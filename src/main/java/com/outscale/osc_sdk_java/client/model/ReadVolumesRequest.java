@@ -21,14 +21,33 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.FiltersVolume;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * ReadVolumesRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ReadVolumesRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -38,6 +57,8 @@ public class ReadVolumesRequest {
   @SerializedName(SERIALIZED_NAME_FILTERS)
   private FiltersVolume filters;
 
+  public ReadVolumesRequest() {
+  }
 
   public ReadVolumesRequest dryRun(Boolean dryRun) {
     
@@ -50,7 +71,6 @@ public class ReadVolumesRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -73,7 +93,6 @@ public class ReadVolumesRequest {
    * @return filters
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public FiltersVolume getFilters() {
     return filters;
@@ -83,6 +102,7 @@ public class ReadVolumesRequest {
   public void setFilters(FiltersVolume filters) {
     this.filters = filters;
   }
+
 
 
   @Override
@@ -124,5 +144,93 @@ public class ReadVolumesRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("Filters");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReadVolumesRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReadVolumesRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadVolumesRequest is not found in the empty JSON string", ReadVolumesRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ReadVolumesRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadVolumesRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `Filters`
+      if (jsonObj.get("Filters") != null && !jsonObj.get("Filters").isJsonNull()) {
+        FiltersVolume.validateJsonObject(jsonObj.getAsJsonObject("Filters"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReadVolumesRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReadVolumesRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReadVolumesRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReadVolumesRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReadVolumesRequest>() {
+           @Override
+           public void write(JsonWriter out, ReadVolumesRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReadVolumesRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReadVolumesRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReadVolumesRequest
+  * @throws IOException if the JSON string is invalid with respect to ReadVolumesRequest
+  */
+  public static ReadVolumesRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReadVolumesRequest.class);
+  }
+
+ /**
+  * Convert an instance of ReadVolumesRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -22,17 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.PublicIpLight;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the NAT service.
  */
-@ApiModel(description = "Information about the NAT service.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class NatService {
   public static final String SERIALIZED_NAME_NAT_SERVICE_ID = "NatServiceId";
   @SerializedName(SERIALIZED_NAME_NAT_SERVICE_ID)
@@ -58,6 +76,8 @@ public class NatService {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public NatService() {
+  }
 
   public NatService natServiceId(String natServiceId) {
     
@@ -70,7 +90,6 @@ public class NatService {
    * @return natServiceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NAT service.")
 
   public String getNatServiceId() {
     return natServiceId;
@@ -93,7 +112,6 @@ public class NatService {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net in which the NAT service is.")
 
   public String getNetId() {
     return netId;
@@ -113,7 +131,7 @@ public class NatService {
 
   public NatService addPublicIpsItem(PublicIpLight publicIpsItem) {
     if (this.publicIps == null) {
-      this.publicIps = new ArrayList<PublicIpLight>();
+      this.publicIps = new ArrayList<>();
     }
     this.publicIps.add(publicIpsItem);
     return this;
@@ -124,7 +142,6 @@ public class NatService {
    * @return publicIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about the public IP or IPs associated with the NAT service.")
 
   public List<PublicIpLight> getPublicIps() {
     return publicIps;
@@ -147,7 +164,6 @@ public class NatService {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the NAT service (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -170,7 +186,6 @@ public class NatService {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet in which the NAT service is.")
 
   public String getSubnetId() {
     return subnetId;
@@ -190,7 +205,7 @@ public class NatService {
 
   public NatService addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -201,7 +216,6 @@ public class NatService {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the NAT service.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -211,6 +225,7 @@ public class NatService {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -260,5 +275,133 @@ public class NatService {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("NatServiceId");
+    openapiFields.add("NetId");
+    openapiFields.add("PublicIps");
+    openapiFields.add("State");
+    openapiFields.add("SubnetId");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NatService
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!NatService.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NatService is not found in the empty JSON string", NatService.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NatService.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NatService` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("NatServiceId") != null && !jsonObj.get("NatServiceId").isJsonNull()) && !jsonObj.get("NatServiceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NatServiceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NatServiceId").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if (jsonObj.get("PublicIps") != null && !jsonObj.get("PublicIps").isJsonNull()) {
+        JsonArray jsonArraypublicIps = jsonObj.getAsJsonArray("PublicIps");
+        if (jsonArraypublicIps != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("PublicIps").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `PublicIps` to be an array in the JSON string but got `%s`", jsonObj.get("PublicIps").toString()));
+          }
+
+          // validate the optional field `PublicIps` (array)
+          for (int i = 0; i < jsonArraypublicIps.size(); i++) {
+            PublicIpLight.validateJsonObject(jsonArraypublicIps.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NatService.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NatService' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NatService> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NatService.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NatService>() {
+           @Override
+           public void write(JsonWriter out, NatService value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NatService read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NatService given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NatService
+  * @throws IOException if the JSON string is invalid with respect to NatService
+  */
+  public static NatService fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NatService.class);
+  }
+
+ /**
+  * Convert an instance of NatService to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

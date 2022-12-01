@@ -21,15 +21,33 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.LinkPublicIpLightForVm;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the private IP of the NIC.
  */
-@ApiModel(description = "Information about the private IP of the NIC.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class PrivateIpLightForVm {
   public static final String SERIALIZED_NAME_IS_PRIMARY = "IsPrimary";
   @SerializedName(SERIALIZED_NAME_IS_PRIMARY)
@@ -47,6 +65,8 @@ public class PrivateIpLightForVm {
   @SerializedName(SERIALIZED_NAME_PRIVATE_IP)
   private String privateIp;
 
+  public PrivateIpLightForVm() {
+  }
 
   public PrivateIpLightForVm isPrimary(Boolean isPrimary) {
     
@@ -59,7 +79,6 @@ public class PrivateIpLightForVm {
    * @return isPrimary
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, the IP is the primary private IP of the NIC.")
 
   public Boolean getIsPrimary() {
     return isPrimary;
@@ -82,7 +101,6 @@ public class PrivateIpLightForVm {
    * @return linkPublicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LinkPublicIpLightForVm getLinkPublicIp() {
     return linkPublicIp;
@@ -105,7 +123,6 @@ public class PrivateIpLightForVm {
    * @return privateDnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the private DNS.")
 
   public String getPrivateDnsName() {
     return privateDnsName;
@@ -128,7 +145,6 @@ public class PrivateIpLightForVm {
    * @return privateIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IP.")
 
   public String getPrivateIp() {
     return privateIp;
@@ -138,6 +154,7 @@ public class PrivateIpLightForVm {
   public void setPrivateIp(String privateIp) {
     this.privateIp = privateIp;
   }
+
 
 
   @Override
@@ -183,5 +200,101 @@ public class PrivateIpLightForVm {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("IsPrimary");
+    openapiFields.add("LinkPublicIp");
+    openapiFields.add("PrivateDnsName");
+    openapiFields.add("PrivateIp");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to PrivateIpLightForVm
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!PrivateIpLightForVm.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PrivateIpLightForVm is not found in the empty JSON string", PrivateIpLightForVm.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!PrivateIpLightForVm.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PrivateIpLightForVm` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `LinkPublicIp`
+      if (jsonObj.get("LinkPublicIp") != null && !jsonObj.get("LinkPublicIp").isJsonNull()) {
+        LinkPublicIpLightForVm.validateJsonObject(jsonObj.getAsJsonObject("LinkPublicIp"));
+      }
+      if ((jsonObj.get("PrivateDnsName") != null && !jsonObj.get("PrivateDnsName").isJsonNull()) && !jsonObj.get("PrivateDnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateDnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateDnsName").toString()));
+      }
+      if ((jsonObj.get("PrivateIp") != null && !jsonObj.get("PrivateIp").isJsonNull()) && !jsonObj.get("PrivateIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateIp").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PrivateIpLightForVm.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PrivateIpLightForVm' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PrivateIpLightForVm> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PrivateIpLightForVm.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PrivateIpLightForVm>() {
+           @Override
+           public void write(JsonWriter out, PrivateIpLightForVm value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PrivateIpLightForVm read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of PrivateIpLightForVm given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of PrivateIpLightForVm
+  * @throws IOException if the JSON string is invalid with respect to PrivateIpLightForVm
+  */
+  public static PrivateIpLightForVm fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PrivateIpLightForVm.class);
+  }
+
+ /**
+  * Convert an instance of PrivateIpLightForVm to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

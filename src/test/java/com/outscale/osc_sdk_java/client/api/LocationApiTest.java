@@ -16,8 +16,8 @@ package com.outscale.osc_sdk_java.client.api;
 import com.outscale.osc_sdk_java.client.ApiException;
 import com.outscale.osc_sdk_java.client.model.ReadLocationsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadLocationsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,26 +27,19 @@ import java.util.Map;
 /**
  * API tests for LocationApi
  */
-@Ignore
+@Disabled
 public class LocationApiTest {
 
     private final LocationApi api = new LocationApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readLocationsTest() throws ApiException {
         ReadLocationsRequest readLocationsRequest = null;
         ReadLocationsResponse response = api.readLocations(readLocationsRequest);
-
         // TODO: test validations
     }
-    
+
 }

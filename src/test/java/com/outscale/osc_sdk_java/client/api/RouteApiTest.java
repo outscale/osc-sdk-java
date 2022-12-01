@@ -21,8 +21,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteRouteResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateRouteRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateRouteResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,58 +32,39 @@ import java.util.Map;
 /**
  * API tests for RouteApi
  */
-@Ignore
+@Disabled
 public class RouteApiTest {
 
     private final RouteApi api = new RouteApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createRouteTest() throws ApiException {
         CreateRouteRequest createRouteRequest = null;
         CreateRouteResponse response = api.createRoute(createRouteRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteRouteTest() throws ApiException {
         DeleteRouteRequest deleteRouteRequest = null;
         DeleteRouteResponse response = api.deleteRoute(deleteRouteRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateRouteTest() throws ApiException {
         UpdateRouteRequest updateRouteRequest = null;
         UpdateRouteResponse response = api.updateRoute(updateRouteRequest);
-
         // TODO: test validations
     }
-    
+
 }

@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersPublicIp {
   public static final String SERIALIZED_NAME_LINK_PUBLIC_IP_IDS = "LinkPublicIpIds";
   @SerializedName(SERIALIZED_NAME_LINK_PUBLIC_IP_IDS)
@@ -76,6 +94,8 @@ public class FiltersPublicIp {
   @SerializedName(SERIALIZED_NAME_VM_IDS)
   private List<String> vmIds = null;
 
+  public FiltersPublicIp() {
+  }
 
   public FiltersPublicIp linkPublicIpIds(List<String> linkPublicIpIds) {
     
@@ -85,7 +105,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addLinkPublicIpIdsItem(String linkPublicIpIdsItem) {
     if (this.linkPublicIpIds == null) {
-      this.linkPublicIpIds = new ArrayList<String>();
+      this.linkPublicIpIds = new ArrayList<>();
     }
     this.linkPublicIpIds.add(linkPublicIpIdsItem);
     return this;
@@ -96,7 +116,6 @@ public class FiltersPublicIp {
    * @return linkPublicIpIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs representing the associations of public IPs with VMs or NICs.")
 
   public List<String> getLinkPublicIpIds() {
     return linkPublicIpIds;
@@ -116,7 +135,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addNicAccountIdsItem(String nicAccountIdsItem) {
     if (this.nicAccountIds == null) {
-      this.nicAccountIds = new ArrayList<String>();
+      this.nicAccountIds = new ArrayList<>();
     }
     this.nicAccountIds.add(nicAccountIdsItem);
     return this;
@@ -127,7 +146,6 @@ public class FiltersPublicIp {
    * @return nicAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the NICs.")
 
   public List<String> getNicAccountIds() {
     return nicAccountIds;
@@ -147,7 +165,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addNicIdsItem(String nicIdsItem) {
     if (this.nicIds == null) {
-      this.nicIds = new ArrayList<String>();
+      this.nicIds = new ArrayList<>();
     }
     this.nicIds.add(nicIdsItem);
     return this;
@@ -158,7 +176,6 @@ public class FiltersPublicIp {
    * @return nicIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the NICs.")
 
   public List<String> getNicIds() {
     return nicIds;
@@ -178,7 +195,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addPlacementsItem(String placementsItem) {
     if (this.placements == null) {
-      this.placements = new ArrayList<String>();
+      this.placements = new ArrayList<>();
     }
     this.placements.add(placementsItem);
     return this;
@@ -189,7 +206,6 @@ public class FiltersPublicIp {
    * @return placements
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the public IPs are for use in the public Cloud or in a Net.")
 
   public List<String> getPlacements() {
     return placements;
@@ -209,7 +225,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addPrivateIpsItem(String privateIpsItem) {
     if (this.privateIps == null) {
-      this.privateIps = new ArrayList<String>();
+      this.privateIps = new ArrayList<>();
     }
     this.privateIps.add(privateIpsItem);
     return this;
@@ -220,7 +236,6 @@ public class FiltersPublicIp {
    * @return privateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IPs associated with the public IPs.")
 
   public List<String> getPrivateIps() {
     return privateIps;
@@ -240,7 +255,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addPublicIpIdsItem(String publicIpIdsItem) {
     if (this.publicIpIds == null) {
-      this.publicIpIds = new ArrayList<String>();
+      this.publicIpIds = new ArrayList<>();
     }
     this.publicIpIds.add(publicIpIdsItem);
     return this;
@@ -251,7 +266,6 @@ public class FiltersPublicIp {
    * @return publicIpIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the public IPs.")
 
   public List<String> getPublicIpIds() {
     return publicIpIds;
@@ -271,7 +285,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addPublicIpsItem(String publicIpsItem) {
     if (this.publicIps == null) {
-      this.publicIps = new ArrayList<String>();
+      this.publicIps = new ArrayList<>();
     }
     this.publicIps.add(publicIpsItem);
     return this;
@@ -282,7 +296,6 @@ public class FiltersPublicIp {
    * @return publicIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IPs.")
 
   public List<String> getPublicIps() {
     return publicIps;
@@ -302,7 +315,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -313,7 +326,6 @@ public class FiltersPublicIp {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the public IPs.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -333,7 +345,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -344,7 +356,6 @@ public class FiltersPublicIp {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the public IPs.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -364,7 +375,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -375,7 +386,6 @@ public class FiltersPublicIp {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the public IPs, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -395,7 +405,7 @@ public class FiltersPublicIp {
 
   public FiltersPublicIp addVmIdsItem(String vmIdsItem) {
     if (this.vmIds == null) {
-      this.vmIds = new ArrayList<String>();
+      this.vmIds = new ArrayList<>();
     }
     this.vmIds.add(vmIdsItem);
     return this;
@@ -406,7 +416,6 @@ public class FiltersPublicIp {
    * @return vmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the VMs.")
 
   public List<String> getVmIds() {
     return vmIds;
@@ -416,6 +425,7 @@ public class FiltersPublicIp {
   public void setVmIds(List<String> vmIds) {
     this.vmIds = vmIds;
   }
+
 
 
   @Override
@@ -475,5 +485,142 @@ public class FiltersPublicIp {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("LinkPublicIpIds");
+    openapiFields.add("NicAccountIds");
+    openapiFields.add("NicIds");
+    openapiFields.add("Placements");
+    openapiFields.add("PrivateIps");
+    openapiFields.add("PublicIpIds");
+    openapiFields.add("PublicIps");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+    openapiFields.add("VmIds");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersPublicIp
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersPublicIp.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersPublicIp is not found in the empty JSON string", FiltersPublicIp.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersPublicIp.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersPublicIp` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkPublicIpIds") != null && !jsonObj.get("LinkPublicIpIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkPublicIpIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NicAccountIds") != null && !jsonObj.get("NicAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("NicAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NicIds") != null && !jsonObj.get("NicIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicIds` to be an array in the JSON string but got `%s`", jsonObj.get("NicIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Placements") != null && !jsonObj.get("Placements").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Placements` to be an array in the JSON string but got `%s`", jsonObj.get("Placements").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateIps") != null && !jsonObj.get("PrivateIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PublicIpIds") != null && !jsonObj.get("PublicIpIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIpIds` to be an array in the JSON string but got `%s`", jsonObj.get("PublicIpIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PublicIps") != null && !jsonObj.get("PublicIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIps` to be an array in the JSON string but got `%s`", jsonObj.get("PublicIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmIds") != null && !jsonObj.get("VmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmIds` to be an array in the JSON string but got `%s`", jsonObj.get("VmIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersPublicIp.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersPublicIp' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersPublicIp> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersPublicIp.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersPublicIp>() {
+           @Override
+           public void write(JsonWriter out, FiltersPublicIp value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersPublicIp read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersPublicIp given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersPublicIp
+  * @throws IOException if the JSON string is invalid with respect to FiltersPublicIp
+  */
+  public static FiltersPublicIp fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersPublicIp.class);
+  }
+
+ /**
+  * Convert an instance of FiltersPublicIp to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

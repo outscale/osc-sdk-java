@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the current state of a VPN tunnel.
  */
-@ApiModel(description = "Information about the current state of a VPN tunnel.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class VgwTelemetry {
   public static final String SERIALIZED_NAME_ACCEPTED_ROUTE_COUNT = "AcceptedRouteCount";
   @SerializedName(SERIALIZED_NAME_ACCEPTED_ROUTE_COUNT)
@@ -51,6 +69,8 @@ public class VgwTelemetry {
   @SerializedName(SERIALIZED_NAME_STATE_DESCRIPTION)
   private String stateDescription;
 
+  public VgwTelemetry() {
+  }
 
   public VgwTelemetry acceptedRouteCount(Integer acceptedRouteCount) {
     
@@ -63,7 +83,6 @@ public class VgwTelemetry {
    * @return acceptedRouteCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of routes accepted through BGP (Border Gateway Protocol) route exchanges.")
 
   public Integer getAcceptedRouteCount() {
     return acceptedRouteCount;
@@ -86,7 +105,6 @@ public class VgwTelemetry {
    * @return lastStateChangeDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time (UTC) of the latest state update.")
 
   public OffsetDateTime getLastStateChangeDate() {
     return lastStateChangeDate;
@@ -109,7 +127,6 @@ public class VgwTelemetry {
    * @return outsideIpAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP on the OUTSCALE side of the tunnel.")
 
   public String getOutsideIpAddress() {
     return outsideIpAddress;
@@ -132,7 +149,6 @@ public class VgwTelemetry {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the IPSEC tunnel (`UP` \\| `DOWN`).")
 
   public String getState() {
     return state;
@@ -155,7 +171,6 @@ public class VgwTelemetry {
    * @return stateDescription
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A description of the current state of the tunnel.")
 
   public String getStateDescription() {
     return stateDescription;
@@ -165,6 +180,7 @@ public class VgwTelemetry {
   public void setStateDescription(String stateDescription) {
     this.stateDescription = stateDescription;
   }
+
 
 
   @Override
@@ -212,5 +228,101 @@ public class VgwTelemetry {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AcceptedRouteCount");
+    openapiFields.add("LastStateChangeDate");
+    openapiFields.add("OutsideIpAddress");
+    openapiFields.add("State");
+    openapiFields.add("StateDescription");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to VgwTelemetry
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!VgwTelemetry.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VgwTelemetry is not found in the empty JSON string", VgwTelemetry.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!VgwTelemetry.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VgwTelemetry` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("OutsideIpAddress") != null && !jsonObj.get("OutsideIpAddress").isJsonNull()) && !jsonObj.get("OutsideIpAddress").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutsideIpAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OutsideIpAddress").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("StateDescription") != null && !jsonObj.get("StateDescription").isJsonNull()) && !jsonObj.get("StateDescription").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StateDescription").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!VgwTelemetry.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VgwTelemetry' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<VgwTelemetry> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VgwTelemetry.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<VgwTelemetry>() {
+           @Override
+           public void write(JsonWriter out, VgwTelemetry value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public VgwTelemetry read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of VgwTelemetry given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of VgwTelemetry
+  * @throws IOException if the JSON string is invalid with respect to VgwTelemetry
+  */
+  public static VgwTelemetry fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VgwTelemetry.class);
+  }
+
+ /**
+  * Convert an instance of VgwTelemetry to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

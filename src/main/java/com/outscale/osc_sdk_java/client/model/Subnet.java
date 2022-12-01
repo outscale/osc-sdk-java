@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the Subnet.
  */
-@ApiModel(description = "Information about the Subnet.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Subnet {
   public static final String SERIALIZED_NAME_AVAILABLE_IPS_COUNT = "AvailableIpsCount";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_IPS_COUNT)
@@ -65,6 +83,8 @@ public class Subnet {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public Subnet() {
+  }
 
   public Subnet availableIpsCount(Integer availableIpsCount) {
     
@@ -77,7 +97,6 @@ public class Subnet {
    * @return availableIpsCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of available IPs in the Subnets.")
 
   public Integer getAvailableIpsCount() {
     return availableIpsCount;
@@ -100,7 +119,6 @@ public class Subnet {
    * @return ipRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).")
 
   public String getIpRange() {
     return ipRange;
@@ -123,7 +141,6 @@ public class Subnet {
    * @return mapPublicIpOnLaunch
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, a public IP is assigned to the network interface cards (NICs) created in the specified Subnet.")
 
   public Boolean getMapPublicIpOnLaunch() {
     return mapPublicIpOnLaunch;
@@ -146,7 +163,6 @@ public class Subnet {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net in which the Subnet is.")
 
   public String getNetId() {
     return netId;
@@ -169,7 +185,6 @@ public class Subnet {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the Subnet (`pending` \\| `available` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -192,7 +207,6 @@ public class Subnet {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet.")
 
   public String getSubnetId() {
     return subnetId;
@@ -215,7 +229,6 @@ public class Subnet {
    * @return subregionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the Subregion in which the Subnet is located.")
 
   public String getSubregionName() {
     return subregionName;
@@ -235,7 +248,7 @@ public class Subnet {
 
   public Subnet addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -246,7 +259,6 @@ public class Subnet {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the Subnet.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -256,6 +268,7 @@ public class Subnet {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -309,5 +322,124 @@ public class Subnet {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AvailableIpsCount");
+    openapiFields.add("IpRange");
+    openapiFields.add("MapPublicIpOnLaunch");
+    openapiFields.add("NetId");
+    openapiFields.add("State");
+    openapiFields.add("SubnetId");
+    openapiFields.add("SubregionName");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Subnet
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Subnet.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Subnet is not found in the empty JSON string", Subnet.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Subnet.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Subnet` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("IpRange") != null && !jsonObj.get("IpRange").isJsonNull()) && !jsonObj.get("IpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpRange").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Subnet.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Subnet' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Subnet> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Subnet.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Subnet>() {
+           @Override
+           public void write(JsonWriter out, Subnet value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Subnet read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Subnet given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Subnet
+  * @throws IOException if the JSON string is invalid with respect to Subnet
+  */
+  public static Subnet fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Subnet.class);
+  }
+
+ /**
+  * Convert an instance of Subnet to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

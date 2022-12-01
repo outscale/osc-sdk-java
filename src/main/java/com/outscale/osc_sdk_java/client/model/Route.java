@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the route.
  */
-@ApiModel(description = "Information about the route.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Route {
   public static final String SERIALIZED_NAME_CREATION_METHOD = "CreationMethod";
   @SerializedName(SERIALIZED_NAME_CREATION_METHOD)
@@ -74,6 +92,8 @@ public class Route {
   @SerializedName(SERIALIZED_NAME_VM_ID)
   private String vmId;
 
+  public Route() {
+  }
 
   public Route creationMethod(String creationMethod) {
     
@@ -86,7 +106,6 @@ public class Route {
    * @return creationMethod
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The method used to create the route.")
 
   public String getCreationMethod() {
     return creationMethod;
@@ -109,7 +128,6 @@ public class Route {
    * @return destinationIpRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).")
 
   public String getDestinationIpRange() {
     return destinationIpRange;
@@ -132,7 +150,6 @@ public class Route {
    * @return destinationServiceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the OUTSCALE service.")
 
   public String getDestinationServiceId() {
     return destinationServiceId;
@@ -155,7 +172,6 @@ public class Route {
    * @return gatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Internet service or virtual gateway attached to the Net.")
 
   public String getGatewayId() {
     return gatewayId;
@@ -178,7 +194,6 @@ public class Route {
    * @return natServiceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a NAT service attached to the Net.")
 
   public String getNatServiceId() {
     return natServiceId;
@@ -201,7 +216,6 @@ public class Route {
    * @return netAccessPointId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net access point.")
 
   public String getNetAccessPointId() {
     return netAccessPointId;
@@ -224,7 +238,6 @@ public class Route {
    * @return netPeeringId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net peering.")
 
   public String getNetPeeringId() {
     return netPeeringId;
@@ -247,7 +260,6 @@ public class Route {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NIC.")
 
   public String getNicId() {
     return nicId;
@@ -270,7 +282,6 @@ public class Route {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of a route in the route table (always `active`). ")
 
   public String getState() {
     return state;
@@ -293,7 +304,6 @@ public class Route {
    * @return vmAccountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the VM.")
 
   public String getVmAccountId() {
     return vmAccountId;
@@ -316,7 +326,6 @@ public class Route {
    * @return vmId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a VM specified in a route in the table.")
 
   public String getVmId() {
     return vmId;
@@ -326,6 +335,7 @@ public class Route {
   public void setVmId(String vmId) {
     this.vmId = vmId;
   }
+
 
 
   @Override
@@ -385,5 +395,131 @@ public class Route {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CreationMethod");
+    openapiFields.add("DestinationIpRange");
+    openapiFields.add("DestinationServiceId");
+    openapiFields.add("GatewayId");
+    openapiFields.add("NatServiceId");
+    openapiFields.add("NetAccessPointId");
+    openapiFields.add("NetPeeringId");
+    openapiFields.add("NicId");
+    openapiFields.add("State");
+    openapiFields.add("VmAccountId");
+    openapiFields.add("VmId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Route
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Route.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Route is not found in the empty JSON string", Route.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Route.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Route` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("CreationMethod") != null && !jsonObj.get("CreationMethod").isJsonNull()) && !jsonObj.get("CreationMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CreationMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CreationMethod").toString()));
+      }
+      if ((jsonObj.get("DestinationIpRange") != null && !jsonObj.get("DestinationIpRange").isJsonNull()) && !jsonObj.get("DestinationIpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DestinationIpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DestinationIpRange").toString()));
+      }
+      if ((jsonObj.get("DestinationServiceId") != null && !jsonObj.get("DestinationServiceId").isJsonNull()) && !jsonObj.get("DestinationServiceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DestinationServiceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DestinationServiceId").toString()));
+      }
+      if ((jsonObj.get("GatewayId") != null && !jsonObj.get("GatewayId").isJsonNull()) && !jsonObj.get("GatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `GatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("GatewayId").toString()));
+      }
+      if ((jsonObj.get("NatServiceId") != null && !jsonObj.get("NatServiceId").isJsonNull()) && !jsonObj.get("NatServiceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NatServiceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NatServiceId").toString()));
+      }
+      if ((jsonObj.get("NetAccessPointId") != null && !jsonObj.get("NetAccessPointId").isJsonNull()) && !jsonObj.get("NetAccessPointId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetAccessPointId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetAccessPointId").toString()));
+      }
+      if ((jsonObj.get("NetPeeringId") != null && !jsonObj.get("NetPeeringId").isJsonNull()) && !jsonObj.get("NetPeeringId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetPeeringId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetPeeringId").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("VmAccountId") != null && !jsonObj.get("VmAccountId").isJsonNull()) && !jsonObj.get("VmAccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmAccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmAccountId").toString()));
+      }
+      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Route.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Route' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Route> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Route.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Route>() {
+           @Override
+           public void write(JsonWriter out, Route value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Route read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Route given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Route
+  * @throws IOException if the JSON string is invalid with respect to Route
+  */
+  public static Route fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Route.class);
+  }
+
+ /**
+  * Convert an instance of Route to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

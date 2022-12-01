@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersNic {
   public static final String SERIALIZED_NAME_DESCRIPTIONS = "Descriptions";
   @SerializedName(SERIALIZED_NAME_DESCRIPTIONS)
@@ -144,6 +162,8 @@ public class FiltersNic {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersNic() {
+  }
 
   public FiltersNic descriptions(List<String> descriptions) {
     
@@ -153,7 +173,7 @@ public class FiltersNic {
 
   public FiltersNic addDescriptionsItem(String descriptionsItem) {
     if (this.descriptions == null) {
-      this.descriptions = new ArrayList<String>();
+      this.descriptions = new ArrayList<>();
     }
     this.descriptions.add(descriptionsItem);
     return this;
@@ -164,7 +184,6 @@ public class FiltersNic {
    * @return descriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The descriptions of the NICs.")
 
   public List<String> getDescriptions() {
     return descriptions;
@@ -187,7 +206,6 @@ public class FiltersNic {
    * @return isSourceDestCheck
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the source/destination checking is enabled (true) or disabled (false).")
 
   public Boolean getIsSourceDestCheck() {
     return isSourceDestCheck;
@@ -210,7 +228,6 @@ public class FiltersNic {
    * @return linkNicDeleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the NICs are deleted when the VMs they are attached to are terminated.")
 
   public Boolean getLinkNicDeleteOnVmDeletion() {
     return linkNicDeleteOnVmDeletion;
@@ -230,7 +247,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkNicDeviceNumbersItem(Integer linkNicDeviceNumbersItem) {
     if (this.linkNicDeviceNumbers == null) {
-      this.linkNicDeviceNumbers = new ArrayList<Integer>();
+      this.linkNicDeviceNumbers = new ArrayList<>();
     }
     this.linkNicDeviceNumbers.add(linkNicDeviceNumbersItem);
     return this;
@@ -241,7 +258,6 @@ public class FiltersNic {
    * @return linkNicDeviceNumbers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The device numbers the NICs are attached to.")
 
   public List<Integer> getLinkNicDeviceNumbers() {
     return linkNicDeviceNumbers;
@@ -261,7 +277,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkNicLinkNicIdsItem(String linkNicLinkNicIdsItem) {
     if (this.linkNicLinkNicIds == null) {
-      this.linkNicLinkNicIds = new ArrayList<String>();
+      this.linkNicLinkNicIds = new ArrayList<>();
     }
     this.linkNicLinkNicIds.add(linkNicLinkNicIdsItem);
     return this;
@@ -272,7 +288,6 @@ public class FiltersNic {
    * @return linkNicLinkNicIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The attachment IDs of the NICs.")
 
   public List<String> getLinkNicLinkNicIds() {
     return linkNicLinkNicIds;
@@ -292,7 +307,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkNicStatesItem(String linkNicStatesItem) {
     if (this.linkNicStates == null) {
-      this.linkNicStates = new ArrayList<String>();
+      this.linkNicStates = new ArrayList<>();
     }
     this.linkNicStates.add(linkNicStatesItem);
     return this;
@@ -303,7 +318,6 @@ public class FiltersNic {
    * @return linkNicStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the attachments.")
 
   public List<String> getLinkNicStates() {
     return linkNicStates;
@@ -323,7 +337,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkNicVmAccountIdsItem(String linkNicVmAccountIdsItem) {
     if (this.linkNicVmAccountIds == null) {
-      this.linkNicVmAccountIds = new ArrayList<String>();
+      this.linkNicVmAccountIds = new ArrayList<>();
     }
     this.linkNicVmAccountIds.add(linkNicVmAccountIdsItem);
     return this;
@@ -334,7 +348,6 @@ public class FiltersNic {
    * @return linkNicVmAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the VMs the NICs are attached to.")
 
   public List<String> getLinkNicVmAccountIds() {
     return linkNicVmAccountIds;
@@ -354,7 +367,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkNicVmIdsItem(String linkNicVmIdsItem) {
     if (this.linkNicVmIds == null) {
-      this.linkNicVmIds = new ArrayList<String>();
+      this.linkNicVmIds = new ArrayList<>();
     }
     this.linkNicVmIds.add(linkNicVmIdsItem);
     return this;
@@ -365,7 +378,6 @@ public class FiltersNic {
    * @return linkNicVmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the VMs the NICs are attached to.")
 
   public List<String> getLinkNicVmIds() {
     return linkNicVmIds;
@@ -385,7 +397,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkPublicIpAccountIdsItem(String linkPublicIpAccountIdsItem) {
     if (this.linkPublicIpAccountIds == null) {
-      this.linkPublicIpAccountIds = new ArrayList<String>();
+      this.linkPublicIpAccountIds = new ArrayList<>();
     }
     this.linkPublicIpAccountIds.add(linkPublicIpAccountIdsItem);
     return this;
@@ -396,7 +408,6 @@ public class FiltersNic {
    * @return linkPublicIpAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the public IPs associated with the NICs.")
 
   public List<String> getLinkPublicIpAccountIds() {
     return linkPublicIpAccountIds;
@@ -416,7 +427,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkPublicIpLinkPublicIpIdsItem(String linkPublicIpLinkPublicIpIdsItem) {
     if (this.linkPublicIpLinkPublicIpIds == null) {
-      this.linkPublicIpLinkPublicIpIds = new ArrayList<String>();
+      this.linkPublicIpLinkPublicIpIds = new ArrayList<>();
     }
     this.linkPublicIpLinkPublicIpIds.add(linkPublicIpLinkPublicIpIdsItem);
     return this;
@@ -427,7 +438,6 @@ public class FiltersNic {
    * @return linkPublicIpLinkPublicIpIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The association IDs returned when the public IPs were associated with the NICs.")
 
   public List<String> getLinkPublicIpLinkPublicIpIds() {
     return linkPublicIpLinkPublicIpIds;
@@ -447,7 +457,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkPublicIpPublicIpIdsItem(String linkPublicIpPublicIpIdsItem) {
     if (this.linkPublicIpPublicIpIds == null) {
-      this.linkPublicIpPublicIpIds = new ArrayList<String>();
+      this.linkPublicIpPublicIpIds = new ArrayList<>();
     }
     this.linkPublicIpPublicIpIds.add(linkPublicIpPublicIpIdsItem);
     return this;
@@ -458,7 +468,6 @@ public class FiltersNic {
    * @return linkPublicIpPublicIpIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The allocation IDs returned when the public IPs were allocated to their accounts.")
 
   public List<String> getLinkPublicIpPublicIpIds() {
     return linkPublicIpPublicIpIds;
@@ -478,7 +487,7 @@ public class FiltersNic {
 
   public FiltersNic addLinkPublicIpPublicIpsItem(String linkPublicIpPublicIpsItem) {
     if (this.linkPublicIpPublicIps == null) {
-      this.linkPublicIpPublicIps = new ArrayList<String>();
+      this.linkPublicIpPublicIps = new ArrayList<>();
     }
     this.linkPublicIpPublicIps.add(linkPublicIpPublicIpsItem);
     return this;
@@ -489,7 +498,6 @@ public class FiltersNic {
    * @return linkPublicIpPublicIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IPs associated with the NICs.")
 
   public List<String> getLinkPublicIpPublicIps() {
     return linkPublicIpPublicIps;
@@ -509,7 +517,7 @@ public class FiltersNic {
 
   public FiltersNic addMacAddressesItem(String macAddressesItem) {
     if (this.macAddresses == null) {
-      this.macAddresses = new ArrayList<String>();
+      this.macAddresses = new ArrayList<>();
     }
     this.macAddresses.add(macAddressesItem);
     return this;
@@ -520,7 +528,6 @@ public class FiltersNic {
    * @return macAddresses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Media Access Control (MAC) addresses of the NICs.")
 
   public List<String> getMacAddresses() {
     return macAddresses;
@@ -540,7 +547,7 @@ public class FiltersNic {
 
   public FiltersNic addNetIdsItem(String netIdsItem) {
     if (this.netIds == null) {
-      this.netIds = new ArrayList<String>();
+      this.netIds = new ArrayList<>();
     }
     this.netIds.add(netIdsItem);
     return this;
@@ -551,7 +558,6 @@ public class FiltersNic {
    * @return netIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Nets where the NICs are located.")
 
   public List<String> getNetIds() {
     return netIds;
@@ -571,7 +577,7 @@ public class FiltersNic {
 
   public FiltersNic addNicIdsItem(String nicIdsItem) {
     if (this.nicIds == null) {
-      this.nicIds = new ArrayList<String>();
+      this.nicIds = new ArrayList<>();
     }
     this.nicIds.add(nicIdsItem);
     return this;
@@ -582,7 +588,6 @@ public class FiltersNic {
    * @return nicIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the NICs.")
 
   public List<String> getNicIds() {
     return nicIds;
@@ -602,7 +607,7 @@ public class FiltersNic {
 
   public FiltersNic addPrivateDnsNamesItem(String privateDnsNamesItem) {
     if (this.privateDnsNames == null) {
-      this.privateDnsNames = new ArrayList<String>();
+      this.privateDnsNames = new ArrayList<>();
     }
     this.privateDnsNames.add(privateDnsNamesItem);
     return this;
@@ -613,7 +618,6 @@ public class FiltersNic {
    * @return privateDnsNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private DNS names associated with the primary private IPs.")
 
   public List<String> getPrivateDnsNames() {
     return privateDnsNames;
@@ -633,7 +637,7 @@ public class FiltersNic {
 
   public FiltersNic addPrivateIpsLinkPublicIpAccountIdsItem(String privateIpsLinkPublicIpAccountIdsItem) {
     if (this.privateIpsLinkPublicIpAccountIds == null) {
-      this.privateIpsLinkPublicIpAccountIds = new ArrayList<String>();
+      this.privateIpsLinkPublicIpAccountIds = new ArrayList<>();
     }
     this.privateIpsLinkPublicIpAccountIds.add(privateIpsLinkPublicIpAccountIdsItem);
     return this;
@@ -644,7 +648,6 @@ public class FiltersNic {
    * @return privateIpsLinkPublicIpAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owner of the public IPs associated with the private IPs.")
 
   public List<String> getPrivateIpsLinkPublicIpAccountIds() {
     return privateIpsLinkPublicIpAccountIds;
@@ -664,7 +667,7 @@ public class FiltersNic {
 
   public FiltersNic addPrivateIpsLinkPublicIpPublicIpsItem(String privateIpsLinkPublicIpPublicIpsItem) {
     if (this.privateIpsLinkPublicIpPublicIps == null) {
-      this.privateIpsLinkPublicIpPublicIps = new ArrayList<String>();
+      this.privateIpsLinkPublicIpPublicIps = new ArrayList<>();
     }
     this.privateIpsLinkPublicIpPublicIps.add(privateIpsLinkPublicIpPublicIpsItem);
     return this;
@@ -675,7 +678,6 @@ public class FiltersNic {
    * @return privateIpsLinkPublicIpPublicIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IPs associated with the private IPs.")
 
   public List<String> getPrivateIpsLinkPublicIpPublicIps() {
     return privateIpsLinkPublicIpPublicIps;
@@ -698,7 +700,6 @@ public class FiltersNic {
    * @return privateIpsPrimaryIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the private IP is the primary IP associated with the NIC.")
 
   public Boolean getPrivateIpsPrimaryIp() {
     return privateIpsPrimaryIp;
@@ -718,7 +719,7 @@ public class FiltersNic {
 
   public FiltersNic addPrivateIpsPrivateIpsItem(String privateIpsPrivateIpsItem) {
     if (this.privateIpsPrivateIps == null) {
-      this.privateIpsPrivateIps = new ArrayList<String>();
+      this.privateIpsPrivateIps = new ArrayList<>();
     }
     this.privateIpsPrivateIps.add(privateIpsPrivateIpsItem);
     return this;
@@ -729,7 +730,6 @@ public class FiltersNic {
    * @return privateIpsPrivateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IPs of the NICs.")
 
   public List<String> getPrivateIpsPrivateIps() {
     return privateIpsPrivateIps;
@@ -749,7 +749,7 @@ public class FiltersNic {
 
   public FiltersNic addSecurityGroupIdsItem(String securityGroupIdsItem) {
     if (this.securityGroupIds == null) {
-      this.securityGroupIds = new ArrayList<String>();
+      this.securityGroupIds = new ArrayList<>();
     }
     this.securityGroupIds.add(securityGroupIdsItem);
     return this;
@@ -760,7 +760,6 @@ public class FiltersNic {
    * @return securityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the security groups associated with the NICs.")
 
   public List<String> getSecurityGroupIds() {
     return securityGroupIds;
@@ -780,7 +779,7 @@ public class FiltersNic {
 
   public FiltersNic addSecurityGroupNamesItem(String securityGroupNamesItem) {
     if (this.securityGroupNames == null) {
-      this.securityGroupNames = new ArrayList<String>();
+      this.securityGroupNames = new ArrayList<>();
     }
     this.securityGroupNames.add(securityGroupNamesItem);
     return this;
@@ -791,7 +790,6 @@ public class FiltersNic {
    * @return securityGroupNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the security groups associated with the NICs.")
 
   public List<String> getSecurityGroupNames() {
     return securityGroupNames;
@@ -811,7 +809,7 @@ public class FiltersNic {
 
   public FiltersNic addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -822,7 +820,6 @@ public class FiltersNic {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the NICs.")
 
   public List<String> getStates() {
     return states;
@@ -842,7 +839,7 @@ public class FiltersNic {
 
   public FiltersNic addSubnetIdsItem(String subnetIdsItem) {
     if (this.subnetIds == null) {
-      this.subnetIds = new ArrayList<String>();
+      this.subnetIds = new ArrayList<>();
     }
     this.subnetIds.add(subnetIdsItem);
     return this;
@@ -853,7 +850,6 @@ public class FiltersNic {
    * @return subnetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Subnets for the NICs.")
 
   public List<String> getSubnetIds() {
     return subnetIds;
@@ -873,7 +869,7 @@ public class FiltersNic {
 
   public FiltersNic addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -884,7 +880,6 @@ public class FiltersNic {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Subregions where the NICs are located.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -904,7 +899,7 @@ public class FiltersNic {
 
   public FiltersNic addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -915,7 +910,6 @@ public class FiltersNic {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the NICs.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -935,7 +929,7 @@ public class FiltersNic {
 
   public FiltersNic addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -946,7 +940,6 @@ public class FiltersNic {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the NICs.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -966,7 +959,7 @@ public class FiltersNic {
 
   public FiltersNic addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -977,7 +970,6 @@ public class FiltersNic {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the NICs, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -987,6 +979,7 @@ public class FiltersNic {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -1080,5 +1073,215 @@ public class FiltersNic {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Descriptions");
+    openapiFields.add("IsSourceDestCheck");
+    openapiFields.add("LinkNicDeleteOnVmDeletion");
+    openapiFields.add("LinkNicDeviceNumbers");
+    openapiFields.add("LinkNicLinkNicIds");
+    openapiFields.add("LinkNicStates");
+    openapiFields.add("LinkNicVmAccountIds");
+    openapiFields.add("LinkNicVmIds");
+    openapiFields.add("LinkPublicIpAccountIds");
+    openapiFields.add("LinkPublicIpLinkPublicIpIds");
+    openapiFields.add("LinkPublicIpPublicIpIds");
+    openapiFields.add("LinkPublicIpPublicIps");
+    openapiFields.add("MacAddresses");
+    openapiFields.add("NetIds");
+    openapiFields.add("NicIds");
+    openapiFields.add("PrivateDnsNames");
+    openapiFields.add("PrivateIpsLinkPublicIpAccountIds");
+    openapiFields.add("PrivateIpsLinkPublicIpPublicIps");
+    openapiFields.add("PrivateIpsPrimaryIp");
+    openapiFields.add("PrivateIpsPrivateIps");
+    openapiFields.add("SecurityGroupIds");
+    openapiFields.add("SecurityGroupNames");
+    openapiFields.add("States");
+    openapiFields.add("SubnetIds");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersNic
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersNic.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersNic is not found in the empty JSON string", FiltersNic.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersNic.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersNic` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Descriptions") != null && !jsonObj.get("Descriptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Descriptions` to be an array in the JSON string but got `%s`", jsonObj.get("Descriptions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNicDeviceNumbers") != null && !jsonObj.get("LinkNicDeviceNumbers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNicDeviceNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNicDeviceNumbers").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNicLinkNicIds") != null && !jsonObj.get("LinkNicLinkNicIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNicLinkNicIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNicLinkNicIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNicStates") != null && !jsonObj.get("LinkNicStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNicStates` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNicStates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNicVmAccountIds") != null && !jsonObj.get("LinkNicVmAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNicVmAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNicVmAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNicVmIds") != null && !jsonObj.get("LinkNicVmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNicVmIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNicVmIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkPublicIpAccountIds") != null && !jsonObj.get("LinkPublicIpAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkPublicIpAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkPublicIpLinkPublicIpIds") != null && !jsonObj.get("LinkPublicIpLinkPublicIpIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpLinkPublicIpIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkPublicIpLinkPublicIpIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkPublicIpPublicIpIds") != null && !jsonObj.get("LinkPublicIpPublicIpIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpPublicIpIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkPublicIpPublicIpIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkPublicIpPublicIps") != null && !jsonObj.get("LinkPublicIpPublicIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpPublicIps` to be an array in the JSON string but got `%s`", jsonObj.get("LinkPublicIpPublicIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MacAddresses") != null && !jsonObj.get("MacAddresses").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MacAddresses` to be an array in the JSON string but got `%s`", jsonObj.get("MacAddresses").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NetIds") != null && !jsonObj.get("NetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetIds` to be an array in the JSON string but got `%s`", jsonObj.get("NetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NicIds") != null && !jsonObj.get("NicIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicIds` to be an array in the JSON string but got `%s`", jsonObj.get("NicIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateDnsNames") != null && !jsonObj.get("PrivateDnsNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateDnsNames` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateDnsNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateIpsLinkPublicIpAccountIds") != null && !jsonObj.get("PrivateIpsLinkPublicIpAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIpsLinkPublicIpAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIpsLinkPublicIpAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateIpsLinkPublicIpPublicIps") != null && !jsonObj.get("PrivateIpsLinkPublicIpPublicIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIpsLinkPublicIpPublicIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIpsLinkPublicIpPublicIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateIpsPrivateIps") != null && !jsonObj.get("PrivateIpsPrivateIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIpsPrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIpsPrivateIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupIds") != null && !jsonObj.get("SecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupNames") != null && !jsonObj.get("SecurityGroupNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupNames` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubnetIds") != null && !jsonObj.get("SubnetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetIds` to be an array in the JSON string but got `%s`", jsonObj.get("SubnetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersNic.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersNic' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersNic> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersNic.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersNic>() {
+           @Override
+           public void write(JsonWriter out, FiltersNic value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersNic read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersNic given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersNic
+  * @throws IOException if the JSON string is invalid with respect to FiltersNic
+  */
+  public static FiltersNic fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersNic.class);
+  }
+
+ /**
+  * Convert an instance of FiltersNic to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

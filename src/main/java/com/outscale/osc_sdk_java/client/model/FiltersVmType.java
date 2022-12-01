@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersVmType {
   public static final String SERIALIZED_NAME_BSU_OPTIMIZED = "BsuOptimized";
   @SerializedName(SERIALIZED_NAME_BSU_OPTIMIZED)
@@ -56,6 +74,8 @@ public class FiltersVmType {
   @SerializedName(SERIALIZED_NAME_VOLUME_SIZES)
   private List<Integer> volumeSizes = null;
 
+  public FiltersVmType() {
+  }
 
   public FiltersVmType bsuOptimized(Boolean bsuOptimized) {
     
@@ -68,7 +88,6 @@ public class FiltersVmType {
    * @return bsuOptimized
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is not available. It is present in our API for the sake of historical compatibility with AWS.")
 
   public Boolean getBsuOptimized() {
     return bsuOptimized;
@@ -88,7 +107,7 @@ public class FiltersVmType {
 
   public FiltersVmType addMemorySizesItem(Float memorySizesItem) {
     if (this.memorySizes == null) {
-      this.memorySizes = new ArrayList<Float>();
+      this.memorySizes = new ArrayList<>();
     }
     this.memorySizes.add(memorySizesItem);
     return this;
@@ -99,7 +118,6 @@ public class FiltersVmType {
    * @return memorySizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amounts of memory, in gibibytes (GiB).")
 
   public List<Float> getMemorySizes() {
     return memorySizes;
@@ -119,7 +137,7 @@ public class FiltersVmType {
 
   public FiltersVmType addVcoreCountsItem(Integer vcoreCountsItem) {
     if (this.vcoreCounts == null) {
-      this.vcoreCounts = new ArrayList<Integer>();
+      this.vcoreCounts = new ArrayList<>();
     }
     this.vcoreCounts.add(vcoreCountsItem);
     return this;
@@ -130,7 +148,6 @@ public class FiltersVmType {
    * @return vcoreCounts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The numbers of vCores.")
 
   public List<Integer> getVcoreCounts() {
     return vcoreCounts;
@@ -150,7 +167,7 @@ public class FiltersVmType {
 
   public FiltersVmType addVmTypeNamesItem(String vmTypeNamesItem) {
     if (this.vmTypeNames == null) {
-      this.vmTypeNames = new ArrayList<String>();
+      this.vmTypeNames = new ArrayList<>();
     }
     this.vmTypeNames.add(vmTypeNamesItem);
     return this;
@@ -161,7 +178,6 @@ public class FiltersVmType {
    * @return vmTypeNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the VM types. For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).")
 
   public List<String> getVmTypeNames() {
     return vmTypeNames;
@@ -181,7 +197,7 @@ public class FiltersVmType {
 
   public FiltersVmType addVolumeCountsItem(Integer volumeCountsItem) {
     if (this.volumeCounts == null) {
-      this.volumeCounts = new ArrayList<Integer>();
+      this.volumeCounts = new ArrayList<>();
     }
     this.volumeCounts.add(volumeCountsItem);
     return this;
@@ -192,7 +208,6 @@ public class FiltersVmType {
    * @return volumeCounts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of ephemeral storage disks.")
 
   public List<Integer> getVolumeCounts() {
     return volumeCounts;
@@ -212,7 +227,7 @@ public class FiltersVmType {
 
   public FiltersVmType addVolumeSizesItem(Integer volumeSizesItem) {
     if (this.volumeSizes == null) {
-      this.volumeSizes = new ArrayList<Integer>();
+      this.volumeSizes = new ArrayList<>();
     }
     this.volumeSizes.add(volumeSizesItem);
     return this;
@@ -223,7 +238,6 @@ public class FiltersVmType {
    * @return volumeSizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of one ephemeral storage disk, in gibibytes (GiB).")
 
   public List<Integer> getVolumeSizes() {
     return volumeSizes;
@@ -233,6 +247,7 @@ public class FiltersVmType {
   public void setVolumeSizes(List<Integer> volumeSizes) {
     this.volumeSizes = volumeSizes;
   }
+
 
 
   @Override
@@ -282,5 +297,113 @@ public class FiltersVmType {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BsuOptimized");
+    openapiFields.add("MemorySizes");
+    openapiFields.add("VcoreCounts");
+    openapiFields.add("VmTypeNames");
+    openapiFields.add("VolumeCounts");
+    openapiFields.add("VolumeSizes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersVmType
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersVmType.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersVmType is not found in the empty JSON string", FiltersVmType.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersVmType.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersVmType` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MemorySizes") != null && !jsonObj.get("MemorySizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MemorySizes` to be an array in the JSON string but got `%s`", jsonObj.get("MemorySizes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VcoreCounts") != null && !jsonObj.get("VcoreCounts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VcoreCounts` to be an array in the JSON string but got `%s`", jsonObj.get("VcoreCounts").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmTypeNames") != null && !jsonObj.get("VmTypeNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmTypeNames` to be an array in the JSON string but got `%s`", jsonObj.get("VmTypeNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeCounts") != null && !jsonObj.get("VolumeCounts").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeCounts` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeCounts").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeSizes") != null && !jsonObj.get("VolumeSizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeSizes` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeSizes").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersVmType.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersVmType' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersVmType> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersVmType.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersVmType>() {
+           @Override
+           public void write(JsonWriter out, FiltersVmType value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersVmType read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersVmType given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersVmType
+  * @throws IOException if the JSON string is invalid with respect to FiltersVmType
+  */
+  public static FiltersVmType fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersVmType.class);
+  }
+
+ /**
+  * Convert an instance of FiltersVmType to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

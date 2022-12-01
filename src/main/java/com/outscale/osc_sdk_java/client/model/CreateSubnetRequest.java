@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * CreateSubnetRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateSubnetRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -45,6 +64,8 @@ public class CreateSubnetRequest {
   @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
   private String subregionName;
 
+  public CreateSubnetRequest() {
+  }
 
   public CreateSubnetRequest dryRun(Boolean dryRun) {
     
@@ -57,7 +78,6 @@ public class CreateSubnetRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -79,7 +99,7 @@ public class CreateSubnetRequest {
    * The IP range in the Subnet, in CIDR notation (for example, &#x60;10.0.0.0/16&#x60;).&lt;br /&gt; The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).
    * @return ipRange
   **/
-  @ApiModelProperty(required = true, value = "The IP range in the Subnet, in CIDR notation (for example, `10.0.0.0/16`).<br /> The IP range of the Subnet can be either the same as the Net one if you create only a single Subnet in this Net, or a subset of the Net one. In case of several Subnets in a Net, their IP ranges must not overlap. The smallest Subnet you can create uses a /29 netmask (eight IPs). For more information, see [About VPCs](https://docs.outscale.com/en/userguide/About-VPCs.html).")
+  @javax.annotation.Nonnull
 
   public String getIpRange() {
     return ipRange;
@@ -101,7 +121,7 @@ public class CreateSubnetRequest {
    * The ID of the Net for which you want to create a Subnet.
    * @return netId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the Net for which you want to create a Subnet.")
+  @javax.annotation.Nonnull
 
   public String getNetId() {
     return netId;
@@ -124,7 +144,6 @@ public class CreateSubnetRequest {
    * @return subregionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the Subregion in which you want to create the Subnet.")
 
   public String getSubregionName() {
     return subregionName;
@@ -134,6 +153,7 @@ public class CreateSubnetRequest {
   public void setSubregionName(String subregionName) {
     this.subregionName = subregionName;
   }
+
 
 
   @Override
@@ -179,5 +199,109 @@ public class CreateSubnetRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("IpRange");
+    openapiFields.add("NetId");
+    openapiFields.add("SubregionName");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("IpRange");
+    openapiRequiredFields.add("NetId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateSubnetRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateSubnetRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSubnetRequest is not found in the empty JSON string", CreateSubnetRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateSubnetRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateSubnetRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateSubnetRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("IpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpRange").toString()));
+      }
+      if (!jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateSubnetRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateSubnetRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateSubnetRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSubnetRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateSubnetRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateSubnetRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateSubnetRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateSubnetRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateSubnetRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateSubnetRequest
+  */
+  public static CreateSubnetRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateSubnetRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateSubnetRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

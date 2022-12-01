@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the tag.
  */
-@ApiModel(description = "Information about the tag.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Tag {
   public static final String SERIALIZED_NAME_KEY = "Key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -46,6 +64,8 @@ public class Tag {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
+  public Tag() {
+  }
 
   public Tag key(String key) {
     
@@ -58,7 +78,6 @@ public class Tag {
    * @return key
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key of the tag, with a minimum of 1 character.")
 
   public String getKey() {
     return key;
@@ -81,7 +100,6 @@ public class Tag {
    * @return resourceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the resource.")
 
   public String getResourceId() {
     return resourceId;
@@ -104,7 +122,6 @@ public class Tag {
    * @return resourceType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of the resource.")
 
   public String getResourceType() {
     return resourceType;
@@ -127,7 +144,6 @@ public class Tag {
    * @return value
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The value of the tag, between 0 and 255 characters.")
 
   public String getValue() {
     return value;
@@ -137,6 +153,7 @@ public class Tag {
   public void setValue(String value) {
     this.value = value;
   }
+
 
 
   @Override
@@ -182,5 +199,103 @@ public class Tag {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Key");
+    openapiFields.add("ResourceId");
+    openapiFields.add("ResourceType");
+    openapiFields.add("Value");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Tag
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Tag.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Tag is not found in the empty JSON string", Tag.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Tag.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Tag` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Key") != null && !jsonObj.get("Key").isJsonNull()) && !jsonObj.get("Key").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Key").toString()));
+      }
+      if ((jsonObj.get("ResourceId") != null && !jsonObj.get("ResourceId").isJsonNull()) && !jsonObj.get("ResourceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ResourceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ResourceId").toString()));
+      }
+      if ((jsonObj.get("ResourceType") != null && !jsonObj.get("ResourceType").isJsonNull()) && !jsonObj.get("ResourceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ResourceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ResourceType").toString()));
+      }
+      if ((jsonObj.get("Value") != null && !jsonObj.get("Value").isJsonNull()) && !jsonObj.get("Value").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Value").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Tag.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Tag' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Tag> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Tag.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Tag>() {
+           @Override
+           public void write(JsonWriter out, Tag value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Tag read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Tag given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Tag
+  * @throws IOException if the JSON string is invalid with respect to Tag
+  */
+  public static Tag fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Tag.class);
+  }
+
+ /**
+  * Convert an instance of Tag to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

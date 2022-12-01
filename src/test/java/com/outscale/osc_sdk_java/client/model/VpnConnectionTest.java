@@ -22,14 +22,11 @@ import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.RouteLight;
 import com.outscale.osc_sdk_java.client.model.VgwTelemetry;
 import com.outscale.osc_sdk_java.client.model.VpnOptions;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 
 /**

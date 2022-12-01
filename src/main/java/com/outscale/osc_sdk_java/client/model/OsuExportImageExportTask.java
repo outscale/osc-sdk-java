@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the OMI export task.
  */
-@ApiModel(description = "Information about the OMI export task.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class OsuExportImageExportTask {
   public static final String SERIALIZED_NAME_DISK_IMAGE_FORMAT = "DiskImageFormat";
   @SerializedName(SERIALIZED_NAME_DISK_IMAGE_FORMAT)
@@ -46,6 +64,8 @@ public class OsuExportImageExportTask {
   @SerializedName(SERIALIZED_NAME_OSU_PREFIX)
   private String osuPrefix;
 
+  public OsuExportImageExportTask() {
+  }
 
   public OsuExportImageExportTask diskImageFormat(String diskImageFormat) {
     
@@ -57,7 +77,7 @@ public class OsuExportImageExportTask {
    * The format of the export disk (&#x60;qcow2&#x60; \\| &#x60;raw&#x60;).
    * @return diskImageFormat
   **/
-  @ApiModelProperty(required = true, value = "The format of the export disk (`qcow2` \\| `raw`).")
+  @javax.annotation.Nonnull
 
   public String getDiskImageFormat() {
     return diskImageFormat;
@@ -79,7 +99,7 @@ public class OsuExportImageExportTask {
    * The name of the OOS bucket the OMI is exported to.
    * @return osuBucket
   **/
-  @ApiModelProperty(required = true, value = "The name of the OOS bucket the OMI is exported to.")
+  @javax.annotation.Nonnull
 
   public String getOsuBucket() {
     return osuBucket;
@@ -102,7 +122,6 @@ public class OsuExportImageExportTask {
    * @return osuManifestUrl
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The URL of the manifest file.")
 
   public String getOsuManifestUrl() {
     return osuManifestUrl;
@@ -125,7 +144,6 @@ public class OsuExportImageExportTask {
    * @return osuPrefix
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The prefix for the key of the OOS object corresponding to the image.")
 
   public String getOsuPrefix() {
     return osuPrefix;
@@ -135,6 +153,7 @@ public class OsuExportImageExportTask {
   public void setOsuPrefix(String osuPrefix) {
     this.osuPrefix = osuPrefix;
   }
+
 
 
   @Override
@@ -180,5 +199,112 @@ public class OsuExportImageExportTask {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DiskImageFormat");
+    openapiFields.add("OsuBucket");
+    openapiFields.add("OsuManifestUrl");
+    openapiFields.add("OsuPrefix");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("DiskImageFormat");
+    openapiRequiredFields.add("OsuBucket");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to OsuExportImageExportTask
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!OsuExportImageExportTask.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in OsuExportImageExportTask is not found in the empty JSON string", OsuExportImageExportTask.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!OsuExportImageExportTask.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OsuExportImageExportTask` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : OsuExportImageExportTask.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("DiskImageFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DiskImageFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DiskImageFormat").toString()));
+      }
+      if (!jsonObj.get("OsuBucket").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OsuBucket` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OsuBucket").toString()));
+      }
+      if ((jsonObj.get("OsuManifestUrl") != null && !jsonObj.get("OsuManifestUrl").isJsonNull()) && !jsonObj.get("OsuManifestUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OsuManifestUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OsuManifestUrl").toString()));
+      }
+      if ((jsonObj.get("OsuPrefix") != null && !jsonObj.get("OsuPrefix").isJsonNull()) && !jsonObj.get("OsuPrefix").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OsuPrefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OsuPrefix").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!OsuExportImageExportTask.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'OsuExportImageExportTask' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<OsuExportImageExportTask> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(OsuExportImageExportTask.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<OsuExportImageExportTask>() {
+           @Override
+           public void write(JsonWriter out, OsuExportImageExportTask value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public OsuExportImageExportTask read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of OsuExportImageExportTask given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of OsuExportImageExportTask
+  * @throws IOException if the JSON string is invalid with respect to OsuExportImageExportTask
+  */
+  public static OsuExportImageExportTask fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, OsuExportImageExportTask.class);
+  }
+
+ /**
+  * Convert an instance of OsuExportImageExportTask to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

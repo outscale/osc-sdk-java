@@ -57,9 +57,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class LoadBalancerApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public LoadBalancerApi() {
         this(Configuration.getDefaultApiClient());
@@ -77,6 +80,22 @@ public class LoadBalancerApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for createLoadBalancer
      * @param createLoadBalancerRequest  (optional)
@@ -90,6 +109,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call createLoadBalancerCall(CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createLoadBalancerRequest;
 
         // create path and map variables
@@ -113,18 +145,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLoadBalancerValidateBeforeCall(CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createLoadBalancerCall(createLoadBalancerRequest, _callback);
-        return localVarCall;
+        return createLoadBalancerCall(createLoadBalancerRequest, _callback);
 
     }
 
@@ -196,6 +227,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call createLoadBalancerTagsCall(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createLoadBalancerTagsRequest;
 
         // create path and map variables
@@ -219,18 +263,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLoadBalancerTagsValidateBeforeCall(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createLoadBalancerTagsCall(createLoadBalancerTagsRequest, _callback);
-        return localVarCall;
+        return createLoadBalancerTagsCall(createLoadBalancerTagsRequest, _callback);
 
     }
 
@@ -302,6 +345,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call deleteLoadBalancerCall(DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = deleteLoadBalancerRequest;
 
         // create path and map variables
@@ -325,18 +381,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteLoadBalancerValidateBeforeCall(DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = deleteLoadBalancerCall(deleteLoadBalancerRequest, _callback);
-        return localVarCall;
+        return deleteLoadBalancerCall(deleteLoadBalancerRequest, _callback);
 
     }
 
@@ -408,6 +463,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call deleteLoadBalancerTagsCall(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = deleteLoadBalancerTagsRequest;
 
         // create path and map variables
@@ -431,18 +499,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteLoadBalancerTagsValidateBeforeCall(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = deleteLoadBalancerTagsCall(deleteLoadBalancerTagsRequest, _callback);
-        return localVarCall;
+        return deleteLoadBalancerTagsCall(deleteLoadBalancerTagsRequest, _callback);
 
     }
 
@@ -514,6 +581,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call deregisterVmsInLoadBalancerCall(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = deregisterVmsInLoadBalancerRequest;
 
         // create path and map variables
@@ -537,18 +617,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deregisterVmsInLoadBalancerValidateBeforeCall(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = deregisterVmsInLoadBalancerCall(deregisterVmsInLoadBalancerRequest, _callback);
-        return localVarCall;
+        return deregisterVmsInLoadBalancerCall(deregisterVmsInLoadBalancerRequest, _callback);
 
     }
 
@@ -620,6 +699,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call linkLoadBalancerBackendMachinesCall(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = linkLoadBalancerBackendMachinesRequest;
 
         // create path and map variables
@@ -643,18 +735,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call linkLoadBalancerBackendMachinesValidateBeforeCall(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = linkLoadBalancerBackendMachinesCall(linkLoadBalancerBackendMachinesRequest, _callback);
-        return localVarCall;
+        return linkLoadBalancerBackendMachinesCall(linkLoadBalancerBackendMachinesRequest, _callback);
 
     }
 
@@ -726,6 +817,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call readLoadBalancerTagsCall(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = readLoadBalancerTagsRequest;
 
         // create path and map variables
@@ -749,18 +853,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call readLoadBalancerTagsValidateBeforeCall(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = readLoadBalancerTagsCall(readLoadBalancerTagsRequest, _callback);
-        return localVarCall;
+        return readLoadBalancerTagsCall(readLoadBalancerTagsRequest, _callback);
 
     }
 
@@ -832,6 +935,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call readLoadBalancersCall(ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = readLoadBalancersRequest;
 
         // create path and map variables
@@ -855,18 +971,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call readLoadBalancersValidateBeforeCall(ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = readLoadBalancersCall(readLoadBalancersRequest, _callback);
-        return localVarCall;
+        return readLoadBalancersCall(readLoadBalancersRequest, _callback);
 
     }
 
@@ -938,6 +1053,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call readVmsHealthCall(ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = readVmsHealthRequest;
 
         // create path and map variables
@@ -961,18 +1089,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call readVmsHealthValidateBeforeCall(ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = readVmsHealthCall(readVmsHealthRequest, _callback);
-        return localVarCall;
+        return readVmsHealthCall(readVmsHealthRequest, _callback);
 
     }
 
@@ -1044,6 +1171,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call registerVmsInLoadBalancerCall(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = registerVmsInLoadBalancerRequest;
 
         // create path and map variables
@@ -1067,18 +1207,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call registerVmsInLoadBalancerValidateBeforeCall(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = registerVmsInLoadBalancerCall(registerVmsInLoadBalancerRequest, _callback);
-        return localVarCall;
+        return registerVmsInLoadBalancerCall(registerVmsInLoadBalancerRequest, _callback);
 
     }
 
@@ -1150,6 +1289,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call unlinkLoadBalancerBackendMachinesCall(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = unlinkLoadBalancerBackendMachinesRequest;
 
         // create path and map variables
@@ -1173,18 +1325,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call unlinkLoadBalancerBackendMachinesValidateBeforeCall(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = unlinkLoadBalancerBackendMachinesCall(unlinkLoadBalancerBackendMachinesRequest, _callback);
-        return localVarCall;
+        return unlinkLoadBalancerBackendMachinesCall(unlinkLoadBalancerBackendMachinesRequest, _callback);
 
     }
 
@@ -1256,6 +1407,19 @@ public class LoadBalancerApi {
      </table>
      */
     public okhttp3.Call updateLoadBalancerCall(UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateLoadBalancerRequest;
 
         // create path and map variables
@@ -1279,18 +1443,17 @@ public class LoadBalancerApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateLoadBalancerValidateBeforeCall(UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = updateLoadBalancerCall(updateLoadBalancerRequest, _callback);
-        return localVarCall;
+        return updateLoadBalancerCall(updateLoadBalancerRequest, _callback);
 
     }
 

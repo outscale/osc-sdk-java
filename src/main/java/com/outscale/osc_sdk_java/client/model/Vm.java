@@ -25,18 +25,36 @@ import com.outscale.osc_sdk_java.client.model.NicLight;
 import com.outscale.osc_sdk_java.client.model.Placement;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupLight;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the VM.
  */
-@ApiModel(description = "Information about the VM.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Vm {
   public static final String SERIALIZED_NAME_ARCHITECTURE = "Architecture";
   @SerializedName(SERIALIZED_NAME_ARCHITECTURE)
@@ -174,6 +192,8 @@ public class Vm {
   @SerializedName(SERIALIZED_NAME_VM_TYPE)
   private String vmType;
 
+  public Vm() {
+  }
 
   public Vm architecture(String architecture) {
     
@@ -186,7 +206,6 @@ public class Vm {
    * @return architecture
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The architecture of the VM (`i386` \\| `x86_64`).")
 
   public String getArchitecture() {
     return architecture;
@@ -206,7 +225,7 @@ public class Vm {
 
   public Vm addBlockDeviceMappingsItem(BlockDeviceMappingCreated blockDeviceMappingsItem) {
     if (this.blockDeviceMappings == null) {
-      this.blockDeviceMappings = new ArrayList<BlockDeviceMappingCreated>();
+      this.blockDeviceMappings = new ArrayList<>();
     }
     this.blockDeviceMappings.add(blockDeviceMappingsItem);
     return this;
@@ -217,7 +236,6 @@ public class Vm {
    * @return blockDeviceMappings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The block device mapping of the VM.")
 
   public List<BlockDeviceMappingCreated> getBlockDeviceMappings() {
     return blockDeviceMappings;
@@ -240,7 +258,6 @@ public class Vm {
    * @return bsuOptimized
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is not available. It is present in our API for the sake of historical compatibility with AWS.")
 
   public Boolean getBsuOptimized() {
     return bsuOptimized;
@@ -263,7 +280,6 @@ public class Vm {
    * @return clientToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The idempotency token provided when launching the VM.")
 
   public String getClientToken() {
     return clientToken;
@@ -286,7 +302,6 @@ public class Vm {
    * @return creationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time at which the VM was created.")
 
   public OffsetDateTime getCreationDate() {
     return creationDate;
@@ -309,7 +324,6 @@ public class Vm {
    * @return deletionProtection
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, you cannot delete the VM unless you change this parameter back to false.")
 
   public Boolean getDeletionProtection() {
     return deletionProtection;
@@ -332,7 +346,6 @@ public class Vm {
    * @return hypervisor
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The hypervisor type of the VMs (`ovm` \\| `xen`).")
 
   public String getHypervisor() {
     return hypervisor;
@@ -355,7 +368,6 @@ public class Vm {
    * @return imageId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the OMI used to create the VM.")
 
   public String getImageId() {
     return imageId;
@@ -378,7 +390,6 @@ public class Vm {
    * @return isSourceDestChecked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.")
 
   public Boolean getIsSourceDestChecked() {
     return isSourceDestChecked;
@@ -401,7 +412,6 @@ public class Vm {
    * @return keypairName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the keypair used when launching the VM.")
 
   public String getKeypairName() {
     return keypairName;
@@ -424,7 +434,6 @@ public class Vm {
    * @return launchNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number for the VM when launching a group of several VMs (for example, `0`, `1`, `2`, and so on).")
 
   public Integer getLaunchNumber() {
     return launchNumber;
@@ -447,7 +456,6 @@ public class Vm {
    * @return nestedVirtualization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, nested virtualization is enabled. If false, it is disabled.")
 
   public Boolean getNestedVirtualization() {
     return nestedVirtualization;
@@ -470,7 +478,6 @@ public class Vm {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net in which the VM is running.")
 
   public String getNetId() {
     return netId;
@@ -490,7 +497,7 @@ public class Vm {
 
   public Vm addNicsItem(NicLight nicsItem) {
     if (this.nics == null) {
-      this.nics = new ArrayList<NicLight>();
+      this.nics = new ArrayList<>();
     }
     this.nics.add(nicsItem);
     return this;
@@ -501,7 +508,6 @@ public class Vm {
    * @return nics
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) The network interface cards (NICs) the VMs are attached to.")
 
   public List<NicLight> getNics() {
     return nics;
@@ -524,7 +530,6 @@ public class Vm {
    * @return osFamily
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates the operating system (OS) of the VM.")
 
   public String getOsFamily() {
     return osFamily;
@@ -547,7 +552,6 @@ public class Vm {
    * @return performance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The performance of the VM (`medium` \\| `high` \\|  `highest`).")
 
   public String getPerformance() {
     return performance;
@@ -570,7 +574,6 @@ public class Vm {
    * @return placement
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Placement getPlacement() {
     return placement;
@@ -593,7 +596,6 @@ public class Vm {
    * @return privateDnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the private DNS.")
 
   public String getPrivateDnsName() {
     return privateDnsName;
@@ -616,7 +618,6 @@ public class Vm {
    * @return privateIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The primary private IP of the VM.")
 
   public String getPrivateIp() {
     return privateIp;
@@ -636,7 +637,7 @@ public class Vm {
 
   public Vm addProductCodesItem(String productCodesItem) {
     if (this.productCodes == null) {
-      this.productCodes = new ArrayList<String>();
+      this.productCodes = new ArrayList<>();
     }
     this.productCodes.add(productCodesItem);
     return this;
@@ -647,7 +648,6 @@ public class Vm {
    * @return productCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The product code associated with the OMI used to create the VM (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).")
 
   public List<String> getProductCodes() {
     return productCodes;
@@ -670,7 +670,6 @@ public class Vm {
    * @return publicDnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the public DNS.")
 
   public String getPublicDnsName() {
     return publicDnsName;
@@ -693,7 +692,6 @@ public class Vm {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IP of the VM.")
 
   public String getPublicIp() {
     return publicIp;
@@ -716,7 +714,6 @@ public class Vm {
    * @return reservationId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The reservation ID of the VM.")
 
   public String getReservationId() {
     return reservationId;
@@ -739,7 +736,6 @@ public class Vm {
    * @return rootDeviceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the root device for the VM (for example, `/dev/vda1`).")
 
   public String getRootDeviceName() {
     return rootDeviceName;
@@ -762,7 +758,6 @@ public class Vm {
    * @return rootDeviceType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of root device used by the VM (always `bsu`).")
 
   public String getRootDeviceType() {
     return rootDeviceType;
@@ -782,7 +777,7 @@ public class Vm {
 
   public Vm addSecurityGroupsItem(SecurityGroupLight securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<SecurityGroupLight>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -793,7 +788,6 @@ public class Vm {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more security groups associated with the VM.")
 
   public List<SecurityGroupLight> getSecurityGroups() {
     return securityGroups;
@@ -816,7 +810,6 @@ public class Vm {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the VM (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).")
 
   public String getState() {
     return state;
@@ -839,7 +832,6 @@ public class Vm {
    * @return stateReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The reason explaining the current state of the VM.")
 
   public String getStateReason() {
     return stateReason;
@@ -862,7 +854,6 @@ public class Vm {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet for the VM.")
 
   public String getSubnetId() {
     return subnetId;
@@ -882,7 +873,7 @@ public class Vm {
 
   public Vm addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -893,7 +884,6 @@ public class Vm {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the VM.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -916,7 +906,6 @@ public class Vm {
    * @return userData
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Base64-encoded MIME user data.")
 
   public String getUserData() {
     return userData;
@@ -939,7 +928,6 @@ public class Vm {
    * @return vmId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the VM.")
 
   public String getVmId() {
     return vmId;
@@ -962,7 +950,6 @@ public class Vm {
    * @return vmInitiatedShutdownBehavior
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is deleted.")
 
   public String getVmInitiatedShutdownBehavior() {
     return vmInitiatedShutdownBehavior;
@@ -985,7 +972,6 @@ public class Vm {
    * @return vmType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of VM. For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).")
 
   public String getVmType() {
     return vmType;
@@ -995,6 +981,7 @@ public class Vm {
   public void setVmType(String vmType) {
     this.vmType = vmType;
   }
+
 
 
   @Override
@@ -1100,5 +1087,251 @@ public class Vm {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Architecture");
+    openapiFields.add("BlockDeviceMappings");
+    openapiFields.add("BsuOptimized");
+    openapiFields.add("ClientToken");
+    openapiFields.add("CreationDate");
+    openapiFields.add("DeletionProtection");
+    openapiFields.add("Hypervisor");
+    openapiFields.add("ImageId");
+    openapiFields.add("IsSourceDestChecked");
+    openapiFields.add("KeypairName");
+    openapiFields.add("LaunchNumber");
+    openapiFields.add("NestedVirtualization");
+    openapiFields.add("NetId");
+    openapiFields.add("Nics");
+    openapiFields.add("OsFamily");
+    openapiFields.add("Performance");
+    openapiFields.add("Placement");
+    openapiFields.add("PrivateDnsName");
+    openapiFields.add("PrivateIp");
+    openapiFields.add("ProductCodes");
+    openapiFields.add("PublicDnsName");
+    openapiFields.add("PublicIp");
+    openapiFields.add("ReservationId");
+    openapiFields.add("RootDeviceName");
+    openapiFields.add("RootDeviceType");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("State");
+    openapiFields.add("StateReason");
+    openapiFields.add("SubnetId");
+    openapiFields.add("Tags");
+    openapiFields.add("UserData");
+    openapiFields.add("VmId");
+    openapiFields.add("VmInitiatedShutdownBehavior");
+    openapiFields.add("VmType");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Vm
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Vm.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Vm is not found in the empty JSON string", Vm.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Vm.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Vm` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Architecture") != null && !jsonObj.get("Architecture").isJsonNull()) && !jsonObj.get("Architecture").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Architecture` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Architecture").toString()));
+      }
+      if (jsonObj.get("BlockDeviceMappings") != null && !jsonObj.get("BlockDeviceMappings").isJsonNull()) {
+        JsonArray jsonArrayblockDeviceMappings = jsonObj.getAsJsonArray("BlockDeviceMappings");
+        if (jsonArrayblockDeviceMappings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("BlockDeviceMappings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappings` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappings").toString()));
+          }
+
+          // validate the optional field `BlockDeviceMappings` (array)
+          for (int i = 0; i < jsonArrayblockDeviceMappings.size(); i++) {
+            BlockDeviceMappingCreated.validateJsonObject(jsonArrayblockDeviceMappings.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("ClientToken") != null && !jsonObj.get("ClientToken").isJsonNull()) && !jsonObj.get("ClientToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientToken").toString()));
+      }
+      if ((jsonObj.get("Hypervisor") != null && !jsonObj.get("Hypervisor").isJsonNull()) && !jsonObj.get("Hypervisor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Hypervisor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Hypervisor").toString()));
+      }
+      if ((jsonObj.get("ImageId") != null && !jsonObj.get("ImageId").isJsonNull()) && !jsonObj.get("ImageId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ImageId").toString()));
+      }
+      if ((jsonObj.get("KeypairName") != null && !jsonObj.get("KeypairName").isJsonNull()) && !jsonObj.get("KeypairName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KeypairName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KeypairName").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if (jsonObj.get("Nics") != null && !jsonObj.get("Nics").isJsonNull()) {
+        JsonArray jsonArraynics = jsonObj.getAsJsonArray("Nics");
+        if (jsonArraynics != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Nics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Nics` to be an array in the JSON string but got `%s`", jsonObj.get("Nics").toString()));
+          }
+
+          // validate the optional field `Nics` (array)
+          for (int i = 0; i < jsonArraynics.size(); i++) {
+            NicLight.validateJsonObject(jsonArraynics.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("OsFamily") != null && !jsonObj.get("OsFamily").isJsonNull()) && !jsonObj.get("OsFamily").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OsFamily` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OsFamily").toString()));
+      }
+      if ((jsonObj.get("Performance") != null && !jsonObj.get("Performance").isJsonNull()) && !jsonObj.get("Performance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Performance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Performance").toString()));
+      }
+      // validate the optional field `Placement`
+      if (jsonObj.get("Placement") != null && !jsonObj.get("Placement").isJsonNull()) {
+        Placement.validateJsonObject(jsonObj.getAsJsonObject("Placement"));
+      }
+      if ((jsonObj.get("PrivateDnsName") != null && !jsonObj.get("PrivateDnsName").isJsonNull()) && !jsonObj.get("PrivateDnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateDnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateDnsName").toString()));
+      }
+      if ((jsonObj.get("PrivateIp") != null && !jsonObj.get("PrivateIp").isJsonNull()) && !jsonObj.get("PrivateIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateIp").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ProductCodes") != null && !jsonObj.get("ProductCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ProductCodes` to be an array in the JSON string but got `%s`", jsonObj.get("ProductCodes").toString()));
+      }
+      if ((jsonObj.get("PublicDnsName") != null && !jsonObj.get("PublicDnsName").isJsonNull()) && !jsonObj.get("PublicDnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicDnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicDnsName").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      if ((jsonObj.get("ReservationId") != null && !jsonObj.get("ReservationId").isJsonNull()) && !jsonObj.get("ReservationId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ReservationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ReservationId").toString()));
+      }
+      if ((jsonObj.get("RootDeviceName") != null && !jsonObj.get("RootDeviceName").isJsonNull()) && !jsonObj.get("RootDeviceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RootDeviceName").toString()));
+      }
+      if ((jsonObj.get("RootDeviceType") != null && !jsonObj.get("RootDeviceType").isJsonNull()) && !jsonObj.get("RootDeviceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RootDeviceType").toString()));
+      }
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonNull()) {
+        JsonArray jsonArraysecurityGroups = jsonObj.getAsJsonArray("SecurityGroups");
+        if (jsonArraysecurityGroups != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("SecurityGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+          }
+
+          // validate the optional field `SecurityGroups` (array)
+          for (int i = 0; i < jsonArraysecurityGroups.size(); i++) {
+            SecurityGroupLight.validateJsonObject(jsonArraysecurityGroups.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("StateReason") != null && !jsonObj.get("StateReason").isJsonNull()) && !jsonObj.get("StateReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StateReason").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("UserData") != null && !jsonObj.get("UserData").isJsonNull()) && !jsonObj.get("UserData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `UserData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("UserData").toString()));
+      }
+      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+      if ((jsonObj.get("VmInitiatedShutdownBehavior") != null && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonNull()) && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmInitiatedShutdownBehavior` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmInitiatedShutdownBehavior").toString()));
+      }
+      if ((jsonObj.get("VmType") != null && !jsonObj.get("VmType").isJsonNull()) && !jsonObj.get("VmType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmType").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Vm.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Vm' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Vm> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Vm.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Vm>() {
+           @Override
+           public void write(JsonWriter out, Vm value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Vm read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Vm given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Vm
+  * @throws IOException if the JSON string is invalid with respect to Vm
+  */
+  public static Vm fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Vm.class);
+  }
+
+ /**
+  * Convert an instance of Vm to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

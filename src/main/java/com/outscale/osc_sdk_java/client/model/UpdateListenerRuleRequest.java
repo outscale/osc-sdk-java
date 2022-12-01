@@ -20,14 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.openapitools.jackson.nullable.JsonNullable;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * UpdateListenerRuleRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class UpdateListenerRuleRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -45,6 +65,8 @@ public class UpdateListenerRuleRequest {
   @SerializedName(SERIALIZED_NAME_PATH_PATTERN)
   private String pathPattern;
 
+  public UpdateListenerRuleRequest() {
+  }
 
   public UpdateListenerRuleRequest dryRun(Boolean dryRun) {
     
@@ -57,7 +79,6 @@ public class UpdateListenerRuleRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -80,7 +101,6 @@ public class UpdateListenerRuleRequest {
    * @return hostPattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A host-name pattern for the rule, with a maximum length of 128 characters. This host-name pattern supports maximum three wildcards, and must not contain any special characters except [-.?].")
 
   public String getHostPattern() {
     return hostPattern;
@@ -102,7 +122,7 @@ public class UpdateListenerRuleRequest {
    * The name of the listener rule.
    * @return listenerRuleName
   **/
-  @ApiModelProperty(required = true, value = "The name of the listener rule.")
+  @javax.annotation.Nonnull
 
   public String getListenerRuleName() {
     return listenerRuleName;
@@ -125,7 +145,6 @@ public class UpdateListenerRuleRequest {
    * @return pathPattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A path pattern for the rule, with a maximum length of 128 characters. This path pattern supports maximum three wildcards, and must not contain any special characters except [_-.$/~&quot;'@:+?].")
 
   public String getPathPattern() {
     return pathPattern;
@@ -135,6 +154,7 @@ public class UpdateListenerRuleRequest {
   public void setPathPattern(String pathPattern) {
     this.pathPattern = pathPattern;
   }
+
 
 
   @Override
@@ -152,9 +172,20 @@ public class UpdateListenerRuleRequest {
         Objects.equals(this.pathPattern, updateListenerRuleRequest.pathPattern);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(dryRun, hostPattern, listenerRuleName, pathPattern);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -180,5 +211,108 @@ public class UpdateListenerRuleRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("HostPattern");
+    openapiFields.add("ListenerRuleName");
+    openapiFields.add("PathPattern");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("ListenerRuleName");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UpdateListenerRuleRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UpdateListenerRuleRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateListenerRuleRequest is not found in the empty JSON string", UpdateListenerRuleRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!UpdateListenerRuleRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateListenerRuleRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateListenerRuleRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("HostPattern") != null && !jsonObj.get("HostPattern").isJsonNull()) && !jsonObj.get("HostPattern").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `HostPattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("HostPattern").toString()));
+      }
+      if (!jsonObj.get("ListenerRuleName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ListenerRuleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ListenerRuleName").toString()));
+      }
+      if ((jsonObj.get("PathPattern") != null && !jsonObj.get("PathPattern").isJsonNull()) && !jsonObj.get("PathPattern").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PathPattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PathPattern").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UpdateListenerRuleRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateListenerRuleRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UpdateListenerRuleRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateListenerRuleRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UpdateListenerRuleRequest>() {
+           @Override
+           public void write(JsonWriter out, UpdateListenerRuleRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UpdateListenerRuleRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UpdateListenerRuleRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UpdateListenerRuleRequest
+  * @throws IOException if the JSON string is invalid with respect to UpdateListenerRuleRequest
+  */
+  public static UpdateListenerRuleRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateListenerRuleRequest.class);
+  }
+
+ /**
+  * Convert an instance of UpdateListenerRuleRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

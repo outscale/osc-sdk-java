@@ -37,9 +37,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class LoadBalancerPolicyApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public LoadBalancerPolicyApi() {
         this(Configuration.getDefaultApiClient());
@@ -57,6 +60,22 @@ public class LoadBalancerPolicyApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for createLoadBalancerPolicy
      * @param createLoadBalancerPolicyRequest  (optional)
@@ -70,6 +89,19 @@ public class LoadBalancerPolicyApi {
      </table>
      */
     public okhttp3.Call createLoadBalancerPolicyCall(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createLoadBalancerPolicyRequest;
 
         // create path and map variables
@@ -93,18 +125,17 @@ public class LoadBalancerPolicyApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createLoadBalancerPolicyValidateBeforeCall(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createLoadBalancerPolicyCall(createLoadBalancerPolicyRequest, _callback);
-        return localVarCall;
+        return createLoadBalancerPolicyCall(createLoadBalancerPolicyRequest, _callback);
 
     }
 
@@ -176,6 +207,19 @@ public class LoadBalancerPolicyApi {
      </table>
      */
     public okhttp3.Call deleteLoadBalancerPolicyCall(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = deleteLoadBalancerPolicyRequest;
 
         // create path and map variables
@@ -199,18 +243,17 @@ public class LoadBalancerPolicyApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteLoadBalancerPolicyValidateBeforeCall(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = deleteLoadBalancerPolicyCall(deleteLoadBalancerPolicyRequest, _callback);
-        return localVarCall;
+        return deleteLoadBalancerPolicyCall(deleteLoadBalancerPolicyRequest, _callback);
 
     }
 

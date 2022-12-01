@@ -20,8 +20,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteDhcpOptionsRequest;
 import com.outscale.osc_sdk_java.client.model.DeleteDhcpOptionsResponse;
 import com.outscale.osc_sdk_java.client.model.ReadDhcpOptionsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadDhcpOptionsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,58 +31,39 @@ import java.util.Map;
 /**
  * API tests for DhcpOptionApi
  */
-@Ignore
+@Disabled
 public class DhcpOptionApiTest {
 
     private final DhcpOptionApi api = new DhcpOptionApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createDhcpOptionsTest() throws ApiException {
         CreateDhcpOptionsRequest createDhcpOptionsRequest = null;
         CreateDhcpOptionsResponse response = api.createDhcpOptions(createDhcpOptionsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteDhcpOptionsTest() throws ApiException {
         DeleteDhcpOptionsRequest deleteDhcpOptionsRequest = null;
         DeleteDhcpOptionsResponse response = api.deleteDhcpOptions(deleteDhcpOptionsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readDhcpOptionsTest() throws ApiException {
         ReadDhcpOptionsRequest readDhcpOptionsRequest = null;
         ReadDhcpOptionsResponse response = api.readDhcpOptions(readDhcpOptionsRequest);
-
         // TODO: test validations
     }
-    
+
 }

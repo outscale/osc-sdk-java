@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * LinkVolumeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class LinkVolumeRequest {
   public static final String SERIALIZED_NAME_DEVICE_NAME = "DeviceName";
   @SerializedName(SERIALIZED_NAME_DEVICE_NAME)
@@ -45,6 +64,8 @@ public class LinkVolumeRequest {
   @SerializedName(SERIALIZED_NAME_VOLUME_ID)
   private String volumeId;
 
+  public LinkVolumeRequest() {
+  }
 
   public LinkVolumeRequest deviceName(String deviceName) {
     
@@ -56,7 +77,7 @@ public class LinkVolumeRequest {
    * The name of the device. For a root device, you must use &#x60;/dev/sda1&#x60;. For other volumes, you must use &#x60;/dev/sdX&#x60;, &#x60;/dev/sdXX&#x60;, &#x60;/dev/xvdX&#x60;, or &#x60;/dev/xvdXX&#x60; (where the first &#x60;X&#x60; is a letter between &#x60;b&#x60; and &#x60;z&#x60;, and the second &#x60;X&#x60; is a letter between &#x60;a&#x60; and &#x60;z&#x60;).
    * @return deviceName
   **/
-  @ApiModelProperty(required = true, value = "The name of the device. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).")
+  @javax.annotation.Nonnull
 
   public String getDeviceName() {
     return deviceName;
@@ -79,7 +100,6 @@ public class LinkVolumeRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -101,7 +121,7 @@ public class LinkVolumeRequest {
    * The ID of the VM you want to attach the volume to.
    * @return vmId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the VM you want to attach the volume to.")
+  @javax.annotation.Nonnull
 
   public String getVmId() {
     return vmId;
@@ -123,7 +143,7 @@ public class LinkVolumeRequest {
    * The ID of the volume you want to attach.
    * @return volumeId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the volume you want to attach.")
+  @javax.annotation.Nonnull
 
   public String getVolumeId() {
     return volumeId;
@@ -133,6 +153,7 @@ public class LinkVolumeRequest {
   public void setVolumeId(String volumeId) {
     this.volumeId = volumeId;
   }
+
 
 
   @Override
@@ -178,5 +199,110 @@ public class LinkVolumeRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DeviceName");
+    openapiFields.add("DryRun");
+    openapiFields.add("VmId");
+    openapiFields.add("VolumeId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("DeviceName");
+    openapiRequiredFields.add("VmId");
+    openapiRequiredFields.add("VolumeId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LinkVolumeRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!LinkVolumeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LinkVolumeRequest is not found in the empty JSON string", LinkVolumeRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!LinkVolumeRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LinkVolumeRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : LinkVolumeRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("DeviceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DeviceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DeviceName").toString()));
+      }
+      if (!jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+      if (!jsonObj.get("VolumeId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!LinkVolumeRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LinkVolumeRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<LinkVolumeRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LinkVolumeRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<LinkVolumeRequest>() {
+           @Override
+           public void write(JsonWriter out, LinkVolumeRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public LinkVolumeRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of LinkVolumeRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LinkVolumeRequest
+  * @throws IOException if the JSON string is invalid with respect to LinkVolumeRequest
+  */
+  public static LinkVolumeRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LinkVolumeRequest.class);
+  }
+
+ /**
+  * Convert an instance of LinkVolumeRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

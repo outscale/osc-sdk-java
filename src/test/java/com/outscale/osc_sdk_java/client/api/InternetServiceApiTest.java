@@ -25,8 +25,8 @@ import com.outscale.osc_sdk_java.client.model.ReadInternetServicesRequest;
 import com.outscale.osc_sdk_java.client.model.ReadInternetServicesResponse;
 import com.outscale.osc_sdk_java.client.model.UnlinkInternetServiceRequest;
 import com.outscale.osc_sdk_java.client.model.UnlinkInternetServiceResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,90 +36,59 @@ import java.util.Map;
 /**
  * API tests for InternetServiceApi
  */
-@Ignore
+@Disabled
 public class InternetServiceApiTest {
 
     private final InternetServiceApi api = new InternetServiceApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createInternetServiceTest() throws ApiException {
         CreateInternetServiceRequest createInternetServiceRequest = null;
         CreateInternetServiceResponse response = api.createInternetService(createInternetServiceRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteInternetServiceTest() throws ApiException {
         DeleteInternetServiceRequest deleteInternetServiceRequest = null;
         DeleteInternetServiceResponse response = api.deleteInternetService(deleteInternetServiceRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkInternetServiceTest() throws ApiException {
         LinkInternetServiceRequest linkInternetServiceRequest = null;
         LinkInternetServiceResponse response = api.linkInternetService(linkInternetServiceRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readInternetServicesTest() throws ApiException {
         ReadInternetServicesRequest readInternetServicesRequest = null;
         ReadInternetServicesResponse response = api.readInternetServices(readInternetServicesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkInternetServiceTest() throws ApiException {
         UnlinkInternetServiceRequest unlinkInternetServiceRequest = null;
         UnlinkInternetServiceResponse response = api.unlinkInternetService(unlinkInternetServiceRequest);
-
         // TODO: test validations
     }
-    
+
 }

@@ -21,8 +21,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteTagsResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
 import com.outscale.osc_sdk_java.client.model.ReadTagsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadTagsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,58 +32,39 @@ import java.util.Map;
 /**
  * API tests for TagApi
  */
-@Ignore
+@Disabled
 public class TagApiTest {
 
     private final TagApi api = new TagApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createTagsTest() throws ApiException {
         CreateTagsRequest createTagsRequest = null;
         CreateTagsResponse response = api.createTags(createTagsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteTagsTest() throws ApiException {
         DeleteTagsRequest deleteTagsRequest = null;
         DeleteTagsResponse response = api.deleteTags(deleteTagsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readTagsTest() throws ApiException {
         ReadTagsRequest readTagsRequest = null;
         ReadTagsResponse response = api.readTags(readTagsRequest);
-
         // TODO: test validations
     }
-    
+
 }

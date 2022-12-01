@@ -45,9 +45,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.core.GenericType;
 
 public class VirtualGatewayApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public VirtualGatewayApi() {
         this(Configuration.getDefaultApiClient());
@@ -65,6 +68,22 @@ public class VirtualGatewayApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for createVirtualGateway
      * @param createVirtualGatewayRequest  (optional)
@@ -78,6 +97,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call createVirtualGatewayCall(CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createVirtualGatewayRequest;
 
         // create path and map variables
@@ -101,18 +133,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createVirtualGatewayValidateBeforeCall(CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = createVirtualGatewayCall(createVirtualGatewayRequest, _callback);
-        return localVarCall;
+        return createVirtualGatewayCall(createVirtualGatewayRequest, _callback);
 
     }
 
@@ -184,6 +215,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call deleteVirtualGatewayCall(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = deleteVirtualGatewayRequest;
 
         // create path and map variables
@@ -207,18 +251,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call deleteVirtualGatewayValidateBeforeCall(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = deleteVirtualGatewayCall(deleteVirtualGatewayRequest, _callback);
-        return localVarCall;
+        return deleteVirtualGatewayCall(deleteVirtualGatewayRequest, _callback);
 
     }
 
@@ -290,6 +333,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call linkVirtualGatewayCall(LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = linkVirtualGatewayRequest;
 
         // create path and map variables
@@ -313,18 +369,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call linkVirtualGatewayValidateBeforeCall(LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = linkVirtualGatewayCall(linkVirtualGatewayRequest, _callback);
-        return localVarCall;
+        return linkVirtualGatewayCall(linkVirtualGatewayRequest, _callback);
 
     }
 
@@ -396,6 +451,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call readVirtualGatewaysCall(ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = readVirtualGatewaysRequest;
 
         // create path and map variables
@@ -419,18 +487,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call readVirtualGatewaysValidateBeforeCall(ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = readVirtualGatewaysCall(readVirtualGatewaysRequest, _callback);
-        return localVarCall;
+        return readVirtualGatewaysCall(readVirtualGatewaysRequest, _callback);
 
     }
 
@@ -502,6 +569,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call unlinkVirtualGatewayCall(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = unlinkVirtualGatewayRequest;
 
         // create path and map variables
@@ -525,18 +605,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call unlinkVirtualGatewayValidateBeforeCall(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = unlinkVirtualGatewayCall(unlinkVirtualGatewayRequest, _callback);
-        return localVarCall;
+        return unlinkVirtualGatewayCall(unlinkVirtualGatewayRequest, _callback);
 
     }
 
@@ -608,6 +687,19 @@ public class VirtualGatewayApi {
      </table>
      */
     public okhttp3.Call updateRoutePropagationCall(UpdateRoutePropagationRequest updateRoutePropagationRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateRoutePropagationRequest;
 
         // create path and map variables
@@ -631,18 +723,17 @@ public class VirtualGatewayApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call updateRoutePropagationValidateBeforeCall(UpdateRoutePropagationRequest updateRoutePropagationRequest, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = updateRoutePropagationCall(updateRoutePropagationRequest, _callback);
-        return localVarCall;
+        return updateRoutePropagationCall(updateRoutePropagationRequest, _callback);
 
     }
 

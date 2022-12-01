@@ -27,8 +27,8 @@ import com.outscale.osc_sdk_java.client.model.UnlinkVolumeRequest;
 import com.outscale.osc_sdk_java.client.model.UnlinkVolumeResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateVolumeRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateVolumeResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,106 +38,69 @@ import java.util.Map;
 /**
  * API tests for VolumeApi
  */
-@Ignore
+@Disabled
 public class VolumeApiTest {
 
     private final VolumeApi api = new VolumeApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createVolumeTest() throws ApiException {
         CreateVolumeRequest createVolumeRequest = null;
         CreateVolumeResponse response = api.createVolume(createVolumeRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteVolumeTest() throws ApiException {
         DeleteVolumeRequest deleteVolumeRequest = null;
         DeleteVolumeResponse response = api.deleteVolume(deleteVolumeRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkVolumeTest() throws ApiException {
         LinkVolumeRequest linkVolumeRequest = null;
         LinkVolumeResponse response = api.linkVolume(linkVolumeRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVolumesTest() throws ApiException {
         ReadVolumesRequest readVolumesRequest = null;
         ReadVolumesResponse response = api.readVolumes(readVolumesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkVolumeTest() throws ApiException {
         UnlinkVolumeRequest unlinkVolumeRequest = null;
         UnlinkVolumeResponse response = api.unlinkVolume(unlinkVolumeRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateVolumeTest() throws ApiException {
         UpdateVolumeRequest updateVolumeRequest = null;
         UpdateVolumeResponse response = api.updateVolume(updateVolumeRequest);
-
         // TODO: test validations
     }
-    
+
 }

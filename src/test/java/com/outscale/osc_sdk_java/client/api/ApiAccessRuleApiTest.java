@@ -22,8 +22,8 @@ import com.outscale.osc_sdk_java.client.model.ReadApiAccessRulesRequest;
 import com.outscale.osc_sdk_java.client.model.ReadApiAccessRulesResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,74 +33,49 @@ import java.util.Map;
 /**
  * API tests for ApiAccessRuleApi
  */
-@Ignore
+@Disabled
 public class ApiAccessRuleApiTest {
 
     private final ApiAccessRuleApi api = new ApiAccessRuleApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createApiAccessRuleTest() throws ApiException {
         CreateApiAccessRuleRequest createApiAccessRuleRequest = null;
         CreateApiAccessRuleResponse response = api.createApiAccessRule(createApiAccessRuleRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteApiAccessRuleTest() throws ApiException {
         DeleteApiAccessRuleRequest deleteApiAccessRuleRequest = null;
         DeleteApiAccessRuleResponse response = api.deleteApiAccessRule(deleteApiAccessRuleRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readApiAccessRulesTest() throws ApiException {
         ReadApiAccessRulesRequest readApiAccessRulesRequest = null;
         ReadApiAccessRulesResponse response = api.readApiAccessRules(readApiAccessRulesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateApiAccessRuleTest() throws ApiException {
         UpdateApiAccessRuleRequest updateApiAccessRuleRequest = null;
         UpdateApiAccessRuleResponse response = api.updateApiAccessRule(updateApiAccessRuleRequest);
-
         // TODO: test validations
     }
-    
+
 }

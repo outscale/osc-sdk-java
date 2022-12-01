@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersService {
   public static final String SERIALIZED_NAME_SERVICE_IDS = "ServiceIds";
   @SerializedName(SERIALIZED_NAME_SERVICE_IDS)
@@ -40,6 +58,8 @@ public class FiltersService {
   @SerializedName(SERIALIZED_NAME_SERVICE_NAMES)
   private List<String> serviceNames = null;
 
+  public FiltersService() {
+  }
 
   public FiltersService serviceIds(List<String> serviceIds) {
     
@@ -49,7 +69,7 @@ public class FiltersService {
 
   public FiltersService addServiceIdsItem(String serviceIdsItem) {
     if (this.serviceIds == null) {
-      this.serviceIds = new ArrayList<String>();
+      this.serviceIds = new ArrayList<>();
     }
     this.serviceIds.add(serviceIdsItem);
     return this;
@@ -60,7 +80,6 @@ public class FiltersService {
    * @return serviceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the services.")
 
   public List<String> getServiceIds() {
     return serviceIds;
@@ -80,7 +99,7 @@ public class FiltersService {
 
   public FiltersService addServiceNamesItem(String serviceNamesItem) {
     if (this.serviceNames == null) {
-      this.serviceNames = new ArrayList<String>();
+      this.serviceNames = new ArrayList<>();
     }
     this.serviceNames.add(serviceNamesItem);
     return this;
@@ -91,7 +110,6 @@ public class FiltersService {
    * @return serviceNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the services.")
 
   public List<String> getServiceNames() {
     return serviceNames;
@@ -101,6 +119,7 @@ public class FiltersService {
   public void setServiceNames(List<String> serviceNames) {
     this.serviceNames = serviceNames;
   }
+
 
 
   @Override
@@ -142,5 +161,97 @@ public class FiltersService {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ServiceIds");
+    openapiFields.add("ServiceNames");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersService
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersService.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersService is not found in the empty JSON string", FiltersService.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersService.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersService` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ServiceIds") != null && !jsonObj.get("ServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("ServiceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ServiceNames") != null && !jsonObj.get("ServiceNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ServiceNames` to be an array in the JSON string but got `%s`", jsonObj.get("ServiceNames").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersService.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersService' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersService> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersService.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersService>() {
+           @Override
+           public void write(JsonWriter out, FiltersService value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersService read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersService given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersService
+  * @throws IOException if the JSON string is invalid with respect to FiltersService
+  */
+  public static FiltersService fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersService.class);
+  }
+
+ /**
+  * Convert an instance of FiltersService to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

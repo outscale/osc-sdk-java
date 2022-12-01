@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupsMember;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the security group rule.
  */
-@ApiModel(description = "Information about the security group rule.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class SecurityGroupRule {
   public static final String SERIALIZED_NAME_FROM_PORT_RANGE = "FromPortRange";
   @SerializedName(SERIALIZED_NAME_FROM_PORT_RANGE)
@@ -57,6 +75,8 @@ public class SecurityGroupRule {
   @SerializedName(SERIALIZED_NAME_TO_PORT_RANGE)
   private Integer toPortRange;
 
+  public SecurityGroupRule() {
+  }
 
   public SecurityGroupRule fromPortRange(Integer fromPortRange) {
     
@@ -69,7 +89,6 @@ public class SecurityGroupRule {
    * @return fromPortRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number.")
 
   public Integer getFromPortRange() {
     return fromPortRange;
@@ -92,7 +111,6 @@ public class SecurityGroupRule {
    * @return ipProtocol
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).")
 
   public String getIpProtocol() {
     return ipProtocol;
@@ -112,7 +130,7 @@ public class SecurityGroupRule {
 
   public SecurityGroupRule addIpRangesItem(String ipRangesItem) {
     if (this.ipRanges == null) {
-      this.ipRanges = new ArrayList<String>();
+      this.ipRanges = new ArrayList<>();
     }
     this.ipRanges.add(ipRangesItem);
     return this;
@@ -123,7 +141,6 @@ public class SecurityGroupRule {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IP ranges for the security group rules, in CIDR notation (for example, `10.0.0.0/16`).")
 
   public List<String> getIpRanges() {
     return ipRanges;
@@ -143,7 +160,7 @@ public class SecurityGroupRule {
 
   public SecurityGroupRule addSecurityGroupsMembersItem(SecurityGroupsMember securityGroupsMembersItem) {
     if (this.securityGroupsMembers == null) {
-      this.securityGroupsMembers = new ArrayList<SecurityGroupsMember>();
+      this.securityGroupsMembers = new ArrayList<>();
     }
     this.securityGroupsMembers.add(securityGroupsMembersItem);
     return this;
@@ -154,7 +171,6 @@ public class SecurityGroupRule {
    * @return securityGroupsMembers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about one or more members of a security group.")
 
   public List<SecurityGroupsMember> getSecurityGroupsMembers() {
     return securityGroupsMembers;
@@ -174,7 +190,7 @@ public class SecurityGroupRule {
 
   public SecurityGroupRule addServiceIdsItem(String serviceIdsItem) {
     if (this.serviceIds == null) {
-      this.serviceIds = new ArrayList<String>();
+      this.serviceIds = new ArrayList<>();
     }
     this.serviceIds.add(serviceIdsItem);
     return this;
@@ -185,7 +201,6 @@ public class SecurityGroupRule {
    * @return serviceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more service IDs to allow traffic from a Net to access the corresponding OUTSCALE services. For more information, see [ReadNetAccessPointServices](#readnetaccesspointservices).")
 
   public List<String> getServiceIds() {
     return serviceIds;
@@ -208,7 +223,6 @@ public class SecurityGroupRule {
    * @return toPortRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The end of the port range for the TCP and UDP protocols, or an ICMP code number.")
 
   public Integer getToPortRange() {
     return toPortRange;
@@ -218,6 +232,7 @@ public class SecurityGroupRule {
   public void setToPortRange(Integer toPortRange) {
     this.toPortRange = toPortRange;
   }
+
 
 
   @Override
@@ -267,5 +282,118 @@ public class SecurityGroupRule {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("FromPortRange");
+    openapiFields.add("IpProtocol");
+    openapiFields.add("IpRanges");
+    openapiFields.add("SecurityGroupsMembers");
+    openapiFields.add("ServiceIds");
+    openapiFields.add("ToPortRange");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SecurityGroupRule
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!SecurityGroupRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SecurityGroupRule is not found in the empty JSON string", SecurityGroupRule.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SecurityGroupRule.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SecurityGroupRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("IpProtocol") != null && !jsonObj.get("IpProtocol").isJsonNull()) && !jsonObj.get("IpProtocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpProtocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpProtocol").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("IpRanges") != null && !jsonObj.get("IpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("IpRanges").toString()));
+      }
+      if (jsonObj.get("SecurityGroupsMembers") != null && !jsonObj.get("SecurityGroupsMembers").isJsonNull()) {
+        JsonArray jsonArraysecurityGroupsMembers = jsonObj.getAsJsonArray("SecurityGroupsMembers");
+        if (jsonArraysecurityGroupsMembers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("SecurityGroupsMembers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupsMembers` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupsMembers").toString()));
+          }
+
+          // validate the optional field `SecurityGroupsMembers` (array)
+          for (int i = 0; i < jsonArraysecurityGroupsMembers.size(); i++) {
+            SecurityGroupsMember.validateJsonObject(jsonArraysecurityGroupsMembers.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ServiceIds") != null && !jsonObj.get("ServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("ServiceIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SecurityGroupRule.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SecurityGroupRule' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SecurityGroupRule> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SecurityGroupRule.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SecurityGroupRule>() {
+           @Override
+           public void write(JsonWriter out, SecurityGroupRule value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SecurityGroupRule read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SecurityGroupRule given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SecurityGroupRule
+  * @throws IOException if the JSON string is invalid with respect to SecurityGroupRule
+  */
+  public static SecurityGroupRule fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SecurityGroupRule.class);
+  }
+
+ /**
+  * Convert an instance of SecurityGroupRule to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

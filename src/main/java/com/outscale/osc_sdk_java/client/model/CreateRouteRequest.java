@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * CreateRouteRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateRouteRequest {
   public static final String SERIALIZED_NAME_DESTINATION_IP_RANGE = "DestinationIpRange";
   @SerializedName(SERIALIZED_NAME_DESTINATION_IP_RANGE)
@@ -61,6 +80,8 @@ public class CreateRouteRequest {
   @SerializedName(SERIALIZED_NAME_VM_ID)
   private String vmId;
 
+  public CreateRouteRequest() {
+  }
 
   public CreateRouteRequest destinationIpRange(String destinationIpRange) {
     
@@ -72,7 +93,7 @@ public class CreateRouteRequest {
    * The IP range used for the destination match, in CIDR notation (for example, &#x60;10.0.0.0/24&#x60;).
    * @return destinationIpRange
   **/
-  @ApiModelProperty(required = true, value = "The IP range used for the destination match, in CIDR notation (for example, `10.0.0.0/24`).")
+  @javax.annotation.Nonnull
 
   public String getDestinationIpRange() {
     return destinationIpRange;
@@ -95,7 +116,6 @@ public class CreateRouteRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -118,7 +138,6 @@ public class CreateRouteRequest {
    * @return gatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of an Internet service or virtual gateway attached to your Net.")
 
   public String getGatewayId() {
     return gatewayId;
@@ -141,7 +160,6 @@ public class CreateRouteRequest {
    * @return natServiceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a NAT service.")
 
   public String getNatServiceId() {
     return natServiceId;
@@ -164,7 +182,6 @@ public class CreateRouteRequest {
    * @return netPeeringId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a Net peering.")
 
   public String getNetPeeringId() {
     return netPeeringId;
@@ -187,7 +204,6 @@ public class CreateRouteRequest {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a NIC.")
 
   public String getNicId() {
     return nicId;
@@ -209,7 +225,7 @@ public class CreateRouteRequest {
    * The ID of the route table for which you want to create a route.
    * @return routeTableId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the route table for which you want to create a route.")
+  @javax.annotation.Nonnull
 
   public String getRouteTableId() {
     return routeTableId;
@@ -232,7 +248,6 @@ public class CreateRouteRequest {
    * @return vmId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of a NAT VM in your Net (attached to exactly one NIC).")
 
   public String getVmId() {
     return vmId;
@@ -242,6 +257,7 @@ public class CreateRouteRequest {
   public void setVmId(String vmId) {
     this.vmId = vmId;
   }
+
 
 
   @Override
@@ -295,5 +311,125 @@ public class CreateRouteRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DestinationIpRange");
+    openapiFields.add("DryRun");
+    openapiFields.add("GatewayId");
+    openapiFields.add("NatServiceId");
+    openapiFields.add("NetPeeringId");
+    openapiFields.add("NicId");
+    openapiFields.add("RouteTableId");
+    openapiFields.add("VmId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("DestinationIpRange");
+    openapiRequiredFields.add("RouteTableId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateRouteRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateRouteRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateRouteRequest is not found in the empty JSON string", CreateRouteRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateRouteRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateRouteRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateRouteRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("DestinationIpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DestinationIpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DestinationIpRange").toString()));
+      }
+      if ((jsonObj.get("GatewayId") != null && !jsonObj.get("GatewayId").isJsonNull()) && !jsonObj.get("GatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `GatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("GatewayId").toString()));
+      }
+      if ((jsonObj.get("NatServiceId") != null && !jsonObj.get("NatServiceId").isJsonNull()) && !jsonObj.get("NatServiceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NatServiceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NatServiceId").toString()));
+      }
+      if ((jsonObj.get("NetPeeringId") != null && !jsonObj.get("NetPeeringId").isJsonNull()) && !jsonObj.get("NetPeeringId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetPeeringId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetPeeringId").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if (!jsonObj.get("RouteTableId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RouteTableId").toString()));
+      }
+      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateRouteRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateRouteRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateRouteRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateRouteRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateRouteRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateRouteRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateRouteRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateRouteRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateRouteRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateRouteRequest
+  */
+  public static CreateRouteRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateRouteRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateRouteRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

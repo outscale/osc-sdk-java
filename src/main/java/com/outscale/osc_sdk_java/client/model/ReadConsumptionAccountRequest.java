@@ -20,15 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * ReadConsumptionAccountRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ReadConsumptionAccountRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -46,6 +65,8 @@ public class ReadConsumptionAccountRequest {
   @SerializedName(SERIALIZED_NAME_TO_DATE)
   private OffsetDateTime toDate;
 
+  public ReadConsumptionAccountRequest() {
+  }
 
   public ReadConsumptionAccountRequest dryRun(Boolean dryRun) {
     
@@ -58,7 +79,6 @@ public class ReadConsumptionAccountRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -80,7 +100,7 @@ public class ReadConsumptionAccountRequest {
    * The beginning of the time period, in ISO 8601 date-time format (for example, &#x60;2017-06-14&#x60; or &#x60;2017-06-14T00:00:00Z&#x60;).
    * @return fromDate
   **/
-  @ApiModelProperty(required = true, value = "The beginning of the time period, in ISO 8601 date-time format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`).")
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getFromDate() {
     return fromDate;
@@ -103,7 +123,6 @@ public class ReadConsumptionAccountRequest {
    * @return overall
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if false, returns only the consumption of the specific account that sends this request. If true, returns either the overall consumption of your paying account and all linked accounts (if the account that sends this request is a paying account) or returns nothing (if the account that sends this request is a linked account).")
 
   public Boolean getOverall() {
     return overall;
@@ -125,7 +144,7 @@ public class ReadConsumptionAccountRequest {
    * The end of the time period, in ISO 8601 date-time format (for example, &#x60;2017-06-30&#x60; or &#x60;2017-06-30T00:00:00Z&#x60;).
    * @return toDate
   **/
-  @ApiModelProperty(required = true, value = "The end of the time period, in ISO 8601 date-time format (for example, `2017-06-30` or `2017-06-30T00:00:00Z`).")
+  @javax.annotation.Nonnull
 
   public OffsetDateTime getToDate() {
     return toDate;
@@ -135,6 +154,7 @@ public class ReadConsumptionAccountRequest {
   public void setToDate(OffsetDateTime toDate) {
     this.toDate = toDate;
   }
+
 
 
   @Override
@@ -180,5 +200,100 @@ public class ReadConsumptionAccountRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("FromDate");
+    openapiFields.add("Overall");
+    openapiFields.add("ToDate");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("FromDate");
+    openapiRequiredFields.add("ToDate");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReadConsumptionAccountRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReadConsumptionAccountRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadConsumptionAccountRequest is not found in the empty JSON string", ReadConsumptionAccountRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ReadConsumptionAccountRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadConsumptionAccountRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ReadConsumptionAccountRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReadConsumptionAccountRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReadConsumptionAccountRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReadConsumptionAccountRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReadConsumptionAccountRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReadConsumptionAccountRequest>() {
+           @Override
+           public void write(JsonWriter out, ReadConsumptionAccountRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReadConsumptionAccountRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReadConsumptionAccountRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReadConsumptionAccountRequest
+  * @throws IOException if the JSON string is invalid with respect to ReadConsumptionAccountRequest
+  */
+  public static ReadConsumptionAccountRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReadConsumptionAccountRequest.class);
+  }
+
+ /**
+  * Convert an instance of ReadConsumptionAccountRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

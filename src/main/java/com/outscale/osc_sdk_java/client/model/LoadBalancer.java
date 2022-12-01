@@ -27,17 +27,35 @@ import com.outscale.osc_sdk_java.client.model.Listener;
 import com.outscale.osc_sdk_java.client.model.LoadBalancerStickyCookiePolicy;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.SourceSecurityGroup;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the load balancer.
  */
-@ApiModel(description = "Information about the load balancer.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class LoadBalancer {
   public static final String SERIALIZED_NAME_ACCESS_LOG = "AccessLog";
   @SerializedName(SERIALIZED_NAME_ACCESS_LOG)
@@ -111,6 +129,8 @@ public class LoadBalancer {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public LoadBalancer() {
+  }
 
   public LoadBalancer accessLog(AccessLog accessLog) {
     
@@ -123,7 +143,6 @@ public class LoadBalancer {
    * @return accessLog
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public AccessLog getAccessLog() {
     return accessLog;
@@ -143,7 +162,7 @@ public class LoadBalancer {
 
   public LoadBalancer addApplicationStickyCookiePoliciesItem(ApplicationStickyCookiePolicy applicationStickyCookiePoliciesItem) {
     if (this.applicationStickyCookiePolicies == null) {
-      this.applicationStickyCookiePolicies = new ArrayList<ApplicationStickyCookiePolicy>();
+      this.applicationStickyCookiePolicies = new ArrayList<>();
     }
     this.applicationStickyCookiePolicies.add(applicationStickyCookiePoliciesItem);
     return this;
@@ -154,7 +173,6 @@ public class LoadBalancer {
    * @return applicationStickyCookiePolicies
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The stickiness policies defined for the load balancer.")
 
   public List<ApplicationStickyCookiePolicy> getApplicationStickyCookiePolicies() {
     return applicationStickyCookiePolicies;
@@ -174,7 +192,7 @@ public class LoadBalancer {
 
   public LoadBalancer addBackendIpsItem(String backendIpsItem) {
     if (this.backendIps == null) {
-      this.backendIps = new ArrayList<String>();
+      this.backendIps = new ArrayList<>();
     }
     this.backendIps.add(backendIpsItem);
     return this;
@@ -185,7 +203,6 @@ public class LoadBalancer {
    * @return backendIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more public IPs of back-end VMs.")
 
   public List<String> getBackendIps() {
     return backendIps;
@@ -205,7 +222,7 @@ public class LoadBalancer {
 
   public LoadBalancer addBackendVmIdsItem(String backendVmIdsItem) {
     if (this.backendVmIds == null) {
-      this.backendVmIds = new ArrayList<String>();
+      this.backendVmIds = new ArrayList<>();
     }
     this.backendVmIds.add(backendVmIdsItem);
     return this;
@@ -216,7 +233,6 @@ public class LoadBalancer {
    * @return backendVmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of back-end VMs for the load balancer.")
 
   public List<String> getBackendVmIds() {
     return backendVmIds;
@@ -239,7 +255,6 @@ public class LoadBalancer {
    * @return dnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The DNS name of the load balancer.")
 
   public String getDnsName() {
     return dnsName;
@@ -262,7 +277,6 @@ public class LoadBalancer {
    * @return healthCheck
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public HealthCheck getHealthCheck() {
     return healthCheck;
@@ -282,7 +296,7 @@ public class LoadBalancer {
 
   public LoadBalancer addListenersItem(Listener listenersItem) {
     if (this.listeners == null) {
-      this.listeners = new ArrayList<Listener>();
+      this.listeners = new ArrayList<>();
     }
     this.listeners.add(listenersItem);
     return this;
@@ -293,7 +307,6 @@ public class LoadBalancer {
    * @return listeners
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The listeners for the load balancer.")
 
   public List<Listener> getListeners() {
     return listeners;
@@ -316,7 +329,6 @@ public class LoadBalancer {
    * @return loadBalancerName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the load balancer.")
 
   public String getLoadBalancerName() {
     return loadBalancerName;
@@ -336,7 +348,7 @@ public class LoadBalancer {
 
   public LoadBalancer addLoadBalancerStickyCookiePoliciesItem(LoadBalancerStickyCookiePolicy loadBalancerStickyCookiePoliciesItem) {
     if (this.loadBalancerStickyCookiePolicies == null) {
-      this.loadBalancerStickyCookiePolicies = new ArrayList<LoadBalancerStickyCookiePolicy>();
+      this.loadBalancerStickyCookiePolicies = new ArrayList<>();
     }
     this.loadBalancerStickyCookiePolicies.add(loadBalancerStickyCookiePoliciesItem);
     return this;
@@ -347,7 +359,6 @@ public class LoadBalancer {
    * @return loadBalancerStickyCookiePolicies
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The policies defined for the load balancer.")
 
   public List<LoadBalancerStickyCookiePolicy> getLoadBalancerStickyCookiePolicies() {
     return loadBalancerStickyCookiePolicies;
@@ -370,7 +381,6 @@ public class LoadBalancer {
    * @return loadBalancerType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of load balancer. Valid only for load balancers in a Net.<br /> If `LoadBalancerType` is `internet-facing`, the load balancer has a public DNS name that resolves to a public IP.<br /> If `LoadBalancerType` is `internal`, the load balancer has a public DNS name that resolves to a private IP.")
 
   public String getLoadBalancerType() {
     return loadBalancerType;
@@ -393,7 +403,6 @@ public class LoadBalancer {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net for the load balancer.")
 
   public String getNetId() {
     return netId;
@@ -416,7 +425,6 @@ public class LoadBalancer {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(internet-facing only) The public IP associated with the load balancer.")
 
   public String getPublicIp() {
     return publicIp;
@@ -439,7 +447,6 @@ public class LoadBalancer {
    * @return securedCookies
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether secure cookies are enabled for the load balancer.")
 
   public Boolean getSecuredCookies() {
     return securedCookies;
@@ -459,7 +466,7 @@ public class LoadBalancer {
 
   public LoadBalancer addSecurityGroupsItem(String securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<String>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -470,7 +477,6 @@ public class LoadBalancer {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security groups for the load balancers. Valid only for load balancers in a Net.")
 
   public List<String> getSecurityGroups() {
     return securityGroups;
@@ -493,7 +499,6 @@ public class LoadBalancer {
    * @return sourceSecurityGroup
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public SourceSecurityGroup getSourceSecurityGroup() {
     return sourceSecurityGroup;
@@ -513,7 +518,7 @@ public class LoadBalancer {
 
   public LoadBalancer addSubnetsItem(String subnetsItem) {
     if (this.subnets == null) {
-      this.subnets = new ArrayList<String>();
+      this.subnets = new ArrayList<>();
     }
     this.subnets.add(subnetsItem);
     return this;
@@ -524,7 +529,6 @@ public class LoadBalancer {
    * @return subnets
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet in which the load balancer was created.")
 
   public List<String> getSubnets() {
     return subnets;
@@ -544,7 +548,7 @@ public class LoadBalancer {
 
   public LoadBalancer addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -555,7 +559,6 @@ public class LoadBalancer {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subregion in which the load balancer was created.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -575,7 +578,7 @@ public class LoadBalancer {
 
   public LoadBalancer addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -586,7 +589,6 @@ public class LoadBalancer {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the load balancer.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -596,6 +598,7 @@ public class LoadBalancer {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -669,5 +672,208 @@ public class LoadBalancer {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessLog");
+    openapiFields.add("ApplicationStickyCookiePolicies");
+    openapiFields.add("BackendIps");
+    openapiFields.add("BackendVmIds");
+    openapiFields.add("DnsName");
+    openapiFields.add("HealthCheck");
+    openapiFields.add("Listeners");
+    openapiFields.add("LoadBalancerName");
+    openapiFields.add("LoadBalancerStickyCookiePolicies");
+    openapiFields.add("LoadBalancerType");
+    openapiFields.add("NetId");
+    openapiFields.add("PublicIp");
+    openapiFields.add("SecuredCookies");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("SourceSecurityGroup");
+    openapiFields.add("Subnets");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LoadBalancer
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!LoadBalancer.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LoadBalancer is not found in the empty JSON string", LoadBalancer.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!LoadBalancer.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoadBalancer` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `AccessLog`
+      if (jsonObj.get("AccessLog") != null && !jsonObj.get("AccessLog").isJsonNull()) {
+        AccessLog.validateJsonObject(jsonObj.getAsJsonObject("AccessLog"));
+      }
+      if (jsonObj.get("ApplicationStickyCookiePolicies") != null && !jsonObj.get("ApplicationStickyCookiePolicies").isJsonNull()) {
+        JsonArray jsonArrayapplicationStickyCookiePolicies = jsonObj.getAsJsonArray("ApplicationStickyCookiePolicies");
+        if (jsonArrayapplicationStickyCookiePolicies != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ApplicationStickyCookiePolicies").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ApplicationStickyCookiePolicies` to be an array in the JSON string but got `%s`", jsonObj.get("ApplicationStickyCookiePolicies").toString()));
+          }
+
+          // validate the optional field `ApplicationStickyCookiePolicies` (array)
+          for (int i = 0; i < jsonArrayapplicationStickyCookiePolicies.size(); i++) {
+            ApplicationStickyCookiePolicy.validateJsonObject(jsonArrayapplicationStickyCookiePolicies.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BackendIps") != null && !jsonObj.get("BackendIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BackendIps` to be an array in the JSON string but got `%s`", jsonObj.get("BackendIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BackendVmIds") != null && !jsonObj.get("BackendVmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BackendVmIds` to be an array in the JSON string but got `%s`", jsonObj.get("BackendVmIds").toString()));
+      }
+      if ((jsonObj.get("DnsName") != null && !jsonObj.get("DnsName").isJsonNull()) && !jsonObj.get("DnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DnsName").toString()));
+      }
+      // validate the optional field `HealthCheck`
+      if (jsonObj.get("HealthCheck") != null && !jsonObj.get("HealthCheck").isJsonNull()) {
+        HealthCheck.validateJsonObject(jsonObj.getAsJsonObject("HealthCheck"));
+      }
+      if (jsonObj.get("Listeners") != null && !jsonObj.get("Listeners").isJsonNull()) {
+        JsonArray jsonArraylisteners = jsonObj.getAsJsonArray("Listeners");
+        if (jsonArraylisteners != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Listeners").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Listeners` to be an array in the JSON string but got `%s`", jsonObj.get("Listeners").toString()));
+          }
+
+          // validate the optional field `Listeners` (array)
+          for (int i = 0; i < jsonArraylisteners.size(); i++) {
+            Listener.validateJsonObject(jsonArraylisteners.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("LoadBalancerName") != null && !jsonObj.get("LoadBalancerName").isJsonNull()) && !jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerName").toString()));
+      }
+      if (jsonObj.get("LoadBalancerStickyCookiePolicies") != null && !jsonObj.get("LoadBalancerStickyCookiePolicies").isJsonNull()) {
+        JsonArray jsonArrayloadBalancerStickyCookiePolicies = jsonObj.getAsJsonArray("LoadBalancerStickyCookiePolicies");
+        if (jsonArrayloadBalancerStickyCookiePolicies != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("LoadBalancerStickyCookiePolicies").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerStickyCookiePolicies` to be an array in the JSON string but got `%s`", jsonObj.get("LoadBalancerStickyCookiePolicies").toString()));
+          }
+
+          // validate the optional field `LoadBalancerStickyCookiePolicies` (array)
+          for (int i = 0; i < jsonArrayloadBalancerStickyCookiePolicies.size(); i++) {
+            LoadBalancerStickyCookiePolicy.validateJsonObject(jsonArrayloadBalancerStickyCookiePolicies.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("LoadBalancerType") != null && !jsonObj.get("LoadBalancerType").isJsonNull()) && !jsonObj.get("LoadBalancerType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerType").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+      }
+      // validate the optional field `SourceSecurityGroup`
+      if (jsonObj.get("SourceSecurityGroup") != null && !jsonObj.get("SourceSecurityGroup").isJsonNull()) {
+        SourceSecurityGroup.validateJsonObject(jsonObj.getAsJsonObject("SourceSecurityGroup"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Subnets") != null && !jsonObj.get("Subnets").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Subnets` to be an array in the JSON string but got `%s`", jsonObj.get("Subnets").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!LoadBalancer.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LoadBalancer' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<LoadBalancer> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LoadBalancer.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<LoadBalancer>() {
+           @Override
+           public void write(JsonWriter out, LoadBalancer value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public LoadBalancer read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of LoadBalancer given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LoadBalancer
+  * @throws IOException if the JSON string is invalid with respect to LoadBalancer
+  */
+  public static LoadBalancer fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LoadBalancer.class);
+  }
+
+ /**
+  * Convert an instance of LoadBalancer to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

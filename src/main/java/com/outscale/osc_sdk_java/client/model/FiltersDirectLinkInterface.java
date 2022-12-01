@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersDirectLinkInterface {
   public static final String SERIALIZED_NAME_DIRECT_LINK_IDS = "DirectLinkIds";
   @SerializedName(SERIALIZED_NAME_DIRECT_LINK_IDS)
@@ -40,6 +58,8 @@ public class FiltersDirectLinkInterface {
   @SerializedName(SERIALIZED_NAME_DIRECT_LINK_INTERFACE_IDS)
   private List<String> directLinkInterfaceIds = null;
 
+  public FiltersDirectLinkInterface() {
+  }
 
   public FiltersDirectLinkInterface directLinkIds(List<String> directLinkIds) {
     
@@ -49,7 +69,7 @@ public class FiltersDirectLinkInterface {
 
   public FiltersDirectLinkInterface addDirectLinkIdsItem(String directLinkIdsItem) {
     if (this.directLinkIds == null) {
-      this.directLinkIds = new ArrayList<String>();
+      this.directLinkIds = new ArrayList<>();
     }
     this.directLinkIds.add(directLinkIdsItem);
     return this;
@@ -60,7 +80,6 @@ public class FiltersDirectLinkInterface {
    * @return directLinkIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the DirectLinks.")
 
   public List<String> getDirectLinkIds() {
     return directLinkIds;
@@ -80,7 +99,7 @@ public class FiltersDirectLinkInterface {
 
   public FiltersDirectLinkInterface addDirectLinkInterfaceIdsItem(String directLinkInterfaceIdsItem) {
     if (this.directLinkInterfaceIds == null) {
-      this.directLinkInterfaceIds = new ArrayList<String>();
+      this.directLinkInterfaceIds = new ArrayList<>();
     }
     this.directLinkInterfaceIds.add(directLinkInterfaceIdsItem);
     return this;
@@ -91,7 +110,6 @@ public class FiltersDirectLinkInterface {
    * @return directLinkInterfaceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the DirectLink interfaces.")
 
   public List<String> getDirectLinkInterfaceIds() {
     return directLinkInterfaceIds;
@@ -101,6 +119,7 @@ public class FiltersDirectLinkInterface {
   public void setDirectLinkInterfaceIds(List<String> directLinkInterfaceIds) {
     this.directLinkInterfaceIds = directLinkInterfaceIds;
   }
+
 
 
   @Override
@@ -142,5 +161,97 @@ public class FiltersDirectLinkInterface {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DirectLinkIds");
+    openapiFields.add("DirectLinkInterfaceIds");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersDirectLinkInterface
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersDirectLinkInterface.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersDirectLinkInterface is not found in the empty JSON string", FiltersDirectLinkInterface.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersDirectLinkInterface.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersDirectLinkInterface` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("DirectLinkIds") != null && !jsonObj.get("DirectLinkIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkIds` to be an array in the JSON string but got `%s`", jsonObj.get("DirectLinkIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("DirectLinkInterfaceIds") != null && !jsonObj.get("DirectLinkInterfaceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkInterfaceIds` to be an array in the JSON string but got `%s`", jsonObj.get("DirectLinkInterfaceIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersDirectLinkInterface.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersDirectLinkInterface' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersDirectLinkInterface> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersDirectLinkInterface.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersDirectLinkInterface>() {
+           @Override
+           public void write(JsonWriter out, FiltersDirectLinkInterface value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersDirectLinkInterface read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersDirectLinkInterface given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersDirectLinkInterface
+  * @throws IOException if the JSON string is invalid with respect to FiltersDirectLinkInterface
+  */
+  public static FiltersDirectLinkInterface fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersDirectLinkInterface.class);
+  }
+
+ /**
+  * Convert an instance of FiltersDirectLinkInterface to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

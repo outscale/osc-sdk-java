@@ -20,8 +20,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteDirectLinkRequest;
 import com.outscale.osc_sdk_java.client.model.DeleteDirectLinkResponse;
 import com.outscale.osc_sdk_java.client.model.ReadDirectLinksRequest;
 import com.outscale.osc_sdk_java.client.model.ReadDirectLinksResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,58 +31,39 @@ import java.util.Map;
 /**
  * API tests for DirectLinkApi
  */
-@Ignore
+@Disabled
 public class DirectLinkApiTest {
 
     private final DirectLinkApi api = new DirectLinkApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createDirectLinkTest() throws ApiException {
         CreateDirectLinkRequest createDirectLinkRequest = null;
         CreateDirectLinkResponse response = api.createDirectLink(createDirectLinkRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteDirectLinkTest() throws ApiException {
         DeleteDirectLinkRequest deleteDirectLinkRequest = null;
         DeleteDirectLinkResponse response = api.deleteDirectLink(deleteDirectLinkRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readDirectLinksTest() throws ApiException {
         ReadDirectLinksRequest readDirectLinksRequest = null;
         ReadDirectLinksResponse response = api.readDirectLinks(readDirectLinksRequest);
-
         // TODO: test validations
     }
-    
+
 }

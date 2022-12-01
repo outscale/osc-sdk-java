@@ -37,8 +37,8 @@ import com.outscale.osc_sdk_java.client.model.StopVmsRequest;
 import com.outscale.osc_sdk_java.client.model.StopVmsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateVmRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateVmResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,186 +48,119 @@ import java.util.Map;
 /**
  * API tests for VmApi
  */
-@Ignore
+@Disabled
 public class VmApiTest {
 
     private final VmApi api = new VmApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createVmsTest() throws ApiException {
         CreateVmsRequest createVmsRequest = null;
         CreateVmsResponse response = api.createVms(createVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteVmsTest() throws ApiException {
         DeleteVmsRequest deleteVmsRequest = null;
         DeleteVmsResponse response = api.deleteVms(deleteVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readAdminPasswordTest() throws ApiException {
         ReadAdminPasswordRequest readAdminPasswordRequest = null;
         ReadAdminPasswordResponse response = api.readAdminPassword(readAdminPasswordRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readConsoleOutputTest() throws ApiException {
         ReadConsoleOutputRequest readConsoleOutputRequest = null;
         ReadConsoleOutputResponse response = api.readConsoleOutput(readConsoleOutputRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVmTypesTest() throws ApiException {
         ReadVmTypesRequest readVmTypesRequest = null;
         ReadVmTypesResponse response = api.readVmTypes(readVmTypesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVmsTest() throws ApiException {
         ReadVmsRequest readVmsRequest = null;
         ReadVmsResponse response = api.readVms(readVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVmsStateTest() throws ApiException {
         ReadVmsStateRequest readVmsStateRequest = null;
         ReadVmsStateResponse response = api.readVmsState(readVmsStateRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void rebootVmsTest() throws ApiException {
         RebootVmsRequest rebootVmsRequest = null;
         RebootVmsResponse response = api.rebootVms(rebootVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void startVmsTest() throws ApiException {
         StartVmsRequest startVmsRequest = null;
         StartVmsResponse response = api.startVms(startVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void stopVmsTest() throws ApiException {
         StopVmsRequest stopVmsRequest = null;
         StopVmsResponse response = api.stopVms(stopVmsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateVmTest() throws ApiException {
         UpdateVmRequest updateVmRequest = null;
         UpdateVmResponse response = api.updateVm(updateVmRequest);
-
         // TODO: test validations
     }
-    
+
 }

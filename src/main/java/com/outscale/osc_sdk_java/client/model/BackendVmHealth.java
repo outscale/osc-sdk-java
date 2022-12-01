@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the health of a back-end VM.
  */
-@ApiModel(description = "Information about the health of a back-end VM.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class BackendVmHealth {
   public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -46,6 +64,8 @@ public class BackendVmHealth {
   @SerializedName(SERIALIZED_NAME_VM_ID)
   private String vmId;
 
+  public BackendVmHealth() {
+  }
 
   public BackendVmHealth description(String description) {
     
@@ -58,7 +78,6 @@ public class BackendVmHealth {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the state of the back-end VM.")
 
   public String getDescription() {
     return description;
@@ -81,7 +100,6 @@ public class BackendVmHealth {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the back-end VM (`InService` \\| `OutOfService` \\| `Unknown`).")
 
   public String getState() {
     return state;
@@ -104,7 +122,6 @@ public class BackendVmHealth {
    * @return stateReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about the cause of `OutOfService` VMs.<br /> Specifically, whether the cause is Elastic Load Balancing or the VM (`ELB` \\| `Instance` \\| `N/A`).")
 
   public String getStateReason() {
     return stateReason;
@@ -127,7 +144,6 @@ public class BackendVmHealth {
    * @return vmId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the back-end VM.")
 
   public String getVmId() {
     return vmId;
@@ -137,6 +153,7 @@ public class BackendVmHealth {
   public void setVmId(String vmId) {
     this.vmId = vmId;
   }
+
 
 
   @Override
@@ -182,5 +199,103 @@ public class BackendVmHealth {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Description");
+    openapiFields.add("State");
+    openapiFields.add("StateReason");
+    openapiFields.add("VmId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to BackendVmHealth
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!BackendVmHealth.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BackendVmHealth is not found in the empty JSON string", BackendVmHealth.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!BackendVmHealth.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BackendVmHealth` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("StateReason") != null && !jsonObj.get("StateReason").isJsonNull()) && !jsonObj.get("StateReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StateReason").toString()));
+      }
+      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!BackendVmHealth.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BackendVmHealth' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<BackendVmHealth> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BackendVmHealth.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<BackendVmHealth>() {
+           @Override
+           public void write(JsonWriter out, BackendVmHealth value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public BackendVmHealth read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of BackendVmHealth given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of BackendVmHealth
+  * @throws IOException if the JSON string is invalid with respect to BackendVmHealth
+  */
+  public static BackendVmHealth fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BackendVmHealth.class);
+  }
+
+ /**
+  * Convert an instance of BackendVmHealth to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

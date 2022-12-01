@@ -13,7 +13,7 @@
 
 package com.outscale.osc_sdk_java.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the BSU volume to create.
  */
-@ApiModel(description = "Information about the BSU volume to create.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class BsuToCreate {
   public static final String SERIALIZED_NAME_DELETE_ON_VM_DELETION = "DeleteOnVmDeletion";
   @SerializedName(SERIALIZED_NAME_DELETE_ON_VM_DELETION)
@@ -50,6 +68,8 @@ public class BsuToCreate {
   @SerializedName(SERIALIZED_NAME_VOLUME_TYPE)
   private String volumeType;
 
+  public BsuToCreate() {
+  }
 
   public BsuToCreate deleteOnVmDeletion(Boolean deleteOnVmDeletion) {
     
@@ -62,7 +82,6 @@ public class BsuToCreate {
    * @return deleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the volume is deleted when terminating the VM. If false, the volume is not deleted when terminating the VM.")
 
   public Boolean getDeleteOnVmDeletion() {
     return deleteOnVmDeletion;
@@ -85,7 +104,6 @@ public class BsuToCreate {
    * @return iops
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of I/O operations per second (IOPS). This parameter must be specified only if you create an `io1` volume. The maximum number of IOPS allowed for `io1` volumes is `13000` with a maximum performance ratio of 300 IOPS per gibibyte.")
 
   public Integer getIops() {
     return iops;
@@ -108,7 +126,6 @@ public class BsuToCreate {
    * @return snapshotId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the snapshot used to create the volume.")
 
   public String getSnapshotId() {
     return snapshotId;
@@ -131,7 +148,6 @@ public class BsuToCreate {
    * @return volumeSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of the volume, in gibibytes (GiB).<br /> If you specify a snapshot ID, the volume size must be at least equal to the snapshot size.<br /> If you specify a snapshot ID but no volume size, the volume is created with a size similar to the snapshot one.")
 
   public Integer getVolumeSize() {
     return volumeSize;
@@ -154,7 +170,6 @@ public class BsuToCreate {
    * @return volumeType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of the volume (`standard` \\| `io1` \\| `gp2`). If not specified in the request, a `standard` volume is created.<br /> For more information about volume types, see [About Volumes > Volume Types and IOPS](https://docs.outscale.com/en/userguide/About-Volumes.html#_volume_types_and_iops).")
 
   public String getVolumeType() {
     return volumeType;
@@ -164,6 +179,7 @@ public class BsuToCreate {
   public void setVolumeType(String volumeType) {
     this.volumeType = volumeType;
   }
+
 
 
   @Override
@@ -211,5 +227,98 @@ public class BsuToCreate {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DeleteOnVmDeletion");
+    openapiFields.add("Iops");
+    openapiFields.add("SnapshotId");
+    openapiFields.add("VolumeSize");
+    openapiFields.add("VolumeType");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to BsuToCreate
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!BsuToCreate.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BsuToCreate is not found in the empty JSON string", BsuToCreate.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!BsuToCreate.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BsuToCreate` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("SnapshotId") != null && !jsonObj.get("SnapshotId").isJsonNull()) && !jsonObj.get("SnapshotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SnapshotId").toString()));
+      }
+      if ((jsonObj.get("VolumeType") != null && !jsonObj.get("VolumeType").isJsonNull()) && !jsonObj.get("VolumeType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeType").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!BsuToCreate.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BsuToCreate' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<BsuToCreate> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BsuToCreate.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<BsuToCreate>() {
+           @Override
+           public void write(JsonWriter out, BsuToCreate value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public BsuToCreate read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of BsuToCreate given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of BsuToCreate
+  * @throws IOException if the JSON string is invalid with respect to BsuToCreate
+  */
+  public static BsuToCreate fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BsuToCreate.class);
+  }
+
+ /**
+  * Convert an instance of BsuToCreate to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

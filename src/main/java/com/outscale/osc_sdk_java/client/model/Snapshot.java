@@ -22,18 +22,36 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.PermissionsOnResource;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the snapshot.
  */
-@ApiModel(description = "Information about the snapshot.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Snapshot {
   public static final String SERIALIZED_NAME_ACCOUNT_ALIAS = "AccountAlias";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ALIAS)
@@ -79,6 +97,8 @@ public class Snapshot {
   @SerializedName(SERIALIZED_NAME_VOLUME_SIZE)
   private Integer volumeSize;
 
+  public Snapshot() {
+  }
 
   public Snapshot accountAlias(String accountAlias) {
     
@@ -91,7 +111,6 @@ public class Snapshot {
    * @return accountAlias
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account alias of the owner of the snapshot.")
 
   public String getAccountAlias() {
     return accountAlias;
@@ -114,7 +133,6 @@ public class Snapshot {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the snapshot.")
 
   public String getAccountId() {
     return accountId;
@@ -137,7 +155,6 @@ public class Snapshot {
    * @return creationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time of creation of the snapshot.")
 
   public OffsetDateTime getCreationDate() {
     return creationDate;
@@ -160,7 +177,6 @@ public class Snapshot {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the snapshot.")
 
   public String getDescription() {
     return description;
@@ -183,7 +199,6 @@ public class Snapshot {
    * @return permissionsToCreateVolume
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PermissionsOnResource getPermissionsToCreateVolume() {
     return permissionsToCreateVolume;
@@ -206,7 +221,6 @@ public class Snapshot {
    * @return progress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The progress of the snapshot, as a percentage.")
 
   public Integer getProgress() {
     return progress;
@@ -229,7 +243,6 @@ public class Snapshot {
    * @return snapshotId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the snapshot.")
 
   public String getSnapshotId() {
     return snapshotId;
@@ -252,7 +265,6 @@ public class Snapshot {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the snapshot (`in-queue` \\| `completed` \\| `error`).")
 
   public String getState() {
     return state;
@@ -272,7 +284,7 @@ public class Snapshot {
 
   public Snapshot addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -283,7 +295,6 @@ public class Snapshot {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the snapshot.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -306,7 +317,6 @@ public class Snapshot {
    * @return volumeId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the volume used to create the snapshot.")
 
   public String getVolumeId() {
     return volumeId;
@@ -329,7 +339,6 @@ public class Snapshot {
    * @return volumeSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of the volume used to create the snapshot, in gibibytes (GiB).")
 
   public Integer getVolumeSize() {
     return volumeSize;
@@ -339,6 +348,7 @@ public class Snapshot {
   public void setVolumeSize(Integer volumeSize) {
     this.volumeSize = volumeSize;
   }
+
 
 
   @Override
@@ -398,5 +408,134 @@ public class Snapshot {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountAlias");
+    openapiFields.add("AccountId");
+    openapiFields.add("CreationDate");
+    openapiFields.add("Description");
+    openapiFields.add("PermissionsToCreateVolume");
+    openapiFields.add("Progress");
+    openapiFields.add("SnapshotId");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+    openapiFields.add("VolumeId");
+    openapiFields.add("VolumeSize");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Snapshot
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Snapshot.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Snapshot is not found in the empty JSON string", Snapshot.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Snapshot.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Snapshot` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountAlias") != null && !jsonObj.get("AccountAlias").isJsonNull()) && !jsonObj.get("AccountAlias").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountAlias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountAlias").toString()));
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      // validate the optional field `PermissionsToCreateVolume`
+      if (jsonObj.get("PermissionsToCreateVolume") != null && !jsonObj.get("PermissionsToCreateVolume").isJsonNull()) {
+        PermissionsOnResource.validateJsonObject(jsonObj.getAsJsonObject("PermissionsToCreateVolume"));
+      }
+      if ((jsonObj.get("SnapshotId") != null && !jsonObj.get("SnapshotId").isJsonNull()) && !jsonObj.get("SnapshotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SnapshotId").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("VolumeId") != null && !jsonObj.get("VolumeId").isJsonNull()) && !jsonObj.get("VolumeId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Snapshot.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Snapshot' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Snapshot> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Snapshot.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Snapshot>() {
+           @Override
+           public void write(JsonWriter out, Snapshot value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Snapshot read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Snapshot given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Snapshot
+  * @throws IOException if the JSON string is invalid with respect to Snapshot
+  */
+  public static Snapshot fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Snapshot.class);
+  }
+
+ /**
+  * Convert an instance of Snapshot to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

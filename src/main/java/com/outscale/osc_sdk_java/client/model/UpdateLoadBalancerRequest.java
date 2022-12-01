@@ -22,16 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.AccessLog;
 import com.outscale.osc_sdk_java.client.model.HealthCheck;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * UpdateLoadBalancerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class UpdateLoadBalancerRequest {
   public static final String SERIALIZED_NAME_ACCESS_LOG = "AccessLog";
   @SerializedName(SERIALIZED_NAME_ACCESS_LOG)
@@ -73,6 +92,8 @@ public class UpdateLoadBalancerRequest {
   @SerializedName(SERIALIZED_NAME_SERVER_CERTIFICATE_ID)
   private String serverCertificateId;
 
+  public UpdateLoadBalancerRequest() {
+  }
 
   public UpdateLoadBalancerRequest accessLog(AccessLog accessLog) {
     
@@ -85,7 +106,6 @@ public class UpdateLoadBalancerRequest {
    * @return accessLog
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public AccessLog getAccessLog() {
     return accessLog;
@@ -108,7 +128,6 @@ public class UpdateLoadBalancerRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -131,7 +150,6 @@ public class UpdateLoadBalancerRequest {
    * @return healthCheck
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public HealthCheck getHealthCheck() {
     return healthCheck;
@@ -153,7 +171,7 @@ public class UpdateLoadBalancerRequest {
    * The name of the load balancer.
    * @return loadBalancerName
   **/
-  @ApiModelProperty(required = true, value = "The name of the load balancer.")
+  @javax.annotation.Nonnull
 
   public String getLoadBalancerName() {
     return loadBalancerName;
@@ -176,7 +194,6 @@ public class UpdateLoadBalancerRequest {
    * @return loadBalancerPort
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The port on which the load balancer is listening (between `1` and `65535`, both included). This parameter is required if you want to update the server certificate.")
 
   public Integer getLoadBalancerPort() {
     return loadBalancerPort;
@@ -196,7 +213,7 @@ public class UpdateLoadBalancerRequest {
 
   public UpdateLoadBalancerRequest addPolicyNamesItem(String policyNamesItem) {
     if (this.policyNames == null) {
-      this.policyNames = new ArrayList<String>();
+      this.policyNames = new ArrayList<>();
     }
     this.policyNames.add(policyNamesItem);
     return this;
@@ -207,7 +224,6 @@ public class UpdateLoadBalancerRequest {
    * @return policyNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the policy you want to enable for the listener.")
 
   public List<String> getPolicyNames() {
     return policyNames;
@@ -230,7 +246,6 @@ public class UpdateLoadBalancerRequest {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(internet-facing only) The public IP you want to associate with the load balancer. The former public IP of the load balancer is then disassociated. If you specify an empty string and the former public IP belonged to you, it is disassociated and replaced by a public IP owned by 3DS OUTSCALE.")
 
   public String getPublicIp() {
     return publicIp;
@@ -253,7 +268,6 @@ public class UpdateLoadBalancerRequest {
    * @return securedCookies
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, secure cookies are enabled for the load balancer.")
 
   public Boolean getSecuredCookies() {
     return securedCookies;
@@ -273,7 +287,7 @@ public class UpdateLoadBalancerRequest {
 
   public UpdateLoadBalancerRequest addSecurityGroupsItem(String securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<String>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -284,7 +298,6 @@ public class UpdateLoadBalancerRequest {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) One or more IDs of security groups you want to assign to the load balancer. You need to specify the already assigned security groups that you want to keep along with the new ones you are assigning. If the list is empty, the default security group of the Net is assigned to the load balancer.")
 
   public List<String> getSecurityGroups() {
     return securityGroups;
@@ -307,7 +320,6 @@ public class UpdateLoadBalancerRequest {
    * @return serverCertificateId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns). If this parameter is specified, you must also specify the `LoadBalancerPort` parameter.")
 
   public String getServerCertificateId() {
     return serverCertificateId;
@@ -317,6 +329,7 @@ public class UpdateLoadBalancerRequest {
   public void setServerCertificateId(String serverCertificateId) {
     this.serverCertificateId = serverCertificateId;
   }
+
 
 
   @Override
@@ -374,5 +387,130 @@ public class UpdateLoadBalancerRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessLog");
+    openapiFields.add("DryRun");
+    openapiFields.add("HealthCheck");
+    openapiFields.add("LoadBalancerName");
+    openapiFields.add("LoadBalancerPort");
+    openapiFields.add("PolicyNames");
+    openapiFields.add("PublicIp");
+    openapiFields.add("SecuredCookies");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("ServerCertificateId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("LoadBalancerName");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UpdateLoadBalancerRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UpdateLoadBalancerRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateLoadBalancerRequest is not found in the empty JSON string", UpdateLoadBalancerRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!UpdateLoadBalancerRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateLoadBalancerRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateLoadBalancerRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // validate the optional field `AccessLog`
+      if (jsonObj.get("AccessLog") != null && !jsonObj.get("AccessLog").isJsonNull()) {
+        AccessLog.validateJsonObject(jsonObj.getAsJsonObject("AccessLog"));
+      }
+      // validate the optional field `HealthCheck`
+      if (jsonObj.get("HealthCheck") != null && !jsonObj.get("HealthCheck").isJsonNull()) {
+        HealthCheck.validateJsonObject(jsonObj.getAsJsonObject("HealthCheck"));
+      }
+      if (!jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerName").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PolicyNames") != null && !jsonObj.get("PolicyNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PolicyNames` to be an array in the JSON string but got `%s`", jsonObj.get("PolicyNames").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+      }
+      if ((jsonObj.get("ServerCertificateId") != null && !jsonObj.get("ServerCertificateId").isJsonNull()) && !jsonObj.get("ServerCertificateId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ServerCertificateId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ServerCertificateId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UpdateLoadBalancerRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateLoadBalancerRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UpdateLoadBalancerRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateLoadBalancerRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UpdateLoadBalancerRequest>() {
+           @Override
+           public void write(JsonWriter out, UpdateLoadBalancerRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UpdateLoadBalancerRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UpdateLoadBalancerRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UpdateLoadBalancerRequest
+  * @throws IOException if the JSON string is invalid with respect to UpdateLoadBalancerRequest
+  */
+  public static UpdateLoadBalancerRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateLoadBalancerRequest.class);
+  }
+
+ /**
+  * Convert an instance of UpdateLoadBalancerRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

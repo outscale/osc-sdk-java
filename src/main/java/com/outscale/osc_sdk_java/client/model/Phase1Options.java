@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about Phase 1 of the Internet Key Exchange (IKE) negotiation. When Phase 1 finishes successfully, peers proceed to Phase 2 negotiations. 
  */
-@ApiModel(description = "Information about Phase 1 of the Internet Key Exchange (IKE) negotiation. When Phase 1 finishes successfully, peers proceed to Phase 2 negotiations. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Phase1Options {
   public static final String SERIALIZED_NAME_DPD_TIMEOUT_ACTION = "DpdTimeoutAction";
   @SerializedName(SERIALIZED_NAME_DPD_TIMEOUT_ACTION)
@@ -68,6 +86,8 @@ public class Phase1Options {
   @SerializedName(SERIALIZED_NAME_STARTUP_ACTION)
   private String startupAction;
 
+  public Phase1Options() {
+  }
 
   public Phase1Options dpdTimeoutAction(String dpdTimeoutAction) {
     
@@ -80,7 +100,6 @@ public class Phase1Options {
    * @return dpdTimeoutAction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The action to carry out after a Dead Peer Detection (DPD) timeout occurs.")
 
   public String getDpdTimeoutAction() {
     return dpdTimeoutAction;
@@ -103,7 +122,6 @@ public class Phase1Options {
    * @return dpdTimeoutSeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum waiting time for a Dead Peer Detection (DPD) response before considering the peer as dead, in seconds.")
 
   public Integer getDpdTimeoutSeconds() {
     return dpdTimeoutSeconds;
@@ -123,7 +141,7 @@ public class Phase1Options {
 
   public Phase1Options addIkeVersionsItem(String ikeVersionsItem) {
     if (this.ikeVersions == null) {
-      this.ikeVersions = new ArrayList<String>();
+      this.ikeVersions = new ArrayList<>();
     }
     this.ikeVersions.add(ikeVersionsItem);
     return this;
@@ -134,7 +152,6 @@ public class Phase1Options {
    * @return ikeVersions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Internet Key Exchange (IKE) versions allowed for the VPN tunnel.")
 
   public List<String> getIkeVersions() {
     return ikeVersions;
@@ -154,7 +171,7 @@ public class Phase1Options {
 
   public Phase1Options addPhase1DhGroupNumbersItem(Integer phase1DhGroupNumbersItem) {
     if (this.phase1DhGroupNumbers == null) {
-      this.phase1DhGroupNumbers = new ArrayList<Integer>();
+      this.phase1DhGroupNumbers = new ArrayList<>();
     }
     this.phase1DhGroupNumbers.add(phase1DhGroupNumbersItem);
     return this;
@@ -165,7 +182,6 @@ public class Phase1Options {
    * @return phase1DhGroupNumbers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Diffie-Hellman (DH) group numbers allowed for the VPN tunnel for phase 1.")
 
   public List<Integer> getPhase1DhGroupNumbers() {
     return phase1DhGroupNumbers;
@@ -185,7 +201,7 @@ public class Phase1Options {
 
   public Phase1Options addPhase1EncryptionAlgorithmsItem(String phase1EncryptionAlgorithmsItem) {
     if (this.phase1EncryptionAlgorithms == null) {
-      this.phase1EncryptionAlgorithms = new ArrayList<String>();
+      this.phase1EncryptionAlgorithms = new ArrayList<>();
     }
     this.phase1EncryptionAlgorithms.add(phase1EncryptionAlgorithmsItem);
     return this;
@@ -196,7 +212,6 @@ public class Phase1Options {
    * @return phase1EncryptionAlgorithms
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The encryption algorithms allowed for the VPN tunnel for phase 1.")
 
   public List<String> getPhase1EncryptionAlgorithms() {
     return phase1EncryptionAlgorithms;
@@ -216,7 +231,7 @@ public class Phase1Options {
 
   public Phase1Options addPhase1IntegrityAlgorithmsItem(String phase1IntegrityAlgorithmsItem) {
     if (this.phase1IntegrityAlgorithms == null) {
-      this.phase1IntegrityAlgorithms = new ArrayList<String>();
+      this.phase1IntegrityAlgorithms = new ArrayList<>();
     }
     this.phase1IntegrityAlgorithms.add(phase1IntegrityAlgorithmsItem);
     return this;
@@ -227,7 +242,6 @@ public class Phase1Options {
    * @return phase1IntegrityAlgorithms
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The integrity algorithms allowed for the VPN tunnel for phase 1.")
 
   public List<String> getPhase1IntegrityAlgorithms() {
     return phase1IntegrityAlgorithms;
@@ -250,7 +264,6 @@ public class Phase1Options {
    * @return phase1LifetimeSeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The lifetime for phase 1 of the IKE negotiation process, in seconds.")
 
   public Integer getPhase1LifetimeSeconds() {
     return phase1LifetimeSeconds;
@@ -273,7 +286,6 @@ public class Phase1Options {
    * @return replayWindowSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of packets in an IKE replay window.")
 
   public Integer getReplayWindowSize() {
     return replayWindowSize;
@@ -296,7 +308,6 @@ public class Phase1Options {
    * @return startupAction
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The action to carry out when establishing tunnels for a VPN connection.")
 
   public String getStartupAction() {
     return startupAction;
@@ -306,6 +317,7 @@ public class Phase1Options {
   public void setStartupAction(String startupAction) {
     this.startupAction = startupAction;
   }
+
 
 
   @Override
@@ -361,5 +373,118 @@ public class Phase1Options {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DpdTimeoutAction");
+    openapiFields.add("DpdTimeoutSeconds");
+    openapiFields.add("IkeVersions");
+    openapiFields.add("Phase1DhGroupNumbers");
+    openapiFields.add("Phase1EncryptionAlgorithms");
+    openapiFields.add("Phase1IntegrityAlgorithms");
+    openapiFields.add("Phase1LifetimeSeconds");
+    openapiFields.add("ReplayWindowSize");
+    openapiFields.add("StartupAction");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Phase1Options
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Phase1Options.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Phase1Options is not found in the empty JSON string", Phase1Options.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Phase1Options.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Phase1Options` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("DpdTimeoutAction") != null && !jsonObj.get("DpdTimeoutAction").isJsonNull()) && !jsonObj.get("DpdTimeoutAction").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DpdTimeoutAction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DpdTimeoutAction").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("IkeVersions") != null && !jsonObj.get("IkeVersions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IkeVersions` to be an array in the JSON string but got `%s`", jsonObj.get("IkeVersions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Phase1DhGroupNumbers") != null && !jsonObj.get("Phase1DhGroupNumbers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Phase1DhGroupNumbers` to be an array in the JSON string but got `%s`", jsonObj.get("Phase1DhGroupNumbers").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Phase1EncryptionAlgorithms") != null && !jsonObj.get("Phase1EncryptionAlgorithms").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Phase1EncryptionAlgorithms` to be an array in the JSON string but got `%s`", jsonObj.get("Phase1EncryptionAlgorithms").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Phase1IntegrityAlgorithms") != null && !jsonObj.get("Phase1IntegrityAlgorithms").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Phase1IntegrityAlgorithms` to be an array in the JSON string but got `%s`", jsonObj.get("Phase1IntegrityAlgorithms").toString()));
+      }
+      if ((jsonObj.get("StartupAction") != null && !jsonObj.get("StartupAction").isJsonNull()) && !jsonObj.get("StartupAction").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StartupAction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StartupAction").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Phase1Options.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Phase1Options' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Phase1Options> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Phase1Options.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Phase1Options>() {
+           @Override
+           public void write(JsonWriter out, Phase1Options value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Phase1Options read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Phase1Options given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Phase1Options
+  * @throws IOException if the JSON string is invalid with respect to Phase1Options
+  */
+  public static Phase1Options fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Phase1Options.class);
+  }
+
+ /**
+  * Convert an instance of Phase1Options to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

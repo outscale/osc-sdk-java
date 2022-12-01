@@ -22,16 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.Account;
 import com.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * ReadAccountsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ReadAccountsResponse {
   public static final String SERIALIZED_NAME_ACCOUNTS = "Accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
@@ -41,6 +60,8 @@ public class ReadAccountsResponse {
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
   private ResponseContext responseContext;
 
+  public ReadAccountsResponse() {
+  }
 
   public ReadAccountsResponse accounts(List<Account> accounts) {
     
@@ -50,7 +71,7 @@ public class ReadAccountsResponse {
 
   public ReadAccountsResponse addAccountsItem(Account accountsItem) {
     if (this.accounts == null) {
-      this.accounts = new ArrayList<Account>();
+      this.accounts = new ArrayList<>();
     }
     this.accounts.add(accountsItem);
     return this;
@@ -61,7 +82,6 @@ public class ReadAccountsResponse {
    * @return accounts
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of the accounts.")
 
   public List<Account> getAccounts() {
     return accounts;
@@ -84,7 +104,6 @@ public class ReadAccountsResponse {
    * @return responseContext
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ResponseContext getResponseContext() {
     return responseContext;
@@ -94,6 +113,7 @@ public class ReadAccountsResponse {
   public void setResponseContext(ResponseContext responseContext) {
     this.responseContext = responseContext;
   }
+
 
 
   @Override
@@ -135,5 +155,107 @@ public class ReadAccountsResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Accounts");
+    openapiFields.add("ResponseContext");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReadAccountsResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReadAccountsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadAccountsResponse is not found in the empty JSON string", ReadAccountsResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ReadAccountsResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadAccountsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Accounts") != null && !jsonObj.get("Accounts").isJsonNull()) {
+        JsonArray jsonArrayaccounts = jsonObj.getAsJsonArray("Accounts");
+        if (jsonArrayaccounts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Accounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Accounts` to be an array in the JSON string but got `%s`", jsonObj.get("Accounts").toString()));
+          }
+
+          // validate the optional field `Accounts` (array)
+          for (int i = 0; i < jsonArrayaccounts.size(); i++) {
+            Account.validateJsonObject(jsonArrayaccounts.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `ResponseContext`
+      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
+        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReadAccountsResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReadAccountsResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReadAccountsResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReadAccountsResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReadAccountsResponse>() {
+           @Override
+           public void write(JsonWriter out, ReadAccountsResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReadAccountsResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReadAccountsResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReadAccountsResponse
+  * @throws IOException if the JSON string is invalid with respect to ReadAccountsResponse
+  */
+  public static ReadAccountsResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReadAccountsResponse.class);
+  }
+
+ /**
+  * Convert an instance of ReadAccountsResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

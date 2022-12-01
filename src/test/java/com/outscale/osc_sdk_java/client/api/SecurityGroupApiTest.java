@@ -21,8 +21,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
 import com.outscale.osc_sdk_java.client.model.ReadSecurityGroupsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadSecurityGroupsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,58 +32,39 @@ import java.util.Map;
 /**
  * API tests for SecurityGroupApi
  */
-@Ignore
+@Disabled
 public class SecurityGroupApiTest {
 
     private final SecurityGroupApi api = new SecurityGroupApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createSecurityGroupTest() throws ApiException {
         CreateSecurityGroupRequest createSecurityGroupRequest = null;
         CreateSecurityGroupResponse response = api.createSecurityGroup(createSecurityGroupRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSecurityGroupTest() throws ApiException {
         DeleteSecurityGroupRequest deleteSecurityGroupRequest = null;
         DeleteSecurityGroupResponse response = api.deleteSecurityGroup(deleteSecurityGroupRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readSecurityGroupsTest() throws ApiException {
         ReadSecurityGroupsRequest readSecurityGroupsRequest = null;
         ReadSecurityGroupsResponse response = api.readSecurityGroups(readSecurityGroupsRequest);
-
         // TODO: test validations
     }
-    
+
 }

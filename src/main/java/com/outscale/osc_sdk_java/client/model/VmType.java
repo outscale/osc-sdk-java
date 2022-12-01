@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the VM type.
  */
-@ApiModel(description = "Information about the VM type.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class VmType {
   public static final String SERIALIZED_NAME_BSU_OPTIMIZED = "BsuOptimized";
   @SerializedName(SERIALIZED_NAME_BSU_OPTIMIZED)
@@ -58,6 +76,8 @@ public class VmType {
   @SerializedName(SERIALIZED_NAME_VOLUME_SIZE)
   private Integer volumeSize;
 
+  public VmType() {
+  }
 
   public VmType bsuOptimized(Boolean bsuOptimized) {
     
@@ -70,7 +90,6 @@ public class VmType {
    * @return bsuOptimized
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is not available. It is present in our API for the sake of historical compatibility with AWS.")
 
   public Boolean getBsuOptimized() {
     return bsuOptimized;
@@ -93,7 +112,6 @@ public class VmType {
    * @return maxPrivateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of private IPs per network interface card (NIC).")
 
   public Integer getMaxPrivateIps() {
     return maxPrivateIps;
@@ -116,7 +134,6 @@ public class VmType {
    * @return memorySize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amount of memory, in gibibytes.")
 
   public Float getMemorySize() {
     return memorySize;
@@ -139,7 +156,6 @@ public class VmType {
    * @return vcoreCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of vCores.")
 
   public Integer getVcoreCount() {
     return vcoreCount;
@@ -162,7 +178,6 @@ public class VmType {
    * @return vmTypeName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the VM type.")
 
   public String getVmTypeName() {
     return vmTypeName;
@@ -185,7 +200,6 @@ public class VmType {
    * @return volumeCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of ephemeral storage disks.")
 
   public Integer getVolumeCount() {
     return volumeCount;
@@ -208,7 +222,6 @@ public class VmType {
    * @return volumeSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of one ephemeral storage disk, in gibibytes (GiB).")
 
   public Integer getVolumeSize() {
     return volumeSize;
@@ -218,6 +231,7 @@ public class VmType {
   public void setVolumeSize(Integer volumeSize) {
     this.volumeSize = volumeSize;
   }
+
 
 
   @Override
@@ -269,5 +283,97 @@ public class VmType {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BsuOptimized");
+    openapiFields.add("MaxPrivateIps");
+    openapiFields.add("MemorySize");
+    openapiFields.add("VcoreCount");
+    openapiFields.add("VmTypeName");
+    openapiFields.add("VolumeCount");
+    openapiFields.add("VolumeSize");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to VmType
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!VmType.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VmType is not found in the empty JSON string", VmType.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!VmType.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VmType` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("VmTypeName") != null && !jsonObj.get("VmTypeName").isJsonNull()) && !jsonObj.get("VmTypeName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmTypeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmTypeName").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!VmType.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VmType' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<VmType> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VmType.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<VmType>() {
+           @Override
+           public void write(JsonWriter out, VmType value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public VmType read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of VmType given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of VmType
+  * @throws IOException if the JSON string is invalid with respect to VmType
+  */
+  public static VmType fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VmType.class);
+  }
+
+ /**
+  * Convert an instance of VmType to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -25,8 +25,8 @@ import com.outscale.osc_sdk_java.client.model.ReadNetPeeringsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadNetPeeringsResponse;
 import com.outscale.osc_sdk_java.client.model.RejectNetPeeringRequest;
 import com.outscale.osc_sdk_java.client.model.RejectNetPeeringResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,90 +36,59 @@ import java.util.Map;
 /**
  * API tests for NetPeeringApi
  */
-@Ignore
+@Disabled
 public class NetPeeringApiTest {
 
     private final NetPeeringApi api = new NetPeeringApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void acceptNetPeeringTest() throws ApiException {
         AcceptNetPeeringRequest acceptNetPeeringRequest = null;
         AcceptNetPeeringResponse response = api.acceptNetPeering(acceptNetPeeringRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createNetPeeringTest() throws ApiException {
         CreateNetPeeringRequest createNetPeeringRequest = null;
         CreateNetPeeringResponse response = api.createNetPeering(createNetPeeringRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteNetPeeringTest() throws ApiException {
         DeleteNetPeeringRequest deleteNetPeeringRequest = null;
         DeleteNetPeeringResponse response = api.deleteNetPeering(deleteNetPeeringRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readNetPeeringsTest() throws ApiException {
         ReadNetPeeringsRequest readNetPeeringsRequest = null;
         ReadNetPeeringsResponse response = api.readNetPeerings(readNetPeeringsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void rejectNetPeeringTest() throws ApiException {
         RejectNetPeeringRequest rejectNetPeeringRequest = null;
         RejectNetPeeringResponse response = api.rejectNetPeering(rejectNetPeeringRequest);
-
         // TODO: test validations
     }
-    
+
 }

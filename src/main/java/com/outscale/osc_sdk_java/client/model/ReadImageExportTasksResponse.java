@@ -22,16 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ImageExportTask;
 import com.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * ReadImageExportTasksResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ReadImageExportTasksResponse {
   public static final String SERIALIZED_NAME_IMAGE_EXPORT_TASKS = "ImageExportTasks";
   @SerializedName(SERIALIZED_NAME_IMAGE_EXPORT_TASKS)
@@ -41,6 +60,8 @@ public class ReadImageExportTasksResponse {
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
   private ResponseContext responseContext;
 
+  public ReadImageExportTasksResponse() {
+  }
 
   public ReadImageExportTasksResponse imageExportTasks(List<ImageExportTask> imageExportTasks) {
     
@@ -50,7 +71,7 @@ public class ReadImageExportTasksResponse {
 
   public ReadImageExportTasksResponse addImageExportTasksItem(ImageExportTask imageExportTasksItem) {
     if (this.imageExportTasks == null) {
-      this.imageExportTasks = new ArrayList<ImageExportTask>();
+      this.imageExportTasks = new ArrayList<>();
     }
     this.imageExportTasks.add(imageExportTasksItem);
     return this;
@@ -61,7 +82,6 @@ public class ReadImageExportTasksResponse {
    * @return imageExportTasks
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about one or more image export tasks.")
 
   public List<ImageExportTask> getImageExportTasks() {
     return imageExportTasks;
@@ -84,7 +104,6 @@ public class ReadImageExportTasksResponse {
    * @return responseContext
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ResponseContext getResponseContext() {
     return responseContext;
@@ -94,6 +113,7 @@ public class ReadImageExportTasksResponse {
   public void setResponseContext(ResponseContext responseContext) {
     this.responseContext = responseContext;
   }
+
 
 
   @Override
@@ -135,5 +155,107 @@ public class ReadImageExportTasksResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ImageExportTasks");
+    openapiFields.add("ResponseContext");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReadImageExportTasksResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReadImageExportTasksResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadImageExportTasksResponse is not found in the empty JSON string", ReadImageExportTasksResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ReadImageExportTasksResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadImageExportTasksResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("ImageExportTasks") != null && !jsonObj.get("ImageExportTasks").isJsonNull()) {
+        JsonArray jsonArrayimageExportTasks = jsonObj.getAsJsonArray("ImageExportTasks");
+        if (jsonArrayimageExportTasks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ImageExportTasks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ImageExportTasks` to be an array in the JSON string but got `%s`", jsonObj.get("ImageExportTasks").toString()));
+          }
+
+          // validate the optional field `ImageExportTasks` (array)
+          for (int i = 0; i < jsonArrayimageExportTasks.size(); i++) {
+            ImageExportTask.validateJsonObject(jsonArrayimageExportTasks.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `ResponseContext`
+      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
+        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReadImageExportTasksResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReadImageExportTasksResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReadImageExportTasksResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReadImageExportTasksResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReadImageExportTasksResponse>() {
+           @Override
+           public void write(JsonWriter out, ReadImageExportTasksResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReadImageExportTasksResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReadImageExportTasksResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReadImageExportTasksResponse
+  * @throws IOException if the JSON string is invalid with respect to ReadImageExportTasksResponse
+  */
+  public static ReadImageExportTasksResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReadImageExportTasksResponse.class);
+  }
+
+ /**
+  * Convert an instance of ReadImageExportTasksResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

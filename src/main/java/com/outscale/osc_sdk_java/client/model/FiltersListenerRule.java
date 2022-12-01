@@ -20,22 +20,42 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersListenerRule {
   public static final String SERIALIZED_NAME_LISTENER_RULE_NAMES = "ListenerRuleNames";
   @SerializedName(SERIALIZED_NAME_LISTENER_RULE_NAMES)
   private List<String> listenerRuleNames = null;
 
+  public FiltersListenerRule() {
+  }
 
   public FiltersListenerRule listenerRuleNames(List<String> listenerRuleNames) {
     
@@ -45,7 +65,7 @@ public class FiltersListenerRule {
 
   public FiltersListenerRule addListenerRuleNamesItem(String listenerRuleNamesItem) {
     if (this.listenerRuleNames == null) {
-      this.listenerRuleNames = new ArrayList<String>();
+      this.listenerRuleNames = new ArrayList<>();
     }
     this.listenerRuleNames.add(listenerRuleNamesItem);
     return this;
@@ -56,7 +76,6 @@ public class FiltersListenerRule {
    * @return listenerRuleNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the listener rules.")
 
   public List<String> getListenerRuleNames() {
     return listenerRuleNames;
@@ -66,6 +85,7 @@ public class FiltersListenerRule {
   public void setListenerRuleNames(List<String> listenerRuleNames) {
     this.listenerRuleNames = listenerRuleNames;
   }
+
 
 
   @Override
@@ -105,5 +125,92 @@ public class FiltersListenerRule {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ListenerRuleNames");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersListenerRule
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersListenerRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersListenerRule is not found in the empty JSON string", FiltersListenerRule.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersListenerRule.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersListenerRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ListenerRuleNames") != null && !jsonObj.get("ListenerRuleNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ListenerRuleNames` to be an array in the JSON string but got `%s`", jsonObj.get("ListenerRuleNames").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersListenerRule.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersListenerRule' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersListenerRule> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersListenerRule.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersListenerRule>() {
+           @Override
+           public void write(JsonWriter out, FiltersListenerRule value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersListenerRule read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersListenerRule given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersListenerRule
+  * @throws IOException if the JSON string is invalid with respect to FiltersListenerRule
+  */
+  public static FiltersListenerRule fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersListenerRule.class);
+  }
+
+ /**
+  * Convert an instance of FiltersListenerRule to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

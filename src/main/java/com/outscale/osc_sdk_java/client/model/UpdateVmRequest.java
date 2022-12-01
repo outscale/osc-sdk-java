@@ -21,16 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.BlockDeviceMappingVmUpdate;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * UpdateVmRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class UpdateVmRequest {
   public static final String SERIALIZED_NAME_BLOCK_DEVICE_MAPPINGS = "BlockDeviceMappings";
   @SerializedName(SERIALIZED_NAME_BLOCK_DEVICE_MAPPINGS)
@@ -133,6 +152,8 @@ public class UpdateVmRequest {
   @SerializedName(SERIALIZED_NAME_VM_TYPE)
   private String vmType;
 
+  public UpdateVmRequest() {
+  }
 
   public UpdateVmRequest blockDeviceMappings(List<BlockDeviceMappingVmUpdate> blockDeviceMappings) {
     
@@ -142,7 +163,7 @@ public class UpdateVmRequest {
 
   public UpdateVmRequest addBlockDeviceMappingsItem(BlockDeviceMappingVmUpdate blockDeviceMappingsItem) {
     if (this.blockDeviceMappings == null) {
-      this.blockDeviceMappings = new ArrayList<BlockDeviceMappingVmUpdate>();
+      this.blockDeviceMappings = new ArrayList<>();
     }
     this.blockDeviceMappings.add(blockDeviceMappingsItem);
     return this;
@@ -153,7 +174,6 @@ public class UpdateVmRequest {
    * @return blockDeviceMappings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more block device mappings of the VM.")
 
   public List<BlockDeviceMappingVmUpdate> getBlockDeviceMappings() {
     return blockDeviceMappings;
@@ -176,7 +196,6 @@ public class UpdateVmRequest {
    * @return bsuOptimized
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is not available. It is present in our API for the sake of historical compatibility with AWS.")
 
   public Boolean getBsuOptimized() {
     return bsuOptimized;
@@ -199,7 +218,6 @@ public class UpdateVmRequest {
    * @return deletionProtection
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, you cannot delete the VM unless you change this parameter back to false.")
 
   public Boolean getDeletionProtection() {
     return deletionProtection;
@@ -222,7 +240,6 @@ public class UpdateVmRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -245,7 +262,6 @@ public class UpdateVmRequest {
    * @return isSourceDestChecked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.")
 
   public Boolean getIsSourceDestChecked() {
     return isSourceDestChecked;
@@ -268,7 +284,6 @@ public class UpdateVmRequest {
    * @return keypairName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the keypair.<br /> To complete the replacement, manually replace the old public key with the new public key in the ~/.ssh/authorized_keys file located in the VM. Restart the VM to apply the change.")
 
   public String getKeypairName() {
     return keypairName;
@@ -291,7 +306,6 @@ public class UpdateVmRequest {
    * @return nestedVirtualization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.")
 
   public Boolean getNestedVirtualization() {
     return nestedVirtualization;
@@ -314,7 +328,6 @@ public class UpdateVmRequest {
    * @return performance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The performance of the VM (`medium` \\| `high` \\|  `highest`).")
 
   public PerformanceEnum getPerformance() {
     return performance;
@@ -334,7 +347,7 @@ public class UpdateVmRequest {
 
   public UpdateVmRequest addSecurityGroupIdsItem(String securityGroupIdsItem) {
     if (this.securityGroupIds == null) {
-      this.securityGroupIds = new ArrayList<String>();
+      this.securityGroupIds = new ArrayList<>();
     }
     this.securityGroupIds.add(securityGroupIdsItem);
     return this;
@@ -345,7 +358,6 @@ public class UpdateVmRequest {
    * @return securityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security groups for the VM.")
 
   public List<String> getSecurityGroupIds() {
     return securityGroupIds;
@@ -368,7 +380,6 @@ public class UpdateVmRequest {
    * @return userData
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Base64-encoded MIME user data, limited to 500 kibibytes (KiB).")
 
   public String getUserData() {
     return userData;
@@ -390,7 +401,7 @@ public class UpdateVmRequest {
    * The ID of the VM.
    * @return vmId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the VM.")
+  @javax.annotation.Nonnull
 
   public String getVmId() {
     return vmId;
@@ -413,7 +424,6 @@ public class UpdateVmRequest {
    * @return vmInitiatedShutdownBehavior
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VM behavior when you stop it. If set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.")
 
   public String getVmInitiatedShutdownBehavior() {
     return vmInitiatedShutdownBehavior;
@@ -436,7 +446,6 @@ public class UpdateVmRequest {
    * @return vmType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of VM. For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).")
 
   public String getVmType() {
     return vmType;
@@ -446,6 +455,7 @@ public class UpdateVmRequest {
   public void setVmType(String vmType) {
     this.vmType = vmType;
   }
+
 
 
   @Override
@@ -509,5 +519,144 @@ public class UpdateVmRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BlockDeviceMappings");
+    openapiFields.add("BsuOptimized");
+    openapiFields.add("DeletionProtection");
+    openapiFields.add("DryRun");
+    openapiFields.add("IsSourceDestChecked");
+    openapiFields.add("KeypairName");
+    openapiFields.add("NestedVirtualization");
+    openapiFields.add("Performance");
+    openapiFields.add("SecurityGroupIds");
+    openapiFields.add("UserData");
+    openapiFields.add("VmId");
+    openapiFields.add("VmInitiatedShutdownBehavior");
+    openapiFields.add("VmType");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("VmId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UpdateVmRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UpdateVmRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateVmRequest is not found in the empty JSON string", UpdateVmRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!UpdateVmRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateVmRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateVmRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("BlockDeviceMappings") != null && !jsonObj.get("BlockDeviceMappings").isJsonNull()) {
+        JsonArray jsonArrayblockDeviceMappings = jsonObj.getAsJsonArray("BlockDeviceMappings");
+        if (jsonArrayblockDeviceMappings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("BlockDeviceMappings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappings` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappings").toString()));
+          }
+
+          // validate the optional field `BlockDeviceMappings` (array)
+          for (int i = 0; i < jsonArrayblockDeviceMappings.size(); i++) {
+            BlockDeviceMappingVmUpdate.validateJsonObject(jsonArrayblockDeviceMappings.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("KeypairName") != null && !jsonObj.get("KeypairName").isJsonNull()) && !jsonObj.get("KeypairName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KeypairName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KeypairName").toString()));
+      }
+      if ((jsonObj.get("Performance") != null && !jsonObj.get("Performance").isJsonNull()) && !jsonObj.get("Performance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Performance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Performance").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupIds") != null && !jsonObj.get("SecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupIds").toString()));
+      }
+      if ((jsonObj.get("UserData") != null && !jsonObj.get("UserData").isJsonNull()) && !jsonObj.get("UserData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `UserData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("UserData").toString()));
+      }
+      if (!jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+      if ((jsonObj.get("VmInitiatedShutdownBehavior") != null && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonNull()) && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmInitiatedShutdownBehavior` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmInitiatedShutdownBehavior").toString()));
+      }
+      if ((jsonObj.get("VmType") != null && !jsonObj.get("VmType").isJsonNull()) && !jsonObj.get("VmType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmType").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UpdateVmRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateVmRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UpdateVmRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateVmRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UpdateVmRequest>() {
+           @Override
+           public void write(JsonWriter out, UpdateVmRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UpdateVmRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UpdateVmRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UpdateVmRequest
+  * @throws IOException if the JSON string is invalid with respect to UpdateVmRequest
+  */
+  public static UpdateVmRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateVmRequest.class);
+  }
+
+ /**
+  * Convert an instance of UpdateVmRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

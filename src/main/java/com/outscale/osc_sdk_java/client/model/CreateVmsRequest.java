@@ -23,16 +23,35 @@ import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.BlockDeviceMappingVmCreation;
 import com.outscale.osc_sdk_java.client.model.NicForVmCreation;
 import com.outscale.osc_sdk_java.client.model.Placement;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * CreateVmsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateVmsRequest {
   public static final String SERIALIZED_NAME_BLOCK_DEVICE_MAPPINGS = "BlockDeviceMappings";
   @SerializedName(SERIALIZED_NAME_BLOCK_DEVICE_MAPPINGS)
@@ -167,6 +186,8 @@ public class CreateVmsRequest {
   @SerializedName(SERIALIZED_NAME_VM_TYPE)
   private String vmType;
 
+  public CreateVmsRequest() {
+  }
 
   public CreateVmsRequest blockDeviceMappings(List<BlockDeviceMappingVmCreation> blockDeviceMappings) {
     
@@ -176,7 +197,7 @@ public class CreateVmsRequest {
 
   public CreateVmsRequest addBlockDeviceMappingsItem(BlockDeviceMappingVmCreation blockDeviceMappingsItem) {
     if (this.blockDeviceMappings == null) {
-      this.blockDeviceMappings = new ArrayList<BlockDeviceMappingVmCreation>();
+      this.blockDeviceMappings = new ArrayList<>();
     }
     this.blockDeviceMappings.add(blockDeviceMappingsItem);
     return this;
@@ -187,7 +208,6 @@ public class CreateVmsRequest {
    * @return blockDeviceMappings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more block device mappings.")
 
   public List<BlockDeviceMappingVmCreation> getBlockDeviceMappings() {
     return blockDeviceMappings;
@@ -210,7 +230,6 @@ public class CreateVmsRequest {
    * @return bootOnCreation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if true, the VM is started on creation. If false, the VM is stopped on creation.")
 
   public Boolean getBootOnCreation() {
     return bootOnCreation;
@@ -233,7 +252,6 @@ public class CreateVmsRequest {
    * @return bsuOptimized
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "This parameter is not available. It is present in our API for the sake of historical compatibility with AWS.")
 
   public Boolean getBsuOptimized() {
     return bsuOptimized;
@@ -256,7 +274,6 @@ public class CreateVmsRequest {
    * @return clientToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A unique identifier which enables you to manage the idempotency.")
 
   public String getClientToken() {
     return clientToken;
@@ -279,7 +296,6 @@ public class CreateVmsRequest {
    * @return deletionProtection
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, you cannot delete the VM unless you change this parameter back to false.")
 
   public Boolean getDeletionProtection() {
     return deletionProtection;
@@ -302,7 +318,6 @@ public class CreateVmsRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -324,7 +339,7 @@ public class CreateVmsRequest {
    * The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](#readimages) method.
    * @return imageId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the OMI used to create the VM. You can find the list of OMIs by calling the [ReadImages](#readimages) method.")
+  @javax.annotation.Nonnull
 
   public String getImageId() {
     return imageId;
@@ -347,7 +362,6 @@ public class CreateVmsRequest {
    * @return keypairName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the keypair.")
 
   public String getKeypairName() {
     return keypairName;
@@ -370,7 +384,6 @@ public class CreateVmsRequest {
    * @return maxVmsCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of VMs you want to create. If all the VMs cannot be created, the largest possible number of VMs above MinVmsCount is created.")
 
   public Integer getMaxVmsCount() {
     return maxVmsCount;
@@ -393,7 +406,6 @@ public class CreateVmsRequest {
    * @return minVmsCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The minimum number of VMs you want to create. If this number of VMs cannot be created, no VMs are created.")
 
   public Integer getMinVmsCount() {
     return minVmsCount;
@@ -416,7 +428,6 @@ public class CreateVmsRequest {
    * @return nestedVirtualization
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(dedicated tenancy only) If true, nested virtualization is enabled. If false, it is disabled.")
 
   public Boolean getNestedVirtualization() {
     return nestedVirtualization;
@@ -436,7 +447,7 @@ public class CreateVmsRequest {
 
   public CreateVmsRequest addNicsItem(NicForVmCreation nicsItem) {
     if (this.nics == null) {
-      this.nics = new ArrayList<NicForVmCreation>();
+      this.nics = new ArrayList<>();
     }
     this.nics.add(nicsItem);
     return this;
@@ -447,7 +458,6 @@ public class CreateVmsRequest {
    * @return nics
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more NICs. If you specify this parameter, you must not specify the `SubnetId` and `SubregionName` parameters. You also must define one NIC as the primary network interface of the VM with `0` as its device number.")
 
   public List<NicForVmCreation> getNics() {
     return nics;
@@ -470,7 +480,6 @@ public class CreateVmsRequest {
    * @return performance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The performance of the VM (`medium` \\| `high` \\|  `highest`). By default, `high`. This parameter is ignored if you specify a performance flag directly in the `VmType` parameter.")
 
   public PerformanceEnum getPerformance() {
     return performance;
@@ -493,7 +502,6 @@ public class CreateVmsRequest {
    * @return placement
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public Placement getPlacement() {
     return placement;
@@ -513,7 +521,7 @@ public class CreateVmsRequest {
 
   public CreateVmsRequest addPrivateIpsItem(String privateIpsItem) {
     if (this.privateIps == null) {
-      this.privateIps = new ArrayList<String>();
+      this.privateIps = new ArrayList<>();
     }
     this.privateIps.add(privateIpsItem);
     return this;
@@ -524,7 +532,6 @@ public class CreateVmsRequest {
    * @return privateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more private IPs of the VM.")
 
   public List<String> getPrivateIps() {
     return privateIps;
@@ -544,7 +551,7 @@ public class CreateVmsRequest {
 
   public CreateVmsRequest addSecurityGroupIdsItem(String securityGroupIdsItem) {
     if (this.securityGroupIds == null) {
-      this.securityGroupIds = new ArrayList<String>();
+      this.securityGroupIds = new ArrayList<>();
     }
     this.securityGroupIds.add(securityGroupIdsItem);
     return this;
@@ -555,7 +562,6 @@ public class CreateVmsRequest {
    * @return securityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security group for the VMs.")
 
   public List<String> getSecurityGroupIds() {
     return securityGroupIds;
@@ -575,7 +581,7 @@ public class CreateVmsRequest {
 
   public CreateVmsRequest addSecurityGroupsItem(String securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<String>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -586,7 +592,6 @@ public class CreateVmsRequest {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more names of security groups for the VMs.")
 
   public List<String> getSecurityGroups() {
     return securityGroups;
@@ -609,7 +614,6 @@ public class CreateVmsRequest {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet in which you want to create the VM. If you specify this parameter, you must not specify the `Nics` parameter.")
 
   public String getSubnetId() {
     return subnetId;
@@ -632,7 +636,6 @@ public class CreateVmsRequest {
    * @return userData
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Data or script used to add a specific configuration to the VM. It must be Base64-encoded and is limited to 500 kibibytes (KiB).")
 
   public String getUserData() {
     return userData;
@@ -655,7 +658,6 @@ public class CreateVmsRequest {
    * @return vmInitiatedShutdownBehavior
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VM behavior when you stop it. By default or if set to `stop`, the VM stops. If set to `restart`, the VM stops then automatically restarts. If set to `terminate`, the VM stops and is terminated.")
 
   public String getVmInitiatedShutdownBehavior() {
     return vmInitiatedShutdownBehavior;
@@ -678,7 +680,6 @@ public class CreateVmsRequest {
    * @return vmType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of VM. You can specify a TINA type (in the `tinavW.cXrYpZ` or `tinavW.cXrY` format), or an AWS type (for example, `t2.small`, which is the default value).<br /> If you specify an AWS type, it is converted in the background to its corresponding TINA type, but the AWS type is still returned. If the specified or converted TINA type includes a performance flag, this performance flag is applied regardless of the value you may have provided in the `Performance` parameter. For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html).")
 
   public String getVmType() {
     return vmType;
@@ -688,6 +689,7 @@ public class CreateVmsRequest {
   public void setVmType(String vmType) {
     this.vmType = vmType;
   }
+
 
 
   @Override
@@ -767,5 +769,184 @@ public class CreateVmsRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BlockDeviceMappings");
+    openapiFields.add("BootOnCreation");
+    openapiFields.add("BsuOptimized");
+    openapiFields.add("ClientToken");
+    openapiFields.add("DeletionProtection");
+    openapiFields.add("DryRun");
+    openapiFields.add("ImageId");
+    openapiFields.add("KeypairName");
+    openapiFields.add("MaxVmsCount");
+    openapiFields.add("MinVmsCount");
+    openapiFields.add("NestedVirtualization");
+    openapiFields.add("Nics");
+    openapiFields.add("Performance");
+    openapiFields.add("Placement");
+    openapiFields.add("PrivateIps");
+    openapiFields.add("SecurityGroupIds");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("SubnetId");
+    openapiFields.add("UserData");
+    openapiFields.add("VmInitiatedShutdownBehavior");
+    openapiFields.add("VmType");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("ImageId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateVmsRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateVmsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateVmsRequest is not found in the empty JSON string", CreateVmsRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateVmsRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateVmsRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateVmsRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("BlockDeviceMappings") != null && !jsonObj.get("BlockDeviceMappings").isJsonNull()) {
+        JsonArray jsonArrayblockDeviceMappings = jsonObj.getAsJsonArray("BlockDeviceMappings");
+        if (jsonArrayblockDeviceMappings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("BlockDeviceMappings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappings` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappings").toString()));
+          }
+
+          // validate the optional field `BlockDeviceMappings` (array)
+          for (int i = 0; i < jsonArrayblockDeviceMappings.size(); i++) {
+            BlockDeviceMappingVmCreation.validateJsonObject(jsonArrayblockDeviceMappings.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("ClientToken") != null && !jsonObj.get("ClientToken").isJsonNull()) && !jsonObj.get("ClientToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientToken").toString()));
+      }
+      if (!jsonObj.get("ImageId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ImageId").toString()));
+      }
+      if ((jsonObj.get("KeypairName") != null && !jsonObj.get("KeypairName").isJsonNull()) && !jsonObj.get("KeypairName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `KeypairName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("KeypairName").toString()));
+      }
+      if (jsonObj.get("Nics") != null && !jsonObj.get("Nics").isJsonNull()) {
+        JsonArray jsonArraynics = jsonObj.getAsJsonArray("Nics");
+        if (jsonArraynics != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Nics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Nics` to be an array in the JSON string but got `%s`", jsonObj.get("Nics").toString()));
+          }
+
+          // validate the optional field `Nics` (array)
+          for (int i = 0; i < jsonArraynics.size(); i++) {
+            NicForVmCreation.validateJsonObject(jsonArraynics.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("Performance") != null && !jsonObj.get("Performance").isJsonNull()) && !jsonObj.get("Performance").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Performance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Performance").toString()));
+      }
+      // validate the optional field `Placement`
+      if (jsonObj.get("Placement") != null && !jsonObj.get("Placement").isJsonNull()) {
+        Placement.validateJsonObject(jsonObj.getAsJsonObject("Placement"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PrivateIps") != null && !jsonObj.get("PrivateIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupIds") != null && !jsonObj.get("SecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+      if ((jsonObj.get("UserData") != null && !jsonObj.get("UserData").isJsonNull()) && !jsonObj.get("UserData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `UserData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("UserData").toString()));
+      }
+      if ((jsonObj.get("VmInitiatedShutdownBehavior") != null && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonNull()) && !jsonObj.get("VmInitiatedShutdownBehavior").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmInitiatedShutdownBehavior` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmInitiatedShutdownBehavior").toString()));
+      }
+      if ((jsonObj.get("VmType") != null && !jsonObj.get("VmType").isJsonNull()) && !jsonObj.get("VmType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmType").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateVmsRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateVmsRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateVmsRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateVmsRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateVmsRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateVmsRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateVmsRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateVmsRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateVmsRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateVmsRequest
+  */
+  public static CreateVmsRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateVmsRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateVmsRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

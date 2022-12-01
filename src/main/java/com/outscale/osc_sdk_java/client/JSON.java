@@ -23,11 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.OffsetDateTime;
-import org.threeten.bp.format.DateTimeFormatter;
 
-import com.outscale.osc_sdk_java.client.model.*;
 import okio.ByteString;
 
 import java.io.IOException;
@@ -36,19 +32,28 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.HashMap;
 
+/*
+ * A JSON utility class
+ *
+ * NOTE: in the future, this class may be converted to static, which may break
+ *       backward-compatibility
+ */
 public class JSON {
-    private Gson gson;
-    private boolean isLenientOnJson = false;
-    private DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
-    private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
-    private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
-    private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private static Gson gson;
+    private static boolean isLenientOnJson = false;
+    private static DateTypeAdapter dateTypeAdapter = new DateTypeAdapter();
+    private static SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
+    private static OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
+    private static LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
+    private static ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
 
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
@@ -81,14 +86,512 @@ public class JSON {
         return clazz;
     }
 
-    public JSON() {
-        gson = createGson()
-            .registerTypeAdapter(Date.class, dateTypeAdapter)
-            .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
-            .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
-            .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            .registerTypeAdapter(byte[].class, byteArrayAdapter)
-            .create();
+    {
+        GsonBuilder gsonBuilder = createGson();
+        gsonBuilder.registerTypeAdapter(Date.class, dateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
+        gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
+        gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AcceptNetPeeringRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AcceptNetPeeringResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AccepterNet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AccessKey.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AccessKeySecretKey.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.AccessLog.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Account.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ApiAccessPolicy.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ApiAccessRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ApplicationStickyCookiePolicy.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BackendVmHealth.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BlockDeviceMappingCreated.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BlockDeviceMappingImage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BlockDeviceMappingVmCreation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BlockDeviceMappingVmUpdate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BsuCreated.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BsuToCreate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.BsuToUpdateVm.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Ca.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Catalog.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CatalogEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CheckAuthenticationRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CheckAuthenticationResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ClientGateway.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ConsumptionEntry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateAccessKeyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateAccessKeyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateAccountRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateAccountResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateApiAccessRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateApiAccessRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateCaRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateCaResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateClientGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateClientGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDhcpOptionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDhcpOptionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDirectLinkInterfaceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDirectLinkInterfaceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDirectLinkRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateDirectLinkResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateFlexibleGpuRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateFlexibleGpuResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateImageExportTaskRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateImageExportTaskResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateImageRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateImageResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateInternetServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateInternetServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateKeypairRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateKeypairResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateListenerRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateListenerRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerListenersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerListenersResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerPolicyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerPolicyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateLoadBalancerTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNatServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNatServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetAccessPointRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetAccessPointResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetPeeringRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetPeeringResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNicRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateNicResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreatePublicIpRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreatePublicIpResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateRouteRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateRouteResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateRouteTableRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateRouteTableResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSecurityGroupRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSecurityGroupResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSecurityGroupRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSecurityGroupRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateServerCertificateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateServerCertificateResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSnapshotExportTaskRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSnapshotExportTaskResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSnapshotRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSnapshotResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSubnetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateSubnetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVirtualGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVirtualGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVolumeRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVolumeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVpnConnectionRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVpnConnectionResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVpnConnectionRouteRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.CreateVpnConnectionRouteResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteAccessKeyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteAccessKeyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteApiAccessRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteApiAccessRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteCaRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteCaResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteClientGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteClientGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDhcpOptionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDhcpOptionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDirectLinkInterfaceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDirectLinkInterfaceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDirectLinkRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteDirectLinkResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteExportTaskRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteExportTaskResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteFlexibleGpuRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteFlexibleGpuResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteImageRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteImageResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteInternetServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteInternetServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteKeypairRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteKeypairResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteListenerRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteListenerRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerListenersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerListenersResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerPolicyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerPolicyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteLoadBalancerTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNatServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNatServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetAccessPointRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetAccessPointResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetPeeringRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetPeeringResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNicRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteNicResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeletePublicIpRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeletePublicIpResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteRouteRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteRouteResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteRouteTableRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteRouteTableResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteServerCertificateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteServerCertificateResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSnapshotRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSnapshotResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSubnetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteSubnetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVirtualGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVirtualGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVolumeRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVolumeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVpnConnectionRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVpnConnectionResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVpnConnectionRouteRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeleteVpnConnectionRouteResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeregisterVmsInLoadBalancerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DeregisterVmsInLoadBalancerResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DhcpOptionsSet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DirectLink.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DirectLinkInterface.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.DirectLinkInterfaces.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ErrorResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Errors.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersAccessKeys.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersApiAccessRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersApiLog.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersCa.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersClientGateway.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersDhcpOptions.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersDirectLink.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersDirectLinkInterface.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersExportTask.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersFlexibleGpu.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersImage.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersInternetService.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersKeypair.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersListenerRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersLoadBalancer.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersNatService.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersNet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersNetAccessPoint.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersNetPeering.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersNic.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersProductType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersPublicIp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersQuota.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersRouteTable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersSecurityGroup.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersServerCertificate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersService.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersSnapshot.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersSubnet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersSubregion.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersTag.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVirtualGateway.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVm.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVmType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVmsState.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVolume.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FiltersVpnConnection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FlexibleGpu.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.FlexibleGpuCatalog.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.HealthCheck.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Image.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ImageExportTask.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.InternetService.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Keypair.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.KeypairCreated.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkFlexibleGpuRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkFlexibleGpuResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkInternetServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkInternetServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkLoadBalancerBackendMachinesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkLoadBalancerBackendMachinesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkNic.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkNicLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkNicRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkNicResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkNicToUpdate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPrivateIpsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPrivateIpsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPublicIp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPublicIpLightForVm.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPublicIpRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkPublicIpResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkRouteTable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkRouteTableRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkRouteTableResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkVirtualGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkVirtualGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkVolumeRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkVolumeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LinkedVolume.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Listener.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ListenerForCreation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ListenerRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ListenerRuleForCreation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LoadBalancer.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LoadBalancerLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LoadBalancerStickyCookiePolicy.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.LoadBalancerTag.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Location.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Log.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.MaintenanceEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NatService.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Net.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NetAccessPoint.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NetPeering.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NetPeeringState.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NetToVirtualGatewayLink.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Nic.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NicForVmCreation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.NicLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.OsuApiKey.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.OsuExportImageExportTask.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.OsuExportSnapshotExportTask.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.OsuExportToCreate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PermissionsOnResource.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PermissionsOnResourceCreation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Phase1Options.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Phase2Options.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Placement.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PrivateIp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PrivateIpLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PrivateIpLightForVm.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ProductType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PublicIp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.PublicIpLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Quota.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.QuotaTypes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAccessKeysRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAccessKeysResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAccountsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAccountsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAdminPasswordRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadAdminPasswordResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiAccessPolicyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiAccessPolicyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiAccessRulesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiAccessRulesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiLogsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadApiLogsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadCasRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadCasResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadCatalogRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadCatalogResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadClientGatewaysRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadClientGatewaysResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadConsoleOutputRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadConsoleOutputResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadConsumptionAccountRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadConsumptionAccountResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDhcpOptionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDhcpOptionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDirectLinkInterfacesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDirectLinkInterfacesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDirectLinksRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadDirectLinksResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadFlexibleGpuCatalogRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadFlexibleGpuCatalogResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadFlexibleGpusRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadFlexibleGpusResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadImageExportTasksRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadImageExportTasksResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadImagesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadImagesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadInternetServicesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadInternetServicesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadKeypairsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadKeypairsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadListenerRulesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadListenerRulesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLoadBalancerTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLoadBalancerTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLoadBalancersRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLoadBalancersResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLocationsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadLocationsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNatServicesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNatServicesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetAccessPointServicesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetAccessPointServicesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetAccessPointsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetAccessPointsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetPeeringsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetPeeringsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNetsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNicsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadNicsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadProductTypesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadProductTypesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicCatalogRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicCatalogResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicIpRangesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicIpRangesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicIpsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadPublicIpsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadQuotasRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadQuotasResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadRegionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadRegionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadRouteTablesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadRouteTablesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSecurityGroupsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSecurityGroupsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadServerCertificatesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadServerCertificatesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSnapshotExportTasksRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSnapshotExportTasksResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSnapshotsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSnapshotsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSubnetsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSubnetsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSubregionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadSubregionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadTagsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadTagsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVirtualGatewaysRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVirtualGatewaysResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmTypesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmTypesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsHealthRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsHealthResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsStateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVmsStateResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVolumesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVolumesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVpnConnectionsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ReadVpnConnectionsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RebootVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RebootVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Region.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RegisterVmsInLoadBalancerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RegisterVmsInLoadBalancerResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RejectNetPeeringRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RejectNetPeeringResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ResetAccountPasswordRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ResetAccountPasswordResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ResourceLoadBalancerTag.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ResourceTag.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ResponseContext.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Route.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RouteLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RoutePropagatingVirtualGateway.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.RouteTable.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SecurityGroup.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SecurityGroupLight.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SecurityGroupRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SecurityGroupsMember.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SendResetPasswordEmailRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SendResetPasswordEmailResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.ServerCertificate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Service.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Snapshot.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SnapshotExportTask.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SourceNet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.SourceSecurityGroup.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.StartVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.StartVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.StateComment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.StopVmsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.StopVmsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Subnet.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Subregion.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Tag.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkInternetServiceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkInternetServiceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMachinesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMachinesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkNicRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkNicResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkPrivateIpsRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkPrivateIpsResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkPublicIpRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkPublicIpResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkRouteTableRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkRouteTableResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkVirtualGatewayRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkVirtualGatewayResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkVolumeRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UnlinkVolumeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateAccessKeyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateAccessKeyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateAccountRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateAccountResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateApiAccessPolicyRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateApiAccessPolicyResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateCaRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateCaResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateDirectLinkInterfaceRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateDirectLinkInterfaceResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateImageRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateImageResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateListenerRuleRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateListenerRuleResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateLoadBalancerRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateLoadBalancerResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNetAccessPointRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNetAccessPointResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNicRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateNicResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateRoutePropagationRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateRoutePropagationResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateRouteRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateRouteResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateServerCertificateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateServerCertificateResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateSnapshotRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateSnapshotResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateSubnetRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateSubnetResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVmRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVmResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVolumeRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVolumeResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVpnConnectionRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.UpdateVpnConnectionResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VgwTelemetry.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VirtualGateway.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Vm.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VmState.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VmStates.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VmType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.Volume.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VpnConnection.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.VpnOptions.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.outscale.osc_sdk_java.client.model.With.CustomTypeAdapterFactory());
+        gson = gsonBuilder.create();
     }
 
     /**
@@ -96,7 +599,7 @@ public class JSON {
      *
      * @return Gson
      */
-    public Gson getGson() {
+    public static Gson getGson() {
         return gson;
     }
 
@@ -104,16 +607,13 @@ public class JSON {
      * Set Gson.
      *
      * @param gson Gson
-     * @return JSON
      */
-    public JSON setGson(Gson gson) {
-        this.gson = gson;
-        return this;
+    public static void setGson(Gson gson) {
+        JSON.gson = gson;
     }
 
-    public JSON setLenientOnJson(boolean lenientOnJson) {
+    public static void setLenientOnJson(boolean lenientOnJson) {
         isLenientOnJson = lenientOnJson;
-        return this;
     }
 
     /**
@@ -122,7 +622,7 @@ public class JSON {
      * @param obj Object
      * @return String representation of the JSON
      */
-    public String serialize(Object obj) {
+    public static String serialize(Object obj) {
         return gson.toJson(obj);
     }
 
@@ -135,7 +635,7 @@ public class JSON {
      * @return The deserialized Java object
      */
     @SuppressWarnings("unchecked")
-    public <T> T deserialize(String body, Type returnType) {
+    public static <T> T deserialize(String body, Type returnType) {
         try {
             if (isLenientOnJson) {
                 JsonReader jsonReader = new JsonReader(new StringReader(body));
@@ -159,7 +659,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for Byte Array type
      */
-    public class ByteArrayAdapter extends TypeAdapter<byte[]> {
+    public static class ByteArrayAdapter extends TypeAdapter<byte[]> {
 
         @Override
         public void write(JsonWriter out, byte[] value) throws IOException {
@@ -231,7 +731,7 @@ public class JSON {
     /**
      * Gson TypeAdapter for JSR310 LocalDate type
      */
-    public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
+    public static class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
 
         private DateTimeFormatter formatter;
 
@@ -269,14 +769,12 @@ public class JSON {
         }
     }
 
-    public JSON setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
+    public static void setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         offsetDateTimeTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setLocalDateFormat(DateTimeFormatter dateFormat) {
+    public static void setLocalDateFormat(DateTimeFormatter dateFormat) {
         localDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
     /**
@@ -390,14 +888,11 @@ public class JSON {
         }
     }
 
-    public JSON setDateFormat(DateFormat dateFormat) {
+    public static void setDateFormat(DateFormat dateFormat) {
         dateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
 
-    public JSON setSqlDateFormat(DateFormat dateFormat) {
+    public static void setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
-        return this;
     }
-
 }

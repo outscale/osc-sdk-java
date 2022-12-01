@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the DirectLink.
  */
-@ApiModel(description = "Information about the DirectLink.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class DirectLink {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -58,6 +76,8 @@ public class DirectLink {
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
 
+  public DirectLink() {
+  }
 
   public DirectLink accountId(String accountId) {
     
@@ -70,7 +90,6 @@ public class DirectLink {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the DirectLink.")
 
   public String getAccountId() {
     return accountId;
@@ -93,7 +112,6 @@ public class DirectLink {
    * @return bandwidth
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The physical link bandwidth (either 1 Gbps or 10 Gbps).")
 
   public String getBandwidth() {
     return bandwidth;
@@ -116,7 +134,6 @@ public class DirectLink {
    * @return directLinkId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the DirectLink (for example, `dxcon-xxxxxxxx`).")
 
   public String getDirectLinkId() {
     return directLinkId;
@@ -139,7 +156,6 @@ public class DirectLink {
    * @return directLinkName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the DirectLink.")
 
   public String getDirectLinkName() {
     return directLinkName;
@@ -162,7 +178,6 @@ public class DirectLink {
    * @return location
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The datacenter where the DirectLink is located.")
 
   public String getLocation() {
     return location;
@@ -185,7 +200,6 @@ public class DirectLink {
    * @return regionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Region in which the DirectLink has been created.")
 
   public String getRegionName() {
     return regionName;
@@ -208,7 +222,6 @@ public class DirectLink {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the DirectLink.<br /> * `requested`: The DirectLink is requested but the request has not been validated yet.<br /> * `pending`: The DirectLink request has been validated. It remains in the `pending` state until you establish the physical link.<br /> * `available`: The physical link is established and the connection is ready to use.<br /> * `deleting`: The deletion process is in progress.<br /> * `deleted`: The DirectLink is deleted.")
 
   public String getState() {
     return state;
@@ -218,6 +231,7 @@ public class DirectLink {
   public void setState(String state) {
     this.state = state;
   }
+
 
 
   @Override
@@ -269,5 +283,115 @@ public class DirectLink {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("Bandwidth");
+    openapiFields.add("DirectLinkId");
+    openapiFields.add("DirectLinkName");
+    openapiFields.add("Location");
+    openapiFields.add("RegionName");
+    openapiFields.add("State");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DirectLink
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DirectLink.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DirectLink is not found in the empty JSON string", DirectLink.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DirectLink.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DirectLink` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Bandwidth") != null && !jsonObj.get("Bandwidth").isJsonNull()) && !jsonObj.get("Bandwidth").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Bandwidth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Bandwidth").toString()));
+      }
+      if ((jsonObj.get("DirectLinkId") != null && !jsonObj.get("DirectLinkId").isJsonNull()) && !jsonObj.get("DirectLinkId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkId").toString()));
+      }
+      if ((jsonObj.get("DirectLinkName") != null && !jsonObj.get("DirectLinkName").isJsonNull()) && !jsonObj.get("DirectLinkName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkName").toString()));
+      }
+      if ((jsonObj.get("Location") != null && !jsonObj.get("Location").isJsonNull()) && !jsonObj.get("Location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Location").toString()));
+      }
+      if ((jsonObj.get("RegionName") != null && !jsonObj.get("RegionName").isJsonNull()) && !jsonObj.get("RegionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RegionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RegionName").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DirectLink.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DirectLink' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DirectLink> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DirectLink.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DirectLink>() {
+           @Override
+           public void write(JsonWriter out, DirectLink value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DirectLink read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DirectLink given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DirectLink
+  * @throws IOException if the JSON string is invalid with respect to DirectLink
+  */
+  public static DirectLink fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DirectLink.class);
+  }
+
+ /**
+  * Convert an instance of DirectLink to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

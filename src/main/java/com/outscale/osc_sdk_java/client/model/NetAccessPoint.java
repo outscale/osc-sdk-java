@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the Net access point.
  */
-@ApiModel(description = "Information about the Net access point.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class NetAccessPoint {
   public static final String SERIALIZED_NAME_NET_ACCESS_POINT_ID = "NetAccessPointId";
   @SerializedName(SERIALIZED_NAME_NET_ACCESS_POINT_ID)
@@ -57,6 +75,8 @@ public class NetAccessPoint {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public NetAccessPoint() {
+  }
 
   public NetAccessPoint netAccessPointId(String netAccessPointId) {
     
@@ -69,7 +89,6 @@ public class NetAccessPoint {
    * @return netAccessPointId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net access point.")
 
   public String getNetAccessPointId() {
     return netAccessPointId;
@@ -92,7 +111,6 @@ public class NetAccessPoint {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net with which the Net access point is associated.")
 
   public String getNetId() {
     return netId;
@@ -112,7 +130,7 @@ public class NetAccessPoint {
 
   public NetAccessPoint addRouteTableIdsItem(String routeTableIdsItem) {
     if (this.routeTableIds == null) {
-      this.routeTableIds = new ArrayList<String>();
+      this.routeTableIds = new ArrayList<>();
     }
     this.routeTableIds.add(routeTableIdsItem);
     return this;
@@ -123,7 +141,6 @@ public class NetAccessPoint {
    * @return routeTableIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the route tables associated with the Net access point.")
 
   public List<String> getRouteTableIds() {
     return routeTableIds;
@@ -146,7 +163,6 @@ public class NetAccessPoint {
    * @return serviceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the service with which the Net access point is associated.")
 
   public String getServiceName() {
     return serviceName;
@@ -169,7 +185,6 @@ public class NetAccessPoint {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the Net access point (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -189,7 +204,7 @@ public class NetAccessPoint {
 
   public NetAccessPoint addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -200,7 +215,6 @@ public class NetAccessPoint {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the Net access point.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -210,6 +224,7 @@ public class NetAccessPoint {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -259,5 +274,123 @@ public class NetAccessPoint {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("NetAccessPointId");
+    openapiFields.add("NetId");
+    openapiFields.add("RouteTableIds");
+    openapiFields.add("ServiceName");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NetAccessPoint
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!NetAccessPoint.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NetAccessPoint is not found in the empty JSON string", NetAccessPoint.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NetAccessPoint.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NetAccessPoint` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("NetAccessPointId") != null && !jsonObj.get("NetAccessPointId").isJsonNull()) && !jsonObj.get("NetAccessPointId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetAccessPointId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetAccessPointId").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteTableIds") != null && !jsonObj.get("RouteTableIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteTableIds").toString()));
+      }
+      if ((jsonObj.get("ServiceName") != null && !jsonObj.get("ServiceName").isJsonNull()) && !jsonObj.get("ServiceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ServiceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ServiceName").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NetAccessPoint.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NetAccessPoint' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NetAccessPoint> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NetAccessPoint.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NetAccessPoint>() {
+           @Override
+           public void write(JsonWriter out, NetAccessPoint value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NetAccessPoint read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NetAccessPoint given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NetAccessPoint
+  * @throws IOException if the JSON string is invalid with respect to NetAccessPoint
+  */
+  public static NetAccessPoint fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NetAccessPoint.class);
+  }
+
+ /**
+  * Convert an instance of NetAccessPoint to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

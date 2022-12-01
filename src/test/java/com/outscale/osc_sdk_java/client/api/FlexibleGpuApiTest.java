@@ -28,8 +28,8 @@ import com.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuRequest;
 import com.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,122 +39,79 @@ import java.util.Map;
 /**
  * API tests for FlexibleGpuApi
  */
-@Ignore
+@Disabled
 public class FlexibleGpuApiTest {
 
     private final FlexibleGpuApi api = new FlexibleGpuApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createFlexibleGpuTest() throws ApiException {
         CreateFlexibleGpuRequest createFlexibleGpuRequest = null;
         CreateFlexibleGpuResponse response = api.createFlexibleGpu(createFlexibleGpuRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteFlexibleGpuTest() throws ApiException {
         DeleteFlexibleGpuRequest deleteFlexibleGpuRequest = null;
         DeleteFlexibleGpuResponse response = api.deleteFlexibleGpu(deleteFlexibleGpuRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkFlexibleGpuTest() throws ApiException {
         LinkFlexibleGpuRequest linkFlexibleGpuRequest = null;
         LinkFlexibleGpuResponse response = api.linkFlexibleGpu(linkFlexibleGpuRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readFlexibleGpuCatalogTest() throws ApiException {
         ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest = null;
         ReadFlexibleGpuCatalogResponse response = api.readFlexibleGpuCatalog(readFlexibleGpuCatalogRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readFlexibleGpusTest() throws ApiException {
         ReadFlexibleGpusRequest readFlexibleGpusRequest = null;
         ReadFlexibleGpusResponse response = api.readFlexibleGpus(readFlexibleGpusRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkFlexibleGpuTest() throws ApiException {
         UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest = null;
         UnlinkFlexibleGpuResponse response = api.unlinkFlexibleGpu(unlinkFlexibleGpuRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateFlexibleGpuTest() throws ApiException {
         UpdateFlexibleGpuRequest updateFlexibleGpuRequest = null;
         UpdateFlexibleGpuResponse response = api.updateFlexibleGpu(updateFlexibleGpuRequest);
-
         // TODO: test validations
     }
-    
+
 }

@@ -16,8 +16,8 @@ package com.outscale.osc_sdk_java.client.api;
 import com.outscale.osc_sdk_java.client.ApiException;
 import com.outscale.osc_sdk_java.client.model.ReadRegionsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadRegionsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,26 +27,19 @@ import java.util.Map;
 /**
  * API tests for RegionApi
  */
-@Ignore
+@Disabled
 public class RegionApiTest {
 
     private final RegionApi api = new RegionApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readRegionsTest() throws ApiException {
         ReadRegionsRequest readRegionsRequest = null;
         ReadRegionsResponse response = api.readRegions(readRegionsRequest);
-
         // TODO: test validations
     }
-    
+
 }

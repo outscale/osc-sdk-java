@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersTag {
   public static final String SERIALIZED_NAME_KEYS = "Keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
@@ -48,6 +66,8 @@ public class FiltersTag {
   @SerializedName(SERIALIZED_NAME_VALUES)
   private List<String> values = null;
 
+  public FiltersTag() {
+  }
 
   public FiltersTag keys(List<String> keys) {
     
@@ -57,7 +77,7 @@ public class FiltersTag {
 
   public FiltersTag addKeysItem(String keysItem) {
     if (this.keys == null) {
-      this.keys = new ArrayList<String>();
+      this.keys = new ArrayList<>();
     }
     this.keys.add(keysItem);
     return this;
@@ -68,7 +88,6 @@ public class FiltersTag {
    * @return keys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags that are assigned to the resources. You can use this filter alongside the `Values` filter. In that case, you filter the resources corresponding to each tag, regardless of the other filter.")
 
   public List<String> getKeys() {
     return keys;
@@ -88,7 +107,7 @@ public class FiltersTag {
 
   public FiltersTag addResourceIdsItem(String resourceIdsItem) {
     if (this.resourceIds == null) {
-      this.resourceIds = new ArrayList<String>();
+      this.resourceIds = new ArrayList<>();
     }
     this.resourceIds.add(resourceIdsItem);
     return this;
@@ -99,7 +118,6 @@ public class FiltersTag {
    * @return resourceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the resources with which the tags are associated.")
 
   public List<String> getResourceIds() {
     return resourceIds;
@@ -119,7 +137,7 @@ public class FiltersTag {
 
   public FiltersTag addResourceTypesItem(String resourceTypesItem) {
     if (this.resourceTypes == null) {
-      this.resourceTypes = new ArrayList<String>();
+      this.resourceTypes = new ArrayList<>();
     }
     this.resourceTypes.add(resourceTypesItem);
     return this;
@@ -130,7 +148,6 @@ public class FiltersTag {
    * @return resourceTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The resource type (`vm` \\| `image` \\| `volume` \\| `snapshot` \\| `public-ip` \\| `security-group` \\| `route-table` \\| `nic` \\| `net` \\| `subnet` \\| `net-peering` \\| `net-access-point` \\| `nat-service` \\| `internet-service` \\| `client-gateway` \\| `virtual-gateway` \\| `vpn-connection` \\| `dhcp-options` \\| `task`).")
 
   public List<String> getResourceTypes() {
     return resourceTypes;
@@ -150,7 +167,7 @@ public class FiltersTag {
 
   public FiltersTag addValuesItem(String valuesItem) {
     if (this.values == null) {
-      this.values = new ArrayList<String>();
+      this.values = new ArrayList<>();
     }
     this.values.add(valuesItem);
     return this;
@@ -161,7 +178,6 @@ public class FiltersTag {
    * @return values
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags that are assigned to the resources. You can use this filter alongside the `TagKeys` filter. In that case, you filter the resources corresponding to each tag, regardless of the other filter.")
 
   public List<String> getValues() {
     return values;
@@ -171,6 +187,7 @@ public class FiltersTag {
   public void setValues(List<String> values) {
     this.values = values;
   }
+
 
 
   @Override
@@ -216,5 +233,107 @@ public class FiltersTag {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Keys");
+    openapiFields.add("ResourceIds");
+    openapiFields.add("ResourceTypes");
+    openapiFields.add("Values");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersTag
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersTag.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersTag is not found in the empty JSON string", FiltersTag.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersTag.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersTag` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Keys") != null && !jsonObj.get("Keys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Keys` to be an array in the JSON string but got `%s`", jsonObj.get("Keys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ResourceIds") != null && !jsonObj.get("ResourceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ResourceIds` to be an array in the JSON string but got `%s`", jsonObj.get("ResourceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ResourceTypes") != null && !jsonObj.get("ResourceTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ResourceTypes` to be an array in the JSON string but got `%s`", jsonObj.get("ResourceTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Values") != null && !jsonObj.get("Values").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Values` to be an array in the JSON string but got `%s`", jsonObj.get("Values").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersTag.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersTag' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersTag> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersTag.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersTag>() {
+           @Override
+           public void write(JsonWriter out, FiltersTag value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersTag read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersTag given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersTag
+  * @throws IOException if the JSON string is invalid with respect to FiltersTag
+  */
+  public static FiltersTag fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersTag.class);
+  }
+
+ /**
+  * Convert an instance of FiltersTag to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

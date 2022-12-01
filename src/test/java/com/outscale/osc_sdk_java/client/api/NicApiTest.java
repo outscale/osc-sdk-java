@@ -31,8 +31,8 @@ import com.outscale.osc_sdk_java.client.model.UnlinkPrivateIpsRequest;
 import com.outscale.osc_sdk_java.client.model.UnlinkPrivateIpsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateNicRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateNicResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,138 +42,89 @@ import java.util.Map;
 /**
  * API tests for NicApi
  */
-@Ignore
+@Disabled
 public class NicApiTest {
 
     private final NicApi api = new NicApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createNicTest() throws ApiException {
         CreateNicRequest createNicRequest = null;
         CreateNicResponse response = api.createNic(createNicRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteNicTest() throws ApiException {
         DeleteNicRequest deleteNicRequest = null;
         DeleteNicResponse response = api.deleteNic(deleteNicRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkNicTest() throws ApiException {
         LinkNicRequest linkNicRequest = null;
         LinkNicResponse response = api.linkNic(linkNicRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkPrivateIpsTest() throws ApiException {
         LinkPrivateIpsRequest linkPrivateIpsRequest = null;
         LinkPrivateIpsResponse response = api.linkPrivateIps(linkPrivateIpsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readNicsTest() throws ApiException {
         ReadNicsRequest readNicsRequest = null;
         ReadNicsResponse response = api.readNics(readNicsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkNicTest() throws ApiException {
         UnlinkNicRequest unlinkNicRequest = null;
         UnlinkNicResponse response = api.unlinkNic(unlinkNicRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkPrivateIpsTest() throws ApiException {
         UnlinkPrivateIpsRequest unlinkPrivateIpsRequest = null;
         UnlinkPrivateIpsResponse response = api.unlinkPrivateIps(unlinkPrivateIpsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateNicTest() throws ApiException {
         UpdateNicRequest updateNicRequest = null;
         UpdateNicResponse response = api.updateNic(updateNicRequest);
-
         // TODO: test validations
     }
-    
+
 }

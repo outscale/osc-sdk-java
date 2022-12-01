@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.LocalDate;
+import java.time.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the log.
  */
-@ApiModel(description = "Information about the log.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Log {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -95,6 +113,8 @@ public class Log {
   @SerializedName(SERIALIZED_NAME_RESPONSE_STATUS_CODE)
   private Integer responseStatusCode;
 
+  public Log() {
+  }
 
   public Log accountId(String accountId) {
     
@@ -107,7 +127,6 @@ public class Log {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the logged call.")
 
   public String getAccountId() {
     return accountId;
@@ -130,7 +149,6 @@ public class Log {
    * @return callDuration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The duration of the logged call, in microseconds.")
 
   public Integer getCallDuration() {
     return callDuration;
@@ -153,7 +171,6 @@ public class Log {
    * @return queryAccessKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The access key used for the logged call.")
 
   public String getQueryAccessKey() {
     return queryAccessKey;
@@ -176,7 +193,6 @@ public class Log {
    * @return queryApiName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the API used by the logged call (always `oapi` for the OUTSCALE API).")
 
   public String getQueryApiName() {
     return queryApiName;
@@ -199,7 +215,6 @@ public class Log {
    * @return queryApiVersion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The version of the API used by the logged call.")
 
   public String getQueryApiVersion() {
     return queryApiVersion;
@@ -222,7 +237,6 @@ public class Log {
    * @return queryCallName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the logged call.")
 
   public String getQueryCallName() {
     return queryCallName;
@@ -245,7 +259,6 @@ public class Log {
    * @return queryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date of the logged call, in ISO 8601 format.")
 
   public LocalDate getQueryDate() {
     return queryDate;
@@ -268,7 +281,6 @@ public class Log {
    * @return queryHeaderRaw
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The raw header of the HTTP request of the logged call.")
 
   public String getQueryHeaderRaw() {
     return queryHeaderRaw;
@@ -291,7 +303,6 @@ public class Log {
    * @return queryHeaderSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of the raw header of the HTTP request of the logged call, in bytes.")
 
   public Integer getQueryHeaderSize() {
     return queryHeaderSize;
@@ -314,7 +325,6 @@ public class Log {
    * @return queryIpAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP used for the logged call.")
 
   public String getQueryIpAddress() {
     return queryIpAddress;
@@ -337,7 +347,6 @@ public class Log {
    * @return queryPayloadRaw
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The raw payload of the HTTP request of the logged call.")
 
   public String getQueryPayloadRaw() {
     return queryPayloadRaw;
@@ -360,7 +369,6 @@ public class Log {
    * @return queryPayloadSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of the raw payload of the HTTP request of the logged call, in bytes.")
 
   public Integer getQueryPayloadSize() {
     return queryPayloadSize;
@@ -383,7 +391,6 @@ public class Log {
    * @return queryUserAgent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The user agent of the HTTP request of the logged call.")
 
   public String getQueryUserAgent() {
     return queryUserAgent;
@@ -406,7 +413,6 @@ public class Log {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The request ID provided in the response of the logged call.")
 
   public String getRequestId() {
     return requestId;
@@ -429,7 +435,6 @@ public class Log {
    * @return responseSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The size of the response of the logged call, in bytes.")
 
   public Integer getResponseSize() {
     return responseSize;
@@ -452,7 +457,6 @@ public class Log {
    * @return responseStatusCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The HTTP status code of the response of the logged call.")
 
   public Integer getResponseStatusCode() {
     return responseStatusCode;
@@ -462,6 +466,7 @@ public class Log {
   public void setResponseStatusCode(Integer responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
   }
+
 
 
   @Override
@@ -531,5 +536,133 @@ public class Log {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("CallDuration");
+    openapiFields.add("QueryAccessKey");
+    openapiFields.add("QueryApiName");
+    openapiFields.add("QueryApiVersion");
+    openapiFields.add("QueryCallName");
+    openapiFields.add("QueryDate");
+    openapiFields.add("QueryHeaderRaw");
+    openapiFields.add("QueryHeaderSize");
+    openapiFields.add("QueryIpAddress");
+    openapiFields.add("QueryPayloadRaw");
+    openapiFields.add("QueryPayloadSize");
+    openapiFields.add("QueryUserAgent");
+    openapiFields.add("RequestId");
+    openapiFields.add("ResponseSize");
+    openapiFields.add("ResponseStatusCode");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Log
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Log.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Log is not found in the empty JSON string", Log.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Log.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Log` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("QueryAccessKey") != null && !jsonObj.get("QueryAccessKey").isJsonNull()) && !jsonObj.get("QueryAccessKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryAccessKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryAccessKey").toString()));
+      }
+      if ((jsonObj.get("QueryApiName") != null && !jsonObj.get("QueryApiName").isJsonNull()) && !jsonObj.get("QueryApiName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryApiName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryApiName").toString()));
+      }
+      if ((jsonObj.get("QueryApiVersion") != null && !jsonObj.get("QueryApiVersion").isJsonNull()) && !jsonObj.get("QueryApiVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryApiVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryApiVersion").toString()));
+      }
+      if ((jsonObj.get("QueryCallName") != null && !jsonObj.get("QueryCallName").isJsonNull()) && !jsonObj.get("QueryCallName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryCallName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryCallName").toString()));
+      }
+      if ((jsonObj.get("QueryHeaderRaw") != null && !jsonObj.get("QueryHeaderRaw").isJsonNull()) && !jsonObj.get("QueryHeaderRaw").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryHeaderRaw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryHeaderRaw").toString()));
+      }
+      if ((jsonObj.get("QueryIpAddress") != null && !jsonObj.get("QueryIpAddress").isJsonNull()) && !jsonObj.get("QueryIpAddress").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryIpAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryIpAddress").toString()));
+      }
+      if ((jsonObj.get("QueryPayloadRaw") != null && !jsonObj.get("QueryPayloadRaw").isJsonNull()) && !jsonObj.get("QueryPayloadRaw").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryPayloadRaw` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryPayloadRaw").toString()));
+      }
+      if ((jsonObj.get("QueryUserAgent") != null && !jsonObj.get("QueryUserAgent").isJsonNull()) && !jsonObj.get("QueryUserAgent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryUserAgent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("QueryUserAgent").toString()));
+      }
+      if ((jsonObj.get("RequestId") != null && !jsonObj.get("RequestId").isJsonNull()) && !jsonObj.get("RequestId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RequestId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RequestId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Log.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Log' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Log> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Log.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Log>() {
+           @Override
+           public void write(JsonWriter out, Log value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Log read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Log given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Log
+  * @throws IOException if the JSON string is invalid with respect to Log
+  */
+  public static Log fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Log.class);
+  }
+
+ /**
+  * Convert an instance of Log to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

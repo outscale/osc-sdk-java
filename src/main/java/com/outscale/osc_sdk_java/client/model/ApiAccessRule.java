@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the API access rule.
  */
-@ApiModel(description = "Information about the API access rule.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ApiAccessRule {
   public static final String SERIALIZED_NAME_API_ACCESS_RULE_ID = "ApiAccessRuleId";
   @SerializedName(SERIALIZED_NAME_API_ACCESS_RULE_ID)
@@ -52,6 +70,8 @@ public class ApiAccessRule {
   @SerializedName(SERIALIZED_NAME_IP_RANGES)
   private List<String> ipRanges = null;
 
+  public ApiAccessRule() {
+  }
 
   public ApiAccessRule apiAccessRuleId(String apiAccessRuleId) {
     
@@ -64,7 +84,6 @@ public class ApiAccessRule {
    * @return apiAccessRuleId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = " The ID of the API access rule.")
 
   public String getApiAccessRuleId() {
     return apiAccessRuleId;
@@ -84,7 +103,7 @@ public class ApiAccessRule {
 
   public ApiAccessRule addCaIdsItem(String caIdsItem) {
     if (this.caIds == null) {
-      this.caIds = new ArrayList<String>();
+      this.caIds = new ArrayList<>();
     }
     this.caIds.add(caIdsItem);
     return this;
@@ -95,7 +114,6 @@ public class ApiAccessRule {
    * @return caIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of Client Certificate Authorities (CAs) used for the API access rule.")
 
   public List<String> getCaIds() {
     return caIds;
@@ -115,7 +133,7 @@ public class ApiAccessRule {
 
   public ApiAccessRule addCnsItem(String cnsItem) {
     if (this.cns == null) {
-      this.cns = new ArrayList<String>();
+      this.cns = new ArrayList<>();
     }
     this.cns.add(cnsItem);
     return this;
@@ -126,7 +144,6 @@ public class ApiAccessRule {
    * @return cns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more Client Certificate Common Names (CNs).")
 
   public List<String> getCns() {
     return cns;
@@ -149,7 +166,6 @@ public class ApiAccessRule {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the API access rule.")
 
   public String getDescription() {
     return description;
@@ -169,7 +185,7 @@ public class ApiAccessRule {
 
   public ApiAccessRule addIpRangesItem(String ipRangesItem) {
     if (this.ipRanges == null) {
-      this.ipRanges = new ArrayList<String>();
+      this.ipRanges = new ArrayList<>();
     }
     this.ipRanges.add(ipRangesItem);
     return this;
@@ -180,7 +196,6 @@ public class ApiAccessRule {
    * @return ipRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IP ranges used for the API access rule, in CIDR notation (for example, `192.0.2.0/16`).")
 
   public List<String> getIpRanges() {
     return ipRanges;
@@ -190,6 +205,7 @@ public class ApiAccessRule {
   public void setIpRanges(List<String> ipRanges) {
     this.ipRanges = ipRanges;
   }
+
 
 
   @Override
@@ -237,5 +253,110 @@ public class ApiAccessRule {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ApiAccessRuleId");
+    openapiFields.add("CaIds");
+    openapiFields.add("Cns");
+    openapiFields.add("Description");
+    openapiFields.add("IpRanges");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ApiAccessRule
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ApiAccessRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ApiAccessRule is not found in the empty JSON string", ApiAccessRule.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ApiAccessRule.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ApiAccessRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("ApiAccessRuleId") != null && !jsonObj.get("ApiAccessRuleId").isJsonNull()) && !jsonObj.get("ApiAccessRuleId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ApiAccessRuleId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ApiAccessRuleId").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("CaIds") != null && !jsonObj.get("CaIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CaIds` to be an array in the JSON string but got `%s`", jsonObj.get("CaIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Cns") != null && !jsonObj.get("Cns").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Cns` to be an array in the JSON string but got `%s`", jsonObj.get("Cns").toString()));
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("IpRanges") != null && !jsonObj.get("IpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("IpRanges").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ApiAccessRule.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ApiAccessRule' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ApiAccessRule> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ApiAccessRule.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ApiAccessRule>() {
+           @Override
+           public void write(JsonWriter out, ApiAccessRule value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ApiAccessRule read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ApiAccessRule given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ApiAccessRule
+  * @throws IOException if the JSON string is invalid with respect to ApiAccessRule
+  */
+  public static ApiAccessRule fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ApiAccessRule.class);
+  }
+
+ /**
+  * Convert an instance of ApiAccessRule to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

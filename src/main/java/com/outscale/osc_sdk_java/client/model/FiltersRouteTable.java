@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersRouteTable {
   public static final String SERIALIZED_NAME_LINK_ROUTE_TABLE_IDS = "LinkRouteTableIds";
   @SerializedName(SERIALIZED_NAME_LINK_ROUTE_TABLE_IDS)
@@ -100,6 +118,8 @@ public class FiltersRouteTable {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersRouteTable() {
+  }
 
   public FiltersRouteTable linkRouteTableIds(List<String> linkRouteTableIds) {
     
@@ -109,7 +129,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addLinkRouteTableIdsItem(String linkRouteTableIdsItem) {
     if (this.linkRouteTableIds == null) {
-      this.linkRouteTableIds = new ArrayList<String>();
+      this.linkRouteTableIds = new ArrayList<>();
     }
     this.linkRouteTableIds.add(linkRouteTableIdsItem);
     return this;
@@ -120,7 +140,6 @@ public class FiltersRouteTable {
    * @return linkRouteTableIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the route tables involved in the associations.")
 
   public List<String> getLinkRouteTableIds() {
     return linkRouteTableIds;
@@ -140,7 +159,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addLinkRouteTableLinkRouteTableIdsItem(String linkRouteTableLinkRouteTableIdsItem) {
     if (this.linkRouteTableLinkRouteTableIds == null) {
-      this.linkRouteTableLinkRouteTableIds = new ArrayList<String>();
+      this.linkRouteTableLinkRouteTableIds = new ArrayList<>();
     }
     this.linkRouteTableLinkRouteTableIds.add(linkRouteTableLinkRouteTableIdsItem);
     return this;
@@ -151,7 +170,6 @@ public class FiltersRouteTable {
    * @return linkRouteTableLinkRouteTableIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the associations between the route tables and the Subnets.")
 
   public List<String> getLinkRouteTableLinkRouteTableIds() {
     return linkRouteTableLinkRouteTableIds;
@@ -174,7 +192,6 @@ public class FiltersRouteTable {
    * @return linkRouteTableMain
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, the route tables are the main ones for their Nets.")
 
   public Boolean getLinkRouteTableMain() {
     return linkRouteTableMain;
@@ -194,7 +211,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addLinkSubnetIdsItem(String linkSubnetIdsItem) {
     if (this.linkSubnetIds == null) {
-      this.linkSubnetIds = new ArrayList<String>();
+      this.linkSubnetIds = new ArrayList<>();
     }
     this.linkSubnetIds.add(linkSubnetIdsItem);
     return this;
@@ -205,7 +222,6 @@ public class FiltersRouteTable {
    * @return linkSubnetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Subnets involved in the associations.")
 
   public List<String> getLinkSubnetIds() {
     return linkSubnetIds;
@@ -225,7 +241,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addNetIdsItem(String netIdsItem) {
     if (this.netIds == null) {
-      this.netIds = new ArrayList<String>();
+      this.netIds = new ArrayList<>();
     }
     this.netIds.add(netIdsItem);
     return this;
@@ -236,7 +252,6 @@ public class FiltersRouteTable {
    * @return netIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Nets for the route tables.")
 
   public List<String> getNetIds() {
     return netIds;
@@ -256,7 +271,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteCreationMethodsItem(String routeCreationMethodsItem) {
     if (this.routeCreationMethods == null) {
-      this.routeCreationMethods = new ArrayList<String>();
+      this.routeCreationMethods = new ArrayList<>();
     }
     this.routeCreationMethods.add(routeCreationMethodsItem);
     return this;
@@ -267,7 +282,6 @@ public class FiltersRouteTable {
    * @return routeCreationMethods
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The methods used to create a route.")
 
   public List<String> getRouteCreationMethods() {
     return routeCreationMethods;
@@ -287,7 +301,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteDestinationIpRangesItem(String routeDestinationIpRangesItem) {
     if (this.routeDestinationIpRanges == null) {
-      this.routeDestinationIpRanges = new ArrayList<String>();
+      this.routeDestinationIpRanges = new ArrayList<>();
     }
     this.routeDestinationIpRanges.add(routeDestinationIpRangesItem);
     return this;
@@ -298,7 +312,6 @@ public class FiltersRouteTable {
    * @return routeDestinationIpRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP ranges specified in routes in the tables.")
 
   public List<String> getRouteDestinationIpRanges() {
     return routeDestinationIpRanges;
@@ -318,7 +331,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteDestinationServiceIdsItem(String routeDestinationServiceIdsItem) {
     if (this.routeDestinationServiceIds == null) {
-      this.routeDestinationServiceIds = new ArrayList<String>();
+      this.routeDestinationServiceIds = new ArrayList<>();
     }
     this.routeDestinationServiceIds.add(routeDestinationServiceIdsItem);
     return this;
@@ -329,7 +342,6 @@ public class FiltersRouteTable {
    * @return routeDestinationServiceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The service IDs specified in routes in the tables.")
 
   public List<String> getRouteDestinationServiceIds() {
     return routeDestinationServiceIds;
@@ -349,7 +361,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteGatewayIdsItem(String routeGatewayIdsItem) {
     if (this.routeGatewayIds == null) {
-      this.routeGatewayIds = new ArrayList<String>();
+      this.routeGatewayIds = new ArrayList<>();
     }
     this.routeGatewayIds.add(routeGatewayIdsItem);
     return this;
@@ -360,7 +372,6 @@ public class FiltersRouteTable {
    * @return routeGatewayIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the gateways specified in routes in the tables.")
 
   public List<String> getRouteGatewayIds() {
     return routeGatewayIds;
@@ -380,7 +391,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteNatServiceIdsItem(String routeNatServiceIdsItem) {
     if (this.routeNatServiceIds == null) {
-      this.routeNatServiceIds = new ArrayList<String>();
+      this.routeNatServiceIds = new ArrayList<>();
     }
     this.routeNatServiceIds.add(routeNatServiceIdsItem);
     return this;
@@ -391,7 +402,6 @@ public class FiltersRouteTable {
    * @return routeNatServiceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the NAT services specified in routes in the tables.")
 
   public List<String> getRouteNatServiceIds() {
     return routeNatServiceIds;
@@ -411,7 +421,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteNetPeeringIdsItem(String routeNetPeeringIdsItem) {
     if (this.routeNetPeeringIds == null) {
-      this.routeNetPeeringIds = new ArrayList<String>();
+      this.routeNetPeeringIds = new ArrayList<>();
     }
     this.routeNetPeeringIds.add(routeNetPeeringIdsItem);
     return this;
@@ -422,7 +432,6 @@ public class FiltersRouteTable {
    * @return routeNetPeeringIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Net peerings specified in routes in the tables.")
 
   public List<String> getRouteNetPeeringIds() {
     return routeNetPeeringIds;
@@ -442,7 +451,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteStatesItem(String routeStatesItem) {
     if (this.routeStates == null) {
-      this.routeStates = new ArrayList<String>();
+      this.routeStates = new ArrayList<>();
     }
     this.routeStates.add(routeStatesItem);
     return this;
@@ -453,7 +462,6 @@ public class FiltersRouteTable {
    * @return routeStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of routes in the route tables (always `active`).")
 
   public List<String> getRouteStates() {
     return routeStates;
@@ -473,7 +481,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteTableIdsItem(String routeTableIdsItem) {
     if (this.routeTableIds == null) {
-      this.routeTableIds = new ArrayList<String>();
+      this.routeTableIds = new ArrayList<>();
     }
     this.routeTableIds.add(routeTableIdsItem);
     return this;
@@ -484,7 +492,6 @@ public class FiltersRouteTable {
    * @return routeTableIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the route tables.")
 
   public List<String> getRouteTableIds() {
     return routeTableIds;
@@ -504,7 +511,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addRouteVmIdsItem(String routeVmIdsItem) {
     if (this.routeVmIds == null) {
-      this.routeVmIds = new ArrayList<String>();
+      this.routeVmIds = new ArrayList<>();
     }
     this.routeVmIds.add(routeVmIdsItem);
     return this;
@@ -515,7 +522,6 @@ public class FiltersRouteTable {
    * @return routeVmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the VMs specified in routes in the tables.")
 
   public List<String> getRouteVmIds() {
     return routeVmIds;
@@ -535,7 +541,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -546,7 +552,6 @@ public class FiltersRouteTable {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the route tables.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -566,7 +571,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -577,7 +582,6 @@ public class FiltersRouteTable {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the route tables.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -597,7 +601,7 @@ public class FiltersRouteTable {
 
   public FiltersRouteTable addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -608,7 +612,6 @@ public class FiltersRouteTable {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the route tables, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -618,6 +621,7 @@ public class FiltersRouteTable {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -689,5 +693,168 @@ public class FiltersRouteTable {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("LinkRouteTableIds");
+    openapiFields.add("LinkRouteTableLinkRouteTableIds");
+    openapiFields.add("LinkRouteTableMain");
+    openapiFields.add("LinkSubnetIds");
+    openapiFields.add("NetIds");
+    openapiFields.add("RouteCreationMethods");
+    openapiFields.add("RouteDestinationIpRanges");
+    openapiFields.add("RouteDestinationServiceIds");
+    openapiFields.add("RouteGatewayIds");
+    openapiFields.add("RouteNatServiceIds");
+    openapiFields.add("RouteNetPeeringIds");
+    openapiFields.add("RouteStates");
+    openapiFields.add("RouteTableIds");
+    openapiFields.add("RouteVmIds");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersRouteTable
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersRouteTable.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersRouteTable is not found in the empty JSON string", FiltersRouteTable.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersRouteTable.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersRouteTable` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkRouteTableIds") != null && !jsonObj.get("LinkRouteTableIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkRouteTableIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkRouteTableIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkRouteTableLinkRouteTableIds") != null && !jsonObj.get("LinkRouteTableLinkRouteTableIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkRouteTableLinkRouteTableIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkRouteTableLinkRouteTableIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkSubnetIds") != null && !jsonObj.get("LinkSubnetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkSubnetIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkSubnetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NetIds") != null && !jsonObj.get("NetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetIds` to be an array in the JSON string but got `%s`", jsonObj.get("NetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteCreationMethods") != null && !jsonObj.get("RouteCreationMethods").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteCreationMethods` to be an array in the JSON string but got `%s`", jsonObj.get("RouteCreationMethods").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteDestinationIpRanges") != null && !jsonObj.get("RouteDestinationIpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteDestinationIpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("RouteDestinationIpRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteDestinationServiceIds") != null && !jsonObj.get("RouteDestinationServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteDestinationServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteDestinationServiceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteGatewayIds") != null && !jsonObj.get("RouteGatewayIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteGatewayIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteGatewayIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteNatServiceIds") != null && !jsonObj.get("RouteNatServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteNatServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteNatServiceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteNetPeeringIds") != null && !jsonObj.get("RouteNetPeeringIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteNetPeeringIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteNetPeeringIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteStates") != null && !jsonObj.get("RouteStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteStates` to be an array in the JSON string but got `%s`", jsonObj.get("RouteStates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteTableIds") != null && !jsonObj.get("RouteTableIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteTableIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RouteVmIds") != null && !jsonObj.get("RouteVmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteVmIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteVmIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersRouteTable.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersRouteTable' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersRouteTable> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersRouteTable.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersRouteTable>() {
+           @Override
+           public void write(JsonWriter out, FiltersRouteTable value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersRouteTable read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersRouteTable given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersRouteTable
+  * @throws IOException if the JSON string is invalid with respect to FiltersRouteTable
+  */
+  public static FiltersRouteTable fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersRouteTable.class);
+  }
+
+ /**
+  * Convert an instance of FiltersRouteTable to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

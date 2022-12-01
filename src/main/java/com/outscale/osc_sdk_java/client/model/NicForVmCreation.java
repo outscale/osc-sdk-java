@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.PrivateIpLight;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the network interface card (NIC) when creating a virtual machine (VM).
  */
-@ApiModel(description = "Information about the network interface card (NIC) when creating a virtual machine (VM).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class NicForVmCreation {
   public static final String SERIALIZED_NAME_DELETE_ON_VM_DELETION = "DeleteOnVmDeletion";
   @SerializedName(SERIALIZED_NAME_DELETE_ON_VM_DELETION)
@@ -65,6 +83,8 @@ public class NicForVmCreation {
   @SerializedName(SERIALIZED_NAME_SUBNET_ID)
   private String subnetId;
 
+  public NicForVmCreation() {
+  }
 
   public NicForVmCreation deleteOnVmDeletion(Boolean deleteOnVmDeletion) {
     
@@ -77,7 +97,6 @@ public class NicForVmCreation {
    * @return deleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, the NIC is deleted when the VM is terminated. You can specify this parameter only for a new NIC. To modify this value for an existing NIC, see [UpdateNic](#updatenic).")
 
   public Boolean getDeleteOnVmDeletion() {
     return deleteOnVmDeletion;
@@ -100,7 +119,6 @@ public class NicForVmCreation {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the NIC, if you are creating a NIC when creating the VM.")
 
   public String getDescription() {
     return description;
@@ -123,7 +141,6 @@ public class NicForVmCreation {
    * @return deviceNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The index of the VM device for the NIC attachment (between `0` and `7`, both included). This parameter is required if you create a NIC when creating the VM.")
 
   public Integer getDeviceNumber() {
     return deviceNumber;
@@ -146,7 +163,6 @@ public class NicForVmCreation {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NIC, if you are attaching an existing NIC when creating a VM.")
 
   public String getNicId() {
     return nicId;
@@ -166,7 +182,7 @@ public class NicForVmCreation {
 
   public NicForVmCreation addPrivateIpsItem(PrivateIpLight privateIpsItem) {
     if (this.privateIps == null) {
-      this.privateIps = new ArrayList<PrivateIpLight>();
+      this.privateIps = new ArrayList<>();
     }
     this.privateIps.add(privateIpsItem);
     return this;
@@ -177,7 +193,6 @@ public class NicForVmCreation {
    * @return privateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more private IPs to assign to the NIC, if you create a NIC when creating a VM. Only one private IP can be the primary private IP.")
 
   public List<PrivateIpLight> getPrivateIps() {
     return privateIps;
@@ -200,7 +215,6 @@ public class NicForVmCreation {
    * @return secondaryPrivateIpCount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The number of secondary private IPs, if you create a NIC when creating a VM. This parameter cannot be specified if you specified more than one private IP in the `PrivateIps` parameter.")
 
   public Integer getSecondaryPrivateIpCount() {
     return secondaryPrivateIpCount;
@@ -220,7 +234,7 @@ public class NicForVmCreation {
 
   public NicForVmCreation addSecurityGroupIdsItem(String securityGroupIdsItem) {
     if (this.securityGroupIds == null) {
-      this.securityGroupIds = new ArrayList<String>();
+      this.securityGroupIds = new ArrayList<>();
     }
     this.securityGroupIds.add(securityGroupIdsItem);
     return this;
@@ -231,7 +245,6 @@ public class NicForVmCreation {
    * @return securityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security groups for the NIC, if you create a NIC when creating a VM.")
 
   public List<String> getSecurityGroupIds() {
     return securityGroupIds;
@@ -254,7 +267,6 @@ public class NicForVmCreation {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet for the NIC, if you create a NIC when creating a VM. This parameter is required if you create a NIC when creating the VM.")
 
   public String getSubnetId() {
     return subnetId;
@@ -264,6 +276,7 @@ public class NicForVmCreation {
   public void setSubnetId(String subnetId) {
     this.subnetId = subnetId;
   }
+
 
 
   @Override
@@ -317,5 +330,122 @@ public class NicForVmCreation {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DeleteOnVmDeletion");
+    openapiFields.add("Description");
+    openapiFields.add("DeviceNumber");
+    openapiFields.add("NicId");
+    openapiFields.add("PrivateIps");
+    openapiFields.add("SecondaryPrivateIpCount");
+    openapiFields.add("SecurityGroupIds");
+    openapiFields.add("SubnetId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NicForVmCreation
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!NicForVmCreation.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NicForVmCreation is not found in the empty JSON string", NicForVmCreation.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NicForVmCreation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NicForVmCreation` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if (jsonObj.get("PrivateIps") != null && !jsonObj.get("PrivateIps").isJsonNull()) {
+        JsonArray jsonArrayprivateIps = jsonObj.getAsJsonArray("PrivateIps");
+        if (jsonArrayprivateIps != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("PrivateIps").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `PrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIps").toString()));
+          }
+
+          // validate the optional field `PrivateIps` (array)
+          for (int i = 0; i < jsonArrayprivateIps.size(); i++) {
+            PrivateIpLight.validateJsonObject(jsonArrayprivateIps.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupIds") != null && !jsonObj.get("SecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupIds").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NicForVmCreation.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NicForVmCreation' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NicForVmCreation> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NicForVmCreation.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NicForVmCreation>() {
+           @Override
+           public void write(JsonWriter out, NicForVmCreation value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NicForVmCreation read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NicForVmCreation given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NicForVmCreation
+  * @throws IOException if the JSON string is invalid with respect to NicForVmCreation
+  */
+  public static NicForVmCreation fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NicForVmCreation.class);
+  }
+
+ /**
+  * Convert an instance of NicForVmCreation to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

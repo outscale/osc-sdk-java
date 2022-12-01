@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the client gateway.
  */
-@ApiModel(description = "Information about the client gateway.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ClientGateway {
   public static final String SERIALIZED_NAME_BGP_ASN = "BgpAsn";
   @SerializedName(SERIALIZED_NAME_BGP_ASN)
@@ -57,6 +75,8 @@ public class ClientGateway {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public ClientGateway() {
+  }
 
   public ClientGateway bgpAsn(Integer bgpAsn) {
     
@@ -69,7 +89,6 @@ public class ClientGateway {
    * @return bgpAsn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet.")
 
   public Integer getBgpAsn() {
     return bgpAsn;
@@ -92,7 +111,6 @@ public class ClientGateway {
    * @return clientGatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the client gateway.")
 
   public String getClientGatewayId() {
     return clientGatewayId;
@@ -115,7 +133,6 @@ public class ClientGateway {
    * @return connectionType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of communication tunnel used by the client gateway (only `ipsec.1` is supported).")
 
   public String getConnectionType() {
     return connectionType;
@@ -138,7 +155,6 @@ public class ClientGateway {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IPv4 address of the client gateway (must be a fixed address into a NATed network).")
 
   public String getPublicIp() {
     return publicIp;
@@ -161,7 +177,6 @@ public class ClientGateway {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the client gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -181,7 +196,7 @@ public class ClientGateway {
 
   public ClientGateway addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -192,7 +207,6 @@ public class ClientGateway {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the client gateway.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -202,6 +216,7 @@ public class ClientGateway {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -251,5 +266,119 @@ public class ClientGateway {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BgpAsn");
+    openapiFields.add("ClientGatewayId");
+    openapiFields.add("ConnectionType");
+    openapiFields.add("PublicIp");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ClientGateway
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ClientGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ClientGateway is not found in the empty JSON string", ClientGateway.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ClientGateway.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ClientGateway` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("ClientGatewayId") != null && !jsonObj.get("ClientGatewayId").isJsonNull()) && !jsonObj.get("ClientGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientGatewayId").toString()));
+      }
+      if ((jsonObj.get("ConnectionType") != null && !jsonObj.get("ConnectionType").isJsonNull()) && !jsonObj.get("ConnectionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConnectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConnectionType").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ClientGateway.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ClientGateway' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ClientGateway> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ClientGateway.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ClientGateway>() {
+           @Override
+           public void write(JsonWriter out, ClientGateway value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ClientGateway read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ClientGateway given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ClientGateway
+  * @throws IOException if the JSON string is invalid with respect to ClientGateway
+  */
+  public static ClientGateway fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ClientGateway.class);
+  }
+
+ /**
+  * Convert an instance of ClientGateway to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

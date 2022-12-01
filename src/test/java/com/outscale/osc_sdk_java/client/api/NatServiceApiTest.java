@@ -21,8 +21,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteNatServiceResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
 import com.outscale.osc_sdk_java.client.model.ReadNatServicesRequest;
 import com.outscale.osc_sdk_java.client.model.ReadNatServicesResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,58 +32,39 @@ import java.util.Map;
 /**
  * API tests for NatServiceApi
  */
-@Ignore
+@Disabled
 public class NatServiceApiTest {
 
     private final NatServiceApi api = new NatServiceApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createNatServiceTest() throws ApiException {
         CreateNatServiceRequest createNatServiceRequest = null;
         CreateNatServiceResponse response = api.createNatService(createNatServiceRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteNatServiceTest() throws ApiException {
         DeleteNatServiceRequest deleteNatServiceRequest = null;
         DeleteNatServiceResponse response = api.deleteNatService(deleteNatServiceRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readNatServicesTest() throws ApiException {
         ReadNatServicesRequest readNatServicesRequest = null;
         ReadNatServicesResponse response = api.readNatServices(readNatServicesRequest);
-
         // TODO: test validations
     }
-    
+
 }

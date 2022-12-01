@@ -22,17 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupRule;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the security group.
  */
-@ApiModel(description = "Information about the security group.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class SecurityGroup {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -66,6 +84,8 @@ public class SecurityGroup {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public SecurityGroup() {
+  }
 
   public SecurityGroup accountId(String accountId) {
     
@@ -78,7 +98,6 @@ public class SecurityGroup {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of a user that has been granted permission.")
 
   public String getAccountId() {
     return accountId;
@@ -101,7 +120,6 @@ public class SecurityGroup {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the security group.")
 
   public String getDescription() {
     return description;
@@ -121,7 +139,7 @@ public class SecurityGroup {
 
   public SecurityGroup addInboundRulesItem(SecurityGroupRule inboundRulesItem) {
     if (this.inboundRules == null) {
-      this.inboundRules = new ArrayList<SecurityGroupRule>();
+      this.inboundRules = new ArrayList<>();
     }
     this.inboundRules.add(inboundRulesItem);
     return this;
@@ -132,7 +150,6 @@ public class SecurityGroup {
    * @return inboundRules
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The inbound rules associated with the security group.")
 
   public List<SecurityGroupRule> getInboundRules() {
     return inboundRules;
@@ -155,7 +172,6 @@ public class SecurityGroup {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net for the security group.")
 
   public String getNetId() {
     return netId;
@@ -175,7 +191,7 @@ public class SecurityGroup {
 
   public SecurityGroup addOutboundRulesItem(SecurityGroupRule outboundRulesItem) {
     if (this.outboundRules == null) {
-      this.outboundRules = new ArrayList<SecurityGroupRule>();
+      this.outboundRules = new ArrayList<>();
     }
     this.outboundRules.add(outboundRulesItem);
     return this;
@@ -186,7 +202,6 @@ public class SecurityGroup {
    * @return outboundRules
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The outbound rules associated with the security group.")
 
   public List<SecurityGroupRule> getOutboundRules() {
     return outboundRules;
@@ -209,7 +224,6 @@ public class SecurityGroup {
    * @return securityGroupId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the security group.")
 
   public String getSecurityGroupId() {
     return securityGroupId;
@@ -232,7 +246,6 @@ public class SecurityGroup {
    * @return securityGroupName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the security group.")
 
   public String getSecurityGroupName() {
     return securityGroupName;
@@ -252,7 +265,7 @@ public class SecurityGroup {
 
   public SecurityGroup addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -263,7 +276,6 @@ public class SecurityGroup {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the security group.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -273,6 +285,7 @@ public class SecurityGroup {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -326,5 +339,152 @@ public class SecurityGroup {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("Description");
+    openapiFields.add("InboundRules");
+    openapiFields.add("NetId");
+    openapiFields.add("OutboundRules");
+    openapiFields.add("SecurityGroupId");
+    openapiFields.add("SecurityGroupName");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SecurityGroup
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!SecurityGroup.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SecurityGroup is not found in the empty JSON string", SecurityGroup.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SecurityGroup.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SecurityGroup` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      if (jsonObj.get("InboundRules") != null && !jsonObj.get("InboundRules").isJsonNull()) {
+        JsonArray jsonArrayinboundRules = jsonObj.getAsJsonArray("InboundRules");
+        if (jsonArrayinboundRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("InboundRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `InboundRules` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRules").toString()));
+          }
+
+          // validate the optional field `InboundRules` (array)
+          for (int i = 0; i < jsonArrayinboundRules.size(); i++) {
+            SecurityGroupRule.validateJsonObject(jsonArrayinboundRules.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if (jsonObj.get("OutboundRules") != null && !jsonObj.get("OutboundRules").isJsonNull()) {
+        JsonArray jsonArrayoutboundRules = jsonObj.getAsJsonArray("OutboundRules");
+        if (jsonArrayoutboundRules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("OutboundRules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `OutboundRules` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRules").toString()));
+          }
+
+          // validate the optional field `OutboundRules` (array)
+          for (int i = 0; i < jsonArrayoutboundRules.size(); i++) {
+            SecurityGroupRule.validateJsonObject(jsonArrayoutboundRules.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("SecurityGroupId") != null && !jsonObj.get("SecurityGroupId").isJsonNull()) && !jsonObj.get("SecurityGroupId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecurityGroupId").toString()));
+      }
+      if ((jsonObj.get("SecurityGroupName") != null && !jsonObj.get("SecurityGroupName").isJsonNull()) && !jsonObj.get("SecurityGroupName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecurityGroupName").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SecurityGroup.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SecurityGroup' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SecurityGroup> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SecurityGroup.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SecurityGroup>() {
+           @Override
+           public void write(JsonWriter out, SecurityGroup value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SecurityGroup read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SecurityGroup given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SecurityGroup
+  * @throws IOException if the JSON string is invalid with respect to SecurityGroup
+  */
+  public static SecurityGroup fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SecurityGroup.class);
+  }
+
+ /**
+  * Convert an instance of SecurityGroup to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

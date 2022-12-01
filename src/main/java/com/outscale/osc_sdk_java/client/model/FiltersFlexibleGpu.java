@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersFlexibleGpu {
   public static final String SERIALIZED_NAME_DELETE_ON_VM_DELETION = "DeleteOnVmDeletion";
   @SerializedName(SERIALIZED_NAME_DELETE_ON_VM_DELETION)
@@ -60,6 +78,8 @@ public class FiltersFlexibleGpu {
   @SerializedName(SERIALIZED_NAME_VM_IDS)
   private List<String> vmIds = null;
 
+  public FiltersFlexibleGpu() {
+  }
 
   public FiltersFlexibleGpu deleteOnVmDeletion(Boolean deleteOnVmDeletion) {
     
@@ -72,7 +92,6 @@ public class FiltersFlexibleGpu {
    * @return deleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Indicates whether the fGPU is deleted when terminating the VM.")
 
   public Boolean getDeleteOnVmDeletion() {
     return deleteOnVmDeletion;
@@ -92,7 +111,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addFlexibleGpuIdsItem(String flexibleGpuIdsItem) {
     if (this.flexibleGpuIds == null) {
-      this.flexibleGpuIds = new ArrayList<String>();
+      this.flexibleGpuIds = new ArrayList<>();
     }
     this.flexibleGpuIds.add(flexibleGpuIdsItem);
     return this;
@@ -103,7 +122,6 @@ public class FiltersFlexibleGpu {
    * @return flexibleGpuIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of fGPUs.")
 
   public List<String> getFlexibleGpuIds() {
     return flexibleGpuIds;
@@ -123,7 +141,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addGenerationsItem(String generationsItem) {
     if (this.generations == null) {
-      this.generations = new ArrayList<String>();
+      this.generations = new ArrayList<>();
     }
     this.generations.add(generationsItem);
     return this;
@@ -134,7 +152,6 @@ public class FiltersFlexibleGpu {
    * @return generations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The processor generations that the fGPUs are compatible with.")
 
   public List<String> getGenerations() {
     return generations;
@@ -154,7 +171,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addModelNamesItem(String modelNamesItem) {
     if (this.modelNames == null) {
-      this.modelNames = new ArrayList<String>();
+      this.modelNames = new ArrayList<>();
     }
     this.modelNames.add(modelNamesItem);
     return this;
@@ -165,7 +182,6 @@ public class FiltersFlexibleGpu {
    * @return modelNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more models of fGPUs. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).")
 
   public List<String> getModelNames() {
     return modelNames;
@@ -185,7 +201,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -196,7 +212,6 @@ public class FiltersFlexibleGpu {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the fGPUs (`allocated` \\| `attaching` \\| `attached` \\| `detaching`).")
 
   public List<String> getStates() {
     return states;
@@ -216,7 +231,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -227,7 +242,6 @@ public class FiltersFlexibleGpu {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Subregions where the fGPUs are located.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -247,7 +261,7 @@ public class FiltersFlexibleGpu {
 
   public FiltersFlexibleGpu addVmIdsItem(String vmIdsItem) {
     if (this.vmIds == null) {
-      this.vmIds = new ArrayList<String>();
+      this.vmIds = new ArrayList<>();
     }
     this.vmIds.add(vmIdsItem);
     return this;
@@ -258,7 +272,6 @@ public class FiltersFlexibleGpu {
    * @return vmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of VMs.")
 
   public List<String> getVmIds() {
     return vmIds;
@@ -268,6 +281,7 @@ public class FiltersFlexibleGpu {
   public void setVmIds(List<String> vmIds) {
     this.vmIds = vmIds;
   }
+
 
 
   @Override
@@ -319,5 +333,118 @@ public class FiltersFlexibleGpu {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DeleteOnVmDeletion");
+    openapiFields.add("FlexibleGpuIds");
+    openapiFields.add("Generations");
+    openapiFields.add("ModelNames");
+    openapiFields.add("States");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("VmIds");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersFlexibleGpu
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersFlexibleGpu.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersFlexibleGpu is not found in the empty JSON string", FiltersFlexibleGpu.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersFlexibleGpu.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersFlexibleGpu` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("FlexibleGpuIds") != null && !jsonObj.get("FlexibleGpuIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FlexibleGpuIds` to be an array in the JSON string but got `%s`", jsonObj.get("FlexibleGpuIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Generations") != null && !jsonObj.get("Generations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Generations` to be an array in the JSON string but got `%s`", jsonObj.get("Generations").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ModelNames") != null && !jsonObj.get("ModelNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ModelNames` to be an array in the JSON string but got `%s`", jsonObj.get("ModelNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmIds") != null && !jsonObj.get("VmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmIds` to be an array in the JSON string but got `%s`", jsonObj.get("VmIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersFlexibleGpu.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersFlexibleGpu' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersFlexibleGpu> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersFlexibleGpu.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersFlexibleGpu>() {
+           @Override
+           public void write(JsonWriter out, FiltersFlexibleGpu value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersFlexibleGpu read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersFlexibleGpu given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersFlexibleGpu
+  * @throws IOException if the JSON string is invalid with respect to FiltersFlexibleGpu
+  */
+  public static FiltersFlexibleGpu fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersFlexibleGpu.class);
+  }
+
+ /**
+  * Convert an instance of FiltersFlexibleGpu to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

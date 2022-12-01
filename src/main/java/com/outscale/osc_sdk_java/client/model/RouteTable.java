@@ -24,17 +24,35 @@ import com.outscale.osc_sdk_java.client.model.LinkRouteTable;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.Route;
 import com.outscale.osc_sdk_java.client.model.RoutePropagatingVirtualGateway;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the route table.
  */
-@ApiModel(description = "Information about the route table.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class RouteTable {
   public static final String SERIALIZED_NAME_LINK_ROUTE_TABLES = "LinkRouteTables";
   @SerializedName(SERIALIZED_NAME_LINK_ROUTE_TABLES)
@@ -60,6 +78,8 @@ public class RouteTable {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public RouteTable() {
+  }
 
   public RouteTable linkRouteTables(List<LinkRouteTable> linkRouteTables) {
     
@@ -69,7 +89,7 @@ public class RouteTable {
 
   public RouteTable addLinkRouteTablesItem(LinkRouteTable linkRouteTablesItem) {
     if (this.linkRouteTables == null) {
-      this.linkRouteTables = new ArrayList<LinkRouteTable>();
+      this.linkRouteTables = new ArrayList<>();
     }
     this.linkRouteTables.add(linkRouteTablesItem);
     return this;
@@ -80,7 +100,6 @@ public class RouteTable {
    * @return linkRouteTables
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more associations between the route table and Subnets.")
 
   public List<LinkRouteTable> getLinkRouteTables() {
     return linkRouteTables;
@@ -103,7 +122,6 @@ public class RouteTable {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net for the route table.")
 
   public String getNetId() {
     return netId;
@@ -123,7 +141,7 @@ public class RouteTable {
 
   public RouteTable addRoutePropagatingVirtualGatewaysItem(RoutePropagatingVirtualGateway routePropagatingVirtualGatewaysItem) {
     if (this.routePropagatingVirtualGateways == null) {
-      this.routePropagatingVirtualGateways = new ArrayList<RoutePropagatingVirtualGateway>();
+      this.routePropagatingVirtualGateways = new ArrayList<>();
     }
     this.routePropagatingVirtualGateways.add(routePropagatingVirtualGatewaysItem);
     return this;
@@ -134,7 +152,6 @@ public class RouteTable {
    * @return routePropagatingVirtualGateways
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about virtual gateways propagating routes.")
 
   public List<RoutePropagatingVirtualGateway> getRoutePropagatingVirtualGateways() {
     return routePropagatingVirtualGateways;
@@ -157,7 +174,6 @@ public class RouteTable {
    * @return routeTableId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the route table.")
 
   public String getRouteTableId() {
     return routeTableId;
@@ -177,7 +193,7 @@ public class RouteTable {
 
   public RouteTable addRoutesItem(Route routesItem) {
     if (this.routes == null) {
-      this.routes = new ArrayList<Route>();
+      this.routes = new ArrayList<>();
     }
     this.routes.add(routesItem);
     return this;
@@ -188,7 +204,6 @@ public class RouteTable {
    * @return routes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more routes in the route table.")
 
   public List<Route> getRoutes() {
     return routes;
@@ -208,7 +223,7 @@ public class RouteTable {
 
   public RouteTable addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -219,7 +234,6 @@ public class RouteTable {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the route table.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -229,6 +243,7 @@ public class RouteTable {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -278,5 +293,155 @@ public class RouteTable {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("LinkRouteTables");
+    openapiFields.add("NetId");
+    openapiFields.add("RoutePropagatingVirtualGateways");
+    openapiFields.add("RouteTableId");
+    openapiFields.add("Routes");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to RouteTable
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!RouteTable.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in RouteTable is not found in the empty JSON string", RouteTable.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!RouteTable.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RouteTable` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("LinkRouteTables") != null && !jsonObj.get("LinkRouteTables").isJsonNull()) {
+        JsonArray jsonArraylinkRouteTables = jsonObj.getAsJsonArray("LinkRouteTables");
+        if (jsonArraylinkRouteTables != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("LinkRouteTables").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `LinkRouteTables` to be an array in the JSON string but got `%s`", jsonObj.get("LinkRouteTables").toString()));
+          }
+
+          // validate the optional field `LinkRouteTables` (array)
+          for (int i = 0; i < jsonArraylinkRouteTables.size(); i++) {
+            LinkRouteTable.validateJsonObject(jsonArraylinkRouteTables.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if (jsonObj.get("RoutePropagatingVirtualGateways") != null && !jsonObj.get("RoutePropagatingVirtualGateways").isJsonNull()) {
+        JsonArray jsonArrayroutePropagatingVirtualGateways = jsonObj.getAsJsonArray("RoutePropagatingVirtualGateways");
+        if (jsonArrayroutePropagatingVirtualGateways != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("RoutePropagatingVirtualGateways").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `RoutePropagatingVirtualGateways` to be an array in the JSON string but got `%s`", jsonObj.get("RoutePropagatingVirtualGateways").toString()));
+          }
+
+          // validate the optional field `RoutePropagatingVirtualGateways` (array)
+          for (int i = 0; i < jsonArrayroutePropagatingVirtualGateways.size(); i++) {
+            RoutePropagatingVirtualGateway.validateJsonObject(jsonArrayroutePropagatingVirtualGateways.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("RouteTableId") != null && !jsonObj.get("RouteTableId").isJsonNull()) && !jsonObj.get("RouteTableId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RouteTableId").toString()));
+      }
+      if (jsonObj.get("Routes") != null && !jsonObj.get("Routes").isJsonNull()) {
+        JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("Routes");
+        if (jsonArrayroutes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Routes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Routes` to be an array in the JSON string but got `%s`", jsonObj.get("Routes").toString()));
+          }
+
+          // validate the optional field `Routes` (array)
+          for (int i = 0; i < jsonArrayroutes.size(); i++) {
+            Route.validateJsonObject(jsonArrayroutes.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!RouteTable.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'RouteTable' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<RouteTable> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(RouteTable.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<RouteTable>() {
+           @Override
+           public void write(JsonWriter out, RouteTable value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public RouteTable read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of RouteTable given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of RouteTable
+  * @throws IOException if the JSON string is invalid with respect to RouteTable
+  */
+  public static RouteTable fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, RouteTable.class);
+  }
+
+ /**
+  * Convert an instance of RouteTable to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

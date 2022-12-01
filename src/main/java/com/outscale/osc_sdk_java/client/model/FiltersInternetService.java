@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersInternetService {
   public static final String SERIALIZED_NAME_INTERNET_SERVICE_IDS = "InternetServiceIds";
   @SerializedName(SERIALIZED_NAME_INTERNET_SERVICE_IDS)
@@ -56,6 +74,8 @@ public class FiltersInternetService {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersInternetService() {
+  }
 
   public FiltersInternetService internetServiceIds(List<String> internetServiceIds) {
     
@@ -65,7 +85,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addInternetServiceIdsItem(String internetServiceIdsItem) {
     if (this.internetServiceIds == null) {
-      this.internetServiceIds = new ArrayList<String>();
+      this.internetServiceIds = new ArrayList<>();
     }
     this.internetServiceIds.add(internetServiceIdsItem);
     return this;
@@ -76,7 +96,6 @@ public class FiltersInternetService {
    * @return internetServiceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Internet services.")
 
   public List<String> getInternetServiceIds() {
     return internetServiceIds;
@@ -96,7 +115,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addLinkNetIdsItem(String linkNetIdsItem) {
     if (this.linkNetIds == null) {
-      this.linkNetIds = new ArrayList<String>();
+      this.linkNetIds = new ArrayList<>();
     }
     this.linkNetIds.add(linkNetIdsItem);
     return this;
@@ -107,7 +126,6 @@ public class FiltersInternetService {
    * @return linkNetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Nets the Internet services are attached to.")
 
   public List<String> getLinkNetIds() {
     return linkNetIds;
@@ -127,7 +145,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addLinkStatesItem(String linkStatesItem) {
     if (this.linkStates == null) {
-      this.linkStates = new ArrayList<String>();
+      this.linkStates = new ArrayList<>();
     }
     this.linkStates.add(linkStatesItem);
     return this;
@@ -138,7 +156,6 @@ public class FiltersInternetService {
    * @return linkStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The current states of the attachments between the Internet services and the Nets (only `available`, if the Internet gateway is attached to a VPC).")
 
   public List<String> getLinkStates() {
     return linkStates;
@@ -158,7 +175,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -169,7 +186,6 @@ public class FiltersInternetService {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the Internet services.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -189,7 +205,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -200,7 +216,6 @@ public class FiltersInternetService {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the Internet services.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -220,7 +235,7 @@ public class FiltersInternetService {
 
   public FiltersInternetService addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -231,7 +246,6 @@ public class FiltersInternetService {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the Internet services, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -241,6 +255,7 @@ public class FiltersInternetService {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -290,5 +305,117 @@ public class FiltersInternetService {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("InternetServiceIds");
+    openapiFields.add("LinkNetIds");
+    openapiFields.add("LinkStates");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersInternetService
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersInternetService.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersInternetService is not found in the empty JSON string", FiltersInternetService.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersInternetService.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersInternetService` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InternetServiceIds") != null && !jsonObj.get("InternetServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InternetServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("InternetServiceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkNetIds") != null && !jsonObj.get("LinkNetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkNetIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkNetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkStates") != null && !jsonObj.get("LinkStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkStates` to be an array in the JSON string but got `%s`", jsonObj.get("LinkStates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersInternetService.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersInternetService' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersInternetService> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersInternetService.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersInternetService>() {
+           @Override
+           public void write(JsonWriter out, FiltersInternetService value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersInternetService read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersInternetService given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersInternetService
+  * @throws IOException if the JSON string is invalid with respect to FiltersInternetService
+  */
+  public static FiltersInternetService fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersInternetService.class);
+  }
+
+ /**
+  * Convert an instance of FiltersInternetService to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -20,18 +20,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersVolume {
   public static final String SERIALIZED_NAME_CREATION_DATES = "CreationDates";
   @SerializedName(SERIALIZED_NAME_CREATION_DATES)
@@ -93,6 +111,8 @@ public class FiltersVolume {
   @SerializedName(SERIALIZED_NAME_VOLUME_TYPES)
   private List<String> volumeTypes = null;
 
+  public FiltersVolume() {
+  }
 
   public FiltersVolume creationDates(List<LocalDate> creationDates) {
     
@@ -102,7 +122,7 @@ public class FiltersVolume {
 
   public FiltersVolume addCreationDatesItem(LocalDate creationDatesItem) {
     if (this.creationDates == null) {
-      this.creationDates = new ArrayList<LocalDate>();
+      this.creationDates = new ArrayList<>();
     }
     this.creationDates.add(creationDatesItem);
     return this;
@@ -113,7 +133,6 @@ public class FiltersVolume {
    * @return creationDates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The dates and times at which the volumes were created.")
 
   public List<LocalDate> getCreationDates() {
     return creationDates;
@@ -136,7 +155,6 @@ public class FiltersVolume {
    * @return linkVolumeDeleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the volumes are deleted or not when terminating the VMs.")
 
   public Boolean getLinkVolumeDeleteOnVmDeletion() {
     return linkVolumeDeleteOnVmDeletion;
@@ -156,7 +174,7 @@ public class FiltersVolume {
 
   public FiltersVolume addLinkVolumeDeviceNamesItem(String linkVolumeDeviceNamesItem) {
     if (this.linkVolumeDeviceNames == null) {
-      this.linkVolumeDeviceNames = new ArrayList<String>();
+      this.linkVolumeDeviceNames = new ArrayList<>();
     }
     this.linkVolumeDeviceNames.add(linkVolumeDeviceNamesItem);
     return this;
@@ -167,7 +185,6 @@ public class FiltersVolume {
    * @return linkVolumeDeviceNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VM device names.")
 
   public List<String> getLinkVolumeDeviceNames() {
     return linkVolumeDeviceNames;
@@ -187,7 +204,7 @@ public class FiltersVolume {
 
   public FiltersVolume addLinkVolumeLinkDatesItem(LocalDate linkVolumeLinkDatesItem) {
     if (this.linkVolumeLinkDates == null) {
-      this.linkVolumeLinkDates = new ArrayList<LocalDate>();
+      this.linkVolumeLinkDates = new ArrayList<>();
     }
     this.linkVolumeLinkDates.add(linkVolumeLinkDatesItem);
     return this;
@@ -198,7 +215,6 @@ public class FiltersVolume {
    * @return linkVolumeLinkDates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The dates and times at which the volumes were created.")
 
   public List<LocalDate> getLinkVolumeLinkDates() {
     return linkVolumeLinkDates;
@@ -218,7 +234,7 @@ public class FiltersVolume {
 
   public FiltersVolume addLinkVolumeLinkStatesItem(String linkVolumeLinkStatesItem) {
     if (this.linkVolumeLinkStates == null) {
-      this.linkVolumeLinkStates = new ArrayList<String>();
+      this.linkVolumeLinkStates = new ArrayList<>();
     }
     this.linkVolumeLinkStates.add(linkVolumeLinkStatesItem);
     return this;
@@ -229,7 +245,6 @@ public class FiltersVolume {
    * @return linkVolumeLinkStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The attachment states of the volumes (`attaching` \\| `detaching` \\| `attached` \\| `detached`).")
 
   public List<String> getLinkVolumeLinkStates() {
     return linkVolumeLinkStates;
@@ -249,7 +264,7 @@ public class FiltersVolume {
 
   public FiltersVolume addLinkVolumeVmIdsItem(String linkVolumeVmIdsItem) {
     if (this.linkVolumeVmIds == null) {
-      this.linkVolumeVmIds = new ArrayList<String>();
+      this.linkVolumeVmIds = new ArrayList<>();
     }
     this.linkVolumeVmIds.add(linkVolumeVmIdsItem);
     return this;
@@ -260,7 +275,6 @@ public class FiltersVolume {
    * @return linkVolumeVmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of VMs.")
 
   public List<String> getLinkVolumeVmIds() {
     return linkVolumeVmIds;
@@ -280,7 +294,7 @@ public class FiltersVolume {
 
   public FiltersVolume addSnapshotIdsItem(String snapshotIdsItem) {
     if (this.snapshotIds == null) {
-      this.snapshotIds = new ArrayList<String>();
+      this.snapshotIds = new ArrayList<>();
     }
     this.snapshotIds.add(snapshotIdsItem);
     return this;
@@ -291,7 +305,6 @@ public class FiltersVolume {
    * @return snapshotIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The snapshots from which the volumes were created.")
 
   public List<String> getSnapshotIds() {
     return snapshotIds;
@@ -311,7 +324,7 @@ public class FiltersVolume {
 
   public FiltersVolume addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -322,7 +335,6 @@ public class FiltersVolume {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the Subregions in which the volumes were created.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -342,7 +354,7 @@ public class FiltersVolume {
 
   public FiltersVolume addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -353,7 +365,6 @@ public class FiltersVolume {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the volumes.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -373,7 +384,7 @@ public class FiltersVolume {
 
   public FiltersVolume addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -384,7 +395,6 @@ public class FiltersVolume {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the volumes.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -404,7 +414,7 @@ public class FiltersVolume {
 
   public FiltersVolume addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -415,7 +425,6 @@ public class FiltersVolume {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the volumes, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -435,7 +444,7 @@ public class FiltersVolume {
 
   public FiltersVolume addVolumeIdsItem(String volumeIdsItem) {
     if (this.volumeIds == null) {
-      this.volumeIds = new ArrayList<String>();
+      this.volumeIds = new ArrayList<>();
     }
     this.volumeIds.add(volumeIdsItem);
     return this;
@@ -446,7 +455,6 @@ public class FiltersVolume {
    * @return volumeIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the volumes.")
 
   public List<String> getVolumeIds() {
     return volumeIds;
@@ -466,7 +474,7 @@ public class FiltersVolume {
 
   public FiltersVolume addVolumeSizesItem(Integer volumeSizesItem) {
     if (this.volumeSizes == null) {
-      this.volumeSizes = new ArrayList<Integer>();
+      this.volumeSizes = new ArrayList<>();
     }
     this.volumeSizes.add(volumeSizesItem);
     return this;
@@ -477,7 +485,6 @@ public class FiltersVolume {
    * @return volumeSizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sizes of the volumes, in gibibytes (GiB).")
 
   public List<Integer> getVolumeSizes() {
     return volumeSizes;
@@ -497,7 +504,7 @@ public class FiltersVolume {
 
   public FiltersVolume addVolumeStatesItem(String volumeStatesItem) {
     if (this.volumeStates == null) {
-      this.volumeStates = new ArrayList<String>();
+      this.volumeStates = new ArrayList<>();
     }
     this.volumeStates.add(volumeStatesItem);
     return this;
@@ -508,7 +515,6 @@ public class FiltersVolume {
    * @return volumeStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the volumes (`creating` \\| `available` \\| `in-use` \\| `updating` \\| `deleting` \\| `error`).")
 
   public List<String> getVolumeStates() {
     return volumeStates;
@@ -528,7 +534,7 @@ public class FiltersVolume {
 
   public FiltersVolume addVolumeTypesItem(String volumeTypesItem) {
     if (this.volumeTypes == null) {
-      this.volumeTypes = new ArrayList<String>();
+      this.volumeTypes = new ArrayList<>();
     }
     this.volumeTypes.add(volumeTypesItem);
     return this;
@@ -539,7 +545,6 @@ public class FiltersVolume {
    * @return volumeTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The types of the volumes (`standard` \\| `gp2` \\| `io1`).")
 
   public List<String> getVolumeTypes() {
     return volumeTypes;
@@ -549,6 +554,7 @@ public class FiltersVolume {
   public void setVolumeTypes(List<String> volumeTypes) {
     this.volumeTypes = volumeTypes;
   }
+
 
 
   @Override
@@ -616,5 +622,158 @@ public class FiltersVolume {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CreationDates");
+    openapiFields.add("LinkVolumeDeleteOnVmDeletion");
+    openapiFields.add("LinkVolumeDeviceNames");
+    openapiFields.add("LinkVolumeLinkDates");
+    openapiFields.add("LinkVolumeLinkStates");
+    openapiFields.add("LinkVolumeVmIds");
+    openapiFields.add("SnapshotIds");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+    openapiFields.add("VolumeIds");
+    openapiFields.add("VolumeSizes");
+    openapiFields.add("VolumeStates");
+    openapiFields.add("VolumeTypes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersVolume
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersVolume.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersVolume is not found in the empty JSON string", FiltersVolume.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersVolume.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersVolume` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("CreationDates") != null && !jsonObj.get("CreationDates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CreationDates` to be an array in the JSON string but got `%s`", jsonObj.get("CreationDates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkVolumeDeviceNames") != null && !jsonObj.get("LinkVolumeDeviceNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkVolumeDeviceNames` to be an array in the JSON string but got `%s`", jsonObj.get("LinkVolumeDeviceNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkVolumeLinkDates") != null && !jsonObj.get("LinkVolumeLinkDates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkVolumeLinkDates` to be an array in the JSON string but got `%s`", jsonObj.get("LinkVolumeLinkDates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkVolumeLinkStates") != null && !jsonObj.get("LinkVolumeLinkStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkVolumeLinkStates` to be an array in the JSON string but got `%s`", jsonObj.get("LinkVolumeLinkStates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LinkVolumeVmIds") != null && !jsonObj.get("LinkVolumeVmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkVolumeVmIds` to be an array in the JSON string but got `%s`", jsonObj.get("LinkVolumeVmIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SnapshotIds") != null && !jsonObj.get("SnapshotIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotIds` to be an array in the JSON string but got `%s`", jsonObj.get("SnapshotIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeIds") != null && !jsonObj.get("VolumeIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeIds` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeSizes") != null && !jsonObj.get("VolumeSizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeSizes` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeSizes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeStates") != null && !jsonObj.get("VolumeStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeStates` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeStates").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeTypes") != null && !jsonObj.get("VolumeTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeTypes` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeTypes").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersVolume.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersVolume' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersVolume> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersVolume.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersVolume>() {
+           @Override
+           public void write(JsonWriter out, FiltersVolume value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersVolume read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersVolume given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersVolume
+  * @throws IOException if the JSON string is invalid with respect to FiltersVolume
+  */
+  public static FiltersVolume fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersVolume.class);
+  }
+
+ /**
+  * Convert an instance of FiltersVolume to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

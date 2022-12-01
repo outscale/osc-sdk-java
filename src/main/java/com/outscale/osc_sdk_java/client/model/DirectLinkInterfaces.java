@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the DirectLink interfaces.
  */
-@ApiModel(description = "Information about the DirectLink interfaces.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class DirectLinkInterfaces {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -86,6 +104,8 @@ public class DirectLinkInterfaces {
   @SerializedName(SERIALIZED_NAME_VLAN)
   private Integer vlan;
 
+  public DirectLinkInterfaces() {
+  }
 
   public DirectLinkInterfaces accountId(String accountId) {
     
@@ -98,7 +118,6 @@ public class DirectLinkInterfaces {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the DirectLink interface.")
 
   public String getAccountId() {
     return accountId;
@@ -121,7 +140,6 @@ public class DirectLinkInterfaces {
    * @return bgpAsn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The BGP (Border Gateway Protocol) ASN (Autonomous System Number) on the customer's side of the DirectLink interface.")
 
   public Integer getBgpAsn() {
     return bgpAsn;
@@ -144,7 +162,6 @@ public class DirectLinkInterfaces {
    * @return bgpKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The BGP authentication key.")
 
   public String getBgpKey() {
     return bgpKey;
@@ -167,7 +184,6 @@ public class DirectLinkInterfaces {
    * @return clientPrivateIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP on the customer's side of the DirectLink interface.")
 
   public String getClientPrivateIp() {
     return clientPrivateIp;
@@ -190,7 +206,6 @@ public class DirectLinkInterfaces {
    * @return directLinkId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the DirectLink.")
 
   public String getDirectLinkId() {
     return directLinkId;
@@ -213,7 +228,6 @@ public class DirectLinkInterfaces {
    * @return directLinkInterfaceId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the DirectLink interface.")
 
   public String getDirectLinkInterfaceId() {
     return directLinkInterfaceId;
@@ -236,7 +250,6 @@ public class DirectLinkInterfaces {
    * @return directLinkInterfaceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the DirectLink interface.")
 
   public String getDirectLinkInterfaceName() {
     return directLinkInterfaceName;
@@ -259,7 +272,6 @@ public class DirectLinkInterfaces {
    * @return interfaceType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of the DirectLink interface (always `private`).")
 
   public String getInterfaceType() {
     return interfaceType;
@@ -282,7 +294,6 @@ public class DirectLinkInterfaces {
    * @return location
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The datacenter where the DirectLink interface is located.")
 
   public String getLocation() {
     return location;
@@ -305,7 +316,6 @@ public class DirectLinkInterfaces {
    * @return mtu
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum transmission unit (MTU) of the DirectLink interface, in bytes (by default, `1500`).")
 
   public Integer getMtu() {
     return mtu;
@@ -328,7 +338,6 @@ public class DirectLinkInterfaces {
    * @return outscalePrivateIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP on the OUTSCALE side of the DirectLink interface.")
 
   public String getOutscalePrivateIp() {
     return outscalePrivateIp;
@@ -351,7 +360,6 @@ public class DirectLinkInterfaces {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the DirectLink interface (`pending` \\| `available` \\| `deleting` \\| `deleted` \\| `confirming` \\| `rejected` \\| `expired`).")
 
   public String getState() {
     return state;
@@ -374,7 +382,6 @@ public class DirectLinkInterfaces {
    * @return virtualGatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the target virtual gateway.")
 
   public String getVirtualGatewayId() {
     return virtualGatewayId;
@@ -397,7 +404,6 @@ public class DirectLinkInterfaces {
    * @return vlan
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VLAN number associated with the DirectLink interface.")
 
   public Integer getVlan() {
     return vlan;
@@ -407,6 +413,7 @@ public class DirectLinkInterfaces {
   public void setVlan(Integer vlan) {
     this.vlan = vlan;
   }
+
 
 
   @Override
@@ -472,5 +479,134 @@ public class DirectLinkInterfaces {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("BgpAsn");
+    openapiFields.add("BgpKey");
+    openapiFields.add("ClientPrivateIp");
+    openapiFields.add("DirectLinkId");
+    openapiFields.add("DirectLinkInterfaceId");
+    openapiFields.add("DirectLinkInterfaceName");
+    openapiFields.add("InterfaceType");
+    openapiFields.add("Location");
+    openapiFields.add("Mtu");
+    openapiFields.add("OutscalePrivateIp");
+    openapiFields.add("State");
+    openapiFields.add("VirtualGatewayId");
+    openapiFields.add("Vlan");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DirectLinkInterfaces
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DirectLinkInterfaces.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DirectLinkInterfaces is not found in the empty JSON string", DirectLinkInterfaces.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DirectLinkInterfaces.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DirectLinkInterfaces` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("BgpKey") != null && !jsonObj.get("BgpKey").isJsonNull()) && !jsonObj.get("BgpKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BgpKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("BgpKey").toString()));
+      }
+      if ((jsonObj.get("ClientPrivateIp") != null && !jsonObj.get("ClientPrivateIp").isJsonNull()) && !jsonObj.get("ClientPrivateIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientPrivateIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientPrivateIp").toString()));
+      }
+      if ((jsonObj.get("DirectLinkId") != null && !jsonObj.get("DirectLinkId").isJsonNull()) && !jsonObj.get("DirectLinkId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkId").toString()));
+      }
+      if ((jsonObj.get("DirectLinkInterfaceId") != null && !jsonObj.get("DirectLinkInterfaceId").isJsonNull()) && !jsonObj.get("DirectLinkInterfaceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkInterfaceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkInterfaceId").toString()));
+      }
+      if ((jsonObj.get("DirectLinkInterfaceName") != null && !jsonObj.get("DirectLinkInterfaceName").isJsonNull()) && !jsonObj.get("DirectLinkInterfaceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkInterfaceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkInterfaceName").toString()));
+      }
+      if ((jsonObj.get("InterfaceType") != null && !jsonObj.get("InterfaceType").isJsonNull()) && !jsonObj.get("InterfaceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InterfaceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InterfaceType").toString()));
+      }
+      if ((jsonObj.get("Location") != null && !jsonObj.get("Location").isJsonNull()) && !jsonObj.get("Location").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Location").toString()));
+      }
+      if ((jsonObj.get("OutscalePrivateIp") != null && !jsonObj.get("OutscalePrivateIp").isJsonNull()) && !jsonObj.get("OutscalePrivateIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutscalePrivateIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("OutscalePrivateIp").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("VirtualGatewayId") != null && !jsonObj.get("VirtualGatewayId").isJsonNull()) && !jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualGatewayId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DirectLinkInterfaces.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DirectLinkInterfaces' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DirectLinkInterfaces> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DirectLinkInterfaces.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DirectLinkInterfaces>() {
+           @Override
+           public void write(JsonWriter out, DirectLinkInterfaces value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DirectLinkInterfaces read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DirectLinkInterfaces given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DirectLinkInterfaces
+  * @throws IOException if the JSON string is invalid with respect to DirectLinkInterfaces
+  */
+  public static DirectLinkInterfaces fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DirectLinkInterfaces.class);
+  }
+
+ /**
+  * Convert an instance of DirectLinkInterfaces to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

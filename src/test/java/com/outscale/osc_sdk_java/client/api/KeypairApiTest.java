@@ -21,8 +21,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteKeypairResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
 import com.outscale.osc_sdk_java.client.model.ReadKeypairsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadKeypairsResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,58 +32,39 @@ import java.util.Map;
 /**
  * API tests for KeypairApi
  */
-@Ignore
+@Disabled
 public class KeypairApiTest {
 
     private final KeypairApi api = new KeypairApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createKeypairTest() throws ApiException {
         CreateKeypairRequest createKeypairRequest = null;
         CreateKeypairResponse response = api.createKeypair(createKeypairRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteKeypairTest() throws ApiException {
         DeleteKeypairRequest deleteKeypairRequest = null;
         DeleteKeypairResponse response = api.deleteKeypair(deleteKeypairRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readKeypairsTest() throws ApiException {
         ReadKeypairsRequest readKeypairsRequest = null;
         ReadKeypairsResponse response = api.readKeypairs(readKeypairsRequest);
-
         // TODO: test validations
     }
-    
+
 }

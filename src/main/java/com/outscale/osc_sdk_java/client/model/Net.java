@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the Net.
  */
-@ApiModel(description = "Information about the Net.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Net {
   public static final String SERIALIZED_NAME_DHCP_OPTIONS_SET_ID = "DhcpOptionsSetId";
   @SerializedName(SERIALIZED_NAME_DHCP_OPTIONS_SET_ID)
@@ -57,6 +75,8 @@ public class Net {
   @SerializedName(SERIALIZED_NAME_TENANCY)
   private String tenancy;
 
+  public Net() {
+  }
 
   public Net dhcpOptionsSetId(String dhcpOptionsSetId) {
     
@@ -69,7 +89,6 @@ public class Net {
    * @return dhcpOptionsSetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the DHCP options set (or `default` if you want to associate the default one).")
 
   public String getDhcpOptionsSetId() {
     return dhcpOptionsSetId;
@@ -92,7 +111,6 @@ public class Net {
    * @return ipRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP range for the Net, in CIDR notation (for example, `10.0.0.0/16`).")
 
   public String getIpRange() {
     return ipRange;
@@ -115,7 +133,6 @@ public class Net {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net.")
 
   public String getNetId() {
     return netId;
@@ -138,7 +155,6 @@ public class Net {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the Net (`pending` \\| `available` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -158,7 +174,7 @@ public class Net {
 
   public Net addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -169,7 +185,6 @@ public class Net {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the Net.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -192,7 +207,6 @@ public class Net {
    * @return tenancy
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The VM tenancy in a Net.")
 
   public String getTenancy() {
     return tenancy;
@@ -202,6 +216,7 @@ public class Net {
   public void setTenancy(String tenancy) {
     this.tenancy = tenancy;
   }
+
 
 
   @Override
@@ -251,5 +266,122 @@ public class Net {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DhcpOptionsSetId");
+    openapiFields.add("IpRange");
+    openapiFields.add("NetId");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+    openapiFields.add("Tenancy");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Net
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Net.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Net is not found in the empty JSON string", Net.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Net.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Net` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("DhcpOptionsSetId") != null && !jsonObj.get("DhcpOptionsSetId").isJsonNull()) && !jsonObj.get("DhcpOptionsSetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DhcpOptionsSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DhcpOptionsSetId").toString()));
+      }
+      if ((jsonObj.get("IpRange") != null && !jsonObj.get("IpRange").isJsonNull()) && !jsonObj.get("IpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpRange").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("Tenancy") != null && !jsonObj.get("Tenancy").isJsonNull()) && !jsonObj.get("Tenancy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tenancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Tenancy").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Net.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Net' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Net> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Net.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Net>() {
+           @Override
+           public void write(JsonWriter out, Net value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Net read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Net given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Net
+  * @throws IOException if the JSON string is invalid with respect to Net
+  */
+  public static Net fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Net.class);
+  }
+
+ /**
+  * Convert an instance of Net to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

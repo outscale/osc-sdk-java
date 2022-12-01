@@ -38,8 +38,8 @@ import com.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMachinesR
 import com.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMachinesResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateLoadBalancerRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateLoadBalancerResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,202 +49,129 @@ import java.util.Map;
 /**
  * API tests for LoadBalancerApi
  */
-@Ignore
+@Disabled
 public class LoadBalancerApiTest {
 
     private final LoadBalancerApi api = new LoadBalancerApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createLoadBalancerTest() throws ApiException {
         CreateLoadBalancerRequest createLoadBalancerRequest = null;
         CreateLoadBalancerResponse response = api.createLoadBalancer(createLoadBalancerRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createLoadBalancerTagsTest() throws ApiException {
         CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest = null;
         CreateLoadBalancerTagsResponse response = api.createLoadBalancerTags(createLoadBalancerTagsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteLoadBalancerTest() throws ApiException {
         DeleteLoadBalancerRequest deleteLoadBalancerRequest = null;
         DeleteLoadBalancerResponse response = api.deleteLoadBalancer(deleteLoadBalancerRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteLoadBalancerTagsTest() throws ApiException {
         DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest = null;
         DeleteLoadBalancerTagsResponse response = api.deleteLoadBalancerTags(deleteLoadBalancerTagsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deregisterVmsInLoadBalancerTest() throws ApiException {
         DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest = null;
         DeregisterVmsInLoadBalancerResponse response = api.deregisterVmsInLoadBalancer(deregisterVmsInLoadBalancerRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void linkLoadBalancerBackendMachinesTest() throws ApiException {
         LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest = null;
         LinkLoadBalancerBackendMachinesResponse response = api.linkLoadBalancerBackendMachines(linkLoadBalancerBackendMachinesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readLoadBalancerTagsTest() throws ApiException {
         ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest = null;
         ReadLoadBalancerTagsResponse response = api.readLoadBalancerTags(readLoadBalancerTagsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readLoadBalancersTest() throws ApiException {
         ReadLoadBalancersRequest readLoadBalancersRequest = null;
         ReadLoadBalancersResponse response = api.readLoadBalancers(readLoadBalancersRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVmsHealthTest() throws ApiException {
         ReadVmsHealthRequest readVmsHealthRequest = null;
         ReadVmsHealthResponse response = api.readVmsHealth(readVmsHealthRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void registerVmsInLoadBalancerTest() throws ApiException {
         RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest = null;
         RegisterVmsInLoadBalancerResponse response = api.registerVmsInLoadBalancer(registerVmsInLoadBalancerRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void unlinkLoadBalancerBackendMachinesTest() throws ApiException {
         UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest = null;
         UnlinkLoadBalancerBackendMachinesResponse response = api.unlinkLoadBalancerBackendMachines(unlinkLoadBalancerBackendMachinesRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateLoadBalancerTest() throws ApiException {
         UpdateLoadBalancerRequest updateLoadBalancerRequest = null;
         UpdateLoadBalancerResponse response = api.updateLoadBalancer(updateLoadBalancerRequest);
-
         // TODO: test validations
     }
-    
+
 }

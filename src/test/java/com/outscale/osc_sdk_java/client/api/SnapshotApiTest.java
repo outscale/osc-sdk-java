@@ -27,8 +27,8 @@ import com.outscale.osc_sdk_java.client.model.ReadSnapshotsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadSnapshotsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateSnapshotRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateSnapshotResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,106 +38,69 @@ import java.util.Map;
 /**
  * API tests for SnapshotApi
  */
-@Ignore
+@Disabled
 public class SnapshotApiTest {
 
     private final SnapshotApi api = new SnapshotApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createSnapshotTest() throws ApiException {
         CreateSnapshotRequest createSnapshotRequest = null;
         CreateSnapshotResponse response = api.createSnapshot(createSnapshotRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createSnapshotExportTaskTest() throws ApiException {
         CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest = null;
         CreateSnapshotExportTaskResponse response = api.createSnapshotExportTask(createSnapshotExportTaskRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSnapshotTest() throws ApiException {
         DeleteSnapshotRequest deleteSnapshotRequest = null;
         DeleteSnapshotResponse response = api.deleteSnapshot(deleteSnapshotRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readSnapshotExportTasksTest() throws ApiException {
         ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest = null;
         ReadSnapshotExportTasksResponse response = api.readSnapshotExportTasks(readSnapshotExportTasksRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readSnapshotsTest() throws ApiException {
         ReadSnapshotsRequest readSnapshotsRequest = null;
         ReadSnapshotsResponse response = api.readSnapshots(readSnapshotsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateSnapshotTest() throws ApiException {
         UpdateSnapshotRequest updateSnapshotRequest = null;
         UpdateSnapshotResponse response = api.updateSnapshot(updateSnapshotRequest);
-
         // TODO: test validations
     }
-    
+
 }

@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersAccessKeys {
   public static final String SERIALIZED_NAME_ACCESS_KEY_IDS = "AccessKeyIds";
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY_IDS)
@@ -40,6 +58,8 @@ public class FiltersAccessKeys {
   @SerializedName(SERIALIZED_NAME_STATES)
   private List<String> states = null;
 
+  public FiltersAccessKeys() {
+  }
 
   public FiltersAccessKeys accessKeyIds(List<String> accessKeyIds) {
     
@@ -49,7 +69,7 @@ public class FiltersAccessKeys {
 
   public FiltersAccessKeys addAccessKeyIdsItem(String accessKeyIdsItem) {
     if (this.accessKeyIds == null) {
-      this.accessKeyIds = new ArrayList<String>();
+      this.accessKeyIds = new ArrayList<>();
     }
     this.accessKeyIds.add(accessKeyIdsItem);
     return this;
@@ -60,7 +80,6 @@ public class FiltersAccessKeys {
    * @return accessKeyIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the access keys.")
 
   public List<String> getAccessKeyIds() {
     return accessKeyIds;
@@ -80,7 +99,7 @@ public class FiltersAccessKeys {
 
   public FiltersAccessKeys addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -91,7 +110,6 @@ public class FiltersAccessKeys {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the access keys (`ACTIVE` \\| `INACTIVE`).")
 
   public List<String> getStates() {
     return states;
@@ -101,6 +119,7 @@ public class FiltersAccessKeys {
   public void setStates(List<String> states) {
     this.states = states;
   }
+
 
 
   @Override
@@ -142,5 +161,97 @@ public class FiltersAccessKeys {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessKeyIds");
+    openapiFields.add("States");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersAccessKeys
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersAccessKeys.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersAccessKeys is not found in the empty JSON string", FiltersAccessKeys.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersAccessKeys.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersAccessKeys` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccessKeyIds") != null && !jsonObj.get("AccessKeyIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccessKeyIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccessKeyIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersAccessKeys.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersAccessKeys' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersAccessKeys> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersAccessKeys.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersAccessKeys>() {
+           @Override
+           public void write(JsonWriter out, FiltersAccessKeys value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersAccessKeys read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersAccessKeys given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersAccessKeys
+  * @throws IOException if the JSON string is invalid with respect to FiltersAccessKeys
+  */
+  public static FiltersAccessKeys fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersAccessKeys.class);
+  }
+
+ /**
+  * Convert an instance of FiltersAccessKeys to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

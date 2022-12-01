@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the DHCP options set.
  */
-@ApiModel(description = "Information about the DHCP options set.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class DhcpOptionsSet {
   public static final String SERIALIZED_NAME_DEFAULT = "Default";
   @SerializedName(SERIALIZED_NAME_DEFAULT)
@@ -61,6 +79,8 @@ public class DhcpOptionsSet {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public DhcpOptionsSet() {
+  }
 
   public DhcpOptionsSet _default(Boolean _default) {
     
@@ -73,7 +93,6 @@ public class DhcpOptionsSet {
    * @return _default
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, the DHCP options set is a default one. If false, it is not.")
 
   public Boolean getDefault() {
     return _default;
@@ -96,7 +115,6 @@ public class DhcpOptionsSet {
    * @return dhcpOptionsSetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the DHCP options set.")
 
   public String getDhcpOptionsSetId() {
     return dhcpOptionsSetId;
@@ -119,7 +137,6 @@ public class DhcpOptionsSet {
    * @return domainName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The domain name.")
 
   public String getDomainName() {
     return domainName;
@@ -139,7 +156,7 @@ public class DhcpOptionsSet {
 
   public DhcpOptionsSet addDomainNameServersItem(String domainNameServersItem) {
     if (this.domainNameServers == null) {
-      this.domainNameServers = new ArrayList<String>();
+      this.domainNameServers = new ArrayList<>();
     }
     this.domainNameServers.add(domainNameServersItem);
     return this;
@@ -150,7 +167,6 @@ public class DhcpOptionsSet {
    * @return domainNameServers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IPs for the domain name servers.")
 
   public List<String> getDomainNameServers() {
     return domainNameServers;
@@ -170,7 +186,7 @@ public class DhcpOptionsSet {
 
   public DhcpOptionsSet addLogServersItem(String logServersItem) {
     if (this.logServers == null) {
-      this.logServers = new ArrayList<String>();
+      this.logServers = new ArrayList<>();
     }
     this.logServers.add(logServersItem);
     return this;
@@ -181,7 +197,6 @@ public class DhcpOptionsSet {
    * @return logServers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IPs for the log servers.")
 
   public List<String> getLogServers() {
     return logServers;
@@ -201,7 +216,7 @@ public class DhcpOptionsSet {
 
   public DhcpOptionsSet addNtpServersItem(String ntpServersItem) {
     if (this.ntpServers == null) {
-      this.ntpServers = new ArrayList<String>();
+      this.ntpServers = new ArrayList<>();
     }
     this.ntpServers.add(ntpServersItem);
     return this;
@@ -212,7 +227,6 @@ public class DhcpOptionsSet {
    * @return ntpServers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IPs for the NTP servers.")
 
   public List<String> getNtpServers() {
     return ntpServers;
@@ -232,7 +246,7 @@ public class DhcpOptionsSet {
 
   public DhcpOptionsSet addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -243,7 +257,6 @@ public class DhcpOptionsSet {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the DHCP options set.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -253,6 +266,7 @@ public class DhcpOptionsSet {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -304,5 +318,126 @@ public class DhcpOptionsSet {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Default");
+    openapiFields.add("DhcpOptionsSetId");
+    openapiFields.add("DomainName");
+    openapiFields.add("DomainNameServers");
+    openapiFields.add("LogServers");
+    openapiFields.add("NtpServers");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DhcpOptionsSet
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DhcpOptionsSet.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DhcpOptionsSet is not found in the empty JSON string", DhcpOptionsSet.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DhcpOptionsSet.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DhcpOptionsSet` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("DhcpOptionsSetId") != null && !jsonObj.get("DhcpOptionsSetId").isJsonNull()) && !jsonObj.get("DhcpOptionsSetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DhcpOptionsSetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DhcpOptionsSetId").toString()));
+      }
+      if ((jsonObj.get("DomainName") != null && !jsonObj.get("DomainName").isJsonNull()) && !jsonObj.get("DomainName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DomainName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DomainName").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("DomainNameServers") != null && !jsonObj.get("DomainNameServers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DomainNameServers` to be an array in the JSON string but got `%s`", jsonObj.get("DomainNameServers").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("LogServers") != null && !jsonObj.get("LogServers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LogServers` to be an array in the JSON string but got `%s`", jsonObj.get("LogServers").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NtpServers") != null && !jsonObj.get("NtpServers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NtpServers` to be an array in the JSON string but got `%s`", jsonObj.get("NtpServers").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DhcpOptionsSet.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DhcpOptionsSet' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DhcpOptionsSet> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DhcpOptionsSet.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DhcpOptionsSet>() {
+           @Override
+           public void write(JsonWriter out, DhcpOptionsSet value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DhcpOptionsSet read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DhcpOptionsSet given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DhcpOptionsSet
+  * @throws IOException if the JSON string is invalid with respect to DhcpOptionsSet
+  */
+  public static DhcpOptionsSet fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DhcpOptionsSet.class);
+  }
+
+ /**
+  * Convert an instance of DhcpOptionsSet to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

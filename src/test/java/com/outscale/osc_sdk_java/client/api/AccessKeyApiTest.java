@@ -24,8 +24,8 @@ import com.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyRequest;
 import com.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateAccessKeyRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateAccessKeyResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,90 +35,59 @@ import java.util.Map;
 /**
  * API tests for AccessKeyApi
  */
-@Ignore
+@Disabled
 public class AccessKeyApiTest {
 
     private final AccessKeyApi api = new AccessKeyApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createAccessKeyTest() throws ApiException {
         CreateAccessKeyRequest createAccessKeyRequest = null;
         CreateAccessKeyResponse response = api.createAccessKey(createAccessKeyRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteAccessKeyTest() throws ApiException {
         DeleteAccessKeyRequest deleteAccessKeyRequest = null;
         DeleteAccessKeyResponse response = api.deleteAccessKey(deleteAccessKeyRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readAccessKeysTest() throws ApiException {
         ReadAccessKeysRequest readAccessKeysRequest = null;
         ReadAccessKeysResponse response = api.readAccessKeys(readAccessKeysRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readSecretAccessKeyTest() throws ApiException {
         ReadSecretAccessKeyRequest readSecretAccessKeyRequest = null;
         ReadSecretAccessKeyResponse response = api.readSecretAccessKey(readSecretAccessKeyRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateAccessKeyTest() throws ApiException {
         UpdateAccessKeyRequest updateAccessKeyRequest = null;
         UpdateAccessKeyResponse response = api.updateAccessKey(updateAccessKeyRequest);
-
         // TODO: test validations
     }
-    
+
 }

@@ -24,17 +24,35 @@ import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.RouteLight;
 import com.outscale.osc_sdk_java.client.model.VgwTelemetry;
 import com.outscale.osc_sdk_java.client.model.VpnOptions;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about a VPN connection.
  */
-@ApiModel(description = "Information about a VPN connection.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class VpnConnection {
   public static final String SERIALIZED_NAME_CLIENT_GATEWAY_CONFIGURATION = "ClientGatewayConfiguration";
   @SerializedName(SERIALIZED_NAME_CLIENT_GATEWAY_CONFIGURATION)
@@ -80,6 +98,8 @@ public class VpnConnection {
   @SerializedName(SERIALIZED_NAME_VPN_OPTIONS)
   private VpnOptions vpnOptions;
 
+  public VpnConnection() {
+  }
 
   public VpnConnection clientGatewayConfiguration(String clientGatewayConfiguration) {
     
@@ -92,7 +112,6 @@ public class VpnConnection {
    * @return clientGatewayConfiguration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Example configuration for the client gateway.")
 
   public String getClientGatewayConfiguration() {
     return clientGatewayConfiguration;
@@ -115,7 +134,6 @@ public class VpnConnection {
    * @return clientGatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the client gateway used on the client end of the connection.")
 
   public String getClientGatewayId() {
     return clientGatewayId;
@@ -138,7 +156,6 @@ public class VpnConnection {
    * @return connectionType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of VPN connection (always `ipsec.1`).")
 
   public String getConnectionType() {
     return connectionType;
@@ -158,7 +175,7 @@ public class VpnConnection {
 
   public VpnConnection addRoutesItem(RouteLight routesItem) {
     if (this.routes == null) {
-      this.routes = new ArrayList<RouteLight>();
+      this.routes = new ArrayList<>();
     }
     this.routes.add(routesItem);
     return this;
@@ -169,7 +186,6 @@ public class VpnConnection {
    * @return routes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about one or more static routes associated with the VPN connection, if any.")
 
   public List<RouteLight> getRoutes() {
     return routes;
@@ -192,7 +208,6 @@ public class VpnConnection {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the VPN connection (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -215,7 +230,6 @@ public class VpnConnection {
    * @return staticRoutesOnly
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](#createvpnconnectionroute) and [DeleteVpnConnectionRoute](#deletevpnconnectionroute).")
 
   public Boolean getStaticRoutesOnly() {
     return staticRoutesOnly;
@@ -235,7 +249,7 @@ public class VpnConnection {
 
   public VpnConnection addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -246,7 +260,6 @@ public class VpnConnection {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the VPN connection.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -266,7 +279,7 @@ public class VpnConnection {
 
   public VpnConnection addVgwTelemetriesItem(VgwTelemetry vgwTelemetriesItem) {
     if (this.vgwTelemetries == null) {
-      this.vgwTelemetries = new ArrayList<VgwTelemetry>();
+      this.vgwTelemetries = new ArrayList<>();
     }
     this.vgwTelemetries.add(vgwTelemetriesItem);
     return this;
@@ -277,7 +290,6 @@ public class VpnConnection {
    * @return vgwTelemetries
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about the current state of one or more of the VPN tunnels.")
 
   public List<VgwTelemetry> getVgwTelemetries() {
     return vgwTelemetries;
@@ -300,7 +312,6 @@ public class VpnConnection {
    * @return virtualGatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the virtual gateway used on the OUTSCALE end of the connection.")
 
   public String getVirtualGatewayId() {
     return virtualGatewayId;
@@ -323,7 +334,6 @@ public class VpnConnection {
    * @return vpnConnectionId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the VPN connection.")
 
   public String getVpnConnectionId() {
     return vpnConnectionId;
@@ -346,7 +356,6 @@ public class VpnConnection {
    * @return vpnOptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public VpnOptions getVpnOptions() {
     return vpnOptions;
@@ -356,6 +365,7 @@ public class VpnConnection {
   public void setVpnOptions(VpnOptions vpnOptions) {
     this.vpnOptions = vpnOptions;
   }
+
 
 
   @Override
@@ -415,5 +425,162 @@ public class VpnConnection {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ClientGatewayConfiguration");
+    openapiFields.add("ClientGatewayId");
+    openapiFields.add("ConnectionType");
+    openapiFields.add("Routes");
+    openapiFields.add("State");
+    openapiFields.add("StaticRoutesOnly");
+    openapiFields.add("Tags");
+    openapiFields.add("VgwTelemetries");
+    openapiFields.add("VirtualGatewayId");
+    openapiFields.add("VpnConnectionId");
+    openapiFields.add("VpnOptions");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to VpnConnection
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!VpnConnection.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VpnConnection is not found in the empty JSON string", VpnConnection.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!VpnConnection.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VpnConnection` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("ClientGatewayConfiguration") != null && !jsonObj.get("ClientGatewayConfiguration").isJsonNull()) && !jsonObj.get("ClientGatewayConfiguration").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientGatewayConfiguration` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientGatewayConfiguration").toString()));
+      }
+      if ((jsonObj.get("ClientGatewayId") != null && !jsonObj.get("ClientGatewayId").isJsonNull()) && !jsonObj.get("ClientGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientGatewayId").toString()));
+      }
+      if ((jsonObj.get("ConnectionType") != null && !jsonObj.get("ConnectionType").isJsonNull()) && !jsonObj.get("ConnectionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConnectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConnectionType").toString()));
+      }
+      if (jsonObj.get("Routes") != null && !jsonObj.get("Routes").isJsonNull()) {
+        JsonArray jsonArrayroutes = jsonObj.getAsJsonArray("Routes");
+        if (jsonArrayroutes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Routes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Routes` to be an array in the JSON string but got `%s`", jsonObj.get("Routes").toString()));
+          }
+
+          // validate the optional field `Routes` (array)
+          for (int i = 0; i < jsonArrayroutes.size(); i++) {
+            RouteLight.validateJsonObject(jsonArrayroutes.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("VgwTelemetries") != null && !jsonObj.get("VgwTelemetries").isJsonNull()) {
+        JsonArray jsonArrayvgwTelemetries = jsonObj.getAsJsonArray("VgwTelemetries");
+        if (jsonArrayvgwTelemetries != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("VgwTelemetries").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `VgwTelemetries` to be an array in the JSON string but got `%s`", jsonObj.get("VgwTelemetries").toString()));
+          }
+
+          // validate the optional field `VgwTelemetries` (array)
+          for (int i = 0; i < jsonArrayvgwTelemetries.size(); i++) {
+            VgwTelemetry.validateJsonObject(jsonArrayvgwTelemetries.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("VirtualGatewayId") != null && !jsonObj.get("VirtualGatewayId").isJsonNull()) && !jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualGatewayId").toString()));
+      }
+      if ((jsonObj.get("VpnConnectionId") != null && !jsonObj.get("VpnConnectionId").isJsonNull()) && !jsonObj.get("VpnConnectionId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VpnConnectionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VpnConnectionId").toString()));
+      }
+      // validate the optional field `VpnOptions`
+      if (jsonObj.get("VpnOptions") != null && !jsonObj.get("VpnOptions").isJsonNull()) {
+        VpnOptions.validateJsonObject(jsonObj.getAsJsonObject("VpnOptions"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!VpnConnection.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VpnConnection' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<VpnConnection> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VpnConnection.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<VpnConnection>() {
+           @Override
+           public void write(JsonWriter out, VpnConnection value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public VpnConnection read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of VpnConnection given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of VpnConnection
+  * @throws IOException if the JSON string is invalid with respect to VpnConnection
+  */
+  public static VpnConnection fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VpnConnection.class);
+  }
+
+ /**
+  * Convert an instance of VpnConnection to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

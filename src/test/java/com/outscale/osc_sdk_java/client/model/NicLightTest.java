@@ -22,14 +22,11 @@ import com.outscale.osc_sdk_java.client.model.LinkNicLight;
 import com.outscale.osc_sdk_java.client.model.LinkPublicIpLightForVm;
 import com.outscale.osc_sdk_java.client.model.PrivateIpLightForVm;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupLight;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 
 /**

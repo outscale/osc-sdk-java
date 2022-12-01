@@ -23,8 +23,8 @@ import com.outscale.osc_sdk_java.client.model.ReadNetsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadNetsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateNetRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateNetResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,74 +34,49 @@ import java.util.Map;
 /**
  * API tests for NetApi
  */
-@Ignore
+@Disabled
 public class NetApiTest {
 
     private final NetApi api = new NetApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createNetTest() throws ApiException {
         CreateNetRequest createNetRequest = null;
         CreateNetResponse response = api.createNet(createNetRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteNetTest() throws ApiException {
         DeleteNetRequest deleteNetRequest = null;
         DeleteNetResponse response = api.deleteNet(deleteNetRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readNetsTest() throws ApiException {
         ReadNetsRequest readNetsRequest = null;
         ReadNetsResponse response = api.readNets(readNetsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateNetTest() throws ApiException {
         UpdateNetRequest updateNetRequest = null;
         UpdateNetResponse response = api.updateNet(updateNetRequest);
-
         // TODO: test validations
     }
-    
+
 }

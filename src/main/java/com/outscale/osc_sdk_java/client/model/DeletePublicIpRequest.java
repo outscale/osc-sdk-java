@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * DeletePublicIpRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class DeletePublicIpRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -41,6 +60,8 @@ public class DeletePublicIpRequest {
   @SerializedName(SERIALIZED_NAME_PUBLIC_IP_ID)
   private String publicIpId;
 
+  public DeletePublicIpRequest() {
+  }
 
   public DeletePublicIpRequest dryRun(Boolean dryRun) {
     
@@ -53,7 +74,6 @@ public class DeletePublicIpRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -76,7 +96,6 @@ public class DeletePublicIpRequest {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IP. In the public Cloud, this parameter is required.")
 
   public String getPublicIp() {
     return publicIp;
@@ -99,7 +118,6 @@ public class DeletePublicIpRequest {
    * @return publicIpId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID representing the association of the public IP with the VM or the NIC. In a Net, this parameter is required.")
 
   public String getPublicIpId() {
     return publicIpId;
@@ -109,6 +127,7 @@ public class DeletePublicIpRequest {
   public void setPublicIpId(String publicIpId) {
     this.publicIpId = publicIpId;
   }
+
 
 
   @Override
@@ -152,5 +171,96 @@ public class DeletePublicIpRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("PublicIp");
+    openapiFields.add("PublicIpId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DeletePublicIpRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DeletePublicIpRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeletePublicIpRequest is not found in the empty JSON string", DeletePublicIpRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DeletePublicIpRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeletePublicIpRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      if ((jsonObj.get("PublicIpId") != null && !jsonObj.get("PublicIpId").isJsonNull()) && !jsonObj.get("PublicIpId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIpId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIpId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DeletePublicIpRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeletePublicIpRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DeletePublicIpRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeletePublicIpRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DeletePublicIpRequest>() {
+           @Override
+           public void write(JsonWriter out, DeletePublicIpRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DeletePublicIpRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DeletePublicIpRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DeletePublicIpRequest
+  * @throws IOException if the JSON string is invalid with respect to DeletePublicIpRequest
+  */
+  public static DeletePublicIpRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeletePublicIpRequest.class);
+  }
+
+ /**
+  * Convert an instance of DeletePublicIpRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

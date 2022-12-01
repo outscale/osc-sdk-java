@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * One or more associations between the route table and the Subnets.
  */
-@ApiModel(description = "One or more associations between the route table and the Subnets.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class LinkRouteTable {
   public static final String SERIALIZED_NAME_LINK_ROUTE_TABLE_ID = "LinkRouteTableId";
   @SerializedName(SERIALIZED_NAME_LINK_ROUTE_TABLE_ID)
@@ -46,6 +64,8 @@ public class LinkRouteTable {
   @SerializedName(SERIALIZED_NAME_SUBNET_ID)
   private String subnetId;
 
+  public LinkRouteTable() {
+  }
 
   public LinkRouteTable linkRouteTableId(String linkRouteTableId) {
     
@@ -58,7 +78,6 @@ public class LinkRouteTable {
    * @return linkRouteTableId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the association between the route table and the Subnet.")
 
   public String getLinkRouteTableId() {
     return linkRouteTableId;
@@ -81,7 +100,6 @@ public class LinkRouteTable {
    * @return main
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, the route table is the main one.")
 
   public Boolean getMain() {
     return main;
@@ -104,7 +122,6 @@ public class LinkRouteTable {
    * @return routeTableId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the route table.")
 
   public String getRouteTableId() {
     return routeTableId;
@@ -127,7 +144,6 @@ public class LinkRouteTable {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet.")
 
   public String getSubnetId() {
     return subnetId;
@@ -137,6 +153,7 @@ public class LinkRouteTable {
   public void setSubnetId(String subnetId) {
     this.subnetId = subnetId;
   }
+
 
 
   @Override
@@ -182,5 +199,100 @@ public class LinkRouteTable {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("LinkRouteTableId");
+    openapiFields.add("Main");
+    openapiFields.add("RouteTableId");
+    openapiFields.add("SubnetId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to LinkRouteTable
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!LinkRouteTable.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LinkRouteTable is not found in the empty JSON string", LinkRouteTable.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!LinkRouteTable.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LinkRouteTable` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("LinkRouteTableId") != null && !jsonObj.get("LinkRouteTableId").isJsonNull()) && !jsonObj.get("LinkRouteTableId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkRouteTableId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LinkRouteTableId").toString()));
+      }
+      if ((jsonObj.get("RouteTableId") != null && !jsonObj.get("RouteTableId").isJsonNull()) && !jsonObj.get("RouteTableId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RouteTableId").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!LinkRouteTable.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LinkRouteTable' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<LinkRouteTable> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LinkRouteTable.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<LinkRouteTable>() {
+           @Override
+           public void write(JsonWriter out, LinkRouteTable value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public LinkRouteTable read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of LinkRouteTable given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of LinkRouteTable
+  * @throws IOException if the JSON string is invalid with respect to LinkRouteTable
+  */
+  public static LinkRouteTable fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LinkRouteTable.class);
+  }
+
+ /**
+  * Convert an instance of LinkRouteTable to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

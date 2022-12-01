@@ -21,16 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupRule;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * CreateSecurityGroupRuleRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateSecurityGroupRuleRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -72,6 +91,8 @@ public class CreateSecurityGroupRuleRequest {
   @SerializedName(SERIALIZED_NAME_TO_PORT_RANGE)
   private Integer toPortRange;
 
+  public CreateSecurityGroupRuleRequest() {
+  }
 
   public CreateSecurityGroupRuleRequest dryRun(Boolean dryRun) {
     
@@ -84,7 +105,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -106,7 +126,7 @@ public class CreateSecurityGroupRuleRequest {
    * The direction of the flow: &#x60;Inbound&#x60; or &#x60;Outbound&#x60;. You can specify &#x60;Outbound&#x60; for Nets only.
    * @return flow
   **/
-  @ApiModelProperty(required = true, value = "The direction of the flow: `Inbound` or `Outbound`. You can specify `Outbound` for Nets only.")
+  @javax.annotation.Nonnull
 
   public String getFlow() {
     return flow;
@@ -129,7 +149,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return fromPortRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The beginning of the port range for the TCP and UDP protocols, or an ICMP type number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.")
 
   public Integer getFromPortRange() {
     return fromPortRange;
@@ -152,7 +171,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return ipProtocol
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP protocol name (`tcp`, `udp`, `icmp`, or `-1` for all protocols). By default, `-1`. In a Net, this can also be an IP protocol number. For more information, see the [IANA.org website](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.")
 
   public String getIpProtocol() {
     return ipProtocol;
@@ -175,7 +193,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return ipRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP range for the security group rule, in CIDR notation (for example, 10.0.0.0/16). If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.")
 
   public String getIpRange() {
     return ipRange;
@@ -195,7 +212,7 @@ public class CreateSecurityGroupRuleRequest {
 
   public CreateSecurityGroupRuleRequest addRulesItem(SecurityGroupRule rulesItem) {
     if (this.rules == null) {
-      this.rules = new ArrayList<SecurityGroupRule>();
+      this.rules = new ArrayList<>();
     }
     this.rules.add(rulesItem);
     return this;
@@ -206,7 +223,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return rules
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about the security group rule to create. If you specify this parent parameter and its subparameters, you cannot specify the following parent parameters: `FromPortRange`, `IpProtocol`, `IpRange`, and `ToPortRange`.")
 
   public List<SecurityGroupRule> getRules() {
     return rules;
@@ -229,7 +245,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return securityGroupAccountIdToLink
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the security group for which you want to create a rule.")
 
   public String getSecurityGroupAccountIdToLink() {
     return securityGroupAccountIdToLink;
@@ -251,7 +266,7 @@ public class CreateSecurityGroupRuleRequest {
    * The ID of the security group for which you want to create a rule.
    * @return securityGroupId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the security group for which you want to create a rule.")
+  @javax.annotation.Nonnull
 
   public String getSecurityGroupId() {
     return securityGroupId;
@@ -274,7 +289,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return securityGroupNameToLink
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the source security group. If you are in the Public Cloud, you can also specify the name of the source security group.")
 
   public String getSecurityGroupNameToLink() {
     return securityGroupNameToLink;
@@ -297,7 +311,6 @@ public class CreateSecurityGroupRuleRequest {
    * @return toPortRange
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The end of the port range for the TCP and UDP protocols, or an ICMP code number. If you specify this parameter, you cannot specify the `Rules` parameter and its subparameters.")
 
   public Integer getToPortRange() {
     return toPortRange;
@@ -307,6 +320,7 @@ public class CreateSecurityGroupRuleRequest {
   public void setToPortRange(Integer toPortRange) {
     this.toPortRange = toPortRange;
   }
+
 
 
   @Override
@@ -364,5 +378,138 @@ public class CreateSecurityGroupRuleRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("Flow");
+    openapiFields.add("FromPortRange");
+    openapiFields.add("IpProtocol");
+    openapiFields.add("IpRange");
+    openapiFields.add("Rules");
+    openapiFields.add("SecurityGroupAccountIdToLink");
+    openapiFields.add("SecurityGroupId");
+    openapiFields.add("SecurityGroupNameToLink");
+    openapiFields.add("ToPortRange");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("Flow");
+    openapiRequiredFields.add("SecurityGroupId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateSecurityGroupRuleRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateSecurityGroupRuleRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSecurityGroupRuleRequest is not found in the empty JSON string", CreateSecurityGroupRuleRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateSecurityGroupRuleRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateSecurityGroupRuleRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateSecurityGroupRuleRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("Flow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Flow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Flow").toString()));
+      }
+      if ((jsonObj.get("IpProtocol") != null && !jsonObj.get("IpProtocol").isJsonNull()) && !jsonObj.get("IpProtocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpProtocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpProtocol").toString()));
+      }
+      if ((jsonObj.get("IpRange") != null && !jsonObj.get("IpRange").isJsonNull()) && !jsonObj.get("IpRange").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `IpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IpRange").toString()));
+      }
+      if (jsonObj.get("Rules") != null && !jsonObj.get("Rules").isJsonNull()) {
+        JsonArray jsonArrayrules = jsonObj.getAsJsonArray("Rules");
+        if (jsonArrayrules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Rules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Rules` to be an array in the JSON string but got `%s`", jsonObj.get("Rules").toString()));
+          }
+
+          // validate the optional field `Rules` (array)
+          for (int i = 0; i < jsonArrayrules.size(); i++) {
+            SecurityGroupRule.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("SecurityGroupAccountIdToLink") != null && !jsonObj.get("SecurityGroupAccountIdToLink").isJsonNull()) && !jsonObj.get("SecurityGroupAccountIdToLink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupAccountIdToLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecurityGroupAccountIdToLink").toString()));
+      }
+      if (!jsonObj.get("SecurityGroupId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecurityGroupId").toString()));
+      }
+      if ((jsonObj.get("SecurityGroupNameToLink") != null && !jsonObj.get("SecurityGroupNameToLink").isJsonNull()) && !jsonObj.get("SecurityGroupNameToLink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupNameToLink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecurityGroupNameToLink").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateSecurityGroupRuleRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateSecurityGroupRuleRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateSecurityGroupRuleRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSecurityGroupRuleRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateSecurityGroupRuleRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateSecurityGroupRuleRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateSecurityGroupRuleRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateSecurityGroupRuleRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateSecurityGroupRuleRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateSecurityGroupRuleRequest
+  */
+  public static CreateSecurityGroupRuleRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateSecurityGroupRuleRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateSecurityGroupRuleRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

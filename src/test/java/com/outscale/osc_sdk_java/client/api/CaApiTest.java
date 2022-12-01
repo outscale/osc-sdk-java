@@ -22,8 +22,8 @@ import com.outscale.osc_sdk_java.client.model.ReadCasRequest;
 import com.outscale.osc_sdk_java.client.model.ReadCasResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateCaRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateCaResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,74 +33,49 @@ import java.util.Map;
 /**
  * API tests for CaApi
  */
-@Ignore
+@Disabled
 public class CaApiTest {
 
     private final CaApi api = new CaApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createCaTest() throws ApiException {
         CreateCaRequest createCaRequest = null;
         CreateCaResponse response = api.createCa(createCaRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteCaTest() throws ApiException {
         DeleteCaRequest deleteCaRequest = null;
         DeleteCaResponse response = api.deleteCa(deleteCaRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readCasTest() throws ApiException {
         ReadCasRequest readCasRequest = null;
         ReadCasResponse response = api.readCas(readCasRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateCaTest() throws ApiException {
         UpdateCaRequest updateCaRequest = null;
         UpdateCaResponse response = api.updateCa(updateCaRequest);
-
         // TODO: test validations
     }
-    
+
 }

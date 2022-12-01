@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * UpdateRoutePropagationRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class UpdateRoutePropagationRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -45,6 +64,8 @@ public class UpdateRoutePropagationRequest {
   @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY_ID)
   private String virtualGatewayId;
 
+  public UpdateRoutePropagationRequest() {
+  }
 
   public UpdateRoutePropagationRequest dryRun(Boolean dryRun) {
     
@@ -57,7 +78,6 @@ public class UpdateRoutePropagationRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -79,7 +99,7 @@ public class UpdateRoutePropagationRequest {
    * If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.
    * @return enable
   **/
-  @ApiModelProperty(required = true, value = "If true, a virtual gateway can propagate routes to a specified route table of a Net. If false, the propagation is disabled.")
+  @javax.annotation.Nonnull
 
   public Boolean getEnable() {
     return enable;
@@ -101,7 +121,7 @@ public class UpdateRoutePropagationRequest {
    * The ID of the route table.
    * @return routeTableId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the route table.")
+  @javax.annotation.Nonnull
 
   public String getRouteTableId() {
     return routeTableId;
@@ -123,7 +143,7 @@ public class UpdateRoutePropagationRequest {
    * The ID of the virtual gateway.
    * @return virtualGatewayId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the virtual gateway.")
+  @javax.annotation.Nonnull
 
   public String getVirtualGatewayId() {
     return virtualGatewayId;
@@ -133,6 +153,7 @@ public class UpdateRoutePropagationRequest {
   public void setVirtualGatewayId(String virtualGatewayId) {
     this.virtualGatewayId = virtualGatewayId;
   }
+
 
 
   @Override
@@ -178,5 +199,107 @@ public class UpdateRoutePropagationRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("Enable");
+    openapiFields.add("RouteTableId");
+    openapiFields.add("VirtualGatewayId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("Enable");
+    openapiRequiredFields.add("RouteTableId");
+    openapiRequiredFields.add("VirtualGatewayId");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UpdateRoutePropagationRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UpdateRoutePropagationRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateRoutePropagationRequest is not found in the empty JSON string", UpdateRoutePropagationRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!UpdateRoutePropagationRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateRoutePropagationRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateRoutePropagationRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("RouteTableId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RouteTableId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RouteTableId").toString()));
+      }
+      if (!jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualGatewayId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UpdateRoutePropagationRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateRoutePropagationRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UpdateRoutePropagationRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateRoutePropagationRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UpdateRoutePropagationRequest>() {
+           @Override
+           public void write(JsonWriter out, UpdateRoutePropagationRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UpdateRoutePropagationRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UpdateRoutePropagationRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UpdateRoutePropagationRequest
+  * @throws IOException if the JSON string is invalid with respect to UpdateRoutePropagationRequest
+  */
+  public static UpdateRoutePropagationRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateRoutePropagationRequest.class);
+  }
+
+ /**
+  * Convert an instance of UpdateRoutePropagationRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

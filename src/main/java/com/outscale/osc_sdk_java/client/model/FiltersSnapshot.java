@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersSnapshot {
   public static final String SERIALIZED_NAME_ACCOUNT_ALIASES = "AccountAliases";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ALIASES)
@@ -84,6 +102,8 @@ public class FiltersSnapshot {
   @SerializedName(SERIALIZED_NAME_VOLUME_SIZES)
   private List<Integer> volumeSizes = null;
 
+  public FiltersSnapshot() {
+  }
 
   public FiltersSnapshot accountAliases(List<String> accountAliases) {
     
@@ -93,7 +113,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addAccountAliasesItem(String accountAliasesItem) {
     if (this.accountAliases == null) {
-      this.accountAliases = new ArrayList<String>();
+      this.accountAliases = new ArrayList<>();
     }
     this.accountAliases.add(accountAliasesItem);
     return this;
@@ -104,7 +124,6 @@ public class FiltersSnapshot {
    * @return accountAliases
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account aliases of the owners of the snapshots.")
 
   public List<String> getAccountAliases() {
     return accountAliases;
@@ -124,7 +143,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addAccountIdsItem(String accountIdsItem) {
     if (this.accountIds == null) {
-      this.accountIds = new ArrayList<String>();
+      this.accountIds = new ArrayList<>();
     }
     this.accountIds.add(accountIdsItem);
     return this;
@@ -135,7 +154,6 @@ public class FiltersSnapshot {
    * @return accountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the snapshots.")
 
   public List<String> getAccountIds() {
     return accountIds;
@@ -155,7 +173,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addDescriptionsItem(String descriptionsItem) {
     if (this.descriptions == null) {
-      this.descriptions = new ArrayList<String>();
+      this.descriptions = new ArrayList<>();
     }
     this.descriptions.add(descriptionsItem);
     return this;
@@ -166,7 +184,6 @@ public class FiltersSnapshot {
    * @return descriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The descriptions of the snapshots.")
 
   public List<String> getDescriptions() {
     return descriptions;
@@ -186,7 +203,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addPermissionsToCreateVolumeAccountIdsItem(String permissionsToCreateVolumeAccountIdsItem) {
     if (this.permissionsToCreateVolumeAccountIds == null) {
-      this.permissionsToCreateVolumeAccountIds = new ArrayList<String>();
+      this.permissionsToCreateVolumeAccountIds = new ArrayList<>();
     }
     this.permissionsToCreateVolumeAccountIds.add(permissionsToCreateVolumeAccountIdsItem);
     return this;
@@ -197,7 +214,6 @@ public class FiltersSnapshot {
    * @return permissionsToCreateVolumeAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of one or more users who have permissions to create volumes.")
 
   public List<String> getPermissionsToCreateVolumeAccountIds() {
     return permissionsToCreateVolumeAccountIds;
@@ -220,7 +236,6 @@ public class FiltersSnapshot {
    * @return permissionsToCreateVolumeGlobalPermission
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, lists all public volumes. If false, lists all private volumes.")
 
   public Boolean getPermissionsToCreateVolumeGlobalPermission() {
     return permissionsToCreateVolumeGlobalPermission;
@@ -240,7 +255,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addProgressesItem(Integer progressesItem) {
     if (this.progresses == null) {
-      this.progresses = new ArrayList<Integer>();
+      this.progresses = new ArrayList<>();
     }
     this.progresses.add(progressesItem);
     return this;
@@ -251,7 +266,6 @@ public class FiltersSnapshot {
    * @return progresses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The progresses of the snapshots, as a percentage.")
 
   public List<Integer> getProgresses() {
     return progresses;
@@ -271,7 +285,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addSnapshotIdsItem(String snapshotIdsItem) {
     if (this.snapshotIds == null) {
-      this.snapshotIds = new ArrayList<String>();
+      this.snapshotIds = new ArrayList<>();
     }
     this.snapshotIds.add(snapshotIdsItem);
     return this;
@@ -282,7 +296,6 @@ public class FiltersSnapshot {
    * @return snapshotIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the snapshots.")
 
   public List<String> getSnapshotIds() {
     return snapshotIds;
@@ -302,7 +315,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -313,7 +326,6 @@ public class FiltersSnapshot {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the snapshots (`in-queue` \\| `completed` \\| `error`).")
 
   public List<String> getStates() {
     return states;
@@ -333,7 +345,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -344,7 +356,6 @@ public class FiltersSnapshot {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the snapshots.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -364,7 +375,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -375,7 +386,6 @@ public class FiltersSnapshot {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the snapshots.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -395,7 +405,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -406,7 +416,6 @@ public class FiltersSnapshot {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the snapshots, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -426,7 +435,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addVolumeIdsItem(String volumeIdsItem) {
     if (this.volumeIds == null) {
-      this.volumeIds = new ArrayList<String>();
+      this.volumeIds = new ArrayList<>();
     }
     this.volumeIds.add(volumeIdsItem);
     return this;
@@ -437,7 +446,6 @@ public class FiltersSnapshot {
    * @return volumeIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the volumes used to create the snapshots.")
 
   public List<String> getVolumeIds() {
     return volumeIds;
@@ -457,7 +465,7 @@ public class FiltersSnapshot {
 
   public FiltersSnapshot addVolumeSizesItem(Integer volumeSizesItem) {
     if (this.volumeSizes == null) {
-      this.volumeSizes = new ArrayList<Integer>();
+      this.volumeSizes = new ArrayList<>();
     }
     this.volumeSizes.add(volumeSizesItem);
     return this;
@@ -468,7 +476,6 @@ public class FiltersSnapshot {
    * @return volumeSizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sizes of the volumes used to create the snapshots, in gibibytes (GiB).")
 
   public List<Integer> getVolumeSizes() {
     return volumeSizes;
@@ -478,6 +485,7 @@ public class FiltersSnapshot {
   public void setVolumeSizes(List<Integer> volumeSizes) {
     this.volumeSizes = volumeSizes;
   }
+
 
 
   @Override
@@ -541,5 +549,148 @@ public class FiltersSnapshot {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountAliases");
+    openapiFields.add("AccountIds");
+    openapiFields.add("Descriptions");
+    openapiFields.add("PermissionsToCreateVolumeAccountIds");
+    openapiFields.add("PermissionsToCreateVolumeGlobalPermission");
+    openapiFields.add("Progresses");
+    openapiFields.add("SnapshotIds");
+    openapiFields.add("States");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+    openapiFields.add("VolumeIds");
+    openapiFields.add("VolumeSizes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersSnapshot
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersSnapshot.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersSnapshot is not found in the empty JSON string", FiltersSnapshot.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersSnapshot.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersSnapshot` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccountAliases") != null && !jsonObj.get("AccountAliases").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountAliases` to be an array in the JSON string but got `%s`", jsonObj.get("AccountAliases").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccountIds") != null && !jsonObj.get("AccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Descriptions") != null && !jsonObj.get("Descriptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Descriptions` to be an array in the JSON string but got `%s`", jsonObj.get("Descriptions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PermissionsToCreateVolumeAccountIds") != null && !jsonObj.get("PermissionsToCreateVolumeAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PermissionsToCreateVolumeAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("PermissionsToCreateVolumeAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Progresses") != null && !jsonObj.get("Progresses").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Progresses` to be an array in the JSON string but got `%s`", jsonObj.get("Progresses").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SnapshotIds") != null && !jsonObj.get("SnapshotIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotIds` to be an array in the JSON string but got `%s`", jsonObj.get("SnapshotIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeIds") != null && !jsonObj.get("VolumeIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeIds` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VolumeSizes") != null && !jsonObj.get("VolumeSizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeSizes` to be an array in the JSON string but got `%s`", jsonObj.get("VolumeSizes").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersSnapshot.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersSnapshot' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersSnapshot> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersSnapshot.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersSnapshot>() {
+           @Override
+           public void write(JsonWriter out, FiltersSnapshot value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersSnapshot read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersSnapshot given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersSnapshot
+  * @throws IOException if the JSON string is invalid with respect to FiltersSnapshot
+  */
+  public static FiltersSnapshot fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersSnapshot.class);
+  }
+
+ /**
+  * Convert an instance of FiltersSnapshot to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

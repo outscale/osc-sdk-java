@@ -23,8 +23,8 @@ import com.outscale.osc_sdk_java.client.model.ReadSubnetsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadSubnetsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateSubnetRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateSubnetResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,74 +34,49 @@ import java.util.Map;
 /**
  * API tests for SubnetApi
  */
-@Ignore
+@Disabled
 public class SubnetApiTest {
 
     private final SubnetApi api = new SubnetApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createSubnetTest() throws ApiException {
         CreateSubnetRequest createSubnetRequest = null;
         CreateSubnetResponse response = api.createSubnet(createSubnetRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSubnetTest() throws ApiException {
         DeleteSubnetRequest deleteSubnetRequest = null;
         DeleteSubnetResponse response = api.deleteSubnet(deleteSubnetRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readSubnetsTest() throws ApiException {
         ReadSubnetsRequest readSubnetsRequest = null;
         ReadSubnetsResponse response = api.readSubnets(readSubnetsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateSubnetTest() throws ApiException {
         UpdateSubnetRequest updateSubnetRequest = null;
         UpdateSubnetResponse response = api.updateSubnet(updateSubnetRequest);
-
         // TODO: test validations
     }
-    
+
 }

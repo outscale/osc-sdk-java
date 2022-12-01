@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersNetPeering {
   public static final String SERIALIZED_NAME_ACCEPTER_NET_ACCOUNT_IDS = "AccepterNetAccountIds";
   @SerializedName(SERIALIZED_NAME_ACCEPTER_NET_ACCOUNT_IDS)
@@ -80,6 +98,8 @@ public class FiltersNetPeering {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersNetPeering() {
+  }
 
   public FiltersNetPeering accepterNetAccountIds(List<String> accepterNetAccountIds) {
     
@@ -89,7 +109,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addAccepterNetAccountIdsItem(String accepterNetAccountIdsItem) {
     if (this.accepterNetAccountIds == null) {
-      this.accepterNetAccountIds = new ArrayList<String>();
+      this.accepterNetAccountIds = new ArrayList<>();
     }
     this.accepterNetAccountIds.add(accepterNetAccountIdsItem);
     return this;
@@ -100,7 +120,6 @@ public class FiltersNetPeering {
    * @return accepterNetAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the peer Nets.")
 
   public List<String> getAccepterNetAccountIds() {
     return accepterNetAccountIds;
@@ -120,7 +139,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addAccepterNetIpRangesItem(String accepterNetIpRangesItem) {
     if (this.accepterNetIpRanges == null) {
-      this.accepterNetIpRanges = new ArrayList<String>();
+      this.accepterNetIpRanges = new ArrayList<>();
     }
     this.accepterNetIpRanges.add(accepterNetIpRangesItem);
     return this;
@@ -131,7 +150,6 @@ public class FiltersNetPeering {
    * @return accepterNetIpRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP ranges of the peer Nets, in CIDR notation (for example, `10.0.0.0/24`).")
 
   public List<String> getAccepterNetIpRanges() {
     return accepterNetIpRanges;
@@ -151,7 +169,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addAccepterNetNetIdsItem(String accepterNetNetIdsItem) {
     if (this.accepterNetNetIds == null) {
-      this.accepterNetNetIds = new ArrayList<String>();
+      this.accepterNetNetIds = new ArrayList<>();
     }
     this.accepterNetNetIds.add(accepterNetNetIdsItem);
     return this;
@@ -162,7 +180,6 @@ public class FiltersNetPeering {
    * @return accepterNetNetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the peer Nets.")
 
   public List<String> getAccepterNetNetIds() {
     return accepterNetNetIds;
@@ -182,7 +199,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addNetPeeringIdsItem(String netPeeringIdsItem) {
     if (this.netPeeringIds == null) {
-      this.netPeeringIds = new ArrayList<String>();
+      this.netPeeringIds = new ArrayList<>();
     }
     this.netPeeringIds.add(netPeeringIdsItem);
     return this;
@@ -193,7 +210,6 @@ public class FiltersNetPeering {
    * @return netPeeringIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Net peerings.")
 
   public List<String> getNetPeeringIds() {
     return netPeeringIds;
@@ -213,7 +229,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addSourceNetAccountIdsItem(String sourceNetAccountIdsItem) {
     if (this.sourceNetAccountIds == null) {
-      this.sourceNetAccountIds = new ArrayList<String>();
+      this.sourceNetAccountIds = new ArrayList<>();
     }
     this.sourceNetAccountIds.add(sourceNetAccountIdsItem);
     return this;
@@ -224,7 +240,6 @@ public class FiltersNetPeering {
    * @return sourceNetAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the peer Nets.")
 
   public List<String> getSourceNetAccountIds() {
     return sourceNetAccountIds;
@@ -244,7 +259,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addSourceNetIpRangesItem(String sourceNetIpRangesItem) {
     if (this.sourceNetIpRanges == null) {
-      this.sourceNetIpRanges = new ArrayList<String>();
+      this.sourceNetIpRanges = new ArrayList<>();
     }
     this.sourceNetIpRanges.add(sourceNetIpRangesItem);
     return this;
@@ -255,7 +270,6 @@ public class FiltersNetPeering {
    * @return sourceNetIpRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP ranges of the peer Nets.")
 
   public List<String> getSourceNetIpRanges() {
     return sourceNetIpRanges;
@@ -275,7 +289,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addSourceNetNetIdsItem(String sourceNetNetIdsItem) {
     if (this.sourceNetNetIds == null) {
-      this.sourceNetNetIds = new ArrayList<String>();
+      this.sourceNetNetIds = new ArrayList<>();
     }
     this.sourceNetNetIds.add(sourceNetNetIdsItem);
     return this;
@@ -286,7 +300,6 @@ public class FiltersNetPeering {
    * @return sourceNetNetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the peer Nets.")
 
   public List<String> getSourceNetNetIds() {
     return sourceNetNetIds;
@@ -306,7 +319,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addStateMessagesItem(String stateMessagesItem) {
     if (this.stateMessages == null) {
-      this.stateMessages = new ArrayList<String>();
+      this.stateMessages = new ArrayList<>();
     }
     this.stateMessages.add(stateMessagesItem);
     return this;
@@ -317,7 +330,6 @@ public class FiltersNetPeering {
    * @return stateMessages
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Additional information about the states of the Net peerings.")
 
   public List<String> getStateMessages() {
     return stateMessages;
@@ -337,7 +349,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addStateNamesItem(String stateNamesItem) {
     if (this.stateNames == null) {
-      this.stateNames = new ArrayList<String>();
+      this.stateNames = new ArrayList<>();
     }
     this.stateNames.add(stateNamesItem);
     return this;
@@ -348,7 +360,6 @@ public class FiltersNetPeering {
    * @return stateNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the Net peerings (`pending-acceptance` \\| `active` \\| `rejected` \\| `failed` \\| `expired` \\| `deleted`).")
 
   public List<String> getStateNames() {
     return stateNames;
@@ -368,7 +379,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -379,7 +390,6 @@ public class FiltersNetPeering {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the Net peerings.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -399,7 +409,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -410,7 +420,6 @@ public class FiltersNetPeering {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the Net peerings.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -430,7 +439,7 @@ public class FiltersNetPeering {
 
   public FiltersNetPeering addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -441,7 +450,6 @@ public class FiltersNetPeering {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the Net peerings, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -451,6 +459,7 @@ public class FiltersNetPeering {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -512,5 +521,147 @@ public class FiltersNetPeering {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccepterNetAccountIds");
+    openapiFields.add("AccepterNetIpRanges");
+    openapiFields.add("AccepterNetNetIds");
+    openapiFields.add("NetPeeringIds");
+    openapiFields.add("SourceNetAccountIds");
+    openapiFields.add("SourceNetIpRanges");
+    openapiFields.add("SourceNetNetIds");
+    openapiFields.add("StateMessages");
+    openapiFields.add("StateNames");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersNetPeering
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersNetPeering.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersNetPeering is not found in the empty JSON string", FiltersNetPeering.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersNetPeering.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersNetPeering` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccepterNetAccountIds") != null && !jsonObj.get("AccepterNetAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccepterNetAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccepterNetAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccepterNetIpRanges") != null && !jsonObj.get("AccepterNetIpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccepterNetIpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("AccepterNetIpRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccepterNetNetIds") != null && !jsonObj.get("AccepterNetNetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccepterNetNetIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccepterNetNetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NetPeeringIds") != null && !jsonObj.get("NetPeeringIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetPeeringIds` to be an array in the JSON string but got `%s`", jsonObj.get("NetPeeringIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SourceNetAccountIds") != null && !jsonObj.get("SourceNetAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourceNetAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("SourceNetAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SourceNetIpRanges") != null && !jsonObj.get("SourceNetIpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourceNetIpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("SourceNetIpRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SourceNetNetIds") != null && !jsonObj.get("SourceNetNetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourceNetNetIds` to be an array in the JSON string but got `%s`", jsonObj.get("SourceNetNetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("StateMessages") != null && !jsonObj.get("StateMessages").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateMessages` to be an array in the JSON string but got `%s`", jsonObj.get("StateMessages").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("StateNames") != null && !jsonObj.get("StateNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateNames` to be an array in the JSON string but got `%s`", jsonObj.get("StateNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersNetPeering.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersNetPeering' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersNetPeering> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersNetPeering.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersNetPeering>() {
+           @Override
+           public void write(JsonWriter out, FiltersNetPeering value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersNetPeering read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersNetPeering given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersNetPeering
+  * @throws IOException if the JSON string is invalid with respect to FiltersNetPeering
+  */
+  public static FiltersNetPeering fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersNetPeering.class);
+  }
+
+ /**
+  * Convert an instance of FiltersNetPeering to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

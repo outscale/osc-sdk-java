@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the access key.
  */
-@ApiModel(description = "Information about the access key.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class AccessKeySecretKey {
   public static final String SERIALIZED_NAME_ACCESS_KEY_ID = "AccessKeyId";
   @SerializedName(SERIALIZED_NAME_ACCESS_KEY_ID)
@@ -55,6 +73,8 @@ public class AccessKeySecretKey {
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
 
+  public AccessKeySecretKey() {
+  }
 
   public AccessKeySecretKey accessKeyId(String accessKeyId) {
     
@@ -67,7 +87,6 @@ public class AccessKeySecretKey {
    * @return accessKeyId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the access key.")
 
   public String getAccessKeyId() {
     return accessKeyId;
@@ -90,7 +109,6 @@ public class AccessKeySecretKey {
    * @return creationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time (UTC) of creation of the access key.")
 
   public OffsetDateTime getCreationDate() {
     return creationDate;
@@ -113,7 +131,6 @@ public class AccessKeySecretKey {
    * @return expirationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time (UTC) at which the access key expires.")
 
   public OffsetDateTime getExpirationDate() {
     return expirationDate;
@@ -136,7 +153,6 @@ public class AccessKeySecretKey {
    * @return lastModificationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time (UTC) of the last modification of the access key.")
 
   public OffsetDateTime getLastModificationDate() {
     return lastModificationDate;
@@ -159,7 +175,6 @@ public class AccessKeySecretKey {
    * @return secretKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The access key that enables you to send requests.")
 
   public String getSecretKey() {
     return secretKey;
@@ -182,7 +197,6 @@ public class AccessKeySecretKey {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).")
 
   public String getState() {
     return state;
@@ -192,6 +206,7 @@ public class AccessKeySecretKey {
   public void setState(String state) {
     this.state = state;
   }
+
 
 
   @Override
@@ -241,5 +256,102 @@ public class AccessKeySecretKey {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccessKeyId");
+    openapiFields.add("CreationDate");
+    openapiFields.add("ExpirationDate");
+    openapiFields.add("LastModificationDate");
+    openapiFields.add("SecretKey");
+    openapiFields.add("State");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to AccessKeySecretKey
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!AccessKeySecretKey.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AccessKeySecretKey is not found in the empty JSON string", AccessKeySecretKey.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!AccessKeySecretKey.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AccessKeySecretKey` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccessKeyId") != null && !jsonObj.get("AccessKeyId").isJsonNull()) && !jsonObj.get("AccessKeyId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccessKeyId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccessKeyId").toString()));
+      }
+      if ((jsonObj.get("SecretKey") != null && !jsonObj.get("SecretKey").isJsonNull()) && !jsonObj.get("SecretKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecretKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SecretKey").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!AccessKeySecretKey.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AccessKeySecretKey' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<AccessKeySecretKey> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AccessKeySecretKey.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<AccessKeySecretKey>() {
+           @Override
+           public void write(JsonWriter out, AccessKeySecretKey value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public AccessKeySecretKey read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of AccessKeySecretKey given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of AccessKeySecretKey
+  * @throws IOException if the JSON string is invalid with respect to AccessKeySecretKey
+  */
+  public static AccessKeySecretKey fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AccessKeySecretKey.class);
+  }
+
+ /**
+  * Convert an instance of AccessKeySecretKey to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

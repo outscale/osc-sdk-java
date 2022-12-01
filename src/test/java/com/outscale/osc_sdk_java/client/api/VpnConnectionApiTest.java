@@ -27,8 +27,8 @@ import com.outscale.osc_sdk_java.client.model.ReadVpnConnectionsRequest;
 import com.outscale.osc_sdk_java.client.model.ReadVpnConnectionsResponse;
 import com.outscale.osc_sdk_java.client.model.UpdateVpnConnectionRequest;
 import com.outscale.osc_sdk_java.client.model.UpdateVpnConnectionResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,106 +38,69 @@ import java.util.Map;
 /**
  * API tests for VpnConnectionApi
  */
-@Ignore
+@Disabled
 public class VpnConnectionApiTest {
 
     private final VpnConnectionApi api = new VpnConnectionApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createVpnConnectionTest() throws ApiException {
         CreateVpnConnectionRequest createVpnConnectionRequest = null;
         CreateVpnConnectionResponse response = api.createVpnConnection(createVpnConnectionRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createVpnConnectionRouteTest() throws ApiException {
         CreateVpnConnectionRouteRequest createVpnConnectionRouteRequest = null;
         CreateVpnConnectionRouteResponse response = api.createVpnConnectionRoute(createVpnConnectionRouteRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteVpnConnectionTest() throws ApiException {
         DeleteVpnConnectionRequest deleteVpnConnectionRequest = null;
         DeleteVpnConnectionResponse response = api.deleteVpnConnection(deleteVpnConnectionRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteVpnConnectionRouteTest() throws ApiException {
         DeleteVpnConnectionRouteRequest deleteVpnConnectionRouteRequest = null;
         DeleteVpnConnectionRouteResponse response = api.deleteVpnConnectionRoute(deleteVpnConnectionRouteRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readVpnConnectionsTest() throws ApiException {
         ReadVpnConnectionsRequest readVpnConnectionsRequest = null;
         ReadVpnConnectionsResponse response = api.readVpnConnections(readVpnConnectionsRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void updateVpnConnectionTest() throws ApiException {
         UpdateVpnConnectionRequest updateVpnConnectionRequest = null;
         UpdateVpnConnectionResponse response = api.updateVpnConnection(updateVpnConnectionRequest);
-
         // TODO: test validations
     }
-    
+
 }

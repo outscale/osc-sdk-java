@@ -22,14 +22,33 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResponseContext;
 import com.outscale.osc_sdk_java.client.model.RouteTable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * CreateRouteTableResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateRouteTableResponse {
   public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
@@ -39,6 +58,8 @@ public class CreateRouteTableResponse {
   @SerializedName(SERIALIZED_NAME_ROUTE_TABLE)
   private RouteTable routeTable;
 
+  public CreateRouteTableResponse() {
+  }
 
   public CreateRouteTableResponse responseContext(ResponseContext responseContext) {
     
@@ -51,7 +72,6 @@ public class CreateRouteTableResponse {
    * @return responseContext
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ResponseContext getResponseContext() {
     return responseContext;
@@ -74,7 +94,6 @@ public class CreateRouteTableResponse {
    * @return routeTable
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public RouteTable getRouteTable() {
     return routeTable;
@@ -84,6 +103,7 @@ public class CreateRouteTableResponse {
   public void setRouteTable(RouteTable routeTable) {
     this.routeTable = routeTable;
   }
+
 
 
   @Override
@@ -125,5 +145,97 @@ public class CreateRouteTableResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ResponseContext");
+    openapiFields.add("RouteTable");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateRouteTableResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateRouteTableResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateRouteTableResponse is not found in the empty JSON string", CreateRouteTableResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateRouteTableResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateRouteTableResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `ResponseContext`
+      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
+        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+      }
+      // validate the optional field `RouteTable`
+      if (jsonObj.get("RouteTable") != null && !jsonObj.get("RouteTable").isJsonNull()) {
+        RouteTable.validateJsonObject(jsonObj.getAsJsonObject("RouteTable"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateRouteTableResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateRouteTableResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateRouteTableResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateRouteTableResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateRouteTableResponse>() {
+           @Override
+           public void write(JsonWriter out, CreateRouteTableResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateRouteTableResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateRouteTableResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateRouteTableResponse
+  * @throws IOException if the JSON string is invalid with respect to CreateRouteTableResponse
+  */
+  public static CreateRouteTableResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateRouteTableResponse.class);
+  }
+
+ /**
+  * Convert an instance of CreateRouteTableResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

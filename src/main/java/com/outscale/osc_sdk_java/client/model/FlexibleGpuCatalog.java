@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the flexible GPU (fGPU) that is available in the public catalog.
  */
-@ApiModel(description = "Information about the flexible GPU (fGPU) that is available in the public catalog.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FlexibleGpuCatalog {
   public static final String SERIALIZED_NAME_GENERATIONS = "Generations";
   @SerializedName(SERIALIZED_NAME_GENERATIONS)
@@ -52,6 +70,8 @@ public class FlexibleGpuCatalog {
   @SerializedName(SERIALIZED_NAME_VRAM)
   private Integer vram;
 
+  public FlexibleGpuCatalog() {
+  }
 
   public FlexibleGpuCatalog generations(List<String> generations) {
     
@@ -61,7 +81,7 @@ public class FlexibleGpuCatalog {
 
   public FlexibleGpuCatalog addGenerationsItem(String generationsItem) {
     if (this.generations == null) {
-      this.generations = new ArrayList<String>();
+      this.generations = new ArrayList<>();
     }
     this.generations.add(generationsItem);
     return this;
@@ -72,7 +92,6 @@ public class FlexibleGpuCatalog {
    * @return generations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The generations of VMs that the fGPU is compatible with.")
 
   public List<String> getGenerations() {
     return generations;
@@ -95,7 +114,6 @@ public class FlexibleGpuCatalog {
    * @return maxCpu
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum number of VM vCores that the fGPU is compatible with.")
 
   public Integer getMaxCpu() {
     return maxCpu;
@@ -118,7 +136,6 @@ public class FlexibleGpuCatalog {
    * @return maxRam
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum amount of VM memory that the fGPU is compatible with.")
 
   public Integer getMaxRam() {
     return maxRam;
@@ -141,7 +158,6 @@ public class FlexibleGpuCatalog {
    * @return modelName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The model of fGPU.")
 
   public String getModelName() {
     return modelName;
@@ -164,7 +180,6 @@ public class FlexibleGpuCatalog {
    * @return vram
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The amount of video RAM (VRAM) of the fGPU.")
 
   public Integer getVram() {
     return vram;
@@ -174,6 +189,7 @@ public class FlexibleGpuCatalog {
   public void setVram(Integer vram) {
     this.vram = vram;
   }
+
 
 
   @Override
@@ -221,5 +237,99 @@ public class FlexibleGpuCatalog {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Generations");
+    openapiFields.add("MaxCpu");
+    openapiFields.add("MaxRam");
+    openapiFields.add("ModelName");
+    openapiFields.add("VRam");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FlexibleGpuCatalog
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FlexibleGpuCatalog.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FlexibleGpuCatalog is not found in the empty JSON string", FlexibleGpuCatalog.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FlexibleGpuCatalog.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FlexibleGpuCatalog` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Generations") != null && !jsonObj.get("Generations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Generations` to be an array in the JSON string but got `%s`", jsonObj.get("Generations").toString()));
+      }
+      if ((jsonObj.get("ModelName") != null && !jsonObj.get("ModelName").isJsonNull()) && !jsonObj.get("ModelName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ModelName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ModelName").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FlexibleGpuCatalog.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FlexibleGpuCatalog' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FlexibleGpuCatalog> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FlexibleGpuCatalog.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FlexibleGpuCatalog>() {
+           @Override
+           public void write(JsonWriter out, FlexibleGpuCatalog value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FlexibleGpuCatalog read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FlexibleGpuCatalog given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FlexibleGpuCatalog
+  * @throws IOException if the JSON string is invalid with respect to FlexibleGpuCatalog
+  */
+  public static FlexibleGpuCatalog fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FlexibleGpuCatalog.class);
+  }
+
+ /**
+  * Convert an instance of FlexibleGpuCatalog to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

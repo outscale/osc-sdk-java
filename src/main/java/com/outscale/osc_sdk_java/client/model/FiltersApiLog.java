@@ -20,18 +20,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersApiLog {
   public static final String SERIALIZED_NAME_QUERY_ACCESS_KEYS = "QueryAccessKeys";
   @SerializedName(SERIALIZED_NAME_QUERY_ACCESS_KEYS)
@@ -69,6 +87,8 @@ public class FiltersApiLog {
   @SerializedName(SERIALIZED_NAME_RESPONSE_STATUS_CODES)
   private List<Integer> responseStatusCodes = null;
 
+  public FiltersApiLog() {
+  }
 
   public FiltersApiLog queryAccessKeys(List<String> queryAccessKeys) {
     
@@ -78,7 +98,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addQueryAccessKeysItem(String queryAccessKeysItem) {
     if (this.queryAccessKeys == null) {
-      this.queryAccessKeys = new ArrayList<String>();
+      this.queryAccessKeys = new ArrayList<>();
     }
     this.queryAccessKeys.add(queryAccessKeysItem);
     return this;
@@ -89,7 +109,6 @@ public class FiltersApiLog {
    * @return queryAccessKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The access keys used for the logged calls.")
 
   public List<String> getQueryAccessKeys() {
     return queryAccessKeys;
@@ -109,7 +128,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addQueryApiNamesItem(String queryApiNamesItem) {
     if (this.queryApiNames == null) {
-      this.queryApiNames = new ArrayList<String>();
+      this.queryApiNames = new ArrayList<>();
     }
     this.queryApiNames.add(queryApiNamesItem);
     return this;
@@ -120,7 +139,6 @@ public class FiltersApiLog {
    * @return queryApiNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the APIs of the logged calls (always `oapi` for the OUTSCALE API).")
 
   public List<String> getQueryApiNames() {
     return queryApiNames;
@@ -140,7 +158,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addQueryCallNamesItem(String queryCallNamesItem) {
     if (this.queryCallNames == null) {
-      this.queryCallNames = new ArrayList<String>();
+      this.queryCallNames = new ArrayList<>();
     }
     this.queryCallNames.add(queryCallNamesItem);
     return this;
@@ -151,7 +169,6 @@ public class FiltersApiLog {
    * @return queryCallNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the logged calls.")
 
   public List<String> getQueryCallNames() {
     return queryCallNames;
@@ -174,7 +191,6 @@ public class FiltersApiLog {
    * @return queryDateAfter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date after which you want to retrieve logged calls, in ISO 8601 format (for example, `2020-06-14`). By default, this date is set to 48 hours before the `QueryDateBefore` parameter value.")
 
   public LocalDate getQueryDateAfter() {
     return queryDateAfter;
@@ -197,7 +213,6 @@ public class FiltersApiLog {
    * @return queryDateBefore
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date before which you want to retrieve logged calls, in ISO 8601 format (for example, `2020-06-30`). By default, this date is set to now, or 48 hours after the `QueryDateAfter` parameter value.")
 
   public LocalDate getQueryDateBefore() {
     return queryDateBefore;
@@ -217,7 +232,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addQueryIpAddressesItem(String queryIpAddressesItem) {
     if (this.queryIpAddresses == null) {
-      this.queryIpAddresses = new ArrayList<String>();
+      this.queryIpAddresses = new ArrayList<>();
     }
     this.queryIpAddresses.add(queryIpAddressesItem);
     return this;
@@ -228,7 +243,6 @@ public class FiltersApiLog {
    * @return queryIpAddresses
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IPs used for the logged calls.")
 
   public List<String> getQueryIpAddresses() {
     return queryIpAddresses;
@@ -248,7 +262,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addQueryUserAgentsItem(String queryUserAgentsItem) {
     if (this.queryUserAgents == null) {
-      this.queryUserAgents = new ArrayList<String>();
+      this.queryUserAgents = new ArrayList<>();
     }
     this.queryUserAgents.add(queryUserAgentsItem);
     return this;
@@ -259,7 +273,6 @@ public class FiltersApiLog {
    * @return queryUserAgents
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The user agents of the HTTP requests of the logged calls.")
 
   public List<String> getQueryUserAgents() {
     return queryUserAgents;
@@ -279,7 +292,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addRequestIdsItem(String requestIdsItem) {
     if (this.requestIds == null) {
-      this.requestIds = new ArrayList<String>();
+      this.requestIds = new ArrayList<>();
     }
     this.requestIds.add(requestIdsItem);
     return this;
@@ -290,7 +303,6 @@ public class FiltersApiLog {
    * @return requestIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The request IDs provided in the responses of the logged calls.")
 
   public List<String> getRequestIds() {
     return requestIds;
@@ -310,7 +322,7 @@ public class FiltersApiLog {
 
   public FiltersApiLog addResponseStatusCodesItem(Integer responseStatusCodesItem) {
     if (this.responseStatusCodes == null) {
-      this.responseStatusCodes = new ArrayList<Integer>();
+      this.responseStatusCodes = new ArrayList<>();
     }
     this.responseStatusCodes.add(responseStatusCodesItem);
     return this;
@@ -321,7 +333,6 @@ public class FiltersApiLog {
    * @return responseStatusCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The HTTP status codes of the logged calls.")
 
   public List<Integer> getResponseStatusCodes() {
     return responseStatusCodes;
@@ -331,6 +342,7 @@ public class FiltersApiLog {
   public void setResponseStatusCodes(List<Integer> responseStatusCodes) {
     this.responseStatusCodes = responseStatusCodes;
   }
+
 
 
   @Override
@@ -386,5 +398,124 @@ public class FiltersApiLog {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("QueryAccessKeys");
+    openapiFields.add("QueryApiNames");
+    openapiFields.add("QueryCallNames");
+    openapiFields.add("QueryDateAfter");
+    openapiFields.add("QueryDateBefore");
+    openapiFields.add("QueryIpAddresses");
+    openapiFields.add("QueryUserAgents");
+    openapiFields.add("RequestIds");
+    openapiFields.add("ResponseStatusCodes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersApiLog
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersApiLog.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersApiLog is not found in the empty JSON string", FiltersApiLog.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersApiLog.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersApiLog` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("QueryAccessKeys") != null && !jsonObj.get("QueryAccessKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryAccessKeys` to be an array in the JSON string but got `%s`", jsonObj.get("QueryAccessKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("QueryApiNames") != null && !jsonObj.get("QueryApiNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryApiNames` to be an array in the JSON string but got `%s`", jsonObj.get("QueryApiNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("QueryCallNames") != null && !jsonObj.get("QueryCallNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryCallNames` to be an array in the JSON string but got `%s`", jsonObj.get("QueryCallNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("QueryIpAddresses") != null && !jsonObj.get("QueryIpAddresses").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryIpAddresses` to be an array in the JSON string but got `%s`", jsonObj.get("QueryIpAddresses").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("QueryUserAgents") != null && !jsonObj.get("QueryUserAgents").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `QueryUserAgents` to be an array in the JSON string but got `%s`", jsonObj.get("QueryUserAgents").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RequestIds") != null && !jsonObj.get("RequestIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RequestIds` to be an array in the JSON string but got `%s`", jsonObj.get("RequestIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ResponseStatusCodes") != null && !jsonObj.get("ResponseStatusCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ResponseStatusCodes` to be an array in the JSON string but got `%s`", jsonObj.get("ResponseStatusCodes").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersApiLog.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersApiLog' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersApiLog> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersApiLog.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersApiLog>() {
+           @Override
+           public void write(JsonWriter out, FiltersApiLog value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersApiLog read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersApiLog given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersApiLog
+  * @throws IOException if the JSON string is invalid with respect to FiltersApiLog
+  */
+  public static FiltersApiLog fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersApiLog.class);
+  }
+
+ /**
+  * Convert an instance of FiltersApiLog to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

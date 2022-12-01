@@ -25,17 +25,35 @@ import com.outscale.osc_sdk_java.client.model.LinkPublicIp;
 import com.outscale.osc_sdk_java.client.model.PrivateIp;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupLight;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the NIC.
  */
-@ApiModel(description = "Information about the NIC.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Nic {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -97,6 +115,8 @@ public class Nic {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public Nic() {
+  }
 
   public Nic accountId(String accountId) {
     
@@ -109,7 +129,6 @@ public class Nic {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the NIC.")
 
   public String getAccountId() {
     return accountId;
@@ -132,7 +151,6 @@ public class Nic {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the NIC.")
 
   public String getDescription() {
     return description;
@@ -155,7 +173,6 @@ public class Nic {
    * @return isSourceDestChecked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.")
 
   public Boolean getIsSourceDestChecked() {
     return isSourceDestChecked;
@@ -178,7 +195,6 @@ public class Nic {
    * @return linkNic
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LinkNic getLinkNic() {
     return linkNic;
@@ -201,7 +217,6 @@ public class Nic {
    * @return linkPublicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LinkPublicIp getLinkPublicIp() {
     return linkPublicIp;
@@ -224,7 +239,6 @@ public class Nic {
    * @return macAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Media Access Control (MAC) address of the NIC.")
 
   public String getMacAddress() {
     return macAddress;
@@ -247,7 +261,6 @@ public class Nic {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net for the NIC.")
 
   public String getNetId() {
     return netId;
@@ -270,7 +283,6 @@ public class Nic {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NIC.")
 
   public String getNicId() {
     return nicId;
@@ -293,7 +305,6 @@ public class Nic {
    * @return privateDnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the private DNS.")
 
   public String getPrivateDnsName() {
     return privateDnsName;
@@ -313,7 +324,7 @@ public class Nic {
 
   public Nic addPrivateIpsItem(PrivateIp privateIpsItem) {
     if (this.privateIps == null) {
-      this.privateIps = new ArrayList<PrivateIp>();
+      this.privateIps = new ArrayList<>();
     }
     this.privateIps.add(privateIpsItem);
     return this;
@@ -324,7 +335,6 @@ public class Nic {
    * @return privateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IPs of the NIC.")
 
   public List<PrivateIp> getPrivateIps() {
     return privateIps;
@@ -344,7 +354,7 @@ public class Nic {
 
   public Nic addSecurityGroupsItem(SecurityGroupLight securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<SecurityGroupLight>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -355,7 +365,6 @@ public class Nic {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security groups for the NIC.")
 
   public List<SecurityGroupLight> getSecurityGroups() {
     return securityGroups;
@@ -378,7 +387,6 @@ public class Nic {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).")
 
   public String getState() {
     return state;
@@ -401,7 +409,6 @@ public class Nic {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet.")
 
   public String getSubnetId() {
     return subnetId;
@@ -424,7 +431,6 @@ public class Nic {
    * @return subregionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Subregion in which the NIC is located.")
 
   public String getSubregionName() {
     return subregionName;
@@ -444,7 +450,7 @@ public class Nic {
 
   public Nic addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -455,7 +461,6 @@ public class Nic {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the NIC.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -465,6 +470,7 @@ public class Nic {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -532,5 +538,179 @@ public class Nic {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("Description");
+    openapiFields.add("IsSourceDestChecked");
+    openapiFields.add("LinkNic");
+    openapiFields.add("LinkPublicIp");
+    openapiFields.add("MacAddress");
+    openapiFields.add("NetId");
+    openapiFields.add("NicId");
+    openapiFields.add("PrivateDnsName");
+    openapiFields.add("PrivateIps");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("State");
+    openapiFields.add("SubnetId");
+    openapiFields.add("SubregionName");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Nic
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Nic.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Nic is not found in the empty JSON string", Nic.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Nic.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Nic` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      // validate the optional field `LinkNic`
+      if (jsonObj.get("LinkNic") != null && !jsonObj.get("LinkNic").isJsonNull()) {
+        LinkNic.validateJsonObject(jsonObj.getAsJsonObject("LinkNic"));
+      }
+      // validate the optional field `LinkPublicIp`
+      if (jsonObj.get("LinkPublicIp") != null && !jsonObj.get("LinkPublicIp").isJsonNull()) {
+        LinkPublicIp.validateJsonObject(jsonObj.getAsJsonObject("LinkPublicIp"));
+      }
+      if ((jsonObj.get("MacAddress") != null && !jsonObj.get("MacAddress").isJsonNull()) && !jsonObj.get("MacAddress").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MacAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("MacAddress").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if ((jsonObj.get("PrivateDnsName") != null && !jsonObj.get("PrivateDnsName").isJsonNull()) && !jsonObj.get("PrivateDnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateDnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateDnsName").toString()));
+      }
+      if (jsonObj.get("PrivateIps") != null && !jsonObj.get("PrivateIps").isJsonNull()) {
+        JsonArray jsonArrayprivateIps = jsonObj.getAsJsonArray("PrivateIps");
+        if (jsonArrayprivateIps != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("PrivateIps").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `PrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIps").toString()));
+          }
+
+          // validate the optional field `PrivateIps` (array)
+          for (int i = 0; i < jsonArrayprivateIps.size(); i++) {
+            PrivateIp.validateJsonObject(jsonArrayprivateIps.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonNull()) {
+        JsonArray jsonArraysecurityGroups = jsonObj.getAsJsonArray("SecurityGroups");
+        if (jsonArraysecurityGroups != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("SecurityGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+          }
+
+          // validate the optional field `SecurityGroups` (array)
+          for (int i = 0; i < jsonArraysecurityGroups.size(); i++) {
+            SecurityGroupLight.validateJsonObject(jsonArraysecurityGroups.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Nic.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Nic' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Nic> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Nic.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Nic>() {
+           @Override
+           public void write(JsonWriter out, Nic value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Nic read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Nic given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Nic
+  * @throws IOException if the JSON string is invalid with respect to Nic
+  */
+  public static Nic fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Nic.class);
+  }
+
+ /**
+  * Convert an instance of Nic to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

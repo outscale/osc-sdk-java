@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.OffsetDateTime;
+import java.time.OffsetDateTime;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the resources consumed during the specified time period.
  */
-@ApiModel(description = "Information about the resources consumed during the specified time period.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ConsumptionEntry {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -75,6 +93,8 @@ public class ConsumptionEntry {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private Double value;
 
+  public ConsumptionEntry() {
+  }
 
   public ConsumptionEntry accountId(String accountId) {
     
@@ -87,7 +107,6 @@ public class ConsumptionEntry {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of your TINA account.")
 
   public String getAccountId() {
     return accountId;
@@ -110,7 +129,6 @@ public class ConsumptionEntry {
    * @return category
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The category of the resource (for example, `network`).")
 
   public String getCategory() {
     return category;
@@ -133,7 +151,6 @@ public class ConsumptionEntry {
    * @return fromDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The beginning of the time period.")
 
   public OffsetDateTime getFromDate() {
     return fromDate;
@@ -156,7 +173,6 @@ public class ConsumptionEntry {
    * @return operation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The API call that triggered the resource consumption (for example, `RunInstances` or `CreateVolume`).")
 
   public String getOperation() {
     return operation;
@@ -179,7 +195,6 @@ public class ConsumptionEntry {
    * @return payingAccountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the TINA account which is billed for your consumption. It can be different from your account in the `AccountId` parameter.")
 
   public String getPayingAccountId() {
     return payingAccountId;
@@ -202,7 +217,6 @@ public class ConsumptionEntry {
    * @return service
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The service of the API call (`TinaOS-FCU`, `TinaOS-LBU`, `TinaOS-DirectLink`, `TinaOS-OOS`, or `TinaOS-OSU`).")
 
   public String getService() {
     return service;
@@ -225,7 +239,6 @@ public class ConsumptionEntry {
    * @return subregionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the Subregion.")
 
   public String getSubregionName() {
     return subregionName;
@@ -248,7 +261,6 @@ public class ConsumptionEntry {
    * @return title
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A description of the consumed resource.")
 
   public String getTitle() {
     return title;
@@ -271,7 +283,6 @@ public class ConsumptionEntry {
    * @return toDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The end of the time period.")
 
   public OffsetDateTime getToDate() {
     return toDate;
@@ -294,7 +305,6 @@ public class ConsumptionEntry {
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of resource, depending on the API call.")
 
   public String getType() {
     return type;
@@ -317,7 +327,6 @@ public class ConsumptionEntry {
    * @return value
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The consumed amount for the resource. The unit depends on the resource type. For more information, see the `Title` element.")
 
   public Double getValue() {
     return value;
@@ -327,6 +336,7 @@ public class ConsumptionEntry {
   public void setValue(Double value) {
     this.value = value;
   }
+
 
 
   @Override
@@ -386,5 +396,122 @@ public class ConsumptionEntry {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("Category");
+    openapiFields.add("FromDate");
+    openapiFields.add("Operation");
+    openapiFields.add("PayingAccountId");
+    openapiFields.add("Service");
+    openapiFields.add("SubregionName");
+    openapiFields.add("Title");
+    openapiFields.add("ToDate");
+    openapiFields.add("Type");
+    openapiFields.add("Value");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ConsumptionEntry
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ConsumptionEntry.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConsumptionEntry is not found in the empty JSON string", ConsumptionEntry.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ConsumptionEntry.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConsumptionEntry` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Category") != null && !jsonObj.get("Category").isJsonNull()) && !jsonObj.get("Category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Category").toString()));
+      }
+      if ((jsonObj.get("Operation") != null && !jsonObj.get("Operation").isJsonNull()) && !jsonObj.get("Operation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Operation").toString()));
+      }
+      if ((jsonObj.get("PayingAccountId") != null && !jsonObj.get("PayingAccountId").isJsonNull()) && !jsonObj.get("PayingAccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PayingAccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PayingAccountId").toString()));
+      }
+      if ((jsonObj.get("Service") != null && !jsonObj.get("Service").isJsonNull()) && !jsonObj.get("Service").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Service` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Service").toString()));
+      }
+      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
+      }
+      if ((jsonObj.get("Title") != null && !jsonObj.get("Title").isJsonNull()) && !jsonObj.get("Title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Title").toString()));
+      }
+      if ((jsonObj.get("Type") != null && !jsonObj.get("Type").isJsonNull()) && !jsonObj.get("Type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Type").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ConsumptionEntry.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConsumptionEntry' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ConsumptionEntry> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConsumptionEntry.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ConsumptionEntry>() {
+           @Override
+           public void write(JsonWriter out, ConsumptionEntry value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ConsumptionEntry read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ConsumptionEntry given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ConsumptionEntry
+  * @throws IOException if the JSON string is invalid with respect to ConsumptionEntry
+  */
+  public static ConsumptionEntry fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConsumptionEntry.class);
+  }
+
+ /**
+  * Convert an instance of ConsumptionEntry to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -19,8 +19,8 @@ import com.outscale.osc_sdk_java.client.model.CreateSecurityGroupRuleResponse;
 import com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleRequest;
 import com.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleResponse;
 import com.outscale.osc_sdk_java.client.model.ErrorResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,42 +30,29 @@ import java.util.Map;
 /**
  * API tests for SecurityGroupRuleApi
  */
-@Ignore
+@Disabled
 public class SecurityGroupRuleApiTest {
 
     private final SecurityGroupRuleApi api = new SecurityGroupRuleApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createSecurityGroupRuleTest() throws ApiException {
         CreateSecurityGroupRuleRequest createSecurityGroupRuleRequest = null;
         CreateSecurityGroupRuleResponse response = api.createSecurityGroupRule(createSecurityGroupRuleRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteSecurityGroupRuleTest() throws ApiException {
         DeleteSecurityGroupRuleRequest deleteSecurityGroupRuleRequest = null;
         DeleteSecurityGroupRuleResponse response = api.deleteSecurityGroupRule(deleteSecurityGroupRuleRequest);
-
         // TODO: test validations
     }
-    
+
 }

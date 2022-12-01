@@ -20,8 +20,8 @@ import com.outscale.osc_sdk_java.client.model.DeleteClientGatewayRequest;
 import com.outscale.osc_sdk_java.client.model.DeleteClientGatewayResponse;
 import com.outscale.osc_sdk_java.client.model.ReadClientGatewaysRequest;
 import com.outscale.osc_sdk_java.client.model.ReadClientGatewaysResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,58 +31,39 @@ import java.util.Map;
 /**
  * API tests for ClientGatewayApi
  */
-@Ignore
+@Disabled
 public class ClientGatewayApiTest {
 
     private final ClientGatewayApi api = new ClientGatewayApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void createClientGatewayTest() throws ApiException {
         CreateClientGatewayRequest createClientGatewayRequest = null;
         CreateClientGatewayResponse response = api.createClientGateway(createClientGatewayRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void deleteClientGatewayTest() throws ApiException {
         DeleteClientGatewayRequest deleteClientGatewayRequest = null;
         DeleteClientGatewayResponse response = api.deleteClientGateway(deleteClientGatewayRequest);
-
         // TODO: test validations
     }
-    
+
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readClientGatewaysTest() throws ApiException {
         ReadClientGatewaysRequest readClientGatewaysRequest = null;
         ReadClientGatewaysResponse response = api.readClientGateways(readClientGatewaysRequest);
-
         // TODO: test validations
     }
-    
+
 }

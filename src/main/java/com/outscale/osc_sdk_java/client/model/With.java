@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * The information to display in each returned log.
  */
-@ApiModel(description = "The information to display in each returned log.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class With {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -94,6 +112,8 @@ public class With {
   @SerializedName(SERIALIZED_NAME_RESPONSE_STATUS_CODE)
   private Boolean responseStatusCode = true;
 
+  public With() {
+  }
 
   public With accountId(Boolean accountId) {
     
@@ -106,7 +126,6 @@ public class With {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the account ID is displayed.")
 
   public Boolean getAccountId() {
     return accountId;
@@ -129,7 +148,6 @@ public class With {
    * @return callDuration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the duration of the call is displayed.")
 
   public Boolean getCallDuration() {
     return callDuration;
@@ -152,7 +170,6 @@ public class With {
    * @return queryAccessKey
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the access key is displayed.")
 
   public Boolean getQueryAccessKey() {
     return queryAccessKey;
@@ -175,7 +192,6 @@ public class With {
    * @return queryApiName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the name of the API is displayed.")
 
   public Boolean getQueryApiName() {
     return queryApiName;
@@ -198,7 +214,6 @@ public class With {
    * @return queryApiVersion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the version of the API is displayed.")
 
   public Boolean getQueryApiVersion() {
     return queryApiVersion;
@@ -221,7 +236,6 @@ public class With {
    * @return queryCallName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the name of the call is displayed.")
 
   public Boolean getQueryCallName() {
     return queryCallName;
@@ -244,7 +258,6 @@ public class With {
    * @return queryDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the date of the call is displayed.")
 
   public Boolean getQueryDate() {
     return queryDate;
@@ -267,7 +280,6 @@ public class With {
    * @return queryHeaderRaw
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the raw header of the HTTP request is displayed.")
 
   public Boolean getQueryHeaderRaw() {
     return queryHeaderRaw;
@@ -290,7 +302,6 @@ public class With {
    * @return queryHeaderSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the size of the raw header of the HTTP request is displayed.")
 
   public Boolean getQueryHeaderSize() {
     return queryHeaderSize;
@@ -313,7 +324,6 @@ public class With {
    * @return queryIpAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the IP is displayed.")
 
   public Boolean getQueryIpAddress() {
     return queryIpAddress;
@@ -336,7 +346,6 @@ public class With {
    * @return queryPayloadRaw
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the raw payload of the HTTP request is displayed.")
 
   public Boolean getQueryPayloadRaw() {
     return queryPayloadRaw;
@@ -359,7 +368,6 @@ public class With {
    * @return queryPayloadSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the size of the raw payload of the HTTP request is displayed.")
 
   public Boolean getQueryPayloadSize() {
     return queryPayloadSize;
@@ -382,7 +390,6 @@ public class With {
    * @return queryUserAgent
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the user agent of the HTTP request is displayed.")
 
   public Boolean getQueryUserAgent() {
     return queryUserAgent;
@@ -405,7 +412,6 @@ public class With {
    * @return requestId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the request ID is displayed.")
 
   public Boolean getRequestId() {
     return requestId;
@@ -428,7 +434,6 @@ public class With {
    * @return responseSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the size of the response is displayed.")
 
   public Boolean getResponseSize() {
     return responseSize;
@@ -451,7 +456,6 @@ public class With {
    * @return responseStatusCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "By default or if set to true, the HTTP status code of the response is displayed.")
 
   public Boolean getResponseStatusCode() {
     return responseStatusCode;
@@ -461,6 +465,7 @@ public class With {
   public void setResponseStatusCode(Boolean responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
   }
+
 
 
   @Override
@@ -530,5 +535,103 @@ public class With {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("CallDuration");
+    openapiFields.add("QueryAccessKey");
+    openapiFields.add("QueryApiName");
+    openapiFields.add("QueryApiVersion");
+    openapiFields.add("QueryCallName");
+    openapiFields.add("QueryDate");
+    openapiFields.add("QueryHeaderRaw");
+    openapiFields.add("QueryHeaderSize");
+    openapiFields.add("QueryIpAddress");
+    openapiFields.add("QueryPayloadRaw");
+    openapiFields.add("QueryPayloadSize");
+    openapiFields.add("QueryUserAgent");
+    openapiFields.add("RequestId");
+    openapiFields.add("ResponseSize");
+    openapiFields.add("ResponseStatusCode");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to With
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!With.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in With is not found in the empty JSON string", With.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!With.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `With` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!With.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'With' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<With> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(With.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<With>() {
+           @Override
+           public void write(JsonWriter out, With value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public With read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of With given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of With
+  * @throws IOException if the JSON string is invalid with respect to With
+  */
+  public static With fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, With.class);
+  }
+
+ /**
+  * Convert an instance of With to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

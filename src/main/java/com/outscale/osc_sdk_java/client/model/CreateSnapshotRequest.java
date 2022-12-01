@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * CreateSnapshotRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateSnapshotRequest {
   public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -57,6 +76,8 @@ public class CreateSnapshotRequest {
   @SerializedName(SERIALIZED_NAME_VOLUME_ID)
   private String volumeId;
 
+  public CreateSnapshotRequest() {
+  }
 
   public CreateSnapshotRequest description(String description) {
     
@@ -69,7 +90,6 @@ public class CreateSnapshotRequest {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A description for the snapshot.")
 
   public String getDescription() {
     return description;
@@ -92,7 +112,6 @@ public class CreateSnapshotRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -115,7 +134,6 @@ public class CreateSnapshotRequest {
    * @return fileLocation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(When importing) The pre-signed URL of the snapshot you want to import, or the normal URL of the snapshot if you have permission on the OOS bucket. For more information, see [Configuring a Pre-signed URL](https://docs.outscale.com/en/userguide/Configuring-a-Pre-signed-URL.html) or [Managing Access to Your Buckets and Objects](https://docs.outscale.com/en/userguide/Managing-Access-to-Your-Buckets-and-Objects.html).")
 
   public String getFileLocation() {
     return fileLocation;
@@ -138,7 +156,6 @@ public class CreateSnapshotRequest {
    * @return snapshotSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(When importing) The size of the snapshot you want to create in your account, in bytes. This size must be greater than or equal to the size of the original, uncompressed snapshot.")
 
   public Long getSnapshotSize() {
     return snapshotSize;
@@ -161,7 +178,6 @@ public class CreateSnapshotRequest {
    * @return sourceRegionName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(When copying) The name of the source Region, which must be the same as the Region of your account.")
 
   public String getSourceRegionName() {
     return sourceRegionName;
@@ -184,7 +200,6 @@ public class CreateSnapshotRequest {
    * @return sourceSnapshotId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(When copying) The ID of the snapshot you want to copy.")
 
   public String getSourceSnapshotId() {
     return sourceSnapshotId;
@@ -207,7 +222,6 @@ public class CreateSnapshotRequest {
    * @return volumeId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(When creating) The ID of the volume you want to create a snapshot of.")
 
   public String getVolumeId() {
     return volumeId;
@@ -217,6 +231,7 @@ public class CreateSnapshotRequest {
   public void setVolumeId(String volumeId) {
     this.volumeId = volumeId;
   }
+
 
 
   @Override
@@ -268,5 +283,109 @@ public class CreateSnapshotRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Description");
+    openapiFields.add("DryRun");
+    openapiFields.add("FileLocation");
+    openapiFields.add("SnapshotSize");
+    openapiFields.add("SourceRegionName");
+    openapiFields.add("SourceSnapshotId");
+    openapiFields.add("VolumeId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateSnapshotRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateSnapshotRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSnapshotRequest is not found in the empty JSON string", CreateSnapshotRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateSnapshotRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateSnapshotRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      if ((jsonObj.get("FileLocation") != null && !jsonObj.get("FileLocation").isJsonNull()) && !jsonObj.get("FileLocation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FileLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FileLocation").toString()));
+      }
+      if ((jsonObj.get("SourceRegionName") != null && !jsonObj.get("SourceRegionName").isJsonNull()) && !jsonObj.get("SourceRegionName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourceRegionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SourceRegionName").toString()));
+      }
+      if ((jsonObj.get("SourceSnapshotId") != null && !jsonObj.get("SourceSnapshotId").isJsonNull()) && !jsonObj.get("SourceSnapshotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SourceSnapshotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SourceSnapshotId").toString()));
+      }
+      if ((jsonObj.get("VolumeId") != null && !jsonObj.get("VolumeId").isJsonNull()) && !jsonObj.get("VolumeId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VolumeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateSnapshotRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateSnapshotRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateSnapshotRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSnapshotRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateSnapshotRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateSnapshotRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateSnapshotRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateSnapshotRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateSnapshotRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateSnapshotRequest
+  */
+  public static CreateSnapshotRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateSnapshotRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateSnapshotRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -21,15 +21,33 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.BsuToUpdateVm;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the block device mapping.
  */
-@ApiModel(description = "Information about the block device mapping.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class BlockDeviceMappingVmUpdate {
   public static final String SERIALIZED_NAME_BSU = "Bsu";
   @SerializedName(SERIALIZED_NAME_BSU)
@@ -47,6 +65,8 @@ public class BlockDeviceMappingVmUpdate {
   @SerializedName(SERIALIZED_NAME_VIRTUAL_DEVICE_NAME)
   private String virtualDeviceName;
 
+  public BlockDeviceMappingVmUpdate() {
+  }
 
   public BlockDeviceMappingVmUpdate bsu(BsuToUpdateVm bsu) {
     
@@ -59,7 +79,6 @@ public class BlockDeviceMappingVmUpdate {
    * @return bsu
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public BsuToUpdateVm getBsu() {
     return bsu;
@@ -82,7 +101,6 @@ public class BlockDeviceMappingVmUpdate {
    * @return deviceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The device name for the volume. For a root device, you must use `/dev/sda1`. For other volumes, you must use `/dev/sdX`, `/dev/sdXX`, `/dev/xvdX`, or `/dev/xvdXX` (where the first `X` is a letter between `b` and `z`, and the second `X` is a letter between `a` and `z`).")
 
   public String getDeviceName() {
     return deviceName;
@@ -105,7 +123,6 @@ public class BlockDeviceMappingVmUpdate {
    * @return noDevice
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Removes the device which is included in the block device mapping of the OMI.")
 
   public String getNoDevice() {
     return noDevice;
@@ -128,7 +145,6 @@ public class BlockDeviceMappingVmUpdate {
    * @return virtualDeviceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the virtual device (`ephemeralN`).")
 
   public String getVirtualDeviceName() {
     return virtualDeviceName;
@@ -138,6 +154,7 @@ public class BlockDeviceMappingVmUpdate {
   public void setVirtualDeviceName(String virtualDeviceName) {
     this.virtualDeviceName = virtualDeviceName;
   }
+
 
 
   @Override
@@ -183,5 +200,104 @@ public class BlockDeviceMappingVmUpdate {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Bsu");
+    openapiFields.add("DeviceName");
+    openapiFields.add("NoDevice");
+    openapiFields.add("VirtualDeviceName");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to BlockDeviceMappingVmUpdate
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!BlockDeviceMappingVmUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BlockDeviceMappingVmUpdate is not found in the empty JSON string", BlockDeviceMappingVmUpdate.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!BlockDeviceMappingVmUpdate.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BlockDeviceMappingVmUpdate` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `Bsu`
+      if (jsonObj.get("Bsu") != null && !jsonObj.get("Bsu").isJsonNull()) {
+        BsuToUpdateVm.validateJsonObject(jsonObj.getAsJsonObject("Bsu"));
+      }
+      if ((jsonObj.get("DeviceName") != null && !jsonObj.get("DeviceName").isJsonNull()) && !jsonObj.get("DeviceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DeviceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DeviceName").toString()));
+      }
+      if ((jsonObj.get("NoDevice") != null && !jsonObj.get("NoDevice").isJsonNull()) && !jsonObj.get("NoDevice").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NoDevice` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NoDevice").toString()));
+      }
+      if ((jsonObj.get("VirtualDeviceName") != null && !jsonObj.get("VirtualDeviceName").isJsonNull()) && !jsonObj.get("VirtualDeviceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualDeviceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualDeviceName").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!BlockDeviceMappingVmUpdate.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BlockDeviceMappingVmUpdate' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<BlockDeviceMappingVmUpdate> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BlockDeviceMappingVmUpdate.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<BlockDeviceMappingVmUpdate>() {
+           @Override
+           public void write(JsonWriter out, BlockDeviceMappingVmUpdate value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public BlockDeviceMappingVmUpdate read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of BlockDeviceMappingVmUpdate given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of BlockDeviceMappingVmUpdate
+  * @throws IOException if the JSON string is invalid with respect to BlockDeviceMappingVmUpdate
+  */
+  public static BlockDeviceMappingVmUpdate fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BlockDeviceMappingVmUpdate.class);
+  }
+
+ /**
+  * Convert an instance of BlockDeviceMappingVmUpdate to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

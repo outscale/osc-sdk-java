@@ -20,15 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the health check configuration.
  */
-@ApiModel(description = "Information about the health check configuration.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class HealthCheck {
   public static final String SERIALIZED_NAME_CHECK_INTERVAL = "CheckInterval";
   @SerializedName(SERIALIZED_NAME_CHECK_INTERVAL)
@@ -58,6 +76,8 @@ public class HealthCheck {
   @SerializedName(SERIALIZED_NAME_UNHEALTHY_THRESHOLD)
   private Integer unhealthyThreshold;
 
+  public HealthCheck() {
+  }
 
   public HealthCheck checkInterval(Integer checkInterval) {
     
@@ -69,7 +89,7 @@ public class HealthCheck {
    * The number of seconds between two pings (between &#x60;5&#x60; and &#x60;600&#x60; both included).
    * @return checkInterval
   **/
-  @ApiModelProperty(required = true, value = "The number of seconds between two pings (between `5` and `600` both included).")
+  @javax.annotation.Nonnull
 
   public Integer getCheckInterval() {
     return checkInterval;
@@ -91,7 +111,7 @@ public class HealthCheck {
    * The number of consecutive successful pings before considering the VM as healthy (between &#x60;2&#x60; and &#x60;10&#x60; both included).
    * @return healthyThreshold
   **/
-  @ApiModelProperty(required = true, value = "The number of consecutive successful pings before considering the VM as healthy (between `2` and `10` both included).")
+  @javax.annotation.Nonnull
 
   public Integer getHealthyThreshold() {
     return healthyThreshold;
@@ -114,7 +134,6 @@ public class HealthCheck {
    * @return path
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If you use the HTTP or HTTPS protocols, the ping path.")
 
   public String getPath() {
     return path;
@@ -136,7 +155,7 @@ public class HealthCheck {
    * The port number (between &#x60;1&#x60; and &#x60;65535&#x60;, both included).
    * @return port
   **/
-  @ApiModelProperty(required = true, value = "The port number (between `1` and `65535`, both included).")
+  @javax.annotation.Nonnull
 
   public Integer getPort() {
     return port;
@@ -158,7 +177,7 @@ public class HealthCheck {
    * The protocol for the URL of the VM (&#x60;HTTP&#x60; \\| &#x60;HTTPS&#x60; \\| &#x60;TCP&#x60; \\| &#x60;SSL&#x60;).
    * @return protocol
   **/
-  @ApiModelProperty(required = true, value = "The protocol for the URL of the VM (`HTTP` \\| `HTTPS` \\| `TCP` \\| `SSL`).")
+  @javax.annotation.Nonnull
 
   public String getProtocol() {
     return protocol;
@@ -180,7 +199,7 @@ public class HealthCheck {
    * The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between &#x60;2&#x60; and &#x60;60&#x60; both included).
    * @return timeout
   **/
-  @ApiModelProperty(required = true, value = "The maximum waiting time for a response before considering the VM as unhealthy, in seconds (between `2` and `60` both included).")
+  @javax.annotation.Nonnull
 
   public Integer getTimeout() {
     return timeout;
@@ -202,7 +221,7 @@ public class HealthCheck {
    * The number of consecutive failed pings before considering the VM as unhealthy (between &#x60;2&#x60; and &#x60;10&#x60; both included).
    * @return unhealthyThreshold
   **/
-  @ApiModelProperty(required = true, value = "The number of consecutive failed pings before considering the VM as unhealthy (between `2` and `10` both included).")
+  @javax.annotation.Nonnull
 
   public Integer getUnhealthyThreshold() {
     return unhealthyThreshold;
@@ -212,6 +231,7 @@ public class HealthCheck {
   public void setUnhealthyThreshold(Integer unhealthyThreshold) {
     this.unhealthyThreshold = unhealthyThreshold;
   }
+
 
 
   @Override
@@ -263,5 +283,113 @@ public class HealthCheck {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("CheckInterval");
+    openapiFields.add("HealthyThreshold");
+    openapiFields.add("Path");
+    openapiFields.add("Port");
+    openapiFields.add("Protocol");
+    openapiFields.add("Timeout");
+    openapiFields.add("UnhealthyThreshold");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("CheckInterval");
+    openapiRequiredFields.add("HealthyThreshold");
+    openapiRequiredFields.add("Port");
+    openapiRequiredFields.add("Protocol");
+    openapiRequiredFields.add("Timeout");
+    openapiRequiredFields.add("UnhealthyThreshold");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to HealthCheck
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!HealthCheck.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in HealthCheck is not found in the empty JSON string", HealthCheck.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!HealthCheck.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `HealthCheck` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : HealthCheck.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Path") != null && !jsonObj.get("Path").isJsonNull()) && !jsonObj.get("Path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Path").toString()));
+      }
+      if (!jsonObj.get("Protocol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Protocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Protocol").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!HealthCheck.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'HealthCheck' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<HealthCheck> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(HealthCheck.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<HealthCheck>() {
+           @Override
+           public void write(JsonWriter out, HealthCheck value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public HealthCheck read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of HealthCheck given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of HealthCheck
+  * @throws IOException if the JSON string is invalid with respect to HealthCheck
+  */
+  public static HealthCheck fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, HealthCheck.class);
+  }
+
+ /**
+  * Convert an instance of HealthCheck to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -20,18 +20,36 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersVmsState {
   public static final String SERIALIZED_NAME_MAINTENANCE_EVENT_CODES = "MaintenanceEventCodes";
   @SerializedName(SERIALIZED_NAME_MAINTENANCE_EVENT_CODES)
@@ -61,6 +79,8 @@ public class FiltersVmsState {
   @SerializedName(SERIALIZED_NAME_VM_STATES)
   private List<String> vmStates = null;
 
+  public FiltersVmsState() {
+  }
 
   public FiltersVmsState maintenanceEventCodes(List<String> maintenanceEventCodes) {
     
@@ -70,7 +90,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addMaintenanceEventCodesItem(String maintenanceEventCodesItem) {
     if (this.maintenanceEventCodes == null) {
-      this.maintenanceEventCodes = new ArrayList<String>();
+      this.maintenanceEventCodes = new ArrayList<>();
     }
     this.maintenanceEventCodes.add(maintenanceEventCodesItem);
     return this;
@@ -81,7 +101,6 @@ public class FiltersVmsState {
    * @return maintenanceEventCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The code for the scheduled event (`system-reboot` \\| `system-maintenance`).")
 
   public List<String> getMaintenanceEventCodes() {
     return maintenanceEventCodes;
@@ -101,7 +120,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addMaintenanceEventDescriptionsItem(String maintenanceEventDescriptionsItem) {
     if (this.maintenanceEventDescriptions == null) {
-      this.maintenanceEventDescriptions = new ArrayList<String>();
+      this.maintenanceEventDescriptions = new ArrayList<>();
     }
     this.maintenanceEventDescriptions.add(maintenanceEventDescriptionsItem);
     return this;
@@ -112,7 +131,6 @@ public class FiltersVmsState {
    * @return maintenanceEventDescriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the scheduled event.")
 
   public List<String> getMaintenanceEventDescriptions() {
     return maintenanceEventDescriptions;
@@ -132,7 +150,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addMaintenanceEventsNotAfterItem(LocalDate maintenanceEventsNotAfterItem) {
     if (this.maintenanceEventsNotAfter == null) {
-      this.maintenanceEventsNotAfter = new ArrayList<LocalDate>();
+      this.maintenanceEventsNotAfter = new ArrayList<>();
     }
     this.maintenanceEventsNotAfter.add(maintenanceEventsNotAfterItem);
     return this;
@@ -143,7 +161,6 @@ public class FiltersVmsState {
    * @return maintenanceEventsNotAfter
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The latest time the event can end.")
 
   public List<LocalDate> getMaintenanceEventsNotAfter() {
     return maintenanceEventsNotAfter;
@@ -163,7 +180,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addMaintenanceEventsNotBeforeItem(LocalDate maintenanceEventsNotBeforeItem) {
     if (this.maintenanceEventsNotBefore == null) {
-      this.maintenanceEventsNotBefore = new ArrayList<LocalDate>();
+      this.maintenanceEventsNotBefore = new ArrayList<>();
     }
     this.maintenanceEventsNotBefore.add(maintenanceEventsNotBeforeItem);
     return this;
@@ -174,7 +191,6 @@ public class FiltersVmsState {
    * @return maintenanceEventsNotBefore
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The earliest time the event can start.")
 
   public List<LocalDate> getMaintenanceEventsNotBefore() {
     return maintenanceEventsNotBefore;
@@ -194,7 +210,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -205,7 +221,6 @@ public class FiltersVmsState {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the Subregions of the VMs.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -225,7 +240,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addVmIdsItem(String vmIdsItem) {
     if (this.vmIds == null) {
-      this.vmIds = new ArrayList<String>();
+      this.vmIds = new ArrayList<>();
     }
     this.vmIds.add(vmIdsItem);
     return this;
@@ -236,7 +251,6 @@ public class FiltersVmsState {
    * @return vmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of VMs.")
 
   public List<String> getVmIds() {
     return vmIds;
@@ -256,7 +270,7 @@ public class FiltersVmsState {
 
   public FiltersVmsState addVmStatesItem(String vmStatesItem) {
     if (this.vmStates == null) {
-      this.vmStates = new ArrayList<String>();
+      this.vmStates = new ArrayList<>();
     }
     this.vmStates.add(vmStatesItem);
     return this;
@@ -267,7 +281,6 @@ public class FiltersVmsState {
    * @return vmStates
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the VMs (`pending` \\| `running` \\| `stopping` \\| `stopped` \\| `shutting-down` \\| `terminated` \\| `quarantine`).")
 
   public List<String> getVmStates() {
     return vmStates;
@@ -277,6 +290,7 @@ public class FiltersVmsState {
   public void setVmStates(List<String> vmStates) {
     this.vmStates = vmStates;
   }
+
 
 
   @Override
@@ -328,5 +342,122 @@ public class FiltersVmsState {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("MaintenanceEventCodes");
+    openapiFields.add("MaintenanceEventDescriptions");
+    openapiFields.add("MaintenanceEventsNotAfter");
+    openapiFields.add("MaintenanceEventsNotBefore");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("VmIds");
+    openapiFields.add("VmStates");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersVmsState
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersVmsState.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersVmsState is not found in the empty JSON string", FiltersVmsState.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersVmsState.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersVmsState` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MaintenanceEventCodes") != null && !jsonObj.get("MaintenanceEventCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MaintenanceEventCodes` to be an array in the JSON string but got `%s`", jsonObj.get("MaintenanceEventCodes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MaintenanceEventDescriptions") != null && !jsonObj.get("MaintenanceEventDescriptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MaintenanceEventDescriptions` to be an array in the JSON string but got `%s`", jsonObj.get("MaintenanceEventDescriptions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MaintenanceEventsNotAfter") != null && !jsonObj.get("MaintenanceEventsNotAfter").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MaintenanceEventsNotAfter` to be an array in the JSON string but got `%s`", jsonObj.get("MaintenanceEventsNotAfter").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("MaintenanceEventsNotBefore") != null && !jsonObj.get("MaintenanceEventsNotBefore").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MaintenanceEventsNotBefore` to be an array in the JSON string but got `%s`", jsonObj.get("MaintenanceEventsNotBefore").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmIds") != null && !jsonObj.get("VmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmIds` to be an array in the JSON string but got `%s`", jsonObj.get("VmIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmStates") != null && !jsonObj.get("VmStates").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmStates` to be an array in the JSON string but got `%s`", jsonObj.get("VmStates").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersVmsState.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersVmsState' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersVmsState> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersVmsState.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersVmsState>() {
+           @Override
+           public void write(JsonWriter out, FiltersVmsState value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersVmsState read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersVmsState given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersVmsState
+  * @throws IOException if the JSON string is invalid with respect to FiltersVmsState
+  */
+  public static FiltersVmsState fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersVmsState.class);
+  }
+
+ /**
+  * Convert an instance of FiltersVmsState to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

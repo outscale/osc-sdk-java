@@ -24,17 +24,35 @@ import com.outscale.osc_sdk_java.client.model.LinkNicLight;
 import com.outscale.osc_sdk_java.client.model.LinkPublicIpLightForVm;
 import com.outscale.osc_sdk_java.client.model.PrivateIpLightForVm;
 import com.outscale.osc_sdk_java.client.model.SecurityGroupLight;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the network interface card (NIC).
  */
-@ApiModel(description = "Information about the network interface card (NIC).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class NicLight {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -88,6 +106,8 @@ public class NicLight {
   @SerializedName(SERIALIZED_NAME_SUBNET_ID)
   private String subnetId;
 
+  public NicLight() {
+  }
 
   public NicLight accountId(String accountId) {
     
@@ -100,7 +120,6 @@ public class NicLight {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the NIC.")
 
   public String getAccountId() {
     return accountId;
@@ -123,7 +142,6 @@ public class NicLight {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the NIC.")
 
   public String getDescription() {
     return description;
@@ -146,7 +164,6 @@ public class NicLight {
    * @return isSourceDestChecked
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net.")
 
   public Boolean getIsSourceDestChecked() {
     return isSourceDestChecked;
@@ -169,7 +186,6 @@ public class NicLight {
    * @return linkNic
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LinkNicLight getLinkNic() {
     return linkNic;
@@ -192,7 +208,6 @@ public class NicLight {
    * @return linkPublicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public LinkPublicIpLightForVm getLinkPublicIp() {
     return linkPublicIp;
@@ -215,7 +230,6 @@ public class NicLight {
    * @return macAddress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Media Access Control (MAC) address of the NIC.")
 
   public String getMacAddress() {
     return macAddress;
@@ -238,7 +252,6 @@ public class NicLight {
    * @return netId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Net for the NIC.")
 
   public String getNetId() {
     return netId;
@@ -261,7 +274,6 @@ public class NicLight {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NIC.")
 
   public String getNicId() {
     return nicId;
@@ -284,7 +296,6 @@ public class NicLight {
    * @return privateDnsName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the private DNS.")
 
   public String getPrivateDnsName() {
     return privateDnsName;
@@ -304,7 +315,7 @@ public class NicLight {
 
   public NicLight addPrivateIpsItem(PrivateIpLightForVm privateIpsItem) {
     if (this.privateIps == null) {
-      this.privateIps = new ArrayList<PrivateIpLightForVm>();
+      this.privateIps = new ArrayList<>();
     }
     this.privateIps.add(privateIpsItem);
     return this;
@@ -315,7 +326,6 @@ public class NicLight {
    * @return privateIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IP or IPs of the NIC.")
 
   public List<PrivateIpLightForVm> getPrivateIps() {
     return privateIps;
@@ -335,7 +345,7 @@ public class NicLight {
 
   public NicLight addSecurityGroupsItem(SecurityGroupLight securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<SecurityGroupLight>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -346,7 +356,6 @@ public class NicLight {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more IDs of security groups for the NIC.")
 
   public List<SecurityGroupLight> getSecurityGroups() {
     return securityGroups;
@@ -369,7 +378,6 @@ public class NicLight {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the NIC (`available` \\| `attaching` \\| `in-use` \\| `detaching`).")
 
   public String getState() {
     return state;
@@ -392,7 +400,6 @@ public class NicLight {
    * @return subnetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the Subnet for the NIC.")
 
   public String getSubnetId() {
     return subnetId;
@@ -402,6 +409,7 @@ public class NicLight {
   public void setSubnetId(String subnetId) {
     this.subnetId = subnetId;
   }
+
 
 
   @Override
@@ -465,5 +473,160 @@ public class NicLight {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("Description");
+    openapiFields.add("IsSourceDestChecked");
+    openapiFields.add("LinkNic");
+    openapiFields.add("LinkPublicIp");
+    openapiFields.add("MacAddress");
+    openapiFields.add("NetId");
+    openapiFields.add("NicId");
+    openapiFields.add("PrivateDnsName");
+    openapiFields.add("PrivateIps");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("State");
+    openapiFields.add("SubnetId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to NicLight
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!NicLight.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in NicLight is not found in the empty JSON string", NicLight.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!NicLight.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `NicLight` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      // validate the optional field `LinkNic`
+      if (jsonObj.get("LinkNic") != null && !jsonObj.get("LinkNic").isJsonNull()) {
+        LinkNicLight.validateJsonObject(jsonObj.getAsJsonObject("LinkNic"));
+      }
+      // validate the optional field `LinkPublicIp`
+      if (jsonObj.get("LinkPublicIp") != null && !jsonObj.get("LinkPublicIp").isJsonNull()) {
+        LinkPublicIpLightForVm.validateJsonObject(jsonObj.getAsJsonObject("LinkPublicIp"));
+      }
+      if ((jsonObj.get("MacAddress") != null && !jsonObj.get("MacAddress").isJsonNull()) && !jsonObj.get("MacAddress").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MacAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("MacAddress").toString()));
+      }
+      if ((jsonObj.get("NetId") != null && !jsonObj.get("NetId").isJsonNull()) && !jsonObj.get("NetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if ((jsonObj.get("PrivateDnsName") != null && !jsonObj.get("PrivateDnsName").isJsonNull()) && !jsonObj.get("PrivateDnsName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateDnsName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateDnsName").toString()));
+      }
+      if (jsonObj.get("PrivateIps") != null && !jsonObj.get("PrivateIps").isJsonNull()) {
+        JsonArray jsonArrayprivateIps = jsonObj.getAsJsonArray("PrivateIps");
+        if (jsonArrayprivateIps != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("PrivateIps").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `PrivateIps` to be an array in the JSON string but got `%s`", jsonObj.get("PrivateIps").toString()));
+          }
+
+          // validate the optional field `PrivateIps` (array)
+          for (int i = 0; i < jsonArrayprivateIps.size(); i++) {
+            PrivateIpLightForVm.validateJsonObject(jsonArrayprivateIps.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonNull()) {
+        JsonArray jsonArraysecurityGroups = jsonObj.getAsJsonArray("SecurityGroups");
+        if (jsonArraysecurityGroups != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("SecurityGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+          }
+
+          // validate the optional field `SecurityGroups` (array)
+          for (int i = 0; i < jsonArraysecurityGroups.size(); i++) {
+            SecurityGroupLight.validateJsonObject(jsonArraysecurityGroups.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if ((jsonObj.get("SubnetId") != null && !jsonObj.get("SubnetId").isJsonNull()) && !jsonObj.get("SubnetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubnetId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!NicLight.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'NicLight' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<NicLight> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(NicLight.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<NicLight>() {
+           @Override
+           public void write(JsonWriter out, NicLight value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public NicLight read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of NicLight given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of NicLight
+  * @throws IOException if the JSON string is invalid with respect to NicLight
+  */
+  public static NicLight fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, NicLight.class);
+  }
+
+ /**
+  * Convert an instance of NicLight to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

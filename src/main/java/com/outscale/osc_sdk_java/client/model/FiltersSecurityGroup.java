@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersSecurityGroup {
   public static final String SERIALIZED_NAME_ACCOUNT_IDS = "AccountIds";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_IDS)
@@ -120,6 +138,8 @@ public class FiltersSecurityGroup {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersSecurityGroup() {
+  }
 
   public FiltersSecurityGroup accountIds(List<String> accountIds) {
     
@@ -129,7 +149,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addAccountIdsItem(String accountIdsItem) {
     if (this.accountIds == null) {
-      this.accountIds = new ArrayList<String>();
+      this.accountIds = new ArrayList<>();
     }
     this.accountIds.add(accountIdsItem);
     return this;
@@ -140,7 +160,6 @@ public class FiltersSecurityGroup {
    * @return accountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the security groups.")
 
   public List<String> getAccountIds() {
     return accountIds;
@@ -160,7 +179,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addDescriptionsItem(String descriptionsItem) {
     if (this.descriptions == null) {
-      this.descriptions = new ArrayList<String>();
+      this.descriptions = new ArrayList<>();
     }
     this.descriptions.add(descriptionsItem);
     return this;
@@ -171,7 +190,6 @@ public class FiltersSecurityGroup {
    * @return descriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The descriptions of the security groups.")
 
   public List<String> getDescriptions() {
     return descriptions;
@@ -191,7 +209,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleAccountIdsItem(String inboundRuleAccountIdsItem) {
     if (this.inboundRuleAccountIds == null) {
-      this.inboundRuleAccountIds = new ArrayList<String>();
+      this.inboundRuleAccountIds = new ArrayList<>();
     }
     this.inboundRuleAccountIds.add(inboundRuleAccountIdsItem);
     return this;
@@ -202,7 +220,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs that have been granted permissions.")
 
   public List<String> getInboundRuleAccountIds() {
     return inboundRuleAccountIds;
@@ -222,7 +239,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleFromPortRangesItem(Integer inboundRuleFromPortRangesItem) {
     if (this.inboundRuleFromPortRanges == null) {
-      this.inboundRuleFromPortRanges = new ArrayList<Integer>();
+      this.inboundRuleFromPortRanges = new ArrayList<>();
     }
     this.inboundRuleFromPortRanges.add(inboundRuleFromPortRangesItem);
     return this;
@@ -233,7 +250,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleFromPortRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The beginnings of the port ranges for the TCP and UDP protocols, or the ICMP type numbers.")
 
   public List<Integer> getInboundRuleFromPortRanges() {
     return inboundRuleFromPortRanges;
@@ -253,7 +269,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleIpRangesItem(String inboundRuleIpRangesItem) {
     if (this.inboundRuleIpRanges == null) {
-      this.inboundRuleIpRanges = new ArrayList<String>();
+      this.inboundRuleIpRanges = new ArrayList<>();
     }
     this.inboundRuleIpRanges.add(inboundRuleIpRangesItem);
     return this;
@@ -264,7 +280,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleIpRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP ranges that have been granted permissions, in CIDR notation (for example, `10.0.0.0/24`).")
 
   public List<String> getInboundRuleIpRanges() {
     return inboundRuleIpRanges;
@@ -284,7 +299,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleProtocolsItem(String inboundRuleProtocolsItem) {
     if (this.inboundRuleProtocols == null) {
-      this.inboundRuleProtocols = new ArrayList<String>();
+      this.inboundRuleProtocols = new ArrayList<>();
     }
     this.inboundRuleProtocols.add(inboundRuleProtocolsItem);
     return this;
@@ -295,7 +310,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleProtocols
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP protocols for the permissions (`tcp` \\| `udp` \\| `icmp`, or a protocol number, or `-1` for all protocols).")
 
   public List<String> getInboundRuleProtocols() {
     return inboundRuleProtocols;
@@ -315,7 +329,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleSecurityGroupIdsItem(String inboundRuleSecurityGroupIdsItem) {
     if (this.inboundRuleSecurityGroupIds == null) {
-      this.inboundRuleSecurityGroupIds = new ArrayList<String>();
+      this.inboundRuleSecurityGroupIds = new ArrayList<>();
     }
     this.inboundRuleSecurityGroupIds.add(inboundRuleSecurityGroupIdsItem);
     return this;
@@ -326,7 +340,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleSecurityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the security groups that have been granted permissions.")
 
   public List<String> getInboundRuleSecurityGroupIds() {
     return inboundRuleSecurityGroupIds;
@@ -346,7 +359,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleSecurityGroupNamesItem(String inboundRuleSecurityGroupNamesItem) {
     if (this.inboundRuleSecurityGroupNames == null) {
-      this.inboundRuleSecurityGroupNames = new ArrayList<String>();
+      this.inboundRuleSecurityGroupNames = new ArrayList<>();
     }
     this.inboundRuleSecurityGroupNames.add(inboundRuleSecurityGroupNamesItem);
     return this;
@@ -357,7 +370,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleSecurityGroupNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the security groups that have been granted permissions.")
 
   public List<String> getInboundRuleSecurityGroupNames() {
     return inboundRuleSecurityGroupNames;
@@ -377,7 +389,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addInboundRuleToPortRangesItem(Integer inboundRuleToPortRangesItem) {
     if (this.inboundRuleToPortRanges == null) {
-      this.inboundRuleToPortRanges = new ArrayList<Integer>();
+      this.inboundRuleToPortRanges = new ArrayList<>();
     }
     this.inboundRuleToPortRanges.add(inboundRuleToPortRangesItem);
     return this;
@@ -388,7 +400,6 @@ public class FiltersSecurityGroup {
    * @return inboundRuleToPortRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ends of the port ranges for the TCP and UDP protocols, or the ICMP code numbers.")
 
   public List<Integer> getInboundRuleToPortRanges() {
     return inboundRuleToPortRanges;
@@ -408,7 +419,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addNetIdsItem(String netIdsItem) {
     if (this.netIds == null) {
-      this.netIds = new ArrayList<String>();
+      this.netIds = new ArrayList<>();
     }
     this.netIds.add(netIdsItem);
     return this;
@@ -419,7 +430,6 @@ public class FiltersSecurityGroup {
    * @return netIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Nets specified when the security groups were created.")
 
   public List<String> getNetIds() {
     return netIds;
@@ -439,7 +449,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleAccountIdsItem(String outboundRuleAccountIdsItem) {
     if (this.outboundRuleAccountIds == null) {
-      this.outboundRuleAccountIds = new ArrayList<String>();
+      this.outboundRuleAccountIds = new ArrayList<>();
     }
     this.outboundRuleAccountIds.add(outboundRuleAccountIdsItem);
     return this;
@@ -450,7 +460,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs that have been granted permissions.")
 
   public List<String> getOutboundRuleAccountIds() {
     return outboundRuleAccountIds;
@@ -470,7 +479,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleFromPortRangesItem(Integer outboundRuleFromPortRangesItem) {
     if (this.outboundRuleFromPortRanges == null) {
-      this.outboundRuleFromPortRanges = new ArrayList<Integer>();
+      this.outboundRuleFromPortRanges = new ArrayList<>();
     }
     this.outboundRuleFromPortRanges.add(outboundRuleFromPortRangesItem);
     return this;
@@ -481,7 +490,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleFromPortRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The beginnings of the port ranges for the TCP and UDP protocols, or the ICMP type numbers.")
 
   public List<Integer> getOutboundRuleFromPortRanges() {
     return outboundRuleFromPortRanges;
@@ -501,7 +509,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleIpRangesItem(String outboundRuleIpRangesItem) {
     if (this.outboundRuleIpRanges == null) {
-      this.outboundRuleIpRanges = new ArrayList<String>();
+      this.outboundRuleIpRanges = new ArrayList<>();
     }
     this.outboundRuleIpRanges.add(outboundRuleIpRangesItem);
     return this;
@@ -512,7 +520,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleIpRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP ranges that have been granted permissions, in CIDR notation (for example, `10.0.0.0/24`).")
 
   public List<String> getOutboundRuleIpRanges() {
     return outboundRuleIpRanges;
@@ -532,7 +539,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleProtocolsItem(String outboundRuleProtocolsItem) {
     if (this.outboundRuleProtocols == null) {
-      this.outboundRuleProtocols = new ArrayList<String>();
+      this.outboundRuleProtocols = new ArrayList<>();
     }
     this.outboundRuleProtocols.add(outboundRuleProtocolsItem);
     return this;
@@ -543,7 +550,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleProtocols
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IP protocols for the permissions (`tcp` \\| `udp` \\| `icmp`, or a protocol number, or `-1` for all protocols).")
 
   public List<String> getOutboundRuleProtocols() {
     return outboundRuleProtocols;
@@ -563,7 +569,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleSecurityGroupIdsItem(String outboundRuleSecurityGroupIdsItem) {
     if (this.outboundRuleSecurityGroupIds == null) {
-      this.outboundRuleSecurityGroupIds = new ArrayList<String>();
+      this.outboundRuleSecurityGroupIds = new ArrayList<>();
     }
     this.outboundRuleSecurityGroupIds.add(outboundRuleSecurityGroupIdsItem);
     return this;
@@ -574,7 +580,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleSecurityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the security groups that have been granted permissions.")
 
   public List<String> getOutboundRuleSecurityGroupIds() {
     return outboundRuleSecurityGroupIds;
@@ -594,7 +599,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleSecurityGroupNamesItem(String outboundRuleSecurityGroupNamesItem) {
     if (this.outboundRuleSecurityGroupNames == null) {
-      this.outboundRuleSecurityGroupNames = new ArrayList<String>();
+      this.outboundRuleSecurityGroupNames = new ArrayList<>();
     }
     this.outboundRuleSecurityGroupNames.add(outboundRuleSecurityGroupNamesItem);
     return this;
@@ -605,7 +610,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleSecurityGroupNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the security groups that have been granted permissions.")
 
   public List<String> getOutboundRuleSecurityGroupNames() {
     return outboundRuleSecurityGroupNames;
@@ -625,7 +629,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addOutboundRuleToPortRangesItem(Integer outboundRuleToPortRangesItem) {
     if (this.outboundRuleToPortRanges == null) {
-      this.outboundRuleToPortRanges = new ArrayList<Integer>();
+      this.outboundRuleToPortRanges = new ArrayList<>();
     }
     this.outboundRuleToPortRanges.add(outboundRuleToPortRangesItem);
     return this;
@@ -636,7 +640,6 @@ public class FiltersSecurityGroup {
    * @return outboundRuleToPortRanges
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ends of the port ranges for the TCP and UDP protocols, or the ICMP code numbers.")
 
   public List<Integer> getOutboundRuleToPortRanges() {
     return outboundRuleToPortRanges;
@@ -656,7 +659,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addSecurityGroupIdsItem(String securityGroupIdsItem) {
     if (this.securityGroupIds == null) {
-      this.securityGroupIds = new ArrayList<String>();
+      this.securityGroupIds = new ArrayList<>();
     }
     this.securityGroupIds.add(securityGroupIdsItem);
     return this;
@@ -667,7 +670,6 @@ public class FiltersSecurityGroup {
    * @return securityGroupIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the security groups.")
 
   public List<String> getSecurityGroupIds() {
     return securityGroupIds;
@@ -687,7 +689,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addSecurityGroupNamesItem(String securityGroupNamesItem) {
     if (this.securityGroupNames == null) {
-      this.securityGroupNames = new ArrayList<String>();
+      this.securityGroupNames = new ArrayList<>();
     }
     this.securityGroupNames.add(securityGroupNamesItem);
     return this;
@@ -698,7 +700,6 @@ public class FiltersSecurityGroup {
    * @return securityGroupNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the security groups.")
 
   public List<String> getSecurityGroupNames() {
     return securityGroupNames;
@@ -718,7 +719,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -729,7 +730,6 @@ public class FiltersSecurityGroup {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the security groups.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -749,7 +749,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -760,7 +760,6 @@ public class FiltersSecurityGroup {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the security groups.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -780,7 +779,7 @@ public class FiltersSecurityGroup {
 
   public FiltersSecurityGroup addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -791,7 +790,6 @@ public class FiltersSecurityGroup {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the security groups, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -801,6 +799,7 @@ public class FiltersSecurityGroup {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -882,5 +881,197 @@ public class FiltersSecurityGroup {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountIds");
+    openapiFields.add("Descriptions");
+    openapiFields.add("InboundRuleAccountIds");
+    openapiFields.add("InboundRuleFromPortRanges");
+    openapiFields.add("InboundRuleIpRanges");
+    openapiFields.add("InboundRuleProtocols");
+    openapiFields.add("InboundRuleSecurityGroupIds");
+    openapiFields.add("InboundRuleSecurityGroupNames");
+    openapiFields.add("InboundRuleToPortRanges");
+    openapiFields.add("NetIds");
+    openapiFields.add("OutboundRuleAccountIds");
+    openapiFields.add("OutboundRuleFromPortRanges");
+    openapiFields.add("OutboundRuleIpRanges");
+    openapiFields.add("OutboundRuleProtocols");
+    openapiFields.add("OutboundRuleSecurityGroupIds");
+    openapiFields.add("OutboundRuleSecurityGroupNames");
+    openapiFields.add("OutboundRuleToPortRanges");
+    openapiFields.add("SecurityGroupIds");
+    openapiFields.add("SecurityGroupNames");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersSecurityGroup
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersSecurityGroup.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersSecurityGroup is not found in the empty JSON string", FiltersSecurityGroup.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersSecurityGroup.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersSecurityGroup` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccountIds") != null && !jsonObj.get("AccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Descriptions") != null && !jsonObj.get("Descriptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Descriptions` to be an array in the JSON string but got `%s`", jsonObj.get("Descriptions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleAccountIds") != null && !jsonObj.get("InboundRuleAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleFromPortRanges") != null && !jsonObj.get("InboundRuleFromPortRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleFromPortRanges` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleFromPortRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleIpRanges") != null && !jsonObj.get("InboundRuleIpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleIpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleIpRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleProtocols") != null && !jsonObj.get("InboundRuleProtocols").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleProtocols` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleProtocols").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleSecurityGroupIds") != null && !jsonObj.get("InboundRuleSecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleSecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleSecurityGroupIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleSecurityGroupNames") != null && !jsonObj.get("InboundRuleSecurityGroupNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleSecurityGroupNames` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleSecurityGroupNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("InboundRuleToPortRanges") != null && !jsonObj.get("InboundRuleToPortRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `InboundRuleToPortRanges` to be an array in the JSON string but got `%s`", jsonObj.get("InboundRuleToPortRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NetIds") != null && !jsonObj.get("NetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetIds` to be an array in the JSON string but got `%s`", jsonObj.get("NetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleAccountIds") != null && !jsonObj.get("OutboundRuleAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleFromPortRanges") != null && !jsonObj.get("OutboundRuleFromPortRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleFromPortRanges` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleFromPortRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleIpRanges") != null && !jsonObj.get("OutboundRuleIpRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleIpRanges` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleIpRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleProtocols") != null && !jsonObj.get("OutboundRuleProtocols").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleProtocols` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleProtocols").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleSecurityGroupIds") != null && !jsonObj.get("OutboundRuleSecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleSecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleSecurityGroupIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleSecurityGroupNames") != null && !jsonObj.get("OutboundRuleSecurityGroupNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleSecurityGroupNames` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleSecurityGroupNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("OutboundRuleToPortRanges") != null && !jsonObj.get("OutboundRuleToPortRanges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `OutboundRuleToPortRanges` to be an array in the JSON string but got `%s`", jsonObj.get("OutboundRuleToPortRanges").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupIds") != null && !jsonObj.get("SecurityGroupIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupIds` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroupNames") != null && !jsonObj.get("SecurityGroupNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroupNames` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroupNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersSecurityGroup.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersSecurityGroup' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersSecurityGroup> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersSecurityGroup.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersSecurityGroup>() {
+           @Override
+           public void write(JsonWriter out, FiltersSecurityGroup value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersSecurityGroup read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersSecurityGroup given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersSecurityGroup
+  * @throws IOException if the JSON string is invalid with respect to FiltersSecurityGroup
+  */
+  public static FiltersSecurityGroup fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersSecurityGroup.class);
+  }
+
+ /**
+  * Convert an instance of FiltersSecurityGroup to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

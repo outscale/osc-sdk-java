@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the listener rule.
  */
-@ApiModel(description = "Information about the listener rule.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ListenerRule {
   public static final String SERIALIZED_NAME_ACTION = "Action";
   @SerializedName(SERIALIZED_NAME_ACTION)
@@ -64,6 +82,8 @@ public class ListenerRule {
   @SerializedName(SERIALIZED_NAME_VM_IDS)
   private List<String> vmIds = null;
 
+  public ListenerRule() {
+  }
 
   public ListenerRule action(String action) {
     
@@ -76,7 +96,6 @@ public class ListenerRule {
    * @return action
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of action for the rule (always `forward`).")
 
   public String getAction() {
     return action;
@@ -99,7 +118,6 @@ public class ListenerRule {
    * @return hostNamePattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A host-name pattern for the rule, with a maximum length of 128 characters. This host-name pattern supports maximum three wildcards, and must not contain any special characters except [-.?].")
 
   public String getHostNamePattern() {
     return hostNamePattern;
@@ -122,7 +140,6 @@ public class ListenerRule {
    * @return listenerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the listener.")
 
   public Integer getListenerId() {
     return listenerId;
@@ -145,7 +162,6 @@ public class ListenerRule {
    * @return listenerRuleId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the listener rule.")
 
   public Integer getListenerRuleId() {
     return listenerRuleId;
@@ -168,7 +184,6 @@ public class ListenerRule {
    * @return listenerRuleName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A human-readable name for the listener rule.")
 
   public String getListenerRuleName() {
     return listenerRuleName;
@@ -191,7 +206,6 @@ public class ListenerRule {
    * @return pathPattern
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A path pattern for the rule, with a maximum length of 128 characters. This path pattern supports maximum three wildcards, and must not contain any special characters except [_-.$/~&quot;'@:+?].")
 
   public String getPathPattern() {
     return pathPattern;
@@ -214,7 +228,6 @@ public class ListenerRule {
    * @return priority
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The priority level of the listener rule, between `1` and `19999` both included. Each rule must have a unique priority level. Otherwise, an error is returned.")
 
   public Integer getPriority() {
     return priority;
@@ -234,7 +247,7 @@ public class ListenerRule {
 
   public ListenerRule addVmIdsItem(String vmIdsItem) {
     if (this.vmIds == null) {
-      this.vmIds = new ArrayList<String>();
+      this.vmIds = new ArrayList<>();
     }
     this.vmIds.add(vmIdsItem);
     return this;
@@ -245,7 +258,6 @@ public class ListenerRule {
    * @return vmIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the backend VMs.")
 
   public List<String> getVmIds() {
     return vmIds;
@@ -255,6 +267,7 @@ public class ListenerRule {
   public void setVmIds(List<String> vmIds) {
     this.vmIds = vmIds;
   }
+
 
 
   @Override
@@ -308,5 +321,111 @@ public class ListenerRule {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Action");
+    openapiFields.add("HostNamePattern");
+    openapiFields.add("ListenerId");
+    openapiFields.add("ListenerRuleId");
+    openapiFields.add("ListenerRuleName");
+    openapiFields.add("PathPattern");
+    openapiFields.add("Priority");
+    openapiFields.add("VmIds");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ListenerRule
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ListenerRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ListenerRule is not found in the empty JSON string", ListenerRule.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ListenerRule.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ListenerRule` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Action") != null && !jsonObj.get("Action").isJsonNull()) && !jsonObj.get("Action").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Action").toString()));
+      }
+      if ((jsonObj.get("HostNamePattern") != null && !jsonObj.get("HostNamePattern").isJsonNull()) && !jsonObj.get("HostNamePattern").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `HostNamePattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("HostNamePattern").toString()));
+      }
+      if ((jsonObj.get("ListenerRuleName") != null && !jsonObj.get("ListenerRuleName").isJsonNull()) && !jsonObj.get("ListenerRuleName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ListenerRuleName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ListenerRuleName").toString()));
+      }
+      if ((jsonObj.get("PathPattern") != null && !jsonObj.get("PathPattern").isJsonNull()) && !jsonObj.get("PathPattern").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PathPattern` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PathPattern").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VmIds") != null && !jsonObj.get("VmIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmIds` to be an array in the JSON string but got `%s`", jsonObj.get("VmIds").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ListenerRule.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ListenerRule' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ListenerRule> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ListenerRule.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ListenerRule>() {
+           @Override
+           public void write(JsonWriter out, ListenerRule value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ListenerRule read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ListenerRule given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ListenerRule
+  * @throws IOException if the JSON string is invalid with respect to ListenerRule
+  */
+  public static ListenerRule fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ListenerRule.class);
+  }
+
+ /**
+  * Convert an instance of ListenerRule to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

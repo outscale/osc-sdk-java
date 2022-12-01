@@ -24,18 +24,36 @@ import com.outscale.osc_sdk_java.client.model.BlockDeviceMappingImage;
 import com.outscale.osc_sdk_java.client.model.PermissionsOnResource;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
 import com.outscale.osc_sdk_java.client.model.StateComment;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the OMI.
  */
-@ApiModel(description = "Information about the OMI.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Image {
   public static final String SERIALIZED_NAME_ACCOUNT_ALIAS = "AccountAlias";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ALIAS)
@@ -105,6 +123,8 @@ public class Image {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public Image() {
+  }
 
   public Image accountAlias(String accountAlias) {
     
@@ -117,7 +137,6 @@ public class Image {
    * @return accountAlias
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account alias of the owner of the OMI.")
 
   public String getAccountAlias() {
     return accountAlias;
@@ -140,7 +159,6 @@ public class Image {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the OMI.")
 
   public String getAccountId() {
     return accountId;
@@ -163,7 +181,6 @@ public class Image {
    * @return architecture
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The architecture of the OMI (by default, `i386`).")
 
   public String getArchitecture() {
     return architecture;
@@ -183,7 +200,7 @@ public class Image {
 
   public Image addBlockDeviceMappingsItem(BlockDeviceMappingImage blockDeviceMappingsItem) {
     if (this.blockDeviceMappings == null) {
-      this.blockDeviceMappings = new ArrayList<BlockDeviceMappingImage>();
+      this.blockDeviceMappings = new ArrayList<>();
     }
     this.blockDeviceMappings.add(blockDeviceMappingsItem);
     return this;
@@ -194,7 +211,6 @@ public class Image {
    * @return blockDeviceMappings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more block device mappings.")
 
   public List<BlockDeviceMappingImage> getBlockDeviceMappings() {
     return blockDeviceMappings;
@@ -217,7 +233,6 @@ public class Image {
    * @return creationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date and time at which the OMI was created.")
 
   public LocalDate getCreationDate() {
     return creationDate;
@@ -240,7 +255,6 @@ public class Image {
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The description of the OMI.")
 
   public String getDescription() {
     return description;
@@ -263,7 +277,6 @@ public class Image {
    * @return fileLocation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The location of the bucket where the OMI files are stored.")
 
   public String getFileLocation() {
     return fileLocation;
@@ -286,7 +299,6 @@ public class Image {
    * @return imageId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the OMI.")
 
   public String getImageId() {
     return imageId;
@@ -309,7 +321,6 @@ public class Image {
    * @return imageName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the OMI.")
 
   public String getImageName() {
     return imageName;
@@ -332,7 +343,6 @@ public class Image {
    * @return imageType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of the OMI.")
 
   public String getImageType() {
     return imageType;
@@ -355,7 +365,6 @@ public class Image {
    * @return permissionsToLaunch
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public PermissionsOnResource getPermissionsToLaunch() {
     return permissionsToLaunch;
@@ -375,7 +384,7 @@ public class Image {
 
   public Image addProductCodesItem(String productCodesItem) {
     if (this.productCodes == null) {
-      this.productCodes = new ArrayList<String>();
+      this.productCodes = new ArrayList<>();
     }
     this.productCodes.add(productCodesItem);
     return this;
@@ -386,7 +395,6 @@ public class Image {
    * @return productCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).")
 
   public List<String> getProductCodes() {
     return productCodes;
@@ -409,7 +417,6 @@ public class Image {
    * @return rootDeviceName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the root device.")
 
   public String getRootDeviceName() {
     return rootDeviceName;
@@ -432,7 +439,6 @@ public class Image {
    * @return rootDeviceType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of root device used by the OMI (always `bsu`).")
 
   public String getRootDeviceType() {
     return rootDeviceType;
@@ -455,7 +461,6 @@ public class Image {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the OMI (`pending` \\| `available` \\| `failed`).")
 
   public String getState() {
     return state;
@@ -478,7 +483,6 @@ public class Image {
    * @return stateComment
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public StateComment getStateComment() {
     return stateComment;
@@ -498,7 +502,7 @@ public class Image {
 
   public Image addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -509,7 +513,6 @@ public class Image {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the OMI.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -519,6 +522,7 @@ public class Image {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -590,5 +594,177 @@ public class Image {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountAlias");
+    openapiFields.add("AccountId");
+    openapiFields.add("Architecture");
+    openapiFields.add("BlockDeviceMappings");
+    openapiFields.add("CreationDate");
+    openapiFields.add("Description");
+    openapiFields.add("FileLocation");
+    openapiFields.add("ImageId");
+    openapiFields.add("ImageName");
+    openapiFields.add("ImageType");
+    openapiFields.add("PermissionsToLaunch");
+    openapiFields.add("ProductCodes");
+    openapiFields.add("RootDeviceName");
+    openapiFields.add("RootDeviceType");
+    openapiFields.add("State");
+    openapiFields.add("StateComment");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Image
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Image.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Image is not found in the empty JSON string", Image.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Image.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Image` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountAlias") != null && !jsonObj.get("AccountAlias").isJsonNull()) && !jsonObj.get("AccountAlias").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountAlias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountAlias").toString()));
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      if ((jsonObj.get("Architecture") != null && !jsonObj.get("Architecture").isJsonNull()) && !jsonObj.get("Architecture").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Architecture` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Architecture").toString()));
+      }
+      if (jsonObj.get("BlockDeviceMappings") != null && !jsonObj.get("BlockDeviceMappings").isJsonNull()) {
+        JsonArray jsonArrayblockDeviceMappings = jsonObj.getAsJsonArray("BlockDeviceMappings");
+        if (jsonArrayblockDeviceMappings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("BlockDeviceMappings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappings` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappings").toString()));
+          }
+
+          // validate the optional field `BlockDeviceMappings` (array)
+          for (int i = 0; i < jsonArrayblockDeviceMappings.size(); i++) {
+            BlockDeviceMappingImage.validateJsonObject(jsonArrayblockDeviceMappings.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull()) && !jsonObj.get("Description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Description").toString()));
+      }
+      if ((jsonObj.get("FileLocation") != null && !jsonObj.get("FileLocation").isJsonNull()) && !jsonObj.get("FileLocation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FileLocation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FileLocation").toString()));
+      }
+      if ((jsonObj.get("ImageId") != null && !jsonObj.get("ImageId").isJsonNull()) && !jsonObj.get("ImageId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ImageId").toString()));
+      }
+      if ((jsonObj.get("ImageName") != null && !jsonObj.get("ImageName").isJsonNull()) && !jsonObj.get("ImageName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ImageName").toString()));
+      }
+      if ((jsonObj.get("ImageType") != null && !jsonObj.get("ImageType").isJsonNull()) && !jsonObj.get("ImageType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ImageType").toString()));
+      }
+      // validate the optional field `PermissionsToLaunch`
+      if (jsonObj.get("PermissionsToLaunch") != null && !jsonObj.get("PermissionsToLaunch").isJsonNull()) {
+        PermissionsOnResource.validateJsonObject(jsonObj.getAsJsonObject("PermissionsToLaunch"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ProductCodes") != null && !jsonObj.get("ProductCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ProductCodes` to be an array in the JSON string but got `%s`", jsonObj.get("ProductCodes").toString()));
+      }
+      if ((jsonObj.get("RootDeviceName") != null && !jsonObj.get("RootDeviceName").isJsonNull()) && !jsonObj.get("RootDeviceName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RootDeviceName").toString()));
+      }
+      if ((jsonObj.get("RootDeviceType") != null && !jsonObj.get("RootDeviceType").isJsonNull()) && !jsonObj.get("RootDeviceType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RootDeviceType").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      // validate the optional field `StateComment`
+      if (jsonObj.get("StateComment") != null && !jsonObj.get("StateComment").isJsonNull()) {
+        StateComment.validateJsonObject(jsonObj.getAsJsonObject("StateComment"));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Image.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Image' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Image> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Image.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Image>() {
+           @Override
+           public void write(JsonWriter out, Image value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Image read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Image given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Image
+  * @throws IOException if the JSON string is invalid with respect to Image
+  */
+  public static Image fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Image.class);
+  }
+
+ /**
+  * Convert an instance of Image to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

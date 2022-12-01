@@ -22,16 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.Log;
 import com.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * ReadApiLogsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ReadApiLogsResponse {
   public static final String SERIALIZED_NAME_LOGS = "Logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
@@ -45,6 +64,8 @@ public class ReadApiLogsResponse {
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
   private ResponseContext responseContext;
 
+  public ReadApiLogsResponse() {
+  }
 
   public ReadApiLogsResponse logs(List<Log> logs) {
     
@@ -54,7 +75,7 @@ public class ReadApiLogsResponse {
 
   public ReadApiLogsResponse addLogsItem(Log logsItem) {
     if (this.logs == null) {
-      this.logs = new ArrayList<Log>();
+      this.logs = new ArrayList<>();
     }
     this.logs.add(logsItem);
     return this;
@@ -65,7 +86,6 @@ public class ReadApiLogsResponse {
    * @return logs
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Information about one or more logs.")
 
   public List<Log> getLogs() {
     return logs;
@@ -88,7 +108,6 @@ public class ReadApiLogsResponse {
    * @return nextPageToken
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The token to request the next page of results.")
 
   public String getNextPageToken() {
     return nextPageToken;
@@ -111,7 +130,6 @@ public class ReadApiLogsResponse {
    * @return responseContext
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ResponseContext getResponseContext() {
     return responseContext;
@@ -121,6 +139,7 @@ public class ReadApiLogsResponse {
   public void setResponseContext(ResponseContext responseContext) {
     this.responseContext = responseContext;
   }
+
 
 
   @Override
@@ -164,5 +183,111 @@ public class ReadApiLogsResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Logs");
+    openapiFields.add("NextPageToken");
+    openapiFields.add("ResponseContext");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ReadApiLogsResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ReadApiLogsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadApiLogsResponse is not found in the empty JSON string", ReadApiLogsResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ReadApiLogsResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadApiLogsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if (jsonObj.get("Logs") != null && !jsonObj.get("Logs").isJsonNull()) {
+        JsonArray jsonArraylogs = jsonObj.getAsJsonArray("Logs");
+        if (jsonArraylogs != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Logs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Logs` to be an array in the JSON string but got `%s`", jsonObj.get("Logs").toString()));
+          }
+
+          // validate the optional field `Logs` (array)
+          for (int i = 0; i < jsonArraylogs.size(); i++) {
+            Log.validateJsonObject(jsonArraylogs.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("NextPageToken") != null && !jsonObj.get("NextPageToken").isJsonNull()) && !jsonObj.get("NextPageToken").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NextPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextPageToken").toString()));
+      }
+      // validate the optional field `ResponseContext`
+      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
+        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ReadApiLogsResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ReadApiLogsResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ReadApiLogsResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ReadApiLogsResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ReadApiLogsResponse>() {
+           @Override
+           public void write(JsonWriter out, ReadApiLogsResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ReadApiLogsResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ReadApiLogsResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ReadApiLogsResponse
+  * @throws IOException if the JSON string is invalid with respect to ReadApiLogsResponse
+  */
+  public static ReadApiLogsResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ReadApiLogsResponse.class);
+  }
+
+ /**
+  * Convert an instance of ReadApiLogsResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

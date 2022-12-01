@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersClientGateway {
   public static final String SERIALIZED_NAME_BGP_ASNS = "BgpAsns";
   @SerializedName(SERIALIZED_NAME_BGP_ASNS)
@@ -64,6 +82,8 @@ public class FiltersClientGateway {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersClientGateway() {
+  }
 
   public FiltersClientGateway bgpAsns(List<Integer> bgpAsns) {
     
@@ -73,7 +93,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addBgpAsnsItem(Integer bgpAsnsItem) {
     if (this.bgpAsns == null) {
-      this.bgpAsns = new ArrayList<Integer>();
+      this.bgpAsns = new ArrayList<>();
     }
     this.bgpAsns.add(bgpAsnsItem);
     return this;
@@ -84,7 +104,6 @@ public class FiltersClientGateway {
    * @return bgpAsns
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Border Gateway Protocol (BGP) Autonomous System Numbers (ASNs) of the connections.")
 
   public List<Integer> getBgpAsns() {
     return bgpAsns;
@@ -104,7 +123,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addClientGatewayIdsItem(String clientGatewayIdsItem) {
     if (this.clientGatewayIds == null) {
-      this.clientGatewayIds = new ArrayList<String>();
+      this.clientGatewayIds = new ArrayList<>();
     }
     this.clientGatewayIds.add(clientGatewayIdsItem);
     return this;
@@ -115,7 +134,6 @@ public class FiltersClientGateway {
    * @return clientGatewayIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the client gateways.")
 
   public List<String> getClientGatewayIds() {
     return clientGatewayIds;
@@ -135,7 +153,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addConnectionTypesItem(String connectionTypesItem) {
     if (this.connectionTypes == null) {
-      this.connectionTypes = new ArrayList<String>();
+      this.connectionTypes = new ArrayList<>();
     }
     this.connectionTypes.add(connectionTypesItem);
     return this;
@@ -146,7 +164,6 @@ public class FiltersClientGateway {
    * @return connectionTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The types of communication tunnels used by the client gateways (only `ipsec.1` is supported).")
 
   public List<String> getConnectionTypes() {
     return connectionTypes;
@@ -166,7 +183,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addPublicIpsItem(String publicIpsItem) {
     if (this.publicIps == null) {
-      this.publicIps = new ArrayList<String>();
+      this.publicIps = new ArrayList<>();
     }
     this.publicIps.add(publicIpsItem);
     return this;
@@ -177,7 +194,6 @@ public class FiltersClientGateway {
    * @return publicIps
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IPv4 addresses of the client gateways.")
 
   public List<String> getPublicIps() {
     return publicIps;
@@ -197,7 +213,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -208,7 +224,6 @@ public class FiltersClientGateway {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the client gateways (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public List<String> getStates() {
     return states;
@@ -228,7 +243,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -239,7 +254,6 @@ public class FiltersClientGateway {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the client gateways.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -259,7 +273,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -270,7 +284,6 @@ public class FiltersClientGateway {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the client gateways.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -290,7 +303,7 @@ public class FiltersClientGateway {
 
   public FiltersClientGateway addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -301,7 +314,6 @@ public class FiltersClientGateway {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the client gateways, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -311,6 +323,7 @@ public class FiltersClientGateway {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -364,5 +377,127 @@ public class FiltersClientGateway {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("BgpAsns");
+    openapiFields.add("ClientGatewayIds");
+    openapiFields.add("ConnectionTypes");
+    openapiFields.add("PublicIps");
+    openapiFields.add("States");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersClientGateway
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersClientGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersClientGateway is not found in the empty JSON string", FiltersClientGateway.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersClientGateway.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersClientGateway` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BgpAsns") != null && !jsonObj.get("BgpAsns").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BgpAsns` to be an array in the JSON string but got `%s`", jsonObj.get("BgpAsns").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ClientGatewayIds") != null && !jsonObj.get("ClientGatewayIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientGatewayIds` to be an array in the JSON string but got `%s`", jsonObj.get("ClientGatewayIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ConnectionTypes") != null && !jsonObj.get("ConnectionTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConnectionTypes` to be an array in the JSON string but got `%s`", jsonObj.get("ConnectionTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PublicIps") != null && !jsonObj.get("PublicIps").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIps` to be an array in the JSON string but got `%s`", jsonObj.get("PublicIps").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersClientGateway.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersClientGateway' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersClientGateway> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersClientGateway.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersClientGateway>() {
+           @Override
+           public void write(JsonWriter out, FiltersClientGateway value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersClientGateway read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersClientGateway given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersClientGateway
+  * @throws IOException if the JSON string is invalid with respect to FiltersClientGateway
+  */
+  public static FiltersClientGateway fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersClientGateway.class);
+  }
+
+ /**
+  * Convert an instance of FiltersClientGateway to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

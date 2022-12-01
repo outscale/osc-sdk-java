@@ -22,17 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.OsuExportSnapshotExportTask;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the snapshot export task.
  */
-@ApiModel(description = "Information about the snapshot export task.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class SnapshotExportTask {
   public static final String SERIALIZED_NAME_COMMENT = "Comment";
   @SerializedName(SERIALIZED_NAME_COMMENT)
@@ -62,6 +80,8 @@ public class SnapshotExportTask {
   @SerializedName(SERIALIZED_NAME_TASK_ID)
   private String taskId;
 
+  public SnapshotExportTask() {
+  }
 
   public SnapshotExportTask comment(String comment) {
     
@@ -74,7 +94,6 @@ public class SnapshotExportTask {
    * @return comment
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If the snapshot export task fails, an error message appears.")
 
   public String getComment() {
     return comment;
@@ -97,7 +116,6 @@ public class SnapshotExportTask {
    * @return osuExport
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public OsuExportSnapshotExportTask getOsuExport() {
     return osuExport;
@@ -120,7 +138,6 @@ public class SnapshotExportTask {
    * @return progress
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The progress of the snapshot export task, as a percentage.")
 
   public Integer getProgress() {
     return progress;
@@ -143,7 +160,6 @@ public class SnapshotExportTask {
    * @return snapshotId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the snapshot to be exported.")
 
   public String getSnapshotId() {
     return snapshotId;
@@ -166,7 +182,6 @@ public class SnapshotExportTask {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the snapshot export task (`pending` \\| `active` \\| `completed` \\| `failed`).")
 
   public String getState() {
     return state;
@@ -186,7 +201,7 @@ public class SnapshotExportTask {
 
   public SnapshotExportTask addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -197,7 +212,6 @@ public class SnapshotExportTask {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the snapshot export task.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -220,7 +234,6 @@ public class SnapshotExportTask {
    * @return taskId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the snapshot export task.")
 
   public String getTaskId() {
     return taskId;
@@ -230,6 +243,7 @@ public class SnapshotExportTask {
   public void setTaskId(String taskId) {
     this.taskId = taskId;
   }
+
 
 
   @Override
@@ -281,5 +295,124 @@ public class SnapshotExportTask {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("Comment");
+    openapiFields.add("OsuExport");
+    openapiFields.add("Progress");
+    openapiFields.add("SnapshotId");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+    openapiFields.add("TaskId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to SnapshotExportTask
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!SnapshotExportTask.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SnapshotExportTask is not found in the empty JSON string", SnapshotExportTask.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!SnapshotExportTask.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SnapshotExportTask` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Comment") != null && !jsonObj.get("Comment").isJsonNull()) && !jsonObj.get("Comment").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Comment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Comment").toString()));
+      }
+      // validate the optional field `OsuExport`
+      if (jsonObj.get("OsuExport") != null && !jsonObj.get("OsuExport").isJsonNull()) {
+        OsuExportSnapshotExportTask.validateJsonObject(jsonObj.getAsJsonObject("OsuExport"));
+      }
+      if ((jsonObj.get("SnapshotId") != null && !jsonObj.get("SnapshotId").isJsonNull()) && !jsonObj.get("SnapshotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SnapshotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SnapshotId").toString()));
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("TaskId") != null && !jsonObj.get("TaskId").isJsonNull()) && !jsonObj.get("TaskId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TaskId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TaskId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!SnapshotExportTask.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SnapshotExportTask' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<SnapshotExportTask> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SnapshotExportTask.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<SnapshotExportTask>() {
+           @Override
+           public void write(JsonWriter out, SnapshotExportTask value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public SnapshotExportTask read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of SnapshotExportTask given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of SnapshotExportTask
+  * @throws IOException if the JSON string is invalid with respect to SnapshotExportTask
+  */
+  public static SnapshotExportTask fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SnapshotExportTask.class);
+  }
+
+ /**
+  * Convert an instance of SnapshotExportTask to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -22,17 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.NetToVirtualGatewayLink;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the virtual gateway.
  */
-@ApiModel(description = "Information about the virtual gateway.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class VirtualGateway {
   public static final String SERIALIZED_NAME_CONNECTION_TYPE = "ConnectionType";
   @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
@@ -54,6 +72,8 @@ public class VirtualGateway {
   @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY_ID)
   private String virtualGatewayId;
 
+  public VirtualGateway() {
+  }
 
   public VirtualGateway connectionType(String connectionType) {
     
@@ -66,7 +86,6 @@ public class VirtualGateway {
    * @return connectionType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of VPN connection supported by the virtual gateway (only `ipsec.1` is supported).")
 
   public String getConnectionType() {
     return connectionType;
@@ -86,7 +105,7 @@ public class VirtualGateway {
 
   public VirtualGateway addNetToVirtualGatewayLinksItem(NetToVirtualGatewayLink netToVirtualGatewayLinksItem) {
     if (this.netToVirtualGatewayLinks == null) {
-      this.netToVirtualGatewayLinks = new ArrayList<NetToVirtualGatewayLink>();
+      this.netToVirtualGatewayLinks = new ArrayList<>();
     }
     this.netToVirtualGatewayLinks.add(netToVirtualGatewayLinksItem);
     return this;
@@ -97,7 +116,6 @@ public class VirtualGateway {
    * @return netToVirtualGatewayLinks
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Net to which the virtual gateway is attached.")
 
   public List<NetToVirtualGatewayLink> getNetToVirtualGatewayLinks() {
     return netToVirtualGatewayLinks;
@@ -120,7 +138,6 @@ public class VirtualGateway {
    * @return state
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state of the virtual gateway (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public String getState() {
     return state;
@@ -140,7 +157,7 @@ public class VirtualGateway {
 
   public VirtualGateway addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -151,7 +168,6 @@ public class VirtualGateway {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the virtual gateway.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -174,7 +190,6 @@ public class VirtualGateway {
    * @return virtualGatewayId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the virtual gateway.")
 
   public String getVirtualGatewayId() {
     return virtualGatewayId;
@@ -184,6 +199,7 @@ public class VirtualGateway {
   public void setVirtualGatewayId(String virtualGatewayId) {
     this.virtualGatewayId = virtualGatewayId;
   }
+
 
 
   @Override
@@ -231,5 +247,129 @@ public class VirtualGateway {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ConnectionType");
+    openapiFields.add("NetToVirtualGatewayLinks");
+    openapiFields.add("State");
+    openapiFields.add("Tags");
+    openapiFields.add("VirtualGatewayId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to VirtualGateway
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!VirtualGateway.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VirtualGateway is not found in the empty JSON string", VirtualGateway.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!VirtualGateway.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VirtualGateway` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("ConnectionType") != null && !jsonObj.get("ConnectionType").isJsonNull()) && !jsonObj.get("ConnectionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ConnectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConnectionType").toString()));
+      }
+      if (jsonObj.get("NetToVirtualGatewayLinks") != null && !jsonObj.get("NetToVirtualGatewayLinks").isJsonNull()) {
+        JsonArray jsonArraynetToVirtualGatewayLinks = jsonObj.getAsJsonArray("NetToVirtualGatewayLinks");
+        if (jsonArraynetToVirtualGatewayLinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("NetToVirtualGatewayLinks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `NetToVirtualGatewayLinks` to be an array in the JSON string but got `%s`", jsonObj.get("NetToVirtualGatewayLinks").toString()));
+          }
+
+          // validate the optional field `NetToVirtualGatewayLinks` (array)
+          for (int i = 0; i < jsonArraynetToVirtualGatewayLinks.size(); i++) {
+            NetToVirtualGatewayLink.validateJsonObject(jsonArraynetToVirtualGatewayLinks.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("VirtualGatewayId") != null && !jsonObj.get("VirtualGatewayId").isJsonNull()) && !jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualGatewayId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!VirtualGateway.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VirtualGateway' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<VirtualGateway> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VirtualGateway.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<VirtualGateway>() {
+           @Override
+           public void write(JsonWriter out, VirtualGateway value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public VirtualGateway read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of VirtualGateway given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of VirtualGateway
+  * @throws IOException if the JSON string is invalid with respect to VirtualGateway
+  */
+  public static VirtualGateway fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VirtualGateway.class);
+  }
+
+ /**
+  * Convert an instance of VirtualGateway to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

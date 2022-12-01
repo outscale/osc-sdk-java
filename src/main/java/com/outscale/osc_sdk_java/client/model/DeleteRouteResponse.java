@@ -22,14 +22,33 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResponseContext;
 import com.outscale.osc_sdk_java.client.model.RouteTable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * DeleteRouteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class DeleteRouteResponse {
   public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
   @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
@@ -39,6 +58,8 @@ public class DeleteRouteResponse {
   @SerializedName(SERIALIZED_NAME_ROUTE_TABLE)
   private RouteTable routeTable;
 
+  public DeleteRouteResponse() {
+  }
 
   public DeleteRouteResponse responseContext(ResponseContext responseContext) {
     
@@ -51,7 +72,6 @@ public class DeleteRouteResponse {
    * @return responseContext
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public ResponseContext getResponseContext() {
     return responseContext;
@@ -74,7 +94,6 @@ public class DeleteRouteResponse {
    * @return routeTable
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public RouteTable getRouteTable() {
     return routeTable;
@@ -84,6 +103,7 @@ public class DeleteRouteResponse {
   public void setRouteTable(RouteTable routeTable) {
     this.routeTable = routeTable;
   }
+
 
 
   @Override
@@ -125,5 +145,97 @@ public class DeleteRouteResponse {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ResponseContext");
+    openapiFields.add("RouteTable");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to DeleteRouteResponse
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!DeleteRouteResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteRouteResponse is not found in the empty JSON string", DeleteRouteResponse.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!DeleteRouteResponse.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteRouteResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // validate the optional field `ResponseContext`
+      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
+        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+      }
+      // validate the optional field `RouteTable`
+      if (jsonObj.get("RouteTable") != null && !jsonObj.get("RouteTable").isJsonNull()) {
+        RouteTable.validateJsonObject(jsonObj.getAsJsonObject("RouteTable"));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!DeleteRouteResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeleteRouteResponse' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<DeleteRouteResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteRouteResponse.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<DeleteRouteResponse>() {
+           @Override
+           public void write(JsonWriter out, DeleteRouteResponse value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public DeleteRouteResponse read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of DeleteRouteResponse given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of DeleteRouteResponse
+  * @throws IOException if the JSON string is invalid with respect to DeleteRouteResponse
+  */
+  public static DeleteRouteResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeleteRouteResponse.class);
+  }
+
+ /**
+  * Convert an instance of DeleteRouteResponse to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

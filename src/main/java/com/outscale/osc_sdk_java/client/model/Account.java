@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the account.
  */
-@ApiModel(description = "Information about the account.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class Account {
   public static final String SERIALIZED_NAME_ACCOUNT_ID = "AccountId";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
@@ -92,6 +110,8 @@ public class Account {
   @SerializedName(SERIALIZED_NAME_ZIP_CODE)
   private String zipCode;
 
+  public Account() {
+  }
 
   public Account accountId(String accountId) {
     
@@ -104,7 +124,6 @@ public class Account {
    * @return accountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the account.")
 
   public String getAccountId() {
     return accountId;
@@ -124,7 +143,7 @@ public class Account {
 
   public Account addAdditionalEmailsItem(String additionalEmailsItem) {
     if (this.additionalEmails == null) {
-      this.additionalEmails = new ArrayList<String>();
+      this.additionalEmails = new ArrayList<>();
     }
     this.additionalEmails.add(additionalEmailsItem);
     return this;
@@ -135,7 +154,6 @@ public class Account {
    * @return additionalEmails
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more additional email addresses for the account. These addresses are used for notifications only.")
 
   public List<String> getAdditionalEmails() {
     return additionalEmails;
@@ -158,7 +176,6 @@ public class Account {
    * @return city
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The city of the account owner.")
 
   public String getCity() {
     return city;
@@ -181,7 +198,6 @@ public class Account {
    * @return companyName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the company for the account.")
 
   public String getCompanyName() {
     return companyName;
@@ -204,7 +220,6 @@ public class Account {
    * @return country
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The country of the account owner.")
 
   public String getCountry() {
     return country;
@@ -227,7 +242,6 @@ public class Account {
    * @return customerId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the customer.")
 
   public String getCustomerId() {
     return customerId;
@@ -250,7 +264,6 @@ public class Account {
    * @return email
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The main email address for the account. This address is used for your credentials and for notifications.")
 
   public String getEmail() {
     return email;
@@ -273,7 +286,6 @@ public class Account {
    * @return firstName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The first name of the account owner.")
 
   public String getFirstName() {
     return firstName;
@@ -296,7 +308,6 @@ public class Account {
    * @return jobTitle
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The job title of the account owner.")
 
   public String getJobTitle() {
     return jobTitle;
@@ -319,7 +330,6 @@ public class Account {
    * @return lastName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The last name of the account owner.")
 
   public String getLastName() {
     return lastName;
@@ -342,7 +352,6 @@ public class Account {
    * @return mobileNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The mobile phone number of the account owner.")
 
   public String getMobileNumber() {
     return mobileNumber;
@@ -365,7 +374,6 @@ public class Account {
    * @return phoneNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The landline phone number of the account owner.")
 
   public String getPhoneNumber() {
     return phoneNumber;
@@ -388,7 +396,6 @@ public class Account {
    * @return stateProvince
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The state/province of the account.")
 
   public String getStateProvince() {
     return stateProvince;
@@ -411,7 +418,6 @@ public class Account {
    * @return vatNumber
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The value added tax (VAT) number for the account.")
 
   public String getVatNumber() {
     return vatNumber;
@@ -434,7 +440,6 @@ public class Account {
    * @return zipCode
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ZIP code of the city.")
 
   public String getZipCode() {
     return zipCode;
@@ -444,6 +449,7 @@ public class Account {
   public void setZipCode(String zipCode) {
     this.zipCode = zipCode;
   }
+
 
 
   @Override
@@ -511,5 +517,148 @@ public class Account {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountId");
+    openapiFields.add("AdditionalEmails");
+    openapiFields.add("City");
+    openapiFields.add("CompanyName");
+    openapiFields.add("Country");
+    openapiFields.add("CustomerId");
+    openapiFields.add("Email");
+    openapiFields.add("FirstName");
+    openapiFields.add("JobTitle");
+    openapiFields.add("LastName");
+    openapiFields.add("MobileNumber");
+    openapiFields.add("PhoneNumber");
+    openapiFields.add("StateProvince");
+    openapiFields.add("VatNumber");
+    openapiFields.add("ZipCode");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to Account
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!Account.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Account is not found in the empty JSON string", Account.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!Account.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Account` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("AccountId") != null && !jsonObj.get("AccountId").isJsonNull()) && !jsonObj.get("AccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccountId").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AdditionalEmails") != null && !jsonObj.get("AdditionalEmails").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AdditionalEmails` to be an array in the JSON string but got `%s`", jsonObj.get("AdditionalEmails").toString()));
+      }
+      if ((jsonObj.get("City") != null && !jsonObj.get("City").isJsonNull()) && !jsonObj.get("City").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `City` to be a primitive type in the JSON string but got `%s`", jsonObj.get("City").toString()));
+      }
+      if ((jsonObj.get("CompanyName") != null && !jsonObj.get("CompanyName").isJsonNull()) && !jsonObj.get("CompanyName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CompanyName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CompanyName").toString()));
+      }
+      if ((jsonObj.get("Country") != null && !jsonObj.get("Country").isJsonNull()) && !jsonObj.get("Country").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Country").toString()));
+      }
+      if ((jsonObj.get("CustomerId") != null && !jsonObj.get("CustomerId").isJsonNull()) && !jsonObj.get("CustomerId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CustomerId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CustomerId").toString()));
+      }
+      if ((jsonObj.get("Email") != null && !jsonObj.get("Email").isJsonNull()) && !jsonObj.get("Email").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Email").toString()));
+      }
+      if ((jsonObj.get("FirstName") != null && !jsonObj.get("FirstName").isJsonNull()) && !jsonObj.get("FirstName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FirstName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FirstName").toString()));
+      }
+      if ((jsonObj.get("JobTitle") != null && !jsonObj.get("JobTitle").isJsonNull()) && !jsonObj.get("JobTitle").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `JobTitle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("JobTitle").toString()));
+      }
+      if ((jsonObj.get("LastName") != null && !jsonObj.get("LastName").isJsonNull()) && !jsonObj.get("LastName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LastName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LastName").toString()));
+      }
+      if ((jsonObj.get("MobileNumber") != null && !jsonObj.get("MobileNumber").isJsonNull()) && !jsonObj.get("MobileNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `MobileNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("MobileNumber").toString()));
+      }
+      if ((jsonObj.get("PhoneNumber") != null && !jsonObj.get("PhoneNumber").isJsonNull()) && !jsonObj.get("PhoneNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PhoneNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PhoneNumber").toString()));
+      }
+      if ((jsonObj.get("StateProvince") != null && !jsonObj.get("StateProvince").isJsonNull()) && !jsonObj.get("StateProvince").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `StateProvince` to be a primitive type in the JSON string but got `%s`", jsonObj.get("StateProvince").toString()));
+      }
+      if ((jsonObj.get("VatNumber") != null && !jsonObj.get("VatNumber").isJsonNull()) && !jsonObj.get("VatNumber").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VatNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VatNumber").toString()));
+      }
+      if ((jsonObj.get("ZipCode") != null && !jsonObj.get("ZipCode").isJsonNull()) && !jsonObj.get("ZipCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ZipCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ZipCode").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Account.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Account' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Account> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Account.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Account>() {
+           @Override
+           public void write(JsonWriter out, Account value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Account read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of Account given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of Account
+  * @throws IOException if the JSON string is invalid with respect to Account
+  */
+  public static Account fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Account.class);
+  }
+
+ /**
+  * Convert an instance of Account to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -21,17 +21,35 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * Information about the public IP.
  */
-@ApiModel(description = "Information about the public IP.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class PublicIp {
   public static final String SERIALIZED_NAME_LINK_PUBLIC_IP_ID = "LinkPublicIpId";
   @SerializedName(SERIALIZED_NAME_LINK_PUBLIC_IP_ID)
@@ -65,6 +83,8 @@ public class PublicIp {
   @SerializedName(SERIALIZED_NAME_VM_ID)
   private String vmId;
 
+  public PublicIp() {
+  }
 
   public PublicIp linkPublicIpId(String linkPublicIpId) {
     
@@ -77,7 +97,6 @@ public class PublicIp {
    * @return linkPublicIpId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Required in a Net) The ID representing the association of the public IP with the VM or the NIC.")
 
   public String getLinkPublicIpId() {
     return linkPublicIpId;
@@ -100,7 +119,6 @@ public class PublicIp {
    * @return nicAccountId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account ID of the owner of the NIC.")
 
   public String getNicAccountId() {
     return nicAccountId;
@@ -123,7 +141,6 @@ public class PublicIp {
    * @return nicId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the NIC the public IP is associated with (if any).")
 
   public String getNicId() {
     return nicId;
@@ -146,7 +163,6 @@ public class PublicIp {
    * @return privateIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The private IP associated with the public IP.")
 
   public String getPrivateIp() {
     return privateIp;
@@ -169,7 +185,6 @@ public class PublicIp {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The public IP.")
 
   public String getPublicIp() {
     return publicIp;
@@ -192,7 +207,6 @@ public class PublicIp {
    * @return publicIpId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The allocation ID of the public IP.")
 
   public String getPublicIpId() {
     return publicIpId;
@@ -212,7 +226,7 @@ public class PublicIp {
 
   public PublicIp addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -223,7 +237,6 @@ public class PublicIp {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags associated with the public IP.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -246,7 +259,6 @@ public class PublicIp {
    * @return vmId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the VM the public IP is associated with (if any).")
 
   public String getVmId() {
     return vmId;
@@ -256,6 +268,7 @@ public class PublicIp {
   public void setVmId(String vmId) {
     this.vmId = vmId;
   }
+
 
 
   @Override
@@ -309,5 +322,130 @@ public class PublicIp {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("LinkPublicIpId");
+    openapiFields.add("NicAccountId");
+    openapiFields.add("NicId");
+    openapiFields.add("PrivateIp");
+    openapiFields.add("PublicIp");
+    openapiFields.add("PublicIpId");
+    openapiFields.add("Tags");
+    openapiFields.add("VmId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to PublicIp
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!PublicIp.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PublicIp is not found in the empty JSON string", PublicIp.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!PublicIp.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PublicIp` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("LinkPublicIpId") != null && !jsonObj.get("LinkPublicIpId").isJsonNull()) && !jsonObj.get("LinkPublicIpId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LinkPublicIpId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LinkPublicIpId").toString()));
+      }
+      if ((jsonObj.get("NicAccountId") != null && !jsonObj.get("NicAccountId").isJsonNull()) && !jsonObj.get("NicAccountId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicAccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicAccountId").toString()));
+      }
+      if ((jsonObj.get("NicId") != null && !jsonObj.get("NicId").isJsonNull()) && !jsonObj.get("NicId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NicId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NicId").toString()));
+      }
+      if ((jsonObj.get("PrivateIp") != null && !jsonObj.get("PrivateIp").isJsonNull()) && !jsonObj.get("PrivateIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PrivateIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivateIp").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      if ((jsonObj.get("PublicIpId") != null && !jsonObj.get("PublicIpId").isJsonNull()) && !jsonObj.get("PublicIpId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIpId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIpId").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!PublicIp.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PublicIp' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<PublicIp> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PublicIp.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<PublicIp>() {
+           @Override
+           public void write(JsonWriter out, PublicIp value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public PublicIp read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of PublicIp given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of PublicIp
+  * @throws IOException if the JSON string is invalid with respect to PublicIp
+  */
+  public static PublicIp fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PublicIp.class);
+  }
+
+ /**
+  * Convert an instance of PublicIp to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

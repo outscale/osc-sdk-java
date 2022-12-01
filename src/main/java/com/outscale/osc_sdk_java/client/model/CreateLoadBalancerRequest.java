@@ -22,16 +22,35 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.outscale.osc_sdk_java.client.model.ListenerForCreation;
 import com.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * CreateLoadBalancerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class CreateLoadBalancerRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)
@@ -39,7 +58,7 @@ public class CreateLoadBalancerRequest {
 
   public static final String SERIALIZED_NAME_LISTENERS = "Listeners";
   @SerializedName(SERIALIZED_NAME_LISTENERS)
-  private List<ListenerForCreation> listeners = new ArrayList<ListenerForCreation>();
+  private List<ListenerForCreation> listeners = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LOAD_BALANCER_NAME = "LoadBalancerName";
   @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_NAME)
@@ -69,6 +88,8 @@ public class CreateLoadBalancerRequest {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<ResourceTag> tags = null;
 
+  public CreateLoadBalancerRequest() {
+  }
 
   public CreateLoadBalancerRequest dryRun(Boolean dryRun) {
     
@@ -81,7 +102,6 @@ public class CreateLoadBalancerRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -108,7 +128,7 @@ public class CreateLoadBalancerRequest {
    * One or more listeners to create.
    * @return listeners
   **/
-  @ApiModelProperty(required = true, value = "One or more listeners to create.")
+  @javax.annotation.Nonnull
 
   public List<ListenerForCreation> getListeners() {
     return listeners;
@@ -130,7 +150,7 @@ public class CreateLoadBalancerRequest {
    * The unique name of the load balancer (32 alphanumeric or hyphen characters maximum, but cannot start or end with a hyphen).
    * @return loadBalancerName
   **/
-  @ApiModelProperty(required = true, value = "The unique name of the load balancer (32 alphanumeric or hyphen characters maximum, but cannot start or end with a hyphen).")
+  @javax.annotation.Nonnull
 
   public String getLoadBalancerName() {
     return loadBalancerName;
@@ -153,7 +173,6 @@ public class CreateLoadBalancerRequest {
    * @return loadBalancerType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The type of load balancer: `internet-facing` or `internal`. Use this parameter only for load balancers in a Net.")
 
   public String getLoadBalancerType() {
     return loadBalancerType;
@@ -176,7 +195,6 @@ public class CreateLoadBalancerRequest {
    * @return publicIp
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated.")
 
   public String getPublicIp() {
     return publicIp;
@@ -196,7 +214,7 @@ public class CreateLoadBalancerRequest {
 
   public CreateLoadBalancerRequest addSecurityGroupsItem(String securityGroupsItem) {
     if (this.securityGroups == null) {
-      this.securityGroups = new ArrayList<String>();
+      this.securityGroups = new ArrayList<>();
     }
     this.securityGroups.add(securityGroupsItem);
     return this;
@@ -207,7 +225,6 @@ public class CreateLoadBalancerRequest {
    * @return securityGroups
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer.")
 
   public List<String> getSecurityGroups() {
     return securityGroups;
@@ -227,7 +244,7 @@ public class CreateLoadBalancerRequest {
 
   public CreateLoadBalancerRequest addSubnetsItem(String subnetsItem) {
     if (this.subnets == null) {
-      this.subnets = new ArrayList<String>();
+      this.subnets = new ArrayList<>();
     }
     this.subnets.add(subnetsItem);
     return this;
@@ -238,7 +255,6 @@ public class CreateLoadBalancerRequest {
    * @return subnets
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(Net only) The ID of the Subnet in which you want to create the load balancer. Regardless of this Subnet, the load balancer can distribute traffic to all Subnets. This parameter is required in a Net.")
 
   public List<String> getSubnets() {
     return subnets;
@@ -258,7 +274,7 @@ public class CreateLoadBalancerRequest {
 
   public CreateLoadBalancerRequest addSubregionNamesItem(String subregionNamesItem) {
     if (this.subregionNames == null) {
-      this.subregionNames = new ArrayList<String>();
+      this.subregionNames = new ArrayList<>();
     }
     this.subregionNames.add(subregionNamesItem);
     return this;
@@ -269,7 +285,6 @@ public class CreateLoadBalancerRequest {
    * @return subregionNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "(public Cloud only) The Subregion in which you want to create the load balancer. Regardless of this Subregion, the load balancer can distribute traffic to all Subregions. This parameter is required in the public Cloud.")
 
   public List<String> getSubregionNames() {
     return subregionNames;
@@ -289,7 +304,7 @@ public class CreateLoadBalancerRequest {
 
   public CreateLoadBalancerRequest addTagsItem(ResourceTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<ResourceTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -300,7 +315,6 @@ public class CreateLoadBalancerRequest {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "One or more tags assigned to the load balancer.")
 
   public List<ResourceTag> getTags() {
     return tags;
@@ -310,6 +324,7 @@ public class CreateLoadBalancerRequest {
   public void setTags(List<ResourceTag> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -365,5 +380,150 @@ public class CreateLoadBalancerRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DryRun");
+    openapiFields.add("Listeners");
+    openapiFields.add("LoadBalancerName");
+    openapiFields.add("LoadBalancerType");
+    openapiFields.add("PublicIp");
+    openapiFields.add("SecurityGroups");
+    openapiFields.add("Subnets");
+    openapiFields.add("SubregionNames");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("Listeners");
+    openapiRequiredFields.add("LoadBalancerName");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to CreateLoadBalancerRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!CreateLoadBalancerRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateLoadBalancerRequest is not found in the empty JSON string", CreateLoadBalancerRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!CreateLoadBalancerRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateLoadBalancerRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateLoadBalancerRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("Listeners").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Listeners` to be an array in the JSON string but got `%s`", jsonObj.get("Listeners").toString()));
+      }
+
+      JsonArray jsonArraylisteners = jsonObj.getAsJsonArray("Listeners");
+      // validate the required field `Listeners` (array)
+      for (int i = 0; i < jsonArraylisteners.size(); i++) {
+        ListenerForCreation.validateJsonObject(jsonArraylisteners.get(i).getAsJsonObject());
+      };
+      if (!jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerName").toString()));
+      }
+      if ((jsonObj.get("LoadBalancerType") != null && !jsonObj.get("LoadBalancerType").isJsonNull()) && !jsonObj.get("LoadBalancerType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerType").toString()));
+      }
+      if ((jsonObj.get("PublicIp") != null && !jsonObj.get("PublicIp").isJsonNull()) && !jsonObj.get("PublicIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SecurityGroups") != null && !jsonObj.get("SecurityGroups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SecurityGroups` to be an array in the JSON string but got `%s`", jsonObj.get("SecurityGroups").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Subnets") != null && !jsonObj.get("Subnets").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Subnets` to be an array in the JSON string but got `%s`", jsonObj.get("Subnets").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubregionNames") != null && !jsonObj.get("SubregionNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubregionNames` to be an array in the JSON string but got `%s`", jsonObj.get("SubregionNames").toString()));
+      }
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonNull()) {
+        JsonArray jsonArraytags = jsonObj.getAsJsonArray("Tags");
+        if (jsonArraytags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Tags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+          }
+
+          // validate the optional field `Tags` (array)
+          for (int i = 0; i < jsonArraytags.size(); i++) {
+            ResourceTag.validateJsonObject(jsonArraytags.get(i).getAsJsonObject());
+          };
+        }
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateLoadBalancerRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateLoadBalancerRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateLoadBalancerRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateLoadBalancerRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateLoadBalancerRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateLoadBalancerRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateLoadBalancerRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of CreateLoadBalancerRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of CreateLoadBalancerRequest
+  * @throws IOException if the JSON string is invalid with respect to CreateLoadBalancerRequest
+  */
+  public static CreateLoadBalancerRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateLoadBalancerRequest.class);
+  }
+
+ /**
+  * Convert an instance of CreateLoadBalancerRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

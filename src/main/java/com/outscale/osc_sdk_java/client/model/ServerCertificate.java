@@ -20,16 +20,34 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.LocalDate;
+import java.time.LocalDate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * Information about the server certificate.
  */
-@ApiModel(description = "Information about the server certificate.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class ServerCertificate {
   public static final String SERIALIZED_NAME_EXPIRATION_DATE = "ExpirationDate";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
@@ -55,6 +73,8 @@ public class ServerCertificate {
   @SerializedName(SERIALIZED_NAME_UPLOAD_DATE)
   private LocalDate uploadDate;
 
+  public ServerCertificate() {
+  }
 
   public ServerCertificate expirationDate(LocalDate expirationDate) {
     
@@ -67,7 +87,6 @@ public class ServerCertificate {
    * @return expirationDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date at which the server certificate expires.")
 
   public LocalDate getExpirationDate() {
     return expirationDate;
@@ -90,7 +109,6 @@ public class ServerCertificate {
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The ID of the server certificate.")
 
   public String getId() {
     return id;
@@ -113,7 +131,6 @@ public class ServerCertificate {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the server certificate.")
 
   public String getName() {
     return name;
@@ -136,7 +153,6 @@ public class ServerCertificate {
    * @return orn
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The Outscale Resource Name (ORN) of the server certificate. For more information, see [Resource Identifiers > Outscale Resource Names (ORNs)](https://docs.outscale.com/en/userguide/Resource-Identifiers.html#_outscale_resource_names_orns).")
 
   public String getOrn() {
     return orn;
@@ -159,7 +175,6 @@ public class ServerCertificate {
    * @return path
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The path to the server certificate.")
 
   public String getPath() {
     return path;
@@ -182,7 +197,6 @@ public class ServerCertificate {
    * @return uploadDate
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The date at which the server certificate has been uploaded.")
 
   public LocalDate getUploadDate() {
     return uploadDate;
@@ -192,6 +206,7 @@ public class ServerCertificate {
   public void setUploadDate(LocalDate uploadDate) {
     this.uploadDate = uploadDate;
   }
+
 
 
   @Override
@@ -241,5 +256,105 @@ public class ServerCertificate {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("ExpirationDate");
+    openapiFields.add("Id");
+    openapiFields.add("Name");
+    openapiFields.add("Orn");
+    openapiFields.add("Path");
+    openapiFields.add("UploadDate");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to ServerCertificate
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!ServerCertificate.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ServerCertificate is not found in the empty JSON string", ServerCertificate.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!ServerCertificate.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ServerCertificate` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      if ((jsonObj.get("Id") != null && !jsonObj.get("Id").isJsonNull()) && !jsonObj.get("Id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Id").toString()));
+      }
+      if ((jsonObj.get("Name") != null && !jsonObj.get("Name").isJsonNull()) && !jsonObj.get("Name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Name").toString()));
+      }
+      if ((jsonObj.get("Orn") != null && !jsonObj.get("Orn").isJsonNull()) && !jsonObj.get("Orn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Orn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Orn").toString()));
+      }
+      if ((jsonObj.get("Path") != null && !jsonObj.get("Path").isJsonNull()) && !jsonObj.get("Path").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Path").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!ServerCertificate.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ServerCertificate' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<ServerCertificate> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ServerCertificate.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<ServerCertificate>() {
+           @Override
+           public void write(JsonWriter out, ServerCertificate value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public ServerCertificate read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of ServerCertificate given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of ServerCertificate
+  * @throws IOException if the JSON string is invalid with respect to ServerCertificate
+  */
+  public static ServerCertificate fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ServerCertificate.class);
+  }
+
+ /**
+  * Convert an instance of ServerCertificate to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

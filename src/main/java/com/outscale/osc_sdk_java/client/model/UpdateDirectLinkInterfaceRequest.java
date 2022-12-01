@@ -20,14 +20,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
 
 /**
  * UpdateDirectLinkInterfaceRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class UpdateDirectLinkInterfaceRequest {
   public static final String SERIALIZED_NAME_DIRECT_LINK_INTERFACE_ID = "DirectLinkInterfaceId";
   @SerializedName(SERIALIZED_NAME_DIRECT_LINK_INTERFACE_ID)
@@ -88,6 +107,8 @@ public class UpdateDirectLinkInterfaceRequest {
   @SerializedName(SERIALIZED_NAME_MTU)
   private MtuEnum mtu;
 
+  public UpdateDirectLinkInterfaceRequest() {
+  }
 
   public UpdateDirectLinkInterfaceRequest directLinkInterfaceId(String directLinkInterfaceId) {
     
@@ -99,7 +120,7 @@ public class UpdateDirectLinkInterfaceRequest {
    * The ID of the DirectLink interface you want to update.
    * @return directLinkInterfaceId
   **/
-  @ApiModelProperty(required = true, value = "The ID of the DirectLink interface you want to update.")
+  @javax.annotation.Nonnull
 
   public String getDirectLinkInterfaceId() {
     return directLinkInterfaceId;
@@ -122,7 +143,6 @@ public class UpdateDirectLinkInterfaceRequest {
    * @return dryRun
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, checks whether you have the required permissions to perform the action.")
 
   public Boolean getDryRun() {
     return dryRun;
@@ -144,7 +164,7 @@ public class UpdateDirectLinkInterfaceRequest {
    * The maximum transmission unit (MTU) of the DirectLink interface, in bytes (either &#x60;1500&#x60; or &#x60;9000&#x60;).
    * @return mtu
   **/
-  @ApiModelProperty(required = true, value = "The maximum transmission unit (MTU) of the DirectLink interface, in bytes (either `1500` or `9000`).")
+  @javax.annotation.Nonnull
 
   public MtuEnum getMtu() {
     return mtu;
@@ -154,6 +174,7 @@ public class UpdateDirectLinkInterfaceRequest {
   public void setMtu(MtuEnum mtu) {
     this.mtu = mtu;
   }
+
 
 
   @Override
@@ -197,5 +218,102 @@ public class UpdateDirectLinkInterfaceRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("DirectLinkInterfaceId");
+    openapiFields.add("DryRun");
+    openapiFields.add("Mtu");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("DirectLinkInterfaceId");
+    openapiRequiredFields.add("Mtu");
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to UpdateDirectLinkInterfaceRequest
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!UpdateDirectLinkInterfaceRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateDirectLinkInterfaceRequest is not found in the empty JSON string", UpdateDirectLinkInterfaceRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!UpdateDirectLinkInterfaceRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateDirectLinkInterfaceRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateDirectLinkInterfaceRequest.openapiRequiredFields) {
+        if (jsonObj.get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
+        }
+      }
+      if (!jsonObj.get("DirectLinkInterfaceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `DirectLinkInterfaceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DirectLinkInterfaceId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!UpdateDirectLinkInterfaceRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpdateDirectLinkInterfaceRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<UpdateDirectLinkInterfaceRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateDirectLinkInterfaceRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<UpdateDirectLinkInterfaceRequest>() {
+           @Override
+           public void write(JsonWriter out, UpdateDirectLinkInterfaceRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public UpdateDirectLinkInterfaceRequest read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of UpdateDirectLinkInterfaceRequest given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of UpdateDirectLinkInterfaceRequest
+  * @throws IOException if the JSON string is invalid with respect to UpdateDirectLinkInterfaceRequest
+  */
+  public static UpdateDirectLinkInterfaceRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpdateDirectLinkInterfaceRequest.class);
+  }
+
+ /**
+  * Convert an instance of UpdateDirectLinkInterfaceRequest to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

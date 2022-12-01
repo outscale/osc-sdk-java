@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersNatService {
   public static final String SERIALIZED_NAME_NAT_SERVICE_IDS = "NatServiceIds";
   @SerializedName(SERIALIZED_NAME_NAT_SERVICE_IDS)
@@ -60,6 +78,8 @@ public class FiltersNatService {
   @SerializedName(SERIALIZED_NAME_TAGS)
   private List<String> tags = null;
 
+  public FiltersNatService() {
+  }
 
   public FiltersNatService natServiceIds(List<String> natServiceIds) {
     
@@ -69,7 +89,7 @@ public class FiltersNatService {
 
   public FiltersNatService addNatServiceIdsItem(String natServiceIdsItem) {
     if (this.natServiceIds == null) {
-      this.natServiceIds = new ArrayList<String>();
+      this.natServiceIds = new ArrayList<>();
     }
     this.natServiceIds.add(natServiceIdsItem);
     return this;
@@ -80,7 +100,6 @@ public class FiltersNatService {
    * @return natServiceIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the NAT services.")
 
   public List<String> getNatServiceIds() {
     return natServiceIds;
@@ -100,7 +119,7 @@ public class FiltersNatService {
 
   public FiltersNatService addNetIdsItem(String netIdsItem) {
     if (this.netIds == null) {
-      this.netIds = new ArrayList<String>();
+      this.netIds = new ArrayList<>();
     }
     this.netIds.add(netIdsItem);
     return this;
@@ -111,7 +130,6 @@ public class FiltersNatService {
    * @return netIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Nets in which the NAT services are.")
 
   public List<String> getNetIds() {
     return netIds;
@@ -131,7 +149,7 @@ public class FiltersNatService {
 
   public FiltersNatService addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -142,7 +160,6 @@ public class FiltersNatService {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the NAT services (`pending` \\| `available` \\| `deleting` \\| `deleted`).")
 
   public List<String> getStates() {
     return states;
@@ -162,7 +179,7 @@ public class FiltersNatService {
 
   public FiltersNatService addSubnetIdsItem(String subnetIdsItem) {
     if (this.subnetIds == null) {
-      this.subnetIds = new ArrayList<String>();
+      this.subnetIds = new ArrayList<>();
     }
     this.subnetIds.add(subnetIdsItem);
     return this;
@@ -173,7 +190,6 @@ public class FiltersNatService {
    * @return subnetIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the Subnets in which the NAT services are.")
 
   public List<String> getSubnetIds() {
     return subnetIds;
@@ -193,7 +209,7 @@ public class FiltersNatService {
 
   public FiltersNatService addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -204,7 +220,6 @@ public class FiltersNatService {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the NAT services.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -224,7 +239,7 @@ public class FiltersNatService {
 
   public FiltersNatService addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -235,7 +250,6 @@ public class FiltersNatService {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the NAT services.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -255,7 +269,7 @@ public class FiltersNatService {
 
   public FiltersNatService addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -266,7 +280,6 @@ public class FiltersNatService {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the NAT services, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -276,6 +289,7 @@ public class FiltersNatService {
   public void setTags(List<String> tags) {
     this.tags = tags;
   }
+
 
 
   @Override
@@ -327,5 +341,122 @@ public class FiltersNatService {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("NatServiceIds");
+    openapiFields.add("NetIds");
+    openapiFields.add("States");
+    openapiFields.add("SubnetIds");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersNatService
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersNatService.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersNatService is not found in the empty JSON string", FiltersNatService.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersNatService.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersNatService` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NatServiceIds") != null && !jsonObj.get("NatServiceIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NatServiceIds` to be an array in the JSON string but got `%s`", jsonObj.get("NatServiceIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("NetIds") != null && !jsonObj.get("NetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `NetIds` to be an array in the JSON string but got `%s`", jsonObj.get("NetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("SubnetIds") != null && !jsonObj.get("SubnetIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `SubnetIds` to be an array in the JSON string but got `%s`", jsonObj.get("SubnetIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersNatService.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersNatService' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersNatService> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersNatService.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersNatService>() {
+           @Override
+           public void write(JsonWriter out, FiltersNatService value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersNatService read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersNatService given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersNatService
+  * @throws IOException if the JSON string is invalid with respect to FiltersNatService
+  */
+  public static FiltersNatService fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersNatService.class);
+  }
+
+ /**
+  * Convert an instance of FiltersNatService to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

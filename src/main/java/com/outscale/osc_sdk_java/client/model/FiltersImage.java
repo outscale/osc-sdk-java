@@ -20,17 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.outscale.osc_sdk_java.client.JSON;
+
 /**
  * One or more filters.
  */
-@ApiModel(description = "One or more filters.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-01T09:51:28.653202Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
 public class FiltersImage {
   public static final String SERIALIZED_NAME_ACCOUNT_ALIASES = "AccountAliases";
   @SerializedName(SERIALIZED_NAME_ACCOUNT_ALIASES)
@@ -124,6 +142,8 @@ public class FiltersImage {
   @SerializedName(SERIALIZED_NAME_VIRTUALIZATION_TYPES)
   private List<String> virtualizationTypes = null;
 
+  public FiltersImage() {
+  }
 
   public FiltersImage accountAliases(List<String> accountAliases) {
     
@@ -133,7 +153,7 @@ public class FiltersImage {
 
   public FiltersImage addAccountAliasesItem(String accountAliasesItem) {
     if (this.accountAliases == null) {
-      this.accountAliases = new ArrayList<String>();
+      this.accountAliases = new ArrayList<>();
     }
     this.accountAliases.add(accountAliasesItem);
     return this;
@@ -144,7 +164,6 @@ public class FiltersImage {
    * @return accountAliases
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account aliases of the owners of the OMIs.")
 
   public List<String> getAccountAliases() {
     return accountAliases;
@@ -164,7 +183,7 @@ public class FiltersImage {
 
   public FiltersImage addAccountIdsItem(String accountIdsItem) {
     if (this.accountIds == null) {
-      this.accountIds = new ArrayList<String>();
+      this.accountIds = new ArrayList<>();
     }
     this.accountIds.add(accountIdsItem);
     return this;
@@ -175,7 +194,6 @@ public class FiltersImage {
    * @return accountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the owners of the OMIs. By default, all the OMIs for which you have launch permissions are described.")
 
   public List<String> getAccountIds() {
     return accountIds;
@@ -195,7 +213,7 @@ public class FiltersImage {
 
   public FiltersImage addArchitecturesItem(String architecturesItem) {
     if (this.architectures == null) {
-      this.architectures = new ArrayList<String>();
+      this.architectures = new ArrayList<>();
     }
     this.architectures.add(architecturesItem);
     return this;
@@ -206,7 +224,6 @@ public class FiltersImage {
    * @return architectures
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The architectures of the OMIs (`i386` \\| `x86_64`).")
 
   public List<String> getArchitectures() {
     return architectures;
@@ -229,7 +246,6 @@ public class FiltersImage {
    * @return blockDeviceMappingDeleteOnVmDeletion
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether the volumes are deleted or not when terminating the VM.")
 
   public Boolean getBlockDeviceMappingDeleteOnVmDeletion() {
     return blockDeviceMappingDeleteOnVmDeletion;
@@ -249,7 +265,7 @@ public class FiltersImage {
 
   public FiltersImage addBlockDeviceMappingDeviceNamesItem(String blockDeviceMappingDeviceNamesItem) {
     if (this.blockDeviceMappingDeviceNames == null) {
-      this.blockDeviceMappingDeviceNames = new ArrayList<String>();
+      this.blockDeviceMappingDeviceNames = new ArrayList<>();
     }
     this.blockDeviceMappingDeviceNames.add(blockDeviceMappingDeviceNamesItem);
     return this;
@@ -260,7 +276,6 @@ public class FiltersImage {
    * @return blockDeviceMappingDeviceNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The device names for the volumes.")
 
   public List<String> getBlockDeviceMappingDeviceNames() {
     return blockDeviceMappingDeviceNames;
@@ -280,7 +295,7 @@ public class FiltersImage {
 
   public FiltersImage addBlockDeviceMappingSnapshotIdsItem(String blockDeviceMappingSnapshotIdsItem) {
     if (this.blockDeviceMappingSnapshotIds == null) {
-      this.blockDeviceMappingSnapshotIds = new ArrayList<String>();
+      this.blockDeviceMappingSnapshotIds = new ArrayList<>();
     }
     this.blockDeviceMappingSnapshotIds.add(blockDeviceMappingSnapshotIdsItem);
     return this;
@@ -291,7 +306,6 @@ public class FiltersImage {
    * @return blockDeviceMappingSnapshotIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the snapshots used to create the volumes.")
 
   public List<String> getBlockDeviceMappingSnapshotIds() {
     return blockDeviceMappingSnapshotIds;
@@ -311,7 +325,7 @@ public class FiltersImage {
 
   public FiltersImage addBlockDeviceMappingVolumeSizesItem(Integer blockDeviceMappingVolumeSizesItem) {
     if (this.blockDeviceMappingVolumeSizes == null) {
-      this.blockDeviceMappingVolumeSizes = new ArrayList<Integer>();
+      this.blockDeviceMappingVolumeSizes = new ArrayList<>();
     }
     this.blockDeviceMappingVolumeSizes.add(blockDeviceMappingVolumeSizesItem);
     return this;
@@ -322,7 +336,6 @@ public class FiltersImage {
    * @return blockDeviceMappingVolumeSizes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The sizes of the volumes, in gibibytes (GiB).")
 
   public List<Integer> getBlockDeviceMappingVolumeSizes() {
     return blockDeviceMappingVolumeSizes;
@@ -342,7 +355,7 @@ public class FiltersImage {
 
   public FiltersImage addBlockDeviceMappingVolumeTypesItem(String blockDeviceMappingVolumeTypesItem) {
     if (this.blockDeviceMappingVolumeTypes == null) {
-      this.blockDeviceMappingVolumeTypes = new ArrayList<String>();
+      this.blockDeviceMappingVolumeTypes = new ArrayList<>();
     }
     this.blockDeviceMappingVolumeTypes.add(blockDeviceMappingVolumeTypesItem);
     return this;
@@ -353,7 +366,6 @@ public class FiltersImage {
    * @return blockDeviceMappingVolumeTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The types of volumes (`standard` \\| `gp2` \\| `io1`).")
 
   public List<String> getBlockDeviceMappingVolumeTypes() {
     return blockDeviceMappingVolumeTypes;
@@ -373,7 +385,7 @@ public class FiltersImage {
 
   public FiltersImage addDescriptionsItem(String descriptionsItem) {
     if (this.descriptions == null) {
-      this.descriptions = new ArrayList<String>();
+      this.descriptions = new ArrayList<>();
     }
     this.descriptions.add(descriptionsItem);
     return this;
@@ -384,7 +396,6 @@ public class FiltersImage {
    * @return descriptions
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The descriptions of the OMIs, provided when they were created.")
 
   public List<String> getDescriptions() {
     return descriptions;
@@ -404,7 +415,7 @@ public class FiltersImage {
 
   public FiltersImage addFileLocationsItem(String fileLocationsItem) {
     if (this.fileLocations == null) {
-      this.fileLocations = new ArrayList<String>();
+      this.fileLocations = new ArrayList<>();
     }
     this.fileLocations.add(fileLocationsItem);
     return this;
@@ -415,7 +426,6 @@ public class FiltersImage {
    * @return fileLocations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The locations of the buckets where the OMI files are stored.")
 
   public List<String> getFileLocations() {
     return fileLocations;
@@ -435,7 +445,7 @@ public class FiltersImage {
 
   public FiltersImage addHypervisorsItem(String hypervisorsItem) {
     if (this.hypervisors == null) {
-      this.hypervisors = new ArrayList<String>();
+      this.hypervisors = new ArrayList<>();
     }
     this.hypervisors.add(hypervisorsItem);
     return this;
@@ -446,7 +456,6 @@ public class FiltersImage {
    * @return hypervisors
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The hypervisor type of the OMI (always `xen`).")
 
   public List<String> getHypervisors() {
     return hypervisors;
@@ -466,7 +475,7 @@ public class FiltersImage {
 
   public FiltersImage addImageIdsItem(String imageIdsItem) {
     if (this.imageIds == null) {
-      this.imageIds = new ArrayList<String>();
+      this.imageIds = new ArrayList<>();
     }
     this.imageIds.add(imageIdsItem);
     return this;
@@ -477,7 +486,6 @@ public class FiltersImage {
    * @return imageIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The IDs of the OMIs.")
 
   public List<String> getImageIds() {
     return imageIds;
@@ -497,7 +505,7 @@ public class FiltersImage {
 
   public FiltersImage addImageNamesItem(String imageNamesItem) {
     if (this.imageNames == null) {
-      this.imageNames = new ArrayList<String>();
+      this.imageNames = new ArrayList<>();
     }
     this.imageNames.add(imageNamesItem);
     return this;
@@ -508,7 +516,6 @@ public class FiltersImage {
    * @return imageNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The names of the OMIs, provided when they were created.")
 
   public List<String> getImageNames() {
     return imageNames;
@@ -528,7 +535,7 @@ public class FiltersImage {
 
   public FiltersImage addPermissionsToLaunchAccountIdsItem(String permissionsToLaunchAccountIdsItem) {
     if (this.permissionsToLaunchAccountIds == null) {
-      this.permissionsToLaunchAccountIds = new ArrayList<String>();
+      this.permissionsToLaunchAccountIds = new ArrayList<>();
     }
     this.permissionsToLaunchAccountIds.add(permissionsToLaunchAccountIdsItem);
     return this;
@@ -539,7 +546,6 @@ public class FiltersImage {
    * @return permissionsToLaunchAccountIds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The account IDs of the users who have launch permissions for the OMIs.")
 
   public List<String> getPermissionsToLaunchAccountIds() {
     return permissionsToLaunchAccountIds;
@@ -562,7 +568,6 @@ public class FiltersImage {
    * @return permissionsToLaunchGlobalPermission
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "If true, lists all public OMIs. If false, lists all private OMIs.")
 
   public Boolean getPermissionsToLaunchGlobalPermission() {
     return permissionsToLaunchGlobalPermission;
@@ -582,7 +587,7 @@ public class FiltersImage {
 
   public FiltersImage addProductCodesItem(String productCodesItem) {
     if (this.productCodes == null) {
-      this.productCodes = new ArrayList<String>();
+      this.productCodes = new ArrayList<>();
     }
     this.productCodes.add(productCodesItem);
     return this;
@@ -593,7 +598,6 @@ public class FiltersImage {
    * @return productCodes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The product code associated with the OMI (`0001` Linux/Unix \\| `0002` Windows \\| `0004` Linux/Oracle \\| `0005` Windows 10).")
 
   public List<String> getProductCodes() {
     return productCodes;
@@ -613,7 +617,7 @@ public class FiltersImage {
 
   public FiltersImage addRootDeviceNamesItem(String rootDeviceNamesItem) {
     if (this.rootDeviceNames == null) {
-      this.rootDeviceNames = new ArrayList<String>();
+      this.rootDeviceNames = new ArrayList<>();
     }
     this.rootDeviceNames.add(rootDeviceNamesItem);
     return this;
@@ -624,7 +628,6 @@ public class FiltersImage {
    * @return rootDeviceNames
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The name of the root device. This value must be /dev/sda1.")
 
   public List<String> getRootDeviceNames() {
     return rootDeviceNames;
@@ -644,7 +647,7 @@ public class FiltersImage {
 
   public FiltersImage addRootDeviceTypesItem(String rootDeviceTypesItem) {
     if (this.rootDeviceTypes == null) {
-      this.rootDeviceTypes = new ArrayList<String>();
+      this.rootDeviceTypes = new ArrayList<>();
     }
     this.rootDeviceTypes.add(rootDeviceTypesItem);
     return this;
@@ -655,7 +658,6 @@ public class FiltersImage {
    * @return rootDeviceTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The types of root device used by the OMIs (always `bsu`).")
 
   public List<String> getRootDeviceTypes() {
     return rootDeviceTypes;
@@ -675,7 +677,7 @@ public class FiltersImage {
 
   public FiltersImage addStatesItem(String statesItem) {
     if (this.states == null) {
-      this.states = new ArrayList<String>();
+      this.states = new ArrayList<>();
     }
     this.states.add(statesItem);
     return this;
@@ -686,7 +688,6 @@ public class FiltersImage {
    * @return states
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The states of the OMIs (`pending` \\| `available` \\| `failed`).")
 
   public List<String> getStates() {
     return states;
@@ -706,7 +707,7 @@ public class FiltersImage {
 
   public FiltersImage addTagKeysItem(String tagKeysItem) {
     if (this.tagKeys == null) {
-      this.tagKeys = new ArrayList<String>();
+      this.tagKeys = new ArrayList<>();
     }
     this.tagKeys.add(tagKeysItem);
     return this;
@@ -717,7 +718,6 @@ public class FiltersImage {
    * @return tagKeys
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The keys of the tags associated with the OMIs.")
 
   public List<String> getTagKeys() {
     return tagKeys;
@@ -737,7 +737,7 @@ public class FiltersImage {
 
   public FiltersImage addTagValuesItem(String tagValuesItem) {
     if (this.tagValues == null) {
-      this.tagValues = new ArrayList<String>();
+      this.tagValues = new ArrayList<>();
     }
     this.tagValues.add(tagValuesItem);
     return this;
@@ -748,7 +748,6 @@ public class FiltersImage {
    * @return tagValues
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The values of the tags associated with the OMIs.")
 
   public List<String> getTagValues() {
     return tagValues;
@@ -768,7 +767,7 @@ public class FiltersImage {
 
   public FiltersImage addTagsItem(String tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<String>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;
@@ -779,7 +778,6 @@ public class FiltersImage {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The key/value combination of the tags associated with the OMIs, in the following format: &quot;Filters&quot;:{&quot;Tags&quot;:[&quot;TAGKEY=TAGVALUE&quot;]}.")
 
   public List<String> getTags() {
     return tags;
@@ -799,7 +797,7 @@ public class FiltersImage {
 
   public FiltersImage addVirtualizationTypesItem(String virtualizationTypesItem) {
     if (this.virtualizationTypes == null) {
-      this.virtualizationTypes = new ArrayList<String>();
+      this.virtualizationTypes = new ArrayList<>();
     }
     this.virtualizationTypes.add(virtualizationTypesItem);
     return this;
@@ -810,7 +808,6 @@ public class FiltersImage {
    * @return virtualizationTypes
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The virtualization types (always `hvm`).")
 
   public List<String> getVirtualizationTypes() {
     return virtualizationTypes;
@@ -820,6 +817,7 @@ public class FiltersImage {
   public void setVirtualizationTypes(List<String> virtualizationTypes) {
     this.virtualizationTypes = virtualizationTypes;
   }
+
 
 
   @Override
@@ -903,5 +901,194 @@ public class FiltersImage {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("AccountAliases");
+    openapiFields.add("AccountIds");
+    openapiFields.add("Architectures");
+    openapiFields.add("BlockDeviceMappingDeleteOnVmDeletion");
+    openapiFields.add("BlockDeviceMappingDeviceNames");
+    openapiFields.add("BlockDeviceMappingSnapshotIds");
+    openapiFields.add("BlockDeviceMappingVolumeSizes");
+    openapiFields.add("BlockDeviceMappingVolumeTypes");
+    openapiFields.add("Descriptions");
+    openapiFields.add("FileLocations");
+    openapiFields.add("Hypervisors");
+    openapiFields.add("ImageIds");
+    openapiFields.add("ImageNames");
+    openapiFields.add("PermissionsToLaunchAccountIds");
+    openapiFields.add("PermissionsToLaunchGlobalPermission");
+    openapiFields.add("ProductCodes");
+    openapiFields.add("RootDeviceNames");
+    openapiFields.add("RootDeviceTypes");
+    openapiFields.add("States");
+    openapiFields.add("TagKeys");
+    openapiFields.add("TagValues");
+    openapiFields.add("Tags");
+    openapiFields.add("VirtualizationTypes");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+ /**
+  * Validates the JSON Object and throws an exception if issues found
+  *
+  * @param jsonObj JSON Object
+  * @throws IOException if the JSON Object is invalid with respect to FiltersImage
+  */
+  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+      if (jsonObj == null) {
+        if (!FiltersImage.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in FiltersImage is not found in the empty JSON string", FiltersImage.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Entry<String, JsonElement> entry : entries) {
+        if (!FiltersImage.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FiltersImage` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccountAliases") != null && !jsonObj.get("AccountAliases").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountAliases` to be an array in the JSON string but got `%s`", jsonObj.get("AccountAliases").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AccountIds") != null && !jsonObj.get("AccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("AccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Architectures") != null && !jsonObj.get("Architectures").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Architectures` to be an array in the JSON string but got `%s`", jsonObj.get("Architectures").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BlockDeviceMappingDeviceNames") != null && !jsonObj.get("BlockDeviceMappingDeviceNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappingDeviceNames` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappingDeviceNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BlockDeviceMappingSnapshotIds") != null && !jsonObj.get("BlockDeviceMappingSnapshotIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappingSnapshotIds` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappingSnapshotIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BlockDeviceMappingVolumeSizes") != null && !jsonObj.get("BlockDeviceMappingVolumeSizes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappingVolumeSizes` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappingVolumeSizes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("BlockDeviceMappingVolumeTypes") != null && !jsonObj.get("BlockDeviceMappingVolumeTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `BlockDeviceMappingVolumeTypes` to be an array in the JSON string but got `%s`", jsonObj.get("BlockDeviceMappingVolumeTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Descriptions") != null && !jsonObj.get("Descriptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Descriptions` to be an array in the JSON string but got `%s`", jsonObj.get("Descriptions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("FileLocations") != null && !jsonObj.get("FileLocations").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `FileLocations` to be an array in the JSON string but got `%s`", jsonObj.get("FileLocations").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Hypervisors") != null && !jsonObj.get("Hypervisors").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Hypervisors` to be an array in the JSON string but got `%s`", jsonObj.get("Hypervisors").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ImageIds") != null && !jsonObj.get("ImageIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageIds` to be an array in the JSON string but got `%s`", jsonObj.get("ImageIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ImageNames") != null && !jsonObj.get("ImageNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ImageNames` to be an array in the JSON string but got `%s`", jsonObj.get("ImageNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("PermissionsToLaunchAccountIds") != null && !jsonObj.get("PermissionsToLaunchAccountIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `PermissionsToLaunchAccountIds` to be an array in the JSON string but got `%s`", jsonObj.get("PermissionsToLaunchAccountIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ProductCodes") != null && !jsonObj.get("ProductCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ProductCodes` to be an array in the JSON string but got `%s`", jsonObj.get("ProductCodes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RootDeviceNames") != null && !jsonObj.get("RootDeviceNames").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceNames` to be an array in the JSON string but got `%s`", jsonObj.get("RootDeviceNames").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("RootDeviceTypes") != null && !jsonObj.get("RootDeviceTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `RootDeviceTypes` to be an array in the JSON string but got `%s`", jsonObj.get("RootDeviceTypes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("States") != null && !jsonObj.get("States").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `States` to be an array in the JSON string but got `%s`", jsonObj.get("States").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagKeys") != null && !jsonObj.get("TagKeys").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagKeys` to be an array in the JSON string but got `%s`", jsonObj.get("TagKeys").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("TagValues") != null && !jsonObj.get("TagValues").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `TagValues` to be an array in the JSON string but got `%s`", jsonObj.get("TagValues").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("Tags") != null && !jsonObj.get("Tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Tags` to be an array in the JSON string but got `%s`", jsonObj.get("Tags").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("VirtualizationTypes") != null && !jsonObj.get("VirtualizationTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `VirtualizationTypes` to be an array in the JSON string but got `%s`", jsonObj.get("VirtualizationTypes").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!FiltersImage.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'FiltersImage' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<FiltersImage> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(FiltersImage.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<FiltersImage>() {
+           @Override
+           public void write(JsonWriter out, FiltersImage value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public FiltersImage read(JsonReader in) throws IOException {
+             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+             validateJsonObject(jsonObj);
+             return thisAdapter.fromJsonTree(jsonObj);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+ /**
+  * Create an instance of FiltersImage given an JSON string
+  *
+  * @param jsonString JSON string
+  * @return An instance of FiltersImage
+  * @throws IOException if the JSON string is invalid with respect to FiltersImage
+  */
+  public static FiltersImage fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, FiltersImage.class);
+  }
+
+ /**
+  * Convert an instance of FiltersImage to an JSON string
+  *
+  * @return JSON string
+  */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -16,8 +16,8 @@ package com.outscale.osc_sdk_java.client.api;
 import com.outscale.osc_sdk_java.client.ApiException;
 import com.outscale.osc_sdk_java.client.model.ReadPublicCatalogRequest;
 import com.outscale.osc_sdk_java.client.model.ReadPublicCatalogResponse;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,26 +27,19 @@ import java.util.Map;
 /**
  * API tests for PublicCatalogApi
  */
-@Ignore
+@Disabled
 public class PublicCatalogApiTest {
 
     private final PublicCatalogApi api = new PublicCatalogApi();
 
-    
     /**
-     * 
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * @throws ApiException if the Api call fails
      */
     @Test
     public void readPublicCatalogTest() throws ApiException {
         ReadPublicCatalogRequest readPublicCatalogRequest = null;
         ReadPublicCatalogResponse response = api.readPublicCatalog(readPublicCatalogRequest);
-
         // TODO: test validations
     }
-    
+
 }
