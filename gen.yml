@@ -1,0 +1,5 @@
+artifactId: osc-sdk-java
+invokerPackage: com.outscale.osc-sdk-java.client
+apiPackage: com.outscale.osc-sdk-java.client.api
+modelPackage: com.outscale.osc-sdk-java.client.model
+#library: native
