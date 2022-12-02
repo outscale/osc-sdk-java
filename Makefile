@@ -29,6 +29,7 @@ osc-generate: osc-api/outscale.yaml
 	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) chown -R $(USER_ID).$(GROUP_ID) /sdk/.sdk
 	@echo SDK generated
 	mv .sdk/src ./
+	mv .sdk/pom.xml ./
 
 osc-api/outscale.yaml:
 	@echo getting osc-api description...
@@ -48,43 +49,28 @@ reuse-test:
 	@echo testing licensing with reuse...
 	docker run --rm --volume $(PWD):/data fsfe/reuse:0.11.1 lint
 
+.PHONY: local-deploy
+local-deploy:
+	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+
 .PHONY: examples-test
-examples-test: example-web-vms example-node-volumes
+examples-test: example-ak example-region example-vm
 	@echo examples are OK
 
-.PHONY: example-web-vms
-example-web-vms:
-	@echo testing examples/web-vms example...
-	@source ~/.nvm/nvm.sh; \
-	cd examples/web-vms; \
-	echo "nvm --version:"; \
-	nvm --version; \
-	echo "installing nvm..."; \
-	nvm install; \
-	echo "using nvm..."; \
-	nvm use; \
-	echo "npm version:"; \
-	npm version; \
-	echo "npm install..."; \
-	npm install --local --install-links
+.PHONY: example-ak
+example-ak: local-deploy
+	@echo testing examples/ak example...
+	make -C examples/ak build run
 
-.PHONY: example-node-volumes
-example-node-volumes:
-	@echo testing examples/node-volumes example...
-	@source ~/.nvm/nvm.sh; \
-	cd examples/node-volumes; \
-	echo "nvm version:"; \
-	nvm --version; \
-	echo "nvm install..."; \
-	nvm install; \
-	echo "nvm use..."; \
-	nvm use; \
-	echo "npm version:"; \
-	npm version; \
-	echo "npm install..."; \
-	npm install --local --install-links; \
-	echo "running node example..."; \
-	node ./src/index.js > /dev/null
+.PHONY: example-region
+example-region: local-deploy
+	@echo testing examples/region example...
+	make -C examples/region build run
+
+.PHONY: example-ak
+example-vm: local-deploy
+	@echo testing examples/vm example...
+	make -C examples/vm build run
 
 # try to regen, should not have any difference
 .PHONY: regen-test
