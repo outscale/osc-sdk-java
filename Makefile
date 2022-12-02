@@ -2,7 +2,8 @@ API_VERSION=$(shell cat api_version)
 SDK_VERSION=$(shell cat sdk_version)
 USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
-OPENAPI_IMG=openapitools/openapi-generator:cli-latest-release
+#OPENAPI_IMG=openapitools/openapi-generator:cli-latest-release
+OPENAPI_IMG=outscale/openapi-generator:java-awsv4-signature
 SHELL := /bin/bash
 
 all: help
@@ -34,6 +35,7 @@ osc-generate: osc-api/outscale.yaml
 osc-api/outscale.yaml:
 	@echo getting osc-api description...
 	git clone https://github.com/outscale/osc-api.git && cd osc-api && git checkout -b $(API_VERSION) $(API_VERSION)
+	cd osc-api && git apply ../.osc-api-patches/outscale-yaml.patch
 
 .PHONY: clean
 clean:

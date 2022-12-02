@@ -1,0 +1,141 @@
+diff --git a/outscale.yaml b/outscale.yaml
+index bee31f9..a92b298 100644
+--- a/outscale.yaml
++++ b/outscale.yaml
+@@ -43,15 +43,15 @@ components:
+           type: string
+         CreationDate:
+           description: The date and time (UTC) of creation of the access key.
+-          format: datetime
++          format: date-time
+           type: string
+         ExpirationDate:
+           description: The date (UTC) at which the access key expires.
+-          format: datetime
++          format: date-time
+           type: string
+         LastModificationDate:
+           description: The date and time (UTC) of the last modification of the access key.
+-          format: datetime
++          format: date-time
+           type: string
+         State:
+           description: The state of the access key (`ACTIVE` if the key is valid for API calls, or `INACTIVE` if not).
+@@ -66,15 +66,15 @@ components:
+           type: string
+         CreationDate:
+           description: The date and time (UTC) of creation of the access key.
+-          format: datetime
++          format: date-time
+           type: string
+         ExpirationDate:
+           description: The date and time (UTC) at which the access key expires.
+-          format: datetime
++          format: date-time
+           type: string
+         LastModificationDate:
+           description: The date and time (UTC) of the last modification of the access key.
+-          format: datetime
++          format: date-time
+           type: string
+         SecretKey:
+           description: The access key that enables you to send requests.
+@@ -285,7 +285,7 @@ components:
+           type: boolean
+         LinkDate:
+           description: The time and date of attachment of the volume to the VM.
+-          format: date
++          format: date-time
+           type: string
+         State:
+           description: The state of the volume.
+@@ -445,7 +445,7 @@ components:
+           type: string
+         FromDate:
+           description: The beginning of the time period.
+-          format: datetime
++          format: date-time
+           type: string
+         Operation:
+           description: The API call that triggered the resource consumption (for example, `RunInstances` or `CreateVolume`).
+@@ -464,7 +464,7 @@ components:
+           type: string
+         ToDate:
+           description: The end of the time period.
+-          format: datetime
++          format: date-time
+           type: string
+         Type:
+           description: The type of resource, depending on the API call.
+@@ -482,7 +482,7 @@ components:
+           type: boolean
+         ExpirationDate:
+           description: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). To remove an existing expiration date, use the method without specifying this parameter.
+-          format: datetime
++          format: date-time
+           type: string
+       type: object
+     CreateAccessKeyResponse:
+@@ -5815,7 +5815,7 @@ components:
+           type: boolean
+         FromDate:
+           description: The beginning of the time period, in ISO 8601 date-time format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`).
+-          format: datetime
++          format: date-time
+           type: string
+         Overall:
+           default: false
+@@ -5823,7 +5823,7 @@ components:
+           type: boolean
+         ToDate:
+           description: The end of the time period, in ISO 8601 date-time format (for example, `2017-06-30` or `2017-06-30T00:00:00Z`).
+-          format: datetime
++          format: date-time
+           type: string
+       required:
+       - FromDate
+@@ -7042,7 +7042,7 @@ components:
+           type: string
+         CreationDate:
+           description: The date and time of creation of the snapshot.
+-          format: datetime
++          format: date-time
+           type: string
+         Description:
+           description: The description of the snapshot.
+@@ -7454,7 +7454,7 @@ components:
+           type: boolean
+         ExpirationDate:
+           description: The date and time at which you want the access key to expire, in ISO 8601 format (for example, `2017-06-14` or `2017-06-14T00:00:00Z`). If not specified, the access key is set to not expire.
+-          format: datetime
++          format: date-time
+           type: string
+         State:
+           description: The new state for the access key (`ACTIVE` \| `INACTIVE`). When set to `ACTIVE`, the access key is enabled and can be used to send requests. When set to `INACTIVE`, the access key is disabled.
+@@ -8116,7 +8116,7 @@ components:
+           type: integer
+         LastStateChangeDate:
+           description: The date and time (UTC) of the latest state update.
+-          format: datetime
++          format: date-time
+           type: string
+         OutsideIpAddress:
+           description: The IP on the OUTSCALE side of the tunnel.
+@@ -8172,7 +8172,7 @@ components:
+           type: string
+         CreationDate:
+           description: The date and time at which the VM was created.
+-          format: datetime
++          format: date-time
+           type: string
+         DeletionProtection:
+           description: If true, you cannot delete the VM unless you change this parameter back to false.
+@@ -8335,7 +8335,7 @@ components:
+       properties:
+         CreationDate:
+           description: The date and time of creation of the volume.
+-          format: datetime
++          format: date-time
+           type: string
+         Iops:
+           description: 'The number of I/O operations per second (IOPS):<br />
