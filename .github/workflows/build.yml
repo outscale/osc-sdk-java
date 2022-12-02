@@ -1,0 +1,37 @@
+name: osc-sdk-java release build
+on:
+  workflow_dispatch:
+    inputs:
+      api_version:
+        description: 'Outscale API version'
+        required: true
+
+jobs:
+  auto-build:
+    environment: auto-build
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' 
+          java-version: '11'
+          cache: 'maven'
+      - name: Write Outscale API version to use
+        run: echo "${{ github.event.inputs.api_version }}" > api_version
+      - name: check for release duplicate
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: make release-check-duplicate
+      - name: auto-generate release
+        run: make release-build
+      - name: push release branch
+        run: make release-push
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: create pull request
+        run: make release-pr
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
