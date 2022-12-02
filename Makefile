@@ -31,6 +31,8 @@ osc-generate: osc-api/outscale.yaml
 	@echo SDK generated
 	mv .sdk/src ./
 	mv .sdk/pom.xml ./
+	mv .sdk/docs ./
+	mv .sdk/README.md ./
 
 osc-api/outscale.yaml:
 	@echo getting osc-api description...
@@ -40,7 +42,7 @@ osc-api/outscale.yaml:
 .PHONY: clean
 clean:
 	@echo cleaning build artifacts...
-	rm -rf .sdk osc-api src node_modules dist || true
+	rm -rf .sdk osc-api src docs || true
 
 .PHONY: test
 test: reuse-test examples-test regen-test
