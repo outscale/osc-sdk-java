@@ -30,7 +30,6 @@ osc-generate: osc-api/outscale.yaml
 	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) chown -R $(USER_ID).$(GROUP_ID) /sdk/.sdk
 	@echo SDK generated
 	mv .sdk/src ./
-	mv .sdk/pom.xml ./
 	mv .sdk/docs ./
 	mv .sdk/README.md ./
 
