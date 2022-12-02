@@ -8,7 +8,6 @@ on:
 
 jobs:
   auto-build:
-    environment: auto-build
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3

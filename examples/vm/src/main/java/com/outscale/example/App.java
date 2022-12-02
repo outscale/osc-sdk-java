@@ -26,6 +26,7 @@ public class App {
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
       e.printStackTrace();
+      System.exit(1);
     }
   }
 }
