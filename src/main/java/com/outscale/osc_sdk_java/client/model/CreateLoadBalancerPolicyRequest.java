@@ -46,7 +46,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * CreateLoadBalancerPolicyRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateLoadBalancerPolicyRequest {
   public static final String SERIALIZED_NAME_COOKIE_EXPIRATION_PERIOD = "CookieExpirationPeriod";
   @SerializedName(SERIALIZED_NAME_COOKIE_EXPIRATION_PERIOD)

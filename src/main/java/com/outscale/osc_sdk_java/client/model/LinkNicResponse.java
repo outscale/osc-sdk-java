@@ -47,7 +47,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * LinkNicResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LinkNicResponse {
   public static final String SERIALIZED_NAME_LINK_NIC_ID = "LinkNicId";
   @SerializedName(SERIALIZED_NAME_LINK_NIC_ID)

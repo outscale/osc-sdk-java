@@ -78,7 +78,7 @@ example-vm: local-deploy
 .PHONY: regen-test
 regen-test: gen
 	@echo SDK regeneration test...
-	git add src dist
+	git add src pom.xml
 	git diff --cached -s --exit-code
 	git diff -s --exit-code
 

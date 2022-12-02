@@ -16,7 +16,7 @@ package com.outscale.osc_sdk_java.client;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

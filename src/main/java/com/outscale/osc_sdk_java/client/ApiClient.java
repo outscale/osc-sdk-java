@@ -425,11 +425,12 @@ public class ApiClient {
     }
 
     /**
-     * 
-     * @param accessKey
-     * @param secretKey
-     * @param region
-     * @param service
+     * Helper method to set credentials for AWSV4 Signature
+     *
+     * @param accessKey Access Key
+     * @param secretKey Secret Key
+     * @param region Region
+     * @param service Service to access to
      */
     public void setAWS4Configuration(String accessKey, String secretKey, String region, String service) {
         for (Authentication auth : authentications.values()) {

@@ -48,7 +48,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * CreatePublicIpResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreatePublicIpResponse {
   public static final String SERIALIZED_NAME_PUBLIC_IP = "PublicIp";
   @SerializedName(SERIALIZED_NAME_PUBLIC_IP)

@@ -48,7 +48,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * DeregisterVmsInLoadBalancerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DeregisterVmsInLoadBalancerRequest {
   public static final String SERIALIZED_NAME_BACKEND_VM_IDS = "BackendVmIds";
   @SerializedName(SERIALIZED_NAME_BACKEND_VM_IDS)

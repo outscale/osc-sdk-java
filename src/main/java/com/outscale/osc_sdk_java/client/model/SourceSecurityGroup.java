@@ -46,7 +46,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * Information about the source security group of the load balancer, which you can use as part of your inbound rules for your registered VMs.&lt;br /&gt; To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SourceSecurityGroup {
   public static final String SERIALIZED_NAME_SECURITY_GROUP_ACCOUNT_ID = "SecurityGroupAccountId";
   @SerializedName(SERIALIZED_NAME_SECURITY_GROUP_ACCOUNT_ID)

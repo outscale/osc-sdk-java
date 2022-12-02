@@ -133,7 +133,7 @@ public class ApiAccessPolicyApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuthSec", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -263,7 +263,7 @@ public class ApiAccessPolicyApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuthSec", "BasicAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

@@ -141,7 +141,7 @@ public class PublicIpApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -271,7 +271,7 @@ public class PublicIpApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -401,7 +401,7 @@ public class PublicIpApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -649,7 +649,7 @@ public class PublicIpApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -779,7 +779,7 @@ public class PublicIpApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" ,"ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

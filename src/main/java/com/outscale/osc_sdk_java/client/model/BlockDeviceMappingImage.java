@@ -47,7 +47,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * One or more parameters used to automatically set up volumes when the VM is created.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BlockDeviceMappingImage {
   public static final String SERIALIZED_NAME_BSU = "Bsu";
   @SerializedName(SERIALIZED_NAME_BSU)

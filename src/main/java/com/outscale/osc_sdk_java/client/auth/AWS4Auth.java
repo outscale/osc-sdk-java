@@ -31,7 +31,7 @@ import com.amazonaws.http.HttpMethodName;
 
 import okio.Buffer;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AWS4Auth implements Authentication {
 
   private AWSCredentials credentials;

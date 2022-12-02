@@ -49,7 +49,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * CreateLoadBalancerListenersRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateLoadBalancerListenersRequest {
   public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
   @SerializedName(SERIALIZED_NAME_DRY_RUN)

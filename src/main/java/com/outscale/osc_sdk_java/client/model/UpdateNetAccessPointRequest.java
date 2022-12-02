@@ -48,7 +48,7 @@ import com.outscale.osc_sdk_java.client.JSON;
 /**
  * UpdateNetAccessPointRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-02T08:39:48.703371583Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateNetAccessPointRequest {
   public static final String SERIALIZED_NAME_ADD_ROUTE_TABLE_IDS = "AddRouteTableIds";
   @SerializedName(SERIALIZED_NAME_ADD_ROUTE_TABLE_IDS)
