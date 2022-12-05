@@ -62,6 +62,44 @@ import com.outscale.osc_sdk_java.client.auth.AWS4Auth;
 public class ApiClient {
 
     private String basePath = "https://api.eu-west-2.outscale.com/api/v1";
+    protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
+    new ServerConfiguration(
+      "https://api.{region}.outscale.com/api/v1",
+      "No description provided",
+      new HashMap<String, ServerVariable>() {{
+        put("region", new ServerVariable(
+          "No description provided",
+          "eu-west-2",
+          new HashSet<String>(
+            Arrays.asList(
+              "ap-northeast-1",
+              "cloudgouv-eu-west-1",
+              "eu-west-2",
+              "us-east-2",
+              "us-west-1"
+            )
+          )
+        ));
+      }}
+    ),
+    new ServerConfiguration(
+      "https://api.{region}.outscale.jp/api/v1",
+      "No description provided",
+      new HashMap<String, ServerVariable>() {{
+        put("region", new ServerVariable(
+          "No description provided",
+          "ap-northeast-1",
+          new HashSet<String>(
+            Arrays.asList(
+              "ap-northeast-1"
+            )
+          )
+        ));
+      }}
+    )
+  ));
+    protected Integer serverIndex = 0;
+    protected Map<String, String> serverVariables = null;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -160,6 +198,33 @@ public class ApiClient {
      */
     public ApiClient setBasePath(String basePath) {
         this.basePath = basePath;
+        return this;
+    }
+
+    public List<ServerConfiguration> getServers() {
+        return servers;
+    }
+
+    public ApiClient setServers(List<ServerConfiguration> servers) {
+        this.servers = servers;
+        return this;
+    }
+
+    public Integer getServerIndex() {
+        return serverIndex;
+    }
+
+    public ApiClient setServerIndex(Integer serverIndex) {
+        this.serverIndex = serverIndex;
+        return this;
+    }
+
+    public Map<String, String> getServerVariables() {
+        return serverVariables;
+    }
+
+    public ApiClient setServerVariables(Map<String, String> serverVariables) {
+        this.serverVariables = serverVariables;
         return this;
     }
 
@@ -1202,7 +1267,18 @@ public class ApiClient {
         if (baseUrl != null) {
             url.append(baseUrl).append(path);
         } else {
-            url.append(basePath).append(path);
+            String baseURL;
+            if (serverIndex != null) {
+                if (serverIndex < 0 || serverIndex >= servers.size()) {
+                    throw new ArrayIndexOutOfBoundsException(String.format(
+                    "Invalid index %d when selecting the host settings. Must be less than %d", serverIndex, servers.size()
+                    ));
+                }
+                baseURL = servers.get(serverIndex).URL(serverVariables);
+            } else {
+                baseURL = basePath;
+            }
+            url.append(baseURL).append(path);
         }
 
         if (queryParams != null && !queryParams.isEmpty()) {
