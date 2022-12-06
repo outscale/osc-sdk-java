@@ -59,7 +59,7 @@ local-deploy:
 	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 .PHONY: examples-test
-examples-test: example-ak example-region example-vm
+examples-test: example-ak example-region example-vm example-config_file example-config_env
 	@echo examples are OK
 
 .PHONY: example-ak
@@ -72,11 +72,20 @@ example-region: local-deploy
 	@echo testing examples/region example...
 	make -C examples/region build run
 
-.PHONY: example-ak
+.PHONY: example-vm
 example-vm: local-deploy
 	@echo testing examples/vm example...
 	make -C examples/vm build run
 
+.PHONY: example-config_file
+example-config_file: local-deploy
+	@echo testing examples/config_file example...
+	make -C examples/config_file build run
+
+.PHONY: example-config_env
+example-config_env: local-deploy
+	@echo testing examples/config_env example...
+	make -C examples/config_env build run
 # try to regen, should not have any difference
 .PHONY: regen-test
 regen-test: gen
