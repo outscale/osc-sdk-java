@@ -1,0 +1,486 @@
+diff --git a/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java
+new file mode 100644
+index 0000000..b384871
+--- /dev/null
++++ b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java
+@@ -0,0 +1,238 @@
++package com.outscale.osc_sdk_java.client;
++
++import java.io.BufferedReader;
++import java.io.ByteArrayInputStream;
++import java.io.FileInputStream;
++import java.io.FileNotFoundException;
++import java.io.FileReader;
++import java.io.IOException;
++import java.io.StringReader;
++import java.lang.reflect.Type;
++import java.nio.file.Path;
++import java.nio.file.Paths;
++import java.security.KeyPair;
++import java.security.PrivateKey;
++import java.security.cert.CertificateException;
++import java.security.cert.CertificateFactory;
++import java.security.cert.X509Certificate;
++import java.util.ArrayList;
++import java.util.Base64;
++import java.util.HashMap;
++import java.util.Map;
++
++import org.bouncycastle.openssl.PEMKeyPair;
++import org.bouncycastle.openssl.PEMParser;
++import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
++
++import com.google.gson.Gson;
++import com.google.gson.GsonBuilder;
++import com.google.gson.reflect.TypeToken;
++
++import okhttp3.OkHttpClient;
++import okhttp3.tls.HandshakeCertificates;
++import okhttp3.tls.HeldCertificate;
++
++public class ConfigurationFile {
++    private Map<String, Profile> profiles;
++
++    private static Path defaultConfigPath = Paths.get(System.getProperty("user.home"), ".osc", "config.json");
++
++    public ConfigurationFile() {
++    }
++
++    public static String getDefaultConfigPath() {
++        return defaultConfigPath.toString();
++    }
++
++    public static ConfigurationFile loadDefaultConfigFile() {
++        return loadConfigFile(getDefaultConfigPath());
++    }
++
++    public static ConfigurationFile loadConfigFile(String path) {
++        if (path == null) {
++            return null;
++        }
++
++        GsonBuilder gsonBuilder = JSON.createGson();
++        gsonBuilder.registerTypeAdapterFactory(
++                new com.outscale.osc_sdk_java.client.Profile.CustomTypeAdapterFactory());
++        gsonBuilder
++                .registerTypeAdapterFactory(
++                        new com.outscale.osc_sdk_java.client.Endpoint.CustomTypeAdapterFactory());
++        Gson gson = gsonBuilder.create();
++        ConfigurationFile configurationFile = new ConfigurationFile();
++        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
++            Type listType = new TypeToken<Map<String, Profile>>() {
++            }.getType();
++            configurationFile.profiles = gson.fromJson(br, listType);
++        } catch (FileNotFoundException e) {
++            System.err.println("The file is not found ");
++            return null;
++        } catch (IOException e) {
++            System.err.println("Error during the read of the file");
++            return null;
++        }
++
++        return configurationFile;
++    }
++
++    public ApiClient getApiClient(String profile) {
++        if (!profiles.containsKey(profile)) {
++            System.err.println("Profile was not found for creating Configuration, did you load the config file ?");
++            return null;
++        }
++        Profile selectedProfile = profiles.get(profile);
++
++        ApiClient apiClient = new ApiClient();
++
++        String accessKey = "";
++        if (selectedProfile.getAccessKey() != null && selectedProfile.getAccessKey().length() > 0) {
++            accessKey = selectedProfile.getAccessKey();
++        }
++
++        String secretKey = "";
++        if (selectedProfile.getSecretKey() != null && selectedProfile.getSecretKey().length() > 0) {
++            secretKey = selectedProfile.getSecretKey();
++        }
++
++        String region = "eu-west-2";
++        if (selectedProfile.getRegion() != null && selectedProfile.getRegion().length() > 0) {
++            region = selectedProfile.getRegion();
++        }
++
++        apiClient.setAWS4Configuration(accessKey, secretKey, region, "api");
++
++        StringBuilder urlBuilder = new StringBuilder();
++        if (selectedProfile.getProtocol() != null && selectedProfile.getProtocol().length() > 0) {
++            urlBuilder.append(selectedProfile.getProtocol() + "://");
++        } else {
++            urlBuilder.append("https://");
++        }
++
++        Endpoint endpoints = selectedProfile.getEndpoints();
++        if (endpoints != null && endpoints.getApi().length() > 0) {
++            urlBuilder.append(endpoints.getApi());
++        } else {
++            urlBuilder.append("api.{region}.outscale.com/api/v1");
++        }
++
++        HashMap<String, ServerVariable> serverVariables = new HashMap<>();
++        serverVariables.put("region", new ServerVariable("Loaded from profile", region, null));
++        ServerConfiguration serverConfiguration = new ServerConfiguration(
++                urlBuilder.toString(),
++                "Loaded from profile",
++                serverVariables);
++        apiClient.setServers(new ArrayList<ServerConfiguration>() {
++            {
++                add(serverConfiguration);
++            }
++        });
++        apiClient.setServerIndex(0);
++        apiClient.setServerVariables(null);
++
++        // TLS
++        boolean tlsConfigured = false;
++        if (selectedProfile.getX509ClientCert() != null
++                && selectedProfile.getX509ClientCert().length() > 0
++                && selectedProfile.getX509ClientKey() != null
++                && selectedProfile.getX509ClientKey().length() > 0) {
++            tlsConfigured = true;
++
++            X509Certificate cert = null;
++            try (FileInputStream br = new FileInputStream(selectedProfile.getX509ClientCert())) {
++                CertificateFactory factory = CertificateFactory.getInstance("X.509");
++                cert = (X509Certificate) factory.generateCertificate(br);
++            } catch (FileNotFoundException e) {
++                System.err.println("The certificate is not found ");
++                return null;
++            } catch (IOException e) {
++                System.err.println("Error during the read of the certificate");
++                return null;
++            } catch (CertificateException e) {
++                System.err.println("Error during the parse of the certificate");
++                return null;
++            }
++
++            PEMKeyPair pemKey;
++            PrivateKey ecKey = null;
++            try (BufferedReader br = new BufferedReader(new FileReader(selectedProfile.getX509ClientKey()))) {
++                pemKey = (PEMKeyPair) new PEMParser(br).readObject();
++                ecKey = (PrivateKey) new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
++            } catch (FileNotFoundException e) {
++                System.err.println("The private key is not found ");
++                return null;
++            } catch (IOException e) {
++                System.err.println("Error during the read of the private key");
++                return null;
++            }
++
++            HeldCertificate clientCertificate = new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
++            HandshakeCertificates clientCertificates = new HandshakeCertificates.Builder()
++                    .addPlatformTrustedCertificates()
++                    .heldCertificate(clientCertificate)
++                    .build();
++
++            OkHttpClient client = new OkHttpClient.Builder()
++                    .sslSocketFactory(clientCertificates.sslSocketFactory(), clientCertificates.trustManager())
++                    .build();
++
++            apiClient.setHttpClient(client);
++        }
++
++        if (selectedProfile.getX509ClientCertB64() != null
++                && selectedProfile.getX509ClientCertB64().length() > 0
++                && selectedProfile.getX509ClientKeyB64() != null
++                && selectedProfile.getX509ClientKeyB64().length() > 0) {
++            if (tlsConfigured) {
++                System.err.println("Cannot configure client certificate with both file and base64");
++                return null;
++            }
++
++            byte[] decodedBytes = Base64.getDecoder().decode(selectedProfile.getX509ClientKeyB64());
++            String privateKey = new String(decodedBytes);
++
++            decodedBytes = Base64.getDecoder().decode(selectedProfile.getX509ClientCertB64());
++            String certificate = new String(decodedBytes);
++
++            PEMKeyPair pemKey;
++            PrivateKey ecKey = null;
++            try {
++                pemKey = (PEMKeyPair) new PEMParser(new StringReader(privateKey)).readObject();
++                ecKey = (PrivateKey) new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
++            } catch (IOException e) {
++                System.err.println("Cannot parse the private Key");
++                return null;
++            }
++
++            X509Certificate cert = null;
++            try {
++                CertificateFactory factory = CertificateFactory.getInstance("X.509");
++                cert = (X509Certificate) factory
++                        .generateCertificate(new ByteArrayInputStream(certificate.getBytes()));
++            } catch (CertificateException e) {
++                System.err.println("Error during parse of the certificate");
++                return null;
++            }
++
++            HeldCertificate clientCertificate = new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
++            HandshakeCertificates clientCertificates = new HandshakeCertificates.Builder()
++                    .addPlatformTrustedCertificates()
++                    .heldCertificate(clientCertificate)
++                    .build();
++
++            OkHttpClient client = new OkHttpClient.Builder()
++                    .sslSocketFactory(clientCertificates.sslSocketFactory(), clientCertificates.trustManager())
++                    .build();
++
++            apiClient.setHttpClient(client);
++        }
++
++        return apiClient;
++    }
++
++    @Override
++    public String toString() {
++        return profiles.toString();
++    }
++
++}
+diff --git a/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java b/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
+new file mode 100644
+index 0000000..b635fcf
+--- /dev/null
++++ b/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
+@@ -0,0 +1,72 @@
++package com.outscale.osc_sdk_java.client;
++
++import java.io.IOException;
++
++import com.google.gson.Gson;
++import com.google.gson.JsonElement;
++import com.google.gson.JsonObject;
++import com.google.gson.TypeAdapter;
++import com.google.gson.TypeAdapterFactory;
++import com.google.gson.annotations.SerializedName;
++import com.google.gson.reflect.TypeToken;
++import com.google.gson.stream.JsonReader;
++import com.google.gson.stream.JsonWriter;
++
++public class Endpoint {
++
++    public static final String SERIALIZED_NAME_API = "api";
++    @SerializedName(SERIALIZED_NAME_API)
++    private String api;
++
++    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
++        @SuppressWarnings("unchecked")
++        @Override
++        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
++            if (!Endpoint.class.isAssignableFrom(type.getRawType())) {
++                return null; // this class only serializes 'VpnOptions' and its subtypes
++            }
++            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
++            final TypeAdapter<Endpoint> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Endpoint.class));
++
++            return (TypeAdapter<T>) new TypeAdapter<Endpoint>() {
++                @Override
++                public void write(JsonWriter out, Endpoint value) throws IOException {
++                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
++                    elementAdapter.write(out, obj);
++                }
++
++                @Override
++                public Endpoint read(JsonReader in) throws IOException {
++                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
++                    return thisAdapter.fromJsonTree(jsonObj);
++                }
++
++            }.nullSafe();
++        }
++    }
++
++    /**
++     * Create an instance of Endpoint given an JSON string
++     *
++     * @param jsonString JSON string
++     * @return An instance of Profile
++     * @throws IOException if the JSON string is invalid with respect to
++     *                     AcceptNetPeeringRequest
++     */
++    public static Endpoint fromJson(String jsonString) throws IOException {
++        return JSON.getGson().fromJson(jsonString, Endpoint.class);
++    }
++
++    @Override
++    public String toString() {
++        StringBuilder sb = new StringBuilder();
++        sb.append("class Endpoint {\n");
++        sb.append("    api: ").append(api).append("\n");
++        sb.append("}");
++        return sb.toString();
++    }
++
++    public String getApi() {
++        return api;
++    }
++}
+diff --git a/src/main/java/com/outscale/osc_sdk_java/client/Profile.java b/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
+new file mode 100644
+index 0000000..9dc7fa7
+--- /dev/null
++++ b/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
+@@ -0,0 +1,158 @@
++package com.outscale.osc_sdk_java.client;
++
++import java.io.IOException;
++import java.util.HashSet;
++import java.util.Set;
++import java.util.Map.Entry;
++
++import com.google.gson.Gson;
++import com.google.gson.JsonElement;
++import com.google.gson.JsonObject;
++import com.google.gson.TypeAdapter;
++import com.google.gson.TypeAdapterFactory;
++import com.google.gson.annotations.SerializedName;
++import com.google.gson.reflect.TypeToken;
++import com.google.gson.stream.JsonReader;
++import com.google.gson.stream.JsonWriter;
++
++public class Profile {
++    public static final String SERIALIZED_NAME_ACCESS_KEY = "access_key";
++    @SerializedName(SERIALIZED_NAME_ACCESS_KEY)
++    private String accessKey;
++
++    public static final String SERIALIZED_NAME_SECRET_KEY = "secret_key";
++    @SerializedName(SERIALIZED_NAME_SECRET_KEY)
++    private String secretKey;
++
++    public static final String SERIALIZED_NAME_X509_CLIENT_CERT = "x509_client_cert";
++    @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT)
++    private String x509ClientCert;
++
++    public static final String SERIALIZED_NAME_X509_CLIENT_CERT_B64 = "x509_client_cert_b64";
++    @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT_B64)
++    private String x509ClientCertB64;
++
++    public static final String SERIALIZED_NAME_X509_CLIENT_KEY = "x509_client_key";
++    @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY)
++    private String x509ClientKey;
++
++    public static final String SERIALIZED_NAME_X509_CLIENT_KEY_B64 = "x509_client_key_b64";
++    @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY_B64)
++    private String x509ClientKeyB64;
++
++    public static final String SERIALIZED_NAME_PROTOCOL = "protocol";
++    @SerializedName(SERIALIZED_NAME_PROTOCOL)
++    private String protocol;
++
++    public static final String SERIALIZED_NAME_METHOD = "method";
++    @SerializedName(SERIALIZED_NAME_METHOD)
++    private String method;
++
++    public static final String SERIALIZED_NAME_REGION = "region";
++    @SerializedName(SERIALIZED_NAME_REGION)
++    private String region;
++
++    public static final String SERIALIZED_NAME_ENDPOINTS = "endpoints";
++    @SerializedName(SERIALIZED_NAME_ENDPOINTS)
++    private Endpoint endpoints;
++
++    public static HashSet<String> openapiFields;
++    public static HashSet<String> openapiRequiredFields;
++
++    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
++        @SuppressWarnings("unchecked")
++        @Override
++        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
++            if (!Profile.class.isAssignableFrom(type.getRawType())) {
++                return null; // this class only serializes 'Profile' and its subtypes
++            }
++            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
++            final TypeAdapter<Profile> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Profile.class));
++
++            return (TypeAdapter<T>) new TypeAdapter<Profile>() {
++                @Override
++                public void write(JsonWriter out, Profile value) throws IOException {
++                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
++                    elementAdapter.write(out, obj);
++                }
++
++                @Override
++                public Profile read(JsonReader in) throws IOException {
++                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
++                    return thisAdapter.fromJsonTree(jsonObj);
++                }
++
++            }.nullSafe();
++        }
++    }
++
++    /**
++     * Create an instance of Profile given an JSON string
++     *
++     * @param jsonString JSON string
++     * @return An instance of Profile
++     * @throws IOException if the JSON string is invalid with respect to
++     *                     AcceptNetPeeringRequest
++     */
++    public static Profile fromJson(String jsonString) throws IOException {
++        return JSON.getGson().fromJson(jsonString, Profile.class);
++    }
++
++    @Override
++    public String toString() {
++        StringBuilder sb = new StringBuilder();
++        sb.append("class Profile {\n");
++        sb.append("    accessKey: ").append(accessKey).append("\n");
++        sb.append("    secretKey: ").append(secretKey).append("\n");
++        sb.append("    region: ").append(region).append("\n");
++        sb.append("    x509ClientCert: ").append(x509ClientCert).append("\n");
++        sb.append("    x509ClientCertB64: ").append(x509ClientCertB64).append("\n");
++        sb.append("    x509ClientKey: ").append(x509ClientKey).append("\n");
++        sb.append("    x509ClientKeyB64: ").append(x509ClientKeyB64).append("\n");
++        sb.append("    method: ").append(method).append("\n");
++        sb.append("    protocol: ").append(protocol).append("\n");
++        sb.append("    endpoints: ").append(endpoints).append("\n");
++        sb.append("}");
++        return sb.toString();
++    }
++
++    public Endpoint getEndpoints() {
++        return endpoints;
++    }
++
++    public String getProtocol() {
++        return protocol;
++    }
++
++    public String getAccessKey() {
++        return accessKey;
++    }
++
++    public String getMethod() {
++        return method;
++    }
++
++    public String getRegion() {
++        return region;
++    }
++
++    public String getSecretKey() {
++        return secretKey;
++    }
++
++    public String getX509ClientCert() {
++        return x509ClientCert;
++    }
++
++    public String getX509ClientCertB64() {
++        return x509ClientCertB64;
++    }
++
++    public String getX509ClientKey() {
++        return x509ClientKey;
++    }
++
++    public String getX509ClientKeyB64() {
++        return x509ClientKeyB64;
++    }
++}
