@@ -33,6 +33,7 @@ osc-generate: osc-api/outscale.yaml
 	mv .sdk/src ./
 	mv .sdk/docs ./
 	mv .sdk/README.md ./
+	git apply ./.osc-patches/*
 
 osc-api/outscale.yaml:
 	@echo getting osc-api description...
