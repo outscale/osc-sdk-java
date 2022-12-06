@@ -69,4 +69,8 @@ public class Endpoint {
     public String getApi() {
         return api;
     }
+
+    public void setApi(String api) {
+        this.api = api;
+    }
 }

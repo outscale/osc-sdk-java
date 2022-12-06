@@ -155,4 +155,44 @@ public class Profile {
     public String getX509ClientKeyB64() {
         return x509ClientKeyB64;
     }
+
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+    }
+
+    public void setEndpoints(Endpoint endpoints) {
+        this.endpoints = endpoints;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public void setX509ClientCert(String x509ClientCert) {
+        this.x509ClientCert = x509ClientCert;
+    }
+
+    public void setX509ClientCertB64(String x509ClientCertB64) {
+        this.x509ClientCertB64 = x509ClientCertB64;
+    }
+
+    public void setX509ClientKey(String x509ClientKey) {
+        this.x509ClientKey = x509ClientKey;
+    }
+
+    public void setX509ClientKeyB64(String x509ClientKeyB64) {
+        this.x509ClientKeyB64 = x509ClientKeyB64;
+    }
 }
