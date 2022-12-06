@@ -27,6 +27,7 @@ osc-generate: osc-api/outscale.yaml
 	rm -rf .sdk || true
 	mkdir .sdk
 	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) generate -i /sdk/osc-api/outscale.yaml -g java -c /sdk/gen.yml -o /sdk/.sdk
+	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) sed -i "s%setUserAgent(\".*\");%setUserAgent(\"osc-sdk-java/$(SDK_VERSION)\");%" /sdk/.sdk/src/main/java/com/outscale/osc_sdk_java/client/ApiClient.java
 	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) chown -R $(USER_ID).$(GROUP_ID) /sdk/.sdk
 	@echo SDK generated
 	mv .sdk/src ./
