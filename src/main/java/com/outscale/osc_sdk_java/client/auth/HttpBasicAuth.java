@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.outscale.osc_sdk_java.client.auth;
 
 import com.outscale.osc_sdk_java.client.Pair;
@@ -22,11 +21,14 @@ import java.net.URI;
 import java.util.Map;
 import java.util.List;
 
-import java.io.UnsupportedEncodingException;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class HttpBasicAuth implements Authentication {
     private String username;
     private String password;
+    private DateTimeFormatter timeFormatter = DateTimeFormat
+            .forPattern("yyyyMMdd'T'HHmmss'Z'").withZoneUTC();
 
     public String getUsername() {
         return username;
@@ -45,13 +47,16 @@ public class HttpBasicAuth implements Authentication {
     }
 
     @Override
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-                              String payload, String method, URI uri) throws ApiException {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams,
+            Map<String, String> cookieParams,
+            String payload, String method, URI uri) throws ApiException {
         if (username == null && password == null) {
             return;
         }
         headerParams.put("Authorization", Credentials.basic(
-            username == null ? "" : username,
-            password == null ? "" : password));
+                username == null ? "" : username,
+                password == null ? "" : password));
+
+        headerParams.put("X-Osc-Date", timeFormatter.print(System.currentTimeMillis()));
     }
 }
