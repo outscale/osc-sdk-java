@@ -29,6 +29,8 @@ jobs:
           OSC_ACCESS_KEY: ${{ secrets.OSC_ACCESS_KEY }}
           OSC_SECRET_KEY: ${{ secrets.OSC_SECRET_KEY }}
           OSC_REGION: ${{ secrets.OSC_REGION }}
+          OSC_USERNAME: ${{ secrets.OSC_USERNAME }}
+          OSC_PASSWORD: ${{ secrets.OSC_PASSWORD }}
         run: make examples-test
   regeneration-test:
     runs-on: ubuntu-20.04
