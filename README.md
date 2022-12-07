@@ -42,9 +42,9 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>org.openapitools</groupId>
+  <groupId>com.outscale</groupId>
   <artifactId>osc-sdk-java</artifactId>
-  <version>1.23</version>
+  <version>0.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -60,7 +60,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "org.openapitools:osc-sdk-java:1.23"
+     implementation "com.outscale:osc-sdk-java:0.1.0"
   }
 ```
 
@@ -74,7 +74,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/osc-sdk-java-1.23.jar`
+* `target/osc-sdk-java-0.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
