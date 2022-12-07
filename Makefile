@@ -59,7 +59,7 @@ local-deploy:
 	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 .PHONY: examples-test
-examples-test: example-ak example-region example-vm example-config_file example-config_env
+examples-test: example-ak example-region example-vm example-config_file example-config_env example-password_auth
 	@echo examples are OK
 
 .PHONY: example-ak
@@ -86,6 +86,11 @@ example-config_file: local-deploy
 example-config_env: local-deploy
 	@echo testing examples/config_env example...
 	make -C examples/config_env build run
+
+.PHONY: example-password_auth
+example-password_auth: local-deploy
+	@echo testing examples/password_auth example...
+	make -C examples/password_auth build run
 # try to regen, should not have any difference
 .PHONY: regen-test
 regen-test: gen
