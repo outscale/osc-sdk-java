@@ -58,13 +58,13 @@ local-deploy:
 	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 .PHONY: examples-test
-examples-test: example-ak example-region example-vm example-config_file example-config_env example-password_auth
+examples-test: example-volumes example-region example-vm example-config_file example-config_env example-password_auth
 	@echo examples are OK
 
-.PHONY: example-ak
-example-ak: local-deploy
-	@echo testing examples/ak example...
-	make -C examples/ak build run
+.PHONY: example-volumes
+example-volumes: local-deploy
+	@echo testing examples/volumes example...
+	make -C examples/volumes build run
 
 .PHONY: example-region
 example-region: local-deploy

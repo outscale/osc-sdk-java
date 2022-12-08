@@ -1,10 +1,9 @@
 package com.outscale.example;
 
-
 // Import classes:
 import com.outscale.osc_sdk_java.client.*;
-import com.outscale.osc_sdk_java.client.api.AccessKeyApi;
 import com.outscale.osc_sdk_java.client.api.VmApi;
+import com.outscale.osc_sdk_java.client.api.VolumeApi;
 import com.outscale.osc_sdk_java.client.model.*;
 
 public class App {
@@ -16,10 +15,10 @@ public class App {
     defaultClient.setAWS4Configuration(accessKey, secretKey, region, "api");
     
 
-    AccessKeyApi apiInstance = new AccessKeyApi(defaultClient);
-    ReadAccessKeysRequest createAccessKeyRequest = new ReadAccessKeysRequest(); // CreateAccessKeyRequest | 
+    VolumeApi apiInstance = new VolumeApi(defaultClient);
+    ReadVolumesRequest request = new ReadVolumesRequest();
     try {
-      ReadAccessKeysResponse result = apiInstance.readAccessKeys(createAccessKeyRequest);
+      ReadVolumesResponse result = apiInstance.readVolumes(request);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccessKeyApi#createAccessKey");
