@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -65,7 +65,7 @@ public class Log {
     public static final String SERIALIZED_NAME_QUERY_DATE = "QueryDate";
 
     @SerializedName(SERIALIZED_NAME_QUERY_DATE)
-    private LocalDate queryDate;
+    private OffsetDateTime queryDate;
 
     public static final String SERIALIZED_NAME_QUERY_HEADER_RAW = "QueryHeaderRaw";
 
@@ -234,7 +234,7 @@ public class Log {
         this.queryCallName = queryCallName;
     }
 
-    public Log queryDate(LocalDate queryDate) {
+    public Log queryDate(OffsetDateTime queryDate) {
 
         this.queryDate = queryDate;
         return this;
@@ -246,11 +246,11 @@ public class Log {
      * @return queryDate
      */
     @javax.annotation.Nullable
-    public LocalDate getQueryDate() {
+    public OffsetDateTime getQueryDate() {
         return queryDate;
     }
 
-    public void setQueryDate(LocalDate queryDate) {
+    public void setQueryDate(OffsetDateTime queryDate) {
         this.queryDate = queryDate;
     }
 

@@ -12,7 +12,7 @@ Information about the OMI.
 |**accountId** | **String** | The account ID of the owner of the OMI. |  [optional] |
 |**architecture** | **String** | The architecture of the OMI (by default, &#x60;i386&#x60;). |  [optional] |
 |**blockDeviceMappings** | [**List&lt;BlockDeviceMappingImage&gt;**](BlockDeviceMappingImage.md) | One or more block device mappings. |  [optional] |
-|**creationDate** | **LocalDate** | The date and time at which the OMI was created. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time at which the OMI was created. |  [optional] |
 |**description** | **String** | The description of the OMI. |  [optional] |
 |**fileLocation** | **String** | The location of the bucket where the OMI files are stored. |  [optional] |
 |**imageId** | **String** | The ID of the OMI. |  [optional] |

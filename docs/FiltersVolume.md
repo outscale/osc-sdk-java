@@ -8,10 +8,10 @@ One or more filters.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**creationDates** | **List&lt;LocalDate&gt;** | The dates and times at which the volumes were created. |  [optional] |
+|**creationDates** | **List&lt;OffsetDateTime&gt;** | The dates and times at which the volumes were created. |  [optional] |
 |**linkVolumeDeleteOnVmDeletion** | **Boolean** | Whether the volumes are deleted or not when terminating the VMs. |  [optional] |
 |**linkVolumeDeviceNames** | **List&lt;String&gt;** | The VM device names. |  [optional] |
-|**linkVolumeLinkDates** | **List&lt;LocalDate&gt;** | The dates and times at which the volumes were created. |  [optional] |
+|**linkVolumeLinkDates** | **List&lt;OffsetDateTime&gt;** | The dates and times at which the volumes were created. |  [optional] |
 |**linkVolumeLinkStates** | **List&lt;String&gt;** | The attachment states of the volumes (&#x60;attaching&#x60; \\| &#x60;detaching&#x60; \\| &#x60;attached&#x60; \\| &#x60;detached&#x60;). |  [optional] |
 |**linkVolumeVmIds** | **List&lt;String&gt;** | One or more IDs of VMs. |  [optional] |
 |**snapshotIds** | **List&lt;String&gt;** | The snapshots from which the volumes were created. |  [optional] |

@@ -23,7 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -37,7 +37,7 @@ public class FiltersVolume {
     public static final String SERIALIZED_NAME_CREATION_DATES = "CreationDates";
 
     @SerializedName(SERIALIZED_NAME_CREATION_DATES)
-    private List<LocalDate> creationDates = null;
+    private List<OffsetDateTime> creationDates = null;
 
     public static final String SERIALIZED_NAME_LINK_VOLUME_DELETE_ON_VM_DELETION =
             "LinkVolumeDeleteOnVmDeletion";
@@ -53,7 +53,7 @@ public class FiltersVolume {
     public static final String SERIALIZED_NAME_LINK_VOLUME_LINK_DATES = "LinkVolumeLinkDates";
 
     @SerializedName(SERIALIZED_NAME_LINK_VOLUME_LINK_DATES)
-    private List<LocalDate> linkVolumeLinkDates = null;
+    private List<OffsetDateTime> linkVolumeLinkDates = null;
 
     public static final String SERIALIZED_NAME_LINK_VOLUME_LINK_STATES = "LinkVolumeLinkStates";
 
@@ -112,13 +112,13 @@ public class FiltersVolume {
 
     public FiltersVolume() {}
 
-    public FiltersVolume creationDates(List<LocalDate> creationDates) {
+    public FiltersVolume creationDates(List<OffsetDateTime> creationDates) {
 
         this.creationDates = creationDates;
         return this;
     }
 
-    public FiltersVolume addCreationDatesItem(LocalDate creationDatesItem) {
+    public FiltersVolume addCreationDatesItem(OffsetDateTime creationDatesItem) {
         if (this.creationDates == null) {
             this.creationDates = new ArrayList<>();
         }
@@ -132,11 +132,11 @@ public class FiltersVolume {
      * @return creationDates
      */
     @javax.annotation.Nullable
-    public List<LocalDate> getCreationDates() {
+    public List<OffsetDateTime> getCreationDates() {
         return creationDates;
     }
 
-    public void setCreationDates(List<LocalDate> creationDates) {
+    public void setCreationDates(List<OffsetDateTime> creationDates) {
         this.creationDates = creationDates;
     }
 
@@ -188,13 +188,13 @@ public class FiltersVolume {
         this.linkVolumeDeviceNames = linkVolumeDeviceNames;
     }
 
-    public FiltersVolume linkVolumeLinkDates(List<LocalDate> linkVolumeLinkDates) {
+    public FiltersVolume linkVolumeLinkDates(List<OffsetDateTime> linkVolumeLinkDates) {
 
         this.linkVolumeLinkDates = linkVolumeLinkDates;
         return this;
     }
 
-    public FiltersVolume addLinkVolumeLinkDatesItem(LocalDate linkVolumeLinkDatesItem) {
+    public FiltersVolume addLinkVolumeLinkDatesItem(OffsetDateTime linkVolumeLinkDatesItem) {
         if (this.linkVolumeLinkDates == null) {
             this.linkVolumeLinkDates = new ArrayList<>();
         }
@@ -208,11 +208,11 @@ public class FiltersVolume {
      * @return linkVolumeLinkDates
      */
     @javax.annotation.Nullable
-    public List<LocalDate> getLinkVolumeLinkDates() {
+    public List<OffsetDateTime> getLinkVolumeLinkDates() {
         return linkVolumeLinkDates;
     }
 
-    public void setLinkVolumeLinkDates(List<LocalDate> linkVolumeLinkDates) {
+    public void setLinkVolumeLinkDates(List<OffsetDateTime> linkVolumeLinkDates) {
         this.linkVolumeLinkDates = linkVolumeLinkDates;
     }
 

@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -58,7 +58,7 @@ public class Image {
     public static final String SERIALIZED_NAME_CREATION_DATE = "CreationDate";
 
     @SerializedName(SERIALIZED_NAME_CREATION_DATE)
-    private LocalDate creationDate;
+    private OffsetDateTime creationDate;
 
     public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
 
@@ -210,7 +210,7 @@ public class Image {
         this.blockDeviceMappings = blockDeviceMappings;
     }
 
-    public Image creationDate(LocalDate creationDate) {
+    public Image creationDate(OffsetDateTime creationDate) {
 
         this.creationDate = creationDate;
         return this;
@@ -222,11 +222,11 @@ public class Image {
      * @return creationDate
      */
     @javax.annotation.Nullable
-    public LocalDate getCreationDate() {
+    public OffsetDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(OffsetDateTime creationDate) {
         this.creationDate = creationDate;
     }
 

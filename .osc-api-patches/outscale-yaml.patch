@@ -1,5 +1,5 @@
 diff --git a/outscale.yaml b/outscale.yaml
-index bee31f9..a92b298 100644
+index bee31f9..48bb55e 100644
 --- a/outscale.yaml
 +++ b/outscale.yaml
 @@ -43,15 +43,15 @@ components:
@@ -76,6 +76,42 @@ index bee31f9..a92b298 100644
            type: string
        type: object
      CreateAccessKeyResponse:
+@@ -4024,7 +4024,7 @@ components:
+         CreationDates:
+           description: The dates and times at which the volumes were created.
+           items:
+-            format: date
++            format: date-time
+             type: string
+           type: array
+         LinkVolumeDeleteOnVmDeletion:
+@@ -4038,7 +4038,7 @@ components:
+         LinkVolumeLinkDates:
+           description: The dates and times at which the volumes were created.
+           items:
+-            format: date
++            format: date-time
+             type: string
+           type: array
+         LinkVolumeLinkStates:
+@@ -4256,7 +4256,7 @@ components:
+           type: array
+         CreationDate:
+           description: The date and time at which the OMI was created.
+-          format: date
++          format: date-time
+           type: string
+         Description:
+           description: The description of the OMI.
+@@ -4990,7 +4990,7 @@ components:
+           type: string
+         QueryDate:
+           description: The date of the logged call, in ISO 8601 format.
+-          format: date
++          format: date-time
+           type: string
+         QueryHeaderRaw:
+           description: The raw header of the HTTP request of the logged call.
 @@ -5815,7 +5815,7 @@ components:
            type: boolean
          FromDate:
