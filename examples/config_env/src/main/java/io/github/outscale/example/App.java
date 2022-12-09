@@ -6,15 +6,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.ConfigurationEnv;
-import com.outscale.osc_sdk_java.client.ConfigurationFile;
-import com.outscale.osc_sdk_java.client.JSON;
-import com.outscale.osc_sdk_java.client.model.*;
-import com.outscale.osc_sdk_java.client.api.RegionApi;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.ConfigurationEnv;
+import io.github.outscale.osc_sdk_java.client.ConfigurationFile;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import io.github.outscale.osc_sdk_java.client.model.*;
+import io.github.outscale.osc_sdk_java.client.api.RegionApi;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class App {
 

@@ -1,11 +1,11 @@
 package io.github.outscale.example;
 
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.model.*;
-import com.outscale.osc_sdk_java.client.api.RegionApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.model.*;
+import io.github.outscale.osc_sdk_java.client.api.RegionApi;
 
 public class App {
   public static void main(String[] args) {

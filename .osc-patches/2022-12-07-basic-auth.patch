@@ -1,15 +1,15 @@
-diff --git a/src/main/java/com/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java b/src/main/java/com/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
+diff --git a/src/main/java/io/github/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java b/src/main/java/io/github/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
 index 8d0e8e5..a8f8ef8 100644
---- a/src/main/java/com/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
+--- a/src/main/java/io/github/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/auth/HttpBasicAuth.java
 @@ -10,7 +10,6 @@
   * Do not edit the class manually.
   */
  
 -
- package com.outscale.osc_sdk_java.client.auth;
+ package io.github.outscale.osc_sdk_java.client.auth;
  
- import com.outscale.osc_sdk_java.client.Pair;
+ import io.github.outscale.osc_sdk_java.client.Pair;
 @@ -22,11 +21,14 @@ import java.net.URI;
  import java.util.Map;
  import java.util.List;

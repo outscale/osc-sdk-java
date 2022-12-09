@@ -26,12 +26,12 @@ All URIs are relative to *https://api.eu-west-2.outscale.com/api/v1*
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -96,12 +96,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -166,12 +166,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -236,12 +236,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -306,11 +306,11 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -366,12 +366,12 @@ No authorization required
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -436,12 +436,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -506,12 +506,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -576,12 +576,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -646,12 +646,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -716,12 +716,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.auth.*;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.auth.*;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.VmApi;
 
 public class Example {
   public static void main(String[] args) {

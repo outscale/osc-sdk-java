@@ -1,8 +1,8 @@
 unchanged:
 --- /dev/null
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationFile.java
 @@ -0,0 +1,238 @@
-+package com.outscale.osc_sdk_java.client;
++package io.github.outscale.osc_sdk_java.client;
 +
 +import java.io.BufferedReader;
 +import java.io.ByteArrayInputStream;
@@ -59,10 +59,10 @@ unchanged:
 +
 +        GsonBuilder gsonBuilder = JSON.createGson();
 +        gsonBuilder.registerTypeAdapterFactory(
-+                new com.outscale.osc_sdk_java.client.Profile.CustomTypeAdapterFactory());
++                new io.github.outscale.osc_sdk_java.client.Profile.CustomTypeAdapterFactory());
 +        gsonBuilder
 +                .registerTypeAdapterFactory(
-+                        new com.outscale.osc_sdk_java.client.Endpoint.CustomTypeAdapterFactory());
++                        new io.github.outscale.osc_sdk_java.client.Endpoint.CustomTypeAdapterFactory());
 +        Gson gson = gsonBuilder.create();
 +        ConfigurationFile configurationFile = new ConfigurationFile();
 +        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -242,9 +242,9 @@ unchanged:
 +}
 unchanged:
 --- /dev/null
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/Endpoint.java
 @@ -0,0 +1,72 @@
-+package com.outscale.osc_sdk_java.client;
++package io.github.outscale.osc_sdk_java.client;
 +
 +import java.io.IOException;
 +
@@ -318,9 +318,9 @@ unchanged:
 +}
 unchanged:
 --- /dev/null
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/Profile.java
 @@ -0,0 +1,158 @@
-+package com.outscale.osc_sdk_java.client;
++package io.github.outscale.osc_sdk_java.client;
 +
 +import java.io.IOException;
 +import java.util.HashSet;
@@ -480,10 +480,10 @@ unchanged:
 +}
 only in patch2:
 unchanged:
---- a/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationFile.java
+--- a/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationFile.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationFile.java
 @@ -1,38 +1,19 @@
- package com.outscale.osc_sdk_java.client;
+ package io.github.outscale.osc_sdk_java.client;
  
  import java.io.BufferedReader;
 -import java.io.ByteArrayInputStream;
@@ -680,9 +680,9 @@ unchanged:
 only in patch2:
 unchanged:
 --- /dev/null
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationInitializer.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationInitializer.java
 @@ -0,0 +1,181 @@
-+package com.outscale.osc_sdk_java.client;
++package io.github.outscale.osc_sdk_java.client;
 +
 +import java.io.BufferedReader;
 +import java.io.ByteArrayInputStream;
