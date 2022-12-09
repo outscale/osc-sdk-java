@@ -16,11 +16,11 @@ All URIs are relative to *https://api.eu-west-2.outscale.com/api/v1*
 ### Example
 ```java
 // Import classes:
-import com.outscale.osc_sdk_java.client.ApiClient;
-import com.outscale.osc_sdk_java.client.ApiException;
-import com.outscale.osc_sdk_java.client.Configuration;
-import com.outscale.osc_sdk_java.client.models.*;
-import com.outscale.osc_sdk_java.client.api.PublicCatalogApi;
+import io.github.outscale.osc_sdk_java.client.ApiClient;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.models.*;
+import io.github.outscale.osc_sdk_java.client.api.PublicCatalogApi;
 
 public class Example {
   public static void main(String[] args) {

@@ -1,10 +1,10 @@
-diff --git a/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationEnv.java b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationEnv.java
+diff --git a/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationEnv.java b/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationEnv.java
 new file mode 100644
 index 0000000..c1021d3
 --- /dev/null
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/ConfigurationEnv.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/ConfigurationEnv.java
 @@ -0,0 +1,39 @@
-+package com.outscale.osc_sdk_java.client;
++package io.github.outscale.osc_sdk_java.client;
 +
 +public class ConfigurationEnv extends ConfigurationInitializer {
 +    private Profile profile;
@@ -43,10 +43,10 @@ index 0000000..c1021d3
 +    }
 +
 +}
-diff --git a/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java b/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
+diff --git a/src/main/java/io/github/outscale/osc_sdk_java/client/Endpoint.java b/src/main/java/io/github/outscale/osc_sdk_java/client/Endpoint.java
 index b635fcf..c5d6aca 100644
---- a/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/Endpoint.java
+--- a/src/main/java/io/github/outscale/osc_sdk_java/client/Endpoint.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/Endpoint.java
 @@ -69,4 +69,8 @@ public class Endpoint {
      public String getApi() {
          return api;
@@ -56,10 +56,10 @@ index b635fcf..c5d6aca 100644
 +        this.api = api;
 +    }
  }
-diff --git a/src/main/java/com/outscale/osc_sdk_java/client/Profile.java b/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
+diff --git a/src/main/java/io/github/outscale/osc_sdk_java/client/Profile.java b/src/main/java/io/github/outscale/osc_sdk_java/client/Profile.java
 index 9dc7fa7..bbc2f42 100644
---- a/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
-+++ b/src/main/java/com/outscale/osc_sdk_java/client/Profile.java
+--- a/src/main/java/io/github/outscale/osc_sdk_java/client/Profile.java
++++ b/src/main/java/io/github/outscale/osc_sdk_java/client/Profile.java
 @@ -155,4 +155,44 @@ public class Profile {
      public String getX509ClientKeyB64() {
          return x509ClientKeyB64;
