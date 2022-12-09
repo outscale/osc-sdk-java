@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.outscale</groupId>
+  <groupId>io.github.outscale</groupId>
   <artifactId>osc-sdk-java</artifactId>
   <version>0.1.0</version>
   <scope>compile</scope>
@@ -60,7 +60,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.outscale:osc-sdk-java:0.1.0"
+     implementation "io.github.outscale:osc-sdk-java:0.1.0"
   }
 ```
 
