@@ -10,252 +10,244 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.Subnet;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * ReadSubnetsResponse
- */
+/** ReadSubnetsResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadSubnetsResponse {
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public static final String SERIALIZED_NAME_SUBNETS = "Subnets";
-  @SerializedName(SERIALIZED_NAME_SUBNETS)
-  private List<Subnet> subnets = null;
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
 
-  public ReadSubnetsResponse() {
-  }
+    public static final String SERIALIZED_NAME_SUBNETS = "Subnets";
 
-  public ReadSubnetsResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_SUBNETS)
+    private List<Subnet> subnets = null;
 
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
+    public ReadSubnetsResponse() {}
 
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
+    public ReadSubnetsResponse responseContext(ResponseContext responseContext) {
 
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-  public ReadSubnetsResponse subnets(List<Subnet> subnets) {
-    
-    this.subnets = subnets;
-    return this;
-  }
-
-  public ReadSubnetsResponse addSubnetsItem(Subnet subnetsItem) {
-    if (this.subnets == null) {
-      this.subnets = new ArrayList<>();
+        this.responseContext = responseContext;
+        return this;
     }
-    this.subnets.add(subnetsItem);
-    return this;
-  }
 
-   /**
-   * Information about one or more Subnets.
-   * @return subnets
-  **/
-  @javax.annotation.Nullable
-
-  public List<Subnet> getSubnets() {
-    return subnets;
-  }
-
-
-  public void setSubnets(List<Subnet> subnets) {
-    this.subnets = subnets;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
     }
-    ReadSubnetsResponse readSubnetsResponse = (ReadSubnetsResponse) o;
-    return Objects.equals(this.responseContext, readSubnetsResponse.responseContext) &&
-        Objects.equals(this.subnets, readSubnetsResponse.subnets);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(responseContext, subnets);
-  }
+    public ReadSubnetsResponse subnets(List<Subnet> subnets) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ReadSubnetsResponse {\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("    subnets: ").append(toIndentedString(subnets)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+        this.subnets = subnets;
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ResponseContext");
-    openapiFields.add("Subnets");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReadSubnetsResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReadSubnetsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadSubnetsResponse is not found in the empty JSON string", ReadSubnetsResponse.openapiRequiredFields.toString()));
+    public ReadSubnetsResponse addSubnetsItem(Subnet subnetsItem) {
+        if (this.subnets == null) {
+            this.subnets = new ArrayList<>();
         }
-      }
+        this.subnets.add(subnetsItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ReadSubnetsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadSubnetsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-      if (jsonObj.get("Subnets") != null && !jsonObj.get("Subnets").isJsonNull()) {
-        JsonArray jsonArraysubnets = jsonObj.getAsJsonArray("Subnets");
-        if (jsonArraysubnets != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("Subnets").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `Subnets` to be an array in the JSON string but got `%s`", jsonObj.get("Subnets").toString()));
-          }
+    /**
+     * Information about one or more Subnets.
+     *
+     * @return subnets
+     */
+    @javax.annotation.Nullable
+    public List<Subnet> getSubnets() {
+        return subnets;
+    }
 
-          // validate the optional field `Subnets` (array)
-          for (int i = 0; i < jsonArraysubnets.size(); i++) {
-            Subnet.validateJsonObject(jsonArraysubnets.get(i).getAsJsonObject());
-          };
-        }
-      }
-  }
+    public void setSubnets(List<Subnet> subnets) {
+        this.subnets = subnets;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReadSubnetsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReadSubnetsResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReadSubnetsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReadSubnetsResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ReadSubnetsResponse>() {
-           @Override
-           public void write(JsonWriter out, ReadSubnetsResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ReadSubnetsResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ReadSubnetsResponse readSubnetsResponse = (ReadSubnetsResponse) o;
+        return Objects.equals(this.responseContext, readSubnetsResponse.responseContext)
+                && Objects.equals(this.subnets, readSubnetsResponse.subnets);
     }
-  }
 
- /**
-  * Create an instance of ReadSubnetsResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReadSubnetsResponse
-  * @throws IOException if the JSON string is invalid with respect to ReadSubnetsResponse
-  */
-  public static ReadSubnetsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReadSubnetsResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(responseContext, subnets);
+    }
 
- /**
-  * Convert an instance of ReadSubnetsResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ReadSubnetsResponse {\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("    subnets: ").append(toIndentedString(subnets)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ResponseContext");
+        openapiFields.add("Subnets");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to ReadSubnetsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!ReadSubnetsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in ReadSubnetsResponse is not found in"
+                                        + " the empty JSON string",
+                                ReadSubnetsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!ReadSubnetsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `ReadSubnetsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+        if (jsonObj.get("Subnets") != null && !jsonObj.get("Subnets").isJsonNull()) {
+            JsonArray jsonArraysubnets = jsonObj.getAsJsonArray("Subnets");
+            if (jsonArraysubnets != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("Subnets").isJsonArray()) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Expected the field `Subnets` to be an array in the JSON"
+                                            + " string but got `%s`",
+                                    jsonObj.get("Subnets").toString()));
+                }
+
+                // validate the optional field `Subnets` (array)
+                for (int i = 0; i < jsonArraysubnets.size(); i++) {
+                    Subnet.validateJsonObject(jsonArraysubnets.get(i).getAsJsonObject());
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReadSubnetsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReadSubnetsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReadSubnetsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReadSubnetsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReadSubnetsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ReadSubnetsResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReadSubnetsResponse read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReadSubnetsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReadSubnetsResponse
+     * @throws IOException if the JSON string is invalid with respect to ReadSubnetsResponse
+     */
+    public static ReadSubnetsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReadSubnetsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ReadSubnetsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.VpnConnection;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateVpnConnectionResponse
- */
+/** Model tests for CreateVpnConnectionResponse */
 public class CreateVpnConnectionResponseTest {
     private final CreateVpnConnectionResponse model = new CreateVpnConnectionResponse();
 
-    /**
-     * Model tests for CreateVpnConnectionResponse
-     */
+    /** Model tests for CreateVpnConnectionResponse */
     @Test
     public void testCreateVpnConnectionResponse() {
         // TODO: test CreateVpnConnectionResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
 
-    /**
-     * Test the property 'vpnConnection'
-     */
+    /** Test the property 'vpnConnection' */
     @Test
     public void vpnConnectionTest() {
         // TODO: test vpnConnection
     }
-
 }

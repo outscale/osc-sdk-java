@@ -10,309 +10,310 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateNetAccessPointRequest
- */
+/** CreateNetAccessPointRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateNetAccessPointRequest {
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public static final String SERIALIZED_NAME_NET_ID = "NetId";
-  @SerializedName(SERIALIZED_NAME_NET_ID)
-  private String netId;
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-  public static final String SERIALIZED_NAME_ROUTE_TABLE_IDS = "RouteTableIds";
-  @SerializedName(SERIALIZED_NAME_ROUTE_TABLE_IDS)
-  private List<String> routeTableIds = null;
+    public static final String SERIALIZED_NAME_NET_ID = "NetId";
 
-  public static final String SERIALIZED_NAME_SERVICE_NAME = "ServiceName";
-  @SerializedName(SERIALIZED_NAME_SERVICE_NAME)
-  private String serviceName;
+    @SerializedName(SERIALIZED_NAME_NET_ID)
+    private String netId;
 
-  public CreateNetAccessPointRequest() {
-  }
+    public static final String SERIALIZED_NAME_ROUTE_TABLE_IDS = "RouteTableIds";
 
-  public CreateNetAccessPointRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_ROUTE_TABLE_IDS)
+    private List<String> routeTableIds = null;
 
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
+    public static final String SERIALIZED_NAME_SERVICE_NAME = "ServiceName";
 
-  public Boolean getDryRun() {
-    return dryRun;
-  }
+    @SerializedName(SERIALIZED_NAME_SERVICE_NAME)
+    private String serviceName;
 
+    public CreateNetAccessPointRequest() {}
 
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
+    public CreateNetAccessPointRequest dryRun(Boolean dryRun) {
 
-
-  public CreateNetAccessPointRequest netId(String netId) {
-    
-    this.netId = netId;
-    return this;
-  }
-
-   /**
-   * The ID of the Net.
-   * @return netId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getNetId() {
-    return netId;
-  }
-
-
-  public void setNetId(String netId) {
-    this.netId = netId;
-  }
-
-
-  public CreateNetAccessPointRequest routeTableIds(List<String> routeTableIds) {
-    
-    this.routeTableIds = routeTableIds;
-    return this;
-  }
-
-  public CreateNetAccessPointRequest addRouteTableIdsItem(String routeTableIdsItem) {
-    if (this.routeTableIds == null) {
-      this.routeTableIds = new ArrayList<>();
+        this.dryRun = dryRun;
+        return this;
     }
-    this.routeTableIds.add(routeTableIdsItem);
-    return this;
-  }
 
-   /**
-   * One or more IDs of route tables to use for the connection.
-   * @return routeTableIds
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getRouteTableIds() {
-    return routeTableIds;
-  }
-
-
-  public void setRouteTableIds(List<String> routeTableIds) {
-    this.routeTableIds = routeTableIds;
-  }
-
-
-  public CreateNetAccessPointRequest serviceName(String serviceName) {
-    
-    this.serviceName = serviceName;
-    return this;
-  }
-
-   /**
-   * The name of the service (in the format &#x60;com.outscale.region.service&#x60;).
-   * @return serviceName
-  **/
-  @javax.annotation.Nonnull
-
-  public String getServiceName() {
-    return serviceName;
-  }
-
-
-  public void setServiceName(String serviceName) {
-    this.serviceName = serviceName;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
     }
-    CreateNetAccessPointRequest createNetAccessPointRequest = (CreateNetAccessPointRequest) o;
-    return Objects.equals(this.dryRun, createNetAccessPointRequest.dryRun) &&
-        Objects.equals(this.netId, createNetAccessPointRequest.netId) &&
-        Objects.equals(this.routeTableIds, createNetAccessPointRequest.routeTableIds) &&
-        Objects.equals(this.serviceName, createNetAccessPointRequest.serviceName);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(dryRun, netId, routeTableIds, serviceName);
-  }
+    public CreateNetAccessPointRequest netId(String netId) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateNetAccessPointRequest {\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    netId: ").append(toIndentedString(netId)).append("\n");
-    sb.append("    routeTableIds: ").append(toIndentedString(routeTableIds)).append("\n");
-    sb.append("    serviceName: ").append(toIndentedString(serviceName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+        this.netId = netId;
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    /**
+     * The ID of the Net.
+     *
+     * @return netId
+     */
+    @javax.annotation.Nonnull
+    public String getNetId() {
+        return netId;
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+    public void setNetId(String netId) {
+        this.netId = netId;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("DryRun");
-    openapiFields.add("NetId");
-    openapiFields.add("RouteTableIds");
-    openapiFields.add("ServiceName");
+    public CreateNetAccessPointRequest routeTableIds(List<String> routeTableIds) {
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("NetId");
-    openapiRequiredFields.add("ServiceName");
-  }
+        this.routeTableIds = routeTableIds;
+        return this;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateNetAccessPointRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateNetAccessPointRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateNetAccessPointRequest is not found in the empty JSON string", CreateNetAccessPointRequest.openapiRequiredFields.toString()));
+    public CreateNetAccessPointRequest addRouteTableIdsItem(String routeTableIdsItem) {
+        if (this.routeTableIds == null) {
+            this.routeTableIds = new ArrayList<>();
         }
-      }
+        this.routeTableIds.add(routeTableIdsItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateNetAccessPointRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateNetAccessPointRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+    /**
+     * One or more IDs of route tables to use for the connection.
+     *
+     * @return routeTableIds
+     */
+    @javax.annotation.Nullable
+    public List<String> getRouteTableIds() {
+        return routeTableIds;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateNetAccessPointRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("NetId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `NetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NetId").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("RouteTableIds") != null && !jsonObj.get("RouteTableIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `RouteTableIds` to be an array in the JSON string but got `%s`", jsonObj.get("RouteTableIds").toString()));
-      }
-      if (!jsonObj.get("ServiceName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ServiceName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ServiceName").toString()));
-      }
-  }
+    public void setRouteTableIds(List<String> routeTableIds) {
+        this.routeTableIds = routeTableIds;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public CreateNetAccessPointRequest serviceName(String serviceName) {
+
+        this.serviceName = serviceName;
+        return this;
+    }
+
+    /**
+     * The name of the service (in the format &#x60;com.outscale.region.service&#x60;).
+     *
+     * @return serviceName
+     */
+    @javax.annotation.Nonnull
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateNetAccessPointRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateNetAccessPointRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateNetAccessPointRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateNetAccessPointRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateNetAccessPointRequest>() {
-           @Override
-           public void write(JsonWriter out, CreateNetAccessPointRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateNetAccessPointRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateNetAccessPointRequest createNetAccessPointRequest = (CreateNetAccessPointRequest) o;
+        return Objects.equals(this.dryRun, createNetAccessPointRequest.dryRun)
+                && Objects.equals(this.netId, createNetAccessPointRequest.netId)
+                && Objects.equals(this.routeTableIds, createNetAccessPointRequest.routeTableIds)
+                && Objects.equals(this.serviceName, createNetAccessPointRequest.serviceName);
     }
-  }
 
- /**
-  * Create an instance of CreateNetAccessPointRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateNetAccessPointRequest
-  * @throws IOException if the JSON string is invalid with respect to CreateNetAccessPointRequest
-  */
-  public static CreateNetAccessPointRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateNetAccessPointRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(dryRun, netId, routeTableIds, serviceName);
+    }
 
- /**
-  * Convert an instance of CreateNetAccessPointRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateNetAccessPointRequest {\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    netId: ").append(toIndentedString(netId)).append("\n");
+        sb.append("    routeTableIds: ").append(toIndentedString(routeTableIds)).append("\n");
+        sb.append("    serviceName: ").append(toIndentedString(serviceName)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DryRun");
+        openapiFields.add("NetId");
+        openapiFields.add("RouteTableIds");
+        openapiFields.add("ServiceName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("NetId");
+        openapiRequiredFields.add("ServiceName");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to CreateNetAccessPointRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateNetAccessPointRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateNetAccessPointRequest is not"
+                                        + " found in the empty JSON string",
+                                CreateNetAccessPointRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateNetAccessPointRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateNetAccessPointRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateNetAccessPointRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("NetId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `NetId` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("NetId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("RouteTableIds") != null && !jsonObj.get("RouteTableIds").isJsonArray()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `RouteTableIds` to be an array in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("RouteTableIds").toString()));
+        }
+        if (!jsonObj.get("ServiceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ServiceName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("ServiceName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateNetAccessPointRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateNetAccessPointRequest' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateNetAccessPointRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateNetAccessPointRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateNetAccessPointRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateNetAccessPointRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateNetAccessPointRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateNetAccessPointRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateNetAccessPointRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateNetAccessPointRequest
+     */
+    public static CreateNetAccessPointRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateNetAccessPointRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateNetAccessPointRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -21,37 +20,27 @@ import io.github.outscale.osc_sdk_java.client.model.DeleteLoadBalancerPolicyResp
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for LoadBalancerPolicyApi
- */
+/** API tests for LoadBalancerPolicyApi */
 @Disabled
 public class LoadBalancerPolicyApiTest {
 
     private final LoadBalancerPolicyApi api = new LoadBalancerPolicyApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createLoadBalancerPolicyTest() throws ApiException {
         CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest = null;
-        CreateLoadBalancerPolicyResponse response = api.createLoadBalancerPolicy(createLoadBalancerPolicyRequest);
+        CreateLoadBalancerPolicyResponse response =
+                api.createLoadBalancerPolicy(createLoadBalancerPolicyRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteLoadBalancerPolicyTest() throws ApiException {
         DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest = null;
-        DeleteLoadBalancerPolicyResponse response = api.deleteLoadBalancerPolicy(deleteLoadBalancerPolicyRequest);
+        DeleteLoadBalancerPolicyResponse response =
+                api.deleteLoadBalancerPolicy(deleteLoadBalancerPolicyRequest);
         // TODO: test validations
     }
-
 }

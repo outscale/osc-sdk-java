@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SourceSecurityGroup
- */
+/** Model tests for SourceSecurityGroup */
 public class SourceSecurityGroupTest {
     private final SourceSecurityGroup model = new SourceSecurityGroup();
 
-    /**
-     * Model tests for SourceSecurityGroup
-     */
+    /** Model tests for SourceSecurityGroup */
     @Test
     public void testSourceSecurityGroup() {
         // TODO: test SourceSecurityGroup
     }
 
-    /**
-     * Test the property 'securityGroupAccountId'
-     */
+    /** Test the property 'securityGroupAccountId' */
     @Test
     public void securityGroupAccountIdTest() {
         // TODO: test securityGroupAccountId
     }
 
-    /**
-     * Test the property 'securityGroupName'
-     */
+    /** Test the property 'securityGroupName' */
     @Test
     public void securityGroupNameTest() {
         // TODO: test securityGroupName
     }
-
 }

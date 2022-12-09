@@ -10,67 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ListenerRuleForCreation;
-import io.github.outscale.osc_sdk_java.client.model.LoadBalancerLight;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateListenerRuleRequest
- */
+/** Model tests for CreateListenerRuleRequest */
 public class CreateListenerRuleRequestTest {
     private final CreateListenerRuleRequest model = new CreateListenerRuleRequest();
 
-    /**
-     * Model tests for CreateListenerRuleRequest
-     */
+    /** Model tests for CreateListenerRuleRequest */
     @Test
     public void testCreateListenerRuleRequest() {
         // TODO: test CreateListenerRuleRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'listener'
-     */
+    /** Test the property 'listener' */
     @Test
     public void listenerTest() {
         // TODO: test listener
     }
 
-    /**
-     * Test the property 'listenerRule'
-     */
+    /** Test the property 'listenerRule' */
     @Test
     public void listenerRuleTest() {
         // TODO: test listenerRule
     }
 
-    /**
-     * Test the property 'vmIds'
-     */
+    /** Test the property 'vmIds' */
     @Test
     public void vmIdsTest() {
         // TODO: test vmIds
     }
-
 }

@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ClientGateway;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateClientGatewayResponse
- */
+/** Model tests for CreateClientGatewayResponse */
 public class CreateClientGatewayResponseTest {
     private final CreateClientGatewayResponse model = new CreateClientGatewayResponse();
 
-    /**
-     * Model tests for CreateClientGatewayResponse
-     */
+    /** Model tests for CreateClientGatewayResponse */
     @Test
     public void testCreateClientGatewayResponse() {
         // TODO: test CreateClientGatewayResponse
     }
 
-    /**
-     * Test the property 'clientGateway'
-     */
+    /** Test the property 'clientGateway' */
     @Test
     public void clientGatewayTest() {
         // TODO: test clientGateway
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

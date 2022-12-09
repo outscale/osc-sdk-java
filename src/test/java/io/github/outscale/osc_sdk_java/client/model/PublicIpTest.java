@@ -10,98 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for PublicIp
- */
+/** Model tests for PublicIp */
 public class PublicIpTest {
     private final PublicIp model = new PublicIp();
 
-    /**
-     * Model tests for PublicIp
-     */
+    /** Model tests for PublicIp */
     @Test
     public void testPublicIp() {
         // TODO: test PublicIp
     }
 
-    /**
-     * Test the property 'linkPublicIpId'
-     */
+    /** Test the property 'linkPublicIpId' */
     @Test
     public void linkPublicIpIdTest() {
         // TODO: test linkPublicIpId
     }
 
-    /**
-     * Test the property 'nicAccountId'
-     */
+    /** Test the property 'nicAccountId' */
     @Test
     public void nicAccountIdTest() {
         // TODO: test nicAccountId
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'privateIp'
-     */
+    /** Test the property 'privateIp' */
     @Test
     public void privateIpTest() {
         // TODO: test privateIp
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'publicIpId'
-     */
+    /** Test the property 'publicIpId' */
     @Test
     public void publicIpIdTest() {
         // TODO: test publicIpId
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

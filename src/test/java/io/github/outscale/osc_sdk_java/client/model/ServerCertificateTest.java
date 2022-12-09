@@ -10,80 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ServerCertificate
- */
+/** Model tests for ServerCertificate */
 public class ServerCertificateTest {
     private final ServerCertificate model = new ServerCertificate();
 
-    /**
-     * Model tests for ServerCertificate
-     */
+    /** Model tests for ServerCertificate */
     @Test
     public void testServerCertificate() {
         // TODO: test ServerCertificate
     }
 
-    /**
-     * Test the property 'expirationDate'
-     */
+    /** Test the property 'expirationDate' */
     @Test
     public void expirationDateTest() {
         // TODO: test expirationDate
     }
 
-    /**
-     * Test the property 'id'
-     */
+    /** Test the property 'id' */
     @Test
     public void idTest() {
         // TODO: test id
     }
 
-    /**
-     * Test the property 'name'
-     */
+    /** Test the property 'name' */
     @Test
     public void nameTest() {
         // TODO: test name
     }
 
-    /**
-     * Test the property 'orn'
-     */
+    /** Test the property 'orn' */
     @Test
     public void ornTest() {
         // TODO: test orn
     }
 
-    /**
-     * Test the property 'path'
-     */
+    /** Test the property 'path' */
     @Test
     public void pathTest() {
         // TODO: test path
     }
 
-    /**
-     * Test the property 'uploadDate'
-     */
+    /** Test the property 'uploadDate' */
     @Test
     public void uploadDateTest() {
         // TODO: test uploadDate
     }
-
 }

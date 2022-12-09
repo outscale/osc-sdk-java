@@ -10,107 +10,71 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ListenerForCreation;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateLoadBalancerRequest
- */
+/** Model tests for CreateLoadBalancerRequest */
 public class CreateLoadBalancerRequestTest {
     private final CreateLoadBalancerRequest model = new CreateLoadBalancerRequest();
 
-    /**
-     * Model tests for CreateLoadBalancerRequest
-     */
+    /** Model tests for CreateLoadBalancerRequest */
     @Test
     public void testCreateLoadBalancerRequest() {
         // TODO: test CreateLoadBalancerRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'listeners'
-     */
+    /** Test the property 'listeners' */
     @Test
     public void listenersTest() {
         // TODO: test listeners
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
 
-    /**
-     * Test the property 'loadBalancerType'
-     */
+    /** Test the property 'loadBalancerType' */
     @Test
     public void loadBalancerTypeTest() {
         // TODO: test loadBalancerType
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'securityGroups'
-     */
+    /** Test the property 'securityGroups' */
     @Test
     public void securityGroupsTest() {
         // TODO: test securityGroups
     }
 
-    /**
-     * Test the property 'subnets'
-     */
+    /** Test the property 'subnets' */
     @Test
     public void subnetsTest() {
         // TODO: test subnets
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

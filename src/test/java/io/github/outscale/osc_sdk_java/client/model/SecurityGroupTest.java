@@ -10,99 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.SecurityGroupRule;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SecurityGroup
- */
+/** Model tests for SecurityGroup */
 public class SecurityGroupTest {
     private final SecurityGroup model = new SecurityGroup();
 
-    /**
-     * Model tests for SecurityGroup
-     */
+    /** Model tests for SecurityGroup */
     @Test
     public void testSecurityGroup() {
         // TODO: test SecurityGroup
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'inboundRules'
-     */
+    /** Test the property 'inboundRules' */
     @Test
     public void inboundRulesTest() {
         // TODO: test inboundRules
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'outboundRules'
-     */
+    /** Test the property 'outboundRules' */
     @Test
     public void outboundRulesTest() {
         // TODO: test outboundRules
     }
 
-    /**
-     * Test the property 'securityGroupId'
-     */
+    /** Test the property 'securityGroupId' */
     @Test
     public void securityGroupIdTest() {
         // TODO: test securityGroupId
     }
 
-    /**
-     * Test the property 'securityGroupName'
-     */
+    /** Test the property 'securityGroupName' */
     @Test
     public void securityGroupNameTest() {
         // TODO: test securityGroupName
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

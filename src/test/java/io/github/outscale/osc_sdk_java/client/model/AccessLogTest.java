@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for AccessLog
- */
+/** Model tests for AccessLog */
 public class AccessLogTest {
     private final AccessLog model = new AccessLog();
 
-    /**
-     * Model tests for AccessLog
-     */
+    /** Model tests for AccessLog */
     @Test
     public void testAccessLog() {
         // TODO: test AccessLog
     }
 
-    /**
-     * Test the property 'isEnabled'
-     */
+    /** Test the property 'isEnabled' */
     @Test
     public void isEnabledTest() {
         // TODO: test isEnabled
     }
 
-    /**
-     * Test the property 'osuBucketName'
-     */
+    /** Test the property 'osuBucketName' */
     @Test
     public void osuBucketNameTest() {
         // TODO: test osuBucketName
     }
 
-    /**
-     * Test the property 'osuBucketPrefix'
-     */
+    /** Test the property 'osuBucketPrefix' */
     @Test
     public void osuBucketPrefixTest() {
         // TODO: test osuBucketPrefix
     }
 
-    /**
-     * Test the property 'publicationInterval'
-     */
+    /** Test the property 'publicationInterval' */
     @Test
     public void publicationIntervalTest() {
         // TODO: test publicationInterval
     }
-
 }

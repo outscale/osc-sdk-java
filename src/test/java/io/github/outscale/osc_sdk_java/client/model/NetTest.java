@@ -10,82 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Net
- */
+/** Model tests for Net */
 public class NetTest {
     private final Net model = new Net();
 
-    /**
-     * Model tests for Net
-     */
+    /** Model tests for Net */
     @Test
     public void testNet() {
         // TODO: test Net
     }
 
-    /**
-     * Test the property 'dhcpOptionsSetId'
-     */
+    /** Test the property 'dhcpOptionsSetId' */
     @Test
     public void dhcpOptionsSetIdTest() {
         // TODO: test dhcpOptionsSetId
     }
 
-    /**
-     * Test the property 'ipRange'
-     */
+    /** Test the property 'ipRange' */
     @Test
     public void ipRangeTest() {
         // TODO: test ipRange
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'tenancy'
-     */
+    /** Test the property 'tenancy' */
     @Test
     public void tenancyTest() {
         // TODO: test tenancy
     }
-
 }

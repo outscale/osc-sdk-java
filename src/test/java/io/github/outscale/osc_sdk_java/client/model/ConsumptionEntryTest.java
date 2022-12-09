@@ -10,120 +10,83 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ConsumptionEntry
- */
+/** Model tests for ConsumptionEntry */
 public class ConsumptionEntryTest {
     private final ConsumptionEntry model = new ConsumptionEntry();
 
-    /**
-     * Model tests for ConsumptionEntry
-     */
+    /** Model tests for ConsumptionEntry */
     @Test
     public void testConsumptionEntry() {
         // TODO: test ConsumptionEntry
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'category'
-     */
+    /** Test the property 'category' */
     @Test
     public void categoryTest() {
         // TODO: test category
     }
 
-    /**
-     * Test the property 'fromDate'
-     */
+    /** Test the property 'fromDate' */
     @Test
     public void fromDateTest() {
         // TODO: test fromDate
     }
 
-    /**
-     * Test the property 'operation'
-     */
+    /** Test the property 'operation' */
     @Test
     public void operationTest() {
         // TODO: test operation
     }
 
-    /**
-     * Test the property 'payingAccountId'
-     */
+    /** Test the property 'payingAccountId' */
     @Test
     public void payingAccountIdTest() {
         // TODO: test payingAccountId
     }
 
-    /**
-     * Test the property 'service'
-     */
+    /** Test the property 'service' */
     @Test
     public void serviceTest() {
         // TODO: test service
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
 
-    /**
-     * Test the property 'title'
-     */
+    /** Test the property 'title' */
     @Test
     public void titleTest() {
         // TODO: test title
     }
 
-    /**
-     * Test the property 'toDate'
-     */
+    /** Test the property 'toDate' */
     @Test
     public void toDateTest() {
         // TODO: test toDate
     }
 
-    /**
-     * Test the property 'type'
-     */
+    /** Test the property 'type' */
     @Test
     public void typeTest() {
         // TODO: test type
     }
 
-    /**
-     * Test the property 'value'
-     */
+    /** Test the property 'value' */
     @Test
     public void valueTest() {
         // TODO: test value
     }
-
 }

@@ -10,51 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.FlexibleGpu;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadFlexibleGpusResponse
- */
+/** Model tests for ReadFlexibleGpusResponse */
 public class ReadFlexibleGpusResponseTest {
     private final ReadFlexibleGpusResponse model = new ReadFlexibleGpusResponse();
 
-    /**
-     * Model tests for ReadFlexibleGpusResponse
-     */
+    /** Model tests for ReadFlexibleGpusResponse */
     @Test
     public void testReadFlexibleGpusResponse() {
         // TODO: test ReadFlexibleGpusResponse
     }
 
-    /**
-     * Test the property 'flexibleGpus'
-     */
+    /** Test the property 'flexibleGpus' */
     @Test
     public void flexibleGpusTest() {
         // TODO: test flexibleGpus
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

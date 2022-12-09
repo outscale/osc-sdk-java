@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateApiAccessRuleRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateApiAccessRuleResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteApiAccessRuleRequest;
@@ -35,13 +27,11 @@ import io.github.outscale.osc_sdk_java.client.model.ReadApiAccessRulesRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadApiAccessRulesResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateApiAccessRuleResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class ApiAccessRuleApi {
     private ApiClient localVarApiClient;
@@ -82,25 +72,28 @@ public class ApiAccessRuleApi {
 
     /**
      * Build call for createApiAccessRule
-     * @param createApiAccessRuleRequest  (optional)
+     *
+     * @param createApiAccessRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createApiAccessRuleCall(CreateApiAccessRuleRequest createApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createApiAccessRuleCall(
+            CreateApiAccessRuleRequest createApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -117,108 +110,127 @@ public class ApiAccessRuleApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createApiAccessRuleValidateBeforeCall(CreateApiAccessRuleRequest createApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createApiAccessRuleValidateBeforeCall(
+            CreateApiAccessRuleRequest createApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return createApiAccessRuleCall(createApiAccessRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createApiAccessRuleRequest  (optional)
+     * @param createApiAccessRuleRequest (optional)
      * @return CreateApiAccessRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateApiAccessRuleResponse createApiAccessRule(CreateApiAccessRuleRequest createApiAccessRuleRequest) throws ApiException {
-        ApiResponse<CreateApiAccessRuleResponse> localVarResp = createApiAccessRuleWithHttpInfo(createApiAccessRuleRequest);
+    public CreateApiAccessRuleResponse createApiAccessRule(
+            CreateApiAccessRuleRequest createApiAccessRuleRequest) throws ApiException {
+        ApiResponse<CreateApiAccessRuleResponse> localVarResp =
+                createApiAccessRuleWithHttpInfo(createApiAccessRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createApiAccessRuleRequest  (optional)
+     * @param createApiAccessRuleRequest (optional)
      * @return ApiResponse&lt;CreateApiAccessRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateApiAccessRuleResponse> createApiAccessRuleWithHttpInfo(CreateApiAccessRuleRequest createApiAccessRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = createApiAccessRuleValidateBeforeCall(createApiAccessRuleRequest, null);
-        Type localVarReturnType = new TypeToken<CreateApiAccessRuleResponse>(){}.getType();
+    public ApiResponse<CreateApiAccessRuleResponse> createApiAccessRuleWithHttpInfo(
+            CreateApiAccessRuleRequest createApiAccessRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createApiAccessRuleValidateBeforeCall(createApiAccessRuleRequest, null);
+        Type localVarReturnType = new TypeToken<CreateApiAccessRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createApiAccessRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createApiAccessRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createApiAccessRuleAsync(CreateApiAccessRuleRequest createApiAccessRuleRequest, final ApiCallback<CreateApiAccessRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call createApiAccessRuleAsync(
+            CreateApiAccessRuleRequest createApiAccessRuleRequest,
+            final ApiCallback<CreateApiAccessRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createApiAccessRuleValidateBeforeCall(createApiAccessRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateApiAccessRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createApiAccessRuleValidateBeforeCall(createApiAccessRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateApiAccessRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteApiAccessRule
-     * @param deleteApiAccessRuleRequest  (optional)
+     *
+     * @param deleteApiAccessRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteApiAccessRuleCall(DeleteApiAccessRuleRequest deleteApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteApiAccessRuleCall(
+            DeleteApiAccessRuleRequest deleteApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -235,108 +247,127 @@ public class ApiAccessRuleApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteApiAccessRuleValidateBeforeCall(DeleteApiAccessRuleRequest deleteApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteApiAccessRuleValidateBeforeCall(
+            DeleteApiAccessRuleRequest deleteApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteApiAccessRuleCall(deleteApiAccessRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteApiAccessRuleRequest  (optional)
+     * @param deleteApiAccessRuleRequest (optional)
      * @return DeleteApiAccessRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteApiAccessRuleResponse deleteApiAccessRule(DeleteApiAccessRuleRequest deleteApiAccessRuleRequest) throws ApiException {
-        ApiResponse<DeleteApiAccessRuleResponse> localVarResp = deleteApiAccessRuleWithHttpInfo(deleteApiAccessRuleRequest);
+    public DeleteApiAccessRuleResponse deleteApiAccessRule(
+            DeleteApiAccessRuleRequest deleteApiAccessRuleRequest) throws ApiException {
+        ApiResponse<DeleteApiAccessRuleResponse> localVarResp =
+                deleteApiAccessRuleWithHttpInfo(deleteApiAccessRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteApiAccessRuleRequest  (optional)
+     * @param deleteApiAccessRuleRequest (optional)
      * @return ApiResponse&lt;DeleteApiAccessRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteApiAccessRuleResponse> deleteApiAccessRuleWithHttpInfo(DeleteApiAccessRuleRequest deleteApiAccessRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteApiAccessRuleValidateBeforeCall(deleteApiAccessRuleRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteApiAccessRuleResponse>(){}.getType();
+    public ApiResponse<DeleteApiAccessRuleResponse> deleteApiAccessRuleWithHttpInfo(
+            DeleteApiAccessRuleRequest deleteApiAccessRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteApiAccessRuleValidateBeforeCall(deleteApiAccessRuleRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteApiAccessRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteApiAccessRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteApiAccessRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteApiAccessRuleAsync(DeleteApiAccessRuleRequest deleteApiAccessRuleRequest, final ApiCallback<DeleteApiAccessRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteApiAccessRuleAsync(
+            DeleteApiAccessRuleRequest deleteApiAccessRuleRequest,
+            final ApiCallback<DeleteApiAccessRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteApiAccessRuleValidateBeforeCall(deleteApiAccessRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteApiAccessRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteApiAccessRuleValidateBeforeCall(deleteApiAccessRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteApiAccessRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readApiAccessRules
-     * @param readApiAccessRulesRequest  (optional)
+     *
+     * @param readApiAccessRulesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readApiAccessRulesCall(ReadApiAccessRulesRequest readApiAccessRulesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readApiAccessRulesCall(
+            ReadApiAccessRulesRequest readApiAccessRulesRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -353,108 +384,127 @@ public class ApiAccessRuleApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readApiAccessRulesValidateBeforeCall(ReadApiAccessRulesRequest readApiAccessRulesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readApiAccessRulesValidateBeforeCall(
+            ReadApiAccessRulesRequest readApiAccessRulesRequest, final ApiCallback _callback)
+            throws ApiException {
         return readApiAccessRulesCall(readApiAccessRulesRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readApiAccessRulesRequest  (optional)
+     * @param readApiAccessRulesRequest (optional)
      * @return ReadApiAccessRulesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadApiAccessRulesResponse readApiAccessRules(ReadApiAccessRulesRequest readApiAccessRulesRequest) throws ApiException {
-        ApiResponse<ReadApiAccessRulesResponse> localVarResp = readApiAccessRulesWithHttpInfo(readApiAccessRulesRequest);
+    public ReadApiAccessRulesResponse readApiAccessRules(
+            ReadApiAccessRulesRequest readApiAccessRulesRequest) throws ApiException {
+        ApiResponse<ReadApiAccessRulesResponse> localVarResp =
+                readApiAccessRulesWithHttpInfo(readApiAccessRulesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readApiAccessRulesRequest  (optional)
+     * @param readApiAccessRulesRequest (optional)
      * @return ApiResponse&lt;ReadApiAccessRulesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadApiAccessRulesResponse> readApiAccessRulesWithHttpInfo(ReadApiAccessRulesRequest readApiAccessRulesRequest) throws ApiException {
-        okhttp3.Call localVarCall = readApiAccessRulesValidateBeforeCall(readApiAccessRulesRequest, null);
-        Type localVarReturnType = new TypeToken<ReadApiAccessRulesResponse>(){}.getType();
+    public ApiResponse<ReadApiAccessRulesResponse> readApiAccessRulesWithHttpInfo(
+            ReadApiAccessRulesRequest readApiAccessRulesRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readApiAccessRulesValidateBeforeCall(readApiAccessRulesRequest, null);
+        Type localVarReturnType = new TypeToken<ReadApiAccessRulesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readApiAccessRulesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readApiAccessRulesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readApiAccessRulesAsync(ReadApiAccessRulesRequest readApiAccessRulesRequest, final ApiCallback<ReadApiAccessRulesResponse> _callback) throws ApiException {
+    public okhttp3.Call readApiAccessRulesAsync(
+            ReadApiAccessRulesRequest readApiAccessRulesRequest,
+            final ApiCallback<ReadApiAccessRulesResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readApiAccessRulesValidateBeforeCall(readApiAccessRulesRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadApiAccessRulesResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readApiAccessRulesValidateBeforeCall(readApiAccessRulesRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadApiAccessRulesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateApiAccessRule
-     * @param updateApiAccessRuleRequest  (optional)
+     *
+     * @param updateApiAccessRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateApiAccessRuleCall(UpdateApiAccessRuleRequest updateApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateApiAccessRuleCall(
+            UpdateApiAccessRuleRequest updateApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -471,84 +521,100 @@ public class ApiAccessRuleApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateApiAccessRuleValidateBeforeCall(UpdateApiAccessRuleRequest updateApiAccessRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateApiAccessRuleValidateBeforeCall(
+            UpdateApiAccessRuleRequest updateApiAccessRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateApiAccessRuleCall(updateApiAccessRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateApiAccessRuleRequest  (optional)
+     * @param updateApiAccessRuleRequest (optional)
      * @return UpdateApiAccessRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateApiAccessRuleResponse updateApiAccessRule(UpdateApiAccessRuleRequest updateApiAccessRuleRequest) throws ApiException {
-        ApiResponse<UpdateApiAccessRuleResponse> localVarResp = updateApiAccessRuleWithHttpInfo(updateApiAccessRuleRequest);
+    public UpdateApiAccessRuleResponse updateApiAccessRule(
+            UpdateApiAccessRuleRequest updateApiAccessRuleRequest) throws ApiException {
+        ApiResponse<UpdateApiAccessRuleResponse> localVarResp =
+                updateApiAccessRuleWithHttpInfo(updateApiAccessRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateApiAccessRuleRequest  (optional)
+     * @param updateApiAccessRuleRequest (optional)
      * @return ApiResponse&lt;UpdateApiAccessRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateApiAccessRuleResponse> updateApiAccessRuleWithHttpInfo(UpdateApiAccessRuleRequest updateApiAccessRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateApiAccessRuleValidateBeforeCall(updateApiAccessRuleRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateApiAccessRuleResponse>(){}.getType();
+    public ApiResponse<UpdateApiAccessRuleResponse> updateApiAccessRuleWithHttpInfo(
+            UpdateApiAccessRuleRequest updateApiAccessRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                updateApiAccessRuleValidateBeforeCall(updateApiAccessRuleRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateApiAccessRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateApiAccessRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateApiAccessRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateApiAccessRuleAsync(UpdateApiAccessRuleRequest updateApiAccessRuleRequest, final ApiCallback<UpdateApiAccessRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call updateApiAccessRuleAsync(
+            UpdateApiAccessRuleRequest updateApiAccessRuleRequest,
+            final ApiCallback<UpdateApiAccessRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateApiAccessRuleValidateBeforeCall(updateApiAccessRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateApiAccessRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateApiAccessRuleValidateBeforeCall(updateApiAccessRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateApiAccessRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

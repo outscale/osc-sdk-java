@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.RouteTable;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateRoutePropagationResponse
- */
+/** Model tests for UpdateRoutePropagationResponse */
 public class UpdateRoutePropagationResponseTest {
     private final UpdateRoutePropagationResponse model = new UpdateRoutePropagationResponse();
 
-    /**
-     * Model tests for UpdateRoutePropagationResponse
-     */
+    /** Model tests for UpdateRoutePropagationResponse */
     @Test
     public void testUpdateRoutePropagationResponse() {
         // TODO: test UpdateRoutePropagationResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
 
-    /**
-     * Test the property 'routeTable'
-     */
+    /** Test the property 'routeTable' */
     @Test
     public void routeTableTest() {
         // TODO: test routeTable
     }
-
 }

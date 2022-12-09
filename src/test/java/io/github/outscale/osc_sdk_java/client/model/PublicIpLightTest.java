@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for PublicIpLight
- */
+/** Model tests for PublicIpLight */
 public class PublicIpLightTest {
     private final PublicIpLight model = new PublicIpLight();
 
-    /**
-     * Model tests for PublicIpLight
-     */
+    /** Model tests for PublicIpLight */
     @Test
     public void testPublicIpLight() {
         // TODO: test PublicIpLight
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'publicIpId'
-     */
+    /** Test the property 'publicIpId' */
     @Test
     public void publicIpIdTest() {
         // TODO: test publicIpId
     }
-
 }

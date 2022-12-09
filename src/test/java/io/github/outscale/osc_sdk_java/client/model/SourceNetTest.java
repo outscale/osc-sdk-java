@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SourceNet
- */
+/** Model tests for SourceNet */
 public class SourceNetTest {
     private final SourceNet model = new SourceNet();
 
-    /**
-     * Model tests for SourceNet
-     */
+    /** Model tests for SourceNet */
     @Test
     public void testSourceNet() {
         // TODO: test SourceNet
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'ipRange'
-     */
+    /** Test the property 'ipRange' */
     @Test
     public void ipRangeTest() {
         // TODO: test ipRange
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
-
 }

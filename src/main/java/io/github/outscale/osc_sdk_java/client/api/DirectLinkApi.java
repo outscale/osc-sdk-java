@@ -10,36 +10,26 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateDirectLinkRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateDirectLinkResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteDirectLinkRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteDirectLinkResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadDirectLinksRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadDirectLinksResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class DirectLinkApi {
     private ApiClient localVarApiClient;
@@ -80,25 +70,28 @@ public class DirectLinkApi {
 
     /**
      * Build call for createDirectLink
-     * @param createDirectLinkRequest  (optional)
+     *
+     * @param createDirectLinkRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createDirectLinkCall(CreateDirectLinkRequest createDirectLinkRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDirectLinkCall(
+            CreateDirectLinkRequest createDirectLinkRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -115,108 +108,127 @@ public class DirectLinkApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDirectLinkValidateBeforeCall(CreateDirectLinkRequest createDirectLinkRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDirectLinkValidateBeforeCall(
+            CreateDirectLinkRequest createDirectLinkRequest, final ApiCallback _callback)
+            throws ApiException {
         return createDirectLinkCall(createDirectLinkRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createDirectLinkRequest  (optional)
+     * @param createDirectLinkRequest (optional)
      * @return CreateDirectLinkResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateDirectLinkResponse createDirectLink(CreateDirectLinkRequest createDirectLinkRequest) throws ApiException {
-        ApiResponse<CreateDirectLinkResponse> localVarResp = createDirectLinkWithHttpInfo(createDirectLinkRequest);
+    public CreateDirectLinkResponse createDirectLink(
+            CreateDirectLinkRequest createDirectLinkRequest) throws ApiException {
+        ApiResponse<CreateDirectLinkResponse> localVarResp =
+                createDirectLinkWithHttpInfo(createDirectLinkRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createDirectLinkRequest  (optional)
+     * @param createDirectLinkRequest (optional)
      * @return ApiResponse&lt;CreateDirectLinkResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateDirectLinkResponse> createDirectLinkWithHttpInfo(CreateDirectLinkRequest createDirectLinkRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDirectLinkValidateBeforeCall(createDirectLinkRequest, null);
-        Type localVarReturnType = new TypeToken<CreateDirectLinkResponse>(){}.getType();
+    public ApiResponse<CreateDirectLinkResponse> createDirectLinkWithHttpInfo(
+            CreateDirectLinkRequest createDirectLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createDirectLinkValidateBeforeCall(createDirectLinkRequest, null);
+        Type localVarReturnType = new TypeToken<CreateDirectLinkResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createDirectLinkRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createDirectLinkRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createDirectLinkAsync(CreateDirectLinkRequest createDirectLinkRequest, final ApiCallback<CreateDirectLinkResponse> _callback) throws ApiException {
+    public okhttp3.Call createDirectLinkAsync(
+            CreateDirectLinkRequest createDirectLinkRequest,
+            final ApiCallback<CreateDirectLinkResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createDirectLinkValidateBeforeCall(createDirectLinkRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateDirectLinkResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createDirectLinkValidateBeforeCall(createDirectLinkRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateDirectLinkResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteDirectLink
-     * @param deleteDirectLinkRequest  (optional)
+     *
+     * @param deleteDirectLinkRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteDirectLinkCall(DeleteDirectLinkRequest deleteDirectLinkRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDirectLinkCall(
+            DeleteDirectLinkRequest deleteDirectLinkRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -233,108 +245,127 @@ public class DirectLinkApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteDirectLinkValidateBeforeCall(DeleteDirectLinkRequest deleteDirectLinkRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDirectLinkValidateBeforeCall(
+            DeleteDirectLinkRequest deleteDirectLinkRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteDirectLinkCall(deleteDirectLinkRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteDirectLinkRequest  (optional)
+     * @param deleteDirectLinkRequest (optional)
      * @return DeleteDirectLinkResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteDirectLinkResponse deleteDirectLink(DeleteDirectLinkRequest deleteDirectLinkRequest) throws ApiException {
-        ApiResponse<DeleteDirectLinkResponse> localVarResp = deleteDirectLinkWithHttpInfo(deleteDirectLinkRequest);
+    public DeleteDirectLinkResponse deleteDirectLink(
+            DeleteDirectLinkRequest deleteDirectLinkRequest) throws ApiException {
+        ApiResponse<DeleteDirectLinkResponse> localVarResp =
+                deleteDirectLinkWithHttpInfo(deleteDirectLinkRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteDirectLinkRequest  (optional)
+     * @param deleteDirectLinkRequest (optional)
      * @return ApiResponse&lt;DeleteDirectLinkResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteDirectLinkResponse> deleteDirectLinkWithHttpInfo(DeleteDirectLinkRequest deleteDirectLinkRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteDirectLinkValidateBeforeCall(deleteDirectLinkRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteDirectLinkResponse>(){}.getType();
+    public ApiResponse<DeleteDirectLinkResponse> deleteDirectLinkWithHttpInfo(
+            DeleteDirectLinkRequest deleteDirectLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteDirectLinkValidateBeforeCall(deleteDirectLinkRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteDirectLinkResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteDirectLinkRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteDirectLinkRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteDirectLinkAsync(DeleteDirectLinkRequest deleteDirectLinkRequest, final ApiCallback<DeleteDirectLinkResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteDirectLinkAsync(
+            DeleteDirectLinkRequest deleteDirectLinkRequest,
+            final ApiCallback<DeleteDirectLinkResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteDirectLinkValidateBeforeCall(deleteDirectLinkRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteDirectLinkResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteDirectLinkValidateBeforeCall(deleteDirectLinkRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteDirectLinkResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readDirectLinks
-     * @param readDirectLinksRequest  (optional)
+     *
+     * @param readDirectLinksRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readDirectLinksCall(ReadDirectLinksRequest readDirectLinksRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readDirectLinksCall(
+            ReadDirectLinksRequest readDirectLinksRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -351,84 +382,99 @@ public class DirectLinkApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readDirectLinksValidateBeforeCall(ReadDirectLinksRequest readDirectLinksRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readDirectLinksValidateBeforeCall(
+            ReadDirectLinksRequest readDirectLinksRequest, final ApiCallback _callback)
+            throws ApiException {
         return readDirectLinksCall(readDirectLinksRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readDirectLinksRequest  (optional)
+     * @param readDirectLinksRequest (optional)
      * @return ReadDirectLinksResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadDirectLinksResponse readDirectLinks(ReadDirectLinksRequest readDirectLinksRequest) throws ApiException {
-        ApiResponse<ReadDirectLinksResponse> localVarResp = readDirectLinksWithHttpInfo(readDirectLinksRequest);
+    public ReadDirectLinksResponse readDirectLinks(ReadDirectLinksRequest readDirectLinksRequest)
+            throws ApiException {
+        ApiResponse<ReadDirectLinksResponse> localVarResp =
+                readDirectLinksWithHttpInfo(readDirectLinksRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readDirectLinksRequest  (optional)
+     * @param readDirectLinksRequest (optional)
      * @return ApiResponse&lt;ReadDirectLinksResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadDirectLinksResponse> readDirectLinksWithHttpInfo(ReadDirectLinksRequest readDirectLinksRequest) throws ApiException {
+    public ApiResponse<ReadDirectLinksResponse> readDirectLinksWithHttpInfo(
+            ReadDirectLinksRequest readDirectLinksRequest) throws ApiException {
         okhttp3.Call localVarCall = readDirectLinksValidateBeforeCall(readDirectLinksRequest, null);
-        Type localVarReturnType = new TypeToken<ReadDirectLinksResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadDirectLinksResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readDirectLinksRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readDirectLinksRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readDirectLinksAsync(ReadDirectLinksRequest readDirectLinksRequest, final ApiCallback<ReadDirectLinksResponse> _callback) throws ApiException {
+    public okhttp3.Call readDirectLinksAsync(
+            ReadDirectLinksRequest readDirectLinksRequest,
+            final ApiCallback<ReadDirectLinksResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readDirectLinksValidateBeforeCall(readDirectLinksRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadDirectLinksResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readDirectLinksValidateBeforeCall(readDirectLinksRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadDirectLinksResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

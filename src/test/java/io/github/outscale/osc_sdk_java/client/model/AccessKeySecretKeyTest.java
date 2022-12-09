@@ -10,80 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for AccessKeySecretKey
- */
+/** Model tests for AccessKeySecretKey */
 public class AccessKeySecretKeyTest {
     private final AccessKeySecretKey model = new AccessKeySecretKey();
 
-    /**
-     * Model tests for AccessKeySecretKey
-     */
+    /** Model tests for AccessKeySecretKey */
     @Test
     public void testAccessKeySecretKey() {
         // TODO: test AccessKeySecretKey
     }
 
-    /**
-     * Test the property 'accessKeyId'
-     */
+    /** Test the property 'accessKeyId' */
     @Test
     public void accessKeyIdTest() {
         // TODO: test accessKeyId
     }
 
-    /**
-     * Test the property 'creationDate'
-     */
+    /** Test the property 'creationDate' */
     @Test
     public void creationDateTest() {
         // TODO: test creationDate
     }
 
-    /**
-     * Test the property 'expirationDate'
-     */
+    /** Test the property 'expirationDate' */
     @Test
     public void expirationDateTest() {
         // TODO: test expirationDate
     }
 
-    /**
-     * Test the property 'lastModificationDate'
-     */
+    /** Test the property 'lastModificationDate' */
     @Test
     public void lastModificationDateTest() {
         // TODO: test lastModificationDate
     }
 
-    /**
-     * Test the property 'secretKey'
-     */
+    /** Test the property 'secretKey' */
     @Test
     public void secretKeyTest() {
         // TODO: test secretKey
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
-
 }

@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateListenerRuleRequest
- */
+/** Model tests for UpdateListenerRuleRequest */
 public class UpdateListenerRuleRequestTest {
     private final UpdateListenerRuleRequest model = new UpdateListenerRuleRequest();
 
-    /**
-     * Model tests for UpdateListenerRuleRequest
-     */
+    /** Model tests for UpdateListenerRuleRequest */
     @Test
     public void testUpdateListenerRuleRequest() {
         // TODO: test UpdateListenerRuleRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'hostPattern'
-     */
+    /** Test the property 'hostPattern' */
     @Test
     public void hostPatternTest() {
         // TODO: test hostPattern
     }
 
-    /**
-     * Test the property 'listenerRuleName'
-     */
+    /** Test the property 'listenerRuleName' */
     @Test
     public void listenerRuleNameTest() {
         // TODO: test listenerRuleName
     }
 
-    /**
-     * Test the property 'pathPattern'
-     */
+    /** Test the property 'pathPattern' */
     @Test
     public void pathPatternTest() {
         // TODO: test pathPattern
     }
-
 }

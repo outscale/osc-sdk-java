@@ -10,97 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersClientGateway
- */
+/** Model tests for FiltersClientGateway */
 public class FiltersClientGatewayTest {
     private final FiltersClientGateway model = new FiltersClientGateway();
 
-    /**
-     * Model tests for FiltersClientGateway
-     */
+    /** Model tests for FiltersClientGateway */
     @Test
     public void testFiltersClientGateway() {
         // TODO: test FiltersClientGateway
     }
 
-    /**
-     * Test the property 'bgpAsns'
-     */
+    /** Test the property 'bgpAsns' */
     @Test
     public void bgpAsnsTest() {
         // TODO: test bgpAsns
     }
 
-    /**
-     * Test the property 'clientGatewayIds'
-     */
+    /** Test the property 'clientGatewayIds' */
     @Test
     public void clientGatewayIdsTest() {
         // TODO: test clientGatewayIds
     }
 
-    /**
-     * Test the property 'connectionTypes'
-     */
+    /** Test the property 'connectionTypes' */
     @Test
     public void connectionTypesTest() {
         // TODO: test connectionTypes
     }
 
-    /**
-     * Test the property 'publicIps'
-     */
+    /** Test the property 'publicIps' */
     @Test
     public void publicIpsTest() {
         // TODO: test publicIps
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

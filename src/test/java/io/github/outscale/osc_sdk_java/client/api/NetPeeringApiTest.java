@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -20,7 +19,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateNetPeeringResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetPeeringResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetPeeringsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetPeeringsResponse;
 import io.github.outscale.osc_sdk_java.client.model.RejectNetPeeringRequest;
@@ -28,22 +26,13 @@ import io.github.outscale.osc_sdk_java.client.model.RejectNetPeeringResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for NetPeeringApi
- */
+/** API tests for NetPeeringApi */
 @Disabled
 public class NetPeeringApiTest {
 
     private final NetPeeringApi api = new NetPeeringApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void acceptNetPeeringTest() throws ApiException {
         AcceptNetPeeringRequest acceptNetPeeringRequest = null;
@@ -51,9 +40,7 @@ public class NetPeeringApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createNetPeeringTest() throws ApiException {
         CreateNetPeeringRequest createNetPeeringRequest = null;
@@ -61,9 +48,7 @@ public class NetPeeringApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteNetPeeringTest() throws ApiException {
         DeleteNetPeeringRequest deleteNetPeeringRequest = null;
@@ -71,9 +56,7 @@ public class NetPeeringApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readNetPeeringsTest() throws ApiException {
         ReadNetPeeringsRequest readNetPeeringsRequest = null;
@@ -81,14 +64,11 @@ public class NetPeeringApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void rejectNetPeeringTest() throws ApiException {
         RejectNetPeeringRequest rejectNetPeeringRequest = null;
         RejectNetPeeringResponse response = api.rejectNetPeering(rejectNetPeeringRequest);
         // TODO: test validations
     }
-
 }

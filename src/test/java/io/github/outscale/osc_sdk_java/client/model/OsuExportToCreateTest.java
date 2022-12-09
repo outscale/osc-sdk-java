@@ -10,72 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.OsuApiKey;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for OsuExportToCreate
- */
+/** Model tests for OsuExportToCreate */
 public class OsuExportToCreateTest {
     private final OsuExportToCreate model = new OsuExportToCreate();
 
-    /**
-     * Model tests for OsuExportToCreate
-     */
+    /** Model tests for OsuExportToCreate */
     @Test
     public void testOsuExportToCreate() {
         // TODO: test OsuExportToCreate
     }
 
-    /**
-     * Test the property 'diskImageFormat'
-     */
+    /** Test the property 'diskImageFormat' */
     @Test
     public void diskImageFormatTest() {
         // TODO: test diskImageFormat
     }
 
-    /**
-     * Test the property 'osuApiKey'
-     */
+    /** Test the property 'osuApiKey' */
     @Test
     public void osuApiKeyTest() {
         // TODO: test osuApiKey
     }
 
-    /**
-     * Test the property 'osuBucket'
-     */
+    /** Test the property 'osuBucket' */
     @Test
     public void osuBucketTest() {
         // TODO: test osuBucket
     }
 
-    /**
-     * Test the property 'osuManifestUrl'
-     */
+    /** Test the property 'osuManifestUrl' */
     @Test
     public void osuManifestUrlTest() {
         // TODO: test osuManifestUrl
     }
 
-    /**
-     * Test the property 'osuPrefix'
-     */
+    /** Test the property 'osuPrefix' */
     @Test
     public void osuPrefixTest() {
         // TODO: test osuPrefix
     }
-
 }

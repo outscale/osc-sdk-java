@@ -10,58 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteTagsRequest
- */
+/** Model tests for DeleteTagsRequest */
 public class DeleteTagsRequestTest {
     private final DeleteTagsRequest model = new DeleteTagsRequest();
 
-    /**
-     * Model tests for DeleteTagsRequest
-     */
+    /** Model tests for DeleteTagsRequest */
     @Test
     public void testDeleteTagsRequest() {
         // TODO: test DeleteTagsRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'resourceIds'
-     */
+    /** Test the property 'resourceIds' */
     @Test
     public void resourceIdsTest() {
         // TODO: test resourceIds
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

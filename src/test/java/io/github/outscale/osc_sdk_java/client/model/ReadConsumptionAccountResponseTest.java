@@ -10,51 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ConsumptionEntry;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadConsumptionAccountResponse
- */
+/** Model tests for ReadConsumptionAccountResponse */
 public class ReadConsumptionAccountResponseTest {
     private final ReadConsumptionAccountResponse model = new ReadConsumptionAccountResponse();
 
-    /**
-     * Model tests for ReadConsumptionAccountResponse
-     */
+    /** Model tests for ReadConsumptionAccountResponse */
     @Test
     public void testReadConsumptionAccountResponse() {
         // TODO: test ReadConsumptionAccountResponse
     }
 
-    /**
-     * Test the property 'consumptionEntries'
-     */
+    /** Test the property 'consumptionEntries' */
     @Test
     public void consumptionEntriesTest() {
         // TODO: test consumptionEntries
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

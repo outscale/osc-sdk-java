@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Keypair
- */
+/** Model tests for Keypair */
 public class KeypairTest {
     private final Keypair model = new Keypair();
 
-    /**
-     * Model tests for Keypair
-     */
+    /** Model tests for Keypair */
     @Test
     public void testKeypair() {
         // TODO: test Keypair
     }
 
-    /**
-     * Test the property 'keypairFingerprint'
-     */
+    /** Test the property 'keypairFingerprint' */
     @Test
     public void keypairFingerprintTest() {
         // TODO: test keypairFingerprint
     }
 
-    /**
-     * Test the property 'keypairName'
-     */
+    /** Test the property 'keypairName' */
     @Test
     public void keypairNameTest() {
         // TODO: test keypairName
     }
-
 }

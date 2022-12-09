@@ -10,85 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.LinkRouteTable;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.Route;
-import io.github.outscale.osc_sdk_java.client.model.RoutePropagatingVirtualGateway;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for RouteTable
- */
+/** Model tests for RouteTable */
 public class RouteTableTest {
     private final RouteTable model = new RouteTable();
 
-    /**
-     * Model tests for RouteTable
-     */
+    /** Model tests for RouteTable */
     @Test
     public void testRouteTable() {
         // TODO: test RouteTable
     }
 
-    /**
-     * Test the property 'linkRouteTables'
-     */
+    /** Test the property 'linkRouteTables' */
     @Test
     public void linkRouteTablesTest() {
         // TODO: test linkRouteTables
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'routePropagatingVirtualGateways'
-     */
+    /** Test the property 'routePropagatingVirtualGateways' */
     @Test
     public void routePropagatingVirtualGatewaysTest() {
         // TODO: test routePropagatingVirtualGateways
     }
 
-    /**
-     * Test the property 'routeTableId'
-     */
+    /** Test the property 'routeTableId' */
     @Test
     public void routeTableIdTest() {
         // TODO: test routeTableId
     }
 
-    /**
-     * Test the property 'routes'
-     */
+    /** Test the property 'routes' */
     @Test
     public void routesTest() {
         // TODO: test routes
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

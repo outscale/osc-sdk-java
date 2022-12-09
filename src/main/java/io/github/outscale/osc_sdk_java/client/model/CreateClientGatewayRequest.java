@@ -10,296 +10,296 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateClientGatewayRequest
- */
+/** CreateClientGatewayRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateClientGatewayRequest {
-  public static final String SERIALIZED_NAME_BGP_ASN = "BgpAsn";
-  @SerializedName(SERIALIZED_NAME_BGP_ASN)
-  private Integer bgpAsn;
+    public static final String SERIALIZED_NAME_BGP_ASN = "BgpAsn";
 
-  public static final String SERIALIZED_NAME_CONNECTION_TYPE = "ConnectionType";
-  @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
-  private String connectionType;
+    @SerializedName(SERIALIZED_NAME_BGP_ASN)
+    private Integer bgpAsn;
 
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    public static final String SERIALIZED_NAME_CONNECTION_TYPE = "ConnectionType";
 
-  public static final String SERIALIZED_NAME_PUBLIC_IP = "PublicIp";
-  @SerializedName(SERIALIZED_NAME_PUBLIC_IP)
-  private String publicIp;
+    @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
+    private String connectionType;
 
-  public CreateClientGatewayRequest() {
-  }
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public CreateClientGatewayRequest bgpAsn(Integer bgpAsn) {
-    
-    this.bgpAsn = bgpAsn;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-   /**
-   * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path to your client gateway through the Internet. This number must be between &#x60;1&#x60; and &#x60;4294967295&#x60;.
-   * @return bgpAsn
-  **/
-  @javax.annotation.Nonnull
+    public static final String SERIALIZED_NAME_PUBLIC_IP = "PublicIp";
 
-  public Integer getBgpAsn() {
-    return bgpAsn;
-  }
+    @SerializedName(SERIALIZED_NAME_PUBLIC_IP)
+    private String publicIp;
 
+    public CreateClientGatewayRequest() {}
 
-  public void setBgpAsn(Integer bgpAsn) {
-    this.bgpAsn = bgpAsn;
-  }
+    public CreateClientGatewayRequest bgpAsn(Integer bgpAsn) {
 
-
-  public CreateClientGatewayRequest connectionType(String connectionType) {
-    
-    this.connectionType = connectionType;
-    return this;
-  }
-
-   /**
-   * The communication protocol used to establish tunnel with your client gateway (only &#x60;ipsec.1&#x60; is supported).
-   * @return connectionType
-  **/
-  @javax.annotation.Nonnull
-
-  public String getConnectionType() {
-    return connectionType;
-  }
-
-
-  public void setConnectionType(String connectionType) {
-    this.connectionType = connectionType;
-  }
-
-
-  public CreateClientGatewayRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
-
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDryRun() {
-    return dryRun;
-  }
-
-
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
-
-
-  public CreateClientGatewayRequest publicIp(String publicIp) {
-    
-    this.publicIp = publicIp;
-    return this;
-  }
-
-   /**
-   * The public fixed IPv4 address of your client gateway.
-   * @return publicIp
-  **/
-  @javax.annotation.Nonnull
-
-  public String getPublicIp() {
-    return publicIp;
-  }
-
-
-  public void setPublicIp(String publicIp) {
-    this.publicIp = publicIp;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.bgpAsn = bgpAsn;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The Autonomous System Number (ASN) used by the Border Gateway Protocol (BGP) to find the path
+     * to your client gateway through the Internet. This number must be between &#x60;1&#x60; and
+     * &#x60;4294967295&#x60;.
+     *
+     * @return bgpAsn
+     */
+    @javax.annotation.Nonnull
+    public Integer getBgpAsn() {
+        return bgpAsn;
     }
-    CreateClientGatewayRequest createClientGatewayRequest = (CreateClientGatewayRequest) o;
-    return Objects.equals(this.bgpAsn, createClientGatewayRequest.bgpAsn) &&
-        Objects.equals(this.connectionType, createClientGatewayRequest.connectionType) &&
-        Objects.equals(this.dryRun, createClientGatewayRequest.dryRun) &&
-        Objects.equals(this.publicIp, createClientGatewayRequest.publicIp);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(bgpAsn, connectionType, dryRun, publicIp);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateClientGatewayRequest {\n");
-    sb.append("    bgpAsn: ").append(toIndentedString(bgpAsn)).append("\n");
-    sb.append("    connectionType: ").append(toIndentedString(connectionType)).append("\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    publicIp: ").append(toIndentedString(publicIp)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setBgpAsn(Integer bgpAsn) {
+        this.bgpAsn = bgpAsn;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateClientGatewayRequest connectionType(String connectionType) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.connectionType = connectionType;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("BgpAsn");
-    openapiFields.add("ConnectionType");
-    openapiFields.add("DryRun");
-    openapiFields.add("PublicIp");
+    /**
+     * The communication protocol used to establish tunnel with your client gateway (only
+     * &#x60;ipsec.1&#x60; is supported).
+     *
+     * @return connectionType
+     */
+    @javax.annotation.Nonnull
+    public String getConnectionType() {
+        return connectionType;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("BgpAsn");
-    openapiRequiredFields.add("ConnectionType");
-    openapiRequiredFields.add("PublicIp");
-  }
+    public void setConnectionType(String connectionType) {
+        this.connectionType = connectionType;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateClientGatewayRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateClientGatewayRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateClientGatewayRequest is not found in the empty JSON string", CreateClientGatewayRequest.openapiRequiredFields.toString()));
-        }
-      }
+    public CreateClientGatewayRequest dryRun(Boolean dryRun) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateClientGatewayRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateClientGatewayRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        this.dryRun = dryRun;
+        return this;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateClientGatewayRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("ConnectionType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ConnectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConnectionType").toString()));
-      }
-      if (!jsonObj.get("PublicIp").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `PublicIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PublicIp").toString()));
-      }
-  }
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
+    }
+
+    public CreateClientGatewayRequest publicIp(String publicIp) {
+
+        this.publicIp = publicIp;
+        return this;
+    }
+
+    /**
+     * The public fixed IPv4 address of your client gateway.
+     *
+     * @return publicIp
+     */
+    @javax.annotation.Nonnull
+    public String getPublicIp() {
+        return publicIp;
+    }
+
+    public void setPublicIp(String publicIp) {
+        this.publicIp = publicIp;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateClientGatewayRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateClientGatewayRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateClientGatewayRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateClientGatewayRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateClientGatewayRequest>() {
-           @Override
-           public void write(JsonWriter out, CreateClientGatewayRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateClientGatewayRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateClientGatewayRequest createClientGatewayRequest = (CreateClientGatewayRequest) o;
+        return Objects.equals(this.bgpAsn, createClientGatewayRequest.bgpAsn)
+                && Objects.equals(this.connectionType, createClientGatewayRequest.connectionType)
+                && Objects.equals(this.dryRun, createClientGatewayRequest.dryRun)
+                && Objects.equals(this.publicIp, createClientGatewayRequest.publicIp);
     }
-  }
 
- /**
-  * Create an instance of CreateClientGatewayRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateClientGatewayRequest
-  * @throws IOException if the JSON string is invalid with respect to CreateClientGatewayRequest
-  */
-  public static CreateClientGatewayRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateClientGatewayRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(bgpAsn, connectionType, dryRun, publicIp);
+    }
 
- /**
-  * Convert an instance of CreateClientGatewayRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateClientGatewayRequest {\n");
+        sb.append("    bgpAsn: ").append(toIndentedString(bgpAsn)).append("\n");
+        sb.append("    connectionType: ").append(toIndentedString(connectionType)).append("\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    publicIp: ").append(toIndentedString(publicIp)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("BgpAsn");
+        openapiFields.add("ConnectionType");
+        openapiFields.add("DryRun");
+        openapiFields.add("PublicIp");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("BgpAsn");
+        openapiRequiredFields.add("ConnectionType");
+        openapiRequiredFields.add("PublicIp");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to CreateClientGatewayRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateClientGatewayRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateClientGatewayRequest is not"
+                                        + " found in the empty JSON string",
+                                CreateClientGatewayRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateClientGatewayRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateClientGatewayRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateClientGatewayRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("ConnectionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ConnectionType` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("ConnectionType").toString()));
+        }
+        if (!jsonObj.get("PublicIp").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `PublicIp` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("PublicIp").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateClientGatewayRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateClientGatewayRequest' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateClientGatewayRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateClientGatewayRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateClientGatewayRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateClientGatewayRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateClientGatewayRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateClientGatewayRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateClientGatewayRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateClientGatewayRequest
+     */
+    public static CreateClientGatewayRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateClientGatewayRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateClientGatewayRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

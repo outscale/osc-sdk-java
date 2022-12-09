@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for PermissionsOnResource
- */
+/** Model tests for PermissionsOnResource */
 public class PermissionsOnResourceTest {
     private final PermissionsOnResource model = new PermissionsOnResource();
 
-    /**
-     * Model tests for PermissionsOnResource
-     */
+    /** Model tests for PermissionsOnResource */
     @Test
     public void testPermissionsOnResource() {
         // TODO: test PermissionsOnResource
     }
 
-    /**
-     * Test the property 'accountIds'
-     */
+    /** Test the property 'accountIds' */
     @Test
     public void accountIdsTest() {
         // TODO: test accountIds
     }
 
-    /**
-     * Test the property 'globalPermission'
-     */
+    /** Test the property 'globalPermission' */
     @Test
     public void globalPermissionTest() {
         // TODO: test globalPermission
     }
-
 }

@@ -1,10 +1,5 @@
 package io.github.outscale.osc_sdk_java.client;
 
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Map.Entry;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -14,45 +9,57 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
 
 public class Profile {
     public static final String SERIALIZED_NAME_ACCESS_KEY = "access_key";
+
     @SerializedName(SERIALIZED_NAME_ACCESS_KEY)
     private String accessKey;
 
     public static final String SERIALIZED_NAME_SECRET_KEY = "secret_key";
+
     @SerializedName(SERIALIZED_NAME_SECRET_KEY)
     private String secretKey;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_CERT = "x509_client_cert";
+
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT)
     private String x509ClientCert;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_CERT_B64 = "x509_client_cert_b64";
+
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT_B64)
     private String x509ClientCertB64;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_KEY = "x509_client_key";
+
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY)
     private String x509ClientKey;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_KEY_B64 = "x509_client_key_b64";
+
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY_B64)
     private String x509ClientKeyB64;
 
     public static final String SERIALIZED_NAME_PROTOCOL = "protocol";
+
     @SerializedName(SERIALIZED_NAME_PROTOCOL)
     private String protocol;
 
     public static final String SERIALIZED_NAME_METHOD = "method";
+
     @SerializedName(SERIALIZED_NAME_METHOD)
     private String method;
 
     public static final String SERIALIZED_NAME_REGION = "region";
+
     @SerializedName(SERIALIZED_NAME_REGION)
     private String region;
 
     public static final String SERIALIZED_NAME_ENDPOINTS = "endpoints";
+
     @SerializedName(SERIALIZED_NAME_ENDPOINTS)
     private Endpoint endpoints;
 
@@ -67,22 +74,23 @@ public class Profile {
                 return null; // this class only serializes 'Profile' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Profile> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Profile.class));
+            final TypeAdapter<Profile> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Profile.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Profile>() {
-                @Override
-                public void write(JsonWriter out, Profile value) throws IOException {
-                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-                    elementAdapter.write(out, obj);
-                }
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Profile>() {
+                        @Override
+                        public void write(JsonWriter out, Profile value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
 
-                @Override
-                public Profile read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    return thisAdapter.fromJsonTree(jsonObj);
-                }
-
-            }.nullSafe();
+                        @Override
+                        public Profile read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
         }
     }
 
@@ -91,8 +99,7 @@ public class Profile {
      *
      * @param jsonString JSON string
      * @return An instance of Profile
-     * @throws IOException if the JSON string is invalid with respect to
-     *                     AcceptNetPeeringRequest
+     * @throws IOException if the JSON string is invalid with respect to AcceptNetPeeringRequest
      */
     public static Profile fromJson(String jsonString) throws IOException {
         return JSON.getGson().fromJson(jsonString, Profile.class);

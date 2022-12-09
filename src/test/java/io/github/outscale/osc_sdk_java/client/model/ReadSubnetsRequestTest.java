@@ -10,48 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.FiltersSubnet;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadSubnetsRequest
- */
+/** Model tests for ReadSubnetsRequest */
 public class ReadSubnetsRequestTest {
     private final ReadSubnetsRequest model = new ReadSubnetsRequest();
 
-    /**
-     * Model tests for ReadSubnetsRequest
-     */
+    /** Model tests for ReadSubnetsRequest */
     @Test
     public void testReadSubnetsRequest() {
         // TODO: test ReadSubnetsRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'filters'
-     */
+    /** Test the property 'filters' */
     @Test
     public void filtersTest() {
         // TODO: test filters
     }
-
 }

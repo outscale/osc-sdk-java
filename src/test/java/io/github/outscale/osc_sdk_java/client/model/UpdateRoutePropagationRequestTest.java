@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateRoutePropagationRequest
- */
+/** Model tests for UpdateRoutePropagationRequest */
 public class UpdateRoutePropagationRequestTest {
     private final UpdateRoutePropagationRequest model = new UpdateRoutePropagationRequest();
 
-    /**
-     * Model tests for UpdateRoutePropagationRequest
-     */
+    /** Model tests for UpdateRoutePropagationRequest */
     @Test
     public void testUpdateRoutePropagationRequest() {
         // TODO: test UpdateRoutePropagationRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'enable'
-     */
+    /** Test the property 'enable' */
     @Test
     public void enableTest() {
         // TODO: test enable
     }
 
-    /**
-     * Test the property 'routeTableId'
-     */
+    /** Test the property 'routeTableId' */
     @Test
     public void routeTableIdTest() {
         // TODO: test routeTableId
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
-
 }

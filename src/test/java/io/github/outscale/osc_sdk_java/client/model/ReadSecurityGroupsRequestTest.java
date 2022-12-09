@@ -10,48 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.FiltersSecurityGroup;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadSecurityGroupsRequest
- */
+/** Model tests for ReadSecurityGroupsRequest */
 public class ReadSecurityGroupsRequestTest {
     private final ReadSecurityGroupsRequest model = new ReadSecurityGroupsRequest();
 
-    /**
-     * Model tests for ReadSecurityGroupsRequest
-     */
+    /** Model tests for ReadSecurityGroupsRequest */
     @Test
     public void testReadSecurityGroupsRequest() {
         // TODO: test ReadSecurityGroupsRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'filters'
-     */
+    /** Test the property 'filters' */
     @Test
     public void filtersTest() {
         // TODO: test filters
     }
-
 }

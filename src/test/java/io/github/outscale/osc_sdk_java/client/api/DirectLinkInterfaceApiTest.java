@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -25,57 +24,45 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateDirectLinkInterfaceRes
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for DirectLinkInterfaceApi
- */
+/** API tests for DirectLinkInterfaceApi */
 @Disabled
 public class DirectLinkInterfaceApiTest {
 
     private final DirectLinkInterfaceApi api = new DirectLinkInterfaceApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createDirectLinkInterfaceTest() throws ApiException {
         CreateDirectLinkInterfaceRequest createDirectLinkInterfaceRequest = null;
-        CreateDirectLinkInterfaceResponse response = api.createDirectLinkInterface(createDirectLinkInterfaceRequest);
+        CreateDirectLinkInterfaceResponse response =
+                api.createDirectLinkInterface(createDirectLinkInterfaceRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteDirectLinkInterfaceTest() throws ApiException {
         DeleteDirectLinkInterfaceRequest deleteDirectLinkInterfaceRequest = null;
-        DeleteDirectLinkInterfaceResponse response = api.deleteDirectLinkInterface(deleteDirectLinkInterfaceRequest);
+        DeleteDirectLinkInterfaceResponse response =
+                api.deleteDirectLinkInterface(deleteDirectLinkInterfaceRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readDirectLinkInterfacesTest() throws ApiException {
         ReadDirectLinkInterfacesRequest readDirectLinkInterfacesRequest = null;
-        ReadDirectLinkInterfacesResponse response = api.readDirectLinkInterfaces(readDirectLinkInterfacesRequest);
+        ReadDirectLinkInterfacesResponse response =
+                api.readDirectLinkInterfaces(readDirectLinkInterfacesRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateDirectLinkInterfaceTest() throws ApiException {
         UpdateDirectLinkInterfaceRequest updateDirectLinkInterfaceRequest = null;
-        UpdateDirectLinkInterfaceResponse response = api.updateDirectLinkInterface(updateDirectLinkInterfaceRequest);
+        UpdateDirectLinkInterfaceResponse response =
+                api.updateDirectLinkInterface(updateDirectLinkInterfaceRequest);
         // TODO: test validations
     }
-
 }

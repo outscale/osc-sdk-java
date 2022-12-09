@@ -10,73 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateDhcpOptionsRequest
- */
+/** Model tests for CreateDhcpOptionsRequest */
 public class CreateDhcpOptionsRequestTest {
     private final CreateDhcpOptionsRequest model = new CreateDhcpOptionsRequest();
 
-    /**
-     * Model tests for CreateDhcpOptionsRequest
-     */
+    /** Model tests for CreateDhcpOptionsRequest */
     @Test
     public void testCreateDhcpOptionsRequest() {
         // TODO: test CreateDhcpOptionsRequest
     }
 
-    /**
-     * Test the property 'domainName'
-     */
+    /** Test the property 'domainName' */
     @Test
     public void domainNameTest() {
         // TODO: test domainName
     }
 
-    /**
-     * Test the property 'domainNameServers'
-     */
+    /** Test the property 'domainNameServers' */
     @Test
     public void domainNameServersTest() {
         // TODO: test domainNameServers
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'logServers'
-     */
+    /** Test the property 'logServers' */
     @Test
     public void logServersTest() {
         // TODO: test logServers
     }
 
-    /**
-     * Test the property 'ntpServers'
-     */
+    /** Test the property 'ntpServers' */
     @Test
     public void ntpServersTest() {
         // TODO: test ntpServers
     }
-
 }

@@ -10,57 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Service
- */
+/** Model tests for Service */
 public class ServiceTest {
     private final Service model = new Service();
 
-    /**
-     * Model tests for Service
-     */
+    /** Model tests for Service */
     @Test
     public void testService() {
         // TODO: test Service
     }
 
-    /**
-     * Test the property 'ipRanges'
-     */
+    /** Test the property 'ipRanges' */
     @Test
     public void ipRangesTest() {
         // TODO: test ipRanges
     }
 
-    /**
-     * Test the property 'serviceId'
-     */
+    /** Test the property 'serviceId' */
     @Test
     public void serviceIdTest() {
         // TODO: test serviceId
     }
 
-    /**
-     * Test the property 'serviceName'
-     */
+    /** Test the property 'serviceName' */
     @Test
     public void serviceNameTest() {
         // TODO: test serviceName
     }
-
 }

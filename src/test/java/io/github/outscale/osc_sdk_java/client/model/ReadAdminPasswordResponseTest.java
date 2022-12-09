@@ -10,56 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadAdminPasswordResponse
- */
+/** Model tests for ReadAdminPasswordResponse */
 public class ReadAdminPasswordResponseTest {
     private final ReadAdminPasswordResponse model = new ReadAdminPasswordResponse();
 
-    /**
-     * Model tests for ReadAdminPasswordResponse
-     */
+    /** Model tests for ReadAdminPasswordResponse */
     @Test
     public void testReadAdminPasswordResponse() {
         // TODO: test ReadAdminPasswordResponse
     }
 
-    /**
-     * Test the property 'adminPassword'
-     */
+    /** Test the property 'adminPassword' */
     @Test
     public void adminPasswordTest() {
         // TODO: test adminPassword
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

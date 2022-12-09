@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -27,52 +26,40 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateNetAccessPointResponse
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for NetAccessPointApi
- */
+/** API tests for NetAccessPointApi */
 @Disabled
 public class NetAccessPointApiTest {
 
     private final NetAccessPointApi api = new NetAccessPointApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createNetAccessPointTest() throws ApiException {
         CreateNetAccessPointRequest createNetAccessPointRequest = null;
-        CreateNetAccessPointResponse response = api.createNetAccessPoint(createNetAccessPointRequest);
+        CreateNetAccessPointResponse response =
+                api.createNetAccessPoint(createNetAccessPointRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteNetAccessPointTest() throws ApiException {
         DeleteNetAccessPointRequest deleteNetAccessPointRequest = null;
-        DeleteNetAccessPointResponse response = api.deleteNetAccessPoint(deleteNetAccessPointRequest);
+        DeleteNetAccessPointResponse response =
+                api.deleteNetAccessPoint(deleteNetAccessPointRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readNetAccessPointServicesTest() throws ApiException {
         ReadNetAccessPointServicesRequest readNetAccessPointServicesRequest = null;
-        ReadNetAccessPointServicesResponse response = api.readNetAccessPointServices(readNetAccessPointServicesRequest);
+        ReadNetAccessPointServicesResponse response =
+                api.readNetAccessPointServices(readNetAccessPointServicesRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readNetAccessPointsTest() throws ApiException {
         ReadNetAccessPointsRequest readNetAccessPointsRequest = null;
@@ -80,14 +67,12 @@ public class NetAccessPointApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateNetAccessPointTest() throws ApiException {
         UpdateNetAccessPointRequest updateNetAccessPointRequest = null;
-        UpdateNetAccessPointResponse response = api.updateNetAccessPoint(updateNetAccessPointRequest);
+        UpdateNetAccessPointResponse response =
+                api.updateNetAccessPoint(updateNetAccessPointRequest);
         // TODO: test validations
     }
-
 }

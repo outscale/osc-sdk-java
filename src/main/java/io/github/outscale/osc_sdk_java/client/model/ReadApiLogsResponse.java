@@ -10,284 +10,280 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.Log;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * ReadApiLogsResponse
- */
+/** ReadApiLogsResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadApiLogsResponse {
-  public static final String SERIALIZED_NAME_LOGS = "Logs";
-  @SerializedName(SERIALIZED_NAME_LOGS)
-  private List<Log> logs = null;
+    public static final String SERIALIZED_NAME_LOGS = "Logs";
 
-  public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "NextPageToken";
-  @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
-  private String nextPageToken;
+    @SerializedName(SERIALIZED_NAME_LOGS)
+    private List<Log> logs = null;
 
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "NextPageToken";
 
-  public ReadApiLogsResponse() {
-  }
+    @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
+    private String nextPageToken;
 
-  public ReadApiLogsResponse logs(List<Log> logs) {
-    
-    this.logs = logs;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public ReadApiLogsResponse addLogsItem(Log logsItem) {
-    if (this.logs == null) {
-      this.logs = new ArrayList<>();
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
+
+    public ReadApiLogsResponse() {}
+
+    public ReadApiLogsResponse logs(List<Log> logs) {
+
+        this.logs = logs;
+        return this;
     }
-    this.logs.add(logsItem);
-    return this;
-  }
 
-   /**
-   * Information about one or more logs.
-   * @return logs
-  **/
-  @javax.annotation.Nullable
-
-  public List<Log> getLogs() {
-    return logs;
-  }
-
-
-  public void setLogs(List<Log> logs) {
-    this.logs = logs;
-  }
-
-
-  public ReadApiLogsResponse nextPageToken(String nextPageToken) {
-    
-    this.nextPageToken = nextPageToken;
-    return this;
-  }
-
-   /**
-   * The token to request the next page of results.
-   * @return nextPageToken
-  **/
-  @javax.annotation.Nullable
-
-  public String getNextPageToken() {
-    return nextPageToken;
-  }
-
-
-  public void setNextPageToken(String nextPageToken) {
-    this.nextPageToken = nextPageToken;
-  }
-
-
-  public ReadApiLogsResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
-
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
-
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
-
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ReadApiLogsResponse readApiLogsResponse = (ReadApiLogsResponse) o;
-    return Objects.equals(this.logs, readApiLogsResponse.logs) &&
-        Objects.equals(this.nextPageToken, readApiLogsResponse.nextPageToken) &&
-        Objects.equals(this.responseContext, readApiLogsResponse.responseContext);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(logs, nextPageToken, responseContext);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ReadApiLogsResponse {\n");
-    sb.append("    logs: ").append(toIndentedString(logs)).append("\n");
-    sb.append("    nextPageToken: ").append(toIndentedString(nextPageToken)).append("\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Logs");
-    openapiFields.add("NextPageToken");
-    openapiFields.add("ResponseContext");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReadApiLogsResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReadApiLogsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadApiLogsResponse is not found in the empty JSON string", ReadApiLogsResponse.openapiRequiredFields.toString()));
+    public ReadApiLogsResponse addLogsItem(Log logsItem) {
+        if (this.logs == null) {
+            this.logs = new ArrayList<>();
         }
-      }
+        this.logs.add(logsItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ReadApiLogsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadApiLogsResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("Logs") != null && !jsonObj.get("Logs").isJsonNull()) {
-        JsonArray jsonArraylogs = jsonObj.getAsJsonArray("Logs");
-        if (jsonArraylogs != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("Logs").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `Logs` to be an array in the JSON string but got `%s`", jsonObj.get("Logs").toString()));
-          }
+    /**
+     * Information about one or more logs.
+     *
+     * @return logs
+     */
+    @javax.annotation.Nullable
+    public List<Log> getLogs() {
+        return logs;
+    }
 
-          // validate the optional field `Logs` (array)
-          for (int i = 0; i < jsonArraylogs.size(); i++) {
-            Log.validateJsonObject(jsonArraylogs.get(i).getAsJsonObject());
-          };
-        }
-      }
-      if ((jsonObj.get("NextPageToken") != null && !jsonObj.get("NextPageToken").isJsonNull()) && !jsonObj.get("NextPageToken").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `NextPageToken` to be a primitive type in the JSON string but got `%s`", jsonObj.get("NextPageToken").toString()));
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-  }
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public ReadApiLogsResponse nextPageToken(String nextPageToken) {
+
+        this.nextPageToken = nextPageToken;
+        return this;
+    }
+
+    /**
+     * The token to request the next page of results.
+     *
+     * @return nextPageToken
+     */
+    @javax.annotation.Nullable
+    public String getNextPageToken() {
+        return nextPageToken;
+    }
+
+    public void setNextPageToken(String nextPageToken) {
+        this.nextPageToken = nextPageToken;
+    }
+
+    public ReadApiLogsResponse responseContext(ResponseContext responseContext) {
+
+        this.responseContext = responseContext;
+        return this;
+    }
+
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
+    }
+
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReadApiLogsResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReadApiLogsResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReadApiLogsResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReadApiLogsResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ReadApiLogsResponse>() {
-           @Override
-           public void write(JsonWriter out, ReadApiLogsResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ReadApiLogsResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ReadApiLogsResponse readApiLogsResponse = (ReadApiLogsResponse) o;
+        return Objects.equals(this.logs, readApiLogsResponse.logs)
+                && Objects.equals(this.nextPageToken, readApiLogsResponse.nextPageToken)
+                && Objects.equals(this.responseContext, readApiLogsResponse.responseContext);
     }
-  }
 
- /**
-  * Create an instance of ReadApiLogsResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReadApiLogsResponse
-  * @throws IOException if the JSON string is invalid with respect to ReadApiLogsResponse
-  */
-  public static ReadApiLogsResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReadApiLogsResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(logs, nextPageToken, responseContext);
+    }
 
- /**
-  * Convert an instance of ReadApiLogsResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ReadApiLogsResponse {\n");
+        sb.append("    logs: ").append(toIndentedString(logs)).append("\n");
+        sb.append("    nextPageToken: ").append(toIndentedString(nextPageToken)).append("\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Logs");
+        openapiFields.add("NextPageToken");
+        openapiFields.add("ResponseContext");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to ReadApiLogsResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!ReadApiLogsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in ReadApiLogsResponse is not found in"
+                                        + " the empty JSON string",
+                                ReadApiLogsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!ReadApiLogsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `ReadApiLogsResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if (jsonObj.get("Logs") != null && !jsonObj.get("Logs").isJsonNull()) {
+            JsonArray jsonArraylogs = jsonObj.getAsJsonArray("Logs");
+            if (jsonArraylogs != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("Logs").isJsonArray()) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Expected the field `Logs` to be an array in the JSON string"
+                                            + " but got `%s`",
+                                    jsonObj.get("Logs").toString()));
+                }
+
+                // validate the optional field `Logs` (array)
+                for (int i = 0; i < jsonArraylogs.size(); i++) {
+                    Log.validateJsonObject(jsonArraylogs.get(i).getAsJsonObject());
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("NextPageToken") != null && !jsonObj.get("NextPageToken").isJsonNull())
+                && !jsonObj.get("NextPageToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `NextPageToken` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("NextPageToken").toString()));
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReadApiLogsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReadApiLogsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReadApiLogsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReadApiLogsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReadApiLogsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ReadApiLogsResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReadApiLogsResponse read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReadApiLogsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReadApiLogsResponse
+     * @throws IOException if the JSON string is invalid with respect to ReadApiLogsResponse
+     */
+    public static ReadApiLogsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReadApiLogsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ReadApiLogsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

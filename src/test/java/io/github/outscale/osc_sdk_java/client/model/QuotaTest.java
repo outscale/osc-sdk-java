@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Quota
- */
+/** Model tests for Quota */
 public class QuotaTest {
     private final Quota model = new Quota();
 
-    /**
-     * Model tests for Quota
-     */
+    /** Model tests for Quota */
     @Test
     public void testQuota() {
         // TODO: test Quota
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'maxValue'
-     */
+    /** Test the property 'maxValue' */
     @Test
     public void maxValueTest() {
         // TODO: test maxValue
     }
 
-    /**
-     * Test the property 'name'
-     */
+    /** Test the property 'name' */
     @Test
     public void nameTest() {
         // TODO: test name
     }
 
-    /**
-     * Test the property 'quotaCollection'
-     */
+    /** Test the property 'quotaCollection' */
     @Test
     public void quotaCollectionTest() {
         // TODO: test quotaCollection
     }
 
-    /**
-     * Test the property 'shortDescription'
-     */
+    /** Test the property 'shortDescription' */
     @Test
     public void shortDescriptionTest() {
         // TODO: test shortDescription
     }
 
-    /**
-     * Test the property 'usedValue'
-     */
+    /** Test the property 'usedValue' */
     @Test
     public void usedValueTest() {
         // TODO: test usedValue
     }
-
 }

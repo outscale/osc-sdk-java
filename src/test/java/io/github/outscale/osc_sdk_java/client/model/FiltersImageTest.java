@@ -10,217 +10,155 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersImage
- */
+/** Model tests for FiltersImage */
 public class FiltersImageTest {
     private final FiltersImage model = new FiltersImage();
 
-    /**
-     * Model tests for FiltersImage
-     */
+    /** Model tests for FiltersImage */
     @Test
     public void testFiltersImage() {
         // TODO: test FiltersImage
     }
 
-    /**
-     * Test the property 'accountAliases'
-     */
+    /** Test the property 'accountAliases' */
     @Test
     public void accountAliasesTest() {
         // TODO: test accountAliases
     }
 
-    /**
-     * Test the property 'accountIds'
-     */
+    /** Test the property 'accountIds' */
     @Test
     public void accountIdsTest() {
         // TODO: test accountIds
     }
 
-    /**
-     * Test the property 'architectures'
-     */
+    /** Test the property 'architectures' */
     @Test
     public void architecturesTest() {
         // TODO: test architectures
     }
 
-    /**
-     * Test the property 'blockDeviceMappingDeleteOnVmDeletion'
-     */
+    /** Test the property 'blockDeviceMappingDeleteOnVmDeletion' */
     @Test
     public void blockDeviceMappingDeleteOnVmDeletionTest() {
         // TODO: test blockDeviceMappingDeleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'blockDeviceMappingDeviceNames'
-     */
+    /** Test the property 'blockDeviceMappingDeviceNames' */
     @Test
     public void blockDeviceMappingDeviceNamesTest() {
         // TODO: test blockDeviceMappingDeviceNames
     }
 
-    /**
-     * Test the property 'blockDeviceMappingSnapshotIds'
-     */
+    /** Test the property 'blockDeviceMappingSnapshotIds' */
     @Test
     public void blockDeviceMappingSnapshotIdsTest() {
         // TODO: test blockDeviceMappingSnapshotIds
     }
 
-    /**
-     * Test the property 'blockDeviceMappingVolumeSizes'
-     */
+    /** Test the property 'blockDeviceMappingVolumeSizes' */
     @Test
     public void blockDeviceMappingVolumeSizesTest() {
         // TODO: test blockDeviceMappingVolumeSizes
     }
 
-    /**
-     * Test the property 'blockDeviceMappingVolumeTypes'
-     */
+    /** Test the property 'blockDeviceMappingVolumeTypes' */
     @Test
     public void blockDeviceMappingVolumeTypesTest() {
         // TODO: test blockDeviceMappingVolumeTypes
     }
 
-    /**
-     * Test the property 'descriptions'
-     */
+    /** Test the property 'descriptions' */
     @Test
     public void descriptionsTest() {
         // TODO: test descriptions
     }
 
-    /**
-     * Test the property 'fileLocations'
-     */
+    /** Test the property 'fileLocations' */
     @Test
     public void fileLocationsTest() {
         // TODO: test fileLocations
     }
 
-    /**
-     * Test the property 'hypervisors'
-     */
+    /** Test the property 'hypervisors' */
     @Test
     public void hypervisorsTest() {
         // TODO: test hypervisors
     }
 
-    /**
-     * Test the property 'imageIds'
-     */
+    /** Test the property 'imageIds' */
     @Test
     public void imageIdsTest() {
         // TODO: test imageIds
     }
 
-    /**
-     * Test the property 'imageNames'
-     */
+    /** Test the property 'imageNames' */
     @Test
     public void imageNamesTest() {
         // TODO: test imageNames
     }
 
-    /**
-     * Test the property 'permissionsToLaunchAccountIds'
-     */
+    /** Test the property 'permissionsToLaunchAccountIds' */
     @Test
     public void permissionsToLaunchAccountIdsTest() {
         // TODO: test permissionsToLaunchAccountIds
     }
 
-    /**
-     * Test the property 'permissionsToLaunchGlobalPermission'
-     */
+    /** Test the property 'permissionsToLaunchGlobalPermission' */
     @Test
     public void permissionsToLaunchGlobalPermissionTest() {
         // TODO: test permissionsToLaunchGlobalPermission
     }
 
-    /**
-     * Test the property 'productCodes'
-     */
+    /** Test the property 'productCodes' */
     @Test
     public void productCodesTest() {
         // TODO: test productCodes
     }
 
-    /**
-     * Test the property 'rootDeviceNames'
-     */
+    /** Test the property 'rootDeviceNames' */
     @Test
     public void rootDeviceNamesTest() {
         // TODO: test rootDeviceNames
     }
 
-    /**
-     * Test the property 'rootDeviceTypes'
-     */
+    /** Test the property 'rootDeviceTypes' */
     @Test
     public void rootDeviceTypesTest() {
         // TODO: test rootDeviceTypes
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'virtualizationTypes'
-     */
+    /** Test the property 'virtualizationTypes' */
     @Test
     public void virtualizationTypesTest() {
         // TODO: test virtualizationTypes
     }
-
 }

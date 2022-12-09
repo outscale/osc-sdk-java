@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for OsuApiKey
- */
+/** Model tests for OsuApiKey */
 public class OsuApiKeyTest {
     private final OsuApiKey model = new OsuApiKey();
 
-    /**
-     * Model tests for OsuApiKey
-     */
+    /** Model tests for OsuApiKey */
     @Test
     public void testOsuApiKey() {
         // TODO: test OsuApiKey
     }
 
-    /**
-     * Test the property 'apiKeyId'
-     */
+    /** Test the property 'apiKeyId' */
     @Test
     public void apiKeyIdTest() {
         // TODO: test apiKeyId
     }
 
-    /**
-     * Test the property 'secretKey'
-     */
+    /** Test the property 'secretKey' */
     @Test
     public void secretKeyTest() {
         // TODO: test secretKey
     }
-
 }

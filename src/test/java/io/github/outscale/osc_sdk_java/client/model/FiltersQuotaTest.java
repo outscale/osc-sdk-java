@@ -10,65 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersQuota
- */
+/** Model tests for FiltersQuota */
 public class FiltersQuotaTest {
     private final FiltersQuota model = new FiltersQuota();
 
-    /**
-     * Model tests for FiltersQuota
-     */
+    /** Model tests for FiltersQuota */
     @Test
     public void testFiltersQuota() {
         // TODO: test FiltersQuota
     }
 
-    /**
-     * Test the property 'collections'
-     */
+    /** Test the property 'collections' */
     @Test
     public void collectionsTest() {
         // TODO: test collections
     }
 
-    /**
-     * Test the property 'quotaNames'
-     */
+    /** Test the property 'quotaNames' */
     @Test
     public void quotaNamesTest() {
         // TODO: test quotaNames
     }
 
-    /**
-     * Test the property 'quotaTypes'
-     */
+    /** Test the property 'quotaTypes' */
     @Test
     public void quotaTypesTest() {
         // TODO: test quotaTypes
     }
 
-    /**
-     * Test the property 'shortDescriptions'
-     */
+    /** Test the property 'shortDescriptions' */
     @Test
     public void shortDescriptionsTest() {
         // TODO: test shortDescriptions
     }
-
 }

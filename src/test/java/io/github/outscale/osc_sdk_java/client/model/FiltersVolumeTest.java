@@ -10,154 +10,107 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersVolume
- */
+/** Model tests for FiltersVolume */
 public class FiltersVolumeTest {
     private final FiltersVolume model = new FiltersVolume();
 
-    /**
-     * Model tests for FiltersVolume
-     */
+    /** Model tests for FiltersVolume */
     @Test
     public void testFiltersVolume() {
         // TODO: test FiltersVolume
     }
 
-    /**
-     * Test the property 'creationDates'
-     */
+    /** Test the property 'creationDates' */
     @Test
     public void creationDatesTest() {
         // TODO: test creationDates
     }
 
-    /**
-     * Test the property 'linkVolumeDeleteOnVmDeletion'
-     */
+    /** Test the property 'linkVolumeDeleteOnVmDeletion' */
     @Test
     public void linkVolumeDeleteOnVmDeletionTest() {
         // TODO: test linkVolumeDeleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'linkVolumeDeviceNames'
-     */
+    /** Test the property 'linkVolumeDeviceNames' */
     @Test
     public void linkVolumeDeviceNamesTest() {
         // TODO: test linkVolumeDeviceNames
     }
 
-    /**
-     * Test the property 'linkVolumeLinkDates'
-     */
+    /** Test the property 'linkVolumeLinkDates' */
     @Test
     public void linkVolumeLinkDatesTest() {
         // TODO: test linkVolumeLinkDates
     }
 
-    /**
-     * Test the property 'linkVolumeLinkStates'
-     */
+    /** Test the property 'linkVolumeLinkStates' */
     @Test
     public void linkVolumeLinkStatesTest() {
         // TODO: test linkVolumeLinkStates
     }
 
-    /**
-     * Test the property 'linkVolumeVmIds'
-     */
+    /** Test the property 'linkVolumeVmIds' */
     @Test
     public void linkVolumeVmIdsTest() {
         // TODO: test linkVolumeVmIds
     }
 
-    /**
-     * Test the property 'snapshotIds'
-     */
+    /** Test the property 'snapshotIds' */
     @Test
     public void snapshotIdsTest() {
         // TODO: test snapshotIds
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'volumeIds'
-     */
+    /** Test the property 'volumeIds' */
     @Test
     public void volumeIdsTest() {
         // TODO: test volumeIds
     }
 
-    /**
-     * Test the property 'volumeSizes'
-     */
+    /** Test the property 'volumeSizes' */
     @Test
     public void volumeSizesTest() {
         // TODO: test volumeSizes
     }
 
-    /**
-     * Test the property 'volumeStates'
-     */
+    /** Test the property 'volumeStates' */
     @Test
     public void volumeStatesTest() {
         // TODO: test volumeStates
     }
 
-    /**
-     * Test the property 'volumeTypes'
-     */
+    /** Test the property 'volumeTypes' */
     @Test
     public void volumeTypesTest() {
         // TODO: test volumeTypes
     }
-
 }

@@ -10,11 +10,9 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadApiAccessPolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadApiAccessPolicyResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateApiAccessPolicyRequest;
@@ -22,22 +20,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateApiAccessPolicyRespons
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ApiAccessPolicyApi
- */
+/** API tests for ApiAccessPolicyApi */
 @Disabled
 public class ApiAccessPolicyApiTest {
 
     private final ApiAccessPolicyApi api = new ApiAccessPolicyApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readApiAccessPolicyTest() throws ApiException {
         ReadApiAccessPolicyRequest readApiAccessPolicyRequest = null;
@@ -45,14 +34,12 @@ public class ApiAccessPolicyApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateApiAccessPolicyTest() throws ApiException {
         UpdateApiAccessPolicyRequest updateApiAccessPolicyRequest = null;
-        UpdateApiAccessPolicyResponse response = api.updateApiAccessPolicy(updateApiAccessPolicyRequest);
+        UpdateApiAccessPolicyResponse response =
+                api.updateApiAccessPolicy(updateApiAccessPolicyRequest);
         // TODO: test validations
     }
-
 }

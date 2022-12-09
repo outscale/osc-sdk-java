@@ -10,14 +10,11 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client;
 
+import java.io.IOException;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
-
-import java.io.IOException;
-
 import okio.Buffer;
 import okio.BufferedSource;
 import okio.ForwardingSource;
@@ -62,7 +59,8 @@ public class ProgressResponseBody extends ResponseBody {
                 long bytesRead = super.read(sink, byteCount);
                 // read() returns the number of bytes read, or -1 if this source is exhausted.
                 totalBytesRead += bytesRead != -1 ? bytesRead : 0;
-                callback.onDownloadProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+                callback.onDownloadProgress(
+                        totalBytesRead, responseBody.contentLength(), bytesRead == -1);
                 return bytesRead;
             }
         };

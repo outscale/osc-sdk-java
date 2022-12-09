@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -29,22 +28,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateListenerRuleResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ListenerApi
- */
+/** API tests for ListenerApi */
 @Disabled
 public class ListenerApiTest {
 
     private final ListenerApi api = new ListenerApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createListenerRuleTest() throws ApiException {
         CreateListenerRuleRequest createListenerRuleRequest = null;
@@ -52,19 +42,16 @@ public class ListenerApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createLoadBalancerListenersTest() throws ApiException {
         CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest = null;
-        CreateLoadBalancerListenersResponse response = api.createLoadBalancerListeners(createLoadBalancerListenersRequest);
+        CreateLoadBalancerListenersResponse response =
+                api.createLoadBalancerListeners(createLoadBalancerListenersRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteListenerRuleTest() throws ApiException {
         DeleteListenerRuleRequest deleteListenerRuleRequest = null;
@@ -72,19 +59,16 @@ public class ListenerApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteLoadBalancerListenersTest() throws ApiException {
         DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest = null;
-        DeleteLoadBalancerListenersResponse response = api.deleteLoadBalancerListeners(deleteLoadBalancerListenersRequest);
+        DeleteLoadBalancerListenersResponse response =
+                api.deleteLoadBalancerListeners(deleteLoadBalancerListenersRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readListenerRulesTest() throws ApiException {
         ReadListenerRulesRequest readListenerRulesRequest = null;
@@ -92,14 +76,11 @@ public class ListenerApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateListenerRuleTest() throws ApiException {
         UpdateListenerRuleRequest updateListenerRuleRequest = null;
         UpdateListenerRuleResponse response = api.updateListenerRule(updateListenerRuleRequest);
         // TODO: test validations
     }
-
 }

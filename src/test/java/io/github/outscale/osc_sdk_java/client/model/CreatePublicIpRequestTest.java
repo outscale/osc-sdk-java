@@ -10,39 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreatePublicIpRequest
- */
+/** Model tests for CreatePublicIpRequest */
 public class CreatePublicIpRequestTest {
     private final CreatePublicIpRequest model = new CreatePublicIpRequest();
 
-    /**
-     * Model tests for CreatePublicIpRequest
-     */
+    /** Model tests for CreatePublicIpRequest */
     @Test
     public void testCreatePublicIpRequest() {
         // TODO: test CreatePublicIpRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
-
 }

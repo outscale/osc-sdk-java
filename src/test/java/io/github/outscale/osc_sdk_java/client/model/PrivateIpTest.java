@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.LinkPublicIp;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for PrivateIp
- */
+/** Model tests for PrivateIp */
 public class PrivateIpTest {
     private final PrivateIp model = new PrivateIp();
 
-    /**
-     * Model tests for PrivateIp
-     */
+    /** Model tests for PrivateIp */
     @Test
     public void testPrivateIp() {
         // TODO: test PrivateIp
     }
 
-    /**
-     * Test the property 'isPrimary'
-     */
+    /** Test the property 'isPrimary' */
     @Test
     public void isPrimaryTest() {
         // TODO: test isPrimary
     }
 
-    /**
-     * Test the property 'linkPublicIp'
-     */
+    /** Test the property 'linkPublicIp' */
     @Test
     public void linkPublicIpTest() {
         // TODO: test linkPublicIp
     }
 
-    /**
-     * Test the property 'privateDnsName'
-     */
+    /** Test the property 'privateDnsName' */
     @Test
     public void privateDnsNameTest() {
         // TODO: test privateDnsName
     }
 
-    /**
-     * Test the property 'privateIp'
-     */
+    /** Test the property 'privateIp' */
     @Test
     public void privateIpTest() {
         // TODO: test privateIp
     }
-
 }

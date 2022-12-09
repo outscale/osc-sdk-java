@@ -10,28 +10,19 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreatePublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreatePublicIpResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeletePublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeletePublicIpResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkPublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkPublicIpResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadPublicIpRangesRequest;
@@ -40,13 +31,11 @@ import io.github.outscale.osc_sdk_java.client.model.ReadPublicIpsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadPublicIpsResponse;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkPublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkPublicIpResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class PublicIpApi {
     private ApiClient localVarApiClient;
@@ -87,28 +76,31 @@ public class PublicIpApi {
 
     /**
      * Build call for createPublicIp
-     * @param createPublicIpRequest  (optional)
+     *
+     * @param createPublicIpRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createPublicIpCall(CreatePublicIpRequest createPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createPublicIpCall(
+            CreatePublicIpRequest createPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -125,120 +117,138 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPublicIpValidateBeforeCall(CreatePublicIpRequest createPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPublicIpValidateBeforeCall(
+            CreatePublicIpRequest createPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         return createPublicIpCall(createPublicIpRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createPublicIpRequest  (optional)
+     * @param createPublicIpRequest (optional)
      * @return CreatePublicIpResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreatePublicIpResponse createPublicIp(CreatePublicIpRequest createPublicIpRequest) throws ApiException {
-        ApiResponse<CreatePublicIpResponse> localVarResp = createPublicIpWithHttpInfo(createPublicIpRequest);
+    public CreatePublicIpResponse createPublicIp(CreatePublicIpRequest createPublicIpRequest)
+            throws ApiException {
+        ApiResponse<CreatePublicIpResponse> localVarResp =
+                createPublicIpWithHttpInfo(createPublicIpRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createPublicIpRequest  (optional)
+     * @param createPublicIpRequest (optional)
      * @return ApiResponse&lt;CreatePublicIpResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreatePublicIpResponse> createPublicIpWithHttpInfo(CreatePublicIpRequest createPublicIpRequest) throws ApiException {
+    public ApiResponse<CreatePublicIpResponse> createPublicIpWithHttpInfo(
+            CreatePublicIpRequest createPublicIpRequest) throws ApiException {
         okhttp3.Call localVarCall = createPublicIpValidateBeforeCall(createPublicIpRequest, null);
-        Type localVarReturnType = new TypeToken<CreatePublicIpResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreatePublicIpResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createPublicIpRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createPublicIpRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createPublicIpAsync(CreatePublicIpRequest createPublicIpRequest, final ApiCallback<CreatePublicIpResponse> _callback) throws ApiException {
+    public okhttp3.Call createPublicIpAsync(
+            CreatePublicIpRequest createPublicIpRequest,
+            final ApiCallback<CreatePublicIpResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createPublicIpValidateBeforeCall(createPublicIpRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreatePublicIpResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createPublicIpValidateBeforeCall(createPublicIpRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreatePublicIpResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deletePublicIp
-     * @param deletePublicIpRequest  (optional)
+     *
+     * @param deletePublicIpRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deletePublicIpCall(DeletePublicIpRequest deletePublicIpRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePublicIpCall(
+            DeletePublicIpRequest deletePublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -255,120 +265,138 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePublicIpValidateBeforeCall(DeletePublicIpRequest deletePublicIpRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePublicIpValidateBeforeCall(
+            DeletePublicIpRequest deletePublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         return deletePublicIpCall(deletePublicIpRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deletePublicIpRequest  (optional)
+     * @param deletePublicIpRequest (optional)
      * @return DeletePublicIpResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeletePublicIpResponse deletePublicIp(DeletePublicIpRequest deletePublicIpRequest) throws ApiException {
-        ApiResponse<DeletePublicIpResponse> localVarResp = deletePublicIpWithHttpInfo(deletePublicIpRequest);
+    public DeletePublicIpResponse deletePublicIp(DeletePublicIpRequest deletePublicIpRequest)
+            throws ApiException {
+        ApiResponse<DeletePublicIpResponse> localVarResp =
+                deletePublicIpWithHttpInfo(deletePublicIpRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deletePublicIpRequest  (optional)
+     * @param deletePublicIpRequest (optional)
      * @return ApiResponse&lt;DeletePublicIpResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeletePublicIpResponse> deletePublicIpWithHttpInfo(DeletePublicIpRequest deletePublicIpRequest) throws ApiException {
+    public ApiResponse<DeletePublicIpResponse> deletePublicIpWithHttpInfo(
+            DeletePublicIpRequest deletePublicIpRequest) throws ApiException {
         okhttp3.Call localVarCall = deletePublicIpValidateBeforeCall(deletePublicIpRequest, null);
-        Type localVarReturnType = new TypeToken<DeletePublicIpResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeletePublicIpResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deletePublicIpRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deletePublicIpRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deletePublicIpAsync(DeletePublicIpRequest deletePublicIpRequest, final ApiCallback<DeletePublicIpResponse> _callback) throws ApiException {
+    public okhttp3.Call deletePublicIpAsync(
+            DeletePublicIpRequest deletePublicIpRequest,
+            final ApiCallback<DeletePublicIpResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deletePublicIpValidateBeforeCall(deletePublicIpRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeletePublicIpResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deletePublicIpValidateBeforeCall(deletePublicIpRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeletePublicIpResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for linkPublicIp
-     * @param linkPublicIpRequest  (optional)
+     *
+     * @param linkPublicIpRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkPublicIpCall(LinkPublicIpRequest linkPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkPublicIpCall(
+            LinkPublicIpRequest linkPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -385,117 +413,134 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkPublicIpValidateBeforeCall(LinkPublicIpRequest linkPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkPublicIpValidateBeforeCall(
+            LinkPublicIpRequest linkPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         return linkPublicIpCall(linkPublicIpRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param linkPublicIpRequest  (optional)
+     * @param linkPublicIpRequest (optional)
      * @return LinkPublicIpResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public LinkPublicIpResponse linkPublicIp(LinkPublicIpRequest linkPublicIpRequest) throws ApiException {
-        ApiResponse<LinkPublicIpResponse> localVarResp = linkPublicIpWithHttpInfo(linkPublicIpRequest);
+    public LinkPublicIpResponse linkPublicIp(LinkPublicIpRequest linkPublicIpRequest)
+            throws ApiException {
+        ApiResponse<LinkPublicIpResponse> localVarResp =
+                linkPublicIpWithHttpInfo(linkPublicIpRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param linkPublicIpRequest  (optional)
+     * @param linkPublicIpRequest (optional)
      * @return ApiResponse&lt;LinkPublicIpResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<LinkPublicIpResponse> linkPublicIpWithHttpInfo(LinkPublicIpRequest linkPublicIpRequest) throws ApiException {
+    public ApiResponse<LinkPublicIpResponse> linkPublicIpWithHttpInfo(
+            LinkPublicIpRequest linkPublicIpRequest) throws ApiException {
         okhttp3.Call localVarCall = linkPublicIpValidateBeforeCall(linkPublicIpRequest, null);
-        Type localVarReturnType = new TypeToken<LinkPublicIpResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkPublicIpResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param linkPublicIpRequest  (optional)
+     * (asynchronously)
+     *
+     * @param linkPublicIpRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkPublicIpAsync(LinkPublicIpRequest linkPublicIpRequest, final ApiCallback<LinkPublicIpResponse> _callback) throws ApiException {
+    public okhttp3.Call linkPublicIpAsync(
+            LinkPublicIpRequest linkPublicIpRequest,
+            final ApiCallback<LinkPublicIpResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = linkPublicIpValidateBeforeCall(linkPublicIpRequest, _callback);
-        Type localVarReturnType = new TypeToken<LinkPublicIpResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkPublicIpResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readPublicIpRanges
-     * @param readPublicIpRangesRequest  (optional)
+     *
+     * @param readPublicIpRangesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readPublicIpRangesCall(ReadPublicIpRangesRequest readPublicIpRangesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readPublicIpRangesCall(
+            ReadPublicIpRangesRequest readPublicIpRangesRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -512,111 +557,130 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readPublicIpRangesValidateBeforeCall(ReadPublicIpRangesRequest readPublicIpRangesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readPublicIpRangesValidateBeforeCall(
+            ReadPublicIpRangesRequest readPublicIpRangesRequest, final ApiCallback _callback)
+            throws ApiException {
         return readPublicIpRangesCall(readPublicIpRangesRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readPublicIpRangesRequest  (optional)
+     * @param readPublicIpRangesRequest (optional)
      * @return ReadPublicIpRangesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadPublicIpRangesResponse readPublicIpRanges(ReadPublicIpRangesRequest readPublicIpRangesRequest) throws ApiException {
-        ApiResponse<ReadPublicIpRangesResponse> localVarResp = readPublicIpRangesWithHttpInfo(readPublicIpRangesRequest);
+    public ReadPublicIpRangesResponse readPublicIpRanges(
+            ReadPublicIpRangesRequest readPublicIpRangesRequest) throws ApiException {
+        ApiResponse<ReadPublicIpRangesResponse> localVarResp =
+                readPublicIpRangesWithHttpInfo(readPublicIpRangesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readPublicIpRangesRequest  (optional)
+     * @param readPublicIpRangesRequest (optional)
      * @return ApiResponse&lt;ReadPublicIpRangesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadPublicIpRangesResponse> readPublicIpRangesWithHttpInfo(ReadPublicIpRangesRequest readPublicIpRangesRequest) throws ApiException {
-        okhttp3.Call localVarCall = readPublicIpRangesValidateBeforeCall(readPublicIpRangesRequest, null);
-        Type localVarReturnType = new TypeToken<ReadPublicIpRangesResponse>(){}.getType();
+    public ApiResponse<ReadPublicIpRangesResponse> readPublicIpRangesWithHttpInfo(
+            ReadPublicIpRangesRequest readPublicIpRangesRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readPublicIpRangesValidateBeforeCall(readPublicIpRangesRequest, null);
+        Type localVarReturnType = new TypeToken<ReadPublicIpRangesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readPublicIpRangesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readPublicIpRangesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readPublicIpRangesAsync(ReadPublicIpRangesRequest readPublicIpRangesRequest, final ApiCallback<ReadPublicIpRangesResponse> _callback) throws ApiException {
+    public okhttp3.Call readPublicIpRangesAsync(
+            ReadPublicIpRangesRequest readPublicIpRangesRequest,
+            final ApiCallback<ReadPublicIpRangesResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readPublicIpRangesValidateBeforeCall(readPublicIpRangesRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadPublicIpRangesResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readPublicIpRangesValidateBeforeCall(readPublicIpRangesRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadPublicIpRangesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readPublicIps
-     * @param readPublicIpsRequest  (optional)
+     *
+     * @param readPublicIpsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readPublicIpsCall(ReadPublicIpsRequest readPublicIpsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readPublicIpsCall(
+            ReadPublicIpsRequest readPublicIpsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -633,120 +697,138 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readPublicIpsValidateBeforeCall(ReadPublicIpsRequest readPublicIpsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readPublicIpsValidateBeforeCall(
+            ReadPublicIpsRequest readPublicIpsRequest, final ApiCallback _callback)
+            throws ApiException {
         return readPublicIpsCall(readPublicIpsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readPublicIpsRequest  (optional)
+     * @param readPublicIpsRequest (optional)
      * @return ReadPublicIpsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadPublicIpsResponse readPublicIps(ReadPublicIpsRequest readPublicIpsRequest) throws ApiException {
-        ApiResponse<ReadPublicIpsResponse> localVarResp = readPublicIpsWithHttpInfo(readPublicIpsRequest);
+    public ReadPublicIpsResponse readPublicIps(ReadPublicIpsRequest readPublicIpsRequest)
+            throws ApiException {
+        ApiResponse<ReadPublicIpsResponse> localVarResp =
+                readPublicIpsWithHttpInfo(readPublicIpsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readPublicIpsRequest  (optional)
+     * @param readPublicIpsRequest (optional)
      * @return ApiResponse&lt;ReadPublicIpsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadPublicIpsResponse> readPublicIpsWithHttpInfo(ReadPublicIpsRequest readPublicIpsRequest) throws ApiException {
+    public ApiResponse<ReadPublicIpsResponse> readPublicIpsWithHttpInfo(
+            ReadPublicIpsRequest readPublicIpsRequest) throws ApiException {
         okhttp3.Call localVarCall = readPublicIpsValidateBeforeCall(readPublicIpsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadPublicIpsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadPublicIpsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readPublicIpsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readPublicIpsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readPublicIpsAsync(ReadPublicIpsRequest readPublicIpsRequest, final ApiCallback<ReadPublicIpsResponse> _callback) throws ApiException {
+    public okhttp3.Call readPublicIpsAsync(
+            ReadPublicIpsRequest readPublicIpsRequest,
+            final ApiCallback<ReadPublicIpsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readPublicIpsValidateBeforeCall(readPublicIpsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadPublicIpsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readPublicIpsValidateBeforeCall(readPublicIpsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadPublicIpsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for unlinkPublicIp
-     * @param unlinkPublicIpRequest  (optional)
+     *
+     * @param unlinkPublicIpRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkPublicIpCall(UnlinkPublicIpRequest unlinkPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call unlinkPublicIpCall(
+            UnlinkPublicIpRequest unlinkPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -763,93 +845,108 @@ public class PublicIpApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unlinkPublicIpValidateBeforeCall(UnlinkPublicIpRequest unlinkPublicIpRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call unlinkPublicIpValidateBeforeCall(
+            UnlinkPublicIpRequest unlinkPublicIpRequest, final ApiCallback _callback)
+            throws ApiException {
         return unlinkPublicIpCall(unlinkPublicIpRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param unlinkPublicIpRequest  (optional)
+     * @param unlinkPublicIpRequest (optional)
      * @return UnlinkPublicIpResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UnlinkPublicIpResponse unlinkPublicIp(UnlinkPublicIpRequest unlinkPublicIpRequest) throws ApiException {
-        ApiResponse<UnlinkPublicIpResponse> localVarResp = unlinkPublicIpWithHttpInfo(unlinkPublicIpRequest);
+    public UnlinkPublicIpResponse unlinkPublicIp(UnlinkPublicIpRequest unlinkPublicIpRequest)
+            throws ApiException {
+        ApiResponse<UnlinkPublicIpResponse> localVarResp =
+                unlinkPublicIpWithHttpInfo(unlinkPublicIpRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param unlinkPublicIpRequest  (optional)
+     * @param unlinkPublicIpRequest (optional)
      * @return ApiResponse&lt;UnlinkPublicIpResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UnlinkPublicIpResponse> unlinkPublicIpWithHttpInfo(UnlinkPublicIpRequest unlinkPublicIpRequest) throws ApiException {
+    public ApiResponse<UnlinkPublicIpResponse> unlinkPublicIpWithHttpInfo(
+            UnlinkPublicIpRequest unlinkPublicIpRequest) throws ApiException {
         okhttp3.Call localVarCall = unlinkPublicIpValidateBeforeCall(unlinkPublicIpRequest, null);
-        Type localVarReturnType = new TypeToken<UnlinkPublicIpResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UnlinkPublicIpResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param unlinkPublicIpRequest  (optional)
+     * (asynchronously)
+     *
+     * @param unlinkPublicIpRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkPublicIpAsync(UnlinkPublicIpRequest unlinkPublicIpRequest, final ApiCallback<UnlinkPublicIpResponse> _callback) throws ApiException {
+    public okhttp3.Call unlinkPublicIpAsync(
+            UnlinkPublicIpRequest unlinkPublicIpRequest,
+            final ApiCallback<UnlinkPublicIpResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = unlinkPublicIpValidateBeforeCall(unlinkPublicIpRequest, _callback);
-        Type localVarReturnType = new TypeToken<UnlinkPublicIpResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                unlinkPublicIpValidateBeforeCall(unlinkPublicIpRequest, _callback);
+        Type localVarReturnType = new TypeToken<UnlinkPublicIpResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -10,74 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.PrivateIpLight;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateNicRequest
- */
+/** Model tests for CreateNicRequest */
 public class CreateNicRequestTest {
     private final CreateNicRequest model = new CreateNicRequest();
 
-    /**
-     * Model tests for CreateNicRequest
-     */
+    /** Model tests for CreateNicRequest */
     @Test
     public void testCreateNicRequest() {
         // TODO: test CreateNicRequest
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'privateIps'
-     */
+    /** Test the property 'privateIps' */
     @Test
     public void privateIpsTest() {
         // TODO: test privateIps
     }
 
-    /**
-     * Test the property 'securityGroupIds'
-     */
+    /** Test the property 'securityGroupIds' */
     @Test
     public void securityGroupIdsTest() {
         // TODO: test securityGroupIds
     }
 
-    /**
-     * Test the property 'subnetId'
-     */
+    /** Test the property 'subnetId' */
     @Test
     public void subnetIdTest() {
         // TODO: test subnetId
     }
-
 }

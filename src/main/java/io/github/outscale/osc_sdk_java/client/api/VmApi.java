@@ -10,28 +10,19 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateVmsRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateVmsResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteVmsRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteVmsResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadAdminPasswordRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadAdminPasswordResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadConsoleOutputRequest;
@@ -50,13 +41,11 @@ import io.github.outscale.osc_sdk_java.client.model.StopVmsRequest;
 import io.github.outscale.osc_sdk_java.client.model.StopVmsResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateVmRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateVmResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class VmApi {
     private ApiClient localVarApiClient;
@@ -97,28 +86,30 @@ public class VmApi {
 
     /**
      * Build call for createVms
-     * @param createVmsRequest  (optional)
+     *
+     * @param createVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createVmsCall(CreateVmsRequest createVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createVmsCall(
+            CreateVmsRequest createVmsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -135,46 +126,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createVmsValidateBeforeCall(CreateVmsRequest createVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createVmsValidateBeforeCall(
+            CreateVmsRequest createVmsRequest, final ApiCallback _callback) throws ApiException {
         return createVmsCall(createVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createVmsRequest  (optional)
+     * @param createVmsRequest (optional)
      * @return CreateVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public CreateVmsResponse createVms(CreateVmsRequest createVmsRequest) throws ApiException {
         ApiResponse<CreateVmsResponse> localVarResp = createVmsWithHttpInfo(createVmsRequest);
@@ -182,73 +180,78 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param createVmsRequest  (optional)
+     * @param createVmsRequest (optional)
      * @return ApiResponse&lt;CreateVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateVmsResponse> createVmsWithHttpInfo(CreateVmsRequest createVmsRequest) throws ApiException {
+    public ApiResponse<CreateVmsResponse> createVmsWithHttpInfo(CreateVmsRequest createVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = createVmsValidateBeforeCall(createVmsRequest, null);
-        Type localVarReturnType = new TypeToken<CreateVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createVmsAsync(CreateVmsRequest createVmsRequest, final ApiCallback<CreateVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call createVmsAsync(
+            CreateVmsRequest createVmsRequest, final ApiCallback<CreateVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = createVmsValidateBeforeCall(createVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteVms
-     * @param deleteVmsRequest  (optional)
+     *
+     * @param deleteVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteVmsCall(DeleteVmsRequest deleteVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVmsCall(
+            DeleteVmsRequest deleteVmsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -265,46 +268,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteVmsValidateBeforeCall(DeleteVmsRequest deleteVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVmsValidateBeforeCall(
+            DeleteVmsRequest deleteVmsRequest, final ApiCallback _callback) throws ApiException {
         return deleteVmsCall(deleteVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteVmsRequest  (optional)
+     * @param deleteVmsRequest (optional)
      * @return DeleteVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public DeleteVmsResponse deleteVms(DeleteVmsRequest deleteVmsRequest) throws ApiException {
         ApiResponse<DeleteVmsResponse> localVarResp = deleteVmsWithHttpInfo(deleteVmsRequest);
@@ -312,73 +322,79 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param deleteVmsRequest  (optional)
+     * @param deleteVmsRequest (optional)
      * @return ApiResponse&lt;DeleteVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteVmsResponse> deleteVmsWithHttpInfo(DeleteVmsRequest deleteVmsRequest) throws ApiException {
+    public ApiResponse<DeleteVmsResponse> deleteVmsWithHttpInfo(DeleteVmsRequest deleteVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = deleteVmsValidateBeforeCall(deleteVmsRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeleteVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteVmsAsync(DeleteVmsRequest deleteVmsRequest, final ApiCallback<DeleteVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteVmsAsync(
+            DeleteVmsRequest deleteVmsRequest, final ApiCallback<DeleteVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = deleteVmsValidateBeforeCall(deleteVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeleteVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readAdminPassword
-     * @param readAdminPasswordRequest  (optional)
+     *
+     * @param readAdminPasswordRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAdminPasswordCall(ReadAdminPasswordRequest readAdminPasswordRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readAdminPasswordCall(
+            ReadAdminPasswordRequest readAdminPasswordRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -395,120 +411,139 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readAdminPasswordValidateBeforeCall(ReadAdminPasswordRequest readAdminPasswordRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readAdminPasswordValidateBeforeCall(
+            ReadAdminPasswordRequest readAdminPasswordRequest, final ApiCallback _callback)
+            throws ApiException {
         return readAdminPasswordCall(readAdminPasswordRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readAdminPasswordRequest  (optional)
+     * @param readAdminPasswordRequest (optional)
      * @return ReadAdminPasswordResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadAdminPasswordResponse readAdminPassword(ReadAdminPasswordRequest readAdminPasswordRequest) throws ApiException {
-        ApiResponse<ReadAdminPasswordResponse> localVarResp = readAdminPasswordWithHttpInfo(readAdminPasswordRequest);
+    public ReadAdminPasswordResponse readAdminPassword(
+            ReadAdminPasswordRequest readAdminPasswordRequest) throws ApiException {
+        ApiResponse<ReadAdminPasswordResponse> localVarResp =
+                readAdminPasswordWithHttpInfo(readAdminPasswordRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readAdminPasswordRequest  (optional)
+     * @param readAdminPasswordRequest (optional)
      * @return ApiResponse&lt;ReadAdminPasswordResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadAdminPasswordResponse> readAdminPasswordWithHttpInfo(ReadAdminPasswordRequest readAdminPasswordRequest) throws ApiException {
-        okhttp3.Call localVarCall = readAdminPasswordValidateBeforeCall(readAdminPasswordRequest, null);
-        Type localVarReturnType = new TypeToken<ReadAdminPasswordResponse>(){}.getType();
+    public ApiResponse<ReadAdminPasswordResponse> readAdminPasswordWithHttpInfo(
+            ReadAdminPasswordRequest readAdminPasswordRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readAdminPasswordValidateBeforeCall(readAdminPasswordRequest, null);
+        Type localVarReturnType = new TypeToken<ReadAdminPasswordResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readAdminPasswordRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readAdminPasswordRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAdminPasswordAsync(ReadAdminPasswordRequest readAdminPasswordRequest, final ApiCallback<ReadAdminPasswordResponse> _callback) throws ApiException {
+    public okhttp3.Call readAdminPasswordAsync(
+            ReadAdminPasswordRequest readAdminPasswordRequest,
+            final ApiCallback<ReadAdminPasswordResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readAdminPasswordValidateBeforeCall(readAdminPasswordRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadAdminPasswordResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readAdminPasswordValidateBeforeCall(readAdminPasswordRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadAdminPasswordResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readConsoleOutput
-     * @param readConsoleOutputRequest  (optional)
+     *
+     * @param readConsoleOutputRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readConsoleOutputCall(ReadConsoleOutputRequest readConsoleOutputRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readConsoleOutputCall(
+            ReadConsoleOutputRequest readConsoleOutputRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -525,117 +560,136 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readConsoleOutputValidateBeforeCall(ReadConsoleOutputRequest readConsoleOutputRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readConsoleOutputValidateBeforeCall(
+            ReadConsoleOutputRequest readConsoleOutputRequest, final ApiCallback _callback)
+            throws ApiException {
         return readConsoleOutputCall(readConsoleOutputRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readConsoleOutputRequest  (optional)
+     * @param readConsoleOutputRequest (optional)
      * @return ReadConsoleOutputResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadConsoleOutputResponse readConsoleOutput(ReadConsoleOutputRequest readConsoleOutputRequest) throws ApiException {
-        ApiResponse<ReadConsoleOutputResponse> localVarResp = readConsoleOutputWithHttpInfo(readConsoleOutputRequest);
+    public ReadConsoleOutputResponse readConsoleOutput(
+            ReadConsoleOutputRequest readConsoleOutputRequest) throws ApiException {
+        ApiResponse<ReadConsoleOutputResponse> localVarResp =
+                readConsoleOutputWithHttpInfo(readConsoleOutputRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readConsoleOutputRequest  (optional)
+     * @param readConsoleOutputRequest (optional)
      * @return ApiResponse&lt;ReadConsoleOutputResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadConsoleOutputResponse> readConsoleOutputWithHttpInfo(ReadConsoleOutputRequest readConsoleOutputRequest) throws ApiException {
-        okhttp3.Call localVarCall = readConsoleOutputValidateBeforeCall(readConsoleOutputRequest, null);
-        Type localVarReturnType = new TypeToken<ReadConsoleOutputResponse>(){}.getType();
+    public ApiResponse<ReadConsoleOutputResponse> readConsoleOutputWithHttpInfo(
+            ReadConsoleOutputRequest readConsoleOutputRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readConsoleOutputValidateBeforeCall(readConsoleOutputRequest, null);
+        Type localVarReturnType = new TypeToken<ReadConsoleOutputResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readConsoleOutputRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readConsoleOutputRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readConsoleOutputAsync(ReadConsoleOutputRequest readConsoleOutputRequest, final ApiCallback<ReadConsoleOutputResponse> _callback) throws ApiException {
+    public okhttp3.Call readConsoleOutputAsync(
+            ReadConsoleOutputRequest readConsoleOutputRequest,
+            final ApiCallback<ReadConsoleOutputResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readConsoleOutputValidateBeforeCall(readConsoleOutputRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadConsoleOutputResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readConsoleOutputValidateBeforeCall(readConsoleOutputRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadConsoleOutputResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readVmTypes
-     * @param readVmTypesRequest  (optional)
+     *
+     * @param readVmTypesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmTypesCall(ReadVmTypesRequest readVmTypesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readVmTypesCall(
+            ReadVmTypesRequest readVmTypesRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -652,111 +706,125 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readVmTypesValidateBeforeCall(ReadVmTypesRequest readVmTypesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readVmTypesValidateBeforeCall(
+            ReadVmTypesRequest readVmTypesRequest, final ApiCallback _callback)
+            throws ApiException {
         return readVmTypesCall(readVmTypesRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readVmTypesRequest  (optional)
+     * @param readVmTypesRequest (optional)
      * @return ReadVmTypesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadVmTypesResponse readVmTypes(ReadVmTypesRequest readVmTypesRequest) throws ApiException {
+    public ReadVmTypesResponse readVmTypes(ReadVmTypesRequest readVmTypesRequest)
+            throws ApiException {
         ApiResponse<ReadVmTypesResponse> localVarResp = readVmTypesWithHttpInfo(readVmTypesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readVmTypesRequest  (optional)
+     * @param readVmTypesRequest (optional)
      * @return ApiResponse&lt;ReadVmTypesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadVmTypesResponse> readVmTypesWithHttpInfo(ReadVmTypesRequest readVmTypesRequest) throws ApiException {
+    public ApiResponse<ReadVmTypesResponse> readVmTypesWithHttpInfo(
+            ReadVmTypesRequest readVmTypesRequest) throws ApiException {
         okhttp3.Call localVarCall = readVmTypesValidateBeforeCall(readVmTypesRequest, null);
-        Type localVarReturnType = new TypeToken<ReadVmTypesResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmTypesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readVmTypesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readVmTypesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmTypesAsync(ReadVmTypesRequest readVmTypesRequest, final ApiCallback<ReadVmTypesResponse> _callback) throws ApiException {
+    public okhttp3.Call readVmTypesAsync(
+            ReadVmTypesRequest readVmTypesRequest, final ApiCallback<ReadVmTypesResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = readVmTypesValidateBeforeCall(readVmTypesRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadVmTypesResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmTypesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readVms
-     * @param readVmsRequest  (optional)
+     *
+     * @param readVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsCall(ReadVmsRequest readVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readVmsCall(ReadVmsRequest readVmsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -773,46 +841,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readVmsValidateBeforeCall(ReadVmsRequest readVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readVmsValidateBeforeCall(
+            ReadVmsRequest readVmsRequest, final ApiCallback _callback) throws ApiException {
         return readVmsCall(readVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readVmsRequest  (optional)
+     * @param readVmsRequest (optional)
      * @return ReadVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public ReadVmsResponse readVms(ReadVmsRequest readVmsRequest) throws ApiException {
         ApiResponse<ReadVmsResponse> localVarResp = readVmsWithHttpInfo(readVmsRequest);
@@ -820,73 +895,79 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param readVmsRequest  (optional)
+     * @param readVmsRequest (optional)
      * @return ApiResponse&lt;ReadVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadVmsResponse> readVmsWithHttpInfo(ReadVmsRequest readVmsRequest) throws ApiException {
+    public ApiResponse<ReadVmsResponse> readVmsWithHttpInfo(ReadVmsRequest readVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = readVmsValidateBeforeCall(readVmsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsAsync(ReadVmsRequest readVmsRequest, final ApiCallback<ReadVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call readVmsAsync(
+            ReadVmsRequest readVmsRequest, final ApiCallback<ReadVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = readVmsValidateBeforeCall(readVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readVmsState
-     * @param readVmsStateRequest  (optional)
+     *
+     * @param readVmsStateRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsStateCall(ReadVmsStateRequest readVmsStateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readVmsStateCall(
+            ReadVmsStateRequest readVmsStateRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -903,120 +984,136 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readVmsStateValidateBeforeCall(ReadVmsStateRequest readVmsStateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readVmsStateValidateBeforeCall(
+            ReadVmsStateRequest readVmsStateRequest, final ApiCallback _callback)
+            throws ApiException {
         return readVmsStateCall(readVmsStateRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readVmsStateRequest  (optional)
+     * @param readVmsStateRequest (optional)
      * @return ReadVmsStateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadVmsStateResponse readVmsState(ReadVmsStateRequest readVmsStateRequest) throws ApiException {
-        ApiResponse<ReadVmsStateResponse> localVarResp = readVmsStateWithHttpInfo(readVmsStateRequest);
+    public ReadVmsStateResponse readVmsState(ReadVmsStateRequest readVmsStateRequest)
+            throws ApiException {
+        ApiResponse<ReadVmsStateResponse> localVarResp =
+                readVmsStateWithHttpInfo(readVmsStateRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readVmsStateRequest  (optional)
+     * @param readVmsStateRequest (optional)
      * @return ApiResponse&lt;ReadVmsStateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadVmsStateResponse> readVmsStateWithHttpInfo(ReadVmsStateRequest readVmsStateRequest) throws ApiException {
+    public ApiResponse<ReadVmsStateResponse> readVmsStateWithHttpInfo(
+            ReadVmsStateRequest readVmsStateRequest) throws ApiException {
         okhttp3.Call localVarCall = readVmsStateValidateBeforeCall(readVmsStateRequest, null);
-        Type localVarReturnType = new TypeToken<ReadVmsStateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmsStateResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readVmsStateRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readVmsStateRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsStateAsync(ReadVmsStateRequest readVmsStateRequest, final ApiCallback<ReadVmsStateResponse> _callback) throws ApiException {
+    public okhttp3.Call readVmsStateAsync(
+            ReadVmsStateRequest readVmsStateRequest,
+            final ApiCallback<ReadVmsStateResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = readVmsStateValidateBeforeCall(readVmsStateRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadVmsStateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmsStateResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for rebootVms
-     * @param rebootVmsRequest  (optional)
+     *
+     * @param rebootVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call rebootVmsCall(RebootVmsRequest rebootVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call rebootVmsCall(
+            RebootVmsRequest rebootVmsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1033,46 +1130,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call rebootVmsValidateBeforeCall(RebootVmsRequest rebootVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call rebootVmsValidateBeforeCall(
+            RebootVmsRequest rebootVmsRequest, final ApiCallback _callback) throws ApiException {
         return rebootVmsCall(rebootVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param rebootVmsRequest  (optional)
+     * @param rebootVmsRequest (optional)
      * @return RebootVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public RebootVmsResponse rebootVms(RebootVmsRequest rebootVmsRequest) throws ApiException {
         ApiResponse<RebootVmsResponse> localVarResp = rebootVmsWithHttpInfo(rebootVmsRequest);
@@ -1080,73 +1184,78 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param rebootVmsRequest  (optional)
+     * @param rebootVmsRequest (optional)
      * @return ApiResponse&lt;RebootVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<RebootVmsResponse> rebootVmsWithHttpInfo(RebootVmsRequest rebootVmsRequest) throws ApiException {
+    public ApiResponse<RebootVmsResponse> rebootVmsWithHttpInfo(RebootVmsRequest rebootVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = rebootVmsValidateBeforeCall(rebootVmsRequest, null);
-        Type localVarReturnType = new TypeToken<RebootVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RebootVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param rebootVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param rebootVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call rebootVmsAsync(RebootVmsRequest rebootVmsRequest, final ApiCallback<RebootVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call rebootVmsAsync(
+            RebootVmsRequest rebootVmsRequest, final ApiCallback<RebootVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = rebootVmsValidateBeforeCall(rebootVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<RebootVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<RebootVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for startVms
-     * @param startVmsRequest  (optional)
+     *
+     * @param startVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call startVmsCall(StartVmsRequest startVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call startVmsCall(StartVmsRequest startVmsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1163,46 +1272,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call startVmsValidateBeforeCall(StartVmsRequest startVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call startVmsValidateBeforeCall(
+            StartVmsRequest startVmsRequest, final ApiCallback _callback) throws ApiException {
         return startVmsCall(startVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param startVmsRequest  (optional)
+     * @param startVmsRequest (optional)
      * @return StartVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public StartVmsResponse startVms(StartVmsRequest startVmsRequest) throws ApiException {
         ApiResponse<StartVmsResponse> localVarResp = startVmsWithHttpInfo(startVmsRequest);
@@ -1210,73 +1326,78 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param startVmsRequest  (optional)
+     * @param startVmsRequest (optional)
      * @return ApiResponse&lt;StartVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<StartVmsResponse> startVmsWithHttpInfo(StartVmsRequest startVmsRequest) throws ApiException {
+    public ApiResponse<StartVmsResponse> startVmsWithHttpInfo(StartVmsRequest startVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = startVmsValidateBeforeCall(startVmsRequest, null);
-        Type localVarReturnType = new TypeToken<StartVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<StartVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param startVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param startVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call startVmsAsync(StartVmsRequest startVmsRequest, final ApiCallback<StartVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call startVmsAsync(
+            StartVmsRequest startVmsRequest, final ApiCallback<StartVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = startVmsValidateBeforeCall(startVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<StartVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<StartVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for stopVms
-     * @param stopVmsRequest  (optional)
+     *
+     * @param stopVmsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call stopVmsCall(StopVmsRequest stopVmsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call stopVmsCall(StopVmsRequest stopVmsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1293,46 +1414,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call stopVmsValidateBeforeCall(StopVmsRequest stopVmsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call stopVmsValidateBeforeCall(
+            StopVmsRequest stopVmsRequest, final ApiCallback _callback) throws ApiException {
         return stopVmsCall(stopVmsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param stopVmsRequest  (optional)
+     * @param stopVmsRequest (optional)
      * @return StopVmsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public StopVmsResponse stopVms(StopVmsRequest stopVmsRequest) throws ApiException {
         ApiResponse<StopVmsResponse> localVarResp = stopVmsWithHttpInfo(stopVmsRequest);
@@ -1340,73 +1468,78 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param stopVmsRequest  (optional)
+     * @param stopVmsRequest (optional)
      * @return ApiResponse&lt;StopVmsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<StopVmsResponse> stopVmsWithHttpInfo(StopVmsRequest stopVmsRequest) throws ApiException {
+    public ApiResponse<StopVmsResponse> stopVmsWithHttpInfo(StopVmsRequest stopVmsRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = stopVmsValidateBeforeCall(stopVmsRequest, null);
-        Type localVarReturnType = new TypeToken<StopVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<StopVmsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param stopVmsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param stopVmsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call stopVmsAsync(StopVmsRequest stopVmsRequest, final ApiCallback<StopVmsResponse> _callback) throws ApiException {
+    public okhttp3.Call stopVmsAsync(
+            StopVmsRequest stopVmsRequest, final ApiCallback<StopVmsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = stopVmsValidateBeforeCall(stopVmsRequest, _callback);
-        Type localVarReturnType = new TypeToken<StopVmsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<StopVmsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateVm
-     * @param updateVmRequest  (optional)
+     *
+     * @param updateVmRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateVmCall(UpdateVmRequest updateVmRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateVmCall(UpdateVmRequest updateVmRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1423,46 +1556,53 @@ public class VmApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateVmValidateBeforeCall(UpdateVmRequest updateVmRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateVmValidateBeforeCall(
+            UpdateVmRequest updateVmRequest, final ApiCallback _callback) throws ApiException {
         return updateVmCall(updateVmRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateVmRequest  (optional)
+     * @param updateVmRequest (optional)
      * @return UpdateVmResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
     public UpdateVmResponse updateVm(UpdateVmRequest updateVmRequest) throws ApiException {
         ApiResponse<UpdateVmResponse> localVarResp = updateVmWithHttpInfo(updateVmRequest);
@@ -1470,46 +1610,49 @@ public class VmApi {
     }
 
     /**
-     * 
-     * 
-     * @param updateVmRequest  (optional)
+     * @param updateVmRequest (optional)
      * @return ApiResponse&lt;UpdateVmResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateVmResponse> updateVmWithHttpInfo(UpdateVmRequest updateVmRequest) throws ApiException {
+    public ApiResponse<UpdateVmResponse> updateVmWithHttpInfo(UpdateVmRequest updateVmRequest)
+            throws ApiException {
         okhttp3.Call localVarCall = updateVmValidateBeforeCall(updateVmRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateVmResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateVmResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateVmRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateVmRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateVmAsync(UpdateVmRequest updateVmRequest, final ApiCallback<UpdateVmResponse> _callback) throws ApiException {
+    public okhttp3.Call updateVmAsync(
+            UpdateVmRequest updateVmRequest, final ApiCallback<UpdateVmResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = updateVmValidateBeforeCall(updateVmRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateVmResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateVmResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

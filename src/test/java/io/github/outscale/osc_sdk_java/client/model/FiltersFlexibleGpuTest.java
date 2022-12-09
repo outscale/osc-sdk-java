@@ -10,89 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersFlexibleGpu
- */
+/** Model tests for FiltersFlexibleGpu */
 public class FiltersFlexibleGpuTest {
     private final FiltersFlexibleGpu model = new FiltersFlexibleGpu();
 
-    /**
-     * Model tests for FiltersFlexibleGpu
-     */
+    /** Model tests for FiltersFlexibleGpu */
     @Test
     public void testFiltersFlexibleGpu() {
         // TODO: test FiltersFlexibleGpu
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'flexibleGpuIds'
-     */
+    /** Test the property 'flexibleGpuIds' */
     @Test
     public void flexibleGpuIdsTest() {
         // TODO: test flexibleGpuIds
     }
 
-    /**
-     * Test the property 'generations'
-     */
+    /** Test the property 'generations' */
     @Test
     public void generationsTest() {
         // TODO: test generations
     }
 
-    /**
-     * Test the property 'modelNames'
-     */
+    /** Test the property 'modelNames' */
     @Test
     public void modelNamesTest() {
         // TODO: test modelNames
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
 
-    /**
-     * Test the property 'vmIds'
-     */
+    /** Test the property 'vmIds' */
     @Test
     public void vmIdsTest() {
         // TODO: test vmIds
     }
-
 }

@@ -10,57 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersCa
- */
+/** Model tests for FiltersCa */
 public class FiltersCaTest {
     private final FiltersCa model = new FiltersCa();
 
-    /**
-     * Model tests for FiltersCa
-     */
+    /** Model tests for FiltersCa */
     @Test
     public void testFiltersCa() {
         // TODO: test FiltersCa
     }
 
-    /**
-     * Test the property 'caFingerprints'
-     */
+    /** Test the property 'caFingerprints' */
     @Test
     public void caFingerprintsTest() {
         // TODO: test caFingerprints
     }
 
-    /**
-     * Test the property 'caIds'
-     */
+    /** Test the property 'caIds' */
     @Test
     public void caIdsTest() {
         // TODO: test caIds
     }
 
-    /**
-     * Test the property 'descriptions'
-     */
+    /** Test the property 'descriptions' */
     @Test
     public void descriptionsTest() {
         // TODO: test descriptions
     }
-
 }

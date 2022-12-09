@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CheckAuthenticationRequest;
 import io.github.outscale.osc_sdk_java.client.model.CheckAuthenticationResponse;
 import io.github.outscale.osc_sdk_java.client.model.CreateAccountRequest;
@@ -41,13 +33,11 @@ import io.github.outscale.osc_sdk_java.client.model.SendResetPasswordEmailReques
 import io.github.outscale.osc_sdk_java.client.model.SendResetPasswordEmailResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateAccountRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateAccountResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class AccountApi {
     private ApiClient localVarApiClient;
@@ -88,25 +78,28 @@ public class AccountApi {
 
     /**
      * Build call for checkAuthentication
-     * @param checkAuthenticationRequest  (optional)
+     *
+     * @param checkAuthenticationRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call checkAuthenticationCall(CheckAuthenticationRequest checkAuthenticationRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call checkAuthenticationCall(
+            CheckAuthenticationRequest checkAuthenticationRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -123,108 +116,127 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call checkAuthenticationValidateBeforeCall(CheckAuthenticationRequest checkAuthenticationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call checkAuthenticationValidateBeforeCall(
+            CheckAuthenticationRequest checkAuthenticationRequest, final ApiCallback _callback)
+            throws ApiException {
         return checkAuthenticationCall(checkAuthenticationRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param checkAuthenticationRequest  (optional)
+     * @param checkAuthenticationRequest (optional)
      * @return CheckAuthenticationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CheckAuthenticationResponse checkAuthentication(CheckAuthenticationRequest checkAuthenticationRequest) throws ApiException {
-        ApiResponse<CheckAuthenticationResponse> localVarResp = checkAuthenticationWithHttpInfo(checkAuthenticationRequest);
+    public CheckAuthenticationResponse checkAuthentication(
+            CheckAuthenticationRequest checkAuthenticationRequest) throws ApiException {
+        ApiResponse<CheckAuthenticationResponse> localVarResp =
+                checkAuthenticationWithHttpInfo(checkAuthenticationRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param checkAuthenticationRequest  (optional)
+     * @param checkAuthenticationRequest (optional)
      * @return ApiResponse&lt;CheckAuthenticationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CheckAuthenticationResponse> checkAuthenticationWithHttpInfo(CheckAuthenticationRequest checkAuthenticationRequest) throws ApiException {
-        okhttp3.Call localVarCall = checkAuthenticationValidateBeforeCall(checkAuthenticationRequest, null);
-        Type localVarReturnType = new TypeToken<CheckAuthenticationResponse>(){}.getType();
+    public ApiResponse<CheckAuthenticationResponse> checkAuthenticationWithHttpInfo(
+            CheckAuthenticationRequest checkAuthenticationRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                checkAuthenticationValidateBeforeCall(checkAuthenticationRequest, null);
+        Type localVarReturnType = new TypeToken<CheckAuthenticationResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param checkAuthenticationRequest  (optional)
+     * (asynchronously)
+     *
+     * @param checkAuthenticationRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call checkAuthenticationAsync(CheckAuthenticationRequest checkAuthenticationRequest, final ApiCallback<CheckAuthenticationResponse> _callback) throws ApiException {
+    public okhttp3.Call checkAuthenticationAsync(
+            CheckAuthenticationRequest checkAuthenticationRequest,
+            final ApiCallback<CheckAuthenticationResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = checkAuthenticationValidateBeforeCall(checkAuthenticationRequest, _callback);
-        Type localVarReturnType = new TypeToken<CheckAuthenticationResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                checkAuthenticationValidateBeforeCall(checkAuthenticationRequest, _callback);
+        Type localVarReturnType = new TypeToken<CheckAuthenticationResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createAccount
-     * @param createAccountRequest  (optional)
+     *
+     * @param createAccountRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createAccountCall(CreateAccountRequest createAccountRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAccountCall(
+            CreateAccountRequest createAccountRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -241,108 +253,126 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAccountValidateBeforeCall(CreateAccountRequest createAccountRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAccountValidateBeforeCall(
+            CreateAccountRequest createAccountRequest, final ApiCallback _callback)
+            throws ApiException {
         return createAccountCall(createAccountRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createAccountRequest  (optional)
+     * @param createAccountRequest (optional)
      * @return CreateAccountResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateAccountResponse createAccount(CreateAccountRequest createAccountRequest) throws ApiException {
-        ApiResponse<CreateAccountResponse> localVarResp = createAccountWithHttpInfo(createAccountRequest);
+    public CreateAccountResponse createAccount(CreateAccountRequest createAccountRequest)
+            throws ApiException {
+        ApiResponse<CreateAccountResponse> localVarResp =
+                createAccountWithHttpInfo(createAccountRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createAccountRequest  (optional)
+     * @param createAccountRequest (optional)
      * @return ApiResponse&lt;CreateAccountResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateAccountResponse> createAccountWithHttpInfo(CreateAccountRequest createAccountRequest) throws ApiException {
+    public ApiResponse<CreateAccountResponse> createAccountWithHttpInfo(
+            CreateAccountRequest createAccountRequest) throws ApiException {
         okhttp3.Call localVarCall = createAccountValidateBeforeCall(createAccountRequest, null);
-        Type localVarReturnType = new TypeToken<CreateAccountResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateAccountResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createAccountRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createAccountRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createAccountAsync(CreateAccountRequest createAccountRequest, final ApiCallback<CreateAccountResponse> _callback) throws ApiException {
+    public okhttp3.Call createAccountAsync(
+            CreateAccountRequest createAccountRequest,
+            final ApiCallback<CreateAccountResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createAccountValidateBeforeCall(createAccountRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateAccountResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createAccountValidateBeforeCall(createAccountRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateAccountResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readAccounts
-     * @param readAccountsRequest  (optional)
+     *
+     * @param readAccountsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAccountsCall(ReadAccountsRequest readAccountsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readAccountsCall(
+            ReadAccountsRequest readAccountsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -359,108 +389,126 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readAccountsValidateBeforeCall(ReadAccountsRequest readAccountsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readAccountsValidateBeforeCall(
+            ReadAccountsRequest readAccountsRequest, final ApiCallback _callback)
+            throws ApiException {
         return readAccountsCall(readAccountsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readAccountsRequest  (optional)
+     * @param readAccountsRequest (optional)
      * @return ReadAccountsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadAccountsResponse readAccounts(ReadAccountsRequest readAccountsRequest) throws ApiException {
-        ApiResponse<ReadAccountsResponse> localVarResp = readAccountsWithHttpInfo(readAccountsRequest);
+    public ReadAccountsResponse readAccounts(ReadAccountsRequest readAccountsRequest)
+            throws ApiException {
+        ApiResponse<ReadAccountsResponse> localVarResp =
+                readAccountsWithHttpInfo(readAccountsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readAccountsRequest  (optional)
+     * @param readAccountsRequest (optional)
      * @return ApiResponse&lt;ReadAccountsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadAccountsResponse> readAccountsWithHttpInfo(ReadAccountsRequest readAccountsRequest) throws ApiException {
+    public ApiResponse<ReadAccountsResponse> readAccountsWithHttpInfo(
+            ReadAccountsRequest readAccountsRequest) throws ApiException {
         okhttp3.Call localVarCall = readAccountsValidateBeforeCall(readAccountsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadAccountsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadAccountsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readAccountsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readAccountsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAccountsAsync(ReadAccountsRequest readAccountsRequest, final ApiCallback<ReadAccountsResponse> _callback) throws ApiException {
+    public okhttp3.Call readAccountsAsync(
+            ReadAccountsRequest readAccountsRequest,
+            final ApiCallback<ReadAccountsResponse> _callback)
+            throws ApiException {
 
         okhttp3.Call localVarCall = readAccountsValidateBeforeCall(readAccountsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadAccountsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadAccountsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readConsumptionAccount
-     * @param readConsumptionAccountRequest  (optional)
+     *
+     * @param readConsumptionAccountRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readConsumptionAccountCall(ReadConsumptionAccountRequest readConsumptionAccountRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readConsumptionAccountCall(
+            ReadConsumptionAccountRequest readConsumptionAccountRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -477,108 +525,128 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readConsumptionAccountValidateBeforeCall(ReadConsumptionAccountRequest readConsumptionAccountRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readConsumptionAccountValidateBeforeCall(
+            ReadConsumptionAccountRequest readConsumptionAccountRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return readConsumptionAccountCall(readConsumptionAccountRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readConsumptionAccountRequest  (optional)
+     * @param readConsumptionAccountRequest (optional)
      * @return ReadConsumptionAccountResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadConsumptionAccountResponse readConsumptionAccount(ReadConsumptionAccountRequest readConsumptionAccountRequest) throws ApiException {
-        ApiResponse<ReadConsumptionAccountResponse> localVarResp = readConsumptionAccountWithHttpInfo(readConsumptionAccountRequest);
+    public ReadConsumptionAccountResponse readConsumptionAccount(
+            ReadConsumptionAccountRequest readConsumptionAccountRequest) throws ApiException {
+        ApiResponse<ReadConsumptionAccountResponse> localVarResp =
+                readConsumptionAccountWithHttpInfo(readConsumptionAccountRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readConsumptionAccountRequest  (optional)
+     * @param readConsumptionAccountRequest (optional)
      * @return ApiResponse&lt;ReadConsumptionAccountResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadConsumptionAccountResponse> readConsumptionAccountWithHttpInfo(ReadConsumptionAccountRequest readConsumptionAccountRequest) throws ApiException {
-        okhttp3.Call localVarCall = readConsumptionAccountValidateBeforeCall(readConsumptionAccountRequest, null);
-        Type localVarReturnType = new TypeToken<ReadConsumptionAccountResponse>(){}.getType();
+    public ApiResponse<ReadConsumptionAccountResponse> readConsumptionAccountWithHttpInfo(
+            ReadConsumptionAccountRequest readConsumptionAccountRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readConsumptionAccountValidateBeforeCall(readConsumptionAccountRequest, null);
+        Type localVarReturnType = new TypeToken<ReadConsumptionAccountResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readConsumptionAccountRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readConsumptionAccountRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readConsumptionAccountAsync(ReadConsumptionAccountRequest readConsumptionAccountRequest, final ApiCallback<ReadConsumptionAccountResponse> _callback) throws ApiException {
+    public okhttp3.Call readConsumptionAccountAsync(
+            ReadConsumptionAccountRequest readConsumptionAccountRequest,
+            final ApiCallback<ReadConsumptionAccountResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readConsumptionAccountValidateBeforeCall(readConsumptionAccountRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadConsumptionAccountResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readConsumptionAccountValidateBeforeCall(readConsumptionAccountRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadConsumptionAccountResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for resetAccountPassword
-     * @param resetAccountPasswordRequest  (optional)
+     *
+     * @param resetAccountPasswordRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call resetAccountPasswordCall(ResetAccountPasswordRequest resetAccountPasswordRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call resetAccountPasswordCall(
+            ResetAccountPasswordRequest resetAccountPasswordRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -595,108 +663,128 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call resetAccountPasswordValidateBeforeCall(ResetAccountPasswordRequest resetAccountPasswordRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call resetAccountPasswordValidateBeforeCall(
+            ResetAccountPasswordRequest resetAccountPasswordRequest, final ApiCallback _callback)
+            throws ApiException {
         return resetAccountPasswordCall(resetAccountPasswordRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param resetAccountPasswordRequest  (optional)
+     * @param resetAccountPasswordRequest (optional)
      * @return ResetAccountPasswordResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ResetAccountPasswordResponse resetAccountPassword(ResetAccountPasswordRequest resetAccountPasswordRequest) throws ApiException {
-        ApiResponse<ResetAccountPasswordResponse> localVarResp = resetAccountPasswordWithHttpInfo(resetAccountPasswordRequest);
+    public ResetAccountPasswordResponse resetAccountPassword(
+            ResetAccountPasswordRequest resetAccountPasswordRequest) throws ApiException {
+        ApiResponse<ResetAccountPasswordResponse> localVarResp =
+                resetAccountPasswordWithHttpInfo(resetAccountPasswordRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param resetAccountPasswordRequest  (optional)
+     * @param resetAccountPasswordRequest (optional)
      * @return ApiResponse&lt;ResetAccountPasswordResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ResetAccountPasswordResponse> resetAccountPasswordWithHttpInfo(ResetAccountPasswordRequest resetAccountPasswordRequest) throws ApiException {
-        okhttp3.Call localVarCall = resetAccountPasswordValidateBeforeCall(resetAccountPasswordRequest, null);
-        Type localVarReturnType = new TypeToken<ResetAccountPasswordResponse>(){}.getType();
+    public ApiResponse<ResetAccountPasswordResponse> resetAccountPasswordWithHttpInfo(
+            ResetAccountPasswordRequest resetAccountPasswordRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                resetAccountPasswordValidateBeforeCall(resetAccountPasswordRequest, null);
+        Type localVarReturnType = new TypeToken<ResetAccountPasswordResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param resetAccountPasswordRequest  (optional)
+     * (asynchronously)
+     *
+     * @param resetAccountPasswordRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call resetAccountPasswordAsync(ResetAccountPasswordRequest resetAccountPasswordRequest, final ApiCallback<ResetAccountPasswordResponse> _callback) throws ApiException {
+    public okhttp3.Call resetAccountPasswordAsync(
+            ResetAccountPasswordRequest resetAccountPasswordRequest,
+            final ApiCallback<ResetAccountPasswordResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = resetAccountPasswordValidateBeforeCall(resetAccountPasswordRequest, _callback);
-        Type localVarReturnType = new TypeToken<ResetAccountPasswordResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                resetAccountPasswordValidateBeforeCall(resetAccountPasswordRequest, _callback);
+        Type localVarReturnType = new TypeToken<ResetAccountPasswordResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for sendResetPasswordEmail
-     * @param sendResetPasswordEmailRequest  (optional)
+     *
+     * @param sendResetPasswordEmailRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call sendResetPasswordEmailCall(SendResetPasswordEmailRequest sendResetPasswordEmailRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sendResetPasswordEmailCall(
+            SendResetPasswordEmailRequest sendResetPasswordEmailRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -713,108 +801,128 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call sendResetPasswordEmailValidateBeforeCall(SendResetPasswordEmailRequest sendResetPasswordEmailRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call sendResetPasswordEmailValidateBeforeCall(
+            SendResetPasswordEmailRequest sendResetPasswordEmailRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return sendResetPasswordEmailCall(sendResetPasswordEmailRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param sendResetPasswordEmailRequest  (optional)
+     * @param sendResetPasswordEmailRequest (optional)
      * @return SendResetPasswordEmailResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public SendResetPasswordEmailResponse sendResetPasswordEmail(SendResetPasswordEmailRequest sendResetPasswordEmailRequest) throws ApiException {
-        ApiResponse<SendResetPasswordEmailResponse> localVarResp = sendResetPasswordEmailWithHttpInfo(sendResetPasswordEmailRequest);
+    public SendResetPasswordEmailResponse sendResetPasswordEmail(
+            SendResetPasswordEmailRequest sendResetPasswordEmailRequest) throws ApiException {
+        ApiResponse<SendResetPasswordEmailResponse> localVarResp =
+                sendResetPasswordEmailWithHttpInfo(sendResetPasswordEmailRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param sendResetPasswordEmailRequest  (optional)
+     * @param sendResetPasswordEmailRequest (optional)
      * @return ApiResponse&lt;SendResetPasswordEmailResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<SendResetPasswordEmailResponse> sendResetPasswordEmailWithHttpInfo(SendResetPasswordEmailRequest sendResetPasswordEmailRequest) throws ApiException {
-        okhttp3.Call localVarCall = sendResetPasswordEmailValidateBeforeCall(sendResetPasswordEmailRequest, null);
-        Type localVarReturnType = new TypeToken<SendResetPasswordEmailResponse>(){}.getType();
+    public ApiResponse<SendResetPasswordEmailResponse> sendResetPasswordEmailWithHttpInfo(
+            SendResetPasswordEmailRequest sendResetPasswordEmailRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                sendResetPasswordEmailValidateBeforeCall(sendResetPasswordEmailRequest, null);
+        Type localVarReturnType = new TypeToken<SendResetPasswordEmailResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param sendResetPasswordEmailRequest  (optional)
+     * (asynchronously)
+     *
+     * @param sendResetPasswordEmailRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call sendResetPasswordEmailAsync(SendResetPasswordEmailRequest sendResetPasswordEmailRequest, final ApiCallback<SendResetPasswordEmailResponse> _callback) throws ApiException {
+    public okhttp3.Call sendResetPasswordEmailAsync(
+            SendResetPasswordEmailRequest sendResetPasswordEmailRequest,
+            final ApiCallback<SendResetPasswordEmailResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = sendResetPasswordEmailValidateBeforeCall(sendResetPasswordEmailRequest, _callback);
-        Type localVarReturnType = new TypeToken<SendResetPasswordEmailResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                sendResetPasswordEmailValidateBeforeCall(sendResetPasswordEmailRequest, _callback);
+        Type localVarReturnType = new TypeToken<SendResetPasswordEmailResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateAccount
-     * @param updateAccountRequest  (optional)
+     *
+     * @param updateAccountRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateAccountCall(UpdateAccountRequest updateAccountRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAccountCall(
+            UpdateAccountRequest updateAccountRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -831,84 +939,99 @@ public class AccountApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAccountValidateBeforeCall(UpdateAccountRequest updateAccountRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAccountValidateBeforeCall(
+            UpdateAccountRequest updateAccountRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateAccountCall(updateAccountRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateAccountRequest  (optional)
+     * @param updateAccountRequest (optional)
      * @return UpdateAccountResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateAccountResponse updateAccount(UpdateAccountRequest updateAccountRequest) throws ApiException {
-        ApiResponse<UpdateAccountResponse> localVarResp = updateAccountWithHttpInfo(updateAccountRequest);
+    public UpdateAccountResponse updateAccount(UpdateAccountRequest updateAccountRequest)
+            throws ApiException {
+        ApiResponse<UpdateAccountResponse> localVarResp =
+                updateAccountWithHttpInfo(updateAccountRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateAccountRequest  (optional)
+     * @param updateAccountRequest (optional)
      * @return ApiResponse&lt;UpdateAccountResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateAccountResponse> updateAccountWithHttpInfo(UpdateAccountRequest updateAccountRequest) throws ApiException {
+    public ApiResponse<UpdateAccountResponse> updateAccountWithHttpInfo(
+            UpdateAccountRequest updateAccountRequest) throws ApiException {
         okhttp3.Call localVarCall = updateAccountValidateBeforeCall(updateAccountRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateAccountResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateAccountResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateAccountRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateAccountRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateAccountAsync(UpdateAccountRequest updateAccountRequest, final ApiCallback<UpdateAccountResponse> _callback) throws ApiException {
+    public okhttp3.Call updateAccountAsync(
+            UpdateAccountRequest updateAccountRequest,
+            final ApiCallback<UpdateAccountResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateAccountValidateBeforeCall(updateAccountRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateAccountResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateAccountValidateBeforeCall(updateAccountRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateAccountResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

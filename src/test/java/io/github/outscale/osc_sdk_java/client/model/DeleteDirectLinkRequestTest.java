@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteDirectLinkRequest
- */
+/** Model tests for DeleteDirectLinkRequest */
 public class DeleteDirectLinkRequestTest {
     private final DeleteDirectLinkRequest model = new DeleteDirectLinkRequest();
 
-    /**
-     * Model tests for DeleteDirectLinkRequest
-     */
+    /** Model tests for DeleteDirectLinkRequest */
     @Test
     public void testDeleteDirectLinkRequest() {
         // TODO: test DeleteDirectLinkRequest
     }
 
-    /**
-     * Test the property 'directLinkId'
-     */
+    /** Test the property 'directLinkId' */
     @Test
     public void directLinkIdTest() {
         // TODO: test directLinkId
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
-
 }

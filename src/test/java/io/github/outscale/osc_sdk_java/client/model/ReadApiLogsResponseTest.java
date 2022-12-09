@@ -10,59 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.Log;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadApiLogsResponse
- */
+/** Model tests for ReadApiLogsResponse */
 public class ReadApiLogsResponseTest {
     private final ReadApiLogsResponse model = new ReadApiLogsResponse();
 
-    /**
-     * Model tests for ReadApiLogsResponse
-     */
+    /** Model tests for ReadApiLogsResponse */
     @Test
     public void testReadApiLogsResponse() {
         // TODO: test ReadApiLogsResponse
     }
 
-    /**
-     * Test the property 'logs'
-     */
+    /** Test the property 'logs' */
     @Test
     public void logsTest() {
         // TODO: test logs
     }
 
-    /**
-     * Test the property 'nextPageToken'
-     */
+    /** Test the property 'nextPageToken' */
     @Test
     public void nextPageTokenTest() {
         // TODO: test nextPageToken
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

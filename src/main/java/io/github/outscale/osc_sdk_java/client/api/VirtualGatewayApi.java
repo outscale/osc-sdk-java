@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateVirtualGatewayRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateVirtualGatewayResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteVirtualGatewayRequest;
@@ -39,13 +31,11 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkVirtualGatewayRequest;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkVirtualGatewayResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateRoutePropagationRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateRoutePropagationResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class VirtualGatewayApi {
     private ApiClient localVarApiClient;
@@ -86,25 +76,28 @@ public class VirtualGatewayApi {
 
     /**
      * Build call for createVirtualGateway
-     * @param createVirtualGatewayRequest  (optional)
+     *
+     * @param createVirtualGatewayRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createVirtualGatewayCall(CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createVirtualGatewayCall(
+            CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -121,108 +114,127 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createVirtualGatewayValidateBeforeCall(CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createVirtualGatewayValidateBeforeCall(
+            CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         return createVirtualGatewayCall(createVirtualGatewayRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createVirtualGatewayRequest  (optional)
+     * @param createVirtualGatewayRequest (optional)
      * @return CreateVirtualGatewayResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateVirtualGatewayResponse createVirtualGateway(CreateVirtualGatewayRequest createVirtualGatewayRequest) throws ApiException {
-        ApiResponse<CreateVirtualGatewayResponse> localVarResp = createVirtualGatewayWithHttpInfo(createVirtualGatewayRequest);
+    public CreateVirtualGatewayResponse createVirtualGateway(
+            CreateVirtualGatewayRequest createVirtualGatewayRequest) throws ApiException {
+        ApiResponse<CreateVirtualGatewayResponse> localVarResp =
+                createVirtualGatewayWithHttpInfo(createVirtualGatewayRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createVirtualGatewayRequest  (optional)
+     * @param createVirtualGatewayRequest (optional)
      * @return ApiResponse&lt;CreateVirtualGatewayResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateVirtualGatewayResponse> createVirtualGatewayWithHttpInfo(CreateVirtualGatewayRequest createVirtualGatewayRequest) throws ApiException {
-        okhttp3.Call localVarCall = createVirtualGatewayValidateBeforeCall(createVirtualGatewayRequest, null);
-        Type localVarReturnType = new TypeToken<CreateVirtualGatewayResponse>(){}.getType();
+    public ApiResponse<CreateVirtualGatewayResponse> createVirtualGatewayWithHttpInfo(
+            CreateVirtualGatewayRequest createVirtualGatewayRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createVirtualGatewayValidateBeforeCall(createVirtualGatewayRequest, null);
+        Type localVarReturnType = new TypeToken<CreateVirtualGatewayResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createVirtualGatewayRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createVirtualGatewayRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createVirtualGatewayAsync(CreateVirtualGatewayRequest createVirtualGatewayRequest, final ApiCallback<CreateVirtualGatewayResponse> _callback) throws ApiException {
+    public okhttp3.Call createVirtualGatewayAsync(
+            CreateVirtualGatewayRequest createVirtualGatewayRequest,
+            final ApiCallback<CreateVirtualGatewayResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createVirtualGatewayValidateBeforeCall(createVirtualGatewayRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateVirtualGatewayResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createVirtualGatewayValidateBeforeCall(createVirtualGatewayRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateVirtualGatewayResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteVirtualGateway
-     * @param deleteVirtualGatewayRequest  (optional)
+     *
+     * @param deleteVirtualGatewayRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteVirtualGatewayCall(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVirtualGatewayCall(
+            DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -239,108 +251,127 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteVirtualGatewayValidateBeforeCall(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVirtualGatewayValidateBeforeCall(
+            DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteVirtualGatewayCall(deleteVirtualGatewayRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteVirtualGatewayRequest  (optional)
+     * @param deleteVirtualGatewayRequest (optional)
      * @return DeleteVirtualGatewayResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteVirtualGatewayResponse deleteVirtualGateway(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest) throws ApiException {
-        ApiResponse<DeleteVirtualGatewayResponse> localVarResp = deleteVirtualGatewayWithHttpInfo(deleteVirtualGatewayRequest);
+    public DeleteVirtualGatewayResponse deleteVirtualGateway(
+            DeleteVirtualGatewayRequest deleteVirtualGatewayRequest) throws ApiException {
+        ApiResponse<DeleteVirtualGatewayResponse> localVarResp =
+                deleteVirtualGatewayWithHttpInfo(deleteVirtualGatewayRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteVirtualGatewayRequest  (optional)
+     * @param deleteVirtualGatewayRequest (optional)
      * @return ApiResponse&lt;DeleteVirtualGatewayResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteVirtualGatewayResponse> deleteVirtualGatewayWithHttpInfo(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteVirtualGatewayValidateBeforeCall(deleteVirtualGatewayRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteVirtualGatewayResponse>(){}.getType();
+    public ApiResponse<DeleteVirtualGatewayResponse> deleteVirtualGatewayWithHttpInfo(
+            DeleteVirtualGatewayRequest deleteVirtualGatewayRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteVirtualGatewayValidateBeforeCall(deleteVirtualGatewayRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteVirtualGatewayResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteVirtualGatewayRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteVirtualGatewayRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteVirtualGatewayAsync(DeleteVirtualGatewayRequest deleteVirtualGatewayRequest, final ApiCallback<DeleteVirtualGatewayResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteVirtualGatewayAsync(
+            DeleteVirtualGatewayRequest deleteVirtualGatewayRequest,
+            final ApiCallback<DeleteVirtualGatewayResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteVirtualGatewayValidateBeforeCall(deleteVirtualGatewayRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteVirtualGatewayResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteVirtualGatewayValidateBeforeCall(deleteVirtualGatewayRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteVirtualGatewayResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for linkVirtualGateway
-     * @param linkVirtualGatewayRequest  (optional)
+     *
+     * @param linkVirtualGatewayRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkVirtualGatewayCall(LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkVirtualGatewayCall(
+            LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -357,108 +388,127 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkVirtualGatewayValidateBeforeCall(LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkVirtualGatewayValidateBeforeCall(
+            LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         return linkVirtualGatewayCall(linkVirtualGatewayRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param linkVirtualGatewayRequest  (optional)
+     * @param linkVirtualGatewayRequest (optional)
      * @return LinkVirtualGatewayResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public LinkVirtualGatewayResponse linkVirtualGateway(LinkVirtualGatewayRequest linkVirtualGatewayRequest) throws ApiException {
-        ApiResponse<LinkVirtualGatewayResponse> localVarResp = linkVirtualGatewayWithHttpInfo(linkVirtualGatewayRequest);
+    public LinkVirtualGatewayResponse linkVirtualGateway(
+            LinkVirtualGatewayRequest linkVirtualGatewayRequest) throws ApiException {
+        ApiResponse<LinkVirtualGatewayResponse> localVarResp =
+                linkVirtualGatewayWithHttpInfo(linkVirtualGatewayRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param linkVirtualGatewayRequest  (optional)
+     * @param linkVirtualGatewayRequest (optional)
      * @return ApiResponse&lt;LinkVirtualGatewayResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<LinkVirtualGatewayResponse> linkVirtualGatewayWithHttpInfo(LinkVirtualGatewayRequest linkVirtualGatewayRequest) throws ApiException {
-        okhttp3.Call localVarCall = linkVirtualGatewayValidateBeforeCall(linkVirtualGatewayRequest, null);
-        Type localVarReturnType = new TypeToken<LinkVirtualGatewayResponse>(){}.getType();
+    public ApiResponse<LinkVirtualGatewayResponse> linkVirtualGatewayWithHttpInfo(
+            LinkVirtualGatewayRequest linkVirtualGatewayRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                linkVirtualGatewayValidateBeforeCall(linkVirtualGatewayRequest, null);
+        Type localVarReturnType = new TypeToken<LinkVirtualGatewayResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param linkVirtualGatewayRequest  (optional)
+     * (asynchronously)
+     *
+     * @param linkVirtualGatewayRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkVirtualGatewayAsync(LinkVirtualGatewayRequest linkVirtualGatewayRequest, final ApiCallback<LinkVirtualGatewayResponse> _callback) throws ApiException {
+    public okhttp3.Call linkVirtualGatewayAsync(
+            LinkVirtualGatewayRequest linkVirtualGatewayRequest,
+            final ApiCallback<LinkVirtualGatewayResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = linkVirtualGatewayValidateBeforeCall(linkVirtualGatewayRequest, _callback);
-        Type localVarReturnType = new TypeToken<LinkVirtualGatewayResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                linkVirtualGatewayValidateBeforeCall(linkVirtualGatewayRequest, _callback);
+        Type localVarReturnType = new TypeToken<LinkVirtualGatewayResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readVirtualGateways
-     * @param readVirtualGatewaysRequest  (optional)
+     *
+     * @param readVirtualGatewaysRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVirtualGatewaysCall(ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readVirtualGatewaysCall(
+            ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -475,108 +525,127 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readVirtualGatewaysValidateBeforeCall(ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readVirtualGatewaysValidateBeforeCall(
+            ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback _callback)
+            throws ApiException {
         return readVirtualGatewaysCall(readVirtualGatewaysRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readVirtualGatewaysRequest  (optional)
+     * @param readVirtualGatewaysRequest (optional)
      * @return ReadVirtualGatewaysResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadVirtualGatewaysResponse readVirtualGateways(ReadVirtualGatewaysRequest readVirtualGatewaysRequest) throws ApiException {
-        ApiResponse<ReadVirtualGatewaysResponse> localVarResp = readVirtualGatewaysWithHttpInfo(readVirtualGatewaysRequest);
+    public ReadVirtualGatewaysResponse readVirtualGateways(
+            ReadVirtualGatewaysRequest readVirtualGatewaysRequest) throws ApiException {
+        ApiResponse<ReadVirtualGatewaysResponse> localVarResp =
+                readVirtualGatewaysWithHttpInfo(readVirtualGatewaysRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readVirtualGatewaysRequest  (optional)
+     * @param readVirtualGatewaysRequest (optional)
      * @return ApiResponse&lt;ReadVirtualGatewaysResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadVirtualGatewaysResponse> readVirtualGatewaysWithHttpInfo(ReadVirtualGatewaysRequest readVirtualGatewaysRequest) throws ApiException {
-        okhttp3.Call localVarCall = readVirtualGatewaysValidateBeforeCall(readVirtualGatewaysRequest, null);
-        Type localVarReturnType = new TypeToken<ReadVirtualGatewaysResponse>(){}.getType();
+    public ApiResponse<ReadVirtualGatewaysResponse> readVirtualGatewaysWithHttpInfo(
+            ReadVirtualGatewaysRequest readVirtualGatewaysRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readVirtualGatewaysValidateBeforeCall(readVirtualGatewaysRequest, null);
+        Type localVarReturnType = new TypeToken<ReadVirtualGatewaysResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readVirtualGatewaysRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readVirtualGatewaysRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVirtualGatewaysAsync(ReadVirtualGatewaysRequest readVirtualGatewaysRequest, final ApiCallback<ReadVirtualGatewaysResponse> _callback) throws ApiException {
+    public okhttp3.Call readVirtualGatewaysAsync(
+            ReadVirtualGatewaysRequest readVirtualGatewaysRequest,
+            final ApiCallback<ReadVirtualGatewaysResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readVirtualGatewaysValidateBeforeCall(readVirtualGatewaysRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadVirtualGatewaysResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readVirtualGatewaysValidateBeforeCall(readVirtualGatewaysRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadVirtualGatewaysResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for unlinkVirtualGateway
-     * @param unlinkVirtualGatewayRequest  (optional)
+     *
+     * @param unlinkVirtualGatewayRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkVirtualGatewayCall(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call unlinkVirtualGatewayCall(
+            UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -593,108 +662,128 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unlinkVirtualGatewayValidateBeforeCall(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call unlinkVirtualGatewayValidateBeforeCall(
+            UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback _callback)
+            throws ApiException {
         return unlinkVirtualGatewayCall(unlinkVirtualGatewayRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param unlinkVirtualGatewayRequest  (optional)
+     * @param unlinkVirtualGatewayRequest (optional)
      * @return UnlinkVirtualGatewayResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UnlinkVirtualGatewayResponse unlinkVirtualGateway(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest) throws ApiException {
-        ApiResponse<UnlinkVirtualGatewayResponse> localVarResp = unlinkVirtualGatewayWithHttpInfo(unlinkVirtualGatewayRequest);
+    public UnlinkVirtualGatewayResponse unlinkVirtualGateway(
+            UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest) throws ApiException {
+        ApiResponse<UnlinkVirtualGatewayResponse> localVarResp =
+                unlinkVirtualGatewayWithHttpInfo(unlinkVirtualGatewayRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param unlinkVirtualGatewayRequest  (optional)
+     * @param unlinkVirtualGatewayRequest (optional)
      * @return ApiResponse&lt;UnlinkVirtualGatewayResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UnlinkVirtualGatewayResponse> unlinkVirtualGatewayWithHttpInfo(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest) throws ApiException {
-        okhttp3.Call localVarCall = unlinkVirtualGatewayValidateBeforeCall(unlinkVirtualGatewayRequest, null);
-        Type localVarReturnType = new TypeToken<UnlinkVirtualGatewayResponse>(){}.getType();
+    public ApiResponse<UnlinkVirtualGatewayResponse> unlinkVirtualGatewayWithHttpInfo(
+            UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                unlinkVirtualGatewayValidateBeforeCall(unlinkVirtualGatewayRequest, null);
+        Type localVarReturnType = new TypeToken<UnlinkVirtualGatewayResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param unlinkVirtualGatewayRequest  (optional)
+     * (asynchronously)
+     *
+     * @param unlinkVirtualGatewayRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkVirtualGatewayAsync(UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest, final ApiCallback<UnlinkVirtualGatewayResponse> _callback) throws ApiException {
+    public okhttp3.Call unlinkVirtualGatewayAsync(
+            UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest,
+            final ApiCallback<UnlinkVirtualGatewayResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = unlinkVirtualGatewayValidateBeforeCall(unlinkVirtualGatewayRequest, _callback);
-        Type localVarReturnType = new TypeToken<UnlinkVirtualGatewayResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                unlinkVirtualGatewayValidateBeforeCall(unlinkVirtualGatewayRequest, _callback);
+        Type localVarReturnType = new TypeToken<UnlinkVirtualGatewayResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateRoutePropagation
-     * @param updateRoutePropagationRequest  (optional)
+     *
+     * @param updateRoutePropagationRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateRoutePropagationCall(UpdateRoutePropagationRequest updateRoutePropagationRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateRoutePropagationCall(
+            UpdateRoutePropagationRequest updateRoutePropagationRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -711,84 +800,101 @@ public class VirtualGatewayApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateRoutePropagationValidateBeforeCall(UpdateRoutePropagationRequest updateRoutePropagationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateRoutePropagationValidateBeforeCall(
+            UpdateRoutePropagationRequest updateRoutePropagationRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return updateRoutePropagationCall(updateRoutePropagationRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateRoutePropagationRequest  (optional)
+     * @param updateRoutePropagationRequest (optional)
      * @return UpdateRoutePropagationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateRoutePropagationResponse updateRoutePropagation(UpdateRoutePropagationRequest updateRoutePropagationRequest) throws ApiException {
-        ApiResponse<UpdateRoutePropagationResponse> localVarResp = updateRoutePropagationWithHttpInfo(updateRoutePropagationRequest);
+    public UpdateRoutePropagationResponse updateRoutePropagation(
+            UpdateRoutePropagationRequest updateRoutePropagationRequest) throws ApiException {
+        ApiResponse<UpdateRoutePropagationResponse> localVarResp =
+                updateRoutePropagationWithHttpInfo(updateRoutePropagationRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateRoutePropagationRequest  (optional)
+     * @param updateRoutePropagationRequest (optional)
      * @return ApiResponse&lt;UpdateRoutePropagationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateRoutePropagationResponse> updateRoutePropagationWithHttpInfo(UpdateRoutePropagationRequest updateRoutePropagationRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateRoutePropagationValidateBeforeCall(updateRoutePropagationRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateRoutePropagationResponse>(){}.getType();
+    public ApiResponse<UpdateRoutePropagationResponse> updateRoutePropagationWithHttpInfo(
+            UpdateRoutePropagationRequest updateRoutePropagationRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                updateRoutePropagationValidateBeforeCall(updateRoutePropagationRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateRoutePropagationResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateRoutePropagationRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateRoutePropagationRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateRoutePropagationAsync(UpdateRoutePropagationRequest updateRoutePropagationRequest, final ApiCallback<UpdateRoutePropagationResponse> _callback) throws ApiException {
+    public okhttp3.Call updateRoutePropagationAsync(
+            UpdateRoutePropagationRequest updateRoutePropagationRequest,
+            final ApiCallback<UpdateRoutePropagationResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateRoutePropagationValidateBeforeCall(updateRoutePropagationRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateRoutePropagationResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateRoutePropagationValidateBeforeCall(updateRoutePropagationRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateRoutePropagationResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

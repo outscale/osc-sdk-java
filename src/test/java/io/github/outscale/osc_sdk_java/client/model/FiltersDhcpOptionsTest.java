@@ -10,105 +10,71 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersDhcpOptions
- */
+/** Model tests for FiltersDhcpOptions */
 public class FiltersDhcpOptionsTest {
     private final FiltersDhcpOptions model = new FiltersDhcpOptions();
 
-    /**
-     * Model tests for FiltersDhcpOptions
-     */
+    /** Model tests for FiltersDhcpOptions */
     @Test
     public void testFiltersDhcpOptions() {
         // TODO: test FiltersDhcpOptions
     }
 
-    /**
-     * Test the property '_default'
-     */
+    /** Test the property '_default' */
     @Test
     public void _defaultTest() {
         // TODO: test _default
     }
 
-    /**
-     * Test the property 'dhcpOptionsSetIds'
-     */
+    /** Test the property 'dhcpOptionsSetIds' */
     @Test
     public void dhcpOptionsSetIdsTest() {
         // TODO: test dhcpOptionsSetIds
     }
 
-    /**
-     * Test the property 'domainNameServers'
-     */
+    /** Test the property 'domainNameServers' */
     @Test
     public void domainNameServersTest() {
         // TODO: test domainNameServers
     }
 
-    /**
-     * Test the property 'domainNames'
-     */
+    /** Test the property 'domainNames' */
     @Test
     public void domainNamesTest() {
         // TODO: test domainNames
     }
 
-    /**
-     * Test the property 'logServers'
-     */
+    /** Test the property 'logServers' */
     @Test
     public void logServersTest() {
         // TODO: test logServers
     }
 
-    /**
-     * Test the property 'ntpServers'
-     */
+    /** Test the property 'ntpServers' */
     @Test
     public void ntpServersTest() {
         // TODO: test ntpServers
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

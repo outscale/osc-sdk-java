@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SecurityGroupsMember
- */
+/** Model tests for SecurityGroupsMember */
 public class SecurityGroupsMemberTest {
     private final SecurityGroupsMember model = new SecurityGroupsMember();
 
-    /**
-     * Model tests for SecurityGroupsMember
-     */
+    /** Model tests for SecurityGroupsMember */
     @Test
     public void testSecurityGroupsMember() {
         // TODO: test SecurityGroupsMember
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'securityGroupId'
-     */
+    /** Test the property 'securityGroupId' */
     @Test
     public void securityGroupIdTest() {
         // TODO: test securityGroupId
     }
 
-    /**
-     * Test the property 'securityGroupName'
-     */
+    /** Test the property 'securityGroupName' */
     @Test
     public void securityGroupNameTest() {
         // TODO: test securityGroupName
     }
-
 }

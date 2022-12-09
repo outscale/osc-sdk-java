@@ -10,72 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VgwTelemetry
- */
+/** Model tests for VgwTelemetry */
 public class VgwTelemetryTest {
     private final VgwTelemetry model = new VgwTelemetry();
 
-    /**
-     * Model tests for VgwTelemetry
-     */
+    /** Model tests for VgwTelemetry */
     @Test
     public void testVgwTelemetry() {
         // TODO: test VgwTelemetry
     }
 
-    /**
-     * Test the property 'acceptedRouteCount'
-     */
+    /** Test the property 'acceptedRouteCount' */
     @Test
     public void acceptedRouteCountTest() {
         // TODO: test acceptedRouteCount
     }
 
-    /**
-     * Test the property 'lastStateChangeDate'
-     */
+    /** Test the property 'lastStateChangeDate' */
     @Test
     public void lastStateChangeDateTest() {
         // TODO: test lastStateChangeDate
     }
 
-    /**
-     * Test the property 'outsideIpAddress'
-     */
+    /** Test the property 'outsideIpAddress' */
     @Test
     public void outsideIpAddressTest() {
         // TODO: test outsideIpAddress
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'stateDescription'
-     */
+    /** Test the property 'stateDescription' */
     @Test
     public void stateDescriptionTest() {
         // TODO: test stateDescription
     }
-
 }

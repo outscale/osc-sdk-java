@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteRouteRequest
- */
+/** Model tests for DeleteRouteRequest */
 public class DeleteRouteRequestTest {
     private final DeleteRouteRequest model = new DeleteRouteRequest();
 
-    /**
-     * Model tests for DeleteRouteRequest
-     */
+    /** Model tests for DeleteRouteRequest */
     @Test
     public void testDeleteRouteRequest() {
         // TODO: test DeleteRouteRequest
     }
 
-    /**
-     * Test the property 'destinationIpRange'
-     */
+    /** Test the property 'destinationIpRange' */
     @Test
     public void destinationIpRangeTest() {
         // TODO: test destinationIpRange
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'routeTableId'
-     */
+    /** Test the property 'routeTableId' */
     @Test
     public void routeTableIdTest() {
         // TODO: test routeTableId
     }
-
 }

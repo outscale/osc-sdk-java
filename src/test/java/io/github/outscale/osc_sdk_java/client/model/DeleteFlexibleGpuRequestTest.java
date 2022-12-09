@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteFlexibleGpuRequest
- */
+/** Model tests for DeleteFlexibleGpuRequest */
 public class DeleteFlexibleGpuRequestTest {
     private final DeleteFlexibleGpuRequest model = new DeleteFlexibleGpuRequest();
 
-    /**
-     * Model tests for DeleteFlexibleGpuRequest
-     */
+    /** Model tests for DeleteFlexibleGpuRequest */
     @Test
     public void testDeleteFlexibleGpuRequest() {
         // TODO: test DeleteFlexibleGpuRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'flexibleGpuId'
-     */
+    /** Test the property 'flexibleGpuId' */
     @Test
     public void flexibleGpuIdTest() {
         // TODO: test flexibleGpuId
     }
-
 }

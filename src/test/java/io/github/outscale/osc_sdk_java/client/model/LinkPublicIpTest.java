@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkPublicIp
- */
+/** Model tests for LinkPublicIp */
 public class LinkPublicIpTest {
     private final LinkPublicIp model = new LinkPublicIp();
 
-    /**
-     * Model tests for LinkPublicIp
-     */
+    /** Model tests for LinkPublicIp */
     @Test
     public void testLinkPublicIp() {
         // TODO: test LinkPublicIp
     }
 
-    /**
-     * Test the property 'linkPublicIpId'
-     */
+    /** Test the property 'linkPublicIpId' */
     @Test
     public void linkPublicIpIdTest() {
         // TODO: test linkPublicIpId
     }
 
-    /**
-     * Test the property 'publicDnsName'
-     */
+    /** Test the property 'publicDnsName' */
     @Test
     public void publicDnsNameTest() {
         // TODO: test publicDnsName
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'publicIpAccountId'
-     */
+    /** Test the property 'publicIpAccountId' */
     @Test
     public void publicIpAccountIdTest() {
         // TODO: test publicIpAccountId
     }
 
-    /**
-     * Test the property 'publicIpId'
-     */
+    /** Test the property 'publicIpId' */
     @Test
     public void publicIpIdTest() {
         // TODO: test publicIpId
     }
-
 }

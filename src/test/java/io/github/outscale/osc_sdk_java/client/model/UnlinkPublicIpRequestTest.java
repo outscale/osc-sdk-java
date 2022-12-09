@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UnlinkPublicIpRequest
- */
+/** Model tests for UnlinkPublicIpRequest */
 public class UnlinkPublicIpRequestTest {
     private final UnlinkPublicIpRequest model = new UnlinkPublicIpRequest();
 
-    /**
-     * Model tests for UnlinkPublicIpRequest
-     */
+    /** Model tests for UnlinkPublicIpRequest */
     @Test
     public void testUnlinkPublicIpRequest() {
         // TODO: test UnlinkPublicIpRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'linkPublicIpId'
-     */
+    /** Test the property 'linkPublicIpId' */
     @Test
     public void linkPublicIpIdTest() {
         // TODO: test linkPublicIpId
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
-
 }

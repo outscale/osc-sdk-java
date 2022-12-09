@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.LinkPublicIpLightForVm;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for PrivateIpLightForVm
- */
+/** Model tests for PrivateIpLightForVm */
 public class PrivateIpLightForVmTest {
     private final PrivateIpLightForVm model = new PrivateIpLightForVm();
 
-    /**
-     * Model tests for PrivateIpLightForVm
-     */
+    /** Model tests for PrivateIpLightForVm */
     @Test
     public void testPrivateIpLightForVm() {
         // TODO: test PrivateIpLightForVm
     }
 
-    /**
-     * Test the property 'isPrimary'
-     */
+    /** Test the property 'isPrimary' */
     @Test
     public void isPrimaryTest() {
         // TODO: test isPrimary
     }
 
-    /**
-     * Test the property 'linkPublicIp'
-     */
+    /** Test the property 'linkPublicIp' */
     @Test
     public void linkPublicIpTest() {
         // TODO: test linkPublicIp
     }
 
-    /**
-     * Test the property 'privateDnsName'
-     */
+    /** Test the property 'privateDnsName' */
     @Test
     public void privateDnsNameTest() {
         // TODO: test privateDnsName
     }
 
-    /**
-     * Test the property 'privateIp'
-     */
+    /** Test the property 'privateIp' */
     @Test
     public void privateIpTest() {
         // TODO: test privateIp
     }
-
 }

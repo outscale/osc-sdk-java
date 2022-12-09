@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateAccessKeyRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateAccessKeyResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteAccessKeyRequest;
@@ -37,13 +29,11 @@ import io.github.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadSecretAccessKeyResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateAccessKeyRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateAccessKeyResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class AccessKeyApi {
     private ApiClient localVarApiClient;
@@ -84,25 +74,28 @@ public class AccessKeyApi {
 
     /**
      * Build call for createAccessKey
-     * @param createAccessKeyRequest  (optional)
+     *
+     * @param createAccessKeyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createAccessKeyCall(CreateAccessKeyRequest createAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createAccessKeyCall(
+            CreateAccessKeyRequest createAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -119,108 +112,126 @@ public class AccessKeyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAccessKeyValidateBeforeCall(CreateAccessKeyRequest createAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAccessKeyValidateBeforeCall(
+            CreateAccessKeyRequest createAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         return createAccessKeyCall(createAccessKeyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createAccessKeyRequest  (optional)
+     * @param createAccessKeyRequest (optional)
      * @return CreateAccessKeyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateAccessKeyResponse createAccessKey(CreateAccessKeyRequest createAccessKeyRequest) throws ApiException {
-        ApiResponse<CreateAccessKeyResponse> localVarResp = createAccessKeyWithHttpInfo(createAccessKeyRequest);
+    public CreateAccessKeyResponse createAccessKey(CreateAccessKeyRequest createAccessKeyRequest)
+            throws ApiException {
+        ApiResponse<CreateAccessKeyResponse> localVarResp =
+                createAccessKeyWithHttpInfo(createAccessKeyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createAccessKeyRequest  (optional)
+     * @param createAccessKeyRequest (optional)
      * @return ApiResponse&lt;CreateAccessKeyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateAccessKeyResponse> createAccessKeyWithHttpInfo(CreateAccessKeyRequest createAccessKeyRequest) throws ApiException {
+    public ApiResponse<CreateAccessKeyResponse> createAccessKeyWithHttpInfo(
+            CreateAccessKeyRequest createAccessKeyRequest) throws ApiException {
         okhttp3.Call localVarCall = createAccessKeyValidateBeforeCall(createAccessKeyRequest, null);
-        Type localVarReturnType = new TypeToken<CreateAccessKeyResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateAccessKeyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createAccessKeyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createAccessKeyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createAccessKeyAsync(CreateAccessKeyRequest createAccessKeyRequest, final ApiCallback<CreateAccessKeyResponse> _callback) throws ApiException {
+    public okhttp3.Call createAccessKeyAsync(
+            CreateAccessKeyRequest createAccessKeyRequest,
+            final ApiCallback<CreateAccessKeyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createAccessKeyValidateBeforeCall(createAccessKeyRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateAccessKeyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createAccessKeyValidateBeforeCall(createAccessKeyRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateAccessKeyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteAccessKey
-     * @param deleteAccessKeyRequest  (optional)
+     *
+     * @param deleteAccessKeyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteAccessKeyCall(DeleteAccessKeyRequest deleteAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAccessKeyCall(
+            DeleteAccessKeyRequest deleteAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -237,108 +248,126 @@ public class AccessKeyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAccessKeyValidateBeforeCall(DeleteAccessKeyRequest deleteAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAccessKeyValidateBeforeCall(
+            DeleteAccessKeyRequest deleteAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteAccessKeyCall(deleteAccessKeyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteAccessKeyRequest  (optional)
+     * @param deleteAccessKeyRequest (optional)
      * @return DeleteAccessKeyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteAccessKeyResponse deleteAccessKey(DeleteAccessKeyRequest deleteAccessKeyRequest) throws ApiException {
-        ApiResponse<DeleteAccessKeyResponse> localVarResp = deleteAccessKeyWithHttpInfo(deleteAccessKeyRequest);
+    public DeleteAccessKeyResponse deleteAccessKey(DeleteAccessKeyRequest deleteAccessKeyRequest)
+            throws ApiException {
+        ApiResponse<DeleteAccessKeyResponse> localVarResp =
+                deleteAccessKeyWithHttpInfo(deleteAccessKeyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteAccessKeyRequest  (optional)
+     * @param deleteAccessKeyRequest (optional)
      * @return ApiResponse&lt;DeleteAccessKeyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteAccessKeyResponse> deleteAccessKeyWithHttpInfo(DeleteAccessKeyRequest deleteAccessKeyRequest) throws ApiException {
+    public ApiResponse<DeleteAccessKeyResponse> deleteAccessKeyWithHttpInfo(
+            DeleteAccessKeyRequest deleteAccessKeyRequest) throws ApiException {
         okhttp3.Call localVarCall = deleteAccessKeyValidateBeforeCall(deleteAccessKeyRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteAccessKeyResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeleteAccessKeyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteAccessKeyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteAccessKeyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteAccessKeyAsync(DeleteAccessKeyRequest deleteAccessKeyRequest, final ApiCallback<DeleteAccessKeyResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteAccessKeyAsync(
+            DeleteAccessKeyRequest deleteAccessKeyRequest,
+            final ApiCallback<DeleteAccessKeyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAccessKeyValidateBeforeCall(deleteAccessKeyRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteAccessKeyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteAccessKeyValidateBeforeCall(deleteAccessKeyRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteAccessKeyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readAccessKeys
-     * @param readAccessKeysRequest  (optional)
+     *
+     * @param readAccessKeysRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAccessKeysCall(ReadAccessKeysRequest readAccessKeysRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readAccessKeysCall(
+            ReadAccessKeysRequest readAccessKeysRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -355,108 +384,126 @@ public class AccessKeyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readAccessKeysValidateBeforeCall(ReadAccessKeysRequest readAccessKeysRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readAccessKeysValidateBeforeCall(
+            ReadAccessKeysRequest readAccessKeysRequest, final ApiCallback _callback)
+            throws ApiException {
         return readAccessKeysCall(readAccessKeysRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readAccessKeysRequest  (optional)
+     * @param readAccessKeysRequest (optional)
      * @return ReadAccessKeysResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadAccessKeysResponse readAccessKeys(ReadAccessKeysRequest readAccessKeysRequest) throws ApiException {
-        ApiResponse<ReadAccessKeysResponse> localVarResp = readAccessKeysWithHttpInfo(readAccessKeysRequest);
+    public ReadAccessKeysResponse readAccessKeys(ReadAccessKeysRequest readAccessKeysRequest)
+            throws ApiException {
+        ApiResponse<ReadAccessKeysResponse> localVarResp =
+                readAccessKeysWithHttpInfo(readAccessKeysRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readAccessKeysRequest  (optional)
+     * @param readAccessKeysRequest (optional)
      * @return ApiResponse&lt;ReadAccessKeysResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadAccessKeysResponse> readAccessKeysWithHttpInfo(ReadAccessKeysRequest readAccessKeysRequest) throws ApiException {
+    public ApiResponse<ReadAccessKeysResponse> readAccessKeysWithHttpInfo(
+            ReadAccessKeysRequest readAccessKeysRequest) throws ApiException {
         okhttp3.Call localVarCall = readAccessKeysValidateBeforeCall(readAccessKeysRequest, null);
-        Type localVarReturnType = new TypeToken<ReadAccessKeysResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadAccessKeysResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readAccessKeysRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readAccessKeysRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readAccessKeysAsync(ReadAccessKeysRequest readAccessKeysRequest, final ApiCallback<ReadAccessKeysResponse> _callback) throws ApiException {
+    public okhttp3.Call readAccessKeysAsync(
+            ReadAccessKeysRequest readAccessKeysRequest,
+            final ApiCallback<ReadAccessKeysResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readAccessKeysValidateBeforeCall(readAccessKeysRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadAccessKeysResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readAccessKeysValidateBeforeCall(readAccessKeysRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadAccessKeysResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readSecretAccessKey
-     * @param readSecretAccessKeyRequest  (optional)
+     *
+     * @param readSecretAccessKeyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSecretAccessKeyCall(ReadSecretAccessKeyRequest readSecretAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readSecretAccessKeyCall(
+            ReadSecretAccessKeyRequest readSecretAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -473,108 +520,127 @@ public class AccessKeyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readSecretAccessKeyValidateBeforeCall(ReadSecretAccessKeyRequest readSecretAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readSecretAccessKeyValidateBeforeCall(
+            ReadSecretAccessKeyRequest readSecretAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         return readSecretAccessKeyCall(readSecretAccessKeyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readSecretAccessKeyRequest  (optional)
+     * @param readSecretAccessKeyRequest (optional)
      * @return ReadSecretAccessKeyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadSecretAccessKeyResponse readSecretAccessKey(ReadSecretAccessKeyRequest readSecretAccessKeyRequest) throws ApiException {
-        ApiResponse<ReadSecretAccessKeyResponse> localVarResp = readSecretAccessKeyWithHttpInfo(readSecretAccessKeyRequest);
+    public ReadSecretAccessKeyResponse readSecretAccessKey(
+            ReadSecretAccessKeyRequest readSecretAccessKeyRequest) throws ApiException {
+        ApiResponse<ReadSecretAccessKeyResponse> localVarResp =
+                readSecretAccessKeyWithHttpInfo(readSecretAccessKeyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readSecretAccessKeyRequest  (optional)
+     * @param readSecretAccessKeyRequest (optional)
      * @return ApiResponse&lt;ReadSecretAccessKeyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadSecretAccessKeyResponse> readSecretAccessKeyWithHttpInfo(ReadSecretAccessKeyRequest readSecretAccessKeyRequest) throws ApiException {
-        okhttp3.Call localVarCall = readSecretAccessKeyValidateBeforeCall(readSecretAccessKeyRequest, null);
-        Type localVarReturnType = new TypeToken<ReadSecretAccessKeyResponse>(){}.getType();
+    public ApiResponse<ReadSecretAccessKeyResponse> readSecretAccessKeyWithHttpInfo(
+            ReadSecretAccessKeyRequest readSecretAccessKeyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readSecretAccessKeyValidateBeforeCall(readSecretAccessKeyRequest, null);
+        Type localVarReturnType = new TypeToken<ReadSecretAccessKeyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readSecretAccessKeyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readSecretAccessKeyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSecretAccessKeyAsync(ReadSecretAccessKeyRequest readSecretAccessKeyRequest, final ApiCallback<ReadSecretAccessKeyResponse> _callback) throws ApiException {
+    public okhttp3.Call readSecretAccessKeyAsync(
+            ReadSecretAccessKeyRequest readSecretAccessKeyRequest,
+            final ApiCallback<ReadSecretAccessKeyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readSecretAccessKeyValidateBeforeCall(readSecretAccessKeyRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadSecretAccessKeyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readSecretAccessKeyValidateBeforeCall(readSecretAccessKeyRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadSecretAccessKeyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateAccessKey
-     * @param updateAccessKeyRequest  (optional)
+     *
+     * @param updateAccessKeyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateAccessKeyCall(UpdateAccessKeyRequest updateAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAccessKeyCall(
+            UpdateAccessKeyRequest updateAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -591,84 +657,99 @@ public class AccessKeyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuthSec", "BasicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuthSec", "BasicAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAccessKeyValidateBeforeCall(UpdateAccessKeyRequest updateAccessKeyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAccessKeyValidateBeforeCall(
+            UpdateAccessKeyRequest updateAccessKeyRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateAccessKeyCall(updateAccessKeyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateAccessKeyRequest  (optional)
+     * @param updateAccessKeyRequest (optional)
      * @return UpdateAccessKeyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateAccessKeyResponse updateAccessKey(UpdateAccessKeyRequest updateAccessKeyRequest) throws ApiException {
-        ApiResponse<UpdateAccessKeyResponse> localVarResp = updateAccessKeyWithHttpInfo(updateAccessKeyRequest);
+    public UpdateAccessKeyResponse updateAccessKey(UpdateAccessKeyRequest updateAccessKeyRequest)
+            throws ApiException {
+        ApiResponse<UpdateAccessKeyResponse> localVarResp =
+                updateAccessKeyWithHttpInfo(updateAccessKeyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateAccessKeyRequest  (optional)
+     * @param updateAccessKeyRequest (optional)
      * @return ApiResponse&lt;UpdateAccessKeyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateAccessKeyResponse> updateAccessKeyWithHttpInfo(UpdateAccessKeyRequest updateAccessKeyRequest) throws ApiException {
+    public ApiResponse<UpdateAccessKeyResponse> updateAccessKeyWithHttpInfo(
+            UpdateAccessKeyRequest updateAccessKeyRequest) throws ApiException {
         okhttp3.Call localVarCall = updateAccessKeyValidateBeforeCall(updateAccessKeyRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateAccessKeyResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateAccessKeyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateAccessKeyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateAccessKeyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateAccessKeyAsync(UpdateAccessKeyRequest updateAccessKeyRequest, final ApiCallback<UpdateAccessKeyResponse> _callback) throws ApiException {
+    public okhttp3.Call updateAccessKeyAsync(
+            UpdateAccessKeyRequest updateAccessKeyRequest,
+            final ApiCallback<UpdateAccessKeyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateAccessKeyValidateBeforeCall(updateAccessKeyRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateAccessKeyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateAccessKeyValidateBeforeCall(updateAccessKeyRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateAccessKeyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

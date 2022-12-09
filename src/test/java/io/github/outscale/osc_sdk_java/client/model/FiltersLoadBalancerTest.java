@@ -10,41 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersLoadBalancer
- */
+/** Model tests for FiltersLoadBalancer */
 public class FiltersLoadBalancerTest {
     private final FiltersLoadBalancer model = new FiltersLoadBalancer();
 
-    /**
-     * Model tests for FiltersLoadBalancer
-     */
+    /** Model tests for FiltersLoadBalancer */
     @Test
     public void testFiltersLoadBalancer() {
         // TODO: test FiltersLoadBalancer
     }
 
-    /**
-     * Test the property 'loadBalancerNames'
-     */
+    /** Test the property 'loadBalancerNames' */
     @Test
     public void loadBalancerNamesTest() {
         // TODO: test loadBalancerNames
     }
-
 }

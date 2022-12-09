@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreatePublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreatePublicIpResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeletePublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeletePublicIpResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkPublicIpRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkPublicIpResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadPublicIpRangesRequest;
@@ -30,22 +28,13 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkPublicIpResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for PublicIpApi
- */
+/** API tests for PublicIpApi */
 @Disabled
 public class PublicIpApiTest {
 
     private final PublicIpApi api = new PublicIpApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createPublicIpTest() throws ApiException {
         CreatePublicIpRequest createPublicIpRequest = null;
@@ -53,9 +42,7 @@ public class PublicIpApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deletePublicIpTest() throws ApiException {
         DeletePublicIpRequest deletePublicIpRequest = null;
@@ -63,9 +50,7 @@ public class PublicIpApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkPublicIpTest() throws ApiException {
         LinkPublicIpRequest linkPublicIpRequest = null;
@@ -73,9 +58,7 @@ public class PublicIpApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readPublicIpRangesTest() throws ApiException {
         ReadPublicIpRangesRequest readPublicIpRangesRequest = null;
@@ -83,9 +66,7 @@ public class PublicIpApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readPublicIpsTest() throws ApiException {
         ReadPublicIpsRequest readPublicIpsRequest = null;
@@ -93,14 +74,11 @@ public class PublicIpApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkPublicIpTest() throws ApiException {
         UnlinkPublicIpRequest unlinkPublicIpRequest = null;
         UnlinkPublicIpResponse response = api.unlinkPublicIp(unlinkPublicIpRequest);
         // TODO: test validations
     }
-
 }

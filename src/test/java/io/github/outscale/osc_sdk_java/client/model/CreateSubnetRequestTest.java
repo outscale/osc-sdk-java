@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateSubnetRequest
- */
+/** Model tests for CreateSubnetRequest */
 public class CreateSubnetRequestTest {
     private final CreateSubnetRequest model = new CreateSubnetRequest();
 
-    /**
-     * Model tests for CreateSubnetRequest
-     */
+    /** Model tests for CreateSubnetRequest */
     @Test
     public void testCreateSubnetRequest() {
         // TODO: test CreateSubnetRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'ipRange'
-     */
+    /** Test the property 'ipRange' */
     @Test
     public void ipRangeTest() {
         // TODO: test ipRange
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
-
 }

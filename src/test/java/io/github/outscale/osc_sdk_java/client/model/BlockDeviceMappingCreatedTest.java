@@ -10,48 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.BsuCreated;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for BlockDeviceMappingCreated
- */
+/** Model tests for BlockDeviceMappingCreated */
 public class BlockDeviceMappingCreatedTest {
     private final BlockDeviceMappingCreated model = new BlockDeviceMappingCreated();
 
-    /**
-     * Model tests for BlockDeviceMappingCreated
-     */
+    /** Model tests for BlockDeviceMappingCreated */
     @Test
     public void testBlockDeviceMappingCreated() {
         // TODO: test BlockDeviceMappingCreated
     }
 
-    /**
-     * Test the property 'bsu'
-     */
+    /** Test the property 'bsu' */
     @Test
     public void bsuTest() {
         // TODO: test bsu
     }
 
-    /**
-     * Test the property 'deviceName'
-     */
+    /** Test the property 'deviceName' */
     @Test
     public void deviceNameTest() {
         // TODO: test deviceName
     }
-
 }

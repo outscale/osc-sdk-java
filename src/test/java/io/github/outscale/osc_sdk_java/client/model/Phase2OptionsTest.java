@@ -10,73 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Phase2Options
- */
+/** Model tests for Phase2Options */
 public class Phase2OptionsTest {
     private final Phase2Options model = new Phase2Options();
 
-    /**
-     * Model tests for Phase2Options
-     */
+    /** Model tests for Phase2Options */
     @Test
     public void testPhase2Options() {
         // TODO: test Phase2Options
     }
 
-    /**
-     * Test the property 'phase2DhGroupNumbers'
-     */
+    /** Test the property 'phase2DhGroupNumbers' */
     @Test
     public void phase2DhGroupNumbersTest() {
         // TODO: test phase2DhGroupNumbers
     }
 
-    /**
-     * Test the property 'phase2EncryptionAlgorithms'
-     */
+    /** Test the property 'phase2EncryptionAlgorithms' */
     @Test
     public void phase2EncryptionAlgorithmsTest() {
         // TODO: test phase2EncryptionAlgorithms
     }
 
-    /**
-     * Test the property 'phase2IntegrityAlgorithms'
-     */
+    /** Test the property 'phase2IntegrityAlgorithms' */
     @Test
     public void phase2IntegrityAlgorithmsTest() {
         // TODO: test phase2IntegrityAlgorithms
     }
 
-    /**
-     * Test the property 'phase2LifetimeSeconds'
-     */
+    /** Test the property 'phase2LifetimeSeconds' */
     @Test
     public void phase2LifetimeSecondsTest() {
         // TODO: test phase2LifetimeSeconds
     }
 
-    /**
-     * Test the property 'preSharedKey'
-     */
+    /** Test the property 'preSharedKey' */
     @Test
     public void preSharedKeyTest() {
         // TODO: test preSharedKey
     }
-
 }

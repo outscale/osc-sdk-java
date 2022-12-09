@@ -10,65 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateNetAccessPointRequest
- */
+/** Model tests for CreateNetAccessPointRequest */
 public class CreateNetAccessPointRequestTest {
     private final CreateNetAccessPointRequest model = new CreateNetAccessPointRequest();
 
-    /**
-     * Model tests for CreateNetAccessPointRequest
-     */
+    /** Model tests for CreateNetAccessPointRequest */
     @Test
     public void testCreateNetAccessPointRequest() {
         // TODO: test CreateNetAccessPointRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'routeTableIds'
-     */
+    /** Test the property 'routeTableIds' */
     @Test
     public void routeTableIdsTest() {
         // TODO: test routeTableIds
     }
 
-    /**
-     * Test the property 'serviceName'
-     */
+    /** Test the property 'serviceName' */
     @Test
     public void serviceNameTest() {
         // TODO: test serviceName
     }
-
 }

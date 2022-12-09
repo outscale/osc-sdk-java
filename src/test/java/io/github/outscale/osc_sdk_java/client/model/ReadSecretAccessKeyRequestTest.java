@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadSecretAccessKeyRequest
- */
+/** Model tests for ReadSecretAccessKeyRequest */
 public class ReadSecretAccessKeyRequestTest {
     private final ReadSecretAccessKeyRequest model = new ReadSecretAccessKeyRequest();
 
-    /**
-     * Model tests for ReadSecretAccessKeyRequest
-     */
+    /** Model tests for ReadSecretAccessKeyRequest */
     @Test
     public void testReadSecretAccessKeyRequest() {
         // TODO: test ReadSecretAccessKeyRequest
     }
 
-    /**
-     * Test the property 'accessKeyId'
-     */
+    /** Test the property 'accessKeyId' */
     @Test
     public void accessKeyIdTest() {
         // TODO: test accessKeyId
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
-
 }

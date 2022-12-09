@@ -10,56 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.PermissionsOnResourceCreation;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateSnapshotRequest
- */
+/** Model tests for UpdateSnapshotRequest */
 public class UpdateSnapshotRequestTest {
     private final UpdateSnapshotRequest model = new UpdateSnapshotRequest();
 
-    /**
-     * Model tests for UpdateSnapshotRequest
-     */
+    /** Model tests for UpdateSnapshotRequest */
     @Test
     public void testUpdateSnapshotRequest() {
         // TODO: test UpdateSnapshotRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'permissionsToCreateVolume'
-     */
+    /** Test the property 'permissionsToCreateVolume' */
     @Test
     public void permissionsToCreateVolumeTest() {
         // TODO: test permissionsToCreateVolume
     }
 
-    /**
-     * Test the property 'snapshotId'
-     */
+    /** Test the property 'snapshotId' */
     @Test
     public void snapshotIdTest() {
         // TODO: test snapshotId
     }
-
 }

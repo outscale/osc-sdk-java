@@ -10,77 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.AccepterNet;
-import io.github.outscale.osc_sdk_java.client.model.NetPeeringState;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.SourceNet;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for NetPeering
- */
+/** Model tests for NetPeering */
 public class NetPeeringTest {
     private final NetPeering model = new NetPeering();
 
-    /**
-     * Model tests for NetPeering
-     */
+    /** Model tests for NetPeering */
     @Test
     public void testNetPeering() {
         // TODO: test NetPeering
     }
 
-    /**
-     * Test the property 'accepterNet'
-     */
+    /** Test the property 'accepterNet' */
     @Test
     public void accepterNetTest() {
         // TODO: test accepterNet
     }
 
-    /**
-     * Test the property 'netPeeringId'
-     */
+    /** Test the property 'netPeeringId' */
     @Test
     public void netPeeringIdTest() {
         // TODO: test netPeeringId
     }
 
-    /**
-     * Test the property 'sourceNet'
-     */
+    /** Test the property 'sourceNet' */
     @Test
     public void sourceNetTest() {
         // TODO: test sourceNet
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

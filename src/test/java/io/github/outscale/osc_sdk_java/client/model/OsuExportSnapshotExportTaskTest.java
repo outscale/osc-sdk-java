@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for OsuExportSnapshotExportTask
- */
+/** Model tests for OsuExportSnapshotExportTask */
 public class OsuExportSnapshotExportTaskTest {
     private final OsuExportSnapshotExportTask model = new OsuExportSnapshotExportTask();
 
-    /**
-     * Model tests for OsuExportSnapshotExportTask
-     */
+    /** Model tests for OsuExportSnapshotExportTask */
     @Test
     public void testOsuExportSnapshotExportTask() {
         // TODO: test OsuExportSnapshotExportTask
     }
 
-    /**
-     * Test the property 'diskImageFormat'
-     */
+    /** Test the property 'diskImageFormat' */
     @Test
     public void diskImageFormatTest() {
         // TODO: test diskImageFormat
     }
 
-    /**
-     * Test the property 'osuBucket'
-     */
+    /** Test the property 'osuBucket' */
     @Test
     public void osuBucketTest() {
         // TODO: test osuBucket
     }
 
-    /**
-     * Test the property 'osuPrefix'
-     */
+    /** Test the property 'osuPrefix' */
     @Test
     public void osuPrefixTest() {
         // TODO: test osuPrefix
     }
-
 }

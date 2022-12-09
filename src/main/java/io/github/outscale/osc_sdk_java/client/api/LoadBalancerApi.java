@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerResponse;
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerTagsRequest;
@@ -51,13 +43,11 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMac
 import io.github.outscale.osc_sdk_java.client.model.UnlinkLoadBalancerBackendMachinesResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateLoadBalancerRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateLoadBalancerResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class LoadBalancerApi {
     private ApiClient localVarApiClient;
@@ -98,25 +88,28 @@ public class LoadBalancerApi {
 
     /**
      * Build call for createLoadBalancer
-     * @param createLoadBalancerRequest  (optional)
+     *
+     * @param createLoadBalancerRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerCall(CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerCall(
+            CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -133,108 +126,128 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLoadBalancerValidateBeforeCall(CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLoadBalancerValidateBeforeCall(
+            CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         return createLoadBalancerCall(createLoadBalancerRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerRequest  (optional)
+     * @param createLoadBalancerRequest (optional)
      * @return CreateLoadBalancerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateLoadBalancerResponse createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) throws ApiException {
-        ApiResponse<CreateLoadBalancerResponse> localVarResp = createLoadBalancerWithHttpInfo(createLoadBalancerRequest);
+    public CreateLoadBalancerResponse createLoadBalancer(
+            CreateLoadBalancerRequest createLoadBalancerRequest) throws ApiException {
+        ApiResponse<CreateLoadBalancerResponse> localVarResp =
+                createLoadBalancerWithHttpInfo(createLoadBalancerRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerRequest  (optional)
+     * @param createLoadBalancerRequest (optional)
      * @return ApiResponse&lt;CreateLoadBalancerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateLoadBalancerResponse> createLoadBalancerWithHttpInfo(CreateLoadBalancerRequest createLoadBalancerRequest) throws ApiException {
-        okhttp3.Call localVarCall = createLoadBalancerValidateBeforeCall(createLoadBalancerRequest, null);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerResponse>(){}.getType();
+    public ApiResponse<CreateLoadBalancerResponse> createLoadBalancerWithHttpInfo(
+            CreateLoadBalancerRequest createLoadBalancerRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createLoadBalancerValidateBeforeCall(createLoadBalancerRequest, null);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createLoadBalancerRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createLoadBalancerRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerAsync(CreateLoadBalancerRequest createLoadBalancerRequest, final ApiCallback<CreateLoadBalancerResponse> _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerAsync(
+            CreateLoadBalancerRequest createLoadBalancerRequest,
+            final ApiCallback<CreateLoadBalancerResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createLoadBalancerValidateBeforeCall(createLoadBalancerRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createLoadBalancerValidateBeforeCall(createLoadBalancerRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createLoadBalancerTags
-     * @param createLoadBalancerTagsRequest  (optional)
+     *
+     * @param createLoadBalancerTagsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerTagsCall(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerTagsCall(
+            CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -251,108 +264,128 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLoadBalancerTagsValidateBeforeCall(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLoadBalancerTagsValidateBeforeCall(
+            CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return createLoadBalancerTagsCall(createLoadBalancerTagsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerTagsRequest  (optional)
+     * @param createLoadBalancerTagsRequest (optional)
      * @return CreateLoadBalancerTagsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateLoadBalancerTagsResponse createLoadBalancerTags(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest) throws ApiException {
-        ApiResponse<CreateLoadBalancerTagsResponse> localVarResp = createLoadBalancerTagsWithHttpInfo(createLoadBalancerTagsRequest);
+    public CreateLoadBalancerTagsResponse createLoadBalancerTags(
+            CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest) throws ApiException {
+        ApiResponse<CreateLoadBalancerTagsResponse> localVarResp =
+                createLoadBalancerTagsWithHttpInfo(createLoadBalancerTagsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerTagsRequest  (optional)
+     * @param createLoadBalancerTagsRequest (optional)
      * @return ApiResponse&lt;CreateLoadBalancerTagsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateLoadBalancerTagsResponse> createLoadBalancerTagsWithHttpInfo(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest) throws ApiException {
-        okhttp3.Call localVarCall = createLoadBalancerTagsValidateBeforeCall(createLoadBalancerTagsRequest, null);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerTagsResponse>(){}.getType();
+    public ApiResponse<CreateLoadBalancerTagsResponse> createLoadBalancerTagsWithHttpInfo(
+            CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createLoadBalancerTagsValidateBeforeCall(createLoadBalancerTagsRequest, null);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerTagsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createLoadBalancerTagsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createLoadBalancerTagsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerTagsAsync(CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest, final ApiCallback<CreateLoadBalancerTagsResponse> _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerTagsAsync(
+            CreateLoadBalancerTagsRequest createLoadBalancerTagsRequest,
+            final ApiCallback<CreateLoadBalancerTagsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createLoadBalancerTagsValidateBeforeCall(createLoadBalancerTagsRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerTagsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createLoadBalancerTagsValidateBeforeCall(createLoadBalancerTagsRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerTagsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteLoadBalancer
-     * @param deleteLoadBalancerRequest  (optional)
+     *
+     * @param deleteLoadBalancerRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerCall(DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerCall(
+            DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -369,108 +402,128 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLoadBalancerValidateBeforeCall(DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLoadBalancerValidateBeforeCall(
+            DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteLoadBalancerCall(deleteLoadBalancerRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerRequest  (optional)
+     * @param deleteLoadBalancerRequest (optional)
      * @return DeleteLoadBalancerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteLoadBalancerResponse deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) throws ApiException {
-        ApiResponse<DeleteLoadBalancerResponse> localVarResp = deleteLoadBalancerWithHttpInfo(deleteLoadBalancerRequest);
+    public DeleteLoadBalancerResponse deleteLoadBalancer(
+            DeleteLoadBalancerRequest deleteLoadBalancerRequest) throws ApiException {
+        ApiResponse<DeleteLoadBalancerResponse> localVarResp =
+                deleteLoadBalancerWithHttpInfo(deleteLoadBalancerRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerRequest  (optional)
+     * @param deleteLoadBalancerRequest (optional)
      * @return ApiResponse&lt;DeleteLoadBalancerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteLoadBalancerResponse> deleteLoadBalancerWithHttpInfo(DeleteLoadBalancerRequest deleteLoadBalancerRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteLoadBalancerValidateBeforeCall(deleteLoadBalancerRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerResponse>(){}.getType();
+    public ApiResponse<DeleteLoadBalancerResponse> deleteLoadBalancerWithHttpInfo(
+            DeleteLoadBalancerRequest deleteLoadBalancerRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerValidateBeforeCall(deleteLoadBalancerRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteLoadBalancerRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteLoadBalancerRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerAsync(DeleteLoadBalancerRequest deleteLoadBalancerRequest, final ApiCallback<DeleteLoadBalancerResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerAsync(
+            DeleteLoadBalancerRequest deleteLoadBalancerRequest,
+            final ApiCallback<DeleteLoadBalancerResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLoadBalancerValidateBeforeCall(deleteLoadBalancerRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerValidateBeforeCall(deleteLoadBalancerRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteLoadBalancerTags
-     * @param deleteLoadBalancerTagsRequest  (optional)
+     *
+     * @param deleteLoadBalancerTagsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerTagsCall(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerTagsCall(
+            DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -487,108 +540,129 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLoadBalancerTagsValidateBeforeCall(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLoadBalancerTagsValidateBeforeCall(
+            DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return deleteLoadBalancerTagsCall(deleteLoadBalancerTagsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerTagsRequest  (optional)
+     * @param deleteLoadBalancerTagsRequest (optional)
      * @return DeleteLoadBalancerTagsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteLoadBalancerTagsResponse deleteLoadBalancerTags(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest) throws ApiException {
-        ApiResponse<DeleteLoadBalancerTagsResponse> localVarResp = deleteLoadBalancerTagsWithHttpInfo(deleteLoadBalancerTagsRequest);
+    public DeleteLoadBalancerTagsResponse deleteLoadBalancerTags(
+            DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest) throws ApiException {
+        ApiResponse<DeleteLoadBalancerTagsResponse> localVarResp =
+                deleteLoadBalancerTagsWithHttpInfo(deleteLoadBalancerTagsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerTagsRequest  (optional)
+     * @param deleteLoadBalancerTagsRequest (optional)
      * @return ApiResponse&lt;DeleteLoadBalancerTagsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteLoadBalancerTagsResponse> deleteLoadBalancerTagsWithHttpInfo(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteLoadBalancerTagsValidateBeforeCall(deleteLoadBalancerTagsRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerTagsResponse>(){}.getType();
+    public ApiResponse<DeleteLoadBalancerTagsResponse> deleteLoadBalancerTagsWithHttpInfo(
+            DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerTagsValidateBeforeCall(deleteLoadBalancerTagsRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerTagsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteLoadBalancerTagsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteLoadBalancerTagsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerTagsAsync(DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest, final ApiCallback<DeleteLoadBalancerTagsResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerTagsAsync(
+            DeleteLoadBalancerTagsRequest deleteLoadBalancerTagsRequest,
+            final ApiCallback<DeleteLoadBalancerTagsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLoadBalancerTagsValidateBeforeCall(deleteLoadBalancerTagsRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerTagsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerTagsValidateBeforeCall(deleteLoadBalancerTagsRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerTagsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deregisterVmsInLoadBalancer
-     * @param deregisterVmsInLoadBalancerRequest  (optional)
+     *
+     * @param deregisterVmsInLoadBalancerRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deregisterVmsInLoadBalancerCall(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deregisterVmsInLoadBalancerCall(
+            DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -605,108 +679,133 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deregisterVmsInLoadBalancerValidateBeforeCall(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deregisterVmsInLoadBalancerValidateBeforeCall(
+            DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return deregisterVmsInLoadBalancerCall(deregisterVmsInLoadBalancerRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deregisterVmsInLoadBalancerRequest  (optional)
+     * @param deregisterVmsInLoadBalancerRequest (optional)
      * @return DeregisterVmsInLoadBalancerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeregisterVmsInLoadBalancerResponse deregisterVmsInLoadBalancer(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest) throws ApiException {
-        ApiResponse<DeregisterVmsInLoadBalancerResponse> localVarResp = deregisterVmsInLoadBalancerWithHttpInfo(deregisterVmsInLoadBalancerRequest);
+    public DeregisterVmsInLoadBalancerResponse deregisterVmsInLoadBalancer(
+            DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest)
+            throws ApiException {
+        ApiResponse<DeregisterVmsInLoadBalancerResponse> localVarResp =
+                deregisterVmsInLoadBalancerWithHttpInfo(deregisterVmsInLoadBalancerRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deregisterVmsInLoadBalancerRequest  (optional)
+     * @param deregisterVmsInLoadBalancerRequest (optional)
      * @return ApiResponse&lt;DeregisterVmsInLoadBalancerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeregisterVmsInLoadBalancerResponse> deregisterVmsInLoadBalancerWithHttpInfo(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest) throws ApiException {
-        okhttp3.Call localVarCall = deregisterVmsInLoadBalancerValidateBeforeCall(deregisterVmsInLoadBalancerRequest, null);
-        Type localVarReturnType = new TypeToken<DeregisterVmsInLoadBalancerResponse>(){}.getType();
+    public ApiResponse<DeregisterVmsInLoadBalancerResponse> deregisterVmsInLoadBalancerWithHttpInfo(
+            DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest)
+            throws ApiException {
+        okhttp3.Call localVarCall =
+                deregisterVmsInLoadBalancerValidateBeforeCall(
+                        deregisterVmsInLoadBalancerRequest, null);
+        Type localVarReturnType = new TypeToken<DeregisterVmsInLoadBalancerResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deregisterVmsInLoadBalancerRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deregisterVmsInLoadBalancerRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deregisterVmsInLoadBalancerAsync(DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest, final ApiCallback<DeregisterVmsInLoadBalancerResponse> _callback) throws ApiException {
+    public okhttp3.Call deregisterVmsInLoadBalancerAsync(
+            DeregisterVmsInLoadBalancerRequest deregisterVmsInLoadBalancerRequest,
+            final ApiCallback<DeregisterVmsInLoadBalancerResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deregisterVmsInLoadBalancerValidateBeforeCall(deregisterVmsInLoadBalancerRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeregisterVmsInLoadBalancerResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deregisterVmsInLoadBalancerValidateBeforeCall(
+                        deregisterVmsInLoadBalancerRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeregisterVmsInLoadBalancerResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for linkLoadBalancerBackendMachines
-     * @param linkLoadBalancerBackendMachinesRequest  (optional)
+     *
+     * @param linkLoadBalancerBackendMachinesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkLoadBalancerBackendMachinesCall(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkLoadBalancerBackendMachinesCall(
+            LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -723,108 +822,136 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkLoadBalancerBackendMachinesValidateBeforeCall(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
-        return linkLoadBalancerBackendMachinesCall(linkLoadBalancerBackendMachinesRequest, _callback);
-
+    private okhttp3.Call linkLoadBalancerBackendMachinesValidateBeforeCall(
+            LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        return linkLoadBalancerBackendMachinesCall(
+                linkLoadBalancerBackendMachinesRequest, _callback);
     }
 
     /**
-     * 
-     * 
-     * @param linkLoadBalancerBackendMachinesRequest  (optional)
+     * @param linkLoadBalancerBackendMachinesRequest (optional)
      * @return LinkLoadBalancerBackendMachinesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public LinkLoadBalancerBackendMachinesResponse linkLoadBalancerBackendMachines(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest) throws ApiException {
-        ApiResponse<LinkLoadBalancerBackendMachinesResponse> localVarResp = linkLoadBalancerBackendMachinesWithHttpInfo(linkLoadBalancerBackendMachinesRequest);
+    public LinkLoadBalancerBackendMachinesResponse linkLoadBalancerBackendMachines(
+            LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest)
+            throws ApiException {
+        ApiResponse<LinkLoadBalancerBackendMachinesResponse> localVarResp =
+                linkLoadBalancerBackendMachinesWithHttpInfo(linkLoadBalancerBackendMachinesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param linkLoadBalancerBackendMachinesRequest  (optional)
+     * @param linkLoadBalancerBackendMachinesRequest (optional)
      * @return ApiResponse&lt;LinkLoadBalancerBackendMachinesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<LinkLoadBalancerBackendMachinesResponse> linkLoadBalancerBackendMachinesWithHttpInfo(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest) throws ApiException {
-        okhttp3.Call localVarCall = linkLoadBalancerBackendMachinesValidateBeforeCall(linkLoadBalancerBackendMachinesRequest, null);
-        Type localVarReturnType = new TypeToken<LinkLoadBalancerBackendMachinesResponse>(){}.getType();
+    public ApiResponse<LinkLoadBalancerBackendMachinesResponse>
+            linkLoadBalancerBackendMachinesWithHttpInfo(
+                    LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest)
+                    throws ApiException {
+        okhttp3.Call localVarCall =
+                linkLoadBalancerBackendMachinesValidateBeforeCall(
+                        linkLoadBalancerBackendMachinesRequest, null);
+        Type localVarReturnType =
+                new TypeToken<LinkLoadBalancerBackendMachinesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param linkLoadBalancerBackendMachinesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param linkLoadBalancerBackendMachinesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkLoadBalancerBackendMachinesAsync(LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest, final ApiCallback<LinkLoadBalancerBackendMachinesResponse> _callback) throws ApiException {
+    public okhttp3.Call linkLoadBalancerBackendMachinesAsync(
+            LinkLoadBalancerBackendMachinesRequest linkLoadBalancerBackendMachinesRequest,
+            final ApiCallback<LinkLoadBalancerBackendMachinesResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = linkLoadBalancerBackendMachinesValidateBeforeCall(linkLoadBalancerBackendMachinesRequest, _callback);
-        Type localVarReturnType = new TypeToken<LinkLoadBalancerBackendMachinesResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                linkLoadBalancerBackendMachinesValidateBeforeCall(
+                        linkLoadBalancerBackendMachinesRequest, _callback);
+        Type localVarReturnType =
+                new TypeToken<LinkLoadBalancerBackendMachinesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readLoadBalancerTags
-     * @param readLoadBalancerTagsRequest  (optional)
+     *
+     * @param readLoadBalancerTagsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readLoadBalancerTagsCall(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readLoadBalancerTagsCall(
+            ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -841,108 +968,127 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readLoadBalancerTagsValidateBeforeCall(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readLoadBalancerTagsValidateBeforeCall(
+            ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback _callback)
+            throws ApiException {
         return readLoadBalancerTagsCall(readLoadBalancerTagsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readLoadBalancerTagsRequest  (optional)
+     * @param readLoadBalancerTagsRequest (optional)
      * @return ReadLoadBalancerTagsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadLoadBalancerTagsResponse readLoadBalancerTags(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest) throws ApiException {
-        ApiResponse<ReadLoadBalancerTagsResponse> localVarResp = readLoadBalancerTagsWithHttpInfo(readLoadBalancerTagsRequest);
+    public ReadLoadBalancerTagsResponse readLoadBalancerTags(
+            ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest) throws ApiException {
+        ApiResponse<ReadLoadBalancerTagsResponse> localVarResp =
+                readLoadBalancerTagsWithHttpInfo(readLoadBalancerTagsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readLoadBalancerTagsRequest  (optional)
+     * @param readLoadBalancerTagsRequest (optional)
      * @return ApiResponse&lt;ReadLoadBalancerTagsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadLoadBalancerTagsResponse> readLoadBalancerTagsWithHttpInfo(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest) throws ApiException {
-        okhttp3.Call localVarCall = readLoadBalancerTagsValidateBeforeCall(readLoadBalancerTagsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadLoadBalancerTagsResponse>(){}.getType();
+    public ApiResponse<ReadLoadBalancerTagsResponse> readLoadBalancerTagsWithHttpInfo(
+            ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readLoadBalancerTagsValidateBeforeCall(readLoadBalancerTagsRequest, null);
+        Type localVarReturnType = new TypeToken<ReadLoadBalancerTagsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readLoadBalancerTagsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readLoadBalancerTagsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readLoadBalancerTagsAsync(ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest, final ApiCallback<ReadLoadBalancerTagsResponse> _callback) throws ApiException {
+    public okhttp3.Call readLoadBalancerTagsAsync(
+            ReadLoadBalancerTagsRequest readLoadBalancerTagsRequest,
+            final ApiCallback<ReadLoadBalancerTagsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readLoadBalancerTagsValidateBeforeCall(readLoadBalancerTagsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadLoadBalancerTagsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readLoadBalancerTagsValidateBeforeCall(readLoadBalancerTagsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadLoadBalancerTagsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readLoadBalancers
-     * @param readLoadBalancersRequest  (optional)
+     *
+     * @param readLoadBalancersRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readLoadBalancersCall(ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readLoadBalancersCall(
+            ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -959,108 +1105,127 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readLoadBalancersValidateBeforeCall(ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readLoadBalancersValidateBeforeCall(
+            ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback _callback)
+            throws ApiException {
         return readLoadBalancersCall(readLoadBalancersRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readLoadBalancersRequest  (optional)
+     * @param readLoadBalancersRequest (optional)
      * @return ReadLoadBalancersResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadLoadBalancersResponse readLoadBalancers(ReadLoadBalancersRequest readLoadBalancersRequest) throws ApiException {
-        ApiResponse<ReadLoadBalancersResponse> localVarResp = readLoadBalancersWithHttpInfo(readLoadBalancersRequest);
+    public ReadLoadBalancersResponse readLoadBalancers(
+            ReadLoadBalancersRequest readLoadBalancersRequest) throws ApiException {
+        ApiResponse<ReadLoadBalancersResponse> localVarResp =
+                readLoadBalancersWithHttpInfo(readLoadBalancersRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readLoadBalancersRequest  (optional)
+     * @param readLoadBalancersRequest (optional)
      * @return ApiResponse&lt;ReadLoadBalancersResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadLoadBalancersResponse> readLoadBalancersWithHttpInfo(ReadLoadBalancersRequest readLoadBalancersRequest) throws ApiException {
-        okhttp3.Call localVarCall = readLoadBalancersValidateBeforeCall(readLoadBalancersRequest, null);
-        Type localVarReturnType = new TypeToken<ReadLoadBalancersResponse>(){}.getType();
+    public ApiResponse<ReadLoadBalancersResponse> readLoadBalancersWithHttpInfo(
+            ReadLoadBalancersRequest readLoadBalancersRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readLoadBalancersValidateBeforeCall(readLoadBalancersRequest, null);
+        Type localVarReturnType = new TypeToken<ReadLoadBalancersResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readLoadBalancersRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readLoadBalancersRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readLoadBalancersAsync(ReadLoadBalancersRequest readLoadBalancersRequest, final ApiCallback<ReadLoadBalancersResponse> _callback) throws ApiException {
+    public okhttp3.Call readLoadBalancersAsync(
+            ReadLoadBalancersRequest readLoadBalancersRequest,
+            final ApiCallback<ReadLoadBalancersResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readLoadBalancersValidateBeforeCall(readLoadBalancersRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadLoadBalancersResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readLoadBalancersValidateBeforeCall(readLoadBalancersRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadLoadBalancersResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readVmsHealth
-     * @param readVmsHealthRequest  (optional)
+     *
+     * @param readVmsHealthRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsHealthCall(ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readVmsHealthCall(
+            ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1077,108 +1242,127 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readVmsHealthValidateBeforeCall(ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readVmsHealthValidateBeforeCall(
+            ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback _callback)
+            throws ApiException {
         return readVmsHealthCall(readVmsHealthRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readVmsHealthRequest  (optional)
+     * @param readVmsHealthRequest (optional)
      * @return ReadVmsHealthResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadVmsHealthResponse readVmsHealth(ReadVmsHealthRequest readVmsHealthRequest) throws ApiException {
-        ApiResponse<ReadVmsHealthResponse> localVarResp = readVmsHealthWithHttpInfo(readVmsHealthRequest);
+    public ReadVmsHealthResponse readVmsHealth(ReadVmsHealthRequest readVmsHealthRequest)
+            throws ApiException {
+        ApiResponse<ReadVmsHealthResponse> localVarResp =
+                readVmsHealthWithHttpInfo(readVmsHealthRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readVmsHealthRequest  (optional)
+     * @param readVmsHealthRequest (optional)
      * @return ApiResponse&lt;ReadVmsHealthResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadVmsHealthResponse> readVmsHealthWithHttpInfo(ReadVmsHealthRequest readVmsHealthRequest) throws ApiException {
+    public ApiResponse<ReadVmsHealthResponse> readVmsHealthWithHttpInfo(
+            ReadVmsHealthRequest readVmsHealthRequest) throws ApiException {
         okhttp3.Call localVarCall = readVmsHealthValidateBeforeCall(readVmsHealthRequest, null);
-        Type localVarReturnType = new TypeToken<ReadVmsHealthResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadVmsHealthResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readVmsHealthRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readVmsHealthRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readVmsHealthAsync(ReadVmsHealthRequest readVmsHealthRequest, final ApiCallback<ReadVmsHealthResponse> _callback) throws ApiException {
+    public okhttp3.Call readVmsHealthAsync(
+            ReadVmsHealthRequest readVmsHealthRequest,
+            final ApiCallback<ReadVmsHealthResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readVmsHealthValidateBeforeCall(readVmsHealthRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadVmsHealthResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readVmsHealthValidateBeforeCall(readVmsHealthRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadVmsHealthResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for registerVmsInLoadBalancer
-     * @param registerVmsInLoadBalancerRequest  (optional)
+     *
+     * @param registerVmsInLoadBalancerRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call registerVmsInLoadBalancerCall(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call registerVmsInLoadBalancerCall(
+            RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1195,108 +1379,130 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call registerVmsInLoadBalancerValidateBeforeCall(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call registerVmsInLoadBalancerValidateBeforeCall(
+            RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return registerVmsInLoadBalancerCall(registerVmsInLoadBalancerRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param registerVmsInLoadBalancerRequest  (optional)
+     * @param registerVmsInLoadBalancerRequest (optional)
      * @return RegisterVmsInLoadBalancerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public RegisterVmsInLoadBalancerResponse registerVmsInLoadBalancer(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest) throws ApiException {
-        ApiResponse<RegisterVmsInLoadBalancerResponse> localVarResp = registerVmsInLoadBalancerWithHttpInfo(registerVmsInLoadBalancerRequest);
+    public RegisterVmsInLoadBalancerResponse registerVmsInLoadBalancer(
+            RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest) throws ApiException {
+        ApiResponse<RegisterVmsInLoadBalancerResponse> localVarResp =
+                registerVmsInLoadBalancerWithHttpInfo(registerVmsInLoadBalancerRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param registerVmsInLoadBalancerRequest  (optional)
+     * @param registerVmsInLoadBalancerRequest (optional)
      * @return ApiResponse&lt;RegisterVmsInLoadBalancerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<RegisterVmsInLoadBalancerResponse> registerVmsInLoadBalancerWithHttpInfo(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest) throws ApiException {
-        okhttp3.Call localVarCall = registerVmsInLoadBalancerValidateBeforeCall(registerVmsInLoadBalancerRequest, null);
-        Type localVarReturnType = new TypeToken<RegisterVmsInLoadBalancerResponse>(){}.getType();
+    public ApiResponse<RegisterVmsInLoadBalancerResponse> registerVmsInLoadBalancerWithHttpInfo(
+            RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                registerVmsInLoadBalancerValidateBeforeCall(registerVmsInLoadBalancerRequest, null);
+        Type localVarReturnType = new TypeToken<RegisterVmsInLoadBalancerResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param registerVmsInLoadBalancerRequest  (optional)
+     * (asynchronously)
+     *
+     * @param registerVmsInLoadBalancerRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call registerVmsInLoadBalancerAsync(RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest, final ApiCallback<RegisterVmsInLoadBalancerResponse> _callback) throws ApiException {
+    public okhttp3.Call registerVmsInLoadBalancerAsync(
+            RegisterVmsInLoadBalancerRequest registerVmsInLoadBalancerRequest,
+            final ApiCallback<RegisterVmsInLoadBalancerResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = registerVmsInLoadBalancerValidateBeforeCall(registerVmsInLoadBalancerRequest, _callback);
-        Type localVarReturnType = new TypeToken<RegisterVmsInLoadBalancerResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                registerVmsInLoadBalancerValidateBeforeCall(
+                        registerVmsInLoadBalancerRequest, _callback);
+        Type localVarReturnType = new TypeToken<RegisterVmsInLoadBalancerResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for unlinkLoadBalancerBackendMachines
-     * @param unlinkLoadBalancerBackendMachinesRequest  (optional)
+     *
+     * @param unlinkLoadBalancerBackendMachinesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkLoadBalancerBackendMachinesCall(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call unlinkLoadBalancerBackendMachinesCall(
+            UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1313,108 +1519,138 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unlinkLoadBalancerBackendMachinesValidateBeforeCall(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest, final ApiCallback _callback) throws ApiException {
-        return unlinkLoadBalancerBackendMachinesCall(unlinkLoadBalancerBackendMachinesRequest, _callback);
-
+    private okhttp3.Call unlinkLoadBalancerBackendMachinesValidateBeforeCall(
+            UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        return unlinkLoadBalancerBackendMachinesCall(
+                unlinkLoadBalancerBackendMachinesRequest, _callback);
     }
 
     /**
-     * 
-     * 
-     * @param unlinkLoadBalancerBackendMachinesRequest  (optional)
+     * @param unlinkLoadBalancerBackendMachinesRequest (optional)
      * @return UnlinkLoadBalancerBackendMachinesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UnlinkLoadBalancerBackendMachinesResponse unlinkLoadBalancerBackendMachines(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest) throws ApiException {
-        ApiResponse<UnlinkLoadBalancerBackendMachinesResponse> localVarResp = unlinkLoadBalancerBackendMachinesWithHttpInfo(unlinkLoadBalancerBackendMachinesRequest);
+    public UnlinkLoadBalancerBackendMachinesResponse unlinkLoadBalancerBackendMachines(
+            UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest)
+            throws ApiException {
+        ApiResponse<UnlinkLoadBalancerBackendMachinesResponse> localVarResp =
+                unlinkLoadBalancerBackendMachinesWithHttpInfo(
+                        unlinkLoadBalancerBackendMachinesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param unlinkLoadBalancerBackendMachinesRequest  (optional)
+     * @param unlinkLoadBalancerBackendMachinesRequest (optional)
      * @return ApiResponse&lt;UnlinkLoadBalancerBackendMachinesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UnlinkLoadBalancerBackendMachinesResponse> unlinkLoadBalancerBackendMachinesWithHttpInfo(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest) throws ApiException {
-        okhttp3.Call localVarCall = unlinkLoadBalancerBackendMachinesValidateBeforeCall(unlinkLoadBalancerBackendMachinesRequest, null);
-        Type localVarReturnType = new TypeToken<UnlinkLoadBalancerBackendMachinesResponse>(){}.getType();
+    public ApiResponse<UnlinkLoadBalancerBackendMachinesResponse>
+            unlinkLoadBalancerBackendMachinesWithHttpInfo(
+                    UnlinkLoadBalancerBackendMachinesRequest
+                            unlinkLoadBalancerBackendMachinesRequest)
+                    throws ApiException {
+        okhttp3.Call localVarCall =
+                unlinkLoadBalancerBackendMachinesValidateBeforeCall(
+                        unlinkLoadBalancerBackendMachinesRequest, null);
+        Type localVarReturnType =
+                new TypeToken<UnlinkLoadBalancerBackendMachinesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param unlinkLoadBalancerBackendMachinesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param unlinkLoadBalancerBackendMachinesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkLoadBalancerBackendMachinesAsync(UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest, final ApiCallback<UnlinkLoadBalancerBackendMachinesResponse> _callback) throws ApiException {
+    public okhttp3.Call unlinkLoadBalancerBackendMachinesAsync(
+            UnlinkLoadBalancerBackendMachinesRequest unlinkLoadBalancerBackendMachinesRequest,
+            final ApiCallback<UnlinkLoadBalancerBackendMachinesResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = unlinkLoadBalancerBackendMachinesValidateBeforeCall(unlinkLoadBalancerBackendMachinesRequest, _callback);
-        Type localVarReturnType = new TypeToken<UnlinkLoadBalancerBackendMachinesResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                unlinkLoadBalancerBackendMachinesValidateBeforeCall(
+                        unlinkLoadBalancerBackendMachinesRequest, _callback);
+        Type localVarReturnType =
+                new TypeToken<UnlinkLoadBalancerBackendMachinesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateLoadBalancer
-     * @param updateLoadBalancerRequest  (optional)
+     *
+     * @param updateLoadBalancerRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateLoadBalancerCall(UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateLoadBalancerCall(
+            UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -1431,84 +1667,100 @@ public class LoadBalancerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateLoadBalancerValidateBeforeCall(UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateLoadBalancerValidateBeforeCall(
+            UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateLoadBalancerCall(updateLoadBalancerRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateLoadBalancerRequest  (optional)
+     * @param updateLoadBalancerRequest (optional)
      * @return UpdateLoadBalancerResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateLoadBalancerResponse updateLoadBalancer(UpdateLoadBalancerRequest updateLoadBalancerRequest) throws ApiException {
-        ApiResponse<UpdateLoadBalancerResponse> localVarResp = updateLoadBalancerWithHttpInfo(updateLoadBalancerRequest);
+    public UpdateLoadBalancerResponse updateLoadBalancer(
+            UpdateLoadBalancerRequest updateLoadBalancerRequest) throws ApiException {
+        ApiResponse<UpdateLoadBalancerResponse> localVarResp =
+                updateLoadBalancerWithHttpInfo(updateLoadBalancerRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateLoadBalancerRequest  (optional)
+     * @param updateLoadBalancerRequest (optional)
      * @return ApiResponse&lt;UpdateLoadBalancerResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateLoadBalancerResponse> updateLoadBalancerWithHttpInfo(UpdateLoadBalancerRequest updateLoadBalancerRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateLoadBalancerValidateBeforeCall(updateLoadBalancerRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateLoadBalancerResponse>(){}.getType();
+    public ApiResponse<UpdateLoadBalancerResponse> updateLoadBalancerWithHttpInfo(
+            UpdateLoadBalancerRequest updateLoadBalancerRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                updateLoadBalancerValidateBeforeCall(updateLoadBalancerRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateLoadBalancerResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateLoadBalancerRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateLoadBalancerRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateLoadBalancerAsync(UpdateLoadBalancerRequest updateLoadBalancerRequest, final ApiCallback<UpdateLoadBalancerResponse> _callback) throws ApiException {
+    public okhttp3.Call updateLoadBalancerAsync(
+            UpdateLoadBalancerRequest updateLoadBalancerRequest,
+            final ApiCallback<UpdateLoadBalancerResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateLoadBalancerValidateBeforeCall(updateLoadBalancerRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateLoadBalancerResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateLoadBalancerValidateBeforeCall(updateLoadBalancerRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateLoadBalancerResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

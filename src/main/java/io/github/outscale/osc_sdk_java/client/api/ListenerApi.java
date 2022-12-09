@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateListenerRuleRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateListenerRuleResponse;
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerListenersRequest;
@@ -39,13 +31,11 @@ import io.github.outscale.osc_sdk_java.client.model.ReadListenerRulesRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadListenerRulesResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateListenerRuleRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateListenerRuleResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class ListenerApi {
     private ApiClient localVarApiClient;
@@ -86,25 +76,28 @@ public class ListenerApi {
 
     /**
      * Build call for createListenerRule
-     * @param createListenerRuleRequest  (optional)
+     *
+     * @param createListenerRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createListenerRuleCall(CreateListenerRuleRequest createListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createListenerRuleCall(
+            CreateListenerRuleRequest createListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -121,108 +114,128 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createListenerRuleValidateBeforeCall(CreateListenerRuleRequest createListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createListenerRuleValidateBeforeCall(
+            CreateListenerRuleRequest createListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return createListenerRuleCall(createListenerRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createListenerRuleRequest  (optional)
+     * @param createListenerRuleRequest (optional)
      * @return CreateListenerRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateListenerRuleResponse createListenerRule(CreateListenerRuleRequest createListenerRuleRequest) throws ApiException {
-        ApiResponse<CreateListenerRuleResponse> localVarResp = createListenerRuleWithHttpInfo(createListenerRuleRequest);
+    public CreateListenerRuleResponse createListenerRule(
+            CreateListenerRuleRequest createListenerRuleRequest) throws ApiException {
+        ApiResponse<CreateListenerRuleResponse> localVarResp =
+                createListenerRuleWithHttpInfo(createListenerRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createListenerRuleRequest  (optional)
+     * @param createListenerRuleRequest (optional)
      * @return ApiResponse&lt;CreateListenerRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateListenerRuleResponse> createListenerRuleWithHttpInfo(CreateListenerRuleRequest createListenerRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = createListenerRuleValidateBeforeCall(createListenerRuleRequest, null);
-        Type localVarReturnType = new TypeToken<CreateListenerRuleResponse>(){}.getType();
+    public ApiResponse<CreateListenerRuleResponse> createListenerRuleWithHttpInfo(
+            CreateListenerRuleRequest createListenerRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createListenerRuleValidateBeforeCall(createListenerRuleRequest, null);
+        Type localVarReturnType = new TypeToken<CreateListenerRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createListenerRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createListenerRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createListenerRuleAsync(CreateListenerRuleRequest createListenerRuleRequest, final ApiCallback<CreateListenerRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call createListenerRuleAsync(
+            CreateListenerRuleRequest createListenerRuleRequest,
+            final ApiCallback<CreateListenerRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createListenerRuleValidateBeforeCall(createListenerRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateListenerRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createListenerRuleValidateBeforeCall(createListenerRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateListenerRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createLoadBalancerListeners
-     * @param createLoadBalancerListenersRequest  (optional)
+     *
+     * @param createLoadBalancerListenersRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerListenersCall(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerListenersCall(
+            CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -239,108 +252,132 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLoadBalancerListenersValidateBeforeCall(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLoadBalancerListenersValidateBeforeCall(
+            CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return createLoadBalancerListenersCall(createLoadBalancerListenersRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerListenersRequest  (optional)
+     * @param createLoadBalancerListenersRequest (optional)
      * @return CreateLoadBalancerListenersResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateLoadBalancerListenersResponse createLoadBalancerListeners(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest) throws ApiException {
-        ApiResponse<CreateLoadBalancerListenersResponse> localVarResp = createLoadBalancerListenersWithHttpInfo(createLoadBalancerListenersRequest);
+    public CreateLoadBalancerListenersResponse createLoadBalancerListeners(
+            CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest)
+            throws ApiException {
+        ApiResponse<CreateLoadBalancerListenersResponse> localVarResp =
+                createLoadBalancerListenersWithHttpInfo(createLoadBalancerListenersRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerListenersRequest  (optional)
+     * @param createLoadBalancerListenersRequest (optional)
      * @return ApiResponse&lt;CreateLoadBalancerListenersResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateLoadBalancerListenersResponse> createLoadBalancerListenersWithHttpInfo(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest) throws ApiException {
-        okhttp3.Call localVarCall = createLoadBalancerListenersValidateBeforeCall(createLoadBalancerListenersRequest, null);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerListenersResponse>(){}.getType();
+    public ApiResponse<CreateLoadBalancerListenersResponse> createLoadBalancerListenersWithHttpInfo(
+            CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest)
+            throws ApiException {
+        okhttp3.Call localVarCall =
+                createLoadBalancerListenersValidateBeforeCall(
+                        createLoadBalancerListenersRequest, null);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerListenersResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createLoadBalancerListenersRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createLoadBalancerListenersRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerListenersAsync(CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest, final ApiCallback<CreateLoadBalancerListenersResponse> _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerListenersAsync(
+            CreateLoadBalancerListenersRequest createLoadBalancerListenersRequest,
+            final ApiCallback<CreateLoadBalancerListenersResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createLoadBalancerListenersValidateBeforeCall(createLoadBalancerListenersRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerListenersResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createLoadBalancerListenersValidateBeforeCall(
+                        createLoadBalancerListenersRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerListenersResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteListenerRule
-     * @param deleteListenerRuleRequest  (optional)
+     *
+     * @param deleteListenerRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteListenerRuleCall(DeleteListenerRuleRequest deleteListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteListenerRuleCall(
+            DeleteListenerRuleRequest deleteListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -357,108 +394,128 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteListenerRuleValidateBeforeCall(DeleteListenerRuleRequest deleteListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteListenerRuleValidateBeforeCall(
+            DeleteListenerRuleRequest deleteListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteListenerRuleCall(deleteListenerRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteListenerRuleRequest  (optional)
+     * @param deleteListenerRuleRequest (optional)
      * @return DeleteListenerRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteListenerRuleResponse deleteListenerRule(DeleteListenerRuleRequest deleteListenerRuleRequest) throws ApiException {
-        ApiResponse<DeleteListenerRuleResponse> localVarResp = deleteListenerRuleWithHttpInfo(deleteListenerRuleRequest);
+    public DeleteListenerRuleResponse deleteListenerRule(
+            DeleteListenerRuleRequest deleteListenerRuleRequest) throws ApiException {
+        ApiResponse<DeleteListenerRuleResponse> localVarResp =
+                deleteListenerRuleWithHttpInfo(deleteListenerRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteListenerRuleRequest  (optional)
+     * @param deleteListenerRuleRequest (optional)
      * @return ApiResponse&lt;DeleteListenerRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteListenerRuleResponse> deleteListenerRuleWithHttpInfo(DeleteListenerRuleRequest deleteListenerRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteListenerRuleValidateBeforeCall(deleteListenerRuleRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteListenerRuleResponse>(){}.getType();
+    public ApiResponse<DeleteListenerRuleResponse> deleteListenerRuleWithHttpInfo(
+            DeleteListenerRuleRequest deleteListenerRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteListenerRuleValidateBeforeCall(deleteListenerRuleRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteListenerRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteListenerRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteListenerRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteListenerRuleAsync(DeleteListenerRuleRequest deleteListenerRuleRequest, final ApiCallback<DeleteListenerRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteListenerRuleAsync(
+            DeleteListenerRuleRequest deleteListenerRuleRequest,
+            final ApiCallback<DeleteListenerRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteListenerRuleValidateBeforeCall(deleteListenerRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteListenerRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteListenerRuleValidateBeforeCall(deleteListenerRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteListenerRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteLoadBalancerListeners
-     * @param deleteLoadBalancerListenersRequest  (optional)
+     *
+     * @param deleteLoadBalancerListenersRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerListenersCall(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerListenersCall(
+            DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -475,108 +532,132 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLoadBalancerListenersValidateBeforeCall(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLoadBalancerListenersValidateBeforeCall(
+            DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return deleteLoadBalancerListenersCall(deleteLoadBalancerListenersRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerListenersRequest  (optional)
+     * @param deleteLoadBalancerListenersRequest (optional)
      * @return DeleteLoadBalancerListenersResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteLoadBalancerListenersResponse deleteLoadBalancerListeners(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest) throws ApiException {
-        ApiResponse<DeleteLoadBalancerListenersResponse> localVarResp = deleteLoadBalancerListenersWithHttpInfo(deleteLoadBalancerListenersRequest);
+    public DeleteLoadBalancerListenersResponse deleteLoadBalancerListeners(
+            DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest)
+            throws ApiException {
+        ApiResponse<DeleteLoadBalancerListenersResponse> localVarResp =
+                deleteLoadBalancerListenersWithHttpInfo(deleteLoadBalancerListenersRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerListenersRequest  (optional)
+     * @param deleteLoadBalancerListenersRequest (optional)
      * @return ApiResponse&lt;DeleteLoadBalancerListenersResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteLoadBalancerListenersResponse> deleteLoadBalancerListenersWithHttpInfo(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteLoadBalancerListenersValidateBeforeCall(deleteLoadBalancerListenersRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerListenersResponse>(){}.getType();
+    public ApiResponse<DeleteLoadBalancerListenersResponse> deleteLoadBalancerListenersWithHttpInfo(
+            DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest)
+            throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerListenersValidateBeforeCall(
+                        deleteLoadBalancerListenersRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerListenersResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteLoadBalancerListenersRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteLoadBalancerListenersRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerListenersAsync(DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest, final ApiCallback<DeleteLoadBalancerListenersResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerListenersAsync(
+            DeleteLoadBalancerListenersRequest deleteLoadBalancerListenersRequest,
+            final ApiCallback<DeleteLoadBalancerListenersResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLoadBalancerListenersValidateBeforeCall(deleteLoadBalancerListenersRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerListenersResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerListenersValidateBeforeCall(
+                        deleteLoadBalancerListenersRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerListenersResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readListenerRules
-     * @param readListenerRulesRequest  (optional)
+     *
+     * @param readListenerRulesRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readListenerRulesCall(ReadListenerRulesRequest readListenerRulesRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readListenerRulesCall(
+            ReadListenerRulesRequest readListenerRulesRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -593,108 +674,127 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readListenerRulesValidateBeforeCall(ReadListenerRulesRequest readListenerRulesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readListenerRulesValidateBeforeCall(
+            ReadListenerRulesRequest readListenerRulesRequest, final ApiCallback _callback)
+            throws ApiException {
         return readListenerRulesCall(readListenerRulesRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readListenerRulesRequest  (optional)
+     * @param readListenerRulesRequest (optional)
      * @return ReadListenerRulesResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadListenerRulesResponse readListenerRules(ReadListenerRulesRequest readListenerRulesRequest) throws ApiException {
-        ApiResponse<ReadListenerRulesResponse> localVarResp = readListenerRulesWithHttpInfo(readListenerRulesRequest);
+    public ReadListenerRulesResponse readListenerRules(
+            ReadListenerRulesRequest readListenerRulesRequest) throws ApiException {
+        ApiResponse<ReadListenerRulesResponse> localVarResp =
+                readListenerRulesWithHttpInfo(readListenerRulesRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readListenerRulesRequest  (optional)
+     * @param readListenerRulesRequest (optional)
      * @return ApiResponse&lt;ReadListenerRulesResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadListenerRulesResponse> readListenerRulesWithHttpInfo(ReadListenerRulesRequest readListenerRulesRequest) throws ApiException {
-        okhttp3.Call localVarCall = readListenerRulesValidateBeforeCall(readListenerRulesRequest, null);
-        Type localVarReturnType = new TypeToken<ReadListenerRulesResponse>(){}.getType();
+    public ApiResponse<ReadListenerRulesResponse> readListenerRulesWithHttpInfo(
+            ReadListenerRulesRequest readListenerRulesRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readListenerRulesValidateBeforeCall(readListenerRulesRequest, null);
+        Type localVarReturnType = new TypeToken<ReadListenerRulesResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readListenerRulesRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readListenerRulesRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readListenerRulesAsync(ReadListenerRulesRequest readListenerRulesRequest, final ApiCallback<ReadListenerRulesResponse> _callback) throws ApiException {
+    public okhttp3.Call readListenerRulesAsync(
+            ReadListenerRulesRequest readListenerRulesRequest,
+            final ApiCallback<ReadListenerRulesResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readListenerRulesValidateBeforeCall(readListenerRulesRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadListenerRulesResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readListenerRulesValidateBeforeCall(readListenerRulesRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadListenerRulesResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateListenerRule
-     * @param updateListenerRuleRequest  (optional)
+     *
+     * @param updateListenerRuleRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateListenerRuleCall(UpdateListenerRuleRequest updateListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateListenerRuleCall(
+            UpdateListenerRuleRequest updateListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -711,84 +811,100 @@ public class ListenerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateListenerRuleValidateBeforeCall(UpdateListenerRuleRequest updateListenerRuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateListenerRuleValidateBeforeCall(
+            UpdateListenerRuleRequest updateListenerRuleRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateListenerRuleCall(updateListenerRuleRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateListenerRuleRequest  (optional)
+     * @param updateListenerRuleRequest (optional)
      * @return UpdateListenerRuleResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateListenerRuleResponse updateListenerRule(UpdateListenerRuleRequest updateListenerRuleRequest) throws ApiException {
-        ApiResponse<UpdateListenerRuleResponse> localVarResp = updateListenerRuleWithHttpInfo(updateListenerRuleRequest);
+    public UpdateListenerRuleResponse updateListenerRule(
+            UpdateListenerRuleRequest updateListenerRuleRequest) throws ApiException {
+        ApiResponse<UpdateListenerRuleResponse> localVarResp =
+                updateListenerRuleWithHttpInfo(updateListenerRuleRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateListenerRuleRequest  (optional)
+     * @param updateListenerRuleRequest (optional)
      * @return ApiResponse&lt;UpdateListenerRuleResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateListenerRuleResponse> updateListenerRuleWithHttpInfo(UpdateListenerRuleRequest updateListenerRuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateListenerRuleValidateBeforeCall(updateListenerRuleRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateListenerRuleResponse>(){}.getType();
+    public ApiResponse<UpdateListenerRuleResponse> updateListenerRuleWithHttpInfo(
+            UpdateListenerRuleRequest updateListenerRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                updateListenerRuleValidateBeforeCall(updateListenerRuleRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateListenerRuleResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateListenerRuleRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateListenerRuleRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateListenerRuleAsync(UpdateListenerRuleRequest updateListenerRuleRequest, final ApiCallback<UpdateListenerRuleResponse> _callback) throws ApiException {
+    public okhttp3.Call updateListenerRuleAsync(
+            UpdateListenerRuleRequest updateListenerRuleRequest,
+            final ApiCallback<UpdateListenerRuleResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateListenerRuleValidateBeforeCall(updateListenerRuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateListenerRuleResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateListenerRuleValidateBeforeCall(updateListenerRuleRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateListenerRuleResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

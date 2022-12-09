@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for BackendVmHealth
- */
+/** Model tests for BackendVmHealth */
 public class BackendVmHealthTest {
     private final BackendVmHealth model = new BackendVmHealth();
 
-    /**
-     * Model tests for BackendVmHealth
-     */
+    /** Model tests for BackendVmHealth */
     @Test
     public void testBackendVmHealth() {
         // TODO: test BackendVmHealth
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'stateReason'
-     */
+    /** Test the property 'stateReason' */
     @Test
     public void stateReasonTest() {
         // TODO: test stateReason
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

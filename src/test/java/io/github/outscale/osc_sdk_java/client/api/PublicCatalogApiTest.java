@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -19,27 +18,17 @@ import io.github.outscale.osc_sdk_java.client.model.ReadPublicCatalogResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for PublicCatalogApi
- */
+/** API tests for PublicCatalogApi */
 @Disabled
 public class PublicCatalogApiTest {
 
     private final PublicCatalogApi api = new PublicCatalogApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readPublicCatalogTest() throws ApiException {
         ReadPublicCatalogRequest readPublicCatalogRequest = null;
         ReadPublicCatalogResponse response = api.readPublicCatalog(readPublicCatalogRequest);
         // TODO: test validations
     }
-
 }

@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for BsuToCreate
- */
+/** Model tests for BsuToCreate */
 public class BsuToCreateTest {
     private final BsuToCreate model = new BsuToCreate();
 
-    /**
-     * Model tests for BsuToCreate
-     */
+    /** Model tests for BsuToCreate */
     @Test
     public void testBsuToCreate() {
         // TODO: test BsuToCreate
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'iops'
-     */
+    /** Test the property 'iops' */
     @Test
     public void iopsTest() {
         // TODO: test iops
     }
 
-    /**
-     * Test the property 'snapshotId'
-     */
+    /** Test the property 'snapshotId' */
     @Test
     public void snapshotIdTest() {
         // TODO: test snapshotId
     }
 
-    /**
-     * Test the property 'volumeSize'
-     */
+    /** Test the property 'volumeSize' */
     @Test
     public void volumeSizeTest() {
         // TODO: test volumeSize
     }
 
-    /**
-     * Test the property 'volumeType'
-     */
+    /** Test the property 'volumeType' */
     @Test
     public void volumeTypeTest() {
         // TODO: test volumeType
     }
-
 }

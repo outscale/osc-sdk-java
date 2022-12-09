@@ -10,66 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.MaintenanceEvent;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VmStates
- */
+/** Model tests for VmStates */
 public class VmStatesTest {
     private final VmStates model = new VmStates();
 
-    /**
-     * Model tests for VmStates
-     */
+    /** Model tests for VmStates */
     @Test
     public void testVmStates() {
         // TODO: test VmStates
     }
 
-    /**
-     * Test the property 'maintenanceEvents'
-     */
+    /** Test the property 'maintenanceEvents' */
     @Test
     public void maintenanceEventsTest() {
         // TODO: test maintenanceEvents
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
 
-    /**
-     * Test the property 'vmState'
-     */
+    /** Test the property 'vmState' */
     @Test
     public void vmStateTest() {
         // TODO: test vmState
     }
-
 }

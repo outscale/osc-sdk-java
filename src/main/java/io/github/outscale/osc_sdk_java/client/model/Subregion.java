@@ -10,292 +10,297 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the Subregion.
- */
+/** Information about the Subregion. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Subregion {
-  public static final String SERIALIZED_NAME_LOCATION_CODE = "LocationCode";
-  @SerializedName(SERIALIZED_NAME_LOCATION_CODE)
-  private String locationCode;
+    public static final String SERIALIZED_NAME_LOCATION_CODE = "LocationCode";
 
-  public static final String SERIALIZED_NAME_REGION_NAME = "RegionName";
-  @SerializedName(SERIALIZED_NAME_REGION_NAME)
-  private String regionName;
+    @SerializedName(SERIALIZED_NAME_LOCATION_CODE)
+    private String locationCode;
 
-  public static final String SERIALIZED_NAME_STATE = "State";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private String state;
+    public static final String SERIALIZED_NAME_REGION_NAME = "RegionName";
 
-  public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
-  @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
-  private String subregionName;
+    @SerializedName(SERIALIZED_NAME_REGION_NAME)
+    private String regionName;
 
-  public Subregion() {
-  }
+    public static final String SERIALIZED_NAME_STATE = "State";
 
-  public Subregion locationCode(String locationCode) {
-    
-    this.locationCode = locationCode;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_STATE)
+    private String state;
 
-   /**
-   * The location code of the Subregion.
-   * @return locationCode
-  **/
-  @javax.annotation.Nullable
+    public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
 
-  public String getLocationCode() {
-    return locationCode;
-  }
+    @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
+    private String subregionName;
 
+    public Subregion() {}
 
-  public void setLocationCode(String locationCode) {
-    this.locationCode = locationCode;
-  }
+    public Subregion locationCode(String locationCode) {
 
-
-  public Subregion regionName(String regionName) {
-    
-    this.regionName = regionName;
-    return this;
-  }
-
-   /**
-   * The name of the Region containing the Subregion.
-   * @return regionName
-  **/
-  @javax.annotation.Nullable
-
-  public String getRegionName() {
-    return regionName;
-  }
-
-
-  public void setRegionName(String regionName) {
-    this.regionName = regionName;
-  }
-
-
-  public Subregion state(String state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * The state of the Subregion (&#x60;available&#x60; \\| &#x60;information&#x60; \\| &#x60;impaired&#x60; \\| &#x60;unavailable&#x60;).
-   * @return state
-  **/
-  @javax.annotation.Nullable
-
-  public String getState() {
-    return state;
-  }
-
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-
-  public Subregion subregionName(String subregionName) {
-    
-    this.subregionName = subregionName;
-    return this;
-  }
-
-   /**
-   * The name of the Subregion.
-   * @return subregionName
-  **/
-  @javax.annotation.Nullable
-
-  public String getSubregionName() {
-    return subregionName;
-  }
-
-
-  public void setSubregionName(String subregionName) {
-    this.subregionName = subregionName;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.locationCode = locationCode;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The location code of the Subregion.
+     *
+     * @return locationCode
+     */
+    @javax.annotation.Nullable
+    public String getLocationCode() {
+        return locationCode;
     }
-    Subregion subregion = (Subregion) o;
-    return Objects.equals(this.locationCode, subregion.locationCode) &&
-        Objects.equals(this.regionName, subregion.regionName) &&
-        Objects.equals(this.state, subregion.state) &&
-        Objects.equals(this.subregionName, subregion.subregionName);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(locationCode, regionName, state, subregionName);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Subregion {\n");
-    sb.append("    locationCode: ").append(toIndentedString(locationCode)).append("\n");
-    sb.append("    regionName: ").append(toIndentedString(regionName)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setLocationCode(String locationCode) {
+        this.locationCode = locationCode;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public Subregion regionName(String regionName) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.regionName = regionName;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("LocationCode");
-    openapiFields.add("RegionName");
-    openapiFields.add("State");
-    openapiFields.add("SubregionName");
+    /**
+     * The name of the Region containing the Subregion.
+     *
+     * @return regionName
+     */
+    @javax.annotation.Nullable
+    public String getRegionName() {
+        return regionName;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Subregion
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Subregion.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Subregion is not found in the empty JSON string", Subregion.openapiRequiredFields.toString()));
-        }
-      }
+    public Subregion state(String state) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Subregion.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Subregion` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if ((jsonObj.get("LocationCode") != null && !jsonObj.get("LocationCode").isJsonNull()) && !jsonObj.get("LocationCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LocationCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LocationCode").toString()));
-      }
-      if ((jsonObj.get("RegionName") != null && !jsonObj.get("RegionName").isJsonNull()) && !jsonObj.get("RegionName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `RegionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RegionName").toString()));
-      }
-      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
-      }
-      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
-      }
-  }
+        this.state = state;
+        return this;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    /**
+     * The state of the Subregion (&#x60;available&#x60; \\| &#x60;information&#x60; \\|
+     * &#x60;impaired&#x60; \\| &#x60;unavailable&#x60;).
+     *
+     * @return state
+     */
+    @javax.annotation.Nullable
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Subregion subregionName(String subregionName) {
+
+        this.subregionName = subregionName;
+        return this;
+    }
+
+    /**
+     * The name of the Subregion.
+     *
+     * @return subregionName
+     */
+    @javax.annotation.Nullable
+    public String getSubregionName() {
+        return subregionName;
+    }
+
+    public void setSubregionName(String subregionName) {
+        this.subregionName = subregionName;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Subregion.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Subregion' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Subregion> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Subregion.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Subregion>() {
-           @Override
-           public void write(JsonWriter out, Subregion value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Subregion read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Subregion subregion = (Subregion) o;
+        return Objects.equals(this.locationCode, subregion.locationCode)
+                && Objects.equals(this.regionName, subregion.regionName)
+                && Objects.equals(this.state, subregion.state)
+                && Objects.equals(this.subregionName, subregion.subregionName);
     }
-  }
 
- /**
-  * Create an instance of Subregion given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Subregion
-  * @throws IOException if the JSON string is invalid with respect to Subregion
-  */
-  public static Subregion fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Subregion.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(locationCode, regionName, state, subregionName);
+    }
 
- /**
-  * Convert an instance of Subregion to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Subregion {\n");
+        sb.append("    locationCode: ").append(toIndentedString(locationCode)).append("\n");
+        sb.append("    regionName: ").append(toIndentedString(regionName)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("LocationCode");
+        openapiFields.add("RegionName");
+        openapiFields.add("State");
+        openapiFields.add("SubregionName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to Subregion
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!Subregion.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in Subregion is not found in the empty"
+                                        + " JSON string",
+                                Subregion.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!Subregion.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `Subregion` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("LocationCode") != null && !jsonObj.get("LocationCode").isJsonNull())
+                && !jsonObj.get("LocationCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `LocationCode` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("LocationCode").toString()));
+        }
+        if ((jsonObj.get("RegionName") != null && !jsonObj.get("RegionName").isJsonNull())
+                && !jsonObj.get("RegionName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `RegionName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("RegionName").toString()));
+        }
+        if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull())
+                && !jsonObj.get("State").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `State` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("State").toString()));
+        }
+        if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull())
+                && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `SubregionName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("SubregionName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Subregion.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Subregion' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Subregion> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Subregion.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Subregion>() {
+                        @Override
+                        public void write(JsonWriter out, Subregion value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Subregion read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Subregion given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Subregion
+     * @throws IOException if the JSON string is invalid with respect to Subregion
+     */
+    public static Subregion fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Subregion.class);
+    }
+
+    /**
+     * Convert an instance of Subregion to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

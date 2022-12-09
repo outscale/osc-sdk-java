@@ -10,40 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteAccessKeyResponse
- */
+/** Model tests for DeleteAccessKeyResponse */
 public class DeleteAccessKeyResponseTest {
     private final DeleteAccessKeyResponse model = new DeleteAccessKeyResponse();
 
-    /**
-     * Model tests for DeleteAccessKeyResponse
-     */
+    /** Model tests for DeleteAccessKeyResponse */
     @Test
     public void testDeleteAccessKeyResponse() {
         // TODO: test DeleteAccessKeyResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

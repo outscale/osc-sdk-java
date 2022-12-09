@@ -10,385 +10,407 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the flexible GPU (fGPU).
- */
+/** Information about the flexible GPU (fGPU). */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlexibleGpu {
-  public static final String SERIALIZED_NAME_DELETE_ON_VM_DELETION = "DeleteOnVmDeletion";
-  @SerializedName(SERIALIZED_NAME_DELETE_ON_VM_DELETION)
-  private Boolean deleteOnVmDeletion;
+    public static final String SERIALIZED_NAME_DELETE_ON_VM_DELETION = "DeleteOnVmDeletion";
 
-  public static final String SERIALIZED_NAME_FLEXIBLE_GPU_ID = "FlexibleGpuId";
-  @SerializedName(SERIALIZED_NAME_FLEXIBLE_GPU_ID)
-  private String flexibleGpuId;
+    @SerializedName(SERIALIZED_NAME_DELETE_ON_VM_DELETION)
+    private Boolean deleteOnVmDeletion;
 
-  public static final String SERIALIZED_NAME_GENERATION = "Generation";
-  @SerializedName(SERIALIZED_NAME_GENERATION)
-  private String generation;
+    public static final String SERIALIZED_NAME_FLEXIBLE_GPU_ID = "FlexibleGpuId";
 
-  public static final String SERIALIZED_NAME_MODEL_NAME = "ModelName";
-  @SerializedName(SERIALIZED_NAME_MODEL_NAME)
-  private String modelName;
+    @SerializedName(SERIALIZED_NAME_FLEXIBLE_GPU_ID)
+    private String flexibleGpuId;
 
-  public static final String SERIALIZED_NAME_STATE = "State";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private String state;
+    public static final String SERIALIZED_NAME_GENERATION = "Generation";
 
-  public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
-  @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
-  private String subregionName;
+    @SerializedName(SERIALIZED_NAME_GENERATION)
+    private String generation;
 
-  public static final String SERIALIZED_NAME_VM_ID = "VmId";
-  @SerializedName(SERIALIZED_NAME_VM_ID)
-  private String vmId;
+    public static final String SERIALIZED_NAME_MODEL_NAME = "ModelName";
 
-  public FlexibleGpu() {
-  }
+    @SerializedName(SERIALIZED_NAME_MODEL_NAME)
+    private String modelName;
 
-  public FlexibleGpu deleteOnVmDeletion(Boolean deleteOnVmDeletion) {
-    
-    this.deleteOnVmDeletion = deleteOnVmDeletion;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_STATE = "State";
 
-   /**
-   * If true, the fGPU is deleted when the VM is terminated.
-   * @return deleteOnVmDeletion
-  **/
-  @javax.annotation.Nullable
+    @SerializedName(SERIALIZED_NAME_STATE)
+    private String state;
 
-  public Boolean getDeleteOnVmDeletion() {
-    return deleteOnVmDeletion;
-  }
+    public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
 
+    @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
+    private String subregionName;
 
-  public void setDeleteOnVmDeletion(Boolean deleteOnVmDeletion) {
-    this.deleteOnVmDeletion = deleteOnVmDeletion;
-  }
+    public static final String SERIALIZED_NAME_VM_ID = "VmId";
 
+    @SerializedName(SERIALIZED_NAME_VM_ID)
+    private String vmId;
 
-  public FlexibleGpu flexibleGpuId(String flexibleGpuId) {
-    
-    this.flexibleGpuId = flexibleGpuId;
-    return this;
-  }
+    public FlexibleGpu() {}
 
-   /**
-   * The ID of the fGPU.
-   * @return flexibleGpuId
-  **/
-  @javax.annotation.Nullable
+    public FlexibleGpu deleteOnVmDeletion(Boolean deleteOnVmDeletion) {
 
-  public String getFlexibleGpuId() {
-    return flexibleGpuId;
-  }
-
-
-  public void setFlexibleGpuId(String flexibleGpuId) {
-    this.flexibleGpuId = flexibleGpuId;
-  }
-
-
-  public FlexibleGpu generation(String generation) {
-    
-    this.generation = generation;
-    return this;
-  }
-
-   /**
-   * The compatible processor generation.
-   * @return generation
-  **/
-  @javax.annotation.Nullable
-
-  public String getGeneration() {
-    return generation;
-  }
-
-
-  public void setGeneration(String generation) {
-    this.generation = generation;
-  }
-
-
-  public FlexibleGpu modelName(String modelName) {
-    
-    this.modelName = modelName;
-    return this;
-  }
-
-   /**
-   * The model of fGPU. For more information, see [About Flexible GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
-   * @return modelName
-  **/
-  @javax.annotation.Nullable
-
-  public String getModelName() {
-    return modelName;
-  }
-
-
-  public void setModelName(String modelName) {
-    this.modelName = modelName;
-  }
-
-
-  public FlexibleGpu state(String state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * The state of the fGPU (&#x60;allocated&#x60; \\| &#x60;attaching&#x60; \\| &#x60;attached&#x60; \\| &#x60;detaching&#x60;).
-   * @return state
-  **/
-  @javax.annotation.Nullable
-
-  public String getState() {
-    return state;
-  }
-
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-
-  public FlexibleGpu subregionName(String subregionName) {
-    
-    this.subregionName = subregionName;
-    return this;
-  }
-
-   /**
-   * The Subregion where the fGPU is located.
-   * @return subregionName
-  **/
-  @javax.annotation.Nullable
-
-  public String getSubregionName() {
-    return subregionName;
-  }
-
-
-  public void setSubregionName(String subregionName) {
-    this.subregionName = subregionName;
-  }
-
-
-  public FlexibleGpu vmId(String vmId) {
-    
-    this.vmId = vmId;
-    return this;
-  }
-
-   /**
-   * The ID of the VM the fGPU is attached to, if any.
-   * @return vmId
-  **/
-  @javax.annotation.Nullable
-
-  public String getVmId() {
-    return vmId;
-  }
-
-
-  public void setVmId(String vmId) {
-    this.vmId = vmId;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.deleteOnVmDeletion = deleteOnVmDeletion;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * If true, the fGPU is deleted when the VM is terminated.
+     *
+     * @return deleteOnVmDeletion
+     */
+    @javax.annotation.Nullable
+    public Boolean getDeleteOnVmDeletion() {
+        return deleteOnVmDeletion;
     }
-    FlexibleGpu flexibleGpu = (FlexibleGpu) o;
-    return Objects.equals(this.deleteOnVmDeletion, flexibleGpu.deleteOnVmDeletion) &&
-        Objects.equals(this.flexibleGpuId, flexibleGpu.flexibleGpuId) &&
-        Objects.equals(this.generation, flexibleGpu.generation) &&
-        Objects.equals(this.modelName, flexibleGpu.modelName) &&
-        Objects.equals(this.state, flexibleGpu.state) &&
-        Objects.equals(this.subregionName, flexibleGpu.subregionName) &&
-        Objects.equals(this.vmId, flexibleGpu.vmId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(deleteOnVmDeletion, flexibleGpuId, generation, modelName, state, subregionName, vmId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class FlexibleGpu {\n");
-    sb.append("    deleteOnVmDeletion: ").append(toIndentedString(deleteOnVmDeletion)).append("\n");
-    sb.append("    flexibleGpuId: ").append(toIndentedString(flexibleGpuId)).append("\n");
-    sb.append("    generation: ").append(toIndentedString(generation)).append("\n");
-    sb.append("    modelName: ").append(toIndentedString(modelName)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
-    sb.append("    vmId: ").append(toIndentedString(vmId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setDeleteOnVmDeletion(Boolean deleteOnVmDeletion) {
+        this.deleteOnVmDeletion = deleteOnVmDeletion;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public FlexibleGpu flexibleGpuId(String flexibleGpuId) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.flexibleGpuId = flexibleGpuId;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("DeleteOnVmDeletion");
-    openapiFields.add("FlexibleGpuId");
-    openapiFields.add("Generation");
-    openapiFields.add("ModelName");
-    openapiFields.add("State");
-    openapiFields.add("SubregionName");
-    openapiFields.add("VmId");
+    /**
+     * The ID of the fGPU.
+     *
+     * @return flexibleGpuId
+     */
+    @javax.annotation.Nullable
+    public String getFlexibleGpuId() {
+        return flexibleGpuId;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setFlexibleGpuId(String flexibleGpuId) {
+        this.flexibleGpuId = flexibleGpuId;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to FlexibleGpu
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!FlexibleGpu.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in FlexibleGpu is not found in the empty JSON string", FlexibleGpu.openapiRequiredFields.toString()));
-        }
-      }
+    public FlexibleGpu generation(String generation) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!FlexibleGpu.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `FlexibleGpu` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if ((jsonObj.get("FlexibleGpuId") != null && !jsonObj.get("FlexibleGpuId").isJsonNull()) && !jsonObj.get("FlexibleGpuId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `FlexibleGpuId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("FlexibleGpuId").toString()));
-      }
-      if ((jsonObj.get("Generation") != null && !jsonObj.get("Generation").isJsonNull()) && !jsonObj.get("Generation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Generation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Generation").toString()));
-      }
-      if ((jsonObj.get("ModelName") != null && !jsonObj.get("ModelName").isJsonNull()) && !jsonObj.get("ModelName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ModelName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ModelName").toString()));
-      }
-      if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull()) && !jsonObj.get("State").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
-      }
-      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
-      }
-      if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull()) && !jsonObj.get("VmId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `VmId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VmId").toString()));
-      }
-  }
+        this.generation = generation;
+        return this;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    /**
+     * The compatible processor generation.
+     *
+     * @return generation
+     */
+    @javax.annotation.Nullable
+    public String getGeneration() {
+        return generation;
+    }
+
+    public void setGeneration(String generation) {
+        this.generation = generation;
+    }
+
+    public FlexibleGpu modelName(String modelName) {
+
+        this.modelName = modelName;
+        return this;
+    }
+
+    /**
+     * The model of fGPU. For more information, see [About Flexible
+     * GPUs](https://docs.outscale.com/en/userguide/About-Flexible-GPUs.html).
+     *
+     * @return modelName
+     */
+    @javax.annotation.Nullable
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public FlexibleGpu state(String state) {
+
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * The state of the fGPU (&#x60;allocated&#x60; \\| &#x60;attaching&#x60; \\|
+     * &#x60;attached&#x60; \\| &#x60;detaching&#x60;).
+     *
+     * @return state
+     */
+    @javax.annotation.Nullable
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public FlexibleGpu subregionName(String subregionName) {
+
+        this.subregionName = subregionName;
+        return this;
+    }
+
+    /**
+     * The Subregion where the fGPU is located.
+     *
+     * @return subregionName
+     */
+    @javax.annotation.Nullable
+    public String getSubregionName() {
+        return subregionName;
+    }
+
+    public void setSubregionName(String subregionName) {
+        this.subregionName = subregionName;
+    }
+
+    public FlexibleGpu vmId(String vmId) {
+
+        this.vmId = vmId;
+        return this;
+    }
+
+    /**
+     * The ID of the VM the fGPU is attached to, if any.
+     *
+     * @return vmId
+     */
+    @javax.annotation.Nullable
+    public String getVmId() {
+        return vmId;
+    }
+
+    public void setVmId(String vmId) {
+        this.vmId = vmId;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FlexibleGpu.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FlexibleGpu' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FlexibleGpu> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FlexibleGpu.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FlexibleGpu>() {
-           @Override
-           public void write(JsonWriter out, FlexibleGpu value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FlexibleGpu read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FlexibleGpu flexibleGpu = (FlexibleGpu) o;
+        return Objects.equals(this.deleteOnVmDeletion, flexibleGpu.deleteOnVmDeletion)
+                && Objects.equals(this.flexibleGpuId, flexibleGpu.flexibleGpuId)
+                && Objects.equals(this.generation, flexibleGpu.generation)
+                && Objects.equals(this.modelName, flexibleGpu.modelName)
+                && Objects.equals(this.state, flexibleGpu.state)
+                && Objects.equals(this.subregionName, flexibleGpu.subregionName)
+                && Objects.equals(this.vmId, flexibleGpu.vmId);
     }
-  }
 
- /**
-  * Create an instance of FlexibleGpu given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of FlexibleGpu
-  * @throws IOException if the JSON string is invalid with respect to FlexibleGpu
-  */
-  public static FlexibleGpu fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, FlexibleGpu.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                deleteOnVmDeletion,
+                flexibleGpuId,
+                generation,
+                modelName,
+                state,
+                subregionName,
+                vmId);
+    }
 
- /**
-  * Convert an instance of FlexibleGpu to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class FlexibleGpu {\n");
+        sb.append("    deleteOnVmDeletion: ")
+                .append(toIndentedString(deleteOnVmDeletion))
+                .append("\n");
+        sb.append("    flexibleGpuId: ").append(toIndentedString(flexibleGpuId)).append("\n");
+        sb.append("    generation: ").append(toIndentedString(generation)).append("\n");
+        sb.append("    modelName: ").append(toIndentedString(modelName)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
+        sb.append("    vmId: ").append(toIndentedString(vmId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DeleteOnVmDeletion");
+        openapiFields.add("FlexibleGpuId");
+        openapiFields.add("Generation");
+        openapiFields.add("ModelName");
+        openapiFields.add("State");
+        openapiFields.add("SubregionName");
+        openapiFields.add("VmId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to FlexibleGpu
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!FlexibleGpu.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in FlexibleGpu is not found in the empty"
+                                        + " JSON string",
+                                FlexibleGpu.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!FlexibleGpu.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `FlexibleGpu` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("FlexibleGpuId") != null && !jsonObj.get("FlexibleGpuId").isJsonNull())
+                && !jsonObj.get("FlexibleGpuId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `FlexibleGpuId` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("FlexibleGpuId").toString()));
+        }
+        if ((jsonObj.get("Generation") != null && !jsonObj.get("Generation").isJsonNull())
+                && !jsonObj.get("Generation").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `Generation` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("Generation").toString()));
+        }
+        if ((jsonObj.get("ModelName") != null && !jsonObj.get("ModelName").isJsonNull())
+                && !jsonObj.get("ModelName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ModelName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("ModelName").toString()));
+        }
+        if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull())
+                && !jsonObj.get("State").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `State` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("State").toString()));
+        }
+        if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull())
+                && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `SubregionName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("SubregionName").toString()));
+        }
+        if ((jsonObj.get("VmId") != null && !jsonObj.get("VmId").isJsonNull())
+                && !jsonObj.get("VmId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `VmId` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("VmId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FlexibleGpu.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FlexibleGpu' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FlexibleGpu> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FlexibleGpu.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FlexibleGpu>() {
+                        @Override
+                        public void write(JsonWriter out, FlexibleGpu value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FlexibleGpu read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FlexibleGpu given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FlexibleGpu
+     * @throws IOException if the JSON string is invalid with respect to FlexibleGpu
+     */
+    public static FlexibleGpu fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FlexibleGpu.class);
+    }
+
+    /**
+     * Convert an instance of FlexibleGpu to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

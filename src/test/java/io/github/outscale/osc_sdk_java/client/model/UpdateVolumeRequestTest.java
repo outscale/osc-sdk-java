@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateVolumeRequest
- */
+/** Model tests for UpdateVolumeRequest */
 public class UpdateVolumeRequestTest {
     private final UpdateVolumeRequest model = new UpdateVolumeRequest();
 
-    /**
-     * Model tests for UpdateVolumeRequest
-     */
+    /** Model tests for UpdateVolumeRequest */
     @Test
     public void testUpdateVolumeRequest() {
         // TODO: test UpdateVolumeRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'iops'
-     */
+    /** Test the property 'iops' */
     @Test
     public void iopsTest() {
         // TODO: test iops
     }
 
-    /**
-     * Test the property 'size'
-     */
+    /** Test the property 'size' */
     @Test
     public void sizeTest() {
         // TODO: test size
     }
 
-    /**
-     * Test the property 'volumeId'
-     */
+    /** Test the property 'volumeId' */
     @Test
     public void volumeIdTest() {
         // TODO: test volumeId
     }
 
-    /**
-     * Test the property 'volumeType'
-     */
+    /** Test the property 'volumeType' */
     @Test
     public void volumeTypeTest() {
         // TODO: test volumeType
     }
-
 }

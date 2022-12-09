@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -19,27 +18,17 @@ import io.github.outscale.osc_sdk_java.client.model.ReadApiLogsResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ApiLogApi
- */
+/** API tests for ApiLogApi */
 @Disabled
 public class ApiLogApiTest {
 
     private final ApiLogApi api = new ApiLogApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readApiLogsTest() throws ApiException {
         ReadApiLogsRequest readApiLogsRequest = null;
         ReadApiLogsResponse response = api.readApiLogs(readApiLogsRequest);
         // TODO: test validations
     }
-
 }

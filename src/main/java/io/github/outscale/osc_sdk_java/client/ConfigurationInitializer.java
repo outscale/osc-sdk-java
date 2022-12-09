@@ -15,14 +15,12 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
-
-import org.bouncycastle.openssl.PEMKeyPair;
-import org.bouncycastle.openssl.PEMParser;
-import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
-
 import okhttp3.OkHttpClient;
 import okhttp3.tls.HandshakeCertificates;
 import okhttp3.tls.HeldCertificate;
+import org.bouncycastle.openssl.PEMKeyPair;
+import org.bouncycastle.openssl.PEMParser;
+import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 
 public class ConfigurationInitializer {
 
@@ -56,9 +54,7 @@ public class ConfigurationInitializer {
         }
 
         Endpoint endpoints = selectedProfile.getEndpoints();
-        if (endpoints != null
-                && endpoints.getApi() != null
-                && endpoints.getApi().length() > 0) {
+        if (endpoints != null && endpoints.getApi() != null && endpoints.getApi().length() > 0) {
             urlBuilder.append(endpoints.getApi());
         } else {
             urlBuilder.append("api.{region}.outscale.com/api/v1");
@@ -66,15 +62,15 @@ public class ConfigurationInitializer {
 
         HashMap<String, ServerVariable> serverVariables = new HashMap<>();
         serverVariables.put("region", new ServerVariable("Loaded from profile", region, null));
-        ServerConfiguration serverConfiguration = new ServerConfiguration(
-                urlBuilder.toString(),
-                "Loaded from profile",
-                serverVariables);
-        apiClient.setServers(new ArrayList<ServerConfiguration>() {
-            {
-                add(serverConfiguration);
-            }
-        });
+        ServerConfiguration serverConfiguration =
+                new ServerConfiguration(
+                        urlBuilder.toString(), "Loaded from profile", serverVariables);
+        apiClient.setServers(
+                new ArrayList<ServerConfiguration>() {
+                    {
+                        add(serverConfiguration);
+                    }
+                });
         apiClient.setServerIndex(0);
         apiClient.setServerVariables(null);
 
@@ -103,9 +99,12 @@ public class ConfigurationInitializer {
 
             PEMKeyPair pemKey;
             PrivateKey ecKey = null;
-            try (BufferedReader br = new BufferedReader(new FileReader(selectedProfile.getX509ClientKey()))) {
+            try (BufferedReader br =
+                    new BufferedReader(new FileReader(selectedProfile.getX509ClientKey()))) {
                 pemKey = (PEMKeyPair) new PEMParser(br).readObject();
-                ecKey = (PrivateKey) new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
+                ecKey =
+                        (PrivateKey)
+                                new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
             } catch (FileNotFoundException e) {
                 System.err.println("The private key is not found ");
                 return null;
@@ -114,15 +113,20 @@ public class ConfigurationInitializer {
                 return null;
             }
 
-            HeldCertificate clientCertificate = new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
-            HandshakeCertificates clientCertificates = new HandshakeCertificates.Builder()
-                    .addPlatformTrustedCertificates()
-                    .heldCertificate(clientCertificate)
-                    .build();
+            HeldCertificate clientCertificate =
+                    new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
+            HandshakeCertificates clientCertificates =
+                    new HandshakeCertificates.Builder()
+                            .addPlatformTrustedCertificates()
+                            .heldCertificate(clientCertificate)
+                            .build();
 
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .sslSocketFactory(clientCertificates.sslSocketFactory(), clientCertificates.trustManager())
-                    .build();
+            OkHttpClient client =
+                    new OkHttpClient.Builder()
+                            .sslSocketFactory(
+                                    clientCertificates.sslSocketFactory(),
+                                    clientCertificates.trustManager())
+                            .build();
 
             apiClient.setHttpClient(client);
         }
@@ -146,7 +150,9 @@ public class ConfigurationInitializer {
             PrivateKey ecKey = null;
             try {
                 pemKey = (PEMKeyPair) new PEMParser(new StringReader(privateKey)).readObject();
-                ecKey = (PrivateKey) new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
+                ecKey =
+                        (PrivateKey)
+                                new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
             } catch (IOException e) {
                 System.err.println("Cannot parse the private Key");
                 return null;
@@ -155,27 +161,33 @@ public class ConfigurationInitializer {
             X509Certificate cert = null;
             try {
                 CertificateFactory factory = CertificateFactory.getInstance("X.509");
-                cert = (X509Certificate) factory
-                        .generateCertificate(new ByteArrayInputStream(certificate.getBytes()));
+                cert =
+                        (X509Certificate)
+                                factory.generateCertificate(
+                                        new ByteArrayInputStream(certificate.getBytes()));
             } catch (CertificateException e) {
                 System.err.println("Error during parse of the certificate");
                 return null;
             }
 
-            HeldCertificate clientCertificate = new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
-            HandshakeCertificates clientCertificates = new HandshakeCertificates.Builder()
-                    .addPlatformTrustedCertificates()
-                    .heldCertificate(clientCertificate)
-                    .build();
+            HeldCertificate clientCertificate =
+                    new HeldCertificate(new KeyPair(cert.getPublicKey(), ecKey), cert);
+            HandshakeCertificates clientCertificates =
+                    new HandshakeCertificates.Builder()
+                            .addPlatformTrustedCertificates()
+                            .heldCertificate(clientCertificate)
+                            .build();
 
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .sslSocketFactory(clientCertificates.sslSocketFactory(), clientCertificates.trustManager())
-                    .build();
+            OkHttpClient client =
+                    new OkHttpClient.Builder()
+                            .sslSocketFactory(
+                                    clientCertificates.sslSocketFactory(),
+                                    clientCertificates.trustManager())
+                            .build();
 
             apiClient.setHttpClient(client);
         }
 
         return apiClient;
     }
-
 }

@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ProductType
- */
+/** Model tests for ProductType */
 public class ProductTypeTest {
     private final ProductType model = new ProductType();
 
-    /**
-     * Model tests for ProductType
-     */
+    /** Model tests for ProductType */
     @Test
     public void testProductType() {
         // TODO: test ProductType
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'productTypeId'
-     */
+    /** Test the property 'productTypeId' */
     @Test
     public void productTypeIdTest() {
         // TODO: test productTypeId
     }
 
-    /**
-     * Test the property 'vendor'
-     */
+    /** Test the property 'vendor' */
     @Test
     public void vendorTest() {
         // TODO: test vendor
     }
-
 }

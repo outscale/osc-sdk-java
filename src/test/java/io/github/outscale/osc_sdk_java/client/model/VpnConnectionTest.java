@@ -10,125 +10,83 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.RouteLight;
-import io.github.outscale.osc_sdk_java.client.model.VgwTelemetry;
-import io.github.outscale.osc_sdk_java.client.model.VpnOptions;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VpnConnection
- */
+/** Model tests for VpnConnection */
 public class VpnConnectionTest {
     private final VpnConnection model = new VpnConnection();
 
-    /**
-     * Model tests for VpnConnection
-     */
+    /** Model tests for VpnConnection */
     @Test
     public void testVpnConnection() {
         // TODO: test VpnConnection
     }
 
-    /**
-     * Test the property 'clientGatewayConfiguration'
-     */
+    /** Test the property 'clientGatewayConfiguration' */
     @Test
     public void clientGatewayConfigurationTest() {
         // TODO: test clientGatewayConfiguration
     }
 
-    /**
-     * Test the property 'clientGatewayId'
-     */
+    /** Test the property 'clientGatewayId' */
     @Test
     public void clientGatewayIdTest() {
         // TODO: test clientGatewayId
     }
 
-    /**
-     * Test the property 'connectionType'
-     */
+    /** Test the property 'connectionType' */
     @Test
     public void connectionTypeTest() {
         // TODO: test connectionType
     }
 
-    /**
-     * Test the property 'routes'
-     */
+    /** Test the property 'routes' */
     @Test
     public void routesTest() {
         // TODO: test routes
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'staticRoutesOnly'
-     */
+    /** Test the property 'staticRoutesOnly' */
     @Test
     public void staticRoutesOnlyTest() {
         // TODO: test staticRoutesOnly
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'vgwTelemetries'
-     */
+    /** Test the property 'vgwTelemetries' */
     @Test
     public void vgwTelemetriesTest() {
         // TODO: test vgwTelemetries
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
 
-    /**
-     * Test the property 'vpnConnectionId'
-     */
+    /** Test the property 'vpnConnectionId' */
     @Test
     public void vpnConnectionIdTest() {
         // TODO: test vpnConnectionId
     }
 
-    /**
-     * Test the property 'vpnOptions'
-     */
+    /** Test the property 'vpnOptions' */
     @Test
     public void vpnOptionsTest() {
         // TODO: test vpnOptions
     }
-
 }

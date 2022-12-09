@@ -10,83 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.PublicIpLight;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for NatService
- */
+/** Model tests for NatService */
 public class NatServiceTest {
     private final NatService model = new NatService();
 
-    /**
-     * Model tests for NatService
-     */
+    /** Model tests for NatService */
     @Test
     public void testNatService() {
         // TODO: test NatService
     }
 
-    /**
-     * Test the property 'natServiceId'
-     */
+    /** Test the property 'natServiceId' */
     @Test
     public void natServiceIdTest() {
         // TODO: test natServiceId
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'publicIps'
-     */
+    /** Test the property 'publicIps' */
     @Test
     public void publicIpsTest() {
         // TODO: test publicIps
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'subnetId'
-     */
+    /** Test the property 'subnetId' */
     @Test
     public void subnetIdTest() {
         // TODO: test subnetId
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

@@ -1,7 +1,5 @@
 package io.github.outscale.osc_sdk_java.client;
 
-import java.io.IOException;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,10 +9,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 
 public class Endpoint {
 
     public static final String SERIALIZED_NAME_API = "api";
+
     @SerializedName(SERIALIZED_NAME_API)
     private String api;
 
@@ -26,22 +26,23 @@ public class Endpoint {
                 return null; // this class only serializes 'VpnOptions' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Endpoint> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Endpoint.class));
+            final TypeAdapter<Endpoint> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Endpoint.class));
 
-            return (TypeAdapter<T>) new TypeAdapter<Endpoint>() {
-                @Override
-                public void write(JsonWriter out, Endpoint value) throws IOException {
-                    JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-                    elementAdapter.write(out, obj);
-                }
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Endpoint>() {
+                        @Override
+                        public void write(JsonWriter out, Endpoint value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
 
-                @Override
-                public Endpoint read(JsonReader in) throws IOException {
-                    JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-                    return thisAdapter.fromJsonTree(jsonObj);
-                }
-
-            }.nullSafe();
+                        @Override
+                        public Endpoint read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
         }
     }
 
@@ -50,8 +51,7 @@ public class Endpoint {
      *
      * @param jsonString JSON string
      * @return An instance of Profile
-     * @throws IOException if the JSON string is invalid with respect to
-     *                     AcceptNetPeeringRequest
+     * @throws IOException if the JSON string is invalid with respect to AcceptNetPeeringRequest
      */
     public static Endpoint fromJson(String jsonString) throws IOException {
         return JSON.getGson().fromJson(jsonString, Endpoint.class);

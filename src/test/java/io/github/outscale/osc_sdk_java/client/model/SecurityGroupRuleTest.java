@@ -10,82 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.SecurityGroupsMember;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SecurityGroupRule
- */
+/** Model tests for SecurityGroupRule */
 public class SecurityGroupRuleTest {
     private final SecurityGroupRule model = new SecurityGroupRule();
 
-    /**
-     * Model tests for SecurityGroupRule
-     */
+    /** Model tests for SecurityGroupRule */
     @Test
     public void testSecurityGroupRule() {
         // TODO: test SecurityGroupRule
     }
 
-    /**
-     * Test the property 'fromPortRange'
-     */
+    /** Test the property 'fromPortRange' */
     @Test
     public void fromPortRangeTest() {
         // TODO: test fromPortRange
     }
 
-    /**
-     * Test the property 'ipProtocol'
-     */
+    /** Test the property 'ipProtocol' */
     @Test
     public void ipProtocolTest() {
         // TODO: test ipProtocol
     }
 
-    /**
-     * Test the property 'ipRanges'
-     */
+    /** Test the property 'ipRanges' */
     @Test
     public void ipRangesTest() {
         // TODO: test ipRanges
     }
 
-    /**
-     * Test the property 'securityGroupsMembers'
-     */
+    /** Test the property 'securityGroupsMembers' */
     @Test
     public void securityGroupsMembersTest() {
         // TODO: test securityGroupsMembers
     }
 
-    /**
-     * Test the property 'serviceIds'
-     */
+    /** Test the property 'serviceIds' */
     @Test
     public void serviceIdsTest() {
         // TODO: test serviceIds
     }
 
-    /**
-     * Test the property 'toPortRange'
-     */
+    /** Test the property 'toPortRange' */
     @Test
     public void toPortRangeTest() {
         // TODO: test toPortRange
     }
-
 }

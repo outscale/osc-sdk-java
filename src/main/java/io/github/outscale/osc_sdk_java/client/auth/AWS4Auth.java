@@ -10,17 +10,7 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.auth;
-
-import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ApiException;
-
-import java.io.ByteArrayInputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Map;
-import java.util.List;
 
 import com.amazonaws.DefaultRequest;
 import com.amazonaws.auth.AWS4Signer;
@@ -28,55 +18,66 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AnonymousAWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.http.HttpMethodName;
-
-import okio.Buffer;
+import io.github.outscale.osc_sdk_java.client.ApiException;
+import io.github.outscale.osc_sdk_java.client.Pair;
+import java.io.ByteArrayInputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Map;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AWS4Auth implements Authentication {
 
-  private AWSCredentials credentials;
-  private String region;
-  private String service;
+    private AWSCredentials credentials;
+    private String region;
+    private String service;
 
-  public AWS4Auth() {
-    this.credentials = new AnonymousAWSCredentials();
-  }
-
-  public void setCredentials(String accessKey, String secretKey) {
-    this.credentials = new BasicAWSCredentials(accessKey, secretKey);
-  }
-
-  public void setRegion(String region) {
-    this.region = region;
-  }
-
-  public void setService(String service) {
-    this.service = service;
-  }
-
-  @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
-      String payload, String method, URI uri) throws ApiException {
-
-    DefaultRequest<String> signableRequest = new DefaultRequest<>(this.service);
-
-    signableRequest.setContent(new ByteArrayInputStream(payload.getBytes()));
-
-    signableRequest.setHttpMethod(HttpMethodName.valueOf(method));
-    URI targetUri = null;
-    try {
-      targetUri = new URI(uri.getScheme(), "", uri.getHost(), uri.getPort(), "", "", "");
-    } catch (URISyntaxException e) {
-      return;
+    public AWS4Auth() {
+        this.credentials = new AnonymousAWSCredentials();
     }
-    signableRequest.setEndpoint(targetUri);
-    signableRequest.setResourcePath(uri.getPath());
 
-    AWS4Signer signer = new AWS4Signer(false);
-    signer.setServiceName(this.service);
-    signer.setRegionName(this.region);
-    signer.sign(signableRequest, credentials);
+    public void setCredentials(String accessKey, String secretKey) {
+        this.credentials = new BasicAWSCredentials(accessKey, secretKey);
+    }
 
-    headerParams.putAll(signableRequest.getHeaders());
-  }
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    @Override
+    public void applyToParams(
+            List<Pair> queryParams,
+            Map<String, String> headerParams,
+            Map<String, String> cookieParams,
+            String payload,
+            String method,
+            URI uri)
+            throws ApiException {
+
+        DefaultRequest<String> signableRequest = new DefaultRequest<>(this.service);
+
+        signableRequest.setContent(new ByteArrayInputStream(payload.getBytes()));
+
+        signableRequest.setHttpMethod(HttpMethodName.valueOf(method));
+        URI targetUri = null;
+        try {
+            targetUri = new URI(uri.getScheme(), "", uri.getHost(), uri.getPort(), "", "", "");
+        } catch (URISyntaxException e) {
+            return;
+        }
+        signableRequest.setEndpoint(targetUri);
+        signableRequest.setResourcePath(uri.getPath());
+
+        AWS4Signer signer = new AWS4Signer(false);
+        signer.setServiceName(this.service);
+        signer.setRegionName(this.region);
+        signer.sign(signableRequest, credentials);
+
+        headerParams.putAll(signableRequest.getHeaders());
+    }
 }
