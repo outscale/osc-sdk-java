@@ -10,121 +10,83 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersVpnConnection
- */
+/** Model tests for FiltersVpnConnection */
 public class FiltersVpnConnectionTest {
     private final FiltersVpnConnection model = new FiltersVpnConnection();
 
-    /**
-     * Model tests for FiltersVpnConnection
-     */
+    /** Model tests for FiltersVpnConnection */
     @Test
     public void testFiltersVpnConnection() {
         // TODO: test FiltersVpnConnection
     }
 
-    /**
-     * Test the property 'bgpAsns'
-     */
+    /** Test the property 'bgpAsns' */
     @Test
     public void bgpAsnsTest() {
         // TODO: test bgpAsns
     }
 
-    /**
-     * Test the property 'clientGatewayIds'
-     */
+    /** Test the property 'clientGatewayIds' */
     @Test
     public void clientGatewayIdsTest() {
         // TODO: test clientGatewayIds
     }
 
-    /**
-     * Test the property 'connectionTypes'
-     */
+    /** Test the property 'connectionTypes' */
     @Test
     public void connectionTypesTest() {
         // TODO: test connectionTypes
     }
 
-    /**
-     * Test the property 'routeDestinationIpRanges'
-     */
+    /** Test the property 'routeDestinationIpRanges' */
     @Test
     public void routeDestinationIpRangesTest() {
         // TODO: test routeDestinationIpRanges
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'staticRoutesOnly'
-     */
+    /** Test the property 'staticRoutesOnly' */
     @Test
     public void staticRoutesOnlyTest() {
         // TODO: test staticRoutesOnly
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'virtualGatewayIds'
-     */
+    /** Test the property 'virtualGatewayIds' */
     @Test
     public void virtualGatewayIdsTest() {
         // TODO: test virtualGatewayIds
     }
 
-    /**
-     * Test the property 'vpnConnectionIds'
-     */
+    /** Test the property 'vpnConnectionIds' */
     @Test
     public void vpnConnectionIdsTest() {
         // TODO: test vpnConnectionIds
     }
-
 }

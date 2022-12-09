@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for StateComment
- */
+/** Model tests for StateComment */
 public class StateCommentTest {
     private final StateComment model = new StateComment();
 
-    /**
-     * Model tests for StateComment
-     */
+    /** Model tests for StateComment */
     @Test
     public void testStateComment() {
         // TODO: test StateComment
     }
 
-    /**
-     * Test the property 'stateCode'
-     */
+    /** Test the property 'stateCode' */
     @Test
     public void stateCodeTest() {
         // TODO: test stateCode
     }
 
-    /**
-     * Test the property 'stateMessage'
-     */
+    /** Test the property 'stateMessage' */
     @Test
     public void stateMessageTest() {
         // TODO: test stateMessage
     }
-
 }

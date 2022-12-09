@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteInternetServiceRequest
- */
+/** Model tests for DeleteInternetServiceRequest */
 public class DeleteInternetServiceRequestTest {
     private final DeleteInternetServiceRequest model = new DeleteInternetServiceRequest();
 
-    /**
-     * Model tests for DeleteInternetServiceRequest
-     */
+    /** Model tests for DeleteInternetServiceRequest */
     @Test
     public void testDeleteInternetServiceRequest() {
         // TODO: test DeleteInternetServiceRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'internetServiceId'
-     */
+    /** Test the property 'internetServiceId' */
     @Test
     public void internetServiceIdTest() {
         // TODO: test internetServiceId
     }
-
 }

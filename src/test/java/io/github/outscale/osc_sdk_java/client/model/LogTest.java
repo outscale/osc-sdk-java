@@ -10,160 +10,113 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Log
- */
+/** Model tests for Log */
 public class LogTest {
     private final Log model = new Log();
 
-    /**
-     * Model tests for Log
-     */
+    /** Model tests for Log */
     @Test
     public void testLog() {
         // TODO: test Log
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'callDuration'
-     */
+    /** Test the property 'callDuration' */
     @Test
     public void callDurationTest() {
         // TODO: test callDuration
     }
 
-    /**
-     * Test the property 'queryAccessKey'
-     */
+    /** Test the property 'queryAccessKey' */
     @Test
     public void queryAccessKeyTest() {
         // TODO: test queryAccessKey
     }
 
-    /**
-     * Test the property 'queryApiName'
-     */
+    /** Test the property 'queryApiName' */
     @Test
     public void queryApiNameTest() {
         // TODO: test queryApiName
     }
 
-    /**
-     * Test the property 'queryApiVersion'
-     */
+    /** Test the property 'queryApiVersion' */
     @Test
     public void queryApiVersionTest() {
         // TODO: test queryApiVersion
     }
 
-    /**
-     * Test the property 'queryCallName'
-     */
+    /** Test the property 'queryCallName' */
     @Test
     public void queryCallNameTest() {
         // TODO: test queryCallName
     }
 
-    /**
-     * Test the property 'queryDate'
-     */
+    /** Test the property 'queryDate' */
     @Test
     public void queryDateTest() {
         // TODO: test queryDate
     }
 
-    /**
-     * Test the property 'queryHeaderRaw'
-     */
+    /** Test the property 'queryHeaderRaw' */
     @Test
     public void queryHeaderRawTest() {
         // TODO: test queryHeaderRaw
     }
 
-    /**
-     * Test the property 'queryHeaderSize'
-     */
+    /** Test the property 'queryHeaderSize' */
     @Test
     public void queryHeaderSizeTest() {
         // TODO: test queryHeaderSize
     }
 
-    /**
-     * Test the property 'queryIpAddress'
-     */
+    /** Test the property 'queryIpAddress' */
     @Test
     public void queryIpAddressTest() {
         // TODO: test queryIpAddress
     }
 
-    /**
-     * Test the property 'queryPayloadRaw'
-     */
+    /** Test the property 'queryPayloadRaw' */
     @Test
     public void queryPayloadRawTest() {
         // TODO: test queryPayloadRaw
     }
 
-    /**
-     * Test the property 'queryPayloadSize'
-     */
+    /** Test the property 'queryPayloadSize' */
     @Test
     public void queryPayloadSizeTest() {
         // TODO: test queryPayloadSize
     }
 
-    /**
-     * Test the property 'queryUserAgent'
-     */
+    /** Test the property 'queryUserAgent' */
     @Test
     public void queryUserAgentTest() {
         // TODO: test queryUserAgent
     }
 
-    /**
-     * Test the property 'requestId'
-     */
+    /** Test the property 'requestId' */
     @Test
     public void requestIdTest() {
         // TODO: test requestId
     }
 
-    /**
-     * Test the property 'responseSize'
-     */
+    /** Test the property 'responseSize' */
     @Test
     public void responseSizeTest() {
         // TODO: test responseSize
     }
 
-    /**
-     * Test the property 'responseStatusCode'
-     */
+    /** Test the property 'responseStatusCode' */
     @Test
     public void responseStatusCodeTest() {
         // TODO: test responseStatusCode
     }
-
 }

@@ -10,143 +10,101 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DirectLinkInterfaces
- */
+/** Model tests for DirectLinkInterfaces */
 public class DirectLinkInterfacesTest {
     private final DirectLinkInterfaces model = new DirectLinkInterfaces();
 
-    /**
-     * Model tests for DirectLinkInterfaces
-     */
+    /** Model tests for DirectLinkInterfaces */
     @Test
     public void testDirectLinkInterfaces() {
         // TODO: test DirectLinkInterfaces
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'bgpAsn'
-     */
+    /** Test the property 'bgpAsn' */
     @Test
     public void bgpAsnTest() {
         // TODO: test bgpAsn
     }
 
-    /**
-     * Test the property 'bgpKey'
-     */
+    /** Test the property 'bgpKey' */
     @Test
     public void bgpKeyTest() {
         // TODO: test bgpKey
     }
 
-    /**
-     * Test the property 'clientPrivateIp'
-     */
+    /** Test the property 'clientPrivateIp' */
     @Test
     public void clientPrivateIpTest() {
         // TODO: test clientPrivateIp
     }
 
-    /**
-     * Test the property 'directLinkId'
-     */
+    /** Test the property 'directLinkId' */
     @Test
     public void directLinkIdTest() {
         // TODO: test directLinkId
     }
 
-    /**
-     * Test the property 'directLinkInterfaceId'
-     */
+    /** Test the property 'directLinkInterfaceId' */
     @Test
     public void directLinkInterfaceIdTest() {
         // TODO: test directLinkInterfaceId
     }
 
-    /**
-     * Test the property 'directLinkInterfaceName'
-     */
+    /** Test the property 'directLinkInterfaceName' */
     @Test
     public void directLinkInterfaceNameTest() {
         // TODO: test directLinkInterfaceName
     }
 
-    /**
-     * Test the property 'interfaceType'
-     */
+    /** Test the property 'interfaceType' */
     @Test
     public void interfaceTypeTest() {
         // TODO: test interfaceType
     }
 
-    /**
-     * Test the property 'location'
-     */
+    /** Test the property 'location' */
     @Test
     public void locationTest() {
         // TODO: test location
     }
 
-    /**
-     * Test the property 'mtu'
-     */
+    /** Test the property 'mtu' */
     @Test
     public void mtuTest() {
         // TODO: test mtu
     }
 
-    /**
-     * Test the property 'outscalePrivateIp'
-     */
+    /** Test the property 'outscalePrivateIp' */
     @Test
     public void outscalePrivateIpTest() {
         // TODO: test outscalePrivateIp
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
 
-    /**
-     * Test the property 'vlan'
-     */
+    /** Test the property 'vlan' */
     @Test
     public void vlanTest() {
         // TODO: test vlan
     }
-
 }

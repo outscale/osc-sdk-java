@@ -10,89 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersNatService
- */
+/** Model tests for FiltersNatService */
 public class FiltersNatServiceTest {
     private final FiltersNatService model = new FiltersNatService();
 
-    /**
-     * Model tests for FiltersNatService
-     */
+    /** Model tests for FiltersNatService */
     @Test
     public void testFiltersNatService() {
         // TODO: test FiltersNatService
     }
 
-    /**
-     * Test the property 'natServiceIds'
-     */
+    /** Test the property 'natServiceIds' */
     @Test
     public void natServiceIdsTest() {
         // TODO: test natServiceIds
     }
 
-    /**
-     * Test the property 'netIds'
-     */
+    /** Test the property 'netIds' */
     @Test
     public void netIdsTest() {
         // TODO: test netIds
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'subnetIds'
-     */
+    /** Test the property 'subnetIds' */
     @Test
     public void subnetIdsTest() {
         // TODO: test subnetIds
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

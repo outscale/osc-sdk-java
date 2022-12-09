@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateNicRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateNicResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNicRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNicResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkNicRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkNicResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkPrivateIpsRequest;
@@ -34,22 +32,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateNicResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for NicApi
- */
+/** API tests for NicApi */
 @Disabled
 public class NicApiTest {
 
     private final NicApi api = new NicApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createNicTest() throws ApiException {
         CreateNicRequest createNicRequest = null;
@@ -57,9 +46,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteNicTest() throws ApiException {
         DeleteNicRequest deleteNicRequest = null;
@@ -67,9 +54,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkNicTest() throws ApiException {
         LinkNicRequest linkNicRequest = null;
@@ -77,9 +62,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkPrivateIpsTest() throws ApiException {
         LinkPrivateIpsRequest linkPrivateIpsRequest = null;
@@ -87,9 +70,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readNicsTest() throws ApiException {
         ReadNicsRequest readNicsRequest = null;
@@ -97,9 +78,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkNicTest() throws ApiException {
         UnlinkNicRequest unlinkNicRequest = null;
@@ -107,9 +86,7 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkPrivateIpsTest() throws ApiException {
         UnlinkPrivateIpsRequest unlinkPrivateIpsRequest = null;
@@ -117,14 +94,11 @@ public class NicApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateNicTest() throws ApiException {
         UpdateNicRequest updateNicRequest = null;
         UpdateNicResponse response = api.updateNic(updateNicRequest);
         // TODO: test validations
     }
-
 }

@@ -10,209 +10,149 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersSecurityGroup
- */
+/** Model tests for FiltersSecurityGroup */
 public class FiltersSecurityGroupTest {
     private final FiltersSecurityGroup model = new FiltersSecurityGroup();
 
-    /**
-     * Model tests for FiltersSecurityGroup
-     */
+    /** Model tests for FiltersSecurityGroup */
     @Test
     public void testFiltersSecurityGroup() {
         // TODO: test FiltersSecurityGroup
     }
 
-    /**
-     * Test the property 'accountIds'
-     */
+    /** Test the property 'accountIds' */
     @Test
     public void accountIdsTest() {
         // TODO: test accountIds
     }
 
-    /**
-     * Test the property 'descriptions'
-     */
+    /** Test the property 'descriptions' */
     @Test
     public void descriptionsTest() {
         // TODO: test descriptions
     }
 
-    /**
-     * Test the property 'inboundRuleAccountIds'
-     */
+    /** Test the property 'inboundRuleAccountIds' */
     @Test
     public void inboundRuleAccountIdsTest() {
         // TODO: test inboundRuleAccountIds
     }
 
-    /**
-     * Test the property 'inboundRuleFromPortRanges'
-     */
+    /** Test the property 'inboundRuleFromPortRanges' */
     @Test
     public void inboundRuleFromPortRangesTest() {
         // TODO: test inboundRuleFromPortRanges
     }
 
-    /**
-     * Test the property 'inboundRuleIpRanges'
-     */
+    /** Test the property 'inboundRuleIpRanges' */
     @Test
     public void inboundRuleIpRangesTest() {
         // TODO: test inboundRuleIpRanges
     }
 
-    /**
-     * Test the property 'inboundRuleProtocols'
-     */
+    /** Test the property 'inboundRuleProtocols' */
     @Test
     public void inboundRuleProtocolsTest() {
         // TODO: test inboundRuleProtocols
     }
 
-    /**
-     * Test the property 'inboundRuleSecurityGroupIds'
-     */
+    /** Test the property 'inboundRuleSecurityGroupIds' */
     @Test
     public void inboundRuleSecurityGroupIdsTest() {
         // TODO: test inboundRuleSecurityGroupIds
     }
 
-    /**
-     * Test the property 'inboundRuleSecurityGroupNames'
-     */
+    /** Test the property 'inboundRuleSecurityGroupNames' */
     @Test
     public void inboundRuleSecurityGroupNamesTest() {
         // TODO: test inboundRuleSecurityGroupNames
     }
 
-    /**
-     * Test the property 'inboundRuleToPortRanges'
-     */
+    /** Test the property 'inboundRuleToPortRanges' */
     @Test
     public void inboundRuleToPortRangesTest() {
         // TODO: test inboundRuleToPortRanges
     }
 
-    /**
-     * Test the property 'netIds'
-     */
+    /** Test the property 'netIds' */
     @Test
     public void netIdsTest() {
         // TODO: test netIds
     }
 
-    /**
-     * Test the property 'outboundRuleAccountIds'
-     */
+    /** Test the property 'outboundRuleAccountIds' */
     @Test
     public void outboundRuleAccountIdsTest() {
         // TODO: test outboundRuleAccountIds
     }
 
-    /**
-     * Test the property 'outboundRuleFromPortRanges'
-     */
+    /** Test the property 'outboundRuleFromPortRanges' */
     @Test
     public void outboundRuleFromPortRangesTest() {
         // TODO: test outboundRuleFromPortRanges
     }
 
-    /**
-     * Test the property 'outboundRuleIpRanges'
-     */
+    /** Test the property 'outboundRuleIpRanges' */
     @Test
     public void outboundRuleIpRangesTest() {
         // TODO: test outboundRuleIpRanges
     }
 
-    /**
-     * Test the property 'outboundRuleProtocols'
-     */
+    /** Test the property 'outboundRuleProtocols' */
     @Test
     public void outboundRuleProtocolsTest() {
         // TODO: test outboundRuleProtocols
     }
 
-    /**
-     * Test the property 'outboundRuleSecurityGroupIds'
-     */
+    /** Test the property 'outboundRuleSecurityGroupIds' */
     @Test
     public void outboundRuleSecurityGroupIdsTest() {
         // TODO: test outboundRuleSecurityGroupIds
     }
 
-    /**
-     * Test the property 'outboundRuleSecurityGroupNames'
-     */
+    /** Test the property 'outboundRuleSecurityGroupNames' */
     @Test
     public void outboundRuleSecurityGroupNamesTest() {
         // TODO: test outboundRuleSecurityGroupNames
     }
 
-    /**
-     * Test the property 'outboundRuleToPortRanges'
-     */
+    /** Test the property 'outboundRuleToPortRanges' */
     @Test
     public void outboundRuleToPortRangesTest() {
         // TODO: test outboundRuleToPortRanges
     }
 
-    /**
-     * Test the property 'securityGroupIds'
-     */
+    /** Test the property 'securityGroupIds' */
     @Test
     public void securityGroupIdsTest() {
         // TODO: test securityGroupIds
     }
 
-    /**
-     * Test the property 'securityGroupNames'
-     */
+    /** Test the property 'securityGroupNames' */
     @Test
     public void securityGroupNamesTest() {
         // TODO: test securityGroupNames
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

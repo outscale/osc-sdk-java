@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,28 +17,18 @@ import io.github.outscale.osc_sdk_java.client.model.CreateSecurityGroupRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateSecurityGroupResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSecurityGroupResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadSecurityGroupsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadSecurityGroupsResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for SecurityGroupApi
- */
+/** API tests for SecurityGroupApi */
 @Disabled
 public class SecurityGroupApiTest {
 
     private final SecurityGroupApi api = new SecurityGroupApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createSecurityGroupTest() throws ApiException {
         CreateSecurityGroupRequest createSecurityGroupRequest = null;
@@ -47,9 +36,7 @@ public class SecurityGroupApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteSecurityGroupTest() throws ApiException {
         DeleteSecurityGroupRequest deleteSecurityGroupRequest = null;
@@ -57,14 +44,11 @@ public class SecurityGroupApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readSecurityGroupsTest() throws ApiException {
         ReadSecurityGroupsRequest readSecurityGroupsRequest = null;
         ReadSecurityGroupsResponse response = api.readSecurityGroups(readSecurityGroupsRequest);
         // TODO: test validations
     }
-
 }

@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ApplicationStickyCookiePolicy
- */
+/** Model tests for ApplicationStickyCookiePolicy */
 public class ApplicationStickyCookiePolicyTest {
     private final ApplicationStickyCookiePolicy model = new ApplicationStickyCookiePolicy();
 
-    /**
-     * Model tests for ApplicationStickyCookiePolicy
-     */
+    /** Model tests for ApplicationStickyCookiePolicy */
     @Test
     public void testApplicationStickyCookiePolicy() {
         // TODO: test ApplicationStickyCookiePolicy
     }
 
-    /**
-     * Test the property 'cookieName'
-     */
+    /** Test the property 'cookieName' */
     @Test
     public void cookieNameTest() {
         // TODO: test cookieName
     }
 
-    /**
-     * Test the property 'policyName'
-     */
+    /** Test the property 'policyName' */
     @Test
     public void policyNameTest() {
         // TODO: test policyName
     }
-
 }

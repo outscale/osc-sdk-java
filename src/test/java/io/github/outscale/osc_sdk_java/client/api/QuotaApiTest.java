@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -19,27 +18,17 @@ import io.github.outscale.osc_sdk_java.client.model.ReadQuotasResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for QuotaApi
- */
+/** API tests for QuotaApi */
 @Disabled
 public class QuotaApiTest {
 
     private final QuotaApi api = new QuotaApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readQuotasTest() throws ApiException {
         ReadQuotasRequest readQuotasRequest = null;
         ReadQuotasResponse response = api.readQuotas(readQuotasRequest);
         // TODO: test validations
     }
-
 }

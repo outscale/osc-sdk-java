@@ -10,34 +10,24 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerPolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateLoadBalancerPolicyResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteLoadBalancerPolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteLoadBalancerPolicyResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class LoadBalancerPolicyApi {
     private ApiClient localVarApiClient;
@@ -78,25 +68,29 @@ public class LoadBalancerPolicyApi {
 
     /**
      * Build call for createLoadBalancerPolicy
-     * @param createLoadBalancerPolicyRequest  (optional)
+     *
+     * @param createLoadBalancerPolicyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerPolicyCall(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerPolicyCall(
+            CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -113,108 +107,130 @@ public class LoadBalancerPolicyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createLoadBalancerPolicyValidateBeforeCall(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createLoadBalancerPolicyValidateBeforeCall(
+            CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return createLoadBalancerPolicyCall(createLoadBalancerPolicyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerPolicyRequest  (optional)
+     * @param createLoadBalancerPolicyRequest (optional)
      * @return CreateLoadBalancerPolicyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateLoadBalancerPolicyResponse createLoadBalancerPolicy(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) throws ApiException {
-        ApiResponse<CreateLoadBalancerPolicyResponse> localVarResp = createLoadBalancerPolicyWithHttpInfo(createLoadBalancerPolicyRequest);
+    public CreateLoadBalancerPolicyResponse createLoadBalancerPolicy(
+            CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) throws ApiException {
+        ApiResponse<CreateLoadBalancerPolicyResponse> localVarResp =
+                createLoadBalancerPolicyWithHttpInfo(createLoadBalancerPolicyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createLoadBalancerPolicyRequest  (optional)
+     * @param createLoadBalancerPolicyRequest (optional)
      * @return ApiResponse&lt;CreateLoadBalancerPolicyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateLoadBalancerPolicyResponse> createLoadBalancerPolicyWithHttpInfo(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) throws ApiException {
-        okhttp3.Call localVarCall = createLoadBalancerPolicyValidateBeforeCall(createLoadBalancerPolicyRequest, null);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerPolicyResponse>(){}.getType();
+    public ApiResponse<CreateLoadBalancerPolicyResponse> createLoadBalancerPolicyWithHttpInfo(
+            CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createLoadBalancerPolicyValidateBeforeCall(createLoadBalancerPolicyRequest, null);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerPolicyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createLoadBalancerPolicyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createLoadBalancerPolicyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createLoadBalancerPolicyAsync(CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest, final ApiCallback<CreateLoadBalancerPolicyResponse> _callback) throws ApiException {
+    public okhttp3.Call createLoadBalancerPolicyAsync(
+            CreateLoadBalancerPolicyRequest createLoadBalancerPolicyRequest,
+            final ApiCallback<CreateLoadBalancerPolicyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createLoadBalancerPolicyValidateBeforeCall(createLoadBalancerPolicyRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateLoadBalancerPolicyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createLoadBalancerPolicyValidateBeforeCall(
+                        createLoadBalancerPolicyRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateLoadBalancerPolicyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteLoadBalancerPolicy
-     * @param deleteLoadBalancerPolicyRequest  (optional)
+     *
+     * @param deleteLoadBalancerPolicyRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerPolicyCall(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerPolicyCall(
+            DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -231,84 +247,102 @@ public class LoadBalancerPolicyApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLoadBalancerPolicyValidateBeforeCall(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLoadBalancerPolicyValidateBeforeCall(
+            DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return deleteLoadBalancerPolicyCall(deleteLoadBalancerPolicyRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerPolicyRequest  (optional)
+     * @param deleteLoadBalancerPolicyRequest (optional)
      * @return DeleteLoadBalancerPolicyResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteLoadBalancerPolicyResponse deleteLoadBalancerPolicy(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) throws ApiException {
-        ApiResponse<DeleteLoadBalancerPolicyResponse> localVarResp = deleteLoadBalancerPolicyWithHttpInfo(deleteLoadBalancerPolicyRequest);
+    public DeleteLoadBalancerPolicyResponse deleteLoadBalancerPolicy(
+            DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) throws ApiException {
+        ApiResponse<DeleteLoadBalancerPolicyResponse> localVarResp =
+                deleteLoadBalancerPolicyWithHttpInfo(deleteLoadBalancerPolicyRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteLoadBalancerPolicyRequest  (optional)
+     * @param deleteLoadBalancerPolicyRequest (optional)
      * @return ApiResponse&lt;DeleteLoadBalancerPolicyResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteLoadBalancerPolicyResponse> deleteLoadBalancerPolicyWithHttpInfo(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteLoadBalancerPolicyValidateBeforeCall(deleteLoadBalancerPolicyRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerPolicyResponse>(){}.getType();
+    public ApiResponse<DeleteLoadBalancerPolicyResponse> deleteLoadBalancerPolicyWithHttpInfo(
+            DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerPolicyValidateBeforeCall(deleteLoadBalancerPolicyRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerPolicyResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteLoadBalancerPolicyRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteLoadBalancerPolicyRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteLoadBalancerPolicyAsync(DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest, final ApiCallback<DeleteLoadBalancerPolicyResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteLoadBalancerPolicyAsync(
+            DeleteLoadBalancerPolicyRequest deleteLoadBalancerPolicyRequest,
+            final ApiCallback<DeleteLoadBalancerPolicyResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLoadBalancerPolicyValidateBeforeCall(deleteLoadBalancerPolicyRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteLoadBalancerPolicyResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteLoadBalancerPolicyValidateBeforeCall(
+                        deleteLoadBalancerPolicyRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteLoadBalancerPolicyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

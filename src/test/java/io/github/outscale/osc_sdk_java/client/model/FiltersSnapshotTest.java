@@ -10,137 +10,95 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersSnapshot
- */
+/** Model tests for FiltersSnapshot */
 public class FiltersSnapshotTest {
     private final FiltersSnapshot model = new FiltersSnapshot();
 
-    /**
-     * Model tests for FiltersSnapshot
-     */
+    /** Model tests for FiltersSnapshot */
     @Test
     public void testFiltersSnapshot() {
         // TODO: test FiltersSnapshot
     }
 
-    /**
-     * Test the property 'accountAliases'
-     */
+    /** Test the property 'accountAliases' */
     @Test
     public void accountAliasesTest() {
         // TODO: test accountAliases
     }
 
-    /**
-     * Test the property 'accountIds'
-     */
+    /** Test the property 'accountIds' */
     @Test
     public void accountIdsTest() {
         // TODO: test accountIds
     }
 
-    /**
-     * Test the property 'descriptions'
-     */
+    /** Test the property 'descriptions' */
     @Test
     public void descriptionsTest() {
         // TODO: test descriptions
     }
 
-    /**
-     * Test the property 'permissionsToCreateVolumeAccountIds'
-     */
+    /** Test the property 'permissionsToCreateVolumeAccountIds' */
     @Test
     public void permissionsToCreateVolumeAccountIdsTest() {
         // TODO: test permissionsToCreateVolumeAccountIds
     }
 
-    /**
-     * Test the property 'permissionsToCreateVolumeGlobalPermission'
-     */
+    /** Test the property 'permissionsToCreateVolumeGlobalPermission' */
     @Test
     public void permissionsToCreateVolumeGlobalPermissionTest() {
         // TODO: test permissionsToCreateVolumeGlobalPermission
     }
 
-    /**
-     * Test the property 'progresses'
-     */
+    /** Test the property 'progresses' */
     @Test
     public void progressesTest() {
         // TODO: test progresses
     }
 
-    /**
-     * Test the property 'snapshotIds'
-     */
+    /** Test the property 'snapshotIds' */
     @Test
     public void snapshotIdsTest() {
         // TODO: test snapshotIds
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'volumeIds'
-     */
+    /** Test the property 'volumeIds' */
     @Test
     public void volumeIdsTest() {
         // TODO: test volumeIds
     }
 
-    /**
-     * Test the property 'volumeSizes'
-     */
+    /** Test the property 'volumeSizes' */
     @Test
     public void volumeSizesTest() {
         // TODO: test volumeSizes
     }
-
 }

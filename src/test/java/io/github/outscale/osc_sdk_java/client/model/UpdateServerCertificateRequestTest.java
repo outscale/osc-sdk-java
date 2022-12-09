@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateServerCertificateRequest
- */
+/** Model tests for UpdateServerCertificateRequest */
 public class UpdateServerCertificateRequestTest {
     private final UpdateServerCertificateRequest model = new UpdateServerCertificateRequest();
 
-    /**
-     * Model tests for UpdateServerCertificateRequest
-     */
+    /** Model tests for UpdateServerCertificateRequest */
     @Test
     public void testUpdateServerCertificateRequest() {
         // TODO: test UpdateServerCertificateRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'name'
-     */
+    /** Test the property 'name' */
     @Test
     public void nameTest() {
         // TODO: test name
     }
 
-    /**
-     * Test the property 'newName'
-     */
+    /** Test the property 'newName' */
     @Test
     public void newNameTest() {
         // TODO: test newName
     }
 
-    /**
-     * Test the property 'newPath'
-     */
+    /** Test the property 'newPath' */
     @Test
     public void newPathTest() {
         // TODO: test newPath
     }
-
 }

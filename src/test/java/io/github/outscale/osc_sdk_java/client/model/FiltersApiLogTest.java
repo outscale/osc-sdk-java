@@ -10,106 +10,71 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersApiLog
- */
+/** Model tests for FiltersApiLog */
 public class FiltersApiLogTest {
     private final FiltersApiLog model = new FiltersApiLog();
 
-    /**
-     * Model tests for FiltersApiLog
-     */
+    /** Model tests for FiltersApiLog */
     @Test
     public void testFiltersApiLog() {
         // TODO: test FiltersApiLog
     }
 
-    /**
-     * Test the property 'queryAccessKeys'
-     */
+    /** Test the property 'queryAccessKeys' */
     @Test
     public void queryAccessKeysTest() {
         // TODO: test queryAccessKeys
     }
 
-    /**
-     * Test the property 'queryApiNames'
-     */
+    /** Test the property 'queryApiNames' */
     @Test
     public void queryApiNamesTest() {
         // TODO: test queryApiNames
     }
 
-    /**
-     * Test the property 'queryCallNames'
-     */
+    /** Test the property 'queryCallNames' */
     @Test
     public void queryCallNamesTest() {
         // TODO: test queryCallNames
     }
 
-    /**
-     * Test the property 'queryDateAfter'
-     */
+    /** Test the property 'queryDateAfter' */
     @Test
     public void queryDateAfterTest() {
         // TODO: test queryDateAfter
     }
 
-    /**
-     * Test the property 'queryDateBefore'
-     */
+    /** Test the property 'queryDateBefore' */
     @Test
     public void queryDateBeforeTest() {
         // TODO: test queryDateBefore
     }
 
-    /**
-     * Test the property 'queryIpAddresses'
-     */
+    /** Test the property 'queryIpAddresses' */
     @Test
     public void queryIpAddressesTest() {
         // TODO: test queryIpAddresses
     }
 
-    /**
-     * Test the property 'queryUserAgents'
-     */
+    /** Test the property 'queryUserAgents' */
     @Test
     public void queryUserAgentsTest() {
         // TODO: test queryUserAgents
     }
 
-    /**
-     * Test the property 'requestIds'
-     */
+    /** Test the property 'requestIds' */
     @Test
     public void requestIdsTest() {
         // TODO: test requestIds
     }
 
-    /**
-     * Test the property 'responseStatusCodes'
-     */
+    /** Test the property 'responseStatusCodes' */
     @Test
     public void responseStatusCodesTest() {
         // TODO: test responseStatusCodes
     }
-
 }

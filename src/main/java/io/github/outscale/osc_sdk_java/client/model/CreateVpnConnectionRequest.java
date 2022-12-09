@@ -10,328 +10,334 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateVpnConnectionRequest
- */
+/** CreateVpnConnectionRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateVpnConnectionRequest {
-  public static final String SERIALIZED_NAME_CLIENT_GATEWAY_ID = "ClientGatewayId";
-  @SerializedName(SERIALIZED_NAME_CLIENT_GATEWAY_ID)
-  private String clientGatewayId;
+    public static final String SERIALIZED_NAME_CLIENT_GATEWAY_ID = "ClientGatewayId";
 
-  public static final String SERIALIZED_NAME_CONNECTION_TYPE = "ConnectionType";
-  @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
-  private String connectionType;
+    @SerializedName(SERIALIZED_NAME_CLIENT_GATEWAY_ID)
+    private String clientGatewayId;
 
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    public static final String SERIALIZED_NAME_CONNECTION_TYPE = "ConnectionType";
 
-  public static final String SERIALIZED_NAME_STATIC_ROUTES_ONLY = "StaticRoutesOnly";
-  @SerializedName(SERIALIZED_NAME_STATIC_ROUTES_ONLY)
-  private Boolean staticRoutesOnly;
+    @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
+    private String connectionType;
 
-  public static final String SERIALIZED_NAME_VIRTUAL_GATEWAY_ID = "VirtualGatewayId";
-  @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY_ID)
-  private String virtualGatewayId;
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public CreateVpnConnectionRequest() {
-  }
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-  public CreateVpnConnectionRequest clientGatewayId(String clientGatewayId) {
-    
-    this.clientGatewayId = clientGatewayId;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_STATIC_ROUTES_ONLY = "StaticRoutesOnly";
 
-   /**
-   * The ID of the client gateway.
-   * @return clientGatewayId
-  **/
-  @javax.annotation.Nonnull
+    @SerializedName(SERIALIZED_NAME_STATIC_ROUTES_ONLY)
+    private Boolean staticRoutesOnly;
 
-  public String getClientGatewayId() {
-    return clientGatewayId;
-  }
+    public static final String SERIALIZED_NAME_VIRTUAL_GATEWAY_ID = "VirtualGatewayId";
 
+    @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY_ID)
+    private String virtualGatewayId;
 
-  public void setClientGatewayId(String clientGatewayId) {
-    this.clientGatewayId = clientGatewayId;
-  }
+    public CreateVpnConnectionRequest() {}
 
+    public CreateVpnConnectionRequest clientGatewayId(String clientGatewayId) {
 
-  public CreateVpnConnectionRequest connectionType(String connectionType) {
-    
-    this.connectionType = connectionType;
-    return this;
-  }
-
-   /**
-   * The type of VPN connection (only &#x60;ipsec.1&#x60; is supported).
-   * @return connectionType
-  **/
-  @javax.annotation.Nonnull
-
-  public String getConnectionType() {
-    return connectionType;
-  }
-
-
-  public void setConnectionType(String connectionType) {
-    this.connectionType = connectionType;
-  }
-
-
-  public CreateVpnConnectionRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
-
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDryRun() {
-    return dryRun;
-  }
-
-
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
-
-
-  public CreateVpnConnectionRequest staticRoutesOnly(Boolean staticRoutesOnly) {
-    
-    this.staticRoutesOnly = staticRoutesOnly;
-    return this;
-  }
-
-   /**
-   * If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](#createvpnconnectionroute) and [DeleteVpnConnectionRoute](#deletevpnconnectionroute).
-   * @return staticRoutesOnly
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getStaticRoutesOnly() {
-    return staticRoutesOnly;
-  }
-
-
-  public void setStaticRoutesOnly(Boolean staticRoutesOnly) {
-    this.staticRoutesOnly = staticRoutesOnly;
-  }
-
-
-  public CreateVpnConnectionRequest virtualGatewayId(String virtualGatewayId) {
-    
-    this.virtualGatewayId = virtualGatewayId;
-    return this;
-  }
-
-   /**
-   * The ID of the virtual gateway.
-   * @return virtualGatewayId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getVirtualGatewayId() {
-    return virtualGatewayId;
-  }
-
-
-  public void setVirtualGatewayId(String virtualGatewayId) {
-    this.virtualGatewayId = virtualGatewayId;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.clientGatewayId = clientGatewayId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The ID of the client gateway.
+     *
+     * @return clientGatewayId
+     */
+    @javax.annotation.Nonnull
+    public String getClientGatewayId() {
+        return clientGatewayId;
     }
-    CreateVpnConnectionRequest createVpnConnectionRequest = (CreateVpnConnectionRequest) o;
-    return Objects.equals(this.clientGatewayId, createVpnConnectionRequest.clientGatewayId) &&
-        Objects.equals(this.connectionType, createVpnConnectionRequest.connectionType) &&
-        Objects.equals(this.dryRun, createVpnConnectionRequest.dryRun) &&
-        Objects.equals(this.staticRoutesOnly, createVpnConnectionRequest.staticRoutesOnly) &&
-        Objects.equals(this.virtualGatewayId, createVpnConnectionRequest.virtualGatewayId);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(clientGatewayId, connectionType, dryRun, staticRoutesOnly, virtualGatewayId);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateVpnConnectionRequest {\n");
-    sb.append("    clientGatewayId: ").append(toIndentedString(clientGatewayId)).append("\n");
-    sb.append("    connectionType: ").append(toIndentedString(connectionType)).append("\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    staticRoutesOnly: ").append(toIndentedString(staticRoutesOnly)).append("\n");
-    sb.append("    virtualGatewayId: ").append(toIndentedString(virtualGatewayId)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setClientGatewayId(String clientGatewayId) {
+        this.clientGatewayId = clientGatewayId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateVpnConnectionRequest connectionType(String connectionType) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.connectionType = connectionType;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ClientGatewayId");
-    openapiFields.add("ConnectionType");
-    openapiFields.add("DryRun");
-    openapiFields.add("StaticRoutesOnly");
-    openapiFields.add("VirtualGatewayId");
+    /**
+     * The type of VPN connection (only &#x60;ipsec.1&#x60; is supported).
+     *
+     * @return connectionType
+     */
+    @javax.annotation.Nonnull
+    public String getConnectionType() {
+        return connectionType;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ClientGatewayId");
-    openapiRequiredFields.add("ConnectionType");
-    openapiRequiredFields.add("VirtualGatewayId");
-  }
+    public void setConnectionType(String connectionType) {
+        this.connectionType = connectionType;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateVpnConnectionRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateVpnConnectionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateVpnConnectionRequest is not found in the empty JSON string", CreateVpnConnectionRequest.openapiRequiredFields.toString()));
-        }
-      }
+    public CreateVpnConnectionRequest dryRun(Boolean dryRun) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateVpnConnectionRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateVpnConnectionRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        this.dryRun = dryRun;
+        return this;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CreateVpnConnectionRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("ClientGatewayId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ClientGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientGatewayId").toString()));
-      }
-      if (!jsonObj.get("ConnectionType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ConnectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ConnectionType").toString()));
-      }
-      if (!jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `VirtualGatewayId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VirtualGatewayId").toString()));
-      }
-  }
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
+    }
+
+    public CreateVpnConnectionRequest staticRoutesOnly(Boolean staticRoutesOnly) {
+
+        this.staticRoutesOnly = staticRoutesOnly;
+        return this;
+    }
+
+    /**
+     * If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If
+     * true, routing is controlled using static routes. For more information about how to create and
+     * delete static routes, see [CreateVpnConnectionRoute](#createvpnconnectionroute) and
+     * [DeleteVpnConnectionRoute](#deletevpnconnectionroute).
+     *
+     * @return staticRoutesOnly
+     */
+    @javax.annotation.Nullable
+    public Boolean getStaticRoutesOnly() {
+        return staticRoutesOnly;
+    }
+
+    public void setStaticRoutesOnly(Boolean staticRoutesOnly) {
+        this.staticRoutesOnly = staticRoutesOnly;
+    }
+
+    public CreateVpnConnectionRequest virtualGatewayId(String virtualGatewayId) {
+
+        this.virtualGatewayId = virtualGatewayId;
+        return this;
+    }
+
+    /**
+     * The ID of the virtual gateway.
+     *
+     * @return virtualGatewayId
+     */
+    @javax.annotation.Nonnull
+    public String getVirtualGatewayId() {
+        return virtualGatewayId;
+    }
+
+    public void setVirtualGatewayId(String virtualGatewayId) {
+        this.virtualGatewayId = virtualGatewayId;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateVpnConnectionRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateVpnConnectionRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateVpnConnectionRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateVpnConnectionRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateVpnConnectionRequest>() {
-           @Override
-           public void write(JsonWriter out, CreateVpnConnectionRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateVpnConnectionRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateVpnConnectionRequest createVpnConnectionRequest = (CreateVpnConnectionRequest) o;
+        return Objects.equals(this.clientGatewayId, createVpnConnectionRequest.clientGatewayId)
+                && Objects.equals(this.connectionType, createVpnConnectionRequest.connectionType)
+                && Objects.equals(this.dryRun, createVpnConnectionRequest.dryRun)
+                && Objects.equals(
+                        this.staticRoutesOnly, createVpnConnectionRequest.staticRoutesOnly)
+                && Objects.equals(
+                        this.virtualGatewayId, createVpnConnectionRequest.virtualGatewayId);
     }
-  }
 
- /**
-  * Create an instance of CreateVpnConnectionRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateVpnConnectionRequest
-  * @throws IOException if the JSON string is invalid with respect to CreateVpnConnectionRequest
-  */
-  public static CreateVpnConnectionRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateVpnConnectionRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                clientGatewayId, connectionType, dryRun, staticRoutesOnly, virtualGatewayId);
+    }
 
- /**
-  * Convert an instance of CreateVpnConnectionRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateVpnConnectionRequest {\n");
+        sb.append("    clientGatewayId: ").append(toIndentedString(clientGatewayId)).append("\n");
+        sb.append("    connectionType: ").append(toIndentedString(connectionType)).append("\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    staticRoutesOnly: ").append(toIndentedString(staticRoutesOnly)).append("\n");
+        sb.append("    virtualGatewayId: ").append(toIndentedString(virtualGatewayId)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ClientGatewayId");
+        openapiFields.add("ConnectionType");
+        openapiFields.add("DryRun");
+        openapiFields.add("StaticRoutesOnly");
+        openapiFields.add("VirtualGatewayId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ClientGatewayId");
+        openapiRequiredFields.add("ConnectionType");
+        openapiRequiredFields.add("VirtualGatewayId");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to CreateVpnConnectionRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateVpnConnectionRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateVpnConnectionRequest is not"
+                                        + " found in the empty JSON string",
+                                CreateVpnConnectionRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateVpnConnectionRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateVpnConnectionRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateVpnConnectionRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("ClientGatewayId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ClientGatewayId` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("ClientGatewayId").toString()));
+        }
+        if (!jsonObj.get("ConnectionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ConnectionType` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("ConnectionType").toString()));
+        }
+        if (!jsonObj.get("VirtualGatewayId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `VirtualGatewayId` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("VirtualGatewayId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateVpnConnectionRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateVpnConnectionRequest' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateVpnConnectionRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateVpnConnectionRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateVpnConnectionRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateVpnConnectionRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateVpnConnectionRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateVpnConnectionRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateVpnConnectionRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateVpnConnectionRequest
+     */
+    public static CreateVpnConnectionRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateVpnConnectionRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateVpnConnectionRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

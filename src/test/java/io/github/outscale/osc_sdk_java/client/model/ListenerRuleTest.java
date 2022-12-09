@@ -10,97 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ListenerRule
- */
+/** Model tests for ListenerRule */
 public class ListenerRuleTest {
     private final ListenerRule model = new ListenerRule();
 
-    /**
-     * Model tests for ListenerRule
-     */
+    /** Model tests for ListenerRule */
     @Test
     public void testListenerRule() {
         // TODO: test ListenerRule
     }
 
-    /**
-     * Test the property 'action'
-     */
+    /** Test the property 'action' */
     @Test
     public void actionTest() {
         // TODO: test action
     }
 
-    /**
-     * Test the property 'hostNamePattern'
-     */
+    /** Test the property 'hostNamePattern' */
     @Test
     public void hostNamePatternTest() {
         // TODO: test hostNamePattern
     }
 
-    /**
-     * Test the property 'listenerId'
-     */
+    /** Test the property 'listenerId' */
     @Test
     public void listenerIdTest() {
         // TODO: test listenerId
     }
 
-    /**
-     * Test the property 'listenerRuleId'
-     */
+    /** Test the property 'listenerRuleId' */
     @Test
     public void listenerRuleIdTest() {
         // TODO: test listenerRuleId
     }
 
-    /**
-     * Test the property 'listenerRuleName'
-     */
+    /** Test the property 'listenerRuleName' */
     @Test
     public void listenerRuleNameTest() {
         // TODO: test listenerRuleName
     }
 
-    /**
-     * Test the property 'pathPattern'
-     */
+    /** Test the property 'pathPattern' */
     @Test
     public void pathPatternTest() {
         // TODO: test pathPattern
     }
 
-    /**
-     * Test the property 'priority'
-     */
+    /** Test the property 'priority' */
     @Test
     public void priorityTest() {
         // TODO: test priority
     }
 
-    /**
-     * Test the property 'vmIds'
-     */
+    /** Test the property 'vmIds' */
     @Test
     public void vmIdsTest() {
         // TODO: test vmIds
     }
-
 }

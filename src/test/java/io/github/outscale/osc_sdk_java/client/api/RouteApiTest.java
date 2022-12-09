@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,28 +17,18 @@ import io.github.outscale.osc_sdk_java.client.model.CreateRouteRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateRouteResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteRouteRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteRouteResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateRouteRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateRouteResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for RouteApi
- */
+/** API tests for RouteApi */
 @Disabled
 public class RouteApiTest {
 
     private final RouteApi api = new RouteApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createRouteTest() throws ApiException {
         CreateRouteRequest createRouteRequest = null;
@@ -47,9 +36,7 @@ public class RouteApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteRouteTest() throws ApiException {
         DeleteRouteRequest deleteRouteRequest = null;
@@ -57,14 +44,11 @@ public class RouteApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateRouteTest() throws ApiException {
         UpdateRouteRequest updateRouteRequest = null;
         UpdateRouteResponse response = api.updateRoute(updateRouteRequest);
         // TODO: test validations
     }
-
 }

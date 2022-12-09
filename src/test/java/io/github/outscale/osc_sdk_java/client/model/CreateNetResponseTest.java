@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.Net;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateNetResponse
- */
+/** Model tests for CreateNetResponse */
 public class CreateNetResponseTest {
     private final CreateNetResponse model = new CreateNetResponse();
 
-    /**
-     * Model tests for CreateNetResponse
-     */
+    /** Model tests for CreateNetResponse */
     @Test
     public void testCreateNetResponse() {
         // TODO: test CreateNetResponse
     }
 
-    /**
-     * Test the property 'net'
-     */
+    /** Test the property 'net' */
     @Test
     public void netTest() {
         // TODO: test net
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

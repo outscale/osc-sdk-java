@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkPublicIpRequest
- */
+/** Model tests for LinkPublicIpRequest */
 public class LinkPublicIpRequestTest {
     private final LinkPublicIpRequest model = new LinkPublicIpRequest();
 
-    /**
-     * Model tests for LinkPublicIpRequest
-     */
+    /** Model tests for LinkPublicIpRequest */
     @Test
     public void testLinkPublicIpRequest() {
         // TODO: test LinkPublicIpRequest
     }
 
-    /**
-     * Test the property 'allowRelink'
-     */
+    /** Test the property 'allowRelink' */
     @Test
     public void allowRelinkTest() {
         // TODO: test allowRelink
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'privateIp'
-     */
+    /** Test the property 'privateIp' */
     @Test
     public void privateIpTest() {
         // TODO: test privateIp
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'publicIpId'
-     */
+    /** Test the property 'publicIpId' */
     @Test
     public void publicIpIdTest() {
         // TODO: test publicIpId
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

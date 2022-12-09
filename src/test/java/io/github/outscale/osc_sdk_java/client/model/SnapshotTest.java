@@ -10,124 +10,83 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.PermissionsOnResource;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Snapshot
- */
+/** Model tests for Snapshot */
 public class SnapshotTest {
     private final Snapshot model = new Snapshot();
 
-    /**
-     * Model tests for Snapshot
-     */
+    /** Model tests for Snapshot */
     @Test
     public void testSnapshot() {
         // TODO: test Snapshot
     }
 
-    /**
-     * Test the property 'accountAlias'
-     */
+    /** Test the property 'accountAlias' */
     @Test
     public void accountAliasTest() {
         // TODO: test accountAlias
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'creationDate'
-     */
+    /** Test the property 'creationDate' */
     @Test
     public void creationDateTest() {
         // TODO: test creationDate
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'permissionsToCreateVolume'
-     */
+    /** Test the property 'permissionsToCreateVolume' */
     @Test
     public void permissionsToCreateVolumeTest() {
         // TODO: test permissionsToCreateVolume
     }
 
-    /**
-     * Test the property 'progress'
-     */
+    /** Test the property 'progress' */
     @Test
     public void progressTest() {
         // TODO: test progress
     }
 
-    /**
-     * Test the property 'snapshotId'
-     */
+    /** Test the property 'snapshotId' */
     @Test
     public void snapshotIdTest() {
         // TODO: test snapshotId
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'volumeId'
-     */
+    /** Test the property 'volumeId' */
     @Test
     public void volumeIdTest() {
         // TODO: test volumeId
     }
 
-    /**
-     * Test the property 'volumeSize'
-     */
+    /** Test the property 'volumeSize' */
     @Test
     public void volumeSizeTest() {
         // TODO: test volumeSize
     }
-
 }

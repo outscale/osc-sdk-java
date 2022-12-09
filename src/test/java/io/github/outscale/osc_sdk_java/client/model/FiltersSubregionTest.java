@@ -10,41 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersSubregion
- */
+/** Model tests for FiltersSubregion */
 public class FiltersSubregionTest {
     private final FiltersSubregion model = new FiltersSubregion();
 
-    /**
-     * Model tests for FiltersSubregion
-     */
+    /** Model tests for FiltersSubregion */
     @Test
     public void testFiltersSubregion() {
         // TODO: test FiltersSubregion
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
-
 }

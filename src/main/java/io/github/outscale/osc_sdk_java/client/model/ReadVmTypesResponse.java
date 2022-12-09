@@ -10,252 +10,244 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.VmType;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * ReadVmTypesResponse
- */
+/** ReadVmTypesResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadVmTypesResponse {
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public static final String SERIALIZED_NAME_VM_TYPES = "VmTypes";
-  @SerializedName(SERIALIZED_NAME_VM_TYPES)
-  private List<VmType> vmTypes = null;
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
 
-  public ReadVmTypesResponse() {
-  }
+    public static final String SERIALIZED_NAME_VM_TYPES = "VmTypes";
 
-  public ReadVmTypesResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_VM_TYPES)
+    private List<VmType> vmTypes = null;
 
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
+    public ReadVmTypesResponse() {}
 
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
+    public ReadVmTypesResponse responseContext(ResponseContext responseContext) {
 
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-  public ReadVmTypesResponse vmTypes(List<VmType> vmTypes) {
-    
-    this.vmTypes = vmTypes;
-    return this;
-  }
-
-  public ReadVmTypesResponse addVmTypesItem(VmType vmTypesItem) {
-    if (this.vmTypes == null) {
-      this.vmTypes = new ArrayList<>();
+        this.responseContext = responseContext;
+        return this;
     }
-    this.vmTypes.add(vmTypesItem);
-    return this;
-  }
 
-   /**
-   * Information about one or more VM types.
-   * @return vmTypes
-  **/
-  @javax.annotation.Nullable
-
-  public List<VmType> getVmTypes() {
-    return vmTypes;
-  }
-
-
-  public void setVmTypes(List<VmType> vmTypes) {
-    this.vmTypes = vmTypes;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
     }
-    ReadVmTypesResponse readVmTypesResponse = (ReadVmTypesResponse) o;
-    return Objects.equals(this.responseContext, readVmTypesResponse.responseContext) &&
-        Objects.equals(this.vmTypes, readVmTypesResponse.vmTypes);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(responseContext, vmTypes);
-  }
+    public ReadVmTypesResponse vmTypes(List<VmType> vmTypes) {
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ReadVmTypesResponse {\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("    vmTypes: ").append(toIndentedString(vmTypes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+        this.vmTypes = vmTypes;
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ResponseContext");
-    openapiFields.add("VmTypes");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReadVmTypesResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReadVmTypesResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadVmTypesResponse is not found in the empty JSON string", ReadVmTypesResponse.openapiRequiredFields.toString()));
+    public ReadVmTypesResponse addVmTypesItem(VmType vmTypesItem) {
+        if (this.vmTypes == null) {
+            this.vmTypes = new ArrayList<>();
         }
-      }
+        this.vmTypes.add(vmTypesItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ReadVmTypesResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadVmTypesResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-      if (jsonObj.get("VmTypes") != null && !jsonObj.get("VmTypes").isJsonNull()) {
-        JsonArray jsonArrayvmTypes = jsonObj.getAsJsonArray("VmTypes");
-        if (jsonArrayvmTypes != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("VmTypes").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `VmTypes` to be an array in the JSON string but got `%s`", jsonObj.get("VmTypes").toString()));
-          }
+    /**
+     * Information about one or more VM types.
+     *
+     * @return vmTypes
+     */
+    @javax.annotation.Nullable
+    public List<VmType> getVmTypes() {
+        return vmTypes;
+    }
 
-          // validate the optional field `VmTypes` (array)
-          for (int i = 0; i < jsonArrayvmTypes.size(); i++) {
-            VmType.validateJsonObject(jsonArrayvmTypes.get(i).getAsJsonObject());
-          };
-        }
-      }
-  }
+    public void setVmTypes(List<VmType> vmTypes) {
+        this.vmTypes = vmTypes;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReadVmTypesResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReadVmTypesResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReadVmTypesResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReadVmTypesResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ReadVmTypesResponse>() {
-           @Override
-           public void write(JsonWriter out, ReadVmTypesResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ReadVmTypesResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ReadVmTypesResponse readVmTypesResponse = (ReadVmTypesResponse) o;
+        return Objects.equals(this.responseContext, readVmTypesResponse.responseContext)
+                && Objects.equals(this.vmTypes, readVmTypesResponse.vmTypes);
     }
-  }
 
- /**
-  * Create an instance of ReadVmTypesResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReadVmTypesResponse
-  * @throws IOException if the JSON string is invalid with respect to ReadVmTypesResponse
-  */
-  public static ReadVmTypesResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReadVmTypesResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(responseContext, vmTypes);
+    }
 
- /**
-  * Convert an instance of ReadVmTypesResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ReadVmTypesResponse {\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("    vmTypes: ").append(toIndentedString(vmTypes)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ResponseContext");
+        openapiFields.add("VmTypes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to ReadVmTypesResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!ReadVmTypesResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in ReadVmTypesResponse is not found in"
+                                        + " the empty JSON string",
+                                ReadVmTypesResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!ReadVmTypesResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `ReadVmTypesResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+        if (jsonObj.get("VmTypes") != null && !jsonObj.get("VmTypes").isJsonNull()) {
+            JsonArray jsonArrayvmTypes = jsonObj.getAsJsonArray("VmTypes");
+            if (jsonArrayvmTypes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("VmTypes").isJsonArray()) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Expected the field `VmTypes` to be an array in the JSON"
+                                            + " string but got `%s`",
+                                    jsonObj.get("VmTypes").toString()));
+                }
+
+                // validate the optional field `VmTypes` (array)
+                for (int i = 0; i < jsonArrayvmTypes.size(); i++) {
+                    VmType.validateJsonObject(jsonArrayvmTypes.get(i).getAsJsonObject());
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReadVmTypesResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReadVmTypesResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReadVmTypesResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReadVmTypesResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReadVmTypesResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ReadVmTypesResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReadVmTypesResponse read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReadVmTypesResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReadVmTypesResponse
+     * @throws IOException if the JSON string is invalid with respect to ReadVmTypesResponse
+     */
+    public static ReadVmTypesResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReadVmTypesResponse.class);
+    }
+
+    /**
+     * Convert an instance of ReadVmTypesResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

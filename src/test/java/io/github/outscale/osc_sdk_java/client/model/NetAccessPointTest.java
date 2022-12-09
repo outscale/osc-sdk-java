@@ -10,82 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for NetAccessPoint
- */
+/** Model tests for NetAccessPoint */
 public class NetAccessPointTest {
     private final NetAccessPoint model = new NetAccessPoint();
 
-    /**
-     * Model tests for NetAccessPoint
-     */
+    /** Model tests for NetAccessPoint */
     @Test
     public void testNetAccessPoint() {
         // TODO: test NetAccessPoint
     }
 
-    /**
-     * Test the property 'netAccessPointId'
-     */
+    /** Test the property 'netAccessPointId' */
     @Test
     public void netAccessPointIdTest() {
         // TODO: test netAccessPointId
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'routeTableIds'
-     */
+    /** Test the property 'routeTableIds' */
     @Test
     public void routeTableIdsTest() {
         // TODO: test routeTableIds
     }
 
-    /**
-     * Test the property 'serviceName'
-     */
+    /** Test the property 'serviceName' */
     @Test
     public void serviceNameTest() {
         // TODO: test serviceName
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

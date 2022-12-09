@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -31,22 +30,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateAccountResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for AccountApi
- */
+/** API tests for AccountApi */
 @Disabled
 public class AccountApiTest {
 
     private final AccountApi api = new AccountApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void checkAuthenticationTest() throws ApiException {
         CheckAuthenticationRequest checkAuthenticationRequest = null;
@@ -54,9 +44,7 @@ public class AccountApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createAccountTest() throws ApiException {
         CreateAccountRequest createAccountRequest = null;
@@ -64,9 +52,7 @@ public class AccountApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readAccountsTest() throws ApiException {
         ReadAccountsRequest readAccountsRequest = null;
@@ -74,44 +60,38 @@ public class AccountApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readConsumptionAccountTest() throws ApiException {
         ReadConsumptionAccountRequest readConsumptionAccountRequest = null;
-        ReadConsumptionAccountResponse response = api.readConsumptionAccount(readConsumptionAccountRequest);
+        ReadConsumptionAccountResponse response =
+                api.readConsumptionAccount(readConsumptionAccountRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void resetAccountPasswordTest() throws ApiException {
         ResetAccountPasswordRequest resetAccountPasswordRequest = null;
-        ResetAccountPasswordResponse response = api.resetAccountPassword(resetAccountPasswordRequest);
+        ResetAccountPasswordResponse response =
+                api.resetAccountPassword(resetAccountPasswordRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void sendResetPasswordEmailTest() throws ApiException {
         SendResetPasswordEmailRequest sendResetPasswordEmailRequest = null;
-        SendResetPasswordEmailResponse response = api.sendResetPasswordEmail(sendResetPasswordEmailRequest);
+        SendResetPasswordEmailResponse response =
+                api.sendResetPasswordEmail(sendResetPasswordEmailRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateAccountTest() throws ApiException {
         UpdateAccountRequest updateAccountRequest = null;
         UpdateAccountResponse response = api.updateAccount(updateAccountRequest);
         // TODO: test validations
     }
-
 }

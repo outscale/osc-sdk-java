@@ -10,57 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.Phase1Options;
-import io.github.outscale.osc_sdk_java.client.model.Phase2Options;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VpnOptions
- */
+/** Model tests for VpnOptions */
 public class VpnOptionsTest {
     private final VpnOptions model = new VpnOptions();
 
-    /**
-     * Model tests for VpnOptions
-     */
+    /** Model tests for VpnOptions */
     @Test
     public void testVpnOptions() {
         // TODO: test VpnOptions
     }
 
-    /**
-     * Test the property 'phase1Options'
-     */
+    /** Test the property 'phase1Options' */
     @Test
     public void phase1OptionsTest() {
         // TODO: test phase1Options
     }
 
-    /**
-     * Test the property 'phase2Options'
-     */
+    /** Test the property 'phase2Options' */
     @Test
     public void phase2OptionsTest() {
         // TODO: test phase2Options
     }
 
-    /**
-     * Test the property 'tunnelInsideIpRange'
-     */
+    /** Test the property 'tunnelInsideIpRange' */
     @Test
     public void tunnelInsideIpRangeTest() {
         // TODO: test tunnelInsideIpRange
     }
-
 }

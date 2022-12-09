@@ -10,65 +10,42 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkLoadBalancerBackendMachinesRequest
- */
+/** Model tests for LinkLoadBalancerBackendMachinesRequest */
 public class LinkLoadBalancerBackendMachinesRequestTest {
-    private final LinkLoadBalancerBackendMachinesRequest model = new LinkLoadBalancerBackendMachinesRequest();
+    private final LinkLoadBalancerBackendMachinesRequest model =
+            new LinkLoadBalancerBackendMachinesRequest();
 
-    /**
-     * Model tests for LinkLoadBalancerBackendMachinesRequest
-     */
+    /** Model tests for LinkLoadBalancerBackendMachinesRequest */
     @Test
     public void testLinkLoadBalancerBackendMachinesRequest() {
         // TODO: test LinkLoadBalancerBackendMachinesRequest
     }
 
-    /**
-     * Test the property 'backendIps'
-     */
+    /** Test the property 'backendIps' */
     @Test
     public void backendIpsTest() {
         // TODO: test backendIps
     }
 
-    /**
-     * Test the property 'backendVmIds'
-     */
+    /** Test the property 'backendVmIds' */
     @Test
     public void backendVmIdsTest() {
         // TODO: test backendVmIds
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
-
 }

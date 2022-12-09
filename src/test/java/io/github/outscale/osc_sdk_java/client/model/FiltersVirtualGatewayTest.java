@@ -10,97 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersVirtualGateway
- */
+/** Model tests for FiltersVirtualGateway */
 public class FiltersVirtualGatewayTest {
     private final FiltersVirtualGateway model = new FiltersVirtualGateway();
 
-    /**
-     * Model tests for FiltersVirtualGateway
-     */
+    /** Model tests for FiltersVirtualGateway */
     @Test
     public void testFiltersVirtualGateway() {
         // TODO: test FiltersVirtualGateway
     }
 
-    /**
-     * Test the property 'connectionTypes'
-     */
+    /** Test the property 'connectionTypes' */
     @Test
     public void connectionTypesTest() {
         // TODO: test connectionTypes
     }
 
-    /**
-     * Test the property 'linkNetIds'
-     */
+    /** Test the property 'linkNetIds' */
     @Test
     public void linkNetIdsTest() {
         // TODO: test linkNetIds
     }
 
-    /**
-     * Test the property 'linkStates'
-     */
+    /** Test the property 'linkStates' */
     @Test
     public void linkStatesTest() {
         // TODO: test linkStates
     }
 
-    /**
-     * Test the property 'states'
-     */
+    /** Test the property 'states' */
     @Test
     public void statesTest() {
         // TODO: test states
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'virtualGatewayIds'
-     */
+    /** Test the property 'virtualGatewayIds' */
     @Test
     public void virtualGatewayIdsTest() {
         // TODO: test virtualGatewayIds
     }
-
 }

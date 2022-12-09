@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,28 +17,18 @@ import io.github.outscale.osc_sdk_java.client.model.CreateKeypairRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateKeypairResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteKeypairRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteKeypairResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadKeypairsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadKeypairsResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for KeypairApi
- */
+/** API tests for KeypairApi */
 @Disabled
 public class KeypairApiTest {
 
     private final KeypairApi api = new KeypairApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createKeypairTest() throws ApiException {
         CreateKeypairRequest createKeypairRequest = null;
@@ -47,9 +36,7 @@ public class KeypairApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteKeypairTest() throws ApiException {
         DeleteKeypairRequest deleteKeypairRequest = null;
@@ -57,14 +44,11 @@ public class KeypairApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readKeypairsTest() throws ApiException {
         ReadKeypairsRequest readKeypairsRequest = null;
         ReadKeypairsResponse response = api.readKeypairs(readKeypairsRequest);
         // TODO: test validations
     }
-
 }

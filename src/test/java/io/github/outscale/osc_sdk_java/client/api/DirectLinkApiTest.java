@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -23,22 +22,13 @@ import io.github.outscale.osc_sdk_java.client.model.ReadDirectLinksResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for DirectLinkApi
- */
+/** API tests for DirectLinkApi */
 @Disabled
 public class DirectLinkApiTest {
 
     private final DirectLinkApi api = new DirectLinkApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createDirectLinkTest() throws ApiException {
         CreateDirectLinkRequest createDirectLinkRequest = null;
@@ -46,9 +36,7 @@ public class DirectLinkApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteDirectLinkTest() throws ApiException {
         DeleteDirectLinkRequest deleteDirectLinkRequest = null;
@@ -56,14 +44,11 @@ public class DirectLinkApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readDirectLinksTest() throws ApiException {
         ReadDirectLinksRequest readDirectLinksRequest = null;
         ReadDirectLinksResponse response = api.readDirectLinks(readDirectLinksRequest);
         // TODO: test validations
     }
-
 }

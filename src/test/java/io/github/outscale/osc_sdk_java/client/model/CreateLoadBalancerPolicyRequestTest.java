@@ -10,79 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateLoadBalancerPolicyRequest
- */
+/** Model tests for CreateLoadBalancerPolicyRequest */
 public class CreateLoadBalancerPolicyRequestTest {
     private final CreateLoadBalancerPolicyRequest model = new CreateLoadBalancerPolicyRequest();
 
-    /**
-     * Model tests for CreateLoadBalancerPolicyRequest
-     */
+    /** Model tests for CreateLoadBalancerPolicyRequest */
     @Test
     public void testCreateLoadBalancerPolicyRequest() {
         // TODO: test CreateLoadBalancerPolicyRequest
     }
 
-    /**
-     * Test the property 'cookieExpirationPeriod'
-     */
+    /** Test the property 'cookieExpirationPeriod' */
     @Test
     public void cookieExpirationPeriodTest() {
         // TODO: test cookieExpirationPeriod
     }
 
-    /**
-     * Test the property 'cookieName'
-     */
+    /** Test the property 'cookieName' */
     @Test
     public void cookieNameTest() {
         // TODO: test cookieName
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
 
-    /**
-     * Test the property 'policyName'
-     */
+    /** Test the property 'policyName' */
     @Test
     public void policyNameTest() {
         // TODO: test policyName
     }
 
-    /**
-     * Test the property 'policyType'
-     */
+    /** Test the property 'policyType' */
     @Test
     public void policyTypeTest() {
         // TODO: test policyType
     }
-
 }

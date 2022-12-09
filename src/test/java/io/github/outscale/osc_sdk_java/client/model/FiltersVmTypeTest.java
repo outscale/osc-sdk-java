@@ -10,81 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersVmType
- */
+/** Model tests for FiltersVmType */
 public class FiltersVmTypeTest {
     private final FiltersVmType model = new FiltersVmType();
 
-    /**
-     * Model tests for FiltersVmType
-     */
+    /** Model tests for FiltersVmType */
     @Test
     public void testFiltersVmType() {
         // TODO: test FiltersVmType
     }
 
-    /**
-     * Test the property 'bsuOptimized'
-     */
+    /** Test the property 'bsuOptimized' */
     @Test
     public void bsuOptimizedTest() {
         // TODO: test bsuOptimized
     }
 
-    /**
-     * Test the property 'memorySizes'
-     */
+    /** Test the property 'memorySizes' */
     @Test
     public void memorySizesTest() {
         // TODO: test memorySizes
     }
 
-    /**
-     * Test the property 'vcoreCounts'
-     */
+    /** Test the property 'vcoreCounts' */
     @Test
     public void vcoreCountsTest() {
         // TODO: test vcoreCounts
     }
 
-    /**
-     * Test the property 'vmTypeNames'
-     */
+    /** Test the property 'vmTypeNames' */
     @Test
     public void vmTypeNamesTest() {
         // TODO: test vmTypeNames
     }
 
-    /**
-     * Test the property 'volumeCounts'
-     */
+    /** Test the property 'volumeCounts' */
     @Test
     public void volumeCountsTest() {
         // TODO: test volumeCounts
     }
 
-    /**
-     * Test the property 'volumeSizes'
-     */
+    /** Test the property 'volumeSizes' */
     @Test
     public void volumeSizesTest() {
         // TODO: test volumeSizes
     }
-
 }

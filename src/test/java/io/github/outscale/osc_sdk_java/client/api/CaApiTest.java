@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -25,22 +24,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateCaResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for CaApi
- */
+/** API tests for CaApi */
 @Disabled
 public class CaApiTest {
 
     private final CaApi api = new CaApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createCaTest() throws ApiException {
         CreateCaRequest createCaRequest = null;
@@ -48,9 +38,7 @@ public class CaApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteCaTest() throws ApiException {
         DeleteCaRequest deleteCaRequest = null;
@@ -58,9 +46,7 @@ public class CaApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readCasTest() throws ApiException {
         ReadCasRequest readCasRequest = null;
@@ -68,14 +54,11 @@ public class CaApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateCaTest() throws ApiException {
         UpdateCaRequest updateCaRequest = null;
         UpdateCaResponse response = api.updateCa(updateCaRequest);
         // TODO: test validations
     }
-
 }

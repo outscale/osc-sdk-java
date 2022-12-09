@@ -10,41 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersDirectLink
- */
+/** Model tests for FiltersDirectLink */
 public class FiltersDirectLinkTest {
     private final FiltersDirectLink model = new FiltersDirectLink();
 
-    /**
-     * Model tests for FiltersDirectLink
-     */
+    /** Model tests for FiltersDirectLink */
     @Test
     public void testFiltersDirectLink() {
         // TODO: test FiltersDirectLink
     }
 
-    /**
-     * Test the property 'directLinkIds'
-     */
+    /** Test the property 'directLinkIds' */
     @Test
     public void directLinkIdsTest() {
         // TODO: test directLinkIds
     }
-
 }

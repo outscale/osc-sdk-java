@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ListenerRuleForCreation
- */
+/** Model tests for ListenerRuleForCreation */
 public class ListenerRuleForCreationTest {
     private final ListenerRuleForCreation model = new ListenerRuleForCreation();
 
-    /**
-     * Model tests for ListenerRuleForCreation
-     */
+    /** Model tests for ListenerRuleForCreation */
     @Test
     public void testListenerRuleForCreation() {
         // TODO: test ListenerRuleForCreation
     }
 
-    /**
-     * Test the property 'action'
-     */
+    /** Test the property 'action' */
     @Test
     public void actionTest() {
         // TODO: test action
     }
 
-    /**
-     * Test the property 'hostNamePattern'
-     */
+    /** Test the property 'hostNamePattern' */
     @Test
     public void hostNamePatternTest() {
         // TODO: test hostNamePattern
     }
 
-    /**
-     * Test the property 'listenerRuleName'
-     */
+    /** Test the property 'listenerRuleName' */
     @Test
     public void listenerRuleNameTest() {
         // TODO: test listenerRuleName
     }
 
-    /**
-     * Test the property 'pathPattern'
-     */
+    /** Test the property 'pathPattern' */
     @Test
     public void pathPatternTest() {
         // TODO: test pathPattern
     }
 
-    /**
-     * Test the property 'priority'
-     */
+    /** Test the property 'priority' */
     @Test
     public void priorityTest() {
         // TODO: test priority
     }
-
 }

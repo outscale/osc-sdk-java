@@ -10,98 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.PrivateIpLight;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for NicForVmCreation
- */
+/** Model tests for NicForVmCreation */
 public class NicForVmCreationTest {
     private final NicForVmCreation model = new NicForVmCreation();
 
-    /**
-     * Model tests for NicForVmCreation
-     */
+    /** Model tests for NicForVmCreation */
     @Test
     public void testNicForVmCreation() {
         // TODO: test NicForVmCreation
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'deviceNumber'
-     */
+    /** Test the property 'deviceNumber' */
     @Test
     public void deviceNumberTest() {
         // TODO: test deviceNumber
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'privateIps'
-     */
+    /** Test the property 'privateIps' */
     @Test
     public void privateIpsTest() {
         // TODO: test privateIps
     }
 
-    /**
-     * Test the property 'secondaryPrivateIpCount'
-     */
+    /** Test the property 'secondaryPrivateIpCount' */
     @Test
     public void secondaryPrivateIpCountTest() {
         // TODO: test secondaryPrivateIpCount
     }
 
-    /**
-     * Test the property 'securityGroupIds'
-     */
+    /** Test the property 'securityGroupIds' */
     @Test
     public void securityGroupIdsTest() {
         // TODO: test securityGroupIds
     }
 
-    /**
-     * Test the property 'subnetId'
-     */
+    /** Test the property 'subnetId' */
     @Test
     public void subnetIdTest() {
         // TODO: test subnetId
     }
-
 }

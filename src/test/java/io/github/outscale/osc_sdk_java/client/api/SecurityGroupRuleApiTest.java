@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,41 +17,30 @@ import io.github.outscale.osc_sdk_java.client.model.CreateSecurityGroupRuleReque
 import io.github.outscale.osc_sdk_java.client.model.CreateSecurityGroupRuleResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSecurityGroupRuleResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for SecurityGroupRuleApi
- */
+/** API tests for SecurityGroupRuleApi */
 @Disabled
 public class SecurityGroupRuleApiTest {
 
     private final SecurityGroupRuleApi api = new SecurityGroupRuleApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createSecurityGroupRuleTest() throws ApiException {
         CreateSecurityGroupRuleRequest createSecurityGroupRuleRequest = null;
-        CreateSecurityGroupRuleResponse response = api.createSecurityGroupRule(createSecurityGroupRuleRequest);
+        CreateSecurityGroupRuleResponse response =
+                api.createSecurityGroupRule(createSecurityGroupRuleRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteSecurityGroupRuleTest() throws ApiException {
         DeleteSecurityGroupRuleRequest deleteSecurityGroupRuleRequest = null;
-        DeleteSecurityGroupRuleResponse response = api.deleteSecurityGroupRule(deleteSecurityGroupRuleRequest);
+        DeleteSecurityGroupRuleResponse response =
+                api.deleteSecurityGroupRule(deleteSecurityGroupRuleRequest);
         // TODO: test validations
     }
-
 }

@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UnlinkVolumeRequest
- */
+/** Model tests for UnlinkVolumeRequest */
 public class UnlinkVolumeRequestTest {
     private final UnlinkVolumeRequest model = new UnlinkVolumeRequest();
 
-    /**
-     * Model tests for UnlinkVolumeRequest
-     */
+    /** Model tests for UnlinkVolumeRequest */
     @Test
     public void testUnlinkVolumeRequest() {
         // TODO: test UnlinkVolumeRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'forceUnlink'
-     */
+    /** Test the property 'forceUnlink' */
     @Test
     public void forceUnlinkTest() {
         // TODO: test forceUnlink
     }
 
-    /**
-     * Test the property 'volumeId'
-     */
+    /** Test the property 'volumeId' */
     @Test
     public void volumeIdTest() {
         // TODO: test volumeId
     }
-
 }

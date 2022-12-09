@@ -10,323 +10,325 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * UpdateVolumeRequest
- */
+/** UpdateVolumeRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateVolumeRequest {
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public static final String SERIALIZED_NAME_IOPS = "Iops";
-  @SerializedName(SERIALIZED_NAME_IOPS)
-  private Integer iops;
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-  public static final String SERIALIZED_NAME_SIZE = "Size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
-  private Integer size;
+    public static final String SERIALIZED_NAME_IOPS = "Iops";
 
-  public static final String SERIALIZED_NAME_VOLUME_ID = "VolumeId";
-  @SerializedName(SERIALIZED_NAME_VOLUME_ID)
-  private String volumeId;
+    @SerializedName(SERIALIZED_NAME_IOPS)
+    private Integer iops;
 
-  public static final String SERIALIZED_NAME_VOLUME_TYPE = "VolumeType";
-  @SerializedName(SERIALIZED_NAME_VOLUME_TYPE)
-  private String volumeType;
+    public static final String SERIALIZED_NAME_SIZE = "Size";
 
-  public UpdateVolumeRequest() {
-  }
+    @SerializedName(SERIALIZED_NAME_SIZE)
+    private Integer size;
 
-  public UpdateVolumeRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_VOLUME_ID = "VolumeId";
 
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
+    @SerializedName(SERIALIZED_NAME_VOLUME_ID)
+    private String volumeId;
 
-  public Boolean getDryRun() {
-    return dryRun;
-  }
+    public static final String SERIALIZED_NAME_VOLUME_TYPE = "VolumeType";
 
+    @SerializedName(SERIALIZED_NAME_VOLUME_TYPE)
+    private String volumeType;
 
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
+    public UpdateVolumeRequest() {}
 
+    public UpdateVolumeRequest dryRun(Boolean dryRun) {
 
-  public UpdateVolumeRequest iops(Integer iops) {
-    
-    this.iops = iops;
-    return this;
-  }
-
-   /**
-   * The new number of I/O operations per second (IOPS). This parameter can be specified only if you update an &#x60;io1&#x60; volume. The maximum number of IOPS allowed for &#x60;io1&#x60; volumes is &#x60;13000&#x60; with a maximum performance ratio of 300 IOPS per gibibyte. This modification is instantaneous on a cold volume, not on a hot one.
-   * @return iops
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getIops() {
-    return iops;
-  }
-
-
-  public void setIops(Integer iops) {
-    this.iops = iops;
-  }
-
-
-  public UpdateVolumeRequest size(Integer size) {
-    
-    this.size = size;
-    return this;
-  }
-
-   /**
-   * (cold volume only) The new size of the volume, in gibibytes (GiB). This value must be equal to or greater than the current size of the volume. This modification is not instantaneous.
-   * @return size
-  **/
-  @javax.annotation.Nullable
-
-  public Integer getSize() {
-    return size;
-  }
-
-
-  public void setSize(Integer size) {
-    this.size = size;
-  }
-
-
-  public UpdateVolumeRequest volumeId(String volumeId) {
-    
-    this.volumeId = volumeId;
-    return this;
-  }
-
-   /**
-   * The ID of the volume you want to update.
-   * @return volumeId
-  **/
-  @javax.annotation.Nonnull
-
-  public String getVolumeId() {
-    return volumeId;
-  }
-
-
-  public void setVolumeId(String volumeId) {
-    this.volumeId = volumeId;
-  }
-
-
-  public UpdateVolumeRequest volumeType(String volumeType) {
-    
-    this.volumeType = volumeType;
-    return this;
-  }
-
-   /**
-   * (cold volume only) The new type of the volume (&#x60;standard&#x60; \\| &#x60;io1&#x60; \\| &#x60;gp2&#x60;). This modification is instantaneous. If you update to an &#x60;io1&#x60; volume, you must also specify the &#x60;Iops&#x60; parameter.
-   * @return volumeType
-  **/
-  @javax.annotation.Nullable
-
-  public String getVolumeType() {
-    return volumeType;
-  }
-
-
-  public void setVolumeType(String volumeType) {
-    this.volumeType = volumeType;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.dryRun = dryRun;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
     }
-    UpdateVolumeRequest updateVolumeRequest = (UpdateVolumeRequest) o;
-    return Objects.equals(this.dryRun, updateVolumeRequest.dryRun) &&
-        Objects.equals(this.iops, updateVolumeRequest.iops) &&
-        Objects.equals(this.size, updateVolumeRequest.size) &&
-        Objects.equals(this.volumeId, updateVolumeRequest.volumeId) &&
-        Objects.equals(this.volumeType, updateVolumeRequest.volumeType);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(dryRun, iops, size, volumeId, volumeType);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateVolumeRequest {\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    iops: ").append(toIndentedString(iops)).append("\n");
-    sb.append("    size: ").append(toIndentedString(size)).append("\n");
-    sb.append("    volumeId: ").append(toIndentedString(volumeId)).append("\n");
-    sb.append("    volumeType: ").append(toIndentedString(volumeType)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public UpdateVolumeRequest iops(Integer iops) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.iops = iops;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("DryRun");
-    openapiFields.add("Iops");
-    openapiFields.add("Size");
-    openapiFields.add("VolumeId");
-    openapiFields.add("VolumeType");
+    /**
+     * The new number of I/O operations per second (IOPS). This parameter can be specified only if
+     * you update an &#x60;io1&#x60; volume. The maximum number of IOPS allowed for &#x60;io1&#x60;
+     * volumes is &#x60;13000&#x60; with a maximum performance ratio of 300 IOPS per gibibyte. This
+     * modification is instantaneous on a cold volume, not on a hot one.
+     *
+     * @return iops
+     */
+    @javax.annotation.Nullable
+    public Integer getIops() {
+        return iops;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("VolumeId");
-  }
+    public void setIops(Integer iops) {
+        this.iops = iops;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UpdateVolumeRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!UpdateVolumeRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateVolumeRequest is not found in the empty JSON string", UpdateVolumeRequest.openapiRequiredFields.toString()));
-        }
-      }
+    public UpdateVolumeRequest size(Integer size) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!UpdateVolumeRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateVolumeRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        this.size = size;
+        return this;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpdateVolumeRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("VolumeId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `VolumeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeId").toString()));
-      }
-      if ((jsonObj.get("VolumeType") != null && !jsonObj.get("VolumeType").isJsonNull()) && !jsonObj.get("VolumeType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `VolumeType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("VolumeType").toString()));
-      }
-  }
+    /**
+     * (cold volume only) The new size of the volume, in gibibytes (GiB). This value must be equal
+     * to or greater than the current size of the volume. This modification is not instantaneous.
+     *
+     * @return size
+     */
+    @javax.annotation.Nullable
+    public Integer getSize() {
+        return size;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public UpdateVolumeRequest volumeId(String volumeId) {
+
+        this.volumeId = volumeId;
+        return this;
+    }
+
+    /**
+     * The ID of the volume you want to update.
+     *
+     * @return volumeId
+     */
+    @javax.annotation.Nonnull
+    public String getVolumeId() {
+        return volumeId;
+    }
+
+    public void setVolumeId(String volumeId) {
+        this.volumeId = volumeId;
+    }
+
+    public UpdateVolumeRequest volumeType(String volumeType) {
+
+        this.volumeType = volumeType;
+        return this;
+    }
+
+    /**
+     * (cold volume only) The new type of the volume (&#x60;standard&#x60; \\| &#x60;io1&#x60; \\|
+     * &#x60;gp2&#x60;). This modification is instantaneous. If you update to an &#x60;io1&#x60;
+     * volume, you must also specify the &#x60;Iops&#x60; parameter.
+     *
+     * @return volumeType
+     */
+    @javax.annotation.Nullable
+    public String getVolumeType() {
+        return volumeType;
+    }
+
+    public void setVolumeType(String volumeType) {
+        this.volumeType = volumeType;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateVolumeRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateVolumeRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateVolumeRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateVolumeRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<UpdateVolumeRequest>() {
-           @Override
-           public void write(JsonWriter out, UpdateVolumeRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public UpdateVolumeRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UpdateVolumeRequest updateVolumeRequest = (UpdateVolumeRequest) o;
+        return Objects.equals(this.dryRun, updateVolumeRequest.dryRun)
+                && Objects.equals(this.iops, updateVolumeRequest.iops)
+                && Objects.equals(this.size, updateVolumeRequest.size)
+                && Objects.equals(this.volumeId, updateVolumeRequest.volumeId)
+                && Objects.equals(this.volumeType, updateVolumeRequest.volumeType);
     }
-  }
 
- /**
-  * Create an instance of UpdateVolumeRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateVolumeRequest
-  * @throws IOException if the JSON string is invalid with respect to UpdateVolumeRequest
-  */
-  public static UpdateVolumeRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateVolumeRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(dryRun, iops, size, volumeId, volumeType);
+    }
 
- /**
-  * Convert an instance of UpdateVolumeRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class UpdateVolumeRequest {\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    iops: ").append(toIndentedString(iops)).append("\n");
+        sb.append("    size: ").append(toIndentedString(size)).append("\n");
+        sb.append("    volumeId: ").append(toIndentedString(volumeId)).append("\n");
+        sb.append("    volumeType: ").append(toIndentedString(volumeType)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DryRun");
+        openapiFields.add("Iops");
+        openapiFields.add("Size");
+        openapiFields.add("VolumeId");
+        openapiFields.add("VolumeType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("VolumeId");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to UpdateVolumeRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!UpdateVolumeRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in UpdateVolumeRequest is not found in"
+                                        + " the empty JSON string",
+                                UpdateVolumeRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!UpdateVolumeRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `UpdateVolumeRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : UpdateVolumeRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("VolumeId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `VolumeId` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("VolumeId").toString()));
+        }
+        if ((jsonObj.get("VolumeType") != null && !jsonObj.get("VolumeType").isJsonNull())
+                && !jsonObj.get("VolumeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `VolumeType` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("VolumeType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UpdateVolumeRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UpdateVolumeRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UpdateVolumeRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UpdateVolumeRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UpdateVolumeRequest>() {
+                        @Override
+                        public void write(JsonWriter out, UpdateVolumeRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UpdateVolumeRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UpdateVolumeRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UpdateVolumeRequest
+     * @throws IOException if the JSON string is invalid with respect to UpdateVolumeRequest
+     */
+    public static UpdateVolumeRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UpdateVolumeRequest.class);
+    }
+
+    /**
+     * Convert an instance of UpdateVolumeRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

@@ -10,264 +10,256 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.Phase1Options;
-import io.github.outscale.osc_sdk_java.client.model.Phase2Options;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the VPN options.
- */
+/** Information about the VPN options. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VpnOptions {
-  public static final String SERIALIZED_NAME_PHASE1_OPTIONS = "Phase1Options";
-  @SerializedName(SERIALIZED_NAME_PHASE1_OPTIONS)
-  private Phase1Options phase1Options;
+    public static final String SERIALIZED_NAME_PHASE1_OPTIONS = "Phase1Options";
 
-  public static final String SERIALIZED_NAME_PHASE2_OPTIONS = "Phase2Options";
-  @SerializedName(SERIALIZED_NAME_PHASE2_OPTIONS)
-  private Phase2Options phase2Options;
+    @SerializedName(SERIALIZED_NAME_PHASE1_OPTIONS)
+    private Phase1Options phase1Options;
 
-  public static final String SERIALIZED_NAME_TUNNEL_INSIDE_IP_RANGE = "TunnelInsideIpRange";
-  @SerializedName(SERIALIZED_NAME_TUNNEL_INSIDE_IP_RANGE)
-  private String tunnelInsideIpRange;
+    public static final String SERIALIZED_NAME_PHASE2_OPTIONS = "Phase2Options";
 
-  public VpnOptions() {
-  }
+    @SerializedName(SERIALIZED_NAME_PHASE2_OPTIONS)
+    private Phase2Options phase2Options;
 
-  public VpnOptions phase1Options(Phase1Options phase1Options) {
-    
-    this.phase1Options = phase1Options;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_TUNNEL_INSIDE_IP_RANGE = "TunnelInsideIpRange";
 
-   /**
-   * Get phase1Options
-   * @return phase1Options
-  **/
-  @javax.annotation.Nullable
+    @SerializedName(SERIALIZED_NAME_TUNNEL_INSIDE_IP_RANGE)
+    private String tunnelInsideIpRange;
 
-  public Phase1Options getPhase1Options() {
-    return phase1Options;
-  }
+    public VpnOptions() {}
 
+    public VpnOptions phase1Options(Phase1Options phase1Options) {
 
-  public void setPhase1Options(Phase1Options phase1Options) {
-    this.phase1Options = phase1Options;
-  }
-
-
-  public VpnOptions phase2Options(Phase2Options phase2Options) {
-    
-    this.phase2Options = phase2Options;
-    return this;
-  }
-
-   /**
-   * Get phase2Options
-   * @return phase2Options
-  **/
-  @javax.annotation.Nullable
-
-  public Phase2Options getPhase2Options() {
-    return phase2Options;
-  }
-
-
-  public void setPhase2Options(Phase2Options phase2Options) {
-    this.phase2Options = phase2Options;
-  }
-
-
-  public VpnOptions tunnelInsideIpRange(String tunnelInsideIpRange) {
-    
-    this.tunnelInsideIpRange = tunnelInsideIpRange;
-    return this;
-  }
-
-   /**
-   * The range of inside IPs for the tunnel. This must be a /30 CIDR block from the 169.254.254.0/24 range.
-   * @return tunnelInsideIpRange
-  **/
-  @javax.annotation.Nullable
-
-  public String getTunnelInsideIpRange() {
-    return tunnelInsideIpRange;
-  }
-
-
-  public void setTunnelInsideIpRange(String tunnelInsideIpRange) {
-    this.tunnelInsideIpRange = tunnelInsideIpRange;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.phase1Options = phase1Options;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get phase1Options
+     *
+     * @return phase1Options
+     */
+    @javax.annotation.Nullable
+    public Phase1Options getPhase1Options() {
+        return phase1Options;
     }
-    VpnOptions vpnOptions = (VpnOptions) o;
-    return Objects.equals(this.phase1Options, vpnOptions.phase1Options) &&
-        Objects.equals(this.phase2Options, vpnOptions.phase2Options) &&
-        Objects.equals(this.tunnelInsideIpRange, vpnOptions.tunnelInsideIpRange);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(phase1Options, phase2Options, tunnelInsideIpRange);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VpnOptions {\n");
-    sb.append("    phase1Options: ").append(toIndentedString(phase1Options)).append("\n");
-    sb.append("    phase2Options: ").append(toIndentedString(phase2Options)).append("\n");
-    sb.append("    tunnelInsideIpRange: ").append(toIndentedString(tunnelInsideIpRange)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setPhase1Options(Phase1Options phase1Options) {
+        this.phase1Options = phase1Options;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public VpnOptions phase2Options(Phase2Options phase2Options) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.phase2Options = phase2Options;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Phase1Options");
-    openapiFields.add("Phase2Options");
-    openapiFields.add("TunnelInsideIpRange");
+    /**
+     * Get phase2Options
+     *
+     * @return phase2Options
+     */
+    @javax.annotation.Nullable
+    public Phase2Options getPhase2Options() {
+        return phase2Options;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setPhase2Options(Phase2Options phase2Options) {
+        this.phase2Options = phase2Options;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to VpnOptions
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!VpnOptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VpnOptions is not found in the empty JSON string", VpnOptions.openapiRequiredFields.toString()));
-        }
-      }
+    public VpnOptions tunnelInsideIpRange(String tunnelInsideIpRange) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!VpnOptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VpnOptions` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // validate the optional field `Phase1Options`
-      if (jsonObj.get("Phase1Options") != null && !jsonObj.get("Phase1Options").isJsonNull()) {
-        Phase1Options.validateJsonObject(jsonObj.getAsJsonObject("Phase1Options"));
-      }
-      // validate the optional field `Phase2Options`
-      if (jsonObj.get("Phase2Options") != null && !jsonObj.get("Phase2Options").isJsonNull()) {
-        Phase2Options.validateJsonObject(jsonObj.getAsJsonObject("Phase2Options"));
-      }
-      if ((jsonObj.get("TunnelInsideIpRange") != null && !jsonObj.get("TunnelInsideIpRange").isJsonNull()) && !jsonObj.get("TunnelInsideIpRange").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `TunnelInsideIpRange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TunnelInsideIpRange").toString()));
-      }
-  }
+        this.tunnelInsideIpRange = tunnelInsideIpRange;
+        return this;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    /**
+     * The range of inside IPs for the tunnel. This must be a /30 CIDR block from the
+     * 169.254.254.0/24 range.
+     *
+     * @return tunnelInsideIpRange
+     */
+    @javax.annotation.Nullable
+    public String getTunnelInsideIpRange() {
+        return tunnelInsideIpRange;
+    }
+
+    public void setTunnelInsideIpRange(String tunnelInsideIpRange) {
+        this.tunnelInsideIpRange = tunnelInsideIpRange;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!VpnOptions.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'VpnOptions' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<VpnOptions> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(VpnOptions.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<VpnOptions>() {
-           @Override
-           public void write(JsonWriter out, VpnOptions value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public VpnOptions read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        VpnOptions vpnOptions = (VpnOptions) o;
+        return Objects.equals(this.phase1Options, vpnOptions.phase1Options)
+                && Objects.equals(this.phase2Options, vpnOptions.phase2Options)
+                && Objects.equals(this.tunnelInsideIpRange, vpnOptions.tunnelInsideIpRange);
     }
-  }
 
- /**
-  * Create an instance of VpnOptions given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of VpnOptions
-  * @throws IOException if the JSON string is invalid with respect to VpnOptions
-  */
-  public static VpnOptions fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, VpnOptions.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(phase1Options, phase2Options, tunnelInsideIpRange);
+    }
 
- /**
-  * Convert an instance of VpnOptions to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class VpnOptions {\n");
+        sb.append("    phase1Options: ").append(toIndentedString(phase1Options)).append("\n");
+        sb.append("    phase2Options: ").append(toIndentedString(phase2Options)).append("\n");
+        sb.append("    tunnelInsideIpRange: ")
+                .append(toIndentedString(tunnelInsideIpRange))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Phase1Options");
+        openapiFields.add("Phase2Options");
+        openapiFields.add("TunnelInsideIpRange");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to VpnOptions
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!VpnOptions.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in VpnOptions is not found in the empty"
+                                        + " JSON string",
+                                VpnOptions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!VpnOptions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `VpnOptions` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // validate the optional field `Phase1Options`
+        if (jsonObj.get("Phase1Options") != null && !jsonObj.get("Phase1Options").isJsonNull()) {
+            Phase1Options.validateJsonObject(jsonObj.getAsJsonObject("Phase1Options"));
+        }
+        // validate the optional field `Phase2Options`
+        if (jsonObj.get("Phase2Options") != null && !jsonObj.get("Phase2Options").isJsonNull()) {
+            Phase2Options.validateJsonObject(jsonObj.getAsJsonObject("Phase2Options"));
+        }
+        if ((jsonObj.get("TunnelInsideIpRange") != null
+                        && !jsonObj.get("TunnelInsideIpRange").isJsonNull())
+                && !jsonObj.get("TunnelInsideIpRange").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `TunnelInsideIpRange` to be a primitive type in"
+                                    + " the JSON string but got `%s`",
+                            jsonObj.get("TunnelInsideIpRange").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!VpnOptions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VpnOptions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<VpnOptions> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(VpnOptions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<VpnOptions>() {
+                        @Override
+                        public void write(JsonWriter out, VpnOptions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public VpnOptions read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of VpnOptions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of VpnOptions
+     * @throws IOException if the JSON string is invalid with respect to VpnOptions
+     */
+    public static VpnOptions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, VpnOptions.class);
+    }
+
+    /**
+     * Convert an instance of VpnOptions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

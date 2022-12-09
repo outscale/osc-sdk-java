@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkInternetServiceRequest
- */
+/** Model tests for LinkInternetServiceRequest */
 public class LinkInternetServiceRequestTest {
     private final LinkInternetServiceRequest model = new LinkInternetServiceRequest();
 
-    /**
-     * Model tests for LinkInternetServiceRequest
-     */
+    /** Model tests for LinkInternetServiceRequest */
     @Test
     public void testLinkInternetServiceRequest() {
         // TODO: test LinkInternetServiceRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'internetServiceId'
-     */
+    /** Test the property 'internetServiceId' */
     @Test
     public void internetServiceIdTest() {
         // TODO: test internetServiceId
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
-
 }

@@ -10,72 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.VpnOptions;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateVpnConnectionRequest
- */
+/** Model tests for UpdateVpnConnectionRequest */
 public class UpdateVpnConnectionRequestTest {
     private final UpdateVpnConnectionRequest model = new UpdateVpnConnectionRequest();
 
-    /**
-     * Model tests for UpdateVpnConnectionRequest
-     */
+    /** Model tests for UpdateVpnConnectionRequest */
     @Test
     public void testUpdateVpnConnectionRequest() {
         // TODO: test UpdateVpnConnectionRequest
     }
 
-    /**
-     * Test the property 'clientGatewayId'
-     */
+    /** Test the property 'clientGatewayId' */
     @Test
     public void clientGatewayIdTest() {
         // TODO: test clientGatewayId
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
 
-    /**
-     * Test the property 'vpnConnectionId'
-     */
+    /** Test the property 'vpnConnectionId' */
     @Test
     public void vpnConnectionIdTest() {
         // TODO: test vpnConnectionId
     }
 
-    /**
-     * Test the property 'vpnOptions'
-     */
+    /** Test the property 'vpnOptions' */
     @Test
     public void vpnOptionsTest() {
         // TODO: test vpnOptions
     }
-
 }

@@ -10,232 +10,223 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.VirtualGateway;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateVirtualGatewayResponse
- */
+/** CreateVirtualGatewayResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateVirtualGatewayResponse {
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public static final String SERIALIZED_NAME_VIRTUAL_GATEWAY = "VirtualGateway";
-  @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY)
-  private VirtualGateway virtualGateway;
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
 
-  public CreateVirtualGatewayResponse() {
-  }
+    public static final String SERIALIZED_NAME_VIRTUAL_GATEWAY = "VirtualGateway";
 
-  public CreateVirtualGatewayResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_VIRTUAL_GATEWAY)
+    private VirtualGateway virtualGateway;
 
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
+    public CreateVirtualGatewayResponse() {}
 
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
+    public CreateVirtualGatewayResponse responseContext(ResponseContext responseContext) {
 
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-  public CreateVirtualGatewayResponse virtualGateway(VirtualGateway virtualGateway) {
-    
-    this.virtualGateway = virtualGateway;
-    return this;
-  }
-
-   /**
-   * Get virtualGateway
-   * @return virtualGateway
-  **/
-  @javax.annotation.Nullable
-
-  public VirtualGateway getVirtualGateway() {
-    return virtualGateway;
-  }
-
-
-  public void setVirtualGateway(VirtualGateway virtualGateway) {
-    this.virtualGateway = virtualGateway;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.responseContext = responseContext;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
     }
-    CreateVirtualGatewayResponse createVirtualGatewayResponse = (CreateVirtualGatewayResponse) o;
-    return Objects.equals(this.responseContext, createVirtualGatewayResponse.responseContext) &&
-        Objects.equals(this.virtualGateway, createVirtualGatewayResponse.virtualGateway);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(responseContext, virtualGateway);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateVirtualGatewayResponse {\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("    virtualGateway: ").append(toIndentedString(virtualGateway)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateVirtualGatewayResponse virtualGateway(VirtualGateway virtualGateway) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.virtualGateway = virtualGateway;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ResponseContext");
-    openapiFields.add("VirtualGateway");
+    /**
+     * Get virtualGateway
+     *
+     * @return virtualGateway
+     */
+    @javax.annotation.Nullable
+    public VirtualGateway getVirtualGateway() {
+        return virtualGateway;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setVirtualGateway(VirtualGateway virtualGateway) {
+        this.virtualGateway = virtualGateway;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateVirtualGatewayResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateVirtualGatewayResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateVirtualGatewayResponse is not found in the empty JSON string", CreateVirtualGatewayResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateVirtualGatewayResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateVirtualGatewayResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-      // validate the optional field `VirtualGateway`
-      if (jsonObj.get("VirtualGateway") != null && !jsonObj.get("VirtualGateway").isJsonNull()) {
-        VirtualGateway.validateJsonObject(jsonObj.getAsJsonObject("VirtualGateway"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateVirtualGatewayResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateVirtualGatewayResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateVirtualGatewayResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateVirtualGatewayResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateVirtualGatewayResponse>() {
-           @Override
-           public void write(JsonWriter out, CreateVirtualGatewayResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateVirtualGatewayResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateVirtualGatewayResponse createVirtualGatewayResponse =
+                (CreateVirtualGatewayResponse) o;
+        return Objects.equals(this.responseContext, createVirtualGatewayResponse.responseContext)
+                && Objects.equals(this.virtualGateway, createVirtualGatewayResponse.virtualGateway);
     }
-  }
 
- /**
-  * Create an instance of CreateVirtualGatewayResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateVirtualGatewayResponse
-  * @throws IOException if the JSON string is invalid with respect to CreateVirtualGatewayResponse
-  */
-  public static CreateVirtualGatewayResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateVirtualGatewayResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(responseContext, virtualGateway);
+    }
 
- /**
-  * Convert an instance of CreateVirtualGatewayResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateVirtualGatewayResponse {\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("    virtualGateway: ").append(toIndentedString(virtualGateway)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ResponseContext");
+        openapiFields.add("VirtualGateway");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to
+     *     CreateVirtualGatewayResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateVirtualGatewayResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateVirtualGatewayResponse is not"
+                                        + " found in the empty JSON string",
+                                CreateVirtualGatewayResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateVirtualGatewayResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateVirtualGatewayResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+        // validate the optional field `VirtualGateway`
+        if (jsonObj.get("VirtualGateway") != null && !jsonObj.get("VirtualGateway").isJsonNull()) {
+            VirtualGateway.validateJsonObject(jsonObj.getAsJsonObject("VirtualGateway"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateVirtualGatewayResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateVirtualGatewayResponse' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateVirtualGatewayResponse> thisAdapter =
+                    gson.getDelegateAdapter(
+                            this, TypeToken.get(CreateVirtualGatewayResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateVirtualGatewayResponse>() {
+                        @Override
+                        public void write(JsonWriter out, CreateVirtualGatewayResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateVirtualGatewayResponse read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateVirtualGatewayResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateVirtualGatewayResponse
+     * @throws IOException if the JSON string is invalid with respect to
+     *     CreateVirtualGatewayResponse
+     */
+    public static CreateVirtualGatewayResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateVirtualGatewayResponse.class);
+    }
+
+    /**
+     * Convert an instance of CreateVirtualGatewayResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

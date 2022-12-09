@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VmType
- */
+/** Model tests for VmType */
 public class VmTypeTest {
     private final VmType model = new VmType();
 
-    /**
-     * Model tests for VmType
-     */
+    /** Model tests for VmType */
     @Test
     public void testVmType() {
         // TODO: test VmType
     }
 
-    /**
-     * Test the property 'bsuOptimized'
-     */
+    /** Test the property 'bsuOptimized' */
     @Test
     public void bsuOptimizedTest() {
         // TODO: test bsuOptimized
     }
 
-    /**
-     * Test the property 'maxPrivateIps'
-     */
+    /** Test the property 'maxPrivateIps' */
     @Test
     public void maxPrivateIpsTest() {
         // TODO: test maxPrivateIps
     }
 
-    /**
-     * Test the property 'memorySize'
-     */
+    /** Test the property 'memorySize' */
     @Test
     public void memorySizeTest() {
         // TODO: test memorySize
     }
 
-    /**
-     * Test the property 'vcoreCount'
-     */
+    /** Test the property 'vcoreCount' */
     @Test
     public void vcoreCountTest() {
         // TODO: test vcoreCount
     }
 
-    /**
-     * Test the property 'vmTypeName'
-     */
+    /** Test the property 'vmTypeName' */
     @Test
     public void vmTypeNameTest() {
         // TODO: test vmTypeName
     }
 
-    /**
-     * Test the property 'volumeCount'
-     */
+    /** Test the property 'volumeCount' */
     @Test
     public void volumeCountTest() {
         // TODO: test volumeCount
     }
 
-    /**
-     * Test the property 'volumeSize'
-     */
+    /** Test the property 'volumeSize' */
     @Test
     public void volumeSizeTest() {
         // TODO: test volumeSize
     }
-
 }

@@ -10,51 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.DhcpOptionsSet;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadDhcpOptionsResponse
- */
+/** Model tests for ReadDhcpOptionsResponse */
 public class ReadDhcpOptionsResponseTest {
     private final ReadDhcpOptionsResponse model = new ReadDhcpOptionsResponse();
 
-    /**
-     * Model tests for ReadDhcpOptionsResponse
-     */
+    /** Model tests for ReadDhcpOptionsResponse */
     @Test
     public void testReadDhcpOptionsResponse() {
         // TODO: test ReadDhcpOptionsResponse
     }
 
-    /**
-     * Test the property 'dhcpOptionsSets'
-     */
+    /** Test the property 'dhcpOptionsSets' */
     @Test
     public void dhcpOptionsSetsTest() {
         // TODO: test dhcpOptionsSets
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

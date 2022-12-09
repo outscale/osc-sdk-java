@@ -10,65 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateNetAccessPointRequest
- */
+/** Model tests for UpdateNetAccessPointRequest */
 public class UpdateNetAccessPointRequestTest {
     private final UpdateNetAccessPointRequest model = new UpdateNetAccessPointRequest();
 
-    /**
-     * Model tests for UpdateNetAccessPointRequest
-     */
+    /** Model tests for UpdateNetAccessPointRequest */
     @Test
     public void testUpdateNetAccessPointRequest() {
         // TODO: test UpdateNetAccessPointRequest
     }
 
-    /**
-     * Test the property 'addRouteTableIds'
-     */
+    /** Test the property 'addRouteTableIds' */
     @Test
     public void addRouteTableIdsTest() {
         // TODO: test addRouteTableIds
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'netAccessPointId'
-     */
+    /** Test the property 'netAccessPointId' */
     @Test
     public void netAccessPointIdTest() {
         // TODO: test netAccessPointId
     }
 
-    /**
-     * Test the property 'removeRouteTableIds'
-     */
+    /** Test the property 'removeRouteTableIds' */
     @Test
     public void removeRouteTableIdsTest() {
         // TODO: test removeRouteTableIds
     }
-
 }

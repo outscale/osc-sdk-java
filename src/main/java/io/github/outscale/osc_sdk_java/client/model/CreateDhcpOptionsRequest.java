@@ -10,350 +10,366 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateDhcpOptionsRequest
- */
+/** CreateDhcpOptionsRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateDhcpOptionsRequest {
-  public static final String SERIALIZED_NAME_DOMAIN_NAME = "DomainName";
-  @SerializedName(SERIALIZED_NAME_DOMAIN_NAME)
-  private String domainName;
+    public static final String SERIALIZED_NAME_DOMAIN_NAME = "DomainName";
 
-  public static final String SERIALIZED_NAME_DOMAIN_NAME_SERVERS = "DomainNameServers";
-  @SerializedName(SERIALIZED_NAME_DOMAIN_NAME_SERVERS)
-  private List<String> domainNameServers = null;
+    @SerializedName(SERIALIZED_NAME_DOMAIN_NAME)
+    private String domainName;
 
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    public static final String SERIALIZED_NAME_DOMAIN_NAME_SERVERS = "DomainNameServers";
 
-  public static final String SERIALIZED_NAME_LOG_SERVERS = "LogServers";
-  @SerializedName(SERIALIZED_NAME_LOG_SERVERS)
-  private List<String> logServers = null;
+    @SerializedName(SERIALIZED_NAME_DOMAIN_NAME_SERVERS)
+    private List<String> domainNameServers = null;
 
-  public static final String SERIALIZED_NAME_NTP_SERVERS = "NtpServers";
-  @SerializedName(SERIALIZED_NAME_NTP_SERVERS)
-  private List<String> ntpServers = null;
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public CreateDhcpOptionsRequest() {
-  }
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-  public CreateDhcpOptionsRequest domainName(String domainName) {
-    
-    this.domainName = domainName;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_LOG_SERVERS = "LogServers";
 
-   /**
-   * Specify a domain name (for example, &#x60;MyCompany.com&#x60;). You can specify only one domain name. You must specify at least one of the following parameters: &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or &#x60;NtpServers&#x60;.
-   * @return domainName
-  **/
-  @javax.annotation.Nullable
+    @SerializedName(SERIALIZED_NAME_LOG_SERVERS)
+    private List<String> logServers = null;
 
-  public String getDomainName() {
-    return domainName;
-  }
+    public static final String SERIALIZED_NAME_NTP_SERVERS = "NtpServers";
 
+    @SerializedName(SERIALIZED_NAME_NTP_SERVERS)
+    private List<String> ntpServers = null;
 
-  public void setDomainName(String domainName) {
-    this.domainName = domainName;
-  }
+    public CreateDhcpOptionsRequest() {}
 
+    public CreateDhcpOptionsRequest domainName(String domainName) {
 
-  public CreateDhcpOptionsRequest domainNameServers(List<String> domainNameServers) {
-    
-    this.domainNameServers = domainNameServers;
-    return this;
-  }
-
-  public CreateDhcpOptionsRequest addDomainNameServersItem(String domainNameServersItem) {
-    if (this.domainNameServers == null) {
-      this.domainNameServers = new ArrayList<>();
+        this.domainName = domainName;
+        return this;
     }
-    this.domainNameServers.add(domainNameServersItem);
-    return this;
-  }
 
-   /**
-   * The IPs of domain name servers. If no IPs are specified, the &#x60;OutscaleProvidedDNS&#x60; value is set by default. You must specify at least one of the following parameters: &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or &#x60;NtpServers&#x60;.
-   * @return domainNameServers
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getDomainNameServers() {
-    return domainNameServers;
-  }
-
-
-  public void setDomainNameServers(List<String> domainNameServers) {
-    this.domainNameServers = domainNameServers;
-  }
-
-
-  public CreateDhcpOptionsRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
-
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDryRun() {
-    return dryRun;
-  }
-
-
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
-
-
-  public CreateDhcpOptionsRequest logServers(List<String> logServers) {
-    
-    this.logServers = logServers;
-    return this;
-  }
-
-  public CreateDhcpOptionsRequest addLogServersItem(String logServersItem) {
-    if (this.logServers == null) {
-      this.logServers = new ArrayList<>();
+    /**
+     * Specify a domain name (for example, &#x60;MyCompany.com&#x60;). You can specify only one
+     * domain name. You must specify at least one of the following parameters:
+     * &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or
+     * &#x60;NtpServers&#x60;.
+     *
+     * @return domainName
+     */
+    @javax.annotation.Nullable
+    public String getDomainName() {
+        return domainName;
     }
-    this.logServers.add(logServersItem);
-    return this;
-  }
 
-   /**
-   * The IPs of the log servers. You must specify at least one of the following parameters: &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or &#x60;NtpServers&#x60;.
-   * @return logServers
-  **/
-  @javax.annotation.Nullable
-
-  public List<String> getLogServers() {
-    return logServers;
-  }
-
-
-  public void setLogServers(List<String> logServers) {
-    this.logServers = logServers;
-  }
-
-
-  public CreateDhcpOptionsRequest ntpServers(List<String> ntpServers) {
-    
-    this.ntpServers = ntpServers;
-    return this;
-  }
-
-  public CreateDhcpOptionsRequest addNtpServersItem(String ntpServersItem) {
-    if (this.ntpServers == null) {
-      this.ntpServers = new ArrayList<>();
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
     }
-    this.ntpServers.add(ntpServersItem);
-    return this;
-  }
 
-   /**
-   * The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the following parameters: &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or &#x60;NtpServers&#x60;.
-   * @return ntpServers
-  **/
-  @javax.annotation.Nullable
+    public CreateDhcpOptionsRequest domainNameServers(List<String> domainNameServers) {
 
-  public List<String> getNtpServers() {
-    return ntpServers;
-  }
-
-
-  public void setNtpServers(List<String> ntpServers) {
-    this.ntpServers = ntpServers;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.domainNameServers = domainNameServers;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    CreateDhcpOptionsRequest createDhcpOptionsRequest = (CreateDhcpOptionsRequest) o;
-    return Objects.equals(this.domainName, createDhcpOptionsRequest.domainName) &&
-        Objects.equals(this.domainNameServers, createDhcpOptionsRequest.domainNameServers) &&
-        Objects.equals(this.dryRun, createDhcpOptionsRequest.dryRun) &&
-        Objects.equals(this.logServers, createDhcpOptionsRequest.logServers) &&
-        Objects.equals(this.ntpServers, createDhcpOptionsRequest.ntpServers);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(domainName, domainNameServers, dryRun, logServers, ntpServers);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateDhcpOptionsRequest {\n");
-    sb.append("    domainName: ").append(toIndentedString(domainName)).append("\n");
-    sb.append("    domainNameServers: ").append(toIndentedString(domainNameServers)).append("\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    logServers: ").append(toIndentedString(logServers)).append("\n");
-    sb.append("    ntpServers: ").append(toIndentedString(ntpServers)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("DomainName");
-    openapiFields.add("DomainNameServers");
-    openapiFields.add("DryRun");
-    openapiFields.add("LogServers");
-    openapiFields.add("NtpServers");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateDhcpOptionsRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateDhcpOptionsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateDhcpOptionsRequest is not found in the empty JSON string", CreateDhcpOptionsRequest.openapiRequiredFields.toString()));
+    public CreateDhcpOptionsRequest addDomainNameServersItem(String domainNameServersItem) {
+        if (this.domainNameServers == null) {
+            this.domainNameServers = new ArrayList<>();
         }
-      }
+        this.domainNameServers.add(domainNameServersItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateDhcpOptionsRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateDhcpOptionsRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+    /**
+     * The IPs of domain name servers. If no IPs are specified, the &#x60;OutscaleProvidedDNS&#x60;
+     * value is set by default. You must specify at least one of the following parameters:
+     * &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or
+     * &#x60;NtpServers&#x60;.
+     *
+     * @return domainNameServers
+     */
+    @javax.annotation.Nullable
+    public List<String> getDomainNameServers() {
+        return domainNameServers;
+    }
+
+    public void setDomainNameServers(List<String> domainNameServers) {
+        this.domainNameServers = domainNameServers;
+    }
+
+    public CreateDhcpOptionsRequest dryRun(Boolean dryRun) {
+
+        this.dryRun = dryRun;
+        return this;
+    }
+
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
+    }
+
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
+    }
+
+    public CreateDhcpOptionsRequest logServers(List<String> logServers) {
+
+        this.logServers = logServers;
+        return this;
+    }
+
+    public CreateDhcpOptionsRequest addLogServersItem(String logServersItem) {
+        if (this.logServers == null) {
+            this.logServers = new ArrayList<>();
         }
-      }
-      if ((jsonObj.get("DomainName") != null && !jsonObj.get("DomainName").isJsonNull()) && !jsonObj.get("DomainName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `DomainName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("DomainName").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("DomainNameServers") != null && !jsonObj.get("DomainNameServers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `DomainNameServers` to be an array in the JSON string but got `%s`", jsonObj.get("DomainNameServers").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("LogServers") != null && !jsonObj.get("LogServers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LogServers` to be an array in the JSON string but got `%s`", jsonObj.get("LogServers").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("NtpServers") != null && !jsonObj.get("NtpServers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `NtpServers` to be an array in the JSON string but got `%s`", jsonObj.get("NtpServers").toString()));
-      }
-  }
+        this.logServers.add(logServersItem);
+        return this;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    /**
+     * The IPs of the log servers. You must specify at least one of the following parameters:
+     * &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;, &#x60;LogServers&#x60;, or
+     * &#x60;NtpServers&#x60;.
+     *
+     * @return logServers
+     */
+    @javax.annotation.Nullable
+    public List<String> getLogServers() {
+        return logServers;
+    }
+
+    public void setLogServers(List<String> logServers) {
+        this.logServers = logServers;
+    }
+
+    public CreateDhcpOptionsRequest ntpServers(List<String> ntpServers) {
+
+        this.ntpServers = ntpServers;
+        return this;
+    }
+
+    public CreateDhcpOptionsRequest addNtpServersItem(String ntpServersItem) {
+        if (this.ntpServers == null) {
+            this.ntpServers = new ArrayList<>();
+        }
+        this.ntpServers.add(ntpServersItem);
+        return this;
+    }
+
+    /**
+     * The IPs of the Network Time Protocol (NTP) servers. You must specify at least one of the
+     * following parameters: &#x60;DomainName&#x60;, &#x60;DomainNameServers&#x60;,
+     * &#x60;LogServers&#x60;, or &#x60;NtpServers&#x60;.
+     *
+     * @return ntpServers
+     */
+    @javax.annotation.Nullable
+    public List<String> getNtpServers() {
+        return ntpServers;
+    }
+
+    public void setNtpServers(List<String> ntpServers) {
+        this.ntpServers = ntpServers;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateDhcpOptionsRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateDhcpOptionsRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateDhcpOptionsRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateDhcpOptionsRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateDhcpOptionsRequest>() {
-           @Override
-           public void write(JsonWriter out, CreateDhcpOptionsRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateDhcpOptionsRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateDhcpOptionsRequest createDhcpOptionsRequest = (CreateDhcpOptionsRequest) o;
+        return Objects.equals(this.domainName, createDhcpOptionsRequest.domainName)
+                && Objects.equals(
+                        this.domainNameServers, createDhcpOptionsRequest.domainNameServers)
+                && Objects.equals(this.dryRun, createDhcpOptionsRequest.dryRun)
+                && Objects.equals(this.logServers, createDhcpOptionsRequest.logServers)
+                && Objects.equals(this.ntpServers, createDhcpOptionsRequest.ntpServers);
     }
-  }
 
- /**
-  * Create an instance of CreateDhcpOptionsRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateDhcpOptionsRequest
-  * @throws IOException if the JSON string is invalid with respect to CreateDhcpOptionsRequest
-  */
-  public static CreateDhcpOptionsRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateDhcpOptionsRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(domainName, domainNameServers, dryRun, logServers, ntpServers);
+    }
 
- /**
-  * Convert an instance of CreateDhcpOptionsRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateDhcpOptionsRequest {\n");
+        sb.append("    domainName: ").append(toIndentedString(domainName)).append("\n");
+        sb.append("    domainNameServers: ")
+                .append(toIndentedString(domainNameServers))
+                .append("\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    logServers: ").append(toIndentedString(logServers)).append("\n");
+        sb.append("    ntpServers: ").append(toIndentedString(ntpServers)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DomainName");
+        openapiFields.add("DomainNameServers");
+        openapiFields.add("DryRun");
+        openapiFields.add("LogServers");
+        openapiFields.add("NtpServers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to CreateDhcpOptionsRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateDhcpOptionsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateDhcpOptionsRequest is not found"
+                                        + " in the empty JSON string",
+                                CreateDhcpOptionsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateDhcpOptionsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateDhcpOptionsRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("DomainName") != null && !jsonObj.get("DomainName").isJsonNull())
+                && !jsonObj.get("DomainName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `DomainName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("DomainName").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("DomainNameServers") != null
+                && !jsonObj.get("DomainNameServers").isJsonArray()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `DomainNameServers` to be an array in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("DomainNameServers").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("LogServers") != null && !jsonObj.get("LogServers").isJsonArray()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `LogServers` to be an array in the JSON string but"
+                                    + " got `%s`",
+                            jsonObj.get("LogServers").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("NtpServers") != null && !jsonObj.get("NtpServers").isJsonArray()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `NtpServers` to be an array in the JSON string but"
+                                    + " got `%s`",
+                            jsonObj.get("NtpServers").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateDhcpOptionsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateDhcpOptionsRequest' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateDhcpOptionsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateDhcpOptionsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateDhcpOptionsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateDhcpOptionsRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateDhcpOptionsRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateDhcpOptionsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateDhcpOptionsRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateDhcpOptionsRequest
+     */
+    public static CreateDhcpOptionsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateDhcpOptionsRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateDhcpOptionsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for MaintenanceEvent
- */
+/** Model tests for MaintenanceEvent */
 public class MaintenanceEventTest {
     private final MaintenanceEvent model = new MaintenanceEvent();
 
-    /**
-     * Model tests for MaintenanceEvent
-     */
+    /** Model tests for MaintenanceEvent */
     @Test
     public void testMaintenanceEvent() {
         // TODO: test MaintenanceEvent
     }
 
-    /**
-     * Test the property 'code'
-     */
+    /** Test the property 'code' */
     @Test
     public void codeTest() {
         // TODO: test code
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'notAfter'
-     */
+    /** Test the property 'notAfter' */
     @Test
     public void notAfterTest() {
         // TODO: test notAfter
     }
 
-    /**
-     * Test the property 'notBefore'
-     */
+    /** Test the property 'notBefore' */
     @Test
     public void notBeforeTest() {
         // TODO: test notBefore
     }
-
 }

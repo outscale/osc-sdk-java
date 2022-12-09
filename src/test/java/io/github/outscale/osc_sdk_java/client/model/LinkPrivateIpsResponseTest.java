@@ -10,40 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkPrivateIpsResponse
- */
+/** Model tests for LinkPrivateIpsResponse */
 public class LinkPrivateIpsResponseTest {
     private final LinkPrivateIpsResponse model = new LinkPrivateIpsResponse();
 
-    /**
-     * Model tests for LinkPrivateIpsResponse
-     */
+    /** Model tests for LinkPrivateIpsResponse */
     @Test
     public void testLinkPrivateIpsResponse() {
         // TODO: test LinkPrivateIpsResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

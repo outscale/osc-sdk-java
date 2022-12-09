@@ -10,90 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersVmsState
- */
+/** Model tests for FiltersVmsState */
 public class FiltersVmsStateTest {
     private final FiltersVmsState model = new FiltersVmsState();
 
-    /**
-     * Model tests for FiltersVmsState
-     */
+    /** Model tests for FiltersVmsState */
     @Test
     public void testFiltersVmsState() {
         // TODO: test FiltersVmsState
     }
 
-    /**
-     * Test the property 'maintenanceEventCodes'
-     */
+    /** Test the property 'maintenanceEventCodes' */
     @Test
     public void maintenanceEventCodesTest() {
         // TODO: test maintenanceEventCodes
     }
 
-    /**
-     * Test the property 'maintenanceEventDescriptions'
-     */
+    /** Test the property 'maintenanceEventDescriptions' */
     @Test
     public void maintenanceEventDescriptionsTest() {
         // TODO: test maintenanceEventDescriptions
     }
 
-    /**
-     * Test the property 'maintenanceEventsNotAfter'
-     */
+    /** Test the property 'maintenanceEventsNotAfter' */
     @Test
     public void maintenanceEventsNotAfterTest() {
         // TODO: test maintenanceEventsNotAfter
     }
 
-    /**
-     * Test the property 'maintenanceEventsNotBefore'
-     */
+    /** Test the property 'maintenanceEventsNotBefore' */
     @Test
     public void maintenanceEventsNotBeforeTest() {
         // TODO: test maintenanceEventsNotBefore
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
 
-    /**
-     * Test the property 'vmIds'
-     */
+    /** Test the property 'vmIds' */
     @Test
     public void vmIdsTest() {
         // TODO: test vmIds
     }
 
-    /**
-     * Test the property 'vmStates'
-     */
+    /** Test the property 'vmStates' */
     @Test
     public void vmStatesTest() {
         // TODO: test vmStates
     }
-
 }

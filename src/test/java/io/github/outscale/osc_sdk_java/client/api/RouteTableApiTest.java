@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateRouteTableRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateRouteTableResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteRouteTableRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteRouteTableResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkRouteTableRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkRouteTableResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadRouteTablesRequest;
@@ -28,22 +26,13 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkRouteTableResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for RouteTableApi
- */
+/** API tests for RouteTableApi */
 @Disabled
 public class RouteTableApiTest {
 
     private final RouteTableApi api = new RouteTableApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createRouteTableTest() throws ApiException {
         CreateRouteTableRequest createRouteTableRequest = null;
@@ -51,9 +40,7 @@ public class RouteTableApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteRouteTableTest() throws ApiException {
         DeleteRouteTableRequest deleteRouteTableRequest = null;
@@ -61,9 +48,7 @@ public class RouteTableApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkRouteTableTest() throws ApiException {
         LinkRouteTableRequest linkRouteTableRequest = null;
@@ -71,9 +56,7 @@ public class RouteTableApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readRouteTablesTest() throws ApiException {
         ReadRouteTablesRequest readRouteTablesRequest = null;
@@ -81,14 +64,11 @@ public class RouteTableApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkRouteTableTest() throws ApiException {
         UnlinkRouteTableRequest unlinkRouteTableRequest = null;
         UnlinkRouteTableResponse response = api.unlinkRouteTable(unlinkRouteTableRequest);
         // TODO: test validations
     }
-
 }

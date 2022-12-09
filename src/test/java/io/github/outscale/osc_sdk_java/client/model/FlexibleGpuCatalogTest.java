@@ -10,73 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FlexibleGpuCatalog
- */
+/** Model tests for FlexibleGpuCatalog */
 public class FlexibleGpuCatalogTest {
     private final FlexibleGpuCatalog model = new FlexibleGpuCatalog();
 
-    /**
-     * Model tests for FlexibleGpuCatalog
-     */
+    /** Model tests for FlexibleGpuCatalog */
     @Test
     public void testFlexibleGpuCatalog() {
         // TODO: test FlexibleGpuCatalog
     }
 
-    /**
-     * Test the property 'generations'
-     */
+    /** Test the property 'generations' */
     @Test
     public void generationsTest() {
         // TODO: test generations
     }
 
-    /**
-     * Test the property 'maxCpu'
-     */
+    /** Test the property 'maxCpu' */
     @Test
     public void maxCpuTest() {
         // TODO: test maxCpu
     }
 
-    /**
-     * Test the property 'maxRam'
-     */
+    /** Test the property 'maxRam' */
     @Test
     public void maxRamTest() {
         // TODO: test maxRam
     }
 
-    /**
-     * Test the property 'modelName'
-     */
+    /** Test the property 'modelName' */
     @Test
     public void modelNameTest() {
         // TODO: test modelName
     }
 
-    /**
-     * Test the property 'vram'
-     */
+    /** Test the property 'vram' */
     @Test
     public void vramTest() {
         // TODO: test vram
     }
-
 }

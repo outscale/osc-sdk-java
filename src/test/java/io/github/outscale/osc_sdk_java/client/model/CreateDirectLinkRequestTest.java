@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateDirectLinkRequest
- */
+/** Model tests for CreateDirectLinkRequest */
 public class CreateDirectLinkRequestTest {
     private final CreateDirectLinkRequest model = new CreateDirectLinkRequest();
 
-    /**
-     * Model tests for CreateDirectLinkRequest
-     */
+    /** Model tests for CreateDirectLinkRequest */
     @Test
     public void testCreateDirectLinkRequest() {
         // TODO: test CreateDirectLinkRequest
     }
 
-    /**
-     * Test the property 'bandwidth'
-     */
+    /** Test the property 'bandwidth' */
     @Test
     public void bandwidthTest() {
         // TODO: test bandwidth
     }
 
-    /**
-     * Test the property 'directLinkName'
-     */
+    /** Test the property 'directLinkName' */
     @Test
     public void directLinkNameTest() {
         // TODO: test directLinkName
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'location'
-     */
+    /** Test the property 'location' */
     @Test
     public void locationTest() {
         // TODO: test location
     }
-
 }

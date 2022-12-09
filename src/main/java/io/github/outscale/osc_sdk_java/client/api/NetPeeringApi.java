@@ -10,41 +10,30 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.AcceptNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.AcceptNetPeeringResponse;
 import io.github.outscale.osc_sdk_java.client.model.CreateNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateNetPeeringResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetPeeringResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetPeeringsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetPeeringsResponse;
 import io.github.outscale.osc_sdk_java.client.model.RejectNetPeeringRequest;
 import io.github.outscale.osc_sdk_java.client.model.RejectNetPeeringResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class NetPeeringApi {
     private ApiClient localVarApiClient;
@@ -85,29 +74,32 @@ public class NetPeeringApi {
 
     /**
      * Build call for acceptNetPeering
-     * @param acceptNetPeeringRequest  (optional)
+     *
+     * @param acceptNetPeeringRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call acceptNetPeeringCall(AcceptNetPeeringRequest acceptNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call acceptNetPeeringCall(
+            AcceptNetPeeringRequest acceptNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -124,123 +116,142 @@ public class NetPeeringApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call acceptNetPeeringValidateBeforeCall(AcceptNetPeeringRequest acceptNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call acceptNetPeeringValidateBeforeCall(
+            AcceptNetPeeringRequest acceptNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         return acceptNetPeeringCall(acceptNetPeeringRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param acceptNetPeeringRequest  (optional)
+     * @param acceptNetPeeringRequest (optional)
      * @return AcceptNetPeeringResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public AcceptNetPeeringResponse acceptNetPeering(AcceptNetPeeringRequest acceptNetPeeringRequest) throws ApiException {
-        ApiResponse<AcceptNetPeeringResponse> localVarResp = acceptNetPeeringWithHttpInfo(acceptNetPeeringRequest);
+    public AcceptNetPeeringResponse acceptNetPeering(
+            AcceptNetPeeringRequest acceptNetPeeringRequest) throws ApiException {
+        ApiResponse<AcceptNetPeeringResponse> localVarResp =
+                acceptNetPeeringWithHttpInfo(acceptNetPeeringRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param acceptNetPeeringRequest  (optional)
+     * @param acceptNetPeeringRequest (optional)
      * @return ApiResponse&lt;AcceptNetPeeringResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<AcceptNetPeeringResponse> acceptNetPeeringWithHttpInfo(AcceptNetPeeringRequest acceptNetPeeringRequest) throws ApiException {
-        okhttp3.Call localVarCall = acceptNetPeeringValidateBeforeCall(acceptNetPeeringRequest, null);
-        Type localVarReturnType = new TypeToken<AcceptNetPeeringResponse>(){}.getType();
+    public ApiResponse<AcceptNetPeeringResponse> acceptNetPeeringWithHttpInfo(
+            AcceptNetPeeringRequest acceptNetPeeringRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                acceptNetPeeringValidateBeforeCall(acceptNetPeeringRequest, null);
+        Type localVarReturnType = new TypeToken<AcceptNetPeeringResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param acceptNetPeeringRequest  (optional)
+     * (asynchronously)
+     *
+     * @param acceptNetPeeringRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call acceptNetPeeringAsync(AcceptNetPeeringRequest acceptNetPeeringRequest, final ApiCallback<AcceptNetPeeringResponse> _callback) throws ApiException {
+    public okhttp3.Call acceptNetPeeringAsync(
+            AcceptNetPeeringRequest acceptNetPeeringRequest,
+            final ApiCallback<AcceptNetPeeringResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = acceptNetPeeringValidateBeforeCall(acceptNetPeeringRequest, _callback);
-        Type localVarReturnType = new TypeToken<AcceptNetPeeringResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                acceptNetPeeringValidateBeforeCall(acceptNetPeeringRequest, _callback);
+        Type localVarReturnType = new TypeToken<AcceptNetPeeringResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createNetPeering
-     * @param createNetPeeringRequest  (optional)
+     *
+     * @param createNetPeeringRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createNetPeeringCall(CreateNetPeeringRequest createNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createNetPeeringCall(
+            CreateNetPeeringRequest createNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -257,121 +268,140 @@ public class NetPeeringApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createNetPeeringValidateBeforeCall(CreateNetPeeringRequest createNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createNetPeeringValidateBeforeCall(
+            CreateNetPeeringRequest createNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         return createNetPeeringCall(createNetPeeringRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createNetPeeringRequest  (optional)
+     * @param createNetPeeringRequest (optional)
      * @return CreateNetPeeringResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateNetPeeringResponse createNetPeering(CreateNetPeeringRequest createNetPeeringRequest) throws ApiException {
-        ApiResponse<CreateNetPeeringResponse> localVarResp = createNetPeeringWithHttpInfo(createNetPeeringRequest);
+    public CreateNetPeeringResponse createNetPeering(
+            CreateNetPeeringRequest createNetPeeringRequest) throws ApiException {
+        ApiResponse<CreateNetPeeringResponse> localVarResp =
+                createNetPeeringWithHttpInfo(createNetPeeringRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createNetPeeringRequest  (optional)
+     * @param createNetPeeringRequest (optional)
      * @return ApiResponse&lt;CreateNetPeeringResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateNetPeeringResponse> createNetPeeringWithHttpInfo(CreateNetPeeringRequest createNetPeeringRequest) throws ApiException {
-        okhttp3.Call localVarCall = createNetPeeringValidateBeforeCall(createNetPeeringRequest, null);
-        Type localVarReturnType = new TypeToken<CreateNetPeeringResponse>(){}.getType();
+    public ApiResponse<CreateNetPeeringResponse> createNetPeeringWithHttpInfo(
+            CreateNetPeeringRequest createNetPeeringRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createNetPeeringValidateBeforeCall(createNetPeeringRequest, null);
+        Type localVarReturnType = new TypeToken<CreateNetPeeringResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createNetPeeringRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createNetPeeringRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createNetPeeringAsync(CreateNetPeeringRequest createNetPeeringRequest, final ApiCallback<CreateNetPeeringResponse> _callback) throws ApiException {
+    public okhttp3.Call createNetPeeringAsync(
+            CreateNetPeeringRequest createNetPeeringRequest,
+            final ApiCallback<CreateNetPeeringResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createNetPeeringValidateBeforeCall(createNetPeeringRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateNetPeeringResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createNetPeeringValidateBeforeCall(createNetPeeringRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateNetPeeringResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteNetPeering
-     * @param deleteNetPeeringRequest  (optional)
+     *
+     * @param deleteNetPeeringRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteNetPeeringCall(DeleteNetPeeringRequest deleteNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteNetPeeringCall(
+            DeleteNetPeeringRequest deleteNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -388,123 +418,142 @@ public class NetPeeringApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteNetPeeringValidateBeforeCall(DeleteNetPeeringRequest deleteNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteNetPeeringValidateBeforeCall(
+            DeleteNetPeeringRequest deleteNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteNetPeeringCall(deleteNetPeeringRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteNetPeeringRequest  (optional)
+     * @param deleteNetPeeringRequest (optional)
      * @return DeleteNetPeeringResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteNetPeeringResponse deleteNetPeering(DeleteNetPeeringRequest deleteNetPeeringRequest) throws ApiException {
-        ApiResponse<DeleteNetPeeringResponse> localVarResp = deleteNetPeeringWithHttpInfo(deleteNetPeeringRequest);
+    public DeleteNetPeeringResponse deleteNetPeering(
+            DeleteNetPeeringRequest deleteNetPeeringRequest) throws ApiException {
+        ApiResponse<DeleteNetPeeringResponse> localVarResp =
+                deleteNetPeeringWithHttpInfo(deleteNetPeeringRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteNetPeeringRequest  (optional)
+     * @param deleteNetPeeringRequest (optional)
      * @return ApiResponse&lt;DeleteNetPeeringResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteNetPeeringResponse> deleteNetPeeringWithHttpInfo(DeleteNetPeeringRequest deleteNetPeeringRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteNetPeeringValidateBeforeCall(deleteNetPeeringRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteNetPeeringResponse>(){}.getType();
+    public ApiResponse<DeleteNetPeeringResponse> deleteNetPeeringWithHttpInfo(
+            DeleteNetPeeringRequest deleteNetPeeringRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteNetPeeringValidateBeforeCall(deleteNetPeeringRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteNetPeeringResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteNetPeeringRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteNetPeeringRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteNetPeeringAsync(DeleteNetPeeringRequest deleteNetPeeringRequest, final ApiCallback<DeleteNetPeeringResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteNetPeeringAsync(
+            DeleteNetPeeringRequest deleteNetPeeringRequest,
+            final ApiCallback<DeleteNetPeeringResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteNetPeeringValidateBeforeCall(deleteNetPeeringRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteNetPeeringResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteNetPeeringValidateBeforeCall(deleteNetPeeringRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteNetPeeringResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readNetPeerings
-     * @param readNetPeeringsRequest  (optional)
+     *
+     * @param readNetPeeringsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readNetPeeringsCall(ReadNetPeeringsRequest readNetPeeringsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readNetPeeringsCall(
+            ReadNetPeeringsRequest readNetPeeringsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -521,121 +570,139 @@ public class NetPeeringApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readNetPeeringsValidateBeforeCall(ReadNetPeeringsRequest readNetPeeringsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readNetPeeringsValidateBeforeCall(
+            ReadNetPeeringsRequest readNetPeeringsRequest, final ApiCallback _callback)
+            throws ApiException {
         return readNetPeeringsCall(readNetPeeringsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readNetPeeringsRequest  (optional)
+     * @param readNetPeeringsRequest (optional)
      * @return ReadNetPeeringsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadNetPeeringsResponse readNetPeerings(ReadNetPeeringsRequest readNetPeeringsRequest) throws ApiException {
-        ApiResponse<ReadNetPeeringsResponse> localVarResp = readNetPeeringsWithHttpInfo(readNetPeeringsRequest);
+    public ReadNetPeeringsResponse readNetPeerings(ReadNetPeeringsRequest readNetPeeringsRequest)
+            throws ApiException {
+        ApiResponse<ReadNetPeeringsResponse> localVarResp =
+                readNetPeeringsWithHttpInfo(readNetPeeringsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readNetPeeringsRequest  (optional)
+     * @param readNetPeeringsRequest (optional)
      * @return ApiResponse&lt;ReadNetPeeringsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadNetPeeringsResponse> readNetPeeringsWithHttpInfo(ReadNetPeeringsRequest readNetPeeringsRequest) throws ApiException {
+    public ApiResponse<ReadNetPeeringsResponse> readNetPeeringsWithHttpInfo(
+            ReadNetPeeringsRequest readNetPeeringsRequest) throws ApiException {
         okhttp3.Call localVarCall = readNetPeeringsValidateBeforeCall(readNetPeeringsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadNetPeeringsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadNetPeeringsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readNetPeeringsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readNetPeeringsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readNetPeeringsAsync(ReadNetPeeringsRequest readNetPeeringsRequest, final ApiCallback<ReadNetPeeringsResponse> _callback) throws ApiException {
+    public okhttp3.Call readNetPeeringsAsync(
+            ReadNetPeeringsRequest readNetPeeringsRequest,
+            final ApiCallback<ReadNetPeeringsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readNetPeeringsValidateBeforeCall(readNetPeeringsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadNetPeeringsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readNetPeeringsValidateBeforeCall(readNetPeeringsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadNetPeeringsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for rejectNetPeering
-     * @param rejectNetPeeringRequest  (optional)
+     *
+     * @param rejectNetPeeringRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call rejectNetPeeringCall(RejectNetPeeringRequest rejectNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call rejectNetPeeringCall(
+            RejectNetPeeringRequest rejectNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -652,96 +719,112 @@ public class NetPeeringApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call rejectNetPeeringValidateBeforeCall(RejectNetPeeringRequest rejectNetPeeringRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call rejectNetPeeringValidateBeforeCall(
+            RejectNetPeeringRequest rejectNetPeeringRequest, final ApiCallback _callback)
+            throws ApiException {
         return rejectNetPeeringCall(rejectNetPeeringRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param rejectNetPeeringRequest  (optional)
+     * @param rejectNetPeeringRequest (optional)
      * @return RejectNetPeeringResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public RejectNetPeeringResponse rejectNetPeering(RejectNetPeeringRequest rejectNetPeeringRequest) throws ApiException {
-        ApiResponse<RejectNetPeeringResponse> localVarResp = rejectNetPeeringWithHttpInfo(rejectNetPeeringRequest);
+    public RejectNetPeeringResponse rejectNetPeering(
+            RejectNetPeeringRequest rejectNetPeeringRequest) throws ApiException {
+        ApiResponse<RejectNetPeeringResponse> localVarResp =
+                rejectNetPeeringWithHttpInfo(rejectNetPeeringRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param rejectNetPeeringRequest  (optional)
+     * @param rejectNetPeeringRequest (optional)
      * @return ApiResponse&lt;RejectNetPeeringResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<RejectNetPeeringResponse> rejectNetPeeringWithHttpInfo(RejectNetPeeringRequest rejectNetPeeringRequest) throws ApiException {
-        okhttp3.Call localVarCall = rejectNetPeeringValidateBeforeCall(rejectNetPeeringRequest, null);
-        Type localVarReturnType = new TypeToken<RejectNetPeeringResponse>(){}.getType();
+    public ApiResponse<RejectNetPeeringResponse> rejectNetPeeringWithHttpInfo(
+            RejectNetPeeringRequest rejectNetPeeringRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                rejectNetPeeringValidateBeforeCall(rejectNetPeeringRequest, null);
+        Type localVarReturnType = new TypeToken<RejectNetPeeringResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param rejectNetPeeringRequest  (optional)
+     * (asynchronously)
+     *
+     * @param rejectNetPeeringRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 409 </td><td> The HTTP 409 response (Conflict). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call rejectNetPeeringAsync(RejectNetPeeringRequest rejectNetPeeringRequest, final ApiCallback<RejectNetPeeringResponse> _callback) throws ApiException {
+    public okhttp3.Call rejectNetPeeringAsync(
+            RejectNetPeeringRequest rejectNetPeeringRequest,
+            final ApiCallback<RejectNetPeeringResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = rejectNetPeeringValidateBeforeCall(rejectNetPeeringRequest, _callback);
-        Type localVarReturnType = new TypeToken<RejectNetPeeringResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                rejectNetPeeringValidateBeforeCall(rejectNetPeeringRequest, _callback);
+        Type localVarReturnType = new TypeToken<RejectNetPeeringResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for HealthCheck
- */
+/** Model tests for HealthCheck */
 public class HealthCheckTest {
     private final HealthCheck model = new HealthCheck();
 
-    /**
-     * Model tests for HealthCheck
-     */
+    /** Model tests for HealthCheck */
     @Test
     public void testHealthCheck() {
         // TODO: test HealthCheck
     }
 
-    /**
-     * Test the property 'checkInterval'
-     */
+    /** Test the property 'checkInterval' */
     @Test
     public void checkIntervalTest() {
         // TODO: test checkInterval
     }
 
-    /**
-     * Test the property 'healthyThreshold'
-     */
+    /** Test the property 'healthyThreshold' */
     @Test
     public void healthyThresholdTest() {
         // TODO: test healthyThreshold
     }
 
-    /**
-     * Test the property 'path'
-     */
+    /** Test the property 'path' */
     @Test
     public void pathTest() {
         // TODO: test path
     }
 
-    /**
-     * Test the property 'port'
-     */
+    /** Test the property 'port' */
     @Test
     public void portTest() {
         // TODO: test port
     }
 
-    /**
-     * Test the property 'protocol'
-     */
+    /** Test the property 'protocol' */
     @Test
     public void protocolTest() {
         // TODO: test protocol
     }
 
-    /**
-     * Test the property 'timeout'
-     */
+    /** Test the property 'timeout' */
     @Test
     public void timeoutTest() {
         // TODO: test timeout
     }
 
-    /**
-     * Test the property 'unhealthyThreshold'
-     */
+    /** Test the property 'unhealthyThreshold' */
     @Test
     public void unhealthyThresholdTest() {
         // TODO: test unhealthyThreshold
     }
-
 }

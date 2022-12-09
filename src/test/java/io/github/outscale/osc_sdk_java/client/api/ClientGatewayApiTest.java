@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -23,22 +22,13 @@ import io.github.outscale.osc_sdk_java.client.model.ReadClientGatewaysResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ClientGatewayApi
- */
+/** API tests for ClientGatewayApi */
 @Disabled
 public class ClientGatewayApiTest {
 
     private final ClientGatewayApi api = new ClientGatewayApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createClientGatewayTest() throws ApiException {
         CreateClientGatewayRequest createClientGatewayRequest = null;
@@ -46,9 +36,7 @@ public class ClientGatewayApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteClientGatewayTest() throws ApiException {
         DeleteClientGatewayRequest deleteClientGatewayRequest = null;
@@ -56,14 +44,11 @@ public class ClientGatewayApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readClientGatewaysTest() throws ApiException {
         ReadClientGatewaysRequest readClientGatewaysRequest = null;
         ReadClientGatewaysResponse response = api.readClientGateways(readClientGatewaysRequest);
         // TODO: test validations
     }
-
 }

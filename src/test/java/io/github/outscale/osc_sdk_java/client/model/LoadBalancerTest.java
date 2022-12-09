@@ -10,184 +10,125 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.AccessLog;
-import io.github.outscale.osc_sdk_java.client.model.ApplicationStickyCookiePolicy;
-import io.github.outscale.osc_sdk_java.client.model.HealthCheck;
-import io.github.outscale.osc_sdk_java.client.model.Listener;
-import io.github.outscale.osc_sdk_java.client.model.LoadBalancerStickyCookiePolicy;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.SourceSecurityGroup;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LoadBalancer
- */
+/** Model tests for LoadBalancer */
 public class LoadBalancerTest {
     private final LoadBalancer model = new LoadBalancer();
 
-    /**
-     * Model tests for LoadBalancer
-     */
+    /** Model tests for LoadBalancer */
     @Test
     public void testLoadBalancer() {
         // TODO: test LoadBalancer
     }
 
-    /**
-     * Test the property 'accessLog'
-     */
+    /** Test the property 'accessLog' */
     @Test
     public void accessLogTest() {
         // TODO: test accessLog
     }
 
-    /**
-     * Test the property 'applicationStickyCookiePolicies'
-     */
+    /** Test the property 'applicationStickyCookiePolicies' */
     @Test
     public void applicationStickyCookiePoliciesTest() {
         // TODO: test applicationStickyCookiePolicies
     }
 
-    /**
-     * Test the property 'backendIps'
-     */
+    /** Test the property 'backendIps' */
     @Test
     public void backendIpsTest() {
         // TODO: test backendIps
     }
 
-    /**
-     * Test the property 'backendVmIds'
-     */
+    /** Test the property 'backendVmIds' */
     @Test
     public void backendVmIdsTest() {
         // TODO: test backendVmIds
     }
 
-    /**
-     * Test the property 'dnsName'
-     */
+    /** Test the property 'dnsName' */
     @Test
     public void dnsNameTest() {
         // TODO: test dnsName
     }
 
-    /**
-     * Test the property 'healthCheck'
-     */
+    /** Test the property 'healthCheck' */
     @Test
     public void healthCheckTest() {
         // TODO: test healthCheck
     }
 
-    /**
-     * Test the property 'listeners'
-     */
+    /** Test the property 'listeners' */
     @Test
     public void listenersTest() {
         // TODO: test listeners
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
 
-    /**
-     * Test the property 'loadBalancerStickyCookiePolicies'
-     */
+    /** Test the property 'loadBalancerStickyCookiePolicies' */
     @Test
     public void loadBalancerStickyCookiePoliciesTest() {
         // TODO: test loadBalancerStickyCookiePolicies
     }
 
-    /**
-     * Test the property 'loadBalancerType'
-     */
+    /** Test the property 'loadBalancerType' */
     @Test
     public void loadBalancerTypeTest() {
         // TODO: test loadBalancerType
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'securedCookies'
-     */
+    /** Test the property 'securedCookies' */
     @Test
     public void securedCookiesTest() {
         // TODO: test securedCookies
     }
 
-    /**
-     * Test the property 'securityGroups'
-     */
+    /** Test the property 'securityGroups' */
     @Test
     public void securityGroupsTest() {
         // TODO: test securityGroups
     }
 
-    /**
-     * Test the property 'sourceSecurityGroup'
-     */
+    /** Test the property 'sourceSecurityGroup' */
     @Test
     public void sourceSecurityGroupTest() {
         // TODO: test sourceSecurityGroup
     }
 
-    /**
-     * Test the property 'subnets'
-     */
+    /** Test the property 'subnets' */
     @Test
     public void subnetsTest() {
         // TODO: test subnets
     }
 
-    /**
-     * Test the property 'subregionNames'
-     */
+    /** Test the property 'subregionNames' */
     @Test
     public void subregionNamesTest() {
         // TODO: test subregionNames
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

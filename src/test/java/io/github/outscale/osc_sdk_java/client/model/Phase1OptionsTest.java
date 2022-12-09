@@ -10,105 +10,71 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Phase1Options
- */
+/** Model tests for Phase1Options */
 public class Phase1OptionsTest {
     private final Phase1Options model = new Phase1Options();
 
-    /**
-     * Model tests for Phase1Options
-     */
+    /** Model tests for Phase1Options */
     @Test
     public void testPhase1Options() {
         // TODO: test Phase1Options
     }
 
-    /**
-     * Test the property 'dpdTimeoutAction'
-     */
+    /** Test the property 'dpdTimeoutAction' */
     @Test
     public void dpdTimeoutActionTest() {
         // TODO: test dpdTimeoutAction
     }
 
-    /**
-     * Test the property 'dpdTimeoutSeconds'
-     */
+    /** Test the property 'dpdTimeoutSeconds' */
     @Test
     public void dpdTimeoutSecondsTest() {
         // TODO: test dpdTimeoutSeconds
     }
 
-    /**
-     * Test the property 'ikeVersions'
-     */
+    /** Test the property 'ikeVersions' */
     @Test
     public void ikeVersionsTest() {
         // TODO: test ikeVersions
     }
 
-    /**
-     * Test the property 'phase1DhGroupNumbers'
-     */
+    /** Test the property 'phase1DhGroupNumbers' */
     @Test
     public void phase1DhGroupNumbersTest() {
         // TODO: test phase1DhGroupNumbers
     }
 
-    /**
-     * Test the property 'phase1EncryptionAlgorithms'
-     */
+    /** Test the property 'phase1EncryptionAlgorithms' */
     @Test
     public void phase1EncryptionAlgorithmsTest() {
         // TODO: test phase1EncryptionAlgorithms
     }
 
-    /**
-     * Test the property 'phase1IntegrityAlgorithms'
-     */
+    /** Test the property 'phase1IntegrityAlgorithms' */
     @Test
     public void phase1IntegrityAlgorithmsTest() {
         // TODO: test phase1IntegrityAlgorithms
     }
 
-    /**
-     * Test the property 'phase1LifetimeSeconds'
-     */
+    /** Test the property 'phase1LifetimeSeconds' */
     @Test
     public void phase1LifetimeSecondsTest() {
         // TODO: test phase1LifetimeSeconds
     }
 
-    /**
-     * Test the property 'replayWindowSize'
-     */
+    /** Test the property 'replayWindowSize' */
     @Test
     public void replayWindowSizeTest() {
         // TODO: test replayWindowSize
     }
 
-    /**
-     * Test the property 'startupAction'
-     */
+    /** Test the property 'startupAction' */
     @Test
     public void startupActionTest() {
         // TODO: test startupAction
     }
-
 }

@@ -10,174 +10,119 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.BlockDeviceMappingImage;
-import io.github.outscale.osc_sdk_java.client.model.PermissionsOnResource;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.StateComment;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Image
- */
+/** Model tests for Image */
 public class ImageTest {
     private final Image model = new Image();
 
-    /**
-     * Model tests for Image
-     */
+    /** Model tests for Image */
     @Test
     public void testImage() {
         // TODO: test Image
     }
 
-    /**
-     * Test the property 'accountAlias'
-     */
+    /** Test the property 'accountAlias' */
     @Test
     public void accountAliasTest() {
         // TODO: test accountAlias
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'architecture'
-     */
+    /** Test the property 'architecture' */
     @Test
     public void architectureTest() {
         // TODO: test architecture
     }
 
-    /**
-     * Test the property 'blockDeviceMappings'
-     */
+    /** Test the property 'blockDeviceMappings' */
     @Test
     public void blockDeviceMappingsTest() {
         // TODO: test blockDeviceMappings
     }
 
-    /**
-     * Test the property 'creationDate'
-     */
+    /** Test the property 'creationDate' */
     @Test
     public void creationDateTest() {
         // TODO: test creationDate
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'fileLocation'
-     */
+    /** Test the property 'fileLocation' */
     @Test
     public void fileLocationTest() {
         // TODO: test fileLocation
     }
 
-    /**
-     * Test the property 'imageId'
-     */
+    /** Test the property 'imageId' */
     @Test
     public void imageIdTest() {
         // TODO: test imageId
     }
 
-    /**
-     * Test the property 'imageName'
-     */
+    /** Test the property 'imageName' */
     @Test
     public void imageNameTest() {
         // TODO: test imageName
     }
 
-    /**
-     * Test the property 'imageType'
-     */
+    /** Test the property 'imageType' */
     @Test
     public void imageTypeTest() {
         // TODO: test imageType
     }
 
-    /**
-     * Test the property 'permissionsToLaunch'
-     */
+    /** Test the property 'permissionsToLaunch' */
     @Test
     public void permissionsToLaunchTest() {
         // TODO: test permissionsToLaunch
     }
 
-    /**
-     * Test the property 'productCodes'
-     */
+    /** Test the property 'productCodes' */
     @Test
     public void productCodesTest() {
         // TODO: test productCodes
     }
 
-    /**
-     * Test the property 'rootDeviceName'
-     */
+    /** Test the property 'rootDeviceName' */
     @Test
     public void rootDeviceNameTest() {
         // TODO: test rootDeviceName
     }
 
-    /**
-     * Test the property 'rootDeviceType'
-     */
+    /** Test the property 'rootDeviceType' */
     @Test
     public void rootDeviceTypeTest() {
         // TODO: test rootDeviceType
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'stateComment'
-     */
+    /** Test the property 'stateComment' */
     @Test
     public void stateCommentTest() {
         // TODO: test stateComment
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

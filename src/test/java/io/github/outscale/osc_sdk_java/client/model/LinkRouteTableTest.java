@@ -10,63 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkRouteTable
- */
+/** Model tests for LinkRouteTable */
 public class LinkRouteTableTest {
     private final LinkRouteTable model = new LinkRouteTable();
 
-    /**
-     * Model tests for LinkRouteTable
-     */
+    /** Model tests for LinkRouteTable */
     @Test
     public void testLinkRouteTable() {
         // TODO: test LinkRouteTable
     }
 
-    /**
-     * Test the property 'linkRouteTableId'
-     */
+    /** Test the property 'linkRouteTableId' */
     @Test
     public void linkRouteTableIdTest() {
         // TODO: test linkRouteTableId
     }
 
-    /**
-     * Test the property 'main'
-     */
+    /** Test the property 'main' */
     @Test
     public void mainTest() {
         // TODO: test main
     }
 
-    /**
-     * Test the property 'routeTableId'
-     */
+    /** Test the property 'routeTableId' */
     @Test
     public void routeTableIdTest() {
         // TODO: test routeTableId
     }
 
-    /**
-     * Test the property 'subnetId'
-     */
+    /** Test the property 'subnetId' */
     @Test
     public void subnetIdTest() {
         // TODO: test subnetId
     }
-
 }

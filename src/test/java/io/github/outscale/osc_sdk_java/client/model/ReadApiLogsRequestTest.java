@@ -10,73 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.FiltersApiLog;
-import io.github.outscale.osc_sdk_java.client.model.With;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadApiLogsRequest
- */
+/** Model tests for ReadApiLogsRequest */
 public class ReadApiLogsRequestTest {
     private final ReadApiLogsRequest model = new ReadApiLogsRequest();
 
-    /**
-     * Model tests for ReadApiLogsRequest
-     */
+    /** Model tests for ReadApiLogsRequest */
     @Test
     public void testReadApiLogsRequest() {
         // TODO: test ReadApiLogsRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'filters'
-     */
+    /** Test the property 'filters' */
     @Test
     public void filtersTest() {
         // TODO: test filters
     }
 
-    /**
-     * Test the property 'nextPageToken'
-     */
+    /** Test the property 'nextPageToken' */
     @Test
     public void nextPageTokenTest() {
         // TODO: test nextPageToken
     }
 
-    /**
-     * Test the property 'resultsPerPage'
-     */
+    /** Test the property 'resultsPerPage' */
     @Test
     public void resultsPerPageTest() {
         // TODO: test resultsPerPage
     }
 
-    /**
-     * Test the property 'with'
-     */
+    /** Test the property 'with' */
     @Test
     public void withTest() {
         // TODO: test with
     }
-
 }

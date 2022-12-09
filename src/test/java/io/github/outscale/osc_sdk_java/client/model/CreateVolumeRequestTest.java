@@ -10,79 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateVolumeRequest
- */
+/** Model tests for CreateVolumeRequest */
 public class CreateVolumeRequestTest {
     private final CreateVolumeRequest model = new CreateVolumeRequest();
 
-    /**
-     * Model tests for CreateVolumeRequest
-     */
+    /** Model tests for CreateVolumeRequest */
     @Test
     public void testCreateVolumeRequest() {
         // TODO: test CreateVolumeRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'iops'
-     */
+    /** Test the property 'iops' */
     @Test
     public void iopsTest() {
         // TODO: test iops
     }
 
-    /**
-     * Test the property 'size'
-     */
+    /** Test the property 'size' */
     @Test
     public void sizeTest() {
         // TODO: test size
     }
 
-    /**
-     * Test the property 'snapshotId'
-     */
+    /** Test the property 'snapshotId' */
     @Test
     public void snapshotIdTest() {
         // TODO: test snapshotId
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
 
-    /**
-     * Test the property 'volumeType'
-     */
+    /** Test the property 'volumeType' */
     @Test
     public void volumeTypeTest() {
         // TODO: test volumeType
     }
-
 }

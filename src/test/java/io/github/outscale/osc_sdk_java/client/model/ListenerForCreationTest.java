@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ListenerForCreation
- */
+/** Model tests for ListenerForCreation */
 public class ListenerForCreationTest {
     private final ListenerForCreation model = new ListenerForCreation();
 
-    /**
-     * Model tests for ListenerForCreation
-     */
+    /** Model tests for ListenerForCreation */
     @Test
     public void testListenerForCreation() {
         // TODO: test ListenerForCreation
     }
 
-    /**
-     * Test the property 'backendPort'
-     */
+    /** Test the property 'backendPort' */
     @Test
     public void backendPortTest() {
         // TODO: test backendPort
     }
 
-    /**
-     * Test the property 'backendProtocol'
-     */
+    /** Test the property 'backendProtocol' */
     @Test
     public void backendProtocolTest() {
         // TODO: test backendProtocol
     }
 
-    /**
-     * Test the property 'loadBalancerPort'
-     */
+    /** Test the property 'loadBalancerPort' */
     @Test
     public void loadBalancerPortTest() {
         // TODO: test loadBalancerPort
     }
 
-    /**
-     * Test the property 'loadBalancerProtocol'
-     */
+    /** Test the property 'loadBalancerProtocol' */
     @Test
     public void loadBalancerProtocolTest() {
         // TODO: test loadBalancerProtocol
     }
 
-    /**
-     * Test the property 'serverCertificateId'
-     */
+    /** Test the property 'serverCertificateId' */
     @Test
     public void serverCertificateIdTest() {
         // TODO: test serverCertificateId
     }
-
 }

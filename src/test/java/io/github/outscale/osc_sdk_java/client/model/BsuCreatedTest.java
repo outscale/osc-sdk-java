@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for BsuCreated
- */
+/** Model tests for BsuCreated */
 public class BsuCreatedTest {
     private final BsuCreated model = new BsuCreated();
 
-    /**
-     * Model tests for BsuCreated
-     */
+    /** Model tests for BsuCreated */
     @Test
     public void testBsuCreated() {
         // TODO: test BsuCreated
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'linkDate'
-     */
+    /** Test the property 'linkDate' */
     @Test
     public void linkDateTest() {
         // TODO: test linkDate
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'volumeId'
-     */
+    /** Test the property 'volumeId' */
     @Test
     public void volumeIdTest() {
         // TODO: test volumeId
     }
-
 }

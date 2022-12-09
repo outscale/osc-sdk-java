@@ -10,228 +10,225 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the placement of the VM.
- */
+/** Information about the placement of the VM. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Placement {
-  public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
-  @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
-  private String subregionName;
+    public static final String SERIALIZED_NAME_SUBREGION_NAME = "SubregionName";
 
-  public static final String SERIALIZED_NAME_TENANCY = "Tenancy";
-  @SerializedName(SERIALIZED_NAME_TENANCY)
-  private String tenancy;
+    @SerializedName(SERIALIZED_NAME_SUBREGION_NAME)
+    private String subregionName;
 
-  public Placement() {
-  }
+    public static final String SERIALIZED_NAME_TENANCY = "Tenancy";
 
-  public Placement subregionName(String subregionName) {
-    
-    this.subregionName = subregionName;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_TENANCY)
+    private String tenancy;
 
-   /**
-   * The name of the Subregion. If you specify this parameter, you must not specify the &#x60;Nics&#x60; parameter.
-   * @return subregionName
-  **/
-  @javax.annotation.Nullable
+    public Placement() {}
 
-  public String getSubregionName() {
-    return subregionName;
-  }
+    public Placement subregionName(String subregionName) {
 
-
-  public void setSubregionName(String subregionName) {
-    this.subregionName = subregionName;
-  }
-
-
-  public Placement tenancy(String tenancy) {
-    
-    this.tenancy = tenancy;
-    return this;
-  }
-
-   /**
-   * The tenancy of the VM (&#x60;default&#x60; \\| &#x60;dedicated&#x60;).
-   * @return tenancy
-  **/
-  @javax.annotation.Nullable
-
-  public String getTenancy() {
-    return tenancy;
-  }
-
-
-  public void setTenancy(String tenancy) {
-    this.tenancy = tenancy;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.subregionName = subregionName;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The name of the Subregion. If you specify this parameter, you must not specify the
+     * &#x60;Nics&#x60; parameter.
+     *
+     * @return subregionName
+     */
+    @javax.annotation.Nullable
+    public String getSubregionName() {
+        return subregionName;
     }
-    Placement placement = (Placement) o;
-    return Objects.equals(this.subregionName, placement.subregionName) &&
-        Objects.equals(this.tenancy, placement.tenancy);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(subregionName, tenancy);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Placement {\n");
-    sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
-    sb.append("    tenancy: ").append(toIndentedString(tenancy)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setSubregionName(String subregionName) {
+        this.subregionName = subregionName;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public Placement tenancy(String tenancy) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.tenancy = tenancy;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("SubregionName");
-    openapiFields.add("Tenancy");
+    /**
+     * The tenancy of the VM (&#x60;default&#x60; \\| &#x60;dedicated&#x60;).
+     *
+     * @return tenancy
+     */
+    @javax.annotation.Nullable
+    public String getTenancy() {
+        return tenancy;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setTenancy(String tenancy) {
+        this.tenancy = tenancy;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Placement
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Placement.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Placement is not found in the empty JSON string", Placement.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Placement.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Placement` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull()) && !jsonObj.get("SubregionName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `SubregionName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SubregionName").toString()));
-      }
-      if ((jsonObj.get("Tenancy") != null && !jsonObj.get("Tenancy").isJsonNull()) && !jsonObj.get("Tenancy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Tenancy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Tenancy").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Placement.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Placement' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Placement> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Placement.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Placement>() {
-           @Override
-           public void write(JsonWriter out, Placement value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Placement read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Placement placement = (Placement) o;
+        return Objects.equals(this.subregionName, placement.subregionName)
+                && Objects.equals(this.tenancy, placement.tenancy);
     }
-  }
 
- /**
-  * Create an instance of Placement given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Placement
-  * @throws IOException if the JSON string is invalid with respect to Placement
-  */
-  public static Placement fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Placement.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(subregionName, tenancy);
+    }
 
- /**
-  * Convert an instance of Placement to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Placement {\n");
+        sb.append("    subregionName: ").append(toIndentedString(subregionName)).append("\n");
+        sb.append("    tenancy: ").append(toIndentedString(tenancy)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SubregionName");
+        openapiFields.add("Tenancy");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to Placement
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!Placement.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in Placement is not found in the empty"
+                                        + " JSON string",
+                                Placement.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!Placement.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `Placement` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("SubregionName") != null && !jsonObj.get("SubregionName").isJsonNull())
+                && !jsonObj.get("SubregionName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `SubregionName` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("SubregionName").toString()));
+        }
+        if ((jsonObj.get("Tenancy") != null && !jsonObj.get("Tenancy").isJsonNull())
+                && !jsonObj.get("Tenancy").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `Tenancy` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("Tenancy").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Placement.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Placement' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Placement> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Placement.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Placement>() {
+                        @Override
+                        public void write(JsonWriter out, Placement value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Placement read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Placement given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Placement
+     * @throws IOException if the JSON string is invalid with respect to Placement
+     */
+    public static Placement fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Placement.class);
+    }
+
+    /**
+     * Convert an instance of Placement to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

@@ -10,71 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateFlexibleGpuRequest
- */
+/** Model tests for CreateFlexibleGpuRequest */
 public class CreateFlexibleGpuRequestTest {
     private final CreateFlexibleGpuRequest model = new CreateFlexibleGpuRequest();
 
-    /**
-     * Model tests for CreateFlexibleGpuRequest
-     */
+    /** Model tests for CreateFlexibleGpuRequest */
     @Test
     public void testCreateFlexibleGpuRequest() {
         // TODO: test CreateFlexibleGpuRequest
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'generation'
-     */
+    /** Test the property 'generation' */
     @Test
     public void generationTest() {
         // TODO: test generation
     }
 
-    /**
-     * Test the property 'modelName'
-     */
+    /** Test the property 'modelName' */
     @Test
     public void modelNameTest() {
         // TODO: test modelName
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
-
 }

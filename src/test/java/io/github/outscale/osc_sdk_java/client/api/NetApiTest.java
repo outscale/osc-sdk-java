@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateNetRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateNetResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteNetResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadNetsResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateNetRequest;
@@ -26,22 +24,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateNetResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for NetApi
- */
+/** API tests for NetApi */
 @Disabled
 public class NetApiTest {
 
     private final NetApi api = new NetApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createNetTest() throws ApiException {
         CreateNetRequest createNetRequest = null;
@@ -49,9 +38,7 @@ public class NetApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteNetTest() throws ApiException {
         DeleteNetRequest deleteNetRequest = null;
@@ -59,9 +46,7 @@ public class NetApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readNetsTest() throws ApiException {
         ReadNetsRequest readNetsRequest = null;
@@ -69,14 +54,11 @@ public class NetApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateNetTest() throws ApiException {
         UpdateNetRequest updateNetRequest = null;
         UpdateNetResponse response = api.updateNet(updateNetRequest);
         // TODO: test validations
     }
-
 }

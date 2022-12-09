@@ -10,43 +10,32 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateSnapshotExportTaskRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateSnapshotExportTaskResponse;
 import io.github.outscale.osc_sdk_java.client.model.CreateSnapshotRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateSnapshotResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSnapshotRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteSnapshotResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadSnapshotExportTasksRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadSnapshotExportTasksResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadSnapshotsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadSnapshotsResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateSnapshotRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateSnapshotResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class SnapshotApi {
     private ApiClient localVarApiClient;
@@ -87,28 +76,31 @@ public class SnapshotApi {
 
     /**
      * Build call for createSnapshot
-     * @param createSnapshotRequest  (optional)
+     *
+     * @param createSnapshotRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createSnapshotCall(CreateSnapshotRequest createSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSnapshotCall(
+            CreateSnapshotRequest createSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -125,117 +117,136 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSnapshotValidateBeforeCall(CreateSnapshotRequest createSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSnapshotValidateBeforeCall(
+            CreateSnapshotRequest createSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         return createSnapshotCall(createSnapshotRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createSnapshotRequest  (optional)
+     * @param createSnapshotRequest (optional)
      * @return CreateSnapshotResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateSnapshotResponse createSnapshot(CreateSnapshotRequest createSnapshotRequest) throws ApiException {
-        ApiResponse<CreateSnapshotResponse> localVarResp = createSnapshotWithHttpInfo(createSnapshotRequest);
+    public CreateSnapshotResponse createSnapshot(CreateSnapshotRequest createSnapshotRequest)
+            throws ApiException {
+        ApiResponse<CreateSnapshotResponse> localVarResp =
+                createSnapshotWithHttpInfo(createSnapshotRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createSnapshotRequest  (optional)
+     * @param createSnapshotRequest (optional)
      * @return ApiResponse&lt;CreateSnapshotResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateSnapshotResponse> createSnapshotWithHttpInfo(CreateSnapshotRequest createSnapshotRequest) throws ApiException {
+    public ApiResponse<CreateSnapshotResponse> createSnapshotWithHttpInfo(
+            CreateSnapshotRequest createSnapshotRequest) throws ApiException {
         okhttp3.Call localVarCall = createSnapshotValidateBeforeCall(createSnapshotRequest, null);
-        Type localVarReturnType = new TypeToken<CreateSnapshotResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<CreateSnapshotResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createSnapshotRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createSnapshotRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createSnapshotAsync(CreateSnapshotRequest createSnapshotRequest, final ApiCallback<CreateSnapshotResponse> _callback) throws ApiException {
+    public okhttp3.Call createSnapshotAsync(
+            CreateSnapshotRequest createSnapshotRequest,
+            final ApiCallback<CreateSnapshotResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createSnapshotValidateBeforeCall(createSnapshotRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateSnapshotResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createSnapshotValidateBeforeCall(createSnapshotRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateSnapshotResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createSnapshotExportTask
-     * @param createSnapshotExportTaskRequest  (optional)
+     *
+     * @param createSnapshotExportTaskRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createSnapshotExportTaskCall(CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createSnapshotExportTaskCall(
+            CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -252,111 +263,132 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSnapshotExportTaskValidateBeforeCall(CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSnapshotExportTaskValidateBeforeCall(
+            CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return createSnapshotExportTaskCall(createSnapshotExportTaskRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createSnapshotExportTaskRequest  (optional)
+     * @param createSnapshotExportTaskRequest (optional)
      * @return CreateSnapshotExportTaskResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateSnapshotExportTaskResponse createSnapshotExportTask(CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest) throws ApiException {
-        ApiResponse<CreateSnapshotExportTaskResponse> localVarResp = createSnapshotExportTaskWithHttpInfo(createSnapshotExportTaskRequest);
+    public CreateSnapshotExportTaskResponse createSnapshotExportTask(
+            CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest) throws ApiException {
+        ApiResponse<CreateSnapshotExportTaskResponse> localVarResp =
+                createSnapshotExportTaskWithHttpInfo(createSnapshotExportTaskRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createSnapshotExportTaskRequest  (optional)
+     * @param createSnapshotExportTaskRequest (optional)
      * @return ApiResponse&lt;CreateSnapshotExportTaskResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateSnapshotExportTaskResponse> createSnapshotExportTaskWithHttpInfo(CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest) throws ApiException {
-        okhttp3.Call localVarCall = createSnapshotExportTaskValidateBeforeCall(createSnapshotExportTaskRequest, null);
-        Type localVarReturnType = new TypeToken<CreateSnapshotExportTaskResponse>(){}.getType();
+    public ApiResponse<CreateSnapshotExportTaskResponse> createSnapshotExportTaskWithHttpInfo(
+            CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createSnapshotExportTaskValidateBeforeCall(createSnapshotExportTaskRequest, null);
+        Type localVarReturnType = new TypeToken<CreateSnapshotExportTaskResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createSnapshotExportTaskRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createSnapshotExportTaskRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createSnapshotExportTaskAsync(CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest, final ApiCallback<CreateSnapshotExportTaskResponse> _callback) throws ApiException {
+    public okhttp3.Call createSnapshotExportTaskAsync(
+            CreateSnapshotExportTaskRequest createSnapshotExportTaskRequest,
+            final ApiCallback<CreateSnapshotExportTaskResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createSnapshotExportTaskValidateBeforeCall(createSnapshotExportTaskRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateSnapshotExportTaskResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createSnapshotExportTaskValidateBeforeCall(
+                        createSnapshotExportTaskRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateSnapshotExportTaskResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteSnapshot
-     * @param deleteSnapshotRequest  (optional)
+     *
+     * @param deleteSnapshotRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteSnapshotCall(DeleteSnapshotRequest deleteSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSnapshotCall(
+            DeleteSnapshotRequest deleteSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -373,117 +405,136 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSnapshotValidateBeforeCall(DeleteSnapshotRequest deleteSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSnapshotValidateBeforeCall(
+            DeleteSnapshotRequest deleteSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteSnapshotCall(deleteSnapshotRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteSnapshotRequest  (optional)
+     * @param deleteSnapshotRequest (optional)
      * @return DeleteSnapshotResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteSnapshotResponse deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest) throws ApiException {
-        ApiResponse<DeleteSnapshotResponse> localVarResp = deleteSnapshotWithHttpInfo(deleteSnapshotRequest);
+    public DeleteSnapshotResponse deleteSnapshot(DeleteSnapshotRequest deleteSnapshotRequest)
+            throws ApiException {
+        ApiResponse<DeleteSnapshotResponse> localVarResp =
+                deleteSnapshotWithHttpInfo(deleteSnapshotRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteSnapshotRequest  (optional)
+     * @param deleteSnapshotRequest (optional)
      * @return ApiResponse&lt;DeleteSnapshotResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteSnapshotResponse> deleteSnapshotWithHttpInfo(DeleteSnapshotRequest deleteSnapshotRequest) throws ApiException {
+    public ApiResponse<DeleteSnapshotResponse> deleteSnapshotWithHttpInfo(
+            DeleteSnapshotRequest deleteSnapshotRequest) throws ApiException {
         okhttp3.Call localVarCall = deleteSnapshotValidateBeforeCall(deleteSnapshotRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteSnapshotResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeleteSnapshotResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteSnapshotRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteSnapshotRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteSnapshotAsync(DeleteSnapshotRequest deleteSnapshotRequest, final ApiCallback<DeleteSnapshotResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteSnapshotAsync(
+            DeleteSnapshotRequest deleteSnapshotRequest,
+            final ApiCallback<DeleteSnapshotResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteSnapshotValidateBeforeCall(deleteSnapshotRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteSnapshotResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteSnapshotValidateBeforeCall(deleteSnapshotRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteSnapshotResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readSnapshotExportTasks
-     * @param readSnapshotExportTasksRequest  (optional)
+     *
+     * @param readSnapshotExportTasksRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSnapshotExportTasksCall(ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readSnapshotExportTasksCall(
+            ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -500,111 +551,132 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readSnapshotExportTasksValidateBeforeCall(ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readSnapshotExportTasksValidateBeforeCall(
+            ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return readSnapshotExportTasksCall(readSnapshotExportTasksRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readSnapshotExportTasksRequest  (optional)
+     * @param readSnapshotExportTasksRequest (optional)
      * @return ReadSnapshotExportTasksResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadSnapshotExportTasksResponse readSnapshotExportTasks(ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest) throws ApiException {
-        ApiResponse<ReadSnapshotExportTasksResponse> localVarResp = readSnapshotExportTasksWithHttpInfo(readSnapshotExportTasksRequest);
+    public ReadSnapshotExportTasksResponse readSnapshotExportTasks(
+            ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest) throws ApiException {
+        ApiResponse<ReadSnapshotExportTasksResponse> localVarResp =
+                readSnapshotExportTasksWithHttpInfo(readSnapshotExportTasksRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readSnapshotExportTasksRequest  (optional)
+     * @param readSnapshotExportTasksRequest (optional)
      * @return ApiResponse&lt;ReadSnapshotExportTasksResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadSnapshotExportTasksResponse> readSnapshotExportTasksWithHttpInfo(ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest) throws ApiException {
-        okhttp3.Call localVarCall = readSnapshotExportTasksValidateBeforeCall(readSnapshotExportTasksRequest, null);
-        Type localVarReturnType = new TypeToken<ReadSnapshotExportTasksResponse>(){}.getType();
+    public ApiResponse<ReadSnapshotExportTasksResponse> readSnapshotExportTasksWithHttpInfo(
+            ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readSnapshotExportTasksValidateBeforeCall(readSnapshotExportTasksRequest, null);
+        Type localVarReturnType = new TypeToken<ReadSnapshotExportTasksResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readSnapshotExportTasksRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readSnapshotExportTasksRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSnapshotExportTasksAsync(ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest, final ApiCallback<ReadSnapshotExportTasksResponse> _callback) throws ApiException {
+    public okhttp3.Call readSnapshotExportTasksAsync(
+            ReadSnapshotExportTasksRequest readSnapshotExportTasksRequest,
+            final ApiCallback<ReadSnapshotExportTasksResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readSnapshotExportTasksValidateBeforeCall(readSnapshotExportTasksRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadSnapshotExportTasksResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readSnapshotExportTasksValidateBeforeCall(
+                        readSnapshotExportTasksRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadSnapshotExportTasksResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readSnapshots
-     * @param readSnapshotsRequest  (optional)
+     *
+     * @param readSnapshotsRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSnapshotsCall(ReadSnapshotsRequest readSnapshotsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readSnapshotsCall(
+            ReadSnapshotsRequest readSnapshotsRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -621,120 +693,138 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readSnapshotsValidateBeforeCall(ReadSnapshotsRequest readSnapshotsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readSnapshotsValidateBeforeCall(
+            ReadSnapshotsRequest readSnapshotsRequest, final ApiCallback _callback)
+            throws ApiException {
         return readSnapshotsCall(readSnapshotsRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readSnapshotsRequest  (optional)
+     * @param readSnapshotsRequest (optional)
      * @return ReadSnapshotsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadSnapshotsResponse readSnapshots(ReadSnapshotsRequest readSnapshotsRequest) throws ApiException {
-        ApiResponse<ReadSnapshotsResponse> localVarResp = readSnapshotsWithHttpInfo(readSnapshotsRequest);
+    public ReadSnapshotsResponse readSnapshots(ReadSnapshotsRequest readSnapshotsRequest)
+            throws ApiException {
+        ApiResponse<ReadSnapshotsResponse> localVarResp =
+                readSnapshotsWithHttpInfo(readSnapshotsRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readSnapshotsRequest  (optional)
+     * @param readSnapshotsRequest (optional)
      * @return ApiResponse&lt;ReadSnapshotsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadSnapshotsResponse> readSnapshotsWithHttpInfo(ReadSnapshotsRequest readSnapshotsRequest) throws ApiException {
+    public ApiResponse<ReadSnapshotsResponse> readSnapshotsWithHttpInfo(
+            ReadSnapshotsRequest readSnapshotsRequest) throws ApiException {
         okhttp3.Call localVarCall = readSnapshotsValidateBeforeCall(readSnapshotsRequest, null);
-        Type localVarReturnType = new TypeToken<ReadSnapshotsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReadSnapshotsResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readSnapshotsRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readSnapshotsRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readSnapshotsAsync(ReadSnapshotsRequest readSnapshotsRequest, final ApiCallback<ReadSnapshotsResponse> _callback) throws ApiException {
+    public okhttp3.Call readSnapshotsAsync(
+            ReadSnapshotsRequest readSnapshotsRequest,
+            final ApiCallback<ReadSnapshotsResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readSnapshotsValidateBeforeCall(readSnapshotsRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadSnapshotsResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readSnapshotsValidateBeforeCall(readSnapshotsRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadSnapshotsResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateSnapshot
-     * @param updateSnapshotRequest  (optional)
+     *
+     * @param updateSnapshotRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateSnapshotCall(UpdateSnapshotRequest updateSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateSnapshotCall(
+            UpdateSnapshotRequest updateSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -751,93 +841,108 @@ public class SnapshotApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSnapshotValidateBeforeCall(UpdateSnapshotRequest updateSnapshotRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateSnapshotValidateBeforeCall(
+            UpdateSnapshotRequest updateSnapshotRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateSnapshotCall(updateSnapshotRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateSnapshotRequest  (optional)
+     * @param updateSnapshotRequest (optional)
      * @return UpdateSnapshotResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateSnapshotResponse updateSnapshot(UpdateSnapshotRequest updateSnapshotRequest) throws ApiException {
-        ApiResponse<UpdateSnapshotResponse> localVarResp = updateSnapshotWithHttpInfo(updateSnapshotRequest);
+    public UpdateSnapshotResponse updateSnapshot(UpdateSnapshotRequest updateSnapshotRequest)
+            throws ApiException {
+        ApiResponse<UpdateSnapshotResponse> localVarResp =
+                updateSnapshotWithHttpInfo(updateSnapshotRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateSnapshotRequest  (optional)
+     * @param updateSnapshotRequest (optional)
      * @return ApiResponse&lt;UpdateSnapshotResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateSnapshotResponse> updateSnapshotWithHttpInfo(UpdateSnapshotRequest updateSnapshotRequest) throws ApiException {
+    public ApiResponse<UpdateSnapshotResponse> updateSnapshotWithHttpInfo(
+            UpdateSnapshotRequest updateSnapshotRequest) throws ApiException {
         okhttp3.Call localVarCall = updateSnapshotValidateBeforeCall(updateSnapshotRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateSnapshotResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<UpdateSnapshotResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateSnapshotRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateSnapshotRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * <tr><td> 400 </td><td> The HTTP 400 response (Bad Request). </td><td>  -  </td></tr>
+     * <tr><td> 401 </td><td> The HTTP 401 response (Unauthorized). </td><td>  -  </td></tr>
+     * <tr><td> 500 </td><td> The HTTP 500 response (Internal Server Error). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateSnapshotAsync(UpdateSnapshotRequest updateSnapshotRequest, final ApiCallback<UpdateSnapshotResponse> _callback) throws ApiException {
+    public okhttp3.Call updateSnapshotAsync(
+            UpdateSnapshotRequest updateSnapshotRequest,
+            final ApiCallback<UpdateSnapshotResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateSnapshotValidateBeforeCall(updateSnapshotRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateSnapshotResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateSnapshotValidateBeforeCall(updateSnapshotRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateSnapshotResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

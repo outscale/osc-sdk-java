@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -25,57 +24,45 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateServerCertificateRespo
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ServerCertificateApi
- */
+/** API tests for ServerCertificateApi */
 @Disabled
 public class ServerCertificateApiTest {
 
     private final ServerCertificateApi api = new ServerCertificateApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createServerCertificateTest() throws ApiException {
         CreateServerCertificateRequest createServerCertificateRequest = null;
-        CreateServerCertificateResponse response = api.createServerCertificate(createServerCertificateRequest);
+        CreateServerCertificateResponse response =
+                api.createServerCertificate(createServerCertificateRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteServerCertificateTest() throws ApiException {
         DeleteServerCertificateRequest deleteServerCertificateRequest = null;
-        DeleteServerCertificateResponse response = api.deleteServerCertificate(deleteServerCertificateRequest);
+        DeleteServerCertificateResponse response =
+                api.deleteServerCertificate(deleteServerCertificateRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readServerCertificatesTest() throws ApiException {
         ReadServerCertificatesRequest readServerCertificatesRequest = null;
-        ReadServerCertificatesResponse response = api.readServerCertificates(readServerCertificatesRequest);
+        ReadServerCertificatesResponse response =
+                api.readServerCertificates(readServerCertificatesRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateServerCertificateTest() throws ApiException {
         UpdateServerCertificateRequest updateServerCertificateRequest = null;
-        UpdateServerCertificateResponse response = api.updateServerCertificate(updateServerCertificateRequest);
+        UpdateServerCertificateResponse response =
+                api.updateServerCertificate(updateServerCertificateRequest);
         // TODO: test validations
     }
-
 }

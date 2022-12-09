@@ -10,233 +10,228 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * DeleteApiAccessRuleRequest
- */
+/** DeleteApiAccessRuleRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DeleteApiAccessRuleRequest {
-  public static final String SERIALIZED_NAME_API_ACCESS_RULE_ID = "ApiAccessRuleId";
-  @SerializedName(SERIALIZED_NAME_API_ACCESS_RULE_ID)
-  private String apiAccessRuleId;
+    public static final String SERIALIZED_NAME_API_ACCESS_RULE_ID = "ApiAccessRuleId";
 
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    @SerializedName(SERIALIZED_NAME_API_ACCESS_RULE_ID)
+    private String apiAccessRuleId;
 
-  public DeleteApiAccessRuleRequest() {
-  }
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public DeleteApiAccessRuleRequest apiAccessRuleId(String apiAccessRuleId) {
-    
-    this.apiAccessRuleId = apiAccessRuleId;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-   /**
-   * The ID of the API access rule you want to delete.
-   * @return apiAccessRuleId
-  **/
-  @javax.annotation.Nonnull
+    public DeleteApiAccessRuleRequest() {}
 
-  public String getApiAccessRuleId() {
-    return apiAccessRuleId;
-  }
+    public DeleteApiAccessRuleRequest apiAccessRuleId(String apiAccessRuleId) {
 
-
-  public void setApiAccessRuleId(String apiAccessRuleId) {
-    this.apiAccessRuleId = apiAccessRuleId;
-  }
-
-
-  public DeleteApiAccessRuleRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
-
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDryRun() {
-    return dryRun;
-  }
-
-
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.apiAccessRuleId = apiAccessRuleId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The ID of the API access rule you want to delete.
+     *
+     * @return apiAccessRuleId
+     */
+    @javax.annotation.Nonnull
+    public String getApiAccessRuleId() {
+        return apiAccessRuleId;
     }
-    DeleteApiAccessRuleRequest deleteApiAccessRuleRequest = (DeleteApiAccessRuleRequest) o;
-    return Objects.equals(this.apiAccessRuleId, deleteApiAccessRuleRequest.apiAccessRuleId) &&
-        Objects.equals(this.dryRun, deleteApiAccessRuleRequest.dryRun);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(apiAccessRuleId, dryRun);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteApiAccessRuleRequest {\n");
-    sb.append("    apiAccessRuleId: ").append(toIndentedString(apiAccessRuleId)).append("\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setApiAccessRuleId(String apiAccessRuleId) {
+        this.apiAccessRuleId = apiAccessRuleId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public DeleteApiAccessRuleRequest dryRun(Boolean dryRun) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.dryRun = dryRun;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ApiAccessRuleId");
-    openapiFields.add("DryRun");
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ApiAccessRuleId");
-  }
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to DeleteApiAccessRuleRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!DeleteApiAccessRuleRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeleteApiAccessRuleRequest is not found in the empty JSON string", DeleteApiAccessRuleRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!DeleteApiAccessRuleRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeleteApiAccessRuleRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DeleteApiAccessRuleRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("ApiAccessRuleId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ApiAccessRuleId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ApiAccessRuleId").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!DeleteApiAccessRuleRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'DeleteApiAccessRuleRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<DeleteApiAccessRuleRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(DeleteApiAccessRuleRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<DeleteApiAccessRuleRequest>() {
-           @Override
-           public void write(JsonWriter out, DeleteApiAccessRuleRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public DeleteApiAccessRuleRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DeleteApiAccessRuleRequest deleteApiAccessRuleRequest = (DeleteApiAccessRuleRequest) o;
+        return Objects.equals(this.apiAccessRuleId, deleteApiAccessRuleRequest.apiAccessRuleId)
+                && Objects.equals(this.dryRun, deleteApiAccessRuleRequest.dryRun);
     }
-  }
 
- /**
-  * Create an instance of DeleteApiAccessRuleRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DeleteApiAccessRuleRequest
-  * @throws IOException if the JSON string is invalid with respect to DeleteApiAccessRuleRequest
-  */
-  public static DeleteApiAccessRuleRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, DeleteApiAccessRuleRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(apiAccessRuleId, dryRun);
+    }
 
- /**
-  * Convert an instance of DeleteApiAccessRuleRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class DeleteApiAccessRuleRequest {\n");
+        sb.append("    apiAccessRuleId: ").append(toIndentedString(apiAccessRuleId)).append("\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ApiAccessRuleId");
+        openapiFields.add("DryRun");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ApiAccessRuleId");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to DeleteApiAccessRuleRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!DeleteApiAccessRuleRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in DeleteApiAccessRuleRequest is not"
+                                        + " found in the empty JSON string",
+                                DeleteApiAccessRuleRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!DeleteApiAccessRuleRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `DeleteApiAccessRuleRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DeleteApiAccessRuleRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("ApiAccessRuleId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `ApiAccessRuleId` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("ApiAccessRuleId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeleteApiAccessRuleRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeleteApiAccessRuleRequest' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeleteApiAccessRuleRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeleteApiAccessRuleRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeleteApiAccessRuleRequest>() {
+                        @Override
+                        public void write(JsonWriter out, DeleteApiAccessRuleRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeleteApiAccessRuleRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeleteApiAccessRuleRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeleteApiAccessRuleRequest
+     * @throws IOException if the JSON string is invalid with respect to DeleteApiAccessRuleRequest
+     */
+    public static DeleteApiAccessRuleRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeleteApiAccessRuleRequest.class);
+    }
+
+    /**
+     * Convert an instance of DeleteApiAccessRuleRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

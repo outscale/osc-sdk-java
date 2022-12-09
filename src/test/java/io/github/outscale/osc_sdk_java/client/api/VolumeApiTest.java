@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateVolumeRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateVolumeResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteVolumeRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteVolumeResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkVolumeRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkVolumeResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadVolumesRequest;
@@ -30,22 +28,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateVolumeResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for VolumeApi
- */
+/** API tests for VolumeApi */
 @Disabled
 public class VolumeApiTest {
 
     private final VolumeApi api = new VolumeApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createVolumeTest() throws ApiException {
         CreateVolumeRequest createVolumeRequest = null;
@@ -53,9 +42,7 @@ public class VolumeApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteVolumeTest() throws ApiException {
         DeleteVolumeRequest deleteVolumeRequest = null;
@@ -63,9 +50,7 @@ public class VolumeApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkVolumeTest() throws ApiException {
         LinkVolumeRequest linkVolumeRequest = null;
@@ -73,9 +58,7 @@ public class VolumeApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readVolumesTest() throws ApiException {
         ReadVolumesRequest readVolumesRequest = null;
@@ -83,9 +66,7 @@ public class VolumeApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkVolumeTest() throws ApiException {
         UnlinkVolumeRequest unlinkVolumeRequest = null;
@@ -93,14 +74,11 @@ public class VolumeApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateVolumeTest() throws ApiException {
         UpdateVolumeRequest updateVolumeRequest = null;
         UpdateVolumeResponse response = api.updateVolume(updateVolumeRequest);
         // TODO: test validations
     }
-
 }

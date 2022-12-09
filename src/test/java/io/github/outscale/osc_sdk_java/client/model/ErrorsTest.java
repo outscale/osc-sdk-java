@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Errors
- */
+/** Model tests for Errors */
 public class ErrorsTest {
     private final Errors model = new Errors();
 
-    /**
-     * Model tests for Errors
-     */
+    /** Model tests for Errors */
     @Test
     public void testErrors() {
         // TODO: test Errors
     }
 
-    /**
-     * Test the property 'code'
-     */
+    /** Test the property 'code' */
     @Test
     public void codeTest() {
         // TODO: test code
     }
 
-    /**
-     * Test the property 'details'
-     */
+    /** Test the property 'details' */
     @Test
     public void detailsTest() {
         // TODO: test details
     }
 
-    /**
-     * Test the property 'type'
-     */
+    /** Test the property 'type' */
     @Test
     public void typeTest() {
         // TODO: test type
     }
-
 }

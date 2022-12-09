@@ -10,218 +10,210 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.CatalogEntry;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about our catalog of prices.
- */
+/** Information about our catalog of prices. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Catalog {
-  public static final String SERIALIZED_NAME_ENTRIES = "Entries";
-  @SerializedName(SERIALIZED_NAME_ENTRIES)
-  private List<CatalogEntry> entries = null;
+    public static final String SERIALIZED_NAME_ENTRIES = "Entries";
 
-  public Catalog() {
-  }
+    @SerializedName(SERIALIZED_NAME_ENTRIES)
+    private List<CatalogEntry> entries = null;
 
-  public Catalog entries(List<CatalogEntry> entries) {
-    
-    this.entries = entries;
-    return this;
-  }
+    public Catalog() {}
 
-  public Catalog addEntriesItem(CatalogEntry entriesItem) {
-    if (this.entries == null) {
-      this.entries = new ArrayList<>();
+    public Catalog entries(List<CatalogEntry> entries) {
+
+        this.entries = entries;
+        return this;
     }
-    this.entries.add(entriesItem);
-    return this;
-  }
 
-   /**
-   * One or more catalog entries.
-   * @return entries
-  **/
-  @javax.annotation.Nullable
-
-  public List<CatalogEntry> getEntries() {
-    return entries;
-  }
-
-
-  public void setEntries(List<CatalogEntry> entries) {
-    this.entries = entries;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Catalog catalog = (Catalog) o;
-    return Objects.equals(this.entries, catalog.entries);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(entries);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Catalog {\n");
-    sb.append("    entries: ").append(toIndentedString(entries)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Entries");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to Catalog
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!Catalog.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Catalog is not found in the empty JSON string", Catalog.openapiRequiredFields.toString()));
+    public Catalog addEntriesItem(CatalogEntry entriesItem) {
+        if (this.entries == null) {
+            this.entries = new ArrayList<>();
         }
-      }
+        this.entries.add(entriesItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!Catalog.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Catalog` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("Entries") != null && !jsonObj.get("Entries").isJsonNull()) {
-        JsonArray jsonArrayentries = jsonObj.getAsJsonArray("Entries");
-        if (jsonArrayentries != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("Entries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `Entries` to be an array in the JSON string but got `%s`", jsonObj.get("Entries").toString()));
-          }
+    /**
+     * One or more catalog entries.
+     *
+     * @return entries
+     */
+    @javax.annotation.Nullable
+    public List<CatalogEntry> getEntries() {
+        return entries;
+    }
 
-          // validate the optional field `Entries` (array)
-          for (int i = 0; i < jsonArrayentries.size(); i++) {
-            CatalogEntry.validateJsonObject(jsonArrayentries.get(i).getAsJsonObject());
-          };
-        }
-      }
-  }
+    public void setEntries(List<CatalogEntry> entries) {
+        this.entries = entries;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Catalog.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Catalog' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Catalog> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Catalog.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<Catalog>() {
-           @Override
-           public void write(JsonWriter out, Catalog value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public Catalog read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Catalog catalog = (Catalog) o;
+        return Objects.equals(this.entries, catalog.entries);
     }
-  }
 
- /**
-  * Create an instance of Catalog given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Catalog
-  * @throws IOException if the JSON string is invalid with respect to Catalog
-  */
-  public static Catalog fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Catalog.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(entries);
+    }
 
- /**
-  * Convert an instance of Catalog to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Catalog {\n");
+        sb.append("    entries: ").append(toIndentedString(entries)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Entries");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to Catalog
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!Catalog.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in Catalog is not found in the empty"
+                                        + " JSON string",
+                                Catalog.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!Catalog.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the `Catalog`"
+                                        + " properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if (jsonObj.get("Entries") != null && !jsonObj.get("Entries").isJsonNull()) {
+            JsonArray jsonArrayentries = jsonObj.getAsJsonArray("Entries");
+            if (jsonArrayentries != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("Entries").isJsonArray()) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Expected the field `Entries` to be an array in the JSON"
+                                            + " string but got `%s`",
+                                    jsonObj.get("Entries").toString()));
+                }
+
+                // validate the optional field `Entries` (array)
+                for (int i = 0; i < jsonArrayentries.size(); i++) {
+                    CatalogEntry.validateJsonObject(jsonArrayentries.get(i).getAsJsonObject());
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Catalog.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Catalog' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Catalog> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Catalog.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Catalog>() {
+                        @Override
+                        public void write(JsonWriter out, Catalog value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Catalog read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Catalog given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Catalog
+     * @throws IOException if the JSON string is invalid with respect to Catalog
+     */
+    public static Catalog fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Catalog.class);
+    }
+
+    /**
+     * Convert an instance of Catalog to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

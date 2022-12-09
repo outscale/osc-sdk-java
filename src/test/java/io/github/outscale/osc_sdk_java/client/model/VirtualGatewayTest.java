@@ -10,75 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.NetToVirtualGatewayLink;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for VirtualGateway
- */
+/** Model tests for VirtualGateway */
 public class VirtualGatewayTest {
     private final VirtualGateway model = new VirtualGateway();
 
-    /**
-     * Model tests for VirtualGateway
-     */
+    /** Model tests for VirtualGateway */
     @Test
     public void testVirtualGateway() {
         // TODO: test VirtualGateway
     }
 
-    /**
-     * Test the property 'connectionType'
-     */
+    /** Test the property 'connectionType' */
     @Test
     public void connectionTypeTest() {
         // TODO: test connectionType
     }
 
-    /**
-     * Test the property 'netToVirtualGatewayLinks'
-     */
+    /** Test the property 'netToVirtualGatewayLinks' */
     @Test
     public void netToVirtualGatewayLinksTest() {
         // TODO: test netToVirtualGatewayLinks
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
-
 }

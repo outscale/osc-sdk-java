@@ -10,79 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkNic
- */
+/** Model tests for LinkNic */
 public class LinkNicTest {
     private final LinkNic model = new LinkNic();
 
-    /**
-     * Model tests for LinkNic
-     */
+    /** Model tests for LinkNic */
     @Test
     public void testLinkNic() {
         // TODO: test LinkNic
     }
 
-    /**
-     * Test the property 'deleteOnVmDeletion'
-     */
+    /** Test the property 'deleteOnVmDeletion' */
     @Test
     public void deleteOnVmDeletionTest() {
         // TODO: test deleteOnVmDeletion
     }
 
-    /**
-     * Test the property 'deviceNumber'
-     */
+    /** Test the property 'deviceNumber' */
     @Test
     public void deviceNumberTest() {
         // TODO: test deviceNumber
     }
 
-    /**
-     * Test the property 'linkNicId'
-     */
+    /** Test the property 'linkNicId' */
     @Test
     public void linkNicIdTest() {
         // TODO: test linkNicId
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'vmAccountId'
-     */
+    /** Test the property 'vmAccountId' */
     @Test
     public void vmAccountIdTest() {
         // TODO: test vmAccountId
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

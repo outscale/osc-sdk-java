@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,7 +17,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateInternetServiceRequest
 import io.github.outscale.osc_sdk_java.client.model.CreateInternetServiceResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteInternetServiceRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteInternetServiceResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkInternetServiceRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkInternetServiceResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadInternetServicesRequest;
@@ -28,42 +26,31 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkInternetServiceRespons
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for InternetServiceApi
- */
+/** API tests for InternetServiceApi */
 @Disabled
 public class InternetServiceApiTest {
 
     private final InternetServiceApi api = new InternetServiceApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createInternetServiceTest() throws ApiException {
         CreateInternetServiceRequest createInternetServiceRequest = null;
-        CreateInternetServiceResponse response = api.createInternetService(createInternetServiceRequest);
+        CreateInternetServiceResponse response =
+                api.createInternetService(createInternetServiceRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteInternetServiceTest() throws ApiException {
         DeleteInternetServiceRequest deleteInternetServiceRequest = null;
-        DeleteInternetServiceResponse response = api.deleteInternetService(deleteInternetServiceRequest);
+        DeleteInternetServiceResponse response =
+                api.deleteInternetService(deleteInternetServiceRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkInternetServiceTest() throws ApiException {
         LinkInternetServiceRequest linkInternetServiceRequest = null;
@@ -71,24 +58,21 @@ public class InternetServiceApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readInternetServicesTest() throws ApiException {
         ReadInternetServicesRequest readInternetServicesRequest = null;
-        ReadInternetServicesResponse response = api.readInternetServices(readInternetServicesRequest);
+        ReadInternetServicesResponse response =
+                api.readInternetServices(readInternetServicesRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkInternetServiceTest() throws ApiException {
         UnlinkInternetServiceRequest unlinkInternetServiceRequest = null;
-        UnlinkInternetServiceResponse response = api.unlinkInternetService(unlinkInternetServiceRequest);
+        UnlinkInternetServiceResponse response =
+                api.unlinkInternetService(unlinkInternetServiceRequest);
         // TODO: test validations
     }
-
 }

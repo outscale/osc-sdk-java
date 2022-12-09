@@ -10,65 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersTag
- */
+/** Model tests for FiltersTag */
 public class FiltersTagTest {
     private final FiltersTag model = new FiltersTag();
 
-    /**
-     * Model tests for FiltersTag
-     */
+    /** Model tests for FiltersTag */
     @Test
     public void testFiltersTag() {
         // TODO: test FiltersTag
     }
 
-    /**
-     * Test the property 'keys'
-     */
+    /** Test the property 'keys' */
     @Test
     public void keysTest() {
         // TODO: test keys
     }
 
-    /**
-     * Test the property 'resourceIds'
-     */
+    /** Test the property 'resourceIds' */
     @Test
     public void resourceIdsTest() {
         // TODO: test resourceIds
     }
 
-    /**
-     * Test the property 'resourceTypes'
-     */
+    /** Test the property 'resourceTypes' */
     @Test
     public void resourceTypesTest() {
         // TODO: test resourceTypes
     }
 
-    /**
-     * Test the property 'values'
-     */
+    /** Test the property 'values' */
     @Test
     public void valuesTest() {
         // TODO: test values
     }
-
 }

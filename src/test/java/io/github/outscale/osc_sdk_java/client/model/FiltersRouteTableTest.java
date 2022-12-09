@@ -10,169 +10,119 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for FiltersRouteTable
- */
+/** Model tests for FiltersRouteTable */
 public class FiltersRouteTableTest {
     private final FiltersRouteTable model = new FiltersRouteTable();
 
-    /**
-     * Model tests for FiltersRouteTable
-     */
+    /** Model tests for FiltersRouteTable */
     @Test
     public void testFiltersRouteTable() {
         // TODO: test FiltersRouteTable
     }
 
-    /**
-     * Test the property 'linkRouteTableIds'
-     */
+    /** Test the property 'linkRouteTableIds' */
     @Test
     public void linkRouteTableIdsTest() {
         // TODO: test linkRouteTableIds
     }
 
-    /**
-     * Test the property 'linkRouteTableLinkRouteTableIds'
-     */
+    /** Test the property 'linkRouteTableLinkRouteTableIds' */
     @Test
     public void linkRouteTableLinkRouteTableIdsTest() {
         // TODO: test linkRouteTableLinkRouteTableIds
     }
 
-    /**
-     * Test the property 'linkRouteTableMain'
-     */
+    /** Test the property 'linkRouteTableMain' */
     @Test
     public void linkRouteTableMainTest() {
         // TODO: test linkRouteTableMain
     }
 
-    /**
-     * Test the property 'linkSubnetIds'
-     */
+    /** Test the property 'linkSubnetIds' */
     @Test
     public void linkSubnetIdsTest() {
         // TODO: test linkSubnetIds
     }
 
-    /**
-     * Test the property 'netIds'
-     */
+    /** Test the property 'netIds' */
     @Test
     public void netIdsTest() {
         // TODO: test netIds
     }
 
-    /**
-     * Test the property 'routeCreationMethods'
-     */
+    /** Test the property 'routeCreationMethods' */
     @Test
     public void routeCreationMethodsTest() {
         // TODO: test routeCreationMethods
     }
 
-    /**
-     * Test the property 'routeDestinationIpRanges'
-     */
+    /** Test the property 'routeDestinationIpRanges' */
     @Test
     public void routeDestinationIpRangesTest() {
         // TODO: test routeDestinationIpRanges
     }
 
-    /**
-     * Test the property 'routeDestinationServiceIds'
-     */
+    /** Test the property 'routeDestinationServiceIds' */
     @Test
     public void routeDestinationServiceIdsTest() {
         // TODO: test routeDestinationServiceIds
     }
 
-    /**
-     * Test the property 'routeGatewayIds'
-     */
+    /** Test the property 'routeGatewayIds' */
     @Test
     public void routeGatewayIdsTest() {
         // TODO: test routeGatewayIds
     }
 
-    /**
-     * Test the property 'routeNatServiceIds'
-     */
+    /** Test the property 'routeNatServiceIds' */
     @Test
     public void routeNatServiceIdsTest() {
         // TODO: test routeNatServiceIds
     }
 
-    /**
-     * Test the property 'routeNetPeeringIds'
-     */
+    /** Test the property 'routeNetPeeringIds' */
     @Test
     public void routeNetPeeringIdsTest() {
         // TODO: test routeNetPeeringIds
     }
 
-    /**
-     * Test the property 'routeStates'
-     */
+    /** Test the property 'routeStates' */
     @Test
     public void routeStatesTest() {
         // TODO: test routeStates
     }
 
-    /**
-     * Test the property 'routeTableIds'
-     */
+    /** Test the property 'routeTableIds' */
     @Test
     public void routeTableIdsTest() {
         // TODO: test routeTableIds
     }
 
-    /**
-     * Test the property 'routeVmIds'
-     */
+    /** Test the property 'routeVmIds' */
     @Test
     public void routeVmIdsTest() {
         // TODO: test routeVmIds
     }
 
-    /**
-     * Test the property 'tagKeys'
-     */
+    /** Test the property 'tagKeys' */
     @Test
     public void tagKeysTest() {
         // TODO: test tagKeys
     }
 
-    /**
-     * Test the property 'tagValues'
-     */
+    /** Test the property 'tagValues' */
     @Test
     public void tagValuesTest() {
         // TODO: test tagValues
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

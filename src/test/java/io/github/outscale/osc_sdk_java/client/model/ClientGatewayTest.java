@@ -10,82 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ClientGateway
- */
+/** Model tests for ClientGateway */
 public class ClientGatewayTest {
     private final ClientGateway model = new ClientGateway();
 
-    /**
-     * Model tests for ClientGateway
-     */
+    /** Model tests for ClientGateway */
     @Test
     public void testClientGateway() {
         // TODO: test ClientGateway
     }
 
-    /**
-     * Test the property 'bgpAsn'
-     */
+    /** Test the property 'bgpAsn' */
     @Test
     public void bgpAsnTest() {
         // TODO: test bgpAsn
     }
 
-    /**
-     * Test the property 'clientGatewayId'
-     */
+    /** Test the property 'clientGatewayId' */
     @Test
     public void clientGatewayIdTest() {
         // TODO: test clientGatewayId
     }
 
-    /**
-     * Test the property 'connectionType'
-     */
+    /** Test the property 'connectionType' */
     @Test
     public void connectionTypeTest() {
         // TODO: test connectionType
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

@@ -10,79 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateServerCertificateRequest
- */
+/** Model tests for CreateServerCertificateRequest */
 public class CreateServerCertificateRequestTest {
     private final CreateServerCertificateRequest model = new CreateServerCertificateRequest();
 
-    /**
-     * Model tests for CreateServerCertificateRequest
-     */
+    /** Model tests for CreateServerCertificateRequest */
     @Test
     public void testCreateServerCertificateRequest() {
         // TODO: test CreateServerCertificateRequest
     }
 
-    /**
-     * Test the property 'body'
-     */
+    /** Test the property 'body' */
     @Test
     public void bodyTest() {
         // TODO: test body
     }
 
-    /**
-     * Test the property 'chain'
-     */
+    /** Test the property 'chain' */
     @Test
     public void chainTest() {
         // TODO: test chain
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'name'
-     */
+    /** Test the property 'name' */
     @Test
     public void nameTest() {
         // TODO: test name
     }
 
-    /**
-     * Test the property 'path'
-     */
+    /** Test the property 'path' */
     @Test
     public void pathTest() {
         // TODO: test path
     }
 
-    /**
-     * Test the property 'privateKey'
-     */
+    /** Test the property 'privateKey' */
     @Test
     public void privateKeyTest() {
         // TODO: test privateKey
     }
-
 }

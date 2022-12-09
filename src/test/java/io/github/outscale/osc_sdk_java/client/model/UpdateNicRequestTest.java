@@ -10,74 +10,47 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.LinkNicToUpdate;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateNicRequest
- */
+/** Model tests for UpdateNicRequest */
 public class UpdateNicRequestTest {
     private final UpdateNicRequest model = new UpdateNicRequest();
 
-    /**
-     * Model tests for UpdateNicRequest
-     */
+    /** Model tests for UpdateNicRequest */
     @Test
     public void testUpdateNicRequest() {
         // TODO: test UpdateNicRequest
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'linkNic'
-     */
+    /** Test the property 'linkNic' */
     @Test
     public void linkNicTest() {
         // TODO: test linkNic
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'securityGroupIds'
-     */
+    /** Test the property 'securityGroupIds' */
     @Test
     public void securityGroupIdsTest() {
         // TODO: test securityGroupIds
     }
-
 }

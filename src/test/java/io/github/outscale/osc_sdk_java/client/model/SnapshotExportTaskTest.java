@@ -10,91 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.OsuExportSnapshotExportTask;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for SnapshotExportTask
- */
+/** Model tests for SnapshotExportTask */
 public class SnapshotExportTaskTest {
     private final SnapshotExportTask model = new SnapshotExportTask();
 
-    /**
-     * Model tests for SnapshotExportTask
-     */
+    /** Model tests for SnapshotExportTask */
     @Test
     public void testSnapshotExportTask() {
         // TODO: test SnapshotExportTask
     }
 
-    /**
-     * Test the property 'comment'
-     */
+    /** Test the property 'comment' */
     @Test
     public void commentTest() {
         // TODO: test comment
     }
 
-    /**
-     * Test the property 'osuExport'
-     */
+    /** Test the property 'osuExport' */
     @Test
     public void osuExportTest() {
         // TODO: test osuExport
     }
 
-    /**
-     * Test the property 'progress'
-     */
+    /** Test the property 'progress' */
     @Test
     public void progressTest() {
         // TODO: test progress
     }
 
-    /**
-     * Test the property 'snapshotId'
-     */
+    /** Test the property 'snapshotId' */
     @Test
     public void snapshotIdTest() {
         // TODO: test snapshotId
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
 
-    /**
-     * Test the property 'taskId'
-     */
+    /** Test the property 'taskId' */
     @Test
     public void taskIdTest() {
         // TODO: test taskId
     }
-
 }

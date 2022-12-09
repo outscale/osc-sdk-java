@@ -10,95 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CatalogEntry
- */
+/** Model tests for CatalogEntry */
 public class CatalogEntryTest {
     private final CatalogEntry model = new CatalogEntry();
 
-    /**
-     * Model tests for CatalogEntry
-     */
+    /** Model tests for CatalogEntry */
     @Test
     public void testCatalogEntry() {
         // TODO: test CatalogEntry
     }
 
-    /**
-     * Test the property 'category'
-     */
+    /** Test the property 'category' */
     @Test
     public void categoryTest() {
         // TODO: test category
     }
 
-    /**
-     * Test the property 'flags'
-     */
+    /** Test the property 'flags' */
     @Test
     public void flagsTest() {
         // TODO: test flags
     }
 
-    /**
-     * Test the property 'operation'
-     */
+    /** Test the property 'operation' */
     @Test
     public void operationTest() {
         // TODO: test operation
     }
 
-    /**
-     * Test the property 'service'
-     */
+    /** Test the property 'service' */
     @Test
     public void serviceTest() {
         // TODO: test service
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
 
-    /**
-     * Test the property 'title'
-     */
+    /** Test the property 'title' */
     @Test
     public void titleTest() {
         // TODO: test title
     }
 
-    /**
-     * Test the property 'type'
-     */
+    /** Test the property 'type' */
     @Test
     public void typeTest() {
         // TODO: test type
     }
 
-    /**
-     * Test the property 'unitPrice'
-     */
+    /** Test the property 'unitPrice' */
     @Test
     public void unitPriceTest() {
         // TODO: test unitPrice
     }
-
 }

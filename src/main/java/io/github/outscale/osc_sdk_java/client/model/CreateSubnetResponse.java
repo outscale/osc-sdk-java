@@ -10,232 +10,218 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.Subnet;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * CreateSubnetResponse
- */
+/** CreateSubnetResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateSubnetResponse {
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public static final String SERIALIZED_NAME_SUBNET = "Subnet";
-  @SerializedName(SERIALIZED_NAME_SUBNET)
-  private Subnet subnet;
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
 
-  public CreateSubnetResponse() {
-  }
+    public static final String SERIALIZED_NAME_SUBNET = "Subnet";
 
-  public CreateSubnetResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_SUBNET)
+    private Subnet subnet;
 
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
+    public CreateSubnetResponse() {}
 
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
+    public CreateSubnetResponse responseContext(ResponseContext responseContext) {
 
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-  public CreateSubnetResponse subnet(Subnet subnet) {
-    
-    this.subnet = subnet;
-    return this;
-  }
-
-   /**
-   * Get subnet
-   * @return subnet
-  **/
-  @javax.annotation.Nullable
-
-  public Subnet getSubnet() {
-    return subnet;
-  }
-
-
-  public void setSubnet(Subnet subnet) {
-    this.subnet = subnet;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.responseContext = responseContext;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
     }
-    CreateSubnetResponse createSubnetResponse = (CreateSubnetResponse) o;
-    return Objects.equals(this.responseContext, createSubnetResponse.responseContext) &&
-        Objects.equals(this.subnet, createSubnetResponse.subnet);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(responseContext, subnet);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CreateSubnetResponse {\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public CreateSubnetResponse subnet(Subnet subnet) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.subnet = subnet;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ResponseContext");
-    openapiFields.add("Subnet");
+    /**
+     * Get subnet
+     *
+     * @return subnet
+     */
+    @javax.annotation.Nullable
+    public Subnet getSubnet() {
+        return subnet;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setSubnet(Subnet subnet) {
+        this.subnet = subnet;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to CreateSubnetResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!CreateSubnetResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateSubnetResponse is not found in the empty JSON string", CreateSubnetResponse.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!CreateSubnetResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateSubnetResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-      // validate the optional field `Subnet`
-      if (jsonObj.get("Subnet") != null && !jsonObj.get("Subnet").isJsonNull()) {
-        Subnet.validateJsonObject(jsonObj.getAsJsonObject("Subnet"));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CreateSubnetResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CreateSubnetResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CreateSubnetResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CreateSubnetResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<CreateSubnetResponse>() {
-           @Override
-           public void write(JsonWriter out, CreateSubnetResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public CreateSubnetResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CreateSubnetResponse createSubnetResponse = (CreateSubnetResponse) o;
+        return Objects.equals(this.responseContext, createSubnetResponse.responseContext)
+                && Objects.equals(this.subnet, createSubnetResponse.subnet);
     }
-  }
 
- /**
-  * Create an instance of CreateSubnetResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of CreateSubnetResponse
-  * @throws IOException if the JSON string is invalid with respect to CreateSubnetResponse
-  */
-  public static CreateSubnetResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CreateSubnetResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(responseContext, subnet);
+    }
 
- /**
-  * Convert an instance of CreateSubnetResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CreateSubnetResponse {\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("    subnet: ").append(toIndentedString(subnet)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ResponseContext");
+        openapiFields.add("Subnet");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to CreateSubnetResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!CreateSubnetResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in CreateSubnetResponse is not found in"
+                                        + " the empty JSON string",
+                                CreateSubnetResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!CreateSubnetResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `CreateSubnetResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+        // validate the optional field `Subnet`
+        if (jsonObj.get("Subnet") != null && !jsonObj.get("Subnet").isJsonNull()) {
+            Subnet.validateJsonObject(jsonObj.getAsJsonObject("Subnet"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateSubnetResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateSubnetResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateSubnetResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateSubnetResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateSubnetResponse>() {
+                        @Override
+                        public void write(JsonWriter out, CreateSubnetResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateSubnetResponse read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateSubnetResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateSubnetResponse
+     * @throws IOException if the JSON string is invalid with respect to CreateSubnetResponse
+     */
+    public static CreateSubnetResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateSubnetResponse.class);
+    }
+
+    /**
+     * Convert an instance of CreateSubnetResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

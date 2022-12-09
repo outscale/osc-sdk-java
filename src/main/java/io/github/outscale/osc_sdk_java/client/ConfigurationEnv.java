@@ -3,8 +3,7 @@ package io.github.outscale.osc_sdk_java.client;
 public class ConfigurationEnv extends ConfigurationInitializer {
     private Profile profile;
 
-    public ConfigurationEnv() {
-    }
+    public ConfigurationEnv() {}
 
     public static ConfigurationEnv loadConfigEnv() {
         ConfigurationEnv configurationEnv = new ConfigurationEnv();
@@ -35,5 +34,4 @@ public class ConfigurationEnv extends ConfigurationInitializer {
     public String toString() {
         return profile.toString();
     }
-
 }

@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for LinkVirtualGatewayRequest
- */
+/** Model tests for LinkVirtualGatewayRequest */
 public class LinkVirtualGatewayRequestTest {
     private final LinkVirtualGatewayRequest model = new LinkVirtualGatewayRequest();
 
-    /**
-     * Model tests for LinkVirtualGatewayRequest
-     */
+    /** Model tests for LinkVirtualGatewayRequest */
     @Test
     public void testLinkVirtualGatewayRequest() {
         // TODO: test LinkVirtualGatewayRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'virtualGatewayId'
-     */
+    /** Test the property 'virtualGatewayId' */
     @Test
     public void virtualGatewayIdTest() {
         // TODO: test virtualGatewayId
     }
-
 }

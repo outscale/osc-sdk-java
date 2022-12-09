@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DirectLink
- */
+/** Model tests for DirectLink */
 public class DirectLinkTest {
     private final DirectLink model = new DirectLink();
 
-    /**
-     * Model tests for DirectLink
-     */
+    /** Model tests for DirectLink */
     @Test
     public void testDirectLink() {
         // TODO: test DirectLink
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'bandwidth'
-     */
+    /** Test the property 'bandwidth' */
     @Test
     public void bandwidthTest() {
         // TODO: test bandwidth
     }
 
-    /**
-     * Test the property 'directLinkId'
-     */
+    /** Test the property 'directLinkId' */
     @Test
     public void directLinkIdTest() {
         // TODO: test directLinkId
     }
 
-    /**
-     * Test the property 'directLinkName'
-     */
+    /** Test the property 'directLinkName' */
     @Test
     public void directLinkNameTest() {
         // TODO: test directLinkName
     }
 
-    /**
-     * Test the property 'location'
-     */
+    /** Test the property 'location' */
     @Test
     public void locationTest() {
         // TODO: test location
     }
 
-    /**
-     * Test the property 'regionName'
-     */
+    /** Test the property 'regionName' */
     @Test
     public void regionNameTest() {
         // TODO: test regionName
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
-
 }

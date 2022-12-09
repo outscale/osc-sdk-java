@@ -10,114 +10,77 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.SecurityGroupRule;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteSecurityGroupRuleRequest
- */
+/** Model tests for DeleteSecurityGroupRuleRequest */
 public class DeleteSecurityGroupRuleRequestTest {
     private final DeleteSecurityGroupRuleRequest model = new DeleteSecurityGroupRuleRequest();
 
-    /**
-     * Model tests for DeleteSecurityGroupRuleRequest
-     */
+    /** Model tests for DeleteSecurityGroupRuleRequest */
     @Test
     public void testDeleteSecurityGroupRuleRequest() {
         // TODO: test DeleteSecurityGroupRuleRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'flow'
-     */
+    /** Test the property 'flow' */
     @Test
     public void flowTest() {
         // TODO: test flow
     }
 
-    /**
-     * Test the property 'fromPortRange'
-     */
+    /** Test the property 'fromPortRange' */
     @Test
     public void fromPortRangeTest() {
         // TODO: test fromPortRange
     }
 
-    /**
-     * Test the property 'ipProtocol'
-     */
+    /** Test the property 'ipProtocol' */
     @Test
     public void ipProtocolTest() {
         // TODO: test ipProtocol
     }
 
-    /**
-     * Test the property 'ipRange'
-     */
+    /** Test the property 'ipRange' */
     @Test
     public void ipRangeTest() {
         // TODO: test ipRange
     }
 
-    /**
-     * Test the property 'rules'
-     */
+    /** Test the property 'rules' */
     @Test
     public void rulesTest() {
         // TODO: test rules
     }
 
-    /**
-     * Test the property 'securityGroupAccountIdToUnlink'
-     */
+    /** Test the property 'securityGroupAccountIdToUnlink' */
     @Test
     public void securityGroupAccountIdToUnlinkTest() {
         // TODO: test securityGroupAccountIdToUnlink
     }
 
-    /**
-     * Test the property 'securityGroupId'
-     */
+    /** Test the property 'securityGroupId' */
     @Test
     public void securityGroupIdTest() {
         // TODO: test securityGroupId
     }
 
-    /**
-     * Test the property 'securityGroupNameToUnlink'
-     */
+    /** Test the property 'securityGroupNameToUnlink' */
     @Test
     public void securityGroupNameToUnlinkTest() {
         // TODO: test securityGroupNameToUnlink
     }
 
-    /**
-     * Test the property 'toPortRange'
-     */
+    /** Test the property 'toPortRange' */
     @Test
     public void toPortRangeTest() {
         // TODO: test toPortRange
     }
-
 }

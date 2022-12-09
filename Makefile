@@ -16,6 +16,7 @@ help:
 
 .PHONY: gen
 gen: clean osc-generate
+	mvn spotless:apply
 
 .PNONY: openapi-generator-help
 openapi-generator-help:

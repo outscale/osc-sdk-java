@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.SnapshotExportTask;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateSnapshotExportTaskResponse
- */
+/** Model tests for CreateSnapshotExportTaskResponse */
 public class CreateSnapshotExportTaskResponseTest {
     private final CreateSnapshotExportTaskResponse model = new CreateSnapshotExportTaskResponse();
 
-    /**
-     * Model tests for CreateSnapshotExportTaskResponse
-     */
+    /** Model tests for CreateSnapshotExportTaskResponse */
     @Test
     public void testCreateSnapshotExportTaskResponse() {
         // TODO: test CreateSnapshotExportTaskResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
 
-    /**
-     * Test the property 'snapshotExportTask'
-     */
+    /** Test the property 'snapshotExportTask' */
     @Test
     public void snapshotExportTaskTest() {
         // TODO: test snapshotExportTask
     }
-
 }

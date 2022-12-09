@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -18,28 +17,18 @@ import io.github.outscale.osc_sdk_java.client.model.CreateTagsRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateTagsResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteTagsRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteTagsResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadTagsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadTagsResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for TagApi
- */
+/** API tests for TagApi */
 @Disabled
 public class TagApiTest {
 
     private final TagApi api = new TagApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createTagsTest() throws ApiException {
         CreateTagsRequest createTagsRequest = null;
@@ -47,9 +36,7 @@ public class TagApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteTagsTest() throws ApiException {
         DeleteTagsRequest deleteTagsRequest = null;
@@ -57,14 +44,11 @@ public class TagApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readTagsTest() throws ApiException {
         ReadTagsRequest readTagsRequest = null;
         ReadTagsResponse response = api.readTags(readTagsRequest);
         // TODO: test validations
     }
-
 }

@@ -10,64 +10,41 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadConsumptionAccountRequest
- */
+/** Model tests for ReadConsumptionAccountRequest */
 public class ReadConsumptionAccountRequestTest {
     private final ReadConsumptionAccountRequest model = new ReadConsumptionAccountRequest();
 
-    /**
-     * Model tests for ReadConsumptionAccountRequest
-     */
+    /** Model tests for ReadConsumptionAccountRequest */
     @Test
     public void testReadConsumptionAccountRequest() {
         // TODO: test ReadConsumptionAccountRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'fromDate'
-     */
+    /** Test the property 'fromDate' */
     @Test
     public void fromDateTest() {
         // TODO: test fromDate
     }
 
-    /**
-     * Test the property 'overall'
-     */
+    /** Test the property 'overall' */
     @Test
     public void overallTest() {
         // TODO: test overall
     }
 
-    /**
-     * Test the property 'toDate'
-     */
+    /** Test the property 'toDate' */
     @Test
     public void toDateTest() {
         // TODO: test toDate
     }
-
 }

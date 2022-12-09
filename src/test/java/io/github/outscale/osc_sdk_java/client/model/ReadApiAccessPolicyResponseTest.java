@@ -10,49 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ApiAccessPolicy;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadApiAccessPolicyResponse
- */
+/** Model tests for ReadApiAccessPolicyResponse */
 public class ReadApiAccessPolicyResponseTest {
     private final ReadApiAccessPolicyResponse model = new ReadApiAccessPolicyResponse();
 
-    /**
-     * Model tests for ReadApiAccessPolicyResponse
-     */
+    /** Model tests for ReadApiAccessPolicyResponse */
     @Test
     public void testReadApiAccessPolicyResponse() {
         // TODO: test ReadApiAccessPolicyResponse
     }
 
-    /**
-     * Test the property 'apiAccessPolicy'
-     */
+    /** Test the property 'apiAccessPolicy' */
     @Test
     public void apiAccessPolicyTest() {
         // TODO: test apiAccessPolicy
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

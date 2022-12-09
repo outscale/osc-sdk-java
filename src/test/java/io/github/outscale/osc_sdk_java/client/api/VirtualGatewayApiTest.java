@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -29,42 +28,31 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateRoutePropagationRespon
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for VirtualGatewayApi
- */
+/** API tests for VirtualGatewayApi */
 @Disabled
 public class VirtualGatewayApiTest {
 
     private final VirtualGatewayApi api = new VirtualGatewayApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createVirtualGatewayTest() throws ApiException {
         CreateVirtualGatewayRequest createVirtualGatewayRequest = null;
-        CreateVirtualGatewayResponse response = api.createVirtualGateway(createVirtualGatewayRequest);
+        CreateVirtualGatewayResponse response =
+                api.createVirtualGateway(createVirtualGatewayRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteVirtualGatewayTest() throws ApiException {
         DeleteVirtualGatewayRequest deleteVirtualGatewayRequest = null;
-        DeleteVirtualGatewayResponse response = api.deleteVirtualGateway(deleteVirtualGatewayRequest);
+        DeleteVirtualGatewayResponse response =
+                api.deleteVirtualGateway(deleteVirtualGatewayRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void linkVirtualGatewayTest() throws ApiException {
         LinkVirtualGatewayRequest linkVirtualGatewayRequest = null;
@@ -72,9 +60,7 @@ public class VirtualGatewayApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readVirtualGatewaysTest() throws ApiException {
         ReadVirtualGatewaysRequest readVirtualGatewaysRequest = null;
@@ -82,24 +68,21 @@ public class VirtualGatewayApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void unlinkVirtualGatewayTest() throws ApiException {
         UnlinkVirtualGatewayRequest unlinkVirtualGatewayRequest = null;
-        UnlinkVirtualGatewayResponse response = api.unlinkVirtualGateway(unlinkVirtualGatewayRequest);
+        UnlinkVirtualGatewayResponse response =
+                api.unlinkVirtualGateway(unlinkVirtualGatewayRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateRoutePropagationTest() throws ApiException {
         UpdateRoutePropagationRequest updateRoutePropagationRequest = null;
-        UpdateRoutePropagationResponse response = api.updateRoutePropagation(updateRoutePropagationRequest);
+        UpdateRoutePropagationResponse response =
+                api.updateRoutePropagation(updateRoutePropagationRequest);
         // TODO: test validations
     }
-
 }

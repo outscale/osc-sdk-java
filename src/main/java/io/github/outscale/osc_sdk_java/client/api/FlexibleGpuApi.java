@@ -10,23 +10,15 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
+import com.google.gson.reflect.TypeToken;
 import io.github.outscale.osc_sdk_java.client.ApiCallback;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.ApiResponse;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.Pair;
-import io.github.outscale.osc_sdk_java.client.ProgressRequestBody;
-import io.github.outscale.osc_sdk_java.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import io.github.outscale.osc_sdk_java.client.model.CreateFlexibleGpuRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateFlexibleGpuResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteFlexibleGpuRequest;
@@ -41,13 +33,11 @@ import io.github.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuRequest;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkFlexibleGpuResponse;
 import io.github.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuRequest;
 import io.github.outscale.osc_sdk_java.client.model.UpdateFlexibleGpuResponse;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.GenericType;
 
 public class FlexibleGpuApi {
     private ApiClient localVarApiClient;
@@ -88,25 +78,28 @@ public class FlexibleGpuApi {
 
     /**
      * Build call for createFlexibleGpu
-     * @param createFlexibleGpuRequest  (optional)
+     *
+     * @param createFlexibleGpuRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createFlexibleGpuCall(CreateFlexibleGpuRequest createFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createFlexibleGpuCall(
+            CreateFlexibleGpuRequest createFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -123,108 +116,127 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFlexibleGpuValidateBeforeCall(CreateFlexibleGpuRequest createFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createFlexibleGpuValidateBeforeCall(
+            CreateFlexibleGpuRequest createFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         return createFlexibleGpuCall(createFlexibleGpuRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param createFlexibleGpuRequest  (optional)
+     * @param createFlexibleGpuRequest (optional)
      * @return CreateFlexibleGpuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public CreateFlexibleGpuResponse createFlexibleGpu(CreateFlexibleGpuRequest createFlexibleGpuRequest) throws ApiException {
-        ApiResponse<CreateFlexibleGpuResponse> localVarResp = createFlexibleGpuWithHttpInfo(createFlexibleGpuRequest);
+    public CreateFlexibleGpuResponse createFlexibleGpu(
+            CreateFlexibleGpuRequest createFlexibleGpuRequest) throws ApiException {
+        ApiResponse<CreateFlexibleGpuResponse> localVarResp =
+                createFlexibleGpuWithHttpInfo(createFlexibleGpuRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param createFlexibleGpuRequest  (optional)
+     * @param createFlexibleGpuRequest (optional)
      * @return ApiResponse&lt;CreateFlexibleGpuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<CreateFlexibleGpuResponse> createFlexibleGpuWithHttpInfo(CreateFlexibleGpuRequest createFlexibleGpuRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFlexibleGpuValidateBeforeCall(createFlexibleGpuRequest, null);
-        Type localVarReturnType = new TypeToken<CreateFlexibleGpuResponse>(){}.getType();
+    public ApiResponse<CreateFlexibleGpuResponse> createFlexibleGpuWithHttpInfo(
+            CreateFlexibleGpuRequest createFlexibleGpuRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                createFlexibleGpuValidateBeforeCall(createFlexibleGpuRequest, null);
+        Type localVarReturnType = new TypeToken<CreateFlexibleGpuResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param createFlexibleGpuRequest  (optional)
+     * (asynchronously)
+     *
+     * @param createFlexibleGpuRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call createFlexibleGpuAsync(CreateFlexibleGpuRequest createFlexibleGpuRequest, final ApiCallback<CreateFlexibleGpuResponse> _callback) throws ApiException {
+    public okhttp3.Call createFlexibleGpuAsync(
+            CreateFlexibleGpuRequest createFlexibleGpuRequest,
+            final ApiCallback<CreateFlexibleGpuResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = createFlexibleGpuValidateBeforeCall(createFlexibleGpuRequest, _callback);
-        Type localVarReturnType = new TypeToken<CreateFlexibleGpuResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                createFlexibleGpuValidateBeforeCall(createFlexibleGpuRequest, _callback);
+        Type localVarReturnType = new TypeToken<CreateFlexibleGpuResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteFlexibleGpu
-     * @param deleteFlexibleGpuRequest  (optional)
+     *
+     * @param deleteFlexibleGpuRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteFlexibleGpuCall(DeleteFlexibleGpuRequest deleteFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFlexibleGpuCall(
+            DeleteFlexibleGpuRequest deleteFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -241,108 +253,127 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFlexibleGpuValidateBeforeCall(DeleteFlexibleGpuRequest deleteFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFlexibleGpuValidateBeforeCall(
+            DeleteFlexibleGpuRequest deleteFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         return deleteFlexibleGpuCall(deleteFlexibleGpuRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param deleteFlexibleGpuRequest  (optional)
+     * @param deleteFlexibleGpuRequest (optional)
      * @return DeleteFlexibleGpuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public DeleteFlexibleGpuResponse deleteFlexibleGpu(DeleteFlexibleGpuRequest deleteFlexibleGpuRequest) throws ApiException {
-        ApiResponse<DeleteFlexibleGpuResponse> localVarResp = deleteFlexibleGpuWithHttpInfo(deleteFlexibleGpuRequest);
+    public DeleteFlexibleGpuResponse deleteFlexibleGpu(
+            DeleteFlexibleGpuRequest deleteFlexibleGpuRequest) throws ApiException {
+        ApiResponse<DeleteFlexibleGpuResponse> localVarResp =
+                deleteFlexibleGpuWithHttpInfo(deleteFlexibleGpuRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param deleteFlexibleGpuRequest  (optional)
+     * @param deleteFlexibleGpuRequest (optional)
      * @return ApiResponse&lt;DeleteFlexibleGpuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<DeleteFlexibleGpuResponse> deleteFlexibleGpuWithHttpInfo(DeleteFlexibleGpuRequest deleteFlexibleGpuRequest) throws ApiException {
-        okhttp3.Call localVarCall = deleteFlexibleGpuValidateBeforeCall(deleteFlexibleGpuRequest, null);
-        Type localVarReturnType = new TypeToken<DeleteFlexibleGpuResponse>(){}.getType();
+    public ApiResponse<DeleteFlexibleGpuResponse> deleteFlexibleGpuWithHttpInfo(
+            DeleteFlexibleGpuRequest deleteFlexibleGpuRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteFlexibleGpuValidateBeforeCall(deleteFlexibleGpuRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteFlexibleGpuResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param deleteFlexibleGpuRequest  (optional)
+     * (asynchronously)
+     *
+     * @param deleteFlexibleGpuRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call deleteFlexibleGpuAsync(DeleteFlexibleGpuRequest deleteFlexibleGpuRequest, final ApiCallback<DeleteFlexibleGpuResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteFlexibleGpuAsync(
+            DeleteFlexibleGpuRequest deleteFlexibleGpuRequest,
+            final ApiCallback<DeleteFlexibleGpuResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFlexibleGpuValidateBeforeCall(deleteFlexibleGpuRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeleteFlexibleGpuResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                deleteFlexibleGpuValidateBeforeCall(deleteFlexibleGpuRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteFlexibleGpuResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for linkFlexibleGpu
-     * @param linkFlexibleGpuRequest  (optional)
+     *
+     * @param linkFlexibleGpuRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkFlexibleGpuCall(LinkFlexibleGpuRequest linkFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call linkFlexibleGpuCall(
+            LinkFlexibleGpuRequest linkFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -359,108 +390,127 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkFlexibleGpuValidateBeforeCall(LinkFlexibleGpuRequest linkFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call linkFlexibleGpuValidateBeforeCall(
+            LinkFlexibleGpuRequest linkFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         return linkFlexibleGpuCall(linkFlexibleGpuRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param linkFlexibleGpuRequest  (optional)
+     * @param linkFlexibleGpuRequest (optional)
      * @return LinkFlexibleGpuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public LinkFlexibleGpuResponse linkFlexibleGpu(LinkFlexibleGpuRequest linkFlexibleGpuRequest) throws ApiException {
-        ApiResponse<LinkFlexibleGpuResponse> localVarResp = linkFlexibleGpuWithHttpInfo(linkFlexibleGpuRequest);
+    public LinkFlexibleGpuResponse linkFlexibleGpu(LinkFlexibleGpuRequest linkFlexibleGpuRequest)
+            throws ApiException {
+        ApiResponse<LinkFlexibleGpuResponse> localVarResp =
+                linkFlexibleGpuWithHttpInfo(linkFlexibleGpuRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param linkFlexibleGpuRequest  (optional)
+     * @param linkFlexibleGpuRequest (optional)
      * @return ApiResponse&lt;LinkFlexibleGpuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<LinkFlexibleGpuResponse> linkFlexibleGpuWithHttpInfo(LinkFlexibleGpuRequest linkFlexibleGpuRequest) throws ApiException {
+    public ApiResponse<LinkFlexibleGpuResponse> linkFlexibleGpuWithHttpInfo(
+            LinkFlexibleGpuRequest linkFlexibleGpuRequest) throws ApiException {
         okhttp3.Call localVarCall = linkFlexibleGpuValidateBeforeCall(linkFlexibleGpuRequest, null);
-        Type localVarReturnType = new TypeToken<LinkFlexibleGpuResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkFlexibleGpuResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param linkFlexibleGpuRequest  (optional)
+     * (asynchronously)
+     *
+     * @param linkFlexibleGpuRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call linkFlexibleGpuAsync(LinkFlexibleGpuRequest linkFlexibleGpuRequest, final ApiCallback<LinkFlexibleGpuResponse> _callback) throws ApiException {
+    public okhttp3.Call linkFlexibleGpuAsync(
+            LinkFlexibleGpuRequest linkFlexibleGpuRequest,
+            final ApiCallback<LinkFlexibleGpuResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = linkFlexibleGpuValidateBeforeCall(linkFlexibleGpuRequest, _callback);
-        Type localVarReturnType = new TypeToken<LinkFlexibleGpuResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                linkFlexibleGpuValidateBeforeCall(linkFlexibleGpuRequest, _callback);
+        Type localVarReturnType = new TypeToken<LinkFlexibleGpuResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readFlexibleGpuCatalog
-     * @param readFlexibleGpuCatalogRequest  (optional)
+     *
+     * @param readFlexibleGpuCatalogRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readFlexibleGpuCatalogCall(ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readFlexibleGpuCatalogCall(
+            ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -477,108 +527,128 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readFlexibleGpuCatalogValidateBeforeCall(ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readFlexibleGpuCatalogValidateBeforeCall(
+            ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest,
+            final ApiCallback _callback)
+            throws ApiException {
         return readFlexibleGpuCatalogCall(readFlexibleGpuCatalogRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readFlexibleGpuCatalogRequest  (optional)
+     * @param readFlexibleGpuCatalogRequest (optional)
      * @return ReadFlexibleGpuCatalogResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadFlexibleGpuCatalogResponse readFlexibleGpuCatalog(ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest) throws ApiException {
-        ApiResponse<ReadFlexibleGpuCatalogResponse> localVarResp = readFlexibleGpuCatalogWithHttpInfo(readFlexibleGpuCatalogRequest);
+    public ReadFlexibleGpuCatalogResponse readFlexibleGpuCatalog(
+            ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest) throws ApiException {
+        ApiResponse<ReadFlexibleGpuCatalogResponse> localVarResp =
+                readFlexibleGpuCatalogWithHttpInfo(readFlexibleGpuCatalogRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readFlexibleGpuCatalogRequest  (optional)
+     * @param readFlexibleGpuCatalogRequest (optional)
      * @return ApiResponse&lt;ReadFlexibleGpuCatalogResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadFlexibleGpuCatalogResponse> readFlexibleGpuCatalogWithHttpInfo(ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest) throws ApiException {
-        okhttp3.Call localVarCall = readFlexibleGpuCatalogValidateBeforeCall(readFlexibleGpuCatalogRequest, null);
-        Type localVarReturnType = new TypeToken<ReadFlexibleGpuCatalogResponse>(){}.getType();
+    public ApiResponse<ReadFlexibleGpuCatalogResponse> readFlexibleGpuCatalogWithHttpInfo(
+            ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readFlexibleGpuCatalogValidateBeforeCall(readFlexibleGpuCatalogRequest, null);
+        Type localVarReturnType = new TypeToken<ReadFlexibleGpuCatalogResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readFlexibleGpuCatalogRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readFlexibleGpuCatalogRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readFlexibleGpuCatalogAsync(ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest, final ApiCallback<ReadFlexibleGpuCatalogResponse> _callback) throws ApiException {
+    public okhttp3.Call readFlexibleGpuCatalogAsync(
+            ReadFlexibleGpuCatalogRequest readFlexibleGpuCatalogRequest,
+            final ApiCallback<ReadFlexibleGpuCatalogResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readFlexibleGpuCatalogValidateBeforeCall(readFlexibleGpuCatalogRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadFlexibleGpuCatalogResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readFlexibleGpuCatalogValidateBeforeCall(readFlexibleGpuCatalogRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadFlexibleGpuCatalogResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readFlexibleGpus
-     * @param readFlexibleGpusRequest  (optional)
+     *
+     * @param readFlexibleGpusRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readFlexibleGpusCall(ReadFlexibleGpusRequest readFlexibleGpusRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readFlexibleGpusCall(
+            ReadFlexibleGpusRequest readFlexibleGpusRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -595,108 +665,127 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readFlexibleGpusValidateBeforeCall(ReadFlexibleGpusRequest readFlexibleGpusRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call readFlexibleGpusValidateBeforeCall(
+            ReadFlexibleGpusRequest readFlexibleGpusRequest, final ApiCallback _callback)
+            throws ApiException {
         return readFlexibleGpusCall(readFlexibleGpusRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param readFlexibleGpusRequest  (optional)
+     * @param readFlexibleGpusRequest (optional)
      * @return ReadFlexibleGpusResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ReadFlexibleGpusResponse readFlexibleGpus(ReadFlexibleGpusRequest readFlexibleGpusRequest) throws ApiException {
-        ApiResponse<ReadFlexibleGpusResponse> localVarResp = readFlexibleGpusWithHttpInfo(readFlexibleGpusRequest);
+    public ReadFlexibleGpusResponse readFlexibleGpus(
+            ReadFlexibleGpusRequest readFlexibleGpusRequest) throws ApiException {
+        ApiResponse<ReadFlexibleGpusResponse> localVarResp =
+                readFlexibleGpusWithHttpInfo(readFlexibleGpusRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param readFlexibleGpusRequest  (optional)
+     * @param readFlexibleGpusRequest (optional)
      * @return ApiResponse&lt;ReadFlexibleGpusResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<ReadFlexibleGpusResponse> readFlexibleGpusWithHttpInfo(ReadFlexibleGpusRequest readFlexibleGpusRequest) throws ApiException {
-        okhttp3.Call localVarCall = readFlexibleGpusValidateBeforeCall(readFlexibleGpusRequest, null);
-        Type localVarReturnType = new TypeToken<ReadFlexibleGpusResponse>(){}.getType();
+    public ApiResponse<ReadFlexibleGpusResponse> readFlexibleGpusWithHttpInfo(
+            ReadFlexibleGpusRequest readFlexibleGpusRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readFlexibleGpusValidateBeforeCall(readFlexibleGpusRequest, null);
+        Type localVarReturnType = new TypeToken<ReadFlexibleGpusResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param readFlexibleGpusRequest  (optional)
+     * (asynchronously)
+     *
+     * @param readFlexibleGpusRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call readFlexibleGpusAsync(ReadFlexibleGpusRequest readFlexibleGpusRequest, final ApiCallback<ReadFlexibleGpusResponse> _callback) throws ApiException {
+    public okhttp3.Call readFlexibleGpusAsync(
+            ReadFlexibleGpusRequest readFlexibleGpusRequest,
+            final ApiCallback<ReadFlexibleGpusResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = readFlexibleGpusValidateBeforeCall(readFlexibleGpusRequest, _callback);
-        Type localVarReturnType = new TypeToken<ReadFlexibleGpusResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                readFlexibleGpusValidateBeforeCall(readFlexibleGpusRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadFlexibleGpusResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for unlinkFlexibleGpu
-     * @param unlinkFlexibleGpuRequest  (optional)
+     *
+     * @param unlinkFlexibleGpuRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkFlexibleGpuCall(UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call unlinkFlexibleGpuCall(
+            UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -713,108 +802,127 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call unlinkFlexibleGpuValidateBeforeCall(UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call unlinkFlexibleGpuValidateBeforeCall(
+            UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         return unlinkFlexibleGpuCall(unlinkFlexibleGpuRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param unlinkFlexibleGpuRequest  (optional)
+     * @param unlinkFlexibleGpuRequest (optional)
      * @return UnlinkFlexibleGpuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UnlinkFlexibleGpuResponse unlinkFlexibleGpu(UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest) throws ApiException {
-        ApiResponse<UnlinkFlexibleGpuResponse> localVarResp = unlinkFlexibleGpuWithHttpInfo(unlinkFlexibleGpuRequest);
+    public UnlinkFlexibleGpuResponse unlinkFlexibleGpu(
+            UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest) throws ApiException {
+        ApiResponse<UnlinkFlexibleGpuResponse> localVarResp =
+                unlinkFlexibleGpuWithHttpInfo(unlinkFlexibleGpuRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param unlinkFlexibleGpuRequest  (optional)
+     * @param unlinkFlexibleGpuRequest (optional)
      * @return ApiResponse&lt;UnlinkFlexibleGpuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UnlinkFlexibleGpuResponse> unlinkFlexibleGpuWithHttpInfo(UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest) throws ApiException {
-        okhttp3.Call localVarCall = unlinkFlexibleGpuValidateBeforeCall(unlinkFlexibleGpuRequest, null);
-        Type localVarReturnType = new TypeToken<UnlinkFlexibleGpuResponse>(){}.getType();
+    public ApiResponse<UnlinkFlexibleGpuResponse> unlinkFlexibleGpuWithHttpInfo(
+            UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                unlinkFlexibleGpuValidateBeforeCall(unlinkFlexibleGpuRequest, null);
+        Type localVarReturnType = new TypeToken<UnlinkFlexibleGpuResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param unlinkFlexibleGpuRequest  (optional)
+     * (asynchronously)
+     *
+     * @param unlinkFlexibleGpuRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call unlinkFlexibleGpuAsync(UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest, final ApiCallback<UnlinkFlexibleGpuResponse> _callback) throws ApiException {
+    public okhttp3.Call unlinkFlexibleGpuAsync(
+            UnlinkFlexibleGpuRequest unlinkFlexibleGpuRequest,
+            final ApiCallback<UnlinkFlexibleGpuResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = unlinkFlexibleGpuValidateBeforeCall(unlinkFlexibleGpuRequest, _callback);
-        Type localVarReturnType = new TypeToken<UnlinkFlexibleGpuResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                unlinkFlexibleGpuValidateBeforeCall(unlinkFlexibleGpuRequest, _callback);
+        Type localVarReturnType = new TypeToken<UnlinkFlexibleGpuResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateFlexibleGpu
-     * @param updateFlexibleGpuRequest  (optional)
+     *
+     * @param updateFlexibleGpuRequest (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateFlexibleGpuCall(UpdateFlexibleGpuRequest updateFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateFlexibleGpuCall(
+            UpdateFlexibleGpuRequest updateFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         String basePath = null;
         // Operation Servers
-        String[] localBasePaths = new String[] {  };
+        String[] localBasePaths = new String[] {};
 
         // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
+        if (localCustomBaseUrl != null) {
             basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
+        } else if (localBasePaths.length > 0) {
             basePath = localBasePaths[localHostIndex];
         } else {
             basePath = null;
@@ -831,84 +939,100 @@ public class FlexibleGpuApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        final String[] localVarAccepts = {
-            "application/json"
-        };
+        final String[] localVarAccepts = {"application/json"};
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
             localVarHeaderParams.put("Accept", localVarAccept);
         }
 
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "AWS4Auth", "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateFlexibleGpuValidateBeforeCall(UpdateFlexibleGpuRequest updateFlexibleGpuRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateFlexibleGpuValidateBeforeCall(
+            UpdateFlexibleGpuRequest updateFlexibleGpuRequest, final ApiCallback _callback)
+            throws ApiException {
         return updateFlexibleGpuCall(updateFlexibleGpuRequest, _callback);
-
     }
 
     /**
-     * 
-     * 
-     * @param updateFlexibleGpuRequest  (optional)
+     * @param updateFlexibleGpuRequest (optional)
      * @return UpdateFlexibleGpuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public UpdateFlexibleGpuResponse updateFlexibleGpu(UpdateFlexibleGpuRequest updateFlexibleGpuRequest) throws ApiException {
-        ApiResponse<UpdateFlexibleGpuResponse> localVarResp = updateFlexibleGpuWithHttpInfo(updateFlexibleGpuRequest);
+    public UpdateFlexibleGpuResponse updateFlexibleGpu(
+            UpdateFlexibleGpuRequest updateFlexibleGpuRequest) throws ApiException {
+        ApiResponse<UpdateFlexibleGpuResponse> localVarResp =
+                updateFlexibleGpuWithHttpInfo(updateFlexibleGpuRequest);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * 
-     * @param updateFlexibleGpuRequest  (optional)
+     * @param updateFlexibleGpuRequest (optional)
      * @return ApiResponse&lt;UpdateFlexibleGpuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public ApiResponse<UpdateFlexibleGpuResponse> updateFlexibleGpuWithHttpInfo(UpdateFlexibleGpuRequest updateFlexibleGpuRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateFlexibleGpuValidateBeforeCall(updateFlexibleGpuRequest, null);
-        Type localVarReturnType = new TypeToken<UpdateFlexibleGpuResponse>(){}.getType();
+    public ApiResponse<UpdateFlexibleGpuResponse> updateFlexibleGpuWithHttpInfo(
+            UpdateFlexibleGpuRequest updateFlexibleGpuRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                updateFlexibleGpuValidateBeforeCall(updateFlexibleGpuRequest, null);
+        Type localVarReturnType = new TypeToken<UpdateFlexibleGpuResponse>() {}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * 
-     * @param updateFlexibleGpuRequest  (optional)
+     * (asynchronously)
+     *
+     * @param updateFlexibleGpuRequest (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
      * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
-     </table>
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
      */
-    public okhttp3.Call updateFlexibleGpuAsync(UpdateFlexibleGpuRequest updateFlexibleGpuRequest, final ApiCallback<UpdateFlexibleGpuResponse> _callback) throws ApiException {
+    public okhttp3.Call updateFlexibleGpuAsync(
+            UpdateFlexibleGpuRequest updateFlexibleGpuRequest,
+            final ApiCallback<UpdateFlexibleGpuResponse> _callback)
+            throws ApiException {
 
-        okhttp3.Call localVarCall = updateFlexibleGpuValidateBeforeCall(updateFlexibleGpuRequest, _callback);
-        Type localVarReturnType = new TypeToken<UpdateFlexibleGpuResponse>(){}.getType();
+        okhttp3.Call localVarCall =
+                updateFlexibleGpuValidateBeforeCall(updateFlexibleGpuRequest, _callback);
+        Type localVarReturnType = new TypeToken<UpdateFlexibleGpuResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

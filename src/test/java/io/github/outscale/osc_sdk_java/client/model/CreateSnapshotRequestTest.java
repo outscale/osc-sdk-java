@@ -10,87 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateSnapshotRequest
- */
+/** Model tests for CreateSnapshotRequest */
 public class CreateSnapshotRequestTest {
     private final CreateSnapshotRequest model = new CreateSnapshotRequest();
 
-    /**
-     * Model tests for CreateSnapshotRequest
-     */
+    /** Model tests for CreateSnapshotRequest */
     @Test
     public void testCreateSnapshotRequest() {
         // TODO: test CreateSnapshotRequest
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'fileLocation'
-     */
+    /** Test the property 'fileLocation' */
     @Test
     public void fileLocationTest() {
         // TODO: test fileLocation
     }
 
-    /**
-     * Test the property 'snapshotSize'
-     */
+    /** Test the property 'snapshotSize' */
     @Test
     public void snapshotSizeTest() {
         // TODO: test snapshotSize
     }
 
-    /**
-     * Test the property 'sourceRegionName'
-     */
+    /** Test the property 'sourceRegionName' */
     @Test
     public void sourceRegionNameTest() {
         // TODO: test sourceRegionName
     }
 
-    /**
-     * Test the property 'sourceSnapshotId'
-     */
+    /** Test the property 'sourceSnapshotId' */
     @Test
     public void sourceSnapshotIdTest() {
         // TODO: test sourceSnapshotId
     }
 
-    /**
-     * Test the property 'volumeId'
-     */
+    /** Test the property 'volumeId' */
     @Test
     public void volumeIdTest() {
         // TODO: test volumeId
     }
-
 }

@@ -10,95 +10,65 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateRouteRequest
- */
+/** Model tests for CreateRouteRequest */
 public class CreateRouteRequestTest {
     private final CreateRouteRequest model = new CreateRouteRequest();
 
-    /**
-     * Model tests for CreateRouteRequest
-     */
+    /** Model tests for CreateRouteRequest */
     @Test
     public void testCreateRouteRequest() {
         // TODO: test CreateRouteRequest
     }
 
-    /**
-     * Test the property 'destinationIpRange'
-     */
+    /** Test the property 'destinationIpRange' */
     @Test
     public void destinationIpRangeTest() {
         // TODO: test destinationIpRange
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'gatewayId'
-     */
+    /** Test the property 'gatewayId' */
     @Test
     public void gatewayIdTest() {
         // TODO: test gatewayId
     }
 
-    /**
-     * Test the property 'natServiceId'
-     */
+    /** Test the property 'natServiceId' */
     @Test
     public void natServiceIdTest() {
         // TODO: test natServiceId
     }
 
-    /**
-     * Test the property 'netPeeringId'
-     */
+    /** Test the property 'netPeeringId' */
     @Test
     public void netPeeringIdTest() {
         // TODO: test netPeeringId
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'routeTableId'
-     */
+    /** Test the property 'routeTableId' */
     @Test
     public void routeTableIdTest() {
         // TODO: test routeTableId
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

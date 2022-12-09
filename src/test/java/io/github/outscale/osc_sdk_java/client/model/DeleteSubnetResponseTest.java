@@ -10,40 +10,23 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteSubnetResponse
- */
+/** Model tests for DeleteSubnetResponse */
 public class DeleteSubnetResponseTest {
     private final DeleteSubnetResponse model = new DeleteSubnetResponse();
 
-    /**
-     * Model tests for DeleteSubnetResponse
-     */
+    /** Model tests for DeleteSubnetResponse */
     @Test
     public void testDeleteSubnetResponse() {
         // TODO: test DeleteSubnetResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
-
 }

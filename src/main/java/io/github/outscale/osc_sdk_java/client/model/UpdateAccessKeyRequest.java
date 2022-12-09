@@ -10,296 +10,296 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.time.OffsetDateTime;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * UpdateAccessKeyRequest
- */
+/** UpdateAccessKeyRequest */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdateAccessKeyRequest {
-  public static final String SERIALIZED_NAME_ACCESS_KEY_ID = "AccessKeyId";
-  @SerializedName(SERIALIZED_NAME_ACCESS_KEY_ID)
-  private String accessKeyId;
+    public static final String SERIALIZED_NAME_ACCESS_KEY_ID = "AccessKeyId";
 
-  public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
-  @SerializedName(SERIALIZED_NAME_DRY_RUN)
-  private Boolean dryRun;
+    @SerializedName(SERIALIZED_NAME_ACCESS_KEY_ID)
+    private String accessKeyId;
 
-  public static final String SERIALIZED_NAME_EXPIRATION_DATE = "ExpirationDate";
-  @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
-  private OffsetDateTime expirationDate;
+    public static final String SERIALIZED_NAME_DRY_RUN = "DryRun";
 
-  public static final String SERIALIZED_NAME_STATE = "State";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private String state;
+    @SerializedName(SERIALIZED_NAME_DRY_RUN)
+    private Boolean dryRun;
 
-  public UpdateAccessKeyRequest() {
-  }
+    public static final String SERIALIZED_NAME_EXPIRATION_DATE = "ExpirationDate";
 
-  public UpdateAccessKeyRequest accessKeyId(String accessKeyId) {
-    
-    this.accessKeyId = accessKeyId;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+    private OffsetDateTime expirationDate;
 
-   /**
-   * The ID of the access key.
-   * @return accessKeyId
-  **/
-  @javax.annotation.Nonnull
+    public static final String SERIALIZED_NAME_STATE = "State";
 
-  public String getAccessKeyId() {
-    return accessKeyId;
-  }
+    @SerializedName(SERIALIZED_NAME_STATE)
+    private String state;
 
+    public UpdateAccessKeyRequest() {}
 
-  public void setAccessKeyId(String accessKeyId) {
-    this.accessKeyId = accessKeyId;
-  }
+    public UpdateAccessKeyRequest accessKeyId(String accessKeyId) {
 
-
-  public UpdateAccessKeyRequest dryRun(Boolean dryRun) {
-    
-    this.dryRun = dryRun;
-    return this;
-  }
-
-   /**
-   * If true, checks whether you have the required permissions to perform the action.
-   * @return dryRun
-  **/
-  @javax.annotation.Nullable
-
-  public Boolean getDryRun() {
-    return dryRun;
-  }
-
-
-  public void setDryRun(Boolean dryRun) {
-    this.dryRun = dryRun;
-  }
-
-
-  public UpdateAccessKeyRequest expirationDate(OffsetDateTime expirationDate) {
-    
-    this.expirationDate = expirationDate;
-    return this;
-  }
-
-   /**
-   * The date and time at which you want the access key to expire, in ISO 8601 format (for example, &#x60;2017-06-14&#x60; or &#x60;2017-06-14T00:00:00Z&#x60;). If not specified, the access key is set to not expire.
-   * @return expirationDate
-  **/
-  @javax.annotation.Nullable
-
-  public OffsetDateTime getExpirationDate() {
-    return expirationDate;
-  }
-
-
-  public void setExpirationDate(OffsetDateTime expirationDate) {
-    this.expirationDate = expirationDate;
-  }
-
-
-  public UpdateAccessKeyRequest state(String state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * The new state for the access key (&#x60;ACTIVE&#x60; \\| &#x60;INACTIVE&#x60;). When set to &#x60;ACTIVE&#x60;, the access key is enabled and can be used to send requests. When set to &#x60;INACTIVE&#x60;, the access key is disabled.
-   * @return state
-  **/
-  @javax.annotation.Nonnull
-
-  public String getState() {
-    return state;
-  }
-
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.accessKeyId = accessKeyId;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The ID of the access key.
+     *
+     * @return accessKeyId
+     */
+    @javax.annotation.Nonnull
+    public String getAccessKeyId() {
+        return accessKeyId;
     }
-    UpdateAccessKeyRequest updateAccessKeyRequest = (UpdateAccessKeyRequest) o;
-    return Objects.equals(this.accessKeyId, updateAccessKeyRequest.accessKeyId) &&
-        Objects.equals(this.dryRun, updateAccessKeyRequest.dryRun) &&
-        Objects.equals(this.expirationDate, updateAccessKeyRequest.expirationDate) &&
-        Objects.equals(this.state, updateAccessKeyRequest.state);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(accessKeyId, dryRun, expirationDate, state);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateAccessKeyRequest {\n");
-    sb.append("    accessKeyId: ").append(toIndentedString(accessKeyId)).append("\n");
-    sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
-    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setAccessKeyId(String accessKeyId) {
+        this.accessKeyId = accessKeyId;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public UpdateAccessKeyRequest dryRun(Boolean dryRun) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.dryRun = dryRun;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("AccessKeyId");
-    openapiFields.add("DryRun");
-    openapiFields.add("ExpirationDate");
-    openapiFields.add("State");
+    /**
+     * If true, checks whether you have the required permissions to perform the action.
+     *
+     * @return dryRun
+     */
+    @javax.annotation.Nullable
+    public Boolean getDryRun() {
+        return dryRun;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("AccessKeyId");
-    openapiRequiredFields.add("State");
-  }
+    public void setDryRun(Boolean dryRun) {
+        this.dryRun = dryRun;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to UpdateAccessKeyRequest
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!UpdateAccessKeyRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateAccessKeyRequest is not found in the empty JSON string", UpdateAccessKeyRequest.openapiRequiredFields.toString()));
-        }
-      }
+    public UpdateAccessKeyRequest expirationDate(OffsetDateTime expirationDate) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!UpdateAccessKeyRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateAccessKeyRequest` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
+        this.expirationDate = expirationDate;
+        return this;
+    }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpdateAccessKeyRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("AccessKeyId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `AccessKeyId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("AccessKeyId").toString()));
-      }
-      if (!jsonObj.get("State").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `State` to be a primitive type in the JSON string but got `%s`", jsonObj.get("State").toString()));
-      }
-  }
+    /**
+     * The date and time at which you want the access key to expire, in ISO 8601 format (for
+     * example, &#x60;2017-06-14&#x60; or &#x60;2017-06-14T00:00:00Z&#x60;). If not specified, the
+     * access key is set to not expire.
+     *
+     * @return expirationDate
+     */
+    @javax.annotation.Nullable
+    public OffsetDateTime getExpirationDate() {
+        return expirationDate;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public void setExpirationDate(OffsetDateTime expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public UpdateAccessKeyRequest state(String state) {
+
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * The new state for the access key (&#x60;ACTIVE&#x60; \\| &#x60;INACTIVE&#x60;). When set to
+     * &#x60;ACTIVE&#x60;, the access key is enabled and can be used to send requests. When set to
+     * &#x60;INACTIVE&#x60;, the access key is disabled.
+     *
+     * @return state
+     */
+    @javax.annotation.Nonnull
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateAccessKeyRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateAccessKeyRequest' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateAccessKeyRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateAccessKeyRequest.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<UpdateAccessKeyRequest>() {
-           @Override
-           public void write(JsonWriter out, UpdateAccessKeyRequest value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public UpdateAccessKeyRequest read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        UpdateAccessKeyRequest updateAccessKeyRequest = (UpdateAccessKeyRequest) o;
+        return Objects.equals(this.accessKeyId, updateAccessKeyRequest.accessKeyId)
+                && Objects.equals(this.dryRun, updateAccessKeyRequest.dryRun)
+                && Objects.equals(this.expirationDate, updateAccessKeyRequest.expirationDate)
+                && Objects.equals(this.state, updateAccessKeyRequest.state);
     }
-  }
 
- /**
-  * Create an instance of UpdateAccessKeyRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of UpdateAccessKeyRequest
-  * @throws IOException if the JSON string is invalid with respect to UpdateAccessKeyRequest
-  */
-  public static UpdateAccessKeyRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateAccessKeyRequest.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessKeyId, dryRun, expirationDate, state);
+    }
 
- /**
-  * Convert an instance of UpdateAccessKeyRequest to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class UpdateAccessKeyRequest {\n");
+        sb.append("    accessKeyId: ").append(toIndentedString(accessKeyId)).append("\n");
+        sb.append("    dryRun: ").append(toIndentedString(dryRun)).append("\n");
+        sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AccessKeyId");
+        openapiFields.add("DryRun");
+        openapiFields.add("ExpirationDate");
+        openapiFields.add("State");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AccessKeyId");
+        openapiRequiredFields.add("State");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to UpdateAccessKeyRequest
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!UpdateAccessKeyRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in UpdateAccessKeyRequest is not found"
+                                        + " in the empty JSON string",
+                                UpdateAccessKeyRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!UpdateAccessKeyRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `UpdateAccessKeyRequest` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : UpdateAccessKeyRequest.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("AccessKeyId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `AccessKeyId` to be a primitive type in the JSON"
+                                    + " string but got `%s`",
+                            jsonObj.get("AccessKeyId").toString()));
+        }
+        if (!jsonObj.get("State").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `State` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("State").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UpdateAccessKeyRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UpdateAccessKeyRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UpdateAccessKeyRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UpdateAccessKeyRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UpdateAccessKeyRequest>() {
+                        @Override
+                        public void write(JsonWriter out, UpdateAccessKeyRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UpdateAccessKeyRequest read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UpdateAccessKeyRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UpdateAccessKeyRequest
+     * @throws IOException if the JSON string is invalid with respect to UpdateAccessKeyRequest
+     */
+    public static UpdateAccessKeyRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UpdateAccessKeyRequest.class);
+    }
+
+    /**
+     * Convert an instance of UpdateAccessKeyRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

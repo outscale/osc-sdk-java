@@ -10,51 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import io.github.outscale.osc_sdk_java.client.model.ServerCertificate;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for ReadServerCertificatesResponse
- */
+/** Model tests for ReadServerCertificatesResponse */
 public class ReadServerCertificatesResponseTest {
     private final ReadServerCertificatesResponse model = new ReadServerCertificatesResponse();
 
-    /**
-     * Model tests for ReadServerCertificatesResponse
-     */
+    /** Model tests for ReadServerCertificatesResponse */
     @Test
     public void testReadServerCertificatesResponse() {
         // TODO: test ReadServerCertificatesResponse
     }
 
-    /**
-     * Test the property 'responseContext'
-     */
+    /** Test the property 'responseContext' */
     @Test
     public void responseContextTest() {
         // TODO: test responseContext
     }
 
-    /**
-     * Test the property 'serverCertificates'
-     */
+    /** Test the property 'serverCertificates' */
     @Test
     public void serverCertificatesTest() {
         // TODO: test serverCertificates
     }
-
 }

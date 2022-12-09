@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteKeypairRequest
- */
+/** Model tests for DeleteKeypairRequest */
 public class DeleteKeypairRequestTest {
     private final DeleteKeypairRequest model = new DeleteKeypairRequest();
 
-    /**
-     * Model tests for DeleteKeypairRequest
-     */
+    /** Model tests for DeleteKeypairRequest */
     @Test
     public void testDeleteKeypairRequest() {
         // TODO: test DeleteKeypairRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'keypairName'
-     */
+    /** Test the property 'keypairName' */
     @Test
     public void keypairNameTest() {
         // TODO: test keypairName
     }
-
 }

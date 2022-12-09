@@ -10,15 +10,13 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.auth;
 
-import io.github.outscale.osc_sdk_java.client.Pair;
 import io.github.outscale.osc_sdk_java.client.ApiException;
-
+import io.github.outscale.osc_sdk_java.client.Pair;
 import java.net.URI;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public interface Authentication {
     /**
@@ -32,5 +30,12 @@ public interface Authentication {
      * @param uri URI
      * @throws ApiException if failed to update the parameters
      */
-    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams, String payload, String method, URI uri) throws ApiException;
+    void applyToParams(
+            List<Pair> queryParams,
+            Map<String, String> headerParams,
+            Map<String, String> cookieParams,
+            String payload,
+            String method,
+            URI uri)
+            throws ApiException;
 }

@@ -10,260 +10,262 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the load balancer tag.
- */
+/** Information about the load balancer tag. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LoadBalancerTag {
-  public static final String SERIALIZED_NAME_KEY = "Key";
-  @SerializedName(SERIALIZED_NAME_KEY)
-  private String key;
+    public static final String SERIALIZED_NAME_KEY = "Key";
 
-  public static final String SERIALIZED_NAME_LOAD_BALANCER_NAME = "LoadBalancerName";
-  @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_NAME)
-  private String loadBalancerName;
+    @SerializedName(SERIALIZED_NAME_KEY)
+    private String key;
 
-  public static final String SERIALIZED_NAME_VALUE = "Value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
+    public static final String SERIALIZED_NAME_LOAD_BALANCER_NAME = "LoadBalancerName";
 
-  public LoadBalancerTag() {
-  }
+    @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_NAME)
+    private String loadBalancerName;
 
-  public LoadBalancerTag key(String key) {
-    
-    this.key = key;
-    return this;
-  }
+    public static final String SERIALIZED_NAME_VALUE = "Value";
 
-   /**
-   * The key of the tag.
-   * @return key
-  **/
-  @javax.annotation.Nullable
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
 
-  public String getKey() {
-    return key;
-  }
+    public LoadBalancerTag() {}
 
+    public LoadBalancerTag key(String key) {
 
-  public void setKey(String key) {
-    this.key = key;
-  }
-
-
-  public LoadBalancerTag loadBalancerName(String loadBalancerName) {
-    
-    this.loadBalancerName = loadBalancerName;
-    return this;
-  }
-
-   /**
-   * The name of the load balancer.
-   * @return loadBalancerName
-  **/
-  @javax.annotation.Nullable
-
-  public String getLoadBalancerName() {
-    return loadBalancerName;
-  }
-
-
-  public void setLoadBalancerName(String loadBalancerName) {
-    this.loadBalancerName = loadBalancerName;
-  }
-
-
-  public LoadBalancerTag value(String value) {
-    
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The value of the tag.
-   * @return value
-  **/
-  @javax.annotation.Nullable
-
-  public String getValue() {
-    return value;
-  }
-
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.key = key;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The key of the tag.
+     *
+     * @return key
+     */
+    @javax.annotation.Nullable
+    public String getKey() {
+        return key;
     }
-    LoadBalancerTag loadBalancerTag = (LoadBalancerTag) o;
-    return Objects.equals(this.key, loadBalancerTag.key) &&
-        Objects.equals(this.loadBalancerName, loadBalancerTag.loadBalancerName) &&
-        Objects.equals(this.value, loadBalancerTag.value);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(key, loadBalancerName, value);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoadBalancerTag {\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    loadBalancerName: ").append(toIndentedString(loadBalancerName)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setKey(String key) {
+        this.key = key;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public LoadBalancerTag loadBalancerName(String loadBalancerName) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.loadBalancerName = loadBalancerName;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("Key");
-    openapiFields.add("LoadBalancerName");
-    openapiFields.add("Value");
+    /**
+     * The name of the load balancer.
+     *
+     * @return loadBalancerName
+     */
+    @javax.annotation.Nullable
+    public String getLoadBalancerName() {
+        return loadBalancerName;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+    public void setLoadBalancerName(String loadBalancerName) {
+        this.loadBalancerName = loadBalancerName;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LoadBalancerTag
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LoadBalancerTag.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoadBalancerTag is not found in the empty JSON string", LoadBalancerTag.openapiRequiredFields.toString()));
-        }
-      }
+    public LoadBalancerTag value(String value) {
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!LoadBalancerTag.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoadBalancerTag` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if ((jsonObj.get("Key") != null && !jsonObj.get("Key").isJsonNull()) && !jsonObj.get("Key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Key").toString()));
-      }
-      if ((jsonObj.get("LoadBalancerName") != null && !jsonObj.get("LoadBalancerName").isJsonNull()) && !jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerName").toString()));
-      }
-      if ((jsonObj.get("Value") != null && !jsonObj.get("Value").isJsonNull()) && !jsonObj.get("Value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Value").toString()));
-      }
-  }
+        this.value = value;
+        return this;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    /**
+     * The value of the tag.
+     *
+     * @return value
+     */
+    @javax.annotation.Nullable
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoadBalancerTag.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoadBalancerTag' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoadBalancerTag> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoadBalancerTag.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<LoadBalancerTag>() {
-           @Override
-           public void write(JsonWriter out, LoadBalancerTag value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public LoadBalancerTag read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoadBalancerTag loadBalancerTag = (LoadBalancerTag) o;
+        return Objects.equals(this.key, loadBalancerTag.key)
+                && Objects.equals(this.loadBalancerName, loadBalancerTag.loadBalancerName)
+                && Objects.equals(this.value, loadBalancerTag.value);
     }
-  }
 
- /**
-  * Create an instance of LoadBalancerTag given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LoadBalancerTag
-  * @throws IOException if the JSON string is invalid with respect to LoadBalancerTag
-  */
-  public static LoadBalancerTag fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoadBalancerTag.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, loadBalancerName, value);
+    }
 
- /**
-  * Convert an instance of LoadBalancerTag to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoadBalancerTag {\n");
+        sb.append("    key: ").append(toIndentedString(key)).append("\n");
+        sb.append("    loadBalancerName: ").append(toIndentedString(loadBalancerName)).append("\n");
+        sb.append("    value: ").append(toIndentedString(value)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Key");
+        openapiFields.add("LoadBalancerName");
+        openapiFields.add("Value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to LoadBalancerTag
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!LoadBalancerTag.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in LoadBalancerTag is not found in the"
+                                        + " empty JSON string",
+                                LoadBalancerTag.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!LoadBalancerTag.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `LoadBalancerTag` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if ((jsonObj.get("Key") != null && !jsonObj.get("Key").isJsonNull())
+                && !jsonObj.get("Key").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `Key` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("Key").toString()));
+        }
+        if ((jsonObj.get("LoadBalancerName") != null
+                        && !jsonObj.get("LoadBalancerName").isJsonNull())
+                && !jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `LoadBalancerName` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("LoadBalancerName").toString()));
+        }
+        if ((jsonObj.get("Value") != null && !jsonObj.get("Value").isJsonNull())
+                && !jsonObj.get("Value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `Value` to be a primitive type in the JSON string"
+                                    + " but got `%s`",
+                            jsonObj.get("Value").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LoadBalancerTag.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LoadBalancerTag' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LoadBalancerTag> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LoadBalancerTag.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LoadBalancerTag>() {
+                        @Override
+                        public void write(JsonWriter out, LoadBalancerTag value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LoadBalancerTag read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LoadBalancerTag given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LoadBalancerTag
+     * @throws IOException if the JSON string is invalid with respect to LoadBalancerTag
+     */
+    public static LoadBalancerTag fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LoadBalancerTag.class);
+    }
+
+    /**
+     * Convert an instance of LoadBalancerTag to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

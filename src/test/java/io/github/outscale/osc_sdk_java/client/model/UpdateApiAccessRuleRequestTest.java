@@ -10,81 +10,53 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateApiAccessRuleRequest
- */
+/** Model tests for UpdateApiAccessRuleRequest */
 public class UpdateApiAccessRuleRequestTest {
     private final UpdateApiAccessRuleRequest model = new UpdateApiAccessRuleRequest();
 
-    /**
-     * Model tests for UpdateApiAccessRuleRequest
-     */
+    /** Model tests for UpdateApiAccessRuleRequest */
     @Test
     public void testUpdateApiAccessRuleRequest() {
         // TODO: test UpdateApiAccessRuleRequest
     }
 
-    /**
-     * Test the property 'apiAccessRuleId'
-     */
+    /** Test the property 'apiAccessRuleId' */
     @Test
     public void apiAccessRuleIdTest() {
         // TODO: test apiAccessRuleId
     }
 
-    /**
-     * Test the property 'caIds'
-     */
+    /** Test the property 'caIds' */
     @Test
     public void caIdsTest() {
         // TODO: test caIds
     }
 
-    /**
-     * Test the property 'cns'
-     */
+    /** Test the property 'cns' */
     @Test
     public void cnsTest() {
         // TODO: test cns
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'ipRanges'
-     */
+    /** Test the property 'ipRanges' */
     @Test
     public void ipRangesTest() {
         // TODO: test ipRanges
     }
-
 }

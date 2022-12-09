@@ -10,90 +10,59 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DhcpOptionsSet
- */
+/** Model tests for DhcpOptionsSet */
 public class DhcpOptionsSetTest {
     private final DhcpOptionsSet model = new DhcpOptionsSet();
 
-    /**
-     * Model tests for DhcpOptionsSet
-     */
+    /** Model tests for DhcpOptionsSet */
     @Test
     public void testDhcpOptionsSet() {
         // TODO: test DhcpOptionsSet
     }
 
-    /**
-     * Test the property '_default'
-     */
+    /** Test the property '_default' */
     @Test
     public void _defaultTest() {
         // TODO: test _default
     }
 
-    /**
-     * Test the property 'dhcpOptionsSetId'
-     */
+    /** Test the property 'dhcpOptionsSetId' */
     @Test
     public void dhcpOptionsSetIdTest() {
         // TODO: test dhcpOptionsSetId
     }
 
-    /**
-     * Test the property 'domainName'
-     */
+    /** Test the property 'domainName' */
     @Test
     public void domainNameTest() {
         // TODO: test domainName
     }
 
-    /**
-     * Test the property 'domainNameServers'
-     */
+    /** Test the property 'domainNameServers' */
     @Test
     public void domainNameServersTest() {
         // TODO: test domainNameServers
     }
 
-    /**
-     * Test the property 'logServers'
-     */
+    /** Test the property 'logServers' */
     @Test
     public void logServersTest() {
         // TODO: test logServers
     }
 
-    /**
-     * Test the property 'ntpServers'
-     */
+    /** Test the property 'ntpServers' */
     @Test
     public void ntpServersTest() {
         // TODO: test ntpServers
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

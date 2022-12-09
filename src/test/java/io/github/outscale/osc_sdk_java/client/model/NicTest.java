@@ -10,158 +10,107 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.LinkNic;
-import io.github.outscale.osc_sdk_java.client.model.LinkPublicIp;
-import io.github.outscale.osc_sdk_java.client.model.PrivateIp;
-import io.github.outscale.osc_sdk_java.client.model.ResourceTag;
-import io.github.outscale.osc_sdk_java.client.model.SecurityGroupLight;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for Nic
- */
+/** Model tests for Nic */
 public class NicTest {
     private final Nic model = new Nic();
 
-    /**
-     * Model tests for Nic
-     */
+    /** Model tests for Nic */
     @Test
     public void testNic() {
         // TODO: test Nic
     }
 
-    /**
-     * Test the property 'accountId'
-     */
+    /** Test the property 'accountId' */
     @Test
     public void accountIdTest() {
         // TODO: test accountId
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'isSourceDestChecked'
-     */
+    /** Test the property 'isSourceDestChecked' */
     @Test
     public void isSourceDestCheckedTest() {
         // TODO: test isSourceDestChecked
     }
 
-    /**
-     * Test the property 'linkNic'
-     */
+    /** Test the property 'linkNic' */
     @Test
     public void linkNicTest() {
         // TODO: test linkNic
     }
 
-    /**
-     * Test the property 'linkPublicIp'
-     */
+    /** Test the property 'linkPublicIp' */
     @Test
     public void linkPublicIpTest() {
         // TODO: test linkPublicIp
     }
 
-    /**
-     * Test the property 'macAddress'
-     */
+    /** Test the property 'macAddress' */
     @Test
     public void macAddressTest() {
         // TODO: test macAddress
     }
 
-    /**
-     * Test the property 'netId'
-     */
+    /** Test the property 'netId' */
     @Test
     public void netIdTest() {
         // TODO: test netId
     }
 
-    /**
-     * Test the property 'nicId'
-     */
+    /** Test the property 'nicId' */
     @Test
     public void nicIdTest() {
         // TODO: test nicId
     }
 
-    /**
-     * Test the property 'privateDnsName'
-     */
+    /** Test the property 'privateDnsName' */
     @Test
     public void privateDnsNameTest() {
         // TODO: test privateDnsName
     }
 
-    /**
-     * Test the property 'privateIps'
-     */
+    /** Test the property 'privateIps' */
     @Test
     public void privateIpsTest() {
         // TODO: test privateIps
     }
 
-    /**
-     * Test the property 'securityGroups'
-     */
+    /** Test the property 'securityGroups' */
     @Test
     public void securityGroupsTest() {
         // TODO: test securityGroups
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
 
-    /**
-     * Test the property 'subnetId'
-     */
+    /** Test the property 'subnetId' */
     @Test
     public void subnetIdTest() {
         // TODO: test subnetId
     }
 
-    /**
-     * Test the property 'subregionName'
-     */
+    /** Test the property 'subregionName' */
     @Test
     public void subregionNameTest() {
         // TODO: test subregionName
     }
 
-    /**
-     * Test the property 'tags'
-     */
+    /** Test the property 'tags' */
     @Test
     public void tagsTest() {
         // TODO: test tags
     }
-
 }

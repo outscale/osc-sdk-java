@@ -10,252 +10,258 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.FlexibleGpuCatalog;
-import io.github.outscale.osc_sdk_java.client.model.ResponseContext;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * ReadFlexibleGpuCatalogResponse
- */
+/** ReadFlexibleGpuCatalogResponse */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReadFlexibleGpuCatalogResponse {
-  public static final String SERIALIZED_NAME_FLEXIBLE_GPU_CATALOG = "FlexibleGpuCatalog";
-  @SerializedName(SERIALIZED_NAME_FLEXIBLE_GPU_CATALOG)
-  private List<FlexibleGpuCatalog> flexibleGpuCatalog = null;
+    public static final String SERIALIZED_NAME_FLEXIBLE_GPU_CATALOG = "FlexibleGpuCatalog";
 
-  public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
-  @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
-  private ResponseContext responseContext;
+    @SerializedName(SERIALIZED_NAME_FLEXIBLE_GPU_CATALOG)
+    private List<FlexibleGpuCatalog> flexibleGpuCatalog = null;
 
-  public ReadFlexibleGpuCatalogResponse() {
-  }
+    public static final String SERIALIZED_NAME_RESPONSE_CONTEXT = "ResponseContext";
 
-  public ReadFlexibleGpuCatalogResponse flexibleGpuCatalog(List<FlexibleGpuCatalog> flexibleGpuCatalog) {
-    
-    this.flexibleGpuCatalog = flexibleGpuCatalog;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_RESPONSE_CONTEXT)
+    private ResponseContext responseContext;
 
-  public ReadFlexibleGpuCatalogResponse addFlexibleGpuCatalogItem(FlexibleGpuCatalog flexibleGpuCatalogItem) {
-    if (this.flexibleGpuCatalog == null) {
-      this.flexibleGpuCatalog = new ArrayList<>();
+    public ReadFlexibleGpuCatalogResponse() {}
+
+    public ReadFlexibleGpuCatalogResponse flexibleGpuCatalog(
+            List<FlexibleGpuCatalog> flexibleGpuCatalog) {
+
+        this.flexibleGpuCatalog = flexibleGpuCatalog;
+        return this;
     }
-    this.flexibleGpuCatalog.add(flexibleGpuCatalogItem);
-    return this;
-  }
 
-   /**
-   * Information about one or more fGPUs available in the public catalog.
-   * @return flexibleGpuCatalog
-  **/
-  @javax.annotation.Nullable
-
-  public List<FlexibleGpuCatalog> getFlexibleGpuCatalog() {
-    return flexibleGpuCatalog;
-  }
-
-
-  public void setFlexibleGpuCatalog(List<FlexibleGpuCatalog> flexibleGpuCatalog) {
-    this.flexibleGpuCatalog = flexibleGpuCatalog;
-  }
-
-
-  public ReadFlexibleGpuCatalogResponse responseContext(ResponseContext responseContext) {
-    
-    this.responseContext = responseContext;
-    return this;
-  }
-
-   /**
-   * Get responseContext
-   * @return responseContext
-  **/
-  @javax.annotation.Nullable
-
-  public ResponseContext getResponseContext() {
-    return responseContext;
-  }
-
-
-  public void setResponseContext(ResponseContext responseContext) {
-    this.responseContext = responseContext;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ReadFlexibleGpuCatalogResponse readFlexibleGpuCatalogResponse = (ReadFlexibleGpuCatalogResponse) o;
-    return Objects.equals(this.flexibleGpuCatalog, readFlexibleGpuCatalogResponse.flexibleGpuCatalog) &&
-        Objects.equals(this.responseContext, readFlexibleGpuCatalogResponse.responseContext);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(flexibleGpuCatalog, responseContext);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ReadFlexibleGpuCatalogResponse {\n");
-    sb.append("    flexibleGpuCatalog: ").append(toIndentedString(flexibleGpuCatalog)).append("\n");
-    sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("FlexibleGpuCatalog");
-    openapiFields.add("ResponseContext");
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
-
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to ReadFlexibleGpuCatalogResponse
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!ReadFlexibleGpuCatalogResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReadFlexibleGpuCatalogResponse is not found in the empty JSON string", ReadFlexibleGpuCatalogResponse.openapiRequiredFields.toString()));
+    public ReadFlexibleGpuCatalogResponse addFlexibleGpuCatalogItem(
+            FlexibleGpuCatalog flexibleGpuCatalogItem) {
+        if (this.flexibleGpuCatalog == null) {
+            this.flexibleGpuCatalog = new ArrayList<>();
         }
-      }
+        this.flexibleGpuCatalog.add(flexibleGpuCatalogItem);
+        return this;
+    }
 
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!ReadFlexibleGpuCatalogResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ReadFlexibleGpuCatalogResponse` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-      if (jsonObj.get("FlexibleGpuCatalog") != null && !jsonObj.get("FlexibleGpuCatalog").isJsonNull()) {
-        JsonArray jsonArrayflexibleGpuCatalog = jsonObj.getAsJsonArray("FlexibleGpuCatalog");
-        if (jsonArrayflexibleGpuCatalog != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("FlexibleGpuCatalog").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `FlexibleGpuCatalog` to be an array in the JSON string but got `%s`", jsonObj.get("FlexibleGpuCatalog").toString()));
-          }
+    /**
+     * Information about one or more fGPUs available in the public catalog.
+     *
+     * @return flexibleGpuCatalog
+     */
+    @javax.annotation.Nullable
+    public List<FlexibleGpuCatalog> getFlexibleGpuCatalog() {
+        return flexibleGpuCatalog;
+    }
 
-          // validate the optional field `FlexibleGpuCatalog` (array)
-          for (int i = 0; i < jsonArrayflexibleGpuCatalog.size(); i++) {
-            FlexibleGpuCatalog.validateJsonObject(jsonArrayflexibleGpuCatalog.get(i).getAsJsonObject());
-          };
-        }
-      }
-      // validate the optional field `ResponseContext`
-      if (jsonObj.get("ResponseContext") != null && !jsonObj.get("ResponseContext").isJsonNull()) {
-        ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
-      }
-  }
+    public void setFlexibleGpuCatalog(List<FlexibleGpuCatalog> flexibleGpuCatalog) {
+        this.flexibleGpuCatalog = flexibleGpuCatalog;
+    }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
+    public ReadFlexibleGpuCatalogResponse responseContext(ResponseContext responseContext) {
+
+        this.responseContext = responseContext;
+        return this;
+    }
+
+    /**
+     * Get responseContext
+     *
+     * @return responseContext
+     */
+    @javax.annotation.Nullable
+    public ResponseContext getResponseContext() {
+        return responseContext;
+    }
+
+    public void setResponseContext(ResponseContext responseContext) {
+        this.responseContext = responseContext;
+    }
+
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReadFlexibleGpuCatalogResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReadFlexibleGpuCatalogResponse' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReadFlexibleGpuCatalogResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReadFlexibleGpuCatalogResponse.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ReadFlexibleGpuCatalogResponse>() {
-           @Override
-           public void write(JsonWriter out, ReadFlexibleGpuCatalogResponse value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ReadFlexibleGpuCatalogResponse read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ReadFlexibleGpuCatalogResponse readFlexibleGpuCatalogResponse =
+                (ReadFlexibleGpuCatalogResponse) o;
+        return Objects.equals(
+                        this.flexibleGpuCatalog, readFlexibleGpuCatalogResponse.flexibleGpuCatalog)
+                && Objects.equals(
+                        this.responseContext, readFlexibleGpuCatalogResponse.responseContext);
     }
-  }
 
- /**
-  * Create an instance of ReadFlexibleGpuCatalogResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReadFlexibleGpuCatalogResponse
-  * @throws IOException if the JSON string is invalid with respect to ReadFlexibleGpuCatalogResponse
-  */
-  public static ReadFlexibleGpuCatalogResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ReadFlexibleGpuCatalogResponse.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(flexibleGpuCatalog, responseContext);
+    }
 
- /**
-  * Convert an instance of ReadFlexibleGpuCatalogResponse to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ReadFlexibleGpuCatalogResponse {\n");
+        sb.append("    flexibleGpuCatalog: ")
+                .append(toIndentedString(flexibleGpuCatalog))
+                .append("\n");
+        sb.append("    responseContext: ").append(toIndentedString(responseContext)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("FlexibleGpuCatalog");
+        openapiFields.add("ResponseContext");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to
+     *     ReadFlexibleGpuCatalogResponse
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!ReadFlexibleGpuCatalogResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in ReadFlexibleGpuCatalogResponse is not"
+                                        + " found in the empty JSON string",
+                                ReadFlexibleGpuCatalogResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!ReadFlexibleGpuCatalogResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `ReadFlexibleGpuCatalogResponse` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+        if (jsonObj.get("FlexibleGpuCatalog") != null
+                && !jsonObj.get("FlexibleGpuCatalog").isJsonNull()) {
+            JsonArray jsonArrayflexibleGpuCatalog = jsonObj.getAsJsonArray("FlexibleGpuCatalog");
+            if (jsonArrayflexibleGpuCatalog != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FlexibleGpuCatalog").isJsonArray()) {
+                    throw new IllegalArgumentException(
+                            String.format(
+                                    "Expected the field `FlexibleGpuCatalog` to be an array in the"
+                                            + " JSON string but got `%s`",
+                                    jsonObj.get("FlexibleGpuCatalog").toString()));
+                }
+
+                // validate the optional field `FlexibleGpuCatalog` (array)
+                for (int i = 0; i < jsonArrayflexibleGpuCatalog.size(); i++) {
+                    FlexibleGpuCatalog.validateJsonObject(
+                            jsonArrayflexibleGpuCatalog.get(i).getAsJsonObject());
+                }
+                ;
+            }
+        }
+        // validate the optional field `ResponseContext`
+        if (jsonObj.get("ResponseContext") != null
+                && !jsonObj.get("ResponseContext").isJsonNull()) {
+            ResponseContext.validateJsonObject(jsonObj.getAsJsonObject("ResponseContext"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReadFlexibleGpuCatalogResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReadFlexibleGpuCatalogResponse' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReadFlexibleGpuCatalogResponse> thisAdapter =
+                    gson.getDelegateAdapter(
+                            this, TypeToken.get(ReadFlexibleGpuCatalogResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReadFlexibleGpuCatalogResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ReadFlexibleGpuCatalogResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReadFlexibleGpuCatalogResponse read(JsonReader in)
+                                throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReadFlexibleGpuCatalogResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReadFlexibleGpuCatalogResponse
+     * @throws IOException if the JSON string is invalid with respect to
+     *     ReadFlexibleGpuCatalogResponse
+     */
+    public static ReadFlexibleGpuCatalogResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReadFlexibleGpuCatalogResponse.class);
+    }
+
+    /**
+     * Convert an instance of ReadFlexibleGpuCatalogResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

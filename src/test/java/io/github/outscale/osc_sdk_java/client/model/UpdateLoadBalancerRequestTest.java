@@ -10,115 +10,77 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.AccessLog;
-import io.github.outscale.osc_sdk_java.client.model.HealthCheck;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateLoadBalancerRequest
- */
+/** Model tests for UpdateLoadBalancerRequest */
 public class UpdateLoadBalancerRequestTest {
     private final UpdateLoadBalancerRequest model = new UpdateLoadBalancerRequest();
 
-    /**
-     * Model tests for UpdateLoadBalancerRequest
-     */
+    /** Model tests for UpdateLoadBalancerRequest */
     @Test
     public void testUpdateLoadBalancerRequest() {
         // TODO: test UpdateLoadBalancerRequest
     }
 
-    /**
-     * Test the property 'accessLog'
-     */
+    /** Test the property 'accessLog' */
     @Test
     public void accessLogTest() {
         // TODO: test accessLog
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'healthCheck'
-     */
+    /** Test the property 'healthCheck' */
     @Test
     public void healthCheckTest() {
         // TODO: test healthCheck
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
 
-    /**
-     * Test the property 'loadBalancerPort'
-     */
+    /** Test the property 'loadBalancerPort' */
     @Test
     public void loadBalancerPortTest() {
         // TODO: test loadBalancerPort
     }
 
-    /**
-     * Test the property 'policyNames'
-     */
+    /** Test the property 'policyNames' */
     @Test
     public void policyNamesTest() {
         // TODO: test policyNames
     }
 
-    /**
-     * Test the property 'publicIp'
-     */
+    /** Test the property 'publicIp' */
     @Test
     public void publicIpTest() {
         // TODO: test publicIp
     }
 
-    /**
-     * Test the property 'securedCookies'
-     */
+    /** Test the property 'securedCookies' */
     @Test
     public void securedCookiesTest() {
         // TODO: test securedCookies
     }
 
-    /**
-     * Test the property 'securityGroups'
-     */
+    /** Test the property 'securityGroups' */
     @Test
     public void securityGroupsTest() {
         // TODO: test securityGroups
     }
 
-    /**
-     * Test the property 'serverCertificateId'
-     */
+    /** Test the property 'serverCertificateId' */
     @Test
     public void serverCertificateIdTest() {
         // TODO: test serverCertificateId
     }
-
 }

@@ -10,234 +10,229 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.HashMap;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.github.outscale.osc_sdk_java.client.JSON;
+import java.io.IOException;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
-import io.github.outscale.osc_sdk_java.client.JSON;
-
-/**
- * Information about the load balancer.
- */
+/** Information about the load balancer. */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LoadBalancerLight {
-  public static final String SERIALIZED_NAME_LOAD_BALANCER_NAME = "LoadBalancerName";
-  @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_NAME)
-  private String loadBalancerName;
+    public static final String SERIALIZED_NAME_LOAD_BALANCER_NAME = "LoadBalancerName";
 
-  public static final String SERIALIZED_NAME_LOAD_BALANCER_PORT = "LoadBalancerPort";
-  @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_PORT)
-  private Integer loadBalancerPort;
+    @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_NAME)
+    private String loadBalancerName;
 
-  public LoadBalancerLight() {
-  }
+    public static final String SERIALIZED_NAME_LOAD_BALANCER_PORT = "LoadBalancerPort";
 
-  public LoadBalancerLight loadBalancerName(String loadBalancerName) {
-    
-    this.loadBalancerName = loadBalancerName;
-    return this;
-  }
+    @SerializedName(SERIALIZED_NAME_LOAD_BALANCER_PORT)
+    private Integer loadBalancerPort;
 
-   /**
-   * The name of the load balancer to which the listener is attached.
-   * @return loadBalancerName
-  **/
-  @javax.annotation.Nonnull
+    public LoadBalancerLight() {}
 
-  public String getLoadBalancerName() {
-    return loadBalancerName;
-  }
+    public LoadBalancerLight loadBalancerName(String loadBalancerName) {
 
-
-  public void setLoadBalancerName(String loadBalancerName) {
-    this.loadBalancerName = loadBalancerName;
-  }
-
-
-  public LoadBalancerLight loadBalancerPort(Integer loadBalancerPort) {
-    
-    this.loadBalancerPort = loadBalancerPort;
-    return this;
-  }
-
-   /**
-   * The port of load balancer on which the load balancer is listening (between &#x60;1&#x60; and &#x60;65535&#x60; both included).
-   * @return loadBalancerPort
-  **/
-  @javax.annotation.Nonnull
-
-  public Integer getLoadBalancerPort() {
-    return loadBalancerPort;
-  }
-
-
-  public void setLoadBalancerPort(Integer loadBalancerPort) {
-    this.loadBalancerPort = loadBalancerPort;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+        this.loadBalancerName = loadBalancerName;
+        return this;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * The name of the load balancer to which the listener is attached.
+     *
+     * @return loadBalancerName
+     */
+    @javax.annotation.Nonnull
+    public String getLoadBalancerName() {
+        return loadBalancerName;
     }
-    LoadBalancerLight loadBalancerLight = (LoadBalancerLight) o;
-    return Objects.equals(this.loadBalancerName, loadBalancerLight.loadBalancerName) &&
-        Objects.equals(this.loadBalancerPort, loadBalancerLight.loadBalancerPort);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(loadBalancerName, loadBalancerPort);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class LoadBalancerLight {\n");
-    sb.append("    loadBalancerName: ").append(toIndentedString(loadBalancerName)).append("\n");
-    sb.append("    loadBalancerPort: ").append(toIndentedString(loadBalancerPort)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public void setLoadBalancerName(String loadBalancerName) {
+        this.loadBalancerName = loadBalancerName;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    public LoadBalancerLight loadBalancerPort(Integer loadBalancerPort) {
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+        this.loadBalancerPort = loadBalancerPort;
+        return this;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("LoadBalancerName");
-    openapiFields.add("LoadBalancerPort");
+    /**
+     * The port of load balancer on which the load balancer is listening (between &#x60;1&#x60; and
+     * &#x60;65535&#x60; both included).
+     *
+     * @return loadBalancerPort
+     */
+    @javax.annotation.Nonnull
+    public Integer getLoadBalancerPort() {
+        return loadBalancerPort;
+    }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("LoadBalancerName");
-    openapiRequiredFields.add("LoadBalancerPort");
-  }
+    public void setLoadBalancerPort(Integer loadBalancerPort) {
+        this.loadBalancerPort = loadBalancerPort;
+    }
 
- /**
-  * Validates the JSON Object and throws an exception if issues found
-  *
-  * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to LoadBalancerLight
-  */
-  public static void validateJsonObject(JsonObject jsonObj) throws IOException {
-      if (jsonObj == null) {
-        if (!LoadBalancerLight.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LoadBalancerLight is not found in the empty JSON string", LoadBalancerLight.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Entry<String, JsonElement> entry : entries) {
-        if (!LoadBalancerLight.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LoadBalancerLight` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LoadBalancerLight.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LoadBalancerName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("LoadBalancerName").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LoadBalancerLight.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LoadBalancerLight' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LoadBalancerLight> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LoadBalancerLight.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<LoadBalancerLight>() {
-           @Override
-           public void write(JsonWriter out, LoadBalancerLight value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public LoadBalancerLight read(JsonReader in) throws IOException {
-             JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
-             validateJsonObject(jsonObj);
-             return thisAdapter.fromJsonTree(jsonObj);
-           }
-
-       }.nullSafe();
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LoadBalancerLight loadBalancerLight = (LoadBalancerLight) o;
+        return Objects.equals(this.loadBalancerName, loadBalancerLight.loadBalancerName)
+                && Objects.equals(this.loadBalancerPort, loadBalancerLight.loadBalancerPort);
     }
-  }
 
- /**
-  * Create an instance of LoadBalancerLight given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LoadBalancerLight
-  * @throws IOException if the JSON string is invalid with respect to LoadBalancerLight
-  */
-  public static LoadBalancerLight fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LoadBalancerLight.class);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(loadBalancerName, loadBalancerPort);
+    }
 
- /**
-  * Convert an instance of LoadBalancerLight to an JSON string
-  *
-  * @return JSON string
-  */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LoadBalancerLight {\n");
+        sb.append("    loadBalancerName: ").append(toIndentedString(loadBalancerName)).append("\n");
+        sb.append("    loadBalancerPort: ").append(toIndentedString(loadBalancerPort)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces (except the first
+     * line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("LoadBalancerName");
+        openapiFields.add("LoadBalancerPort");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("LoadBalancerName");
+        openapiRequiredFields.add("LoadBalancerPort");
+    }
+
+    /**
+     * Validates the JSON Object and throws an exception if issues found
+     *
+     * @param jsonObj JSON Object
+     * @throws IOException if the JSON Object is invalid with respect to LoadBalancerLight
+     */
+    public static void validateJsonObject(JsonObject jsonObj) throws IOException {
+        if (jsonObj == null) {
+            if (!LoadBalancerLight.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON object is null
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field(s) %s in LoadBalancerLight is not found in the"
+                                        + " empty JSON string",
+                                LoadBalancerLight.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Entry<String, JsonElement> entry : entries) {
+            if (!LoadBalancerLight.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The field `%s` in the JSON string is not defined in the"
+                                        + " `LoadBalancerLight` properties. JSON: %s",
+                                entry.getKey(), jsonObj.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LoadBalancerLight.openapiRequiredFields) {
+            if (jsonObj.get(requiredField) == null) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "The required field `%s` is not found in the JSON string: %s",
+                                requiredField, jsonObj.toString()));
+            }
+        }
+        if (!jsonObj.get("LoadBalancerName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            "Expected the field `LoadBalancerName` to be a primitive type in the"
+                                    + " JSON string but got `%s`",
+                            jsonObj.get("LoadBalancerName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LoadBalancerLight.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LoadBalancerLight' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LoadBalancerLight> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LoadBalancerLight.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LoadBalancerLight>() {
+                        @Override
+                        public void write(JsonWriter out, LoadBalancerLight value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LoadBalancerLight read(JsonReader in) throws IOException {
+                            JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
+                            validateJsonObject(jsonObj);
+                            return thisAdapter.fromJsonTree(jsonObj);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LoadBalancerLight given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LoadBalancerLight
+     * @throws IOException if the JSON string is invalid with respect to LoadBalancerLight
+     */
+    public static LoadBalancerLight fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LoadBalancerLight.class);
+    }
+
+    /**
+     * Convert an instance of LoadBalancerLight to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
-

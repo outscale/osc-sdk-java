@@ -10,47 +10,29 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for DeleteLoadBalancerRequest
- */
+/** Model tests for DeleteLoadBalancerRequest */
 public class DeleteLoadBalancerRequestTest {
     private final DeleteLoadBalancerRequest model = new DeleteLoadBalancerRequest();
 
-    /**
-     * Model tests for DeleteLoadBalancerRequest
-     */
+    /** Model tests for DeleteLoadBalancerRequest */
     @Test
     public void testDeleteLoadBalancerRequest() {
         // TODO: test DeleteLoadBalancerRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'loadBalancerName'
-     */
+    /** Test the property 'loadBalancerName' */
     @Test
     public void loadBalancerNameTest() {
         // TODO: test loadBalancerName
     }
-
 }

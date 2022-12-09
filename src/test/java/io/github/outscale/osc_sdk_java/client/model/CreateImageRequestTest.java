@@ -10,122 +10,83 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.BlockDeviceMappingImage;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CreateImageRequest
- */
+/** Model tests for CreateImageRequest */
 public class CreateImageRequestTest {
     private final CreateImageRequest model = new CreateImageRequest();
 
-    /**
-     * Model tests for CreateImageRequest
-     */
+    /** Model tests for CreateImageRequest */
     @Test
     public void testCreateImageRequest() {
         // TODO: test CreateImageRequest
     }
 
-    /**
-     * Test the property 'architecture'
-     */
+    /** Test the property 'architecture' */
     @Test
     public void architectureTest() {
         // TODO: test architecture
     }
 
-    /**
-     * Test the property 'blockDeviceMappings'
-     */
+    /** Test the property 'blockDeviceMappings' */
     @Test
     public void blockDeviceMappingsTest() {
         // TODO: test blockDeviceMappings
     }
 
-    /**
-     * Test the property 'description'
-     */
+    /** Test the property 'description' */
     @Test
     public void descriptionTest() {
         // TODO: test description
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'fileLocation'
-     */
+    /** Test the property 'fileLocation' */
     @Test
     public void fileLocationTest() {
         // TODO: test fileLocation
     }
 
-    /**
-     * Test the property 'imageName'
-     */
+    /** Test the property 'imageName' */
     @Test
     public void imageNameTest() {
         // TODO: test imageName
     }
 
-    /**
-     * Test the property 'noReboot'
-     */
+    /** Test the property 'noReboot' */
     @Test
     public void noRebootTest() {
         // TODO: test noReboot
     }
 
-    /**
-     * Test the property 'rootDeviceName'
-     */
+    /** Test the property 'rootDeviceName' */
     @Test
     public void rootDeviceNameTest() {
         // TODO: test rootDeviceName
     }
 
-    /**
-     * Test the property 'sourceImageId'
-     */
+    /** Test the property 'sourceImageId' */
     @Test
     public void sourceImageIdTest() {
         // TODO: test sourceImageId
     }
 
-    /**
-     * Test the property 'sourceRegionName'
-     */
+    /** Test the property 'sourceRegionName' */
     @Test
     public void sourceRegionNameTest() {
         // TODO: test sourceRegionName
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
-
 }

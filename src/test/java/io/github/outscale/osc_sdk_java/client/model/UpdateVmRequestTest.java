@@ -10,138 +10,95 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.github.outscale.osc_sdk_java.client.model.BlockDeviceMappingVmUpdate;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for UpdateVmRequest
- */
+/** Model tests for UpdateVmRequest */
 public class UpdateVmRequestTest {
     private final UpdateVmRequest model = new UpdateVmRequest();
 
-    /**
-     * Model tests for UpdateVmRequest
-     */
+    /** Model tests for UpdateVmRequest */
     @Test
     public void testUpdateVmRequest() {
         // TODO: test UpdateVmRequest
     }
 
-    /**
-     * Test the property 'blockDeviceMappings'
-     */
+    /** Test the property 'blockDeviceMappings' */
     @Test
     public void blockDeviceMappingsTest() {
         // TODO: test blockDeviceMappings
     }
 
-    /**
-     * Test the property 'bsuOptimized'
-     */
+    /** Test the property 'bsuOptimized' */
     @Test
     public void bsuOptimizedTest() {
         // TODO: test bsuOptimized
     }
 
-    /**
-     * Test the property 'deletionProtection'
-     */
+    /** Test the property 'deletionProtection' */
     @Test
     public void deletionProtectionTest() {
         // TODO: test deletionProtection
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'isSourceDestChecked'
-     */
+    /** Test the property 'isSourceDestChecked' */
     @Test
     public void isSourceDestCheckedTest() {
         // TODO: test isSourceDestChecked
     }
 
-    /**
-     * Test the property 'keypairName'
-     */
+    /** Test the property 'keypairName' */
     @Test
     public void keypairNameTest() {
         // TODO: test keypairName
     }
 
-    /**
-     * Test the property 'nestedVirtualization'
-     */
+    /** Test the property 'nestedVirtualization' */
     @Test
     public void nestedVirtualizationTest() {
         // TODO: test nestedVirtualization
     }
 
-    /**
-     * Test the property 'performance'
-     */
+    /** Test the property 'performance' */
     @Test
     public void performanceTest() {
         // TODO: test performance
     }
 
-    /**
-     * Test the property 'securityGroupIds'
-     */
+    /** Test the property 'securityGroupIds' */
     @Test
     public void securityGroupIdsTest() {
         // TODO: test securityGroupIds
     }
 
-    /**
-     * Test the property 'userData'
-     */
+    /** Test the property 'userData' */
     @Test
     public void userDataTest() {
         // TODO: test userData
     }
 
-    /**
-     * Test the property 'vmId'
-     */
+    /** Test the property 'vmId' */
     @Test
     public void vmIdTest() {
         // TODO: test vmId
     }
 
-    /**
-     * Test the property 'vmInitiatedShutdownBehavior'
-     */
+    /** Test the property 'vmInitiatedShutdownBehavior' */
     @Test
     public void vmInitiatedShutdownBehaviorTest() {
         // TODO: test vmInitiatedShutdownBehavior
     }
 
-    /**
-     * Test the property 'vmType'
-     */
+    /** Test the property 'vmType' */
     @Test
     public void vmTypeTest() {
         // TODO: test vmType
     }
-
 }

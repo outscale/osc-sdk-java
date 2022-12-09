@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for CheckAuthenticationRequest
- */
+/** Model tests for CheckAuthenticationRequest */
 public class CheckAuthenticationRequestTest {
     private final CheckAuthenticationRequest model = new CheckAuthenticationRequest();
 
-    /**
-     * Model tests for CheckAuthenticationRequest
-     */
+    /** Model tests for CheckAuthenticationRequest */
     @Test
     public void testCheckAuthenticationRequest() {
         // TODO: test CheckAuthenticationRequest
     }
 
-    /**
-     * Test the property 'dryRun'
-     */
+    /** Test the property 'dryRun' */
     @Test
     public void dryRunTest() {
         // TODO: test dryRun
     }
 
-    /**
-     * Test the property 'login'
-     */
+    /** Test the property 'login' */
     @Test
     public void loginTest() {
         // TODO: test login
     }
 
-    /**
-     * Test the property 'password'
-     */
+    /** Test the property 'password' */
     @Test
     public void passwordTest() {
         // TODO: test password
     }
-
 }

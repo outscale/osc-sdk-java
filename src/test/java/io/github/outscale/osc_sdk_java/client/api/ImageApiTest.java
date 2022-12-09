@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.api;
 
 import io.github.outscale.osc_sdk_java.client.ApiException;
@@ -20,7 +19,6 @@ import io.github.outscale.osc_sdk_java.client.model.CreateImageRequest;
 import io.github.outscale.osc_sdk_java.client.model.CreateImageResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeleteImageRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeleteImageResponse;
-import io.github.outscale.osc_sdk_java.client.model.ErrorResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadImageExportTasksRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadImageExportTasksResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadImagesRequest;
@@ -30,22 +28,13 @@ import io.github.outscale.osc_sdk_java.client.model.UpdateImageResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-/**
- * API tests for ImageApi
- */
+/** API tests for ImageApi */
 @Disabled
 public class ImageApiTest {
 
     private final ImageApi api = new ImageApi();
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createImageTest() throws ApiException {
         CreateImageRequest createImageRequest = null;
@@ -53,19 +42,16 @@ public class ImageApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void createImageExportTaskTest() throws ApiException {
         CreateImageExportTaskRequest createImageExportTaskRequest = null;
-        CreateImageExportTaskResponse response = api.createImageExportTask(createImageExportTaskRequest);
+        CreateImageExportTaskResponse response =
+                api.createImageExportTask(createImageExportTaskRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void deleteImageTest() throws ApiException {
         DeleteImageRequest deleteImageRequest = null;
@@ -73,19 +59,16 @@ public class ImageApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readImageExportTasksTest() throws ApiException {
         ReadImageExportTasksRequest readImageExportTasksRequest = null;
-        ReadImageExportTasksResponse response = api.readImageExportTasks(readImageExportTasksRequest);
+        ReadImageExportTasksResponse response =
+                api.readImageExportTasks(readImageExportTasksRequest);
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void readImagesTest() throws ApiException {
         ReadImagesRequest readImagesRequest = null;
@@ -93,14 +76,11 @@ public class ImageApiTest {
         // TODO: test validations
     }
 
-    /**
-     * @throws ApiException if the Api call fails
-     */
+    /** @throws ApiException if the Api call fails */
     @Test
     public void updateImageTest() throws ApiException {
         UpdateImageRequest updateImageRequest = null;
         UpdateImageResponse response = api.updateImage(updateImageRequest);
         // TODO: test validations
     }
-
 }

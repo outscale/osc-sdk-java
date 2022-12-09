@@ -10,55 +10,35 @@
  * Do not edit the class manually.
  */
 
-
 package io.github.outscale.osc_sdk_java.client.model;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-
-/**
- * Model tests for RouteLight
- */
+/** Model tests for RouteLight */
 public class RouteLightTest {
     private final RouteLight model = new RouteLight();
 
-    /**
-     * Model tests for RouteLight
-     */
+    /** Model tests for RouteLight */
     @Test
     public void testRouteLight() {
         // TODO: test RouteLight
     }
 
-    /**
-     * Test the property 'destinationIpRange'
-     */
+    /** Test the property 'destinationIpRange' */
     @Test
     public void destinationIpRangeTest() {
         // TODO: test destinationIpRange
     }
 
-    /**
-     * Test the property 'routeType'
-     */
+    /** Test the property 'routeType' */
     @Test
     public void routeTypeTest() {
         // TODO: test routeType
     }
 
-    /**
-     * Test the property 'state'
-     */
+    /** Test the property 'state' */
     @Test
     public void stateTest() {
         // TODO: test state
     }
-
 }
