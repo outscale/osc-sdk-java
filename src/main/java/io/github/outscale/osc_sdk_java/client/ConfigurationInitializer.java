@@ -24,7 +24,7 @@ import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 
 public class ConfigurationInitializer {
 
-    protected ApiClient getApiClient(Profile profile) {
+    protected ApiClient getApiClient(Profile profile) throws ConfigurationException {
         Profile selectedProfile = profile;
 
         ApiClient apiClient = new ApiClient();
@@ -68,7 +68,7 @@ public class ConfigurationInitializer {
         apiClient.setServers(
                 new ArrayList<ServerConfiguration>() {
                     {
-                        add(serverConfiguration);
+                        this.add(serverConfiguration);
                     }
                 });
         apiClient.setServerIndex(0);
@@ -87,14 +87,20 @@ public class ConfigurationInitializer {
                 CertificateFactory factory = CertificateFactory.getInstance("X.509");
                 cert = (X509Certificate) factory.generateCertificate(br);
             } catch (FileNotFoundException e) {
-                System.err.println("The certificate is not found ");
-                return null;
+                throw new ConfigurationException(
+                        String.format(
+                                "The certificate '%s' is not found ",
+                                selectedProfile.getX509ClientCert()));
             } catch (IOException e) {
-                System.err.println("Error during the read of the certificate");
-                return null;
+                throw new ConfigurationException(
+                        String.format(
+                                "Error during the read of the certificate '%s'",
+                                selectedProfile.getX509ClientCert()));
             } catch (CertificateException e) {
-                System.err.println("Error during the parse of the certificate");
-                return null;
+                throw new ConfigurationException(
+                        String.format(
+                                "Error during the parse of the certificate '%s'",
+                                selectedProfile.getX509ClientCert()));
             }
 
             PEMKeyPair pemKey;
@@ -102,15 +108,25 @@ public class ConfigurationInitializer {
             try (BufferedReader br =
                     new BufferedReader(new FileReader(selectedProfile.getX509ClientKey()))) {
                 pemKey = (PEMKeyPair) new PEMParser(br).readObject();
+                if (pemKey == null) {
+                    throw new ConfigurationException(
+                            String.format(
+                                    "Error during the read of the private key '%s'",
+                                    selectedProfile.getX509ClientKey()));
+                }
                 ecKey =
                         (PrivateKey)
                                 new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
             } catch (FileNotFoundException e) {
-                System.err.println("The private key is not found ");
-                return null;
+                throw new ConfigurationException(
+                        String.format(
+                                "The private key '%s' is not found ",
+                                selectedProfile.getX509ClientKey()));
             } catch (IOException e) {
-                System.err.println("Error during the read of the private key");
-                return null;
+                throw new ConfigurationException(
+                        String.format(
+                                "Error during the read of the private key '%s'",
+                                selectedProfile.getX509ClientKey()));
             }
 
             HeldCertificate clientCertificate =
@@ -136,8 +152,8 @@ public class ConfigurationInitializer {
                 && selectedProfile.getX509ClientKeyB64() != null
                 && selectedProfile.getX509ClientKeyB64().length() > 0) {
             if (tlsConfigured) {
-                System.err.println("Cannot configure client certificate with both file and base64");
-                return null;
+                throw new ConfigurationException(
+                        "Cannot configure client certificate with both file and base64");
             }
 
             byte[] decodedBytes = Base64.getDecoder().decode(selectedProfile.getX509ClientKeyB64());
@@ -150,12 +166,14 @@ public class ConfigurationInitializer {
             PrivateKey ecKey = null;
             try {
                 pemKey = (PEMKeyPair) new PEMParser(new StringReader(privateKey)).readObject();
+                if (pemKey == null) {
+                    throw new ConfigurationException("Cannot parse the private Key B64 encoded");
+                }
                 ecKey =
                         (PrivateKey)
                                 new JcaPEMKeyConverter().getPrivateKey(pemKey.getPrivateKeyInfo());
             } catch (IOException e) {
-                System.err.println("Cannot parse the private Key");
-                return null;
+                throw new ConfigurationException("Cannot parse the private Key B64 encoded");
             }
 
             X509Certificate cert = null;
@@ -166,8 +184,8 @@ public class ConfigurationInitializer {
                                 factory.generateCertificate(
                                         new ByteArrayInputStream(certificate.getBytes()));
             } catch (CertificateException e) {
-                System.err.println("Error during parse of the certificate");
-                return null;
+                throw new ConfigurationException(
+                        "Error during parse of the certificate B64 encoded");
             }
 
             HeldCertificate clientCertificate =

@@ -26,7 +26,7 @@ public class ConfigurationEnv extends ConfigurationInitializer {
         return configurationEnv;
     }
 
-    public ApiClient getApiClient() {
+    public ApiClient getApiClient() throws ConfigurationException {
         return getApiClient(profile);
     }
 

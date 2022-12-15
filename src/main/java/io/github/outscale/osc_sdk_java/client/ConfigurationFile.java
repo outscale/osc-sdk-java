@@ -24,11 +24,11 @@ public class ConfigurationFile extends ConfigurationInitializer {
         return defaultConfigPath.toString();
     }
 
-    public static ConfigurationFile loadDefaultConfigFile() {
+    public static ConfigurationFile loadDefaultConfigFile() throws ConfigurationException {
         return loadConfigFile(getDefaultConfigPath());
     }
 
-    public static ConfigurationFile loadConfigFile(String path) {
+    public static ConfigurationFile loadConfigFile(String path) throws ConfigurationException {
         if (path == null) {
             return null;
         }
@@ -44,22 +44,22 @@ public class ConfigurationFile extends ConfigurationInitializer {
             Type listType = new TypeToken<Map<String, Profile>>() {}.getType();
             configurationFile.profiles = gson.fromJson(br, listType);
         } catch (FileNotFoundException e) {
-            System.err.println("The file is not found ");
-            return null;
+            throw new ConfigurationException(String.format("The file '%s' is not found ", path));
         } catch (IOException e) {
-            System.err.println("Error during the read of the file");
-            return null;
+            throw new ConfigurationException(
+                    String.format("Error during the read of the file '%s'", path));
         }
 
         return configurationFile;
     }
 
-    public ApiClient getApiClient(String profile) {
+    public ApiClient getApiClient(String profile) throws ConfigurationException {
         if (!profiles.containsKey(profile)) {
-            System.err.println(
-                    "Profile was not found for creating Configuration, did you load the config"
-                            + " file ?");
-            return null;
+            throw new ConfigurationException(
+                    String.format(
+                            "Profile '%s' was not found for creating Configuration, did you load"
+                                    + " the configfile ?",
+                            profile));
         }
         return getApiClient(profiles.get(profile));
     }

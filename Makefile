@@ -16,7 +16,6 @@ help:
 
 .PHONY: gen
 gen: clean osc-generate
-	mvn spotless:apply
 
 .PNONY: openapi-generator-help
 openapi-generator-help:
@@ -33,7 +32,9 @@ osc-generate: osc-api/outscale.yaml
 	@echo SDK generated
 	mv .sdk/src ./
 	mv .sdk/docs ./
-	git apply ./.osc-patches/*
+	git apply ./.osc-patches/before-format/*
+	mvn spotless:apply
+	git apply ./.osc-patches/after-format/*
 
 osc-api/outscale.yaml:
 	@echo getting osc-api description...
