@@ -10,6 +10,7 @@ import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.ConfigurationEnv;
+import io.github.outscale.osc_sdk_java.client.ConfigurationException;
 import io.github.outscale.osc_sdk_java.client.ConfigurationFile;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import io.github.outscale.osc_sdk_java.client.model.*;
@@ -25,7 +26,14 @@ public class App {
       return;
     }
 
-    ApiClient apiClient = confEnv.getApiClient();
+    ApiClient apiClient = null;
+    try {
+      apiClient = confEnv.getApiClient();
+    } catch (ConfigurationException e1) {
+      System.err.println(e1.toString());
+      System.exit(1);
+    }
+
     if (apiClient == null) {
       return;
     }

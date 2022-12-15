@@ -9,6 +9,7 @@ import java.io.IOException;
 import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.Configuration;
+import io.github.outscale.osc_sdk_java.client.ConfigurationException;
 import io.github.outscale.osc_sdk_java.client.ConfigurationFile;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import io.github.outscale.osc_sdk_java.client.model.*;
@@ -40,12 +41,25 @@ public class App {
     String path = "/tmp/osc-sdk-java-ConfigurationFile";
     createConfigurationFile(path);
 
-    ConfigurationFile confFile = ConfigurationFile.loadConfigFile(path);
+    ConfigurationFile confFile = null;
+    try {
+      confFile = ConfigurationFile.loadConfigFile(path);
+    } catch (ConfigurationException e1) {
+      System.err.println(e1.toString());
+      System.exit(1);
+    }
     if (confFile == null) {
       return;
     }
 
-    ApiClient apiClient = confFile.getApiClient("default");
+    ApiClient apiClient = null;
+    try {
+      apiClient = confFile.getApiClient("default");
+    } catch (ConfigurationException e1) {
+      System.err.println(e1.toString());
+      System.exit(1);
+    }
+
     if (apiClient == null) {
       return;
     }
