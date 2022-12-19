@@ -30,6 +30,8 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
+    // Configure AWS Signature V4 authorization
+    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
     
     // Configure API key authorization: ApiKeyAuthSec
     ApiKeyAuth ApiKeyAuthSec = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuthSec");
@@ -102,6 +104,8 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
+    // Configure AWS Signature V4 authorization
+    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
     
     // Configure API key authorization: ApiKeyAuthSec
     ApiKeyAuth ApiKeyAuthSec = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuthSec");
@@ -174,6 +178,8 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
+    // Configure AWS Signature V4 authorization
+    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
     
     // Configure API key authorization: ApiKeyAuthSec
     ApiKeyAuth ApiKeyAuthSec = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuthSec");
@@ -246,6 +252,8 @@ public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
+    // Configure AWS Signature V4 authorization
+    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
     
     // Configure API key authorization: ApiKeyAuthSec
     ApiKeyAuth ApiKeyAuthSec = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuthSec");
