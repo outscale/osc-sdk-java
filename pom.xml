@@ -315,7 +315,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-signer</artifactId>
-            <version>1.12.372</version>
+            <version>1.12.373</version>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
