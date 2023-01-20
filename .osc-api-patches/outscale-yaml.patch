@@ -1,5 +1,5 @@
 diff --git a/outscale.yaml b/outscale.yaml
-index bee31f9..48bb55e 100644
+index 8d912fe..17586a0 100644
 --- a/outscale.yaml
 +++ b/outscale.yaml
 @@ -43,15 +43,15 @@ components:
@@ -76,9 +76,23 @@ index bee31f9..48bb55e 100644
            type: string
        type: object
      CreateAccessKeyResponse:
+@@ -2669,11 +2669,11 @@ components:
+           type: array
+         QueryDateAfter:
+           description: The date after which you want to retrieve logged calls, in ISO 8601 format (for example, `2020-06-14`). By default, this date is set to 48 hours before the `QueryDateBefore` parameter value.
+-          format: date
++          format: date-time
+           type: string
+         QueryDateBefore:
+           description: The date before which you want to retrieve logged calls, in ISO 8601 format (for example, `2020-06-30`). By default, this date is set to now, or 48 hours after the `QueryDateAfter` parameter value.
+-          format: date
++          format: date-time
+           type: string
+         QueryIpAddresses:
+           description: The IPs used for the logged calls.
 @@ -4024,7 +4024,7 @@ components:
          CreationDates:
-           description: The dates and times at which the volumes were created.
+           description: The dates and times of creation of the volumes.
            items:
 -            format: date
 +            format: date-time
@@ -87,22 +101,13 @@ index bee31f9..48bb55e 100644
          LinkVolumeDeleteOnVmDeletion:
 @@ -4038,7 +4038,7 @@ components:
          LinkVolumeLinkDates:
-           description: The dates and times at which the volumes were created.
+           description: The dates and times of creation of the volumes.
            items:
 -            format: date
 +            format: date-time
              type: string
            type: array
          LinkVolumeLinkStates:
-@@ -4256,7 +4256,7 @@ components:
-           type: array
-         CreationDate:
-           description: The date and time at which the OMI was created.
--          format: date
-+          format: date-time
-           type: string
-         Description:
-           description: The description of the OMI.
 @@ -4990,7 +4990,7 @@ components:
            type: string
          QueryDate:
@@ -160,7 +165,7 @@ index bee31f9..48bb55e 100644
 @@ -8172,7 +8172,7 @@ components:
            type: string
          CreationDate:
-           description: The date and time at which the VM was created.
+           description: The date and time of creation of the VM.
 -          format: datetime
 +          format: date-time
            type: string
