@@ -3,7 +3,7 @@
 # osc-sdk-java
 
 3DS OUTSCALE API
-- API version: 1.23
+- API version: 1.24
 
 Welcome to the OUTSCALE API documentation.<br />
 The OUTSCALE API enables you to manage your resources in the OUTSCALE Cloud. This documentation describes the different actions available along with code examples.<br /><br />
