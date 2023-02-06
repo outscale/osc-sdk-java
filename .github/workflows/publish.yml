@@ -14,11 +14,11 @@ jobs:
         distribution: 'temurin' 
         java-version: '11'
         cache: 'maven'
-    - name: Setup credentials
-      run: .github/scripts/create-m2-settings.xml
-      env:
-        SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        server-id: ossrh
+        server-username: ${{ secrets.SONATYPE_USERNAME }}
+        server-password: ${{ secrets.SONATYPE_USERNAME }}
+        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+        gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
     - name: Publish
       run: mvn deploy
         
