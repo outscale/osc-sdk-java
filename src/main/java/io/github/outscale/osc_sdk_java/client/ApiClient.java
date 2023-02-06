@@ -168,7 +168,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("osc-sdk-java/0.1.0");
+        setUserAgent("osc-sdk-java/0.2.0");
 
         authentications = new HashMap<String, Authentication>();
     }
