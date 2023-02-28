@@ -17,7 +17,7 @@ Information about the DirectLink interfaces.
 |**directLinkInterfaceName** | **String** | The name of the DirectLink interface. |  [optional] |
 |**interfaceType** | **String** | The type of the DirectLink interface (always &#x60;private&#x60;). |  [optional] |
 |**location** | **String** | The datacenter where the DirectLink interface is located. |  [optional] |
-|**mtu** | **Integer** | The maximum transmission unit (MTU) of the DirectLink interface, in bytes (by default, &#x60;1500&#x60;). |  [optional] |
+|**mtu** | **Integer** | The maximum transmission unit (MTU) of the DirectLink interface, in bytes (always &#x60;1500&#x60;). |  [optional] |
 |**outscalePrivateIp** | **String** | The IP on the OUTSCALE side of the DirectLink interface. |  [optional] |
 |**state** | **String** | The state of the DirectLink interface (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;deleting&#x60; \\| &#x60;deleted&#x60; \\| &#x60;confirming&#x60; \\| &#x60;rejected&#x60; \\| &#x60;expired&#x60;). |  [optional] |
 |**virtualGatewayId** | **String** | The ID of the target virtual gateway. |  [optional] |

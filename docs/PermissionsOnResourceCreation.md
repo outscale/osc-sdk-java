@@ -2,7 +2,7 @@
 
 # PermissionsOnResourceCreation
 
-Information about the permissions for the resource.
+Information about the permissions for the resource.<br /> Specify either the `Additions` or the `Removals` parameter.
 
 ## Properties
 
