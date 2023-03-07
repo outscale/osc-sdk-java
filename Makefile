@@ -34,6 +34,8 @@ osc-generate: osc-api/outscale.yaml
 	mv .sdk/docs ./
 	@echo start update SDK version
 	sed "s%SDK_VERSION%$(SDK_VERSION)%" pom.xml.template > pom.xml
+	sed "s%SDK_VERSION%$(SDK_VERSION)%" README.md.template > README.md
+	sed -i "s%API_VERSION%$(API_VERSION)%" README.md
 	$(shell for i in ./examples/*; do sed "s%SDK_VERSION%$(SDK_VERSION)%" $$i/pom.xml.template > $$i/pom.xml; done)
 	git apply ./.osc-patches/before-format/*
 	mvn spotless:apply
