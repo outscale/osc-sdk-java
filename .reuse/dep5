@@ -3,10 +3,10 @@ Upstream-Name: osc-sdk-java
 Upstream-Contact: Outscale support <support@outscale.com>
 Source: https://github.com/outscale/osc-sdk-java/
 
-Files: *.md
+Files: *.md *.md.template
 Copyright: 2019 Outscale SAS <support@outscale.com>
 License: CC-BY-4.0
 
-Files: Makefile sdk_version api_version *.java .git* src/* dist/* *.yml *.yaml .osc-patches/*.patch  .osc-api-patches/*.patch examples/* pom.xml
+Files: Makefile sdk_version api_version *.java .git* src/* dist/* *.yml *.yaml .osc-patches/*.patch  .osc-api-patches/*.patch examples/* pom.xml pom.xml.template
 Copyright: 2019 Outscale SAS <support@outscale.com>
 License: BSD-3-Clause
