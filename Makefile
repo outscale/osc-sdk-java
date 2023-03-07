@@ -57,7 +57,7 @@ reuse-test:
 
 .PHONY: local-deploy
 local-deploy:
-	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true
+	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dgpg.skip
 
 .PHONY: examples-test
 examples-test: example-volumes example-region example-vm example-config_file example-config_env example-password_auth
