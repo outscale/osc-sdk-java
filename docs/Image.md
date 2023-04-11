@@ -12,14 +12,14 @@ Information about the OMI.
 |**accountId** | **String** | The account ID of the owner of the OMI. |  [optional] |
 |**architecture** | **String** | The architecture of the OMI (by default, &#x60;i386&#x60;). |  [optional] |
 |**blockDeviceMappings** | [**List&lt;BlockDeviceMappingImage&gt;**](BlockDeviceMappingImage.md) | One or more block device mappings. |  [optional] |
-|**creationDate** | **LocalDate** | The date and time of creation of the OMI. |  [optional] |
+|**creationDate** | **LocalDate** | The date and time of creation of the OMI, in ISO 8601 date-time format. |  [optional] |
 |**description** | **String** | The description of the OMI. |  [optional] |
 |**fileLocation** | **String** | The location of the bucket where the OMI files are stored. |  [optional] |
 |**imageId** | **String** | The ID of the OMI. |  [optional] |
 |**imageName** | **String** | The name of the OMI. |  [optional] |
 |**imageType** | **String** | The type of the OMI. |  [optional] |
 |**permissionsToLaunch** | [**PermissionsOnResource**](PermissionsOnResource.md) |  |  [optional] |
-|**productCodes** | **List&lt;String&gt;** | The product code associated with the OMI (&#x60;0001&#x60; Linux/Unix \\| &#x60;0002&#x60; Windows \\| &#x60;0004&#x60; Linux/Oracle \\| &#x60;0005&#x60; Windows 10). |  [optional] |
+|**productCodes** | **List&lt;String&gt;** | The product codes associated with the OMI. |  [optional] |
 |**rootDeviceName** | **String** | The name of the root device. |  [optional] |
 |**rootDeviceType** | **String** | The type of root device used by the OMI (always &#x60;bsu&#x60;). |  [optional] |
 |**state** | **String** | The state of the OMI (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;failed&#x60;). |  [optional] |
