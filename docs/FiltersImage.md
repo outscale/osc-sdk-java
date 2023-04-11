@@ -23,7 +23,7 @@ One or more filters.
 |**imageNames** | **List&lt;String&gt;** | The names of the OMIs, provided when they were created. |  [optional] |
 |**permissionsToLaunchAccountIds** | **List&lt;String&gt;** | The account IDs of the users who have launch permissions for the OMIs. |  [optional] |
 |**permissionsToLaunchGlobalPermission** | **Boolean** | If true, lists all public OMIs. If false, lists all private OMIs. |  [optional] |
-|**productCodes** | **List&lt;String&gt;** | The product code associated with the OMI (&#x60;0001&#x60; Linux/Unix \\| &#x60;0002&#x60; Windows \\| &#x60;0004&#x60; Linux/Oracle \\| &#x60;0005&#x60; Windows 10). |  [optional] |
+|**productCodes** | **List&lt;String&gt;** | The product codes associated with the OMI. |  [optional] |
 |**rootDeviceNames** | **List&lt;String&gt;** | The name of the root device. This value must be /dev/sda1. |  [optional] |
 |**rootDeviceTypes** | **List&lt;String&gt;** | The types of root device used by the OMIs (always &#x60;bsu&#x60;). |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the OMIs (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;failed&#x60;). |  [optional] |
