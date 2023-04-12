@@ -46,3 +46,31 @@ If this is not the case:
 8. Review and merge PR.
 9. Create and push new sdk version tag.
 10. Create new release from tag.
+
+
+# Manual Publish
+1. Import gpg key `gpg --import <FILE>`
+2. Set gpg key as default if multiple in the computer, `~/.gnupg/gpg.conf`
+   ```
+   default-key <FINGERPRINT>
+   ```
+   The fingerprint can be retrieved using `gpg --list-keys`
+3. Add credentials to the nexus server, `~/.m2/settings.xml`
+    ```
+    <settings>
+        <servers>
+            <server>
+                <id>ossrh</id>
+                <username>USERNAME</username>
+                <password>PASSWORD</password>
+            </server>
+        </servers>
+    </settings>
+    ```
+4. `mvn deploy`
+5. In case of failure during the publish, check https://s01.oss.sonatype.org/ (login using sonatype-ci credentials)
+6. Check https://central.sonatype.com/artifact/io.github.outscale/osc-sdk-java after few hours
+
+
+# More details
+Check this site for deploying using sonatype: https://central.sonatype.org/publish/
