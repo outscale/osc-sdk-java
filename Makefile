@@ -45,7 +45,8 @@ osc-api/outscale.yaml:
 	@echo getting osc-api description...
 	git clone https://github.com/outscale/osc-api-deploy.git
 	git clone https://github.com/outscale/osc-api.git && cd osc-api && git checkout -b $(API_VERSION) $(API_VERSION)
-	./osc-api-deploy/hacks/patch-nooneof.rb osc-api/outscale.yaml > osc-api/outscale.yaml
+	./osc-api-deploy/hacks/patch-nooneof.rb osc-api/outscale.yaml > osc-api/outscale-tmp.yaml
+	mv osc-api/outscale-tmp.yaml osc-api/outscale.yaml
 
 .PHONY: clean
 clean:
