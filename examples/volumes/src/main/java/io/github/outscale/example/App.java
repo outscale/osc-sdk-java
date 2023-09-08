@@ -11,7 +11,11 @@ public class App {
     String accessKey = System.getenv("OSC_ACCESS_KEY");
     String secretKey = System.getenv("OSC_SECRET_KEY");
     String region = System.getenv("OSC_REGION");
+    String endpoint = System.getenv("OSC_ENDPOINT_API");
+
     defaultClient.setAWS4Configuration(accessKey, secretKey, region, "api");
+    if (endpoint != null)
+	    defaultClient.setBasePath(endpoint);
 
     VolumeApi apiInstance = new VolumeApi(defaultClient);
     ReadVolumesRequest request = new ReadVolumesRequest();
@@ -20,6 +24,7 @@ public class App {
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccessKeyApi#createAccessKey");
+      System.err.println("Endpoint: " + defaultClient.getBasePath());
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

@@ -12,6 +12,9 @@ public class App {
     String secretKey = System.getenv("OSC_SECRET_KEY");
     String region = System.getenv("OSC_REGION");
     defaultClient.setAWS4Configuration(accessKey, secretKey, region, "api");
+    String endpoint = System.getenv("OSC_ENDPOINT_API");
+    if (endpoint != null)
+	    defaultClient.setBasePath(endpoint);
 
     VmApi apiInstance = new VmApi(defaultClient);
     ReadVmsRequest createAccessKeyRequest = new ReadVmsRequest(); // CreateAccessKeyRequest |

@@ -22,9 +22,24 @@ public class App {
     String accessKey = System.getenv("OSC_ACCESS_KEY");
     String secretKey = System.getenv("OSC_SECRET_KEY");
     String region = System.getenv("OSC_REGION");
+    String endpointApi = System.getenv("OSC_ENDPOINT_API_NOPROTO");
+    String protocol = System.getenv("OSC_PROTOCOL");
+
+    if (endpointApi != null) {
+	endpointApi = String.format("\"endpoints\": {\"api\": \"%s\"},", endpointApi);
+    } else {
+	endpointApi = "";
+    }
+
+    if (protocol != null) {
+	protocol = String.format("\"protocol\": \"%s\",", protocol);
+    } else {
+	protocol = "";
+    }
 
     String content = String.format(
-        "{\"default\": {\"access_key\": \"%s\", \"secret_key\": \"%s\", \"region\": \"%s\"}}",
+        "{\"default\": {%s%s\"access_key\": \"%s\", \"secret_key\": \"%s\", \"region\": \"%s\"}}",
+	endpointApi, protocol,
         accessKey, secretKey, region);
 
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
