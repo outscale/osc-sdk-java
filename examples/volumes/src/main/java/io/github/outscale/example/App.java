@@ -11,11 +11,11 @@ public class App {
     String accessKey = System.getenv("OSC_ACCESS_KEY");
     String secretKey = System.getenv("OSC_SECRET_KEY");
     String region = System.getenv("OSC_REGION");
-    String endpoint = System.getenv("OSC_ENDPOINT_API");
+    String endpoint = System.getenv("OSC_ENDPOINT_API_PROTO");
 
-    defaultClient.setAWS4Configuration(accessKey, secretKey, region, "api");
     if (endpoint != null)
 	    defaultClient.setBasePath(endpoint);
+    defaultClient.setAWS4Configuration(accessKey, secretKey, region, "api");
 
     VolumeApi apiInstance = new VolumeApi(defaultClient);
     ReadVolumesRequest request = new ReadVolumesRequest();

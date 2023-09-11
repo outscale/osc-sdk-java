@@ -14,6 +14,9 @@ public class App {
     String password = System.getenv("OSC_PASSWORD");
     defaultClient.setUsername(username);
     defaultClient.setPassword(password);
+    String endpoint = System.getenv("OSC_ENDPOINT_API_PROTO");
+    if (endpoint != null)
+	    defaultClient.setBasePath(endpoint);
 
     ApiAccessPolicyApi api = new ApiAccessPolicyApi(defaultClient);
     ReadApiAccessPolicyRequest request = new ReadApiAccessPolicyRequest(); // CreateAccessKeyRequest |
