@@ -25,6 +25,8 @@ jobs:
           distribution: 'temurin' 
           java-version: '11'
           cache: 'maven'
+      - name: Local Tests
+        run: ./local_tests.sh
       - name: Example tests
         env:
           OSC_ACCESS_KEY: ${{ secrets.OSC_ACCESS_KEY }}
