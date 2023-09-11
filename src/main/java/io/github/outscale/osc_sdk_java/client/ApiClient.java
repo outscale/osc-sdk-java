@@ -54,7 +54,8 @@ import okio.Okio;
 /** ApiClient class. */
 public class ApiClient {
 
-    private String basePath = "https://api.eu-west-2.outscale.com/api/v1";
+    private String backupPath = "https://api.eu-west-2.outscale.com/api/v1";
+    private String basePath = null;
     protected List<ServerConfiguration> servers =
             new ArrayList<ServerConfiguration>(
                     Arrays.asList(
@@ -1320,7 +1321,9 @@ public class ApiClient {
             url.append(baseUrl).append(path);
         } else {
             String baseURL;
-            if (serverIndex != null) {
+            if (basePath != null) {
+                baseURL = basePath;
+            } else if (serverIndex != null) {
                 if (serverIndex < 0 || serverIndex >= servers.size()) {
                     throw new ArrayIndexOutOfBoundsException(
                             String.format(
@@ -1330,7 +1333,7 @@ public class ApiClient {
                 }
                 baseURL = servers.get(serverIndex).URL(serverVariables);
             } else {
-                baseURL = basePath;
+                baseURL = backupPath;
             }
             url.append(baseURL).append(path);
         }
