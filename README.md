@@ -3,7 +3,7 @@
 # osc-sdk-java
 
 3DS OUTSCALE API
-- API version: 1.27.0
+- API version: 1.28.5
 
 Welcome to the OUTSCALE API documentation.<br />
 The OUTSCALE API enables you to manage your resources in the OUTSCALE Cloud. This documentation describes the different actions available along with code examples.<br /><br />
@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.github.outscale</groupId>
   <artifactId>osc-sdk-java</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +62,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "io.github.outscale:osc-sdk-java:0.4.0"
+     implementation "io.github.outscale:osc-sdk-java:0.5.0"
   }
 ```
 
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/osc-sdk-java-0.4.0.jar`
+* `target/osc-sdk-java-0.5.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

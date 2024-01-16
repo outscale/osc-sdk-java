@@ -8,8 +8,6 @@ All URIs are relative to *https://api.eu-west-2.outscale.com/api/v1*
 | [**createAccount**](AccountApi.md#createAccount) | **POST** /CreateAccount |  |
 | [**readAccounts**](AccountApi.md#readAccounts) | **POST** /ReadAccounts |  |
 | [**readConsumptionAccount**](AccountApi.md#readConsumptionAccount) | **POST** /ReadConsumptionAccount |  |
-| [**resetAccountPassword**](AccountApi.md#resetAccountPassword) | **POST** /ResetAccountPassword |  |
-| [**sendResetPasswordEmail**](AccountApi.md#sendResetPasswordEmail) | **POST** /SendResetPasswordEmail |  |
 | [**updateAccount**](AccountApi.md#updateAccount) | **POST** /UpdateAccount |  |
 
 
@@ -278,130 +276,6 @@ public class Example {
 ### Authorization
 
 [ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The HTTP 200 response (OK). |  -  |
-
-<a name="resetAccountPassword"></a>
-# **resetAccountPassword**
-> ResetAccountPasswordResponse resetAccountPassword(resetAccountPasswordRequest)
-
-
-
-### Example
-```java
-// Import classes:
-import io.github.outscale.osc_sdk_java.client.ApiClient;
-import io.github.outscale.osc_sdk_java.client.ApiException;
-import io.github.outscale.osc_sdk_java.client.Configuration;
-import io.github.outscale.osc_sdk_java.client.models.*;
-import io.github.outscale.osc_sdk_java.client.api.AccountApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
-    // Configure AWS Signature V4 authorization
-    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
-
-    AccountApi apiInstance = new AccountApi(defaultClient);
-    ResetAccountPasswordRequest resetAccountPasswordRequest = new ResetAccountPasswordRequest(); // ResetAccountPasswordRequest | 
-    try {
-      ResetAccountPasswordResponse result = apiInstance.resetAccountPassword(resetAccountPasswordRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AccountApi#resetAccountPassword");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **resetAccountPasswordRequest** | [**ResetAccountPasswordRequest**](ResetAccountPasswordRequest.md)|  | [optional] |
-
-### Return type
-
-[**ResetAccountPasswordResponse**](ResetAccountPasswordResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | The HTTP 200 response (OK). |  -  |
-
-<a name="sendResetPasswordEmail"></a>
-# **sendResetPasswordEmail**
-> SendResetPasswordEmailResponse sendResetPasswordEmail(sendResetPasswordEmailRequest)
-
-
-
-### Example
-```java
-// Import classes:
-import io.github.outscale.osc_sdk_java.client.ApiClient;
-import io.github.outscale.osc_sdk_java.client.ApiException;
-import io.github.outscale.osc_sdk_java.client.Configuration;
-import io.github.outscale.osc_sdk_java.client.models.*;
-import io.github.outscale.osc_sdk_java.client.api.AccountApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://api.eu-west-2.outscale.com/api/v1");
-    // Configure AWS Signature V4 authorization
-    defaultClient.setAWS4Configuration("YOUR_ACCESS_KEY", "YOUR_SECRET_KEY", "REGION", "SERVICE")
-
-    AccountApi apiInstance = new AccountApi(defaultClient);
-    SendResetPasswordEmailRequest sendResetPasswordEmailRequest = new SendResetPasswordEmailRequest(); // SendResetPasswordEmailRequest | 
-    try {
-      SendResetPasswordEmailResponse result = apiInstance.sendResetPasswordEmail(sendResetPasswordEmailRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AccountApi#sendResetPasswordEmail");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **sendResetPasswordEmailRequest** | [**SendResetPasswordEmailRequest**](SendResetPasswordEmailRequest.md)|  | [optional] |
-
-### Return type
-
-[**SendResetPasswordEmailResponse**](SendResetPasswordEmailResponse.md)
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 

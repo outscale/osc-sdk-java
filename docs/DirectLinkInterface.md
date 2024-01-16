@@ -14,7 +14,7 @@ Information about the DirectLink interface.
 |**directLinkInterfaceName** | **String** | The name of the DirectLink interface. |  |
 |**outscalePrivateIp** | **String** | The IP on the OUTSCALE side of the DirectLink interface. |  [optional] |
 |**virtualGatewayId** | **String** | The ID of the target virtual gateway. |  |
-|**vlan** | **Integer** | The VLAN number associated with the DirectLink interface. |  |
+|**vlan** | **Integer** | The VLAN number associated with the DirectLink interface. This number must be unique and be between &#x60;2&#x60; and &#x60;4094&#x60;. |  |
 
 
 

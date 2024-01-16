@@ -8,7 +8,7 @@ Information about the security group.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountId** | **String** | The account ID of a user that has been granted permission. |  [optional] |
+|**accountId** | **String** | The account ID that has been granted permission. |  [optional] |
 |**description** | **String** | The description of the security group. |  [optional] |
 |**inboundRules** | [**List&lt;SecurityGroupRule&gt;**](SecurityGroupRule.md) | The inbound rules associated with the security group. |  [optional] |
 |**netId** | **String** | The ID of the Net for the security group. |  [optional] |

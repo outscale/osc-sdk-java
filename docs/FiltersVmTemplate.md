@@ -17,7 +17,7 @@ One or more filters.
 |**rams** | **List&lt;Integer&gt;** | The amount of RAM. |  [optional] |
 |**tagKeys** | **List&lt;String&gt;** | The keys of the tags associated with the VM templates. |  [optional] |
 |**tagValues** | **List&lt;String&gt;** | The values of the tags associated with the VM templates. |  [optional] |
-|**tags** | **List&lt;String&gt;** | The key/value combination of the tags associated with the VM templates, in the following format: \&quot;Filters\&quot;:{\&quot;Tags\&quot;:[\&quot;TAGKEY&#x3D;TAGVALUE\&quot;]}. |  [optional] |
+|**tags** | **List&lt;String&gt;** | The key/value combination of the tags associated with the VM templates, in the following format: &amp;quot;Filters&amp;quot;:{&amp;quot;Tags&amp;quot;:[&amp;quot;TAGKEY&#x3D;TAGVALUE&amp;quot;]}. |  [optional] |
 |**vmTemplateIds** | **List&lt;String&gt;** | The IDs of the VM templates. |  [optional] |
 |**vmTemplateNames** | **List&lt;String&gt;** | The names of the VM templates. |  [optional] |
 

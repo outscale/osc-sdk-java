@@ -11,6 +11,7 @@ One or more filters.
 |**accepterNetAccountIds** | **List&lt;String&gt;** | The account IDs of the owners of the peer Nets. |  [optional] |
 |**accepterNetIpRanges** | **List&lt;String&gt;** | The IP ranges of the peer Nets, in CIDR notation (for example, &#x60;10.0.0.0/24&#x60;). |  [optional] |
 |**accepterNetNetIds** | **List&lt;String&gt;** | The IDs of the peer Nets. |  [optional] |
+|**expirationDates** | **List&lt;OffsetDateTime&gt;** | The dates and times at which the Net peerings expire, in ISO 8601 date-time format (for example, &#x60;2020-06-14T00:00:00.000Z&#x60;). |  [optional] |
 |**netPeeringIds** | **List&lt;String&gt;** | The IDs of the Net peerings. |  [optional] |
 |**sourceNetAccountIds** | **List&lt;String&gt;** | The account IDs of the owners of the peer Nets. |  [optional] |
 |**sourceNetIpRanges** | **List&lt;String&gt;** | The IP ranges of the peer Nets. |  [optional] |
