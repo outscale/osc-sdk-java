@@ -21,11 +21,12 @@ One or more filters.
 |**hypervisors** | **List&lt;String&gt;** | The hypervisor type of the OMI (always &#x60;xen&#x60;). |  [optional] |
 |**imageIds** | **List&lt;String&gt;** | The IDs of the OMIs. |  [optional] |
 |**imageNames** | **List&lt;String&gt;** | The names of the OMIs, provided when they were created. |  [optional] |
-|**permissionsToLaunchAccountIds** | **List&lt;String&gt;** | The account IDs of the users who have launch permissions for the OMIs. |  [optional] |
+|**permissionsToLaunchAccountIds** | **List&lt;String&gt;** | The account IDs which have launch permissions for the OMIs. |  [optional] |
 |**permissionsToLaunchGlobalPermission** | **Boolean** | If true, lists all public OMIs. If false, lists all private OMIs. |  [optional] |
+|**productCodeNames** | **List&lt;String&gt;** | The names of the product codes associated with the OMI. |  [optional] |
 |**productCodes** | **List&lt;String&gt;** | The product codes associated with the OMI. |  [optional] |
 |**rootDeviceNames** | **List&lt;String&gt;** | The name of the root device. This value must be /dev/sda1. |  [optional] |
-|**rootDeviceTypes** | **List&lt;String&gt;** | The types of root device used by the OMIs (always &#x60;bsu&#x60;). |  [optional] |
+|**rootDeviceTypes** | **List&lt;String&gt;** | The types of root device used by the OMIs (&#x60;bsu&#x60; or &#x60;ebs&#x60;). |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the OMIs (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;failed&#x60;). |  [optional] |
 |**tagKeys** | **List&lt;String&gt;** | The keys of the tags associated with the OMIs. |  [optional] |
 |**tagValues** | **List&lt;String&gt;** | The values of the tags associated with the OMIs. |  [optional] |

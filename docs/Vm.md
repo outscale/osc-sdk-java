@@ -31,7 +31,7 @@ Information about the VM.
 |**publicDnsName** | **String** | The name of the public DNS. |  [optional] |
 |**publicIp** | **String** | The public IP of the VM. |  [optional] |
 |**reservationId** | **String** | The reservation ID of the VM. |  [optional] |
-|**rootDeviceName** | **String** | The name of the root device for the VM (for example, &#x60;/dev/vda1&#x60;). |  [optional] |
+|**rootDeviceName** | **String** | The name of the root device for the VM (for example, &#x60;/dev/sda1&#x60;). |  [optional] |
 |**rootDeviceType** | **String** | The type of root device used by the VM (always &#x60;bsu&#x60;). |  [optional] |
 |**securityGroups** | [**List&lt;SecurityGroupLight&gt;**](SecurityGroupLight.md) | One or more security groups associated with the VM. |  [optional] |
 |**state** | **String** | The state of the VM (&#x60;pending&#x60; \\| &#x60;running&#x60; \\| &#x60;stopping&#x60; \\| &#x60;stopped&#x60; \\| &#x60;shutting-down&#x60; \\| &#x60;terminated&#x60; \\| &#x60;quarantine&#x60;). |  [optional] |
@@ -41,7 +41,7 @@ Information about the VM.
 |**userData** | **String** | The Base64-encoded MIME user data. |  [optional] |
 |**vmId** | **String** | The ID of the VM. |  [optional] |
 |**vmInitiatedShutdownBehavior** | **String** | The VM behavior when you stop it. If set to &#x60;stop&#x60;, the VM stops. If set to &#x60;restart&#x60;, the VM stops then automatically restarts. If set to &#x60;terminate&#x60;, the VM stops and is deleted. |  [optional] |
-|**vmType** | **String** | The type of VM. For more information, see [Instance Types](https://docs.outscale.com/en/userguide/Instance-Types.html). |  [optional] |
+|**vmType** | **String** | The type of VM. For more information, see [VM Types](https://docs.outscale.com/en/userguide/VM-Types.html). |  [optional] |
 
 
 

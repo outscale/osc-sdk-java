@@ -8,7 +8,6 @@ One or more filters.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accountIds** | **List&lt;String&gt;** | The account IDs of the owners of the security groups. |  [optional] |
 |**descriptions** | **List&lt;String&gt;** | The descriptions of the security groups. |  [optional] |
 |**inboundRuleAccountIds** | **List&lt;String&gt;** | The account IDs that have been granted permissions. |  [optional] |
 |**inboundRuleFromPortRanges** | **List&lt;Integer&gt;** | The beginnings of the port ranges for the TCP and UDP protocols, or the ICMP type numbers. |  [optional] |
