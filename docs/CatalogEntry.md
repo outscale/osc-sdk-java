@@ -15,7 +15,7 @@ Information about the catalog entry.
 |**subregionName** | **String** | The Subregion associated with the catalog entry. |  [optional] |
 |**title** | **String** | The description of the catalog entry. |  [optional] |
 |**type** | **String** | The type of resource associated with the catalog entry. |  [optional] |
-|**unitPrice** | **Float** | The unit price of the catalog entry, in the currency of the catalog of the Region where the API method was used. |  [optional] |
+|**unitPrice** | **Float** | The unit price of the catalog entry, in the currency of the Region&#39;s catalog. |  [optional] |
 
 
 
