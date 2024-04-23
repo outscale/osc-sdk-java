@@ -1,8 +1,8 @@
 /*
  * 3DS OUTSCALE API
- * Welcome to the OUTSCALE API documentation.<br /> The OUTSCALE API enables you to manage your resources in the OUTSCALE Cloud. This documentation describes the different actions available along with code examples.<br /><br /> Throttling: To protect against overloads, the number of identical requests allowed in a given time period is limited.<br /> Brute force: To protect against brute force attacks, the number of failed authentication attempts in a given time period is limited.<br /><br /> You can learn more about errors returned by the API in the dedicated [errors page](api/errors).<br /><br /> Note that the OUTSCALE Cloud is compatible with Amazon Web Services (AWS) APIs, but there are [differences in resource names](https://docs.outscale.com/en/userguide/OUTSCALE-APIs-Reference.html) between AWS and the OUTSCALE API.<br /> You can also manage your resources using the [Cockpit](https://docs.outscale.com/en/userguide/About-Cockpit.html) web interface.<br /><br /> An OpenAPI description of the OUTSCALE API is also available in this [GitHub repository](https://github.com/outscale/osc-api).<br /> # Authentication Schemes ### Access Key/Secret Key The main way to authenticate your requests to the OUTSCALE API is to use an access key and a secret key.<br /> The mechanism behind this is based on AWS Signature Version 4, whose technical implementation details are described in [Signature of API Requests](https://docs.outscale.com/en/userguide/Signature-of-API-Requests.html).<br /><br /> In practice, the way to specify your access key and secret key depends on the tool or SDK you want to use to interact with the API.<br />  > For example, if you use OSC CLI: > 1. You need to create an **~/.osc/config.json** file to specify your access key, secret key, and the Region of your account. > 2. You then specify the `--profile` option when executing OSC CLI commands. >  > For more information, see [Installing and Configuring OSC CLI](https://docs.outscale.com/en/userguide/Installing-and-Configuring-OSC-CLI.html).  See the code samples in each section of this documentation for specific examples in different programming languages.<br /> For more information about access keys, see [About Access Keys](https://docs.outscale.com/en/userguide/About-Access-Keys.html). ### Login/Password For certain API actions, you can also use basic authentication with the login (email address) and password of your TINA account.<br /> This is useful only in special circumstances, for example if you do not know your access key/secret key and want to retrieve them programmatically.<br /> In most cases, however, you can use the Cockpit web interface to retrieve them.<br />  > For example, if you use OSC CLI: > 1. You need to create an **~/.osc/config.json** file to specify the Region of your account, but you leave the access key value and secret key value empty (`&quot;&quot;`). > 2. You then specify the `--profile`, `--authentication-method`, `--login`, and `--password` options when executing OSC CLI commands.  See the code samples in each section of this documentation for specific examples in different programming languages. ### No Authentication A few API actions do not require any authentication. They are indicated as such in this documentation.<br /> ### Other Security Mechanisms In parallel with the authentication schemes, you can add other security mechanisms to your OUTSCALE account, for example to restrict API requests by IP or other criteria.<br /> For more information, see [Managing Your API Accesses](https://docs.outscale.com/en/userguide/Managing-Your-API-Accesses.html).
+ * Welcome to the OUTSCALE API documentation.<br /> The OUTSCALE API enables you to manage your resources in the OUTSCALE Cloud. This documentation describes the different actions available along with code examples.<br /><br /> Throttling: To protect against overloads, the number of identical requests allowed in a given time period is limited.<br /> Brute force: To protect against brute force attacks, the number of failed authentication attempts in a given time period is limited.<br /><br /> Note that the OUTSCALE Cloud is compatible with Amazon Web Services (AWS) APIs, but there are [differences in resource names](https://docs.outscale.com/en/userguide/OUTSCALE-APIs-Reference.html) between AWS and the OUTSCALE API.<br /> You can also manage your resources using the [Cockpit](https://docs.outscale.com/en/userguide/About-Cockpit.html) web interface.<br /><br /> An OpenAPI description of the OUTSCALE API is also available in this [GitHub repository](https://github.com/outscale/osc-api).<br /> # Authentication Schemes ### Access Key/Secret Key The main way to authenticate your requests to the OUTSCALE API is to use an access key and a secret key.<br /> The mechanism behind this is based on AWS Signature Version 4, whose technical implementation details are described in [Signature of API Requests](https://docs.outscale.com/en/userguide/Signature-of-API-Requests.html).<br /><br /> In practice, the way to specify your access key and secret key depends on the tool or SDK you want to use to interact with the API.<br />  > For example, if you use OSC CLI: > 1. You need to create an **~/.osc/config.json** file to specify your access key, secret key, and the Region of your account. > 2. You then specify the `--profile` option when executing OSC CLI commands. >  > For more information, see [Installing and Configuring OSC CLI](https://docs.outscale.com/en/userguide/Installing-and-Configuring-OSC-CLI.html).  See the code samples in each section of this documentation for specific examples in different programming languages.<br /> For more information about access keys, see [About Access Keys](https://docs.outscale.com/en/userguide/About-Access-Keys.html).  > If you try to sign requests with an invalid access key four times in a row, further authentication attempts will be prevented for 1 minute. This lockout time increases 1 minute every four failed attempts, for up to 10 minutes.  ### Login/Password For certain API actions, you can also use basic authentication with the login (email address) and password of your TINA account.<br /> This is useful only in special circumstances, for example if you do not know your access key/secret key and want to retrieve them programmatically.<br /> In most cases, however, you can use the Cockpit web interface to retrieve them.<br />  > For example, if you use OSC CLI: > 1. You need to create an **~/.osc/config.json** file to specify the Region of your account, but you leave the access key value and secret key value empty (`&quot;&quot;`). > 2. You then specify the `--profile`, `--authentication-method`, `--login`, and `--password` options when executing OSC CLI commands.  See the code samples in each section of this documentation for specific examples in different programming languages.  > If you try to sign requests with an invalid password four times in a row, further authentication attempts will be prevented for 1 minute. This lockout time increases 1 minute every four failed attempts, for up to 10 minutes.  ### No Authentication A few API actions do not require any authentication. They are indicated as such in this documentation.<br /> ### Other Security Mechanisms In parallel with the authentication schemes, you can add other security mechanisms to your OUTSCALE account, for example to restrict API requests by IP or other criteria.<br /> For more information, see [Managing Your API Accesses](https://docs.outscale.com/en/userguide/Managing-Your-API-Accesses.html).<br /> # Error Codes Reference You can learn more about errors returned by the API in the dedicated [errors page](api-errors.html).
  *
- * The version of the OpenAPI document: 1.28.7
+ * The version of the OpenAPI document: 1.29.3
  * Contact: support@outscale.com
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
@@ -27,10 +27,18 @@ import io.github.outscale.osc_sdk_java.client.model.DeletePolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeletePolicyResponse;
 import io.github.outscale.osc_sdk_java.client.model.DeletePolicyVersionRequest;
 import io.github.outscale.osc_sdk_java.client.model.DeletePolicyVersionResponse;
+import io.github.outscale.osc_sdk_java.client.model.DeleteUserGroupPolicyRequest;
+import io.github.outscale.osc_sdk_java.client.model.DeleteUserGroupPolicyResponse;
+import io.github.outscale.osc_sdk_java.client.model.LinkManagedPolicyToUserGroupRequest;
+import io.github.outscale.osc_sdk_java.client.model.LinkManagedPolicyToUserGroupResponse;
 import io.github.outscale.osc_sdk_java.client.model.LinkPolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.LinkPolicyResponse;
+import io.github.outscale.osc_sdk_java.client.model.PutUserGroupPolicyRequest;
+import io.github.outscale.osc_sdk_java.client.model.PutUserGroupPolicyResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadLinkedPoliciesRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadLinkedPoliciesResponse;
+import io.github.outscale.osc_sdk_java.client.model.ReadManagedPoliciesLinkedToUserGroupRequest;
+import io.github.outscale.osc_sdk_java.client.model.ReadManagedPoliciesLinkedToUserGroupResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadPoliciesRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadPoliciesResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadPolicyRequest;
@@ -39,8 +47,14 @@ import io.github.outscale.osc_sdk_java.client.model.ReadPolicyVersionRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadPolicyVersionResponse;
 import io.github.outscale.osc_sdk_java.client.model.ReadPolicyVersionsRequest;
 import io.github.outscale.osc_sdk_java.client.model.ReadPolicyVersionsResponse;
+import io.github.outscale.osc_sdk_java.client.model.ReadUserGroupPoliciesRequest;
+import io.github.outscale.osc_sdk_java.client.model.ReadUserGroupPoliciesResponse;
+import io.github.outscale.osc_sdk_java.client.model.ReadUserGroupPolicyRequest;
+import io.github.outscale.osc_sdk_java.client.model.ReadUserGroupPolicyResponse;
 import io.github.outscale.osc_sdk_java.client.model.SetDefaultPolicyVersionRequest;
 import io.github.outscale.osc_sdk_java.client.model.SetDefaultPolicyVersionResponse;
+import io.github.outscale.osc_sdk_java.client.model.UnlinkManagedPolicyFromUserGroupRequest;
+import io.github.outscale.osc_sdk_java.client.model.UnlinkManagedPolicyFromUserGroupResponse;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkPolicyRequest;
 import io.github.outscale.osc_sdk_java.client.model.UnlinkPolicyResponse;
 import java.lang.reflect.Type;
@@ -631,6 +645,289 @@ public class PolicyApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteUserGroupPolicy
+     *
+     * @param deleteUserGroupPolicyRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call deleteUserGroupPolicyCall(
+            DeleteUserGroupPolicyRequest deleteUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = deleteUserGroupPolicyRequest;
+
+        // create path and map variables
+        String localVarPath = "/DeleteUserGroupPolicy";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteUserGroupPolicyValidateBeforeCall(
+            DeleteUserGroupPolicyRequest deleteUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        return deleteUserGroupPolicyCall(deleteUserGroupPolicyRequest, _callback);
+    }
+
+    /**
+     * @param deleteUserGroupPolicyRequest (optional)
+     * @return DeleteUserGroupPolicyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public DeleteUserGroupPolicyResponse deleteUserGroupPolicy(
+            DeleteUserGroupPolicyRequest deleteUserGroupPolicyRequest) throws ApiException {
+        ApiResponse<DeleteUserGroupPolicyResponse> localVarResp =
+                deleteUserGroupPolicyWithHttpInfo(deleteUserGroupPolicyRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param deleteUserGroupPolicyRequest (optional)
+     * @return ApiResponse&lt;DeleteUserGroupPolicyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<DeleteUserGroupPolicyResponse> deleteUserGroupPolicyWithHttpInfo(
+            DeleteUserGroupPolicyRequest deleteUserGroupPolicyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                deleteUserGroupPolicyValidateBeforeCall(deleteUserGroupPolicyRequest, null);
+        Type localVarReturnType = new TypeToken<DeleteUserGroupPolicyResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param deleteUserGroupPolicyRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call deleteUserGroupPolicyAsync(
+            DeleteUserGroupPolicyRequest deleteUserGroupPolicyRequest,
+            final ApiCallback<DeleteUserGroupPolicyResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                deleteUserGroupPolicyValidateBeforeCall(deleteUserGroupPolicyRequest, _callback);
+        Type localVarReturnType = new TypeToken<DeleteUserGroupPolicyResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for linkManagedPolicyToUserGroup
+     *
+     * @param linkManagedPolicyToUserGroupRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call linkManagedPolicyToUserGroupCall(
+            LinkManagedPolicyToUserGroupRequest linkManagedPolicyToUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linkManagedPolicyToUserGroupRequest;
+
+        // create path and map variables
+        String localVarPath = "/LinkManagedPolicyToUserGroup";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call linkManagedPolicyToUserGroupValidateBeforeCall(
+            LinkManagedPolicyToUserGroupRequest linkManagedPolicyToUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        return linkManagedPolicyToUserGroupCall(linkManagedPolicyToUserGroupRequest, _callback);
+    }
+
+    /**
+     * @param linkManagedPolicyToUserGroupRequest (optional)
+     * @return LinkManagedPolicyToUserGroupResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public LinkManagedPolicyToUserGroupResponse linkManagedPolicyToUserGroup(
+            LinkManagedPolicyToUserGroupRequest linkManagedPolicyToUserGroupRequest)
+            throws ApiException {
+        ApiResponse<LinkManagedPolicyToUserGroupResponse> localVarResp =
+                linkManagedPolicyToUserGroupWithHttpInfo(linkManagedPolicyToUserGroupRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param linkManagedPolicyToUserGroupRequest (optional)
+     * @return ApiResponse&lt;LinkManagedPolicyToUserGroupResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<LinkManagedPolicyToUserGroupResponse>
+            linkManagedPolicyToUserGroupWithHttpInfo(
+                    LinkManagedPolicyToUserGroupRequest linkManagedPolicyToUserGroupRequest)
+                    throws ApiException {
+        okhttp3.Call localVarCall =
+                linkManagedPolicyToUserGroupValidateBeforeCall(
+                        linkManagedPolicyToUserGroupRequest, null);
+        Type localVarReturnType =
+                new TypeToken<LinkManagedPolicyToUserGroupResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param linkManagedPolicyToUserGroupRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call linkManagedPolicyToUserGroupAsync(
+            LinkManagedPolicyToUserGroupRequest linkManagedPolicyToUserGroupRequest,
+            final ApiCallback<LinkManagedPolicyToUserGroupResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                linkManagedPolicyToUserGroupValidateBeforeCall(
+                        linkManagedPolicyToUserGroupRequest, _callback);
+        Type localVarReturnType =
+                new TypeToken<LinkManagedPolicyToUserGroupResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for linkPolicy
      *
      * @param linkPolicyRequest (optional)
@@ -757,6 +1054,143 @@ public class PolicyApi {
 
         okhttp3.Call localVarCall = linkPolicyValidateBeforeCall(linkPolicyRequest, _callback);
         Type localVarReturnType = new TypeToken<LinkPolicyResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putUserGroupPolicy
+     *
+     * @param putUserGroupPolicyRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call putUserGroupPolicyCall(
+            PutUserGroupPolicyRequest putUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = putUserGroupPolicyRequest;
+
+        // create path and map variables
+        String localVarPath = "/PutUserGroupPolicy";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putUserGroupPolicyValidateBeforeCall(
+            PutUserGroupPolicyRequest putUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        return putUserGroupPolicyCall(putUserGroupPolicyRequest, _callback);
+    }
+
+    /**
+     * @param putUserGroupPolicyRequest (optional)
+     * @return PutUserGroupPolicyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public PutUserGroupPolicyResponse putUserGroupPolicy(
+            PutUserGroupPolicyRequest putUserGroupPolicyRequest) throws ApiException {
+        ApiResponse<PutUserGroupPolicyResponse> localVarResp =
+                putUserGroupPolicyWithHttpInfo(putUserGroupPolicyRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param putUserGroupPolicyRequest (optional)
+     * @return ApiResponse&lt;PutUserGroupPolicyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<PutUserGroupPolicyResponse> putUserGroupPolicyWithHttpInfo(
+            PutUserGroupPolicyRequest putUserGroupPolicyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                putUserGroupPolicyValidateBeforeCall(putUserGroupPolicyRequest, null);
+        Type localVarReturnType = new TypeToken<PutUserGroupPolicyResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param putUserGroupPolicyRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call putUserGroupPolicyAsync(
+            PutUserGroupPolicyRequest putUserGroupPolicyRequest,
+            final ApiCallback<PutUserGroupPolicyResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                putUserGroupPolicyValidateBeforeCall(putUserGroupPolicyRequest, _callback);
+        Type localVarReturnType = new TypeToken<PutUserGroupPolicyResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -894,6 +1328,155 @@ public class PolicyApi {
         okhttp3.Call localVarCall =
                 readLinkedPoliciesValidateBeforeCall(readLinkedPoliciesRequest, _callback);
         Type localVarReturnType = new TypeToken<ReadLinkedPoliciesResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for readManagedPoliciesLinkedToUserGroup
+     *
+     * @param readManagedPoliciesLinkedToUserGroupRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readManagedPoliciesLinkedToUserGroupCall(
+            ReadManagedPoliciesLinkedToUserGroupRequest readManagedPoliciesLinkedToUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = readManagedPoliciesLinkedToUserGroupRequest;
+
+        // create path and map variables
+        String localVarPath = "/ReadManagedPoliciesLinkedToUserGroup";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call readManagedPoliciesLinkedToUserGroupValidateBeforeCall(
+            ReadManagedPoliciesLinkedToUserGroupRequest readManagedPoliciesLinkedToUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        return readManagedPoliciesLinkedToUserGroupCall(
+                readManagedPoliciesLinkedToUserGroupRequest, _callback);
+    }
+
+    /**
+     * @param readManagedPoliciesLinkedToUserGroupRequest (optional)
+     * @return ReadManagedPoliciesLinkedToUserGroupResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ReadManagedPoliciesLinkedToUserGroupResponse readManagedPoliciesLinkedToUserGroup(
+            ReadManagedPoliciesLinkedToUserGroupRequest readManagedPoliciesLinkedToUserGroupRequest)
+            throws ApiException {
+        ApiResponse<ReadManagedPoliciesLinkedToUserGroupResponse> localVarResp =
+                readManagedPoliciesLinkedToUserGroupWithHttpInfo(
+                        readManagedPoliciesLinkedToUserGroupRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param readManagedPoliciesLinkedToUserGroupRequest (optional)
+     * @return ApiResponse&lt;ReadManagedPoliciesLinkedToUserGroupResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<ReadManagedPoliciesLinkedToUserGroupResponse>
+            readManagedPoliciesLinkedToUserGroupWithHttpInfo(
+                    ReadManagedPoliciesLinkedToUserGroupRequest
+                            readManagedPoliciesLinkedToUserGroupRequest)
+                    throws ApiException {
+        okhttp3.Call localVarCall =
+                readManagedPoliciesLinkedToUserGroupValidateBeforeCall(
+                        readManagedPoliciesLinkedToUserGroupRequest, null);
+        Type localVarReturnType =
+                new TypeToken<ReadManagedPoliciesLinkedToUserGroupResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param readManagedPoliciesLinkedToUserGroupRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readManagedPoliciesLinkedToUserGroupAsync(
+            ReadManagedPoliciesLinkedToUserGroupRequest readManagedPoliciesLinkedToUserGroupRequest,
+            final ApiCallback<ReadManagedPoliciesLinkedToUserGroupResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                readManagedPoliciesLinkedToUserGroupValidateBeforeCall(
+                        readManagedPoliciesLinkedToUserGroupRequest, _callback);
+        Type localVarReturnType =
+                new TypeToken<ReadManagedPoliciesLinkedToUserGroupResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1437,6 +2020,280 @@ public class PolicyApi {
         return localVarCall;
     }
     /**
+     * Build call for readUserGroupPolicies
+     *
+     * @param readUserGroupPoliciesRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readUserGroupPoliciesCall(
+            ReadUserGroupPoliciesRequest readUserGroupPoliciesRequest, final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = readUserGroupPoliciesRequest;
+
+        // create path and map variables
+        String localVarPath = "/ReadUserGroupPolicies";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call readUserGroupPoliciesValidateBeforeCall(
+            ReadUserGroupPoliciesRequest readUserGroupPoliciesRequest, final ApiCallback _callback)
+            throws ApiException {
+        return readUserGroupPoliciesCall(readUserGroupPoliciesRequest, _callback);
+    }
+
+    /**
+     * @param readUserGroupPoliciesRequest (optional)
+     * @return ReadUserGroupPoliciesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ReadUserGroupPoliciesResponse readUserGroupPolicies(
+            ReadUserGroupPoliciesRequest readUserGroupPoliciesRequest) throws ApiException {
+        ApiResponse<ReadUserGroupPoliciesResponse> localVarResp =
+                readUserGroupPoliciesWithHttpInfo(readUserGroupPoliciesRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param readUserGroupPoliciesRequest (optional)
+     * @return ApiResponse&lt;ReadUserGroupPoliciesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<ReadUserGroupPoliciesResponse> readUserGroupPoliciesWithHttpInfo(
+            ReadUserGroupPoliciesRequest readUserGroupPoliciesRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readUserGroupPoliciesValidateBeforeCall(readUserGroupPoliciesRequest, null);
+        Type localVarReturnType = new TypeToken<ReadUserGroupPoliciesResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param readUserGroupPoliciesRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readUserGroupPoliciesAsync(
+            ReadUserGroupPoliciesRequest readUserGroupPoliciesRequest,
+            final ApiCallback<ReadUserGroupPoliciesResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                readUserGroupPoliciesValidateBeforeCall(readUserGroupPoliciesRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadUserGroupPoliciesResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for readUserGroupPolicy
+     *
+     * @param readUserGroupPolicyRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readUserGroupPolicyCall(
+            ReadUserGroupPolicyRequest readUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = readUserGroupPolicyRequest;
+
+        // create path and map variables
+        String localVarPath = "/ReadUserGroupPolicy";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call readUserGroupPolicyValidateBeforeCall(
+            ReadUserGroupPolicyRequest readUserGroupPolicyRequest, final ApiCallback _callback)
+            throws ApiException {
+        return readUserGroupPolicyCall(readUserGroupPolicyRequest, _callback);
+    }
+
+    /**
+     * @param readUserGroupPolicyRequest (optional)
+     * @return ReadUserGroupPolicyResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ReadUserGroupPolicyResponse readUserGroupPolicy(
+            ReadUserGroupPolicyRequest readUserGroupPolicyRequest) throws ApiException {
+        ApiResponse<ReadUserGroupPolicyResponse> localVarResp =
+                readUserGroupPolicyWithHttpInfo(readUserGroupPolicyRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param readUserGroupPolicyRequest (optional)
+     * @return ApiResponse&lt;ReadUserGroupPolicyResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<ReadUserGroupPolicyResponse> readUserGroupPolicyWithHttpInfo(
+            ReadUserGroupPolicyRequest readUserGroupPolicyRequest) throws ApiException {
+        okhttp3.Call localVarCall =
+                readUserGroupPolicyValidateBeforeCall(readUserGroupPolicyRequest, null);
+        Type localVarReturnType = new TypeToken<ReadUserGroupPolicyResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param readUserGroupPolicyRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call readUserGroupPolicyAsync(
+            ReadUserGroupPolicyRequest readUserGroupPolicyRequest,
+            final ApiCallback<ReadUserGroupPolicyResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                readUserGroupPolicyValidateBeforeCall(readUserGroupPolicyRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReadUserGroupPolicyResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for setDefaultPolicyVersion
      *
      * @param setDefaultPolicyVersionRequest (optional)
@@ -1573,6 +2430,154 @@ public class PolicyApi {
                 setDefaultPolicyVersionValidateBeforeCall(
                         setDefaultPolicyVersionRequest, _callback);
         Type localVarReturnType = new TypeToken<SetDefaultPolicyVersionResponse>() {}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for unlinkManagedPolicyFromUserGroup
+     *
+     * @param unlinkManagedPolicyFromUserGroupRequest (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call unlinkManagedPolicyFromUserGroupCall(
+            UnlinkManagedPolicyFromUserGroupRequest unlinkManagedPolicyFromUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {};
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null) {
+            basePath = localCustomBaseUrl;
+        } else if (localBasePaths.length > 0) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = unlinkManagedPolicyFromUserGroupRequest;
+
+        // create path and map variables
+        String localVarPath = "/UnlinkManagedPolicyFromUserGroup";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType =
+                localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {"AWS4Auth", "ApiKeyAuth"};
+        return localVarApiClient.buildCall(
+                basePath,
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarCookieParams,
+                localVarFormParams,
+                localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call unlinkManagedPolicyFromUserGroupValidateBeforeCall(
+            UnlinkManagedPolicyFromUserGroupRequest unlinkManagedPolicyFromUserGroupRequest,
+            final ApiCallback _callback)
+            throws ApiException {
+        return unlinkManagedPolicyFromUserGroupCall(
+                unlinkManagedPolicyFromUserGroupRequest, _callback);
+    }
+
+    /**
+     * @param unlinkManagedPolicyFromUserGroupRequest (optional)
+     * @return UnlinkManagedPolicyFromUserGroupResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public UnlinkManagedPolicyFromUserGroupResponse unlinkManagedPolicyFromUserGroup(
+            UnlinkManagedPolicyFromUserGroupRequest unlinkManagedPolicyFromUserGroupRequest)
+            throws ApiException {
+        ApiResponse<UnlinkManagedPolicyFromUserGroupResponse> localVarResp =
+                unlinkManagedPolicyFromUserGroupWithHttpInfo(
+                        unlinkManagedPolicyFromUserGroupRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * @param unlinkManagedPolicyFromUserGroupRequest (optional)
+     * @return ApiResponse&lt;UnlinkManagedPolicyFromUserGroupResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the
+     *     response body
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public ApiResponse<UnlinkManagedPolicyFromUserGroupResponse>
+            unlinkManagedPolicyFromUserGroupWithHttpInfo(
+                    UnlinkManagedPolicyFromUserGroupRequest unlinkManagedPolicyFromUserGroupRequest)
+                    throws ApiException {
+        okhttp3.Call localVarCall =
+                unlinkManagedPolicyFromUserGroupValidateBeforeCall(
+                        unlinkManagedPolicyFromUserGroupRequest, null);
+        Type localVarReturnType =
+                new TypeToken<UnlinkManagedPolicyFromUserGroupResponse>() {}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * (asynchronously)
+     *
+     * @param unlinkManagedPolicyFromUserGroupRequest (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body
+     *     object
+     * @http.response.details
+     *     <table summary="Response Details" border="1">
+     * <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+     * <tr><td> 200 </td><td> The HTTP 200 response (OK). </td><td>  -  </td></tr>
+     * </table>
+     */
+    public okhttp3.Call unlinkManagedPolicyFromUserGroupAsync(
+            UnlinkManagedPolicyFromUserGroupRequest unlinkManagedPolicyFromUserGroupRequest,
+            final ApiCallback<UnlinkManagedPolicyFromUserGroupResponse> _callback)
+            throws ApiException {
+
+        okhttp3.Call localVarCall =
+                unlinkManagedPolicyFromUserGroupValidateBeforeCall(
+                        unlinkManagedPolicyFromUserGroupRequest, _callback);
+        Type localVarReturnType =
+                new TypeToken<UnlinkManagedPolicyFromUserGroupResponse>() {}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

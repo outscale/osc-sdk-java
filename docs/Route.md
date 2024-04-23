@@ -16,7 +16,7 @@ Information about the route.
 |**netAccessPointId** | **String** | The ID of the Net access point. |  [optional] |
 |**netPeeringId** | **String** | The ID of the Net peering. |  [optional] |
 |**nicId** | **String** | The ID of the NIC. |  [optional] |
-|**state** | **String** | The state of a route in the route table (always &#x60;active&#x60;).  |  [optional] |
+|**state** | **String** | The state of a route in the route table (always &#x60;active&#x60;). |  [optional] |
 |**vmAccountId** | **String** | The account ID of the owner of the VM. |  [optional] |
 |**vmId** | **String** | The ID of a VM specified in a route in the table. |  [optional] |
 

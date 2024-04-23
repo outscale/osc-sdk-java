@@ -16,7 +16,7 @@ One or more filters.
 |**permissionsToCreateVolumeGlobalPermission** | **Boolean** | If true, lists all public volumes. If false, lists all private volumes. |  [optional] |
 |**progresses** | **List&lt;Integer&gt;** | The progresses of the snapshots, as a percentage. |  [optional] |
 |**snapshotIds** | **List&lt;String&gt;** | The IDs of the snapshots. |  [optional] |
-|**states** | **List&lt;String&gt;** | The states of the snapshots (&#x60;in-queue&#x60; \\| &#x60;completed&#x60; \\| &#x60;error&#x60;). |  [optional] |
+|**states** | **List&lt;String&gt;** | The states of the snapshots (&#x60;in-queue&#x60; \\| &#x60;pending&#x60; \\| &#x60;completed&#x60; \\| &#x60;error&#x60; \\| &#x60;deleting&#x60;). |  [optional] |
 |**tagKeys** | **List&lt;String&gt;** | The keys of the tags associated with the snapshots. |  [optional] |
 |**tagValues** | **List&lt;String&gt;** | The values of the tags associated with the snapshots. |  [optional] |
 |**tags** | **List&lt;String&gt;** | The key/value combination of the tags associated with the snapshots, in the following format: &amp;quot;Filters&amp;quot;:{&amp;quot;Tags&amp;quot;:[&amp;quot;TAGKEY&#x3D;TAGVALUE&amp;quot;]}. |  [optional] |

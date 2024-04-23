@@ -2,7 +2,6 @@
 
 # ReadCatalogsRequest
 
-ReadCatalogsRequest
 
 ## Properties
 

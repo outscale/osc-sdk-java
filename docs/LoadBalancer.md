@@ -10,8 +10,8 @@ Information about the load balancer.
 |------------ | ------------- | ------------- | -------------|
 |**accessLog** | [**AccessLog**](AccessLog.md) |  |  [optional] |
 |**applicationStickyCookiePolicies** | [**List&lt;ApplicationStickyCookiePolicy&gt;**](ApplicationStickyCookiePolicy.md) | The stickiness policies defined for the load balancer. |  [optional] |
-|**backendIps** | **List&lt;String&gt;** | One or more public IPs of back-end VMs. |  [optional] |
-|**backendVmIds** | **List&lt;String&gt;** | One or more IDs of back-end VMs for the load balancer. |  [optional] |
+|**backendIps** | **List&lt;String&gt;** | One or more public IPs of backend VMs. |  [optional] |
+|**backendVmIds** | **List&lt;String&gt;** | One or more IDs of backend VMs for the load balancer. |  [optional] |
 |**dnsName** | **String** | The DNS name of the load balancer. |  [optional] |
 |**healthCheck** | [**HealthCheck**](HealthCheck.md) |  |  [optional] |
 |**listeners** | [**List&lt;Listener&gt;**](Listener.md) | The listeners for the load balancer. |  [optional] |

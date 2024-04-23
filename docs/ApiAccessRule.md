@@ -8,7 +8,7 @@ Information about the API access rule.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**apiAccessRuleId** | **String** |  The ID of the API access rule. |  [optional] |
+|**apiAccessRuleId** | **String** | The ID of the API access rule. |  [optional] |
 |**caIds** | **List&lt;String&gt;** | One or more IDs of Client Certificate Authorities (CAs) used for the API access rule. |  [optional] |
 |**cns** | **List&lt;String&gt;** | One or more Client Certificate Common Names (CNs). |  [optional] |
 |**description** | **String** | The description of the API access rule. |  [optional] |

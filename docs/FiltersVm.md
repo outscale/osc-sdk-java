@@ -27,7 +27,7 @@ One or more filters.
 |**nicIsSourceDestChecked** | **Boolean** | Whether the source/destination checking is enabled (true) or disabled (false). |  [optional] |
 |**nicLinkNicDeleteOnVmDeletion** | **Boolean** | Whether the NICs are deleted when the VMs they are attached to are deleted. |  [optional] |
 |**nicLinkNicDeviceNumbers** | **List&lt;Integer&gt;** | The device numbers the NICs are attached to. |  [optional] |
-|**nicLinkNicLinkNicDates** | **List&lt;LocalDate&gt;** | The dates and time when the NICs were attached to the VMs. |  [optional] |
+|**nicLinkNicLinkNicDates** | **List&lt;LocalDate&gt;** | The dates and times (UTC) when the NICs were attached to the VMs. |  [optional] |
 |**nicLinkNicLinkNicIds** | **List&lt;String&gt;** | The IDs of the NIC attachments. |  [optional] |
 |**nicLinkNicStates** | **List&lt;String&gt;** | The states of the attachments. |  [optional] |
 |**nicLinkNicVmAccountIds** | **List&lt;String&gt;** | The account IDs of the owners of the VMs the NICs are attached to. |  [optional] |

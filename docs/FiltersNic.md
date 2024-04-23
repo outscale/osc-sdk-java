@@ -18,6 +18,7 @@ One or more filters.
 |**linkNicVmIds** | **List&lt;String&gt;** | The IDs of the VMs the NICs are attached to. |  [optional] |
 |**linkPublicIpAccountIds** | **List&lt;String&gt;** | The account IDs of the owners of the public IPs associated with the NICs. |  [optional] |
 |**linkPublicIpLinkPublicIpIds** | **List&lt;String&gt;** | The association IDs returned when the public IPs were associated with the NICs. |  [optional] |
+|**linkPublicIpPublicDnsNames** | **List&lt;String&gt;** | The public DNS names associated with the public IPs. |  [optional] |
 |**linkPublicIpPublicIpIds** | **List&lt;String&gt;** | The allocation IDs returned when the public IPs were allocated to their accounts. |  [optional] |
 |**linkPublicIpPublicIps** | **List&lt;String&gt;** | The public IPs associated with the NICs. |  [optional] |
 |**macAddresses** | **List&lt;String&gt;** | The Media Access Control (MAC) addresses of the NICs. |  [optional] |

@@ -2,7 +2,7 @@
 
 # Phase2Options
 
-Information about Phase 2 of the Internet Key Exchange (IKE) negotiation. 
+Information about Phase 2 of the Internet Key Exchange (IKE) negotiation.
 
 ## Properties
 

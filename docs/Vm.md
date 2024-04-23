@@ -12,7 +12,7 @@ Information about the VM.
 |**blockDeviceMappings** | [**List&lt;BlockDeviceMappingCreated&gt;**](BlockDeviceMappingCreated.md) | The block device mapping of the VM. |  [optional] |
 |**bsuOptimized** | **Boolean** | This parameter is not available. It is present in our API for the sake of historical compatibility with AWS. |  [optional] |
 |**clientToken** | **String** | The idempotency token provided when launching the VM. |  [optional] |
-|**creationDate** | **OffsetDateTime** | The date and time of creation of the VM. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time (UTC) of creation of the VM. |  [optional] |
 |**deletionProtection** | **Boolean** | If true, you cannot delete the VM unless you change this parameter back to false. |  [optional] |
 |**hypervisor** | **String** | The hypervisor type of the VMs (&#x60;ovm&#x60; \\| &#x60;xen&#x60;). |  [optional] |
 |**imageId** | **String** | The ID of the OMI used to create the VM. |  [optional] |

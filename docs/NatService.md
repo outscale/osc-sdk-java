@@ -8,6 +8,7 @@ Information about the NAT service.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**clientToken** | **String** | The idempotency token provided when creating the NAT service. |  [optional] |
 |**natServiceId** | **String** | The ID of the NAT service. |  [optional] |
 |**netId** | **String** | The ID of the Net in which the NAT service is. |  [optional] |
 |**publicIps** | [**List&lt;PublicIpLight&gt;**](PublicIpLight.md) | Information about the public IP or IPs associated with the NAT service. |  [optional] |

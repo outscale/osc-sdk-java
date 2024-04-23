@@ -9,9 +9,9 @@ Information about the catalogs.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**entries** | [**List&lt;CatalogEntry&gt;**](CatalogEntry.md) | One or more catalog entries. |  [optional] |
-|**fromDate** | **OffsetDateTime** | The beginning of the time period, in ISO 8601 date-time format. |  [optional] |
+|**fromDate** | **OffsetDateTime** | The beginning of the time period (UTC). |  [optional] |
 |**state** | [**StateEnum**](#StateEnum) | The state of the catalog (&#x60;CURRENT&#x60; \\| &#x60;OBSOLETE&#x60;). |  [optional] |
-|**toDate** | **OffsetDateTime** | The end of the time period, in ISO 8601 date-time format. |  [optional] |
+|**toDate** | **OffsetDateTime** | The end of the time period (UTC). |  [optional] |
 
 
 
