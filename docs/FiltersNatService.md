@@ -8,6 +8,7 @@ One or more filters.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**clientTokens** | **List&lt;String&gt;** | The idempotency tokens provided when creating the NAT services. |  [optional] |
 |**natServiceIds** | **List&lt;String&gt;** | The IDs of the NAT services. |  [optional] |
 |**netIds** | **List&lt;String&gt;** | The IDs of the Nets in which the NAT services are. |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the NAT services (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;deleting&#x60; \\| &#x60;deleted&#x60;). |  [optional] |

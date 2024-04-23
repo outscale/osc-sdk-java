@@ -2,7 +2,6 @@
 
 # ReadCatalogsResponse
 
-ReadCatalogsResponse
 
 ## Properties
 
