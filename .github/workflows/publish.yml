@@ -15,10 +15,12 @@ jobs:
         java-version: '11'
         cache: 'maven'
         server-id: ossrh
-        server-username: ${{ secrets.SONATYPE_USERNAME }}
-        server-password: ${{ secrets.SONATYPE_PASSWORD }}
+        server-username: SONATYPE_USERNAME
+        server-password: SONATYPE_PASSWORD
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
     - name: Publish
       run: mvn deploy
       env:
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
