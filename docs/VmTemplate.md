@@ -2,6 +2,7 @@
 
 # VmTemplate
 
+Information about the VM template.
 
 ## Properties
 
@@ -10,7 +11,7 @@
 |**cpuCores** | **Integer** | The number of vCores. |  |
 |**cpuGeneration** | **String** | The processor generation. |  |
 |**cpuPerformance** | [**CpuPerformanceEnum**](#CpuPerformanceEnum) | The performance of the VMs. |  [optional] |
-|**creationDate** | **OffsetDateTime** | The date and time (UTC) of creation of the VM template. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time (UTC) at which the VM was created. |  [optional] |
 |**description** | **String** | The description of the VM template. |  [optional] |
 |**imageId** | **String** | The ID of the OMI. |  |
 |**keypairName** | **String** | The name of the keypair. |  [optional] |

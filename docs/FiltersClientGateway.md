@@ -10,7 +10,7 @@ One or more filters.
 |------------ | ------------- | ------------- | -------------|
 |**bgpAsns** | **List&lt;Integer&gt;** | The Border Gateway Protocol (BGP) Autonomous System Numbers (ASNs) of the connections. |  [optional] |
 |**clientGatewayIds** | **List&lt;String&gt;** | The IDs of the client gateways. |  [optional] |
-|**connectionTypes** | **List&lt;String&gt;** | The types of communication tunnels used by the client gateways (only &#x60;ipsec.1&#x60; is supported). |  [optional] |
+|**connectionTypes** | **List&lt;String&gt;** | The types of communication tunnels used by the client gateways (always &#x60;ipsec.1&#x60;). |  [optional] |
 |**publicIps** | **List&lt;String&gt;** | The public IPv4 addresses of the client gateways. |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the client gateways (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;deleting&#x60; \\| &#x60;deleted&#x60;). |  [optional] |
 |**tagKeys** | **List&lt;String&gt;** | The keys of the tags associated with the client gateways. |  [optional] |

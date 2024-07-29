@@ -12,11 +12,11 @@ Information about the VM.
 |**blockDeviceMappings** | [**List&lt;BlockDeviceMappingCreated&gt;**](BlockDeviceMappingCreated.md) | The block device mapping of the VM. |  [optional] |
 |**bsuOptimized** | **Boolean** | This parameter is not available. It is present in our API for the sake of historical compatibility with AWS. |  [optional] |
 |**clientToken** | **String** | The idempotency token provided when launching the VM. |  [optional] |
-|**creationDate** | **OffsetDateTime** | The date and time (UTC) of creation of the VM. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time (UTC) at which the VM was created. |  [optional] |
 |**deletionProtection** | **Boolean** | If true, you cannot delete the VM unless you change this parameter back to false. |  [optional] |
 |**hypervisor** | **String** | The hypervisor type of the VMs (&#x60;ovm&#x60; \\| &#x60;xen&#x60;). |  [optional] |
 |**imageId** | **String** | The ID of the OMI used to create the VM. |  [optional] |
-|**isSourceDestChecked** | **Boolean** | (Net only) If true, the source/destination check is enabled. If false, it is disabled. This value must be false for a NAT VM to perform network address translation (NAT) in a Net. |  [optional] |
+|**isSourceDestChecked** | **Boolean** | (Net only) If true, the source/destination check is enabled. If false, it is disabled. |  [optional] |
 |**keypairName** | **String** | The name of the keypair used when launching the VM. |  [optional] |
 |**launchNumber** | **Integer** | The number for the VM when launching a group of several VMs (for example, &#x60;0&#x60;, &#x60;1&#x60;, &#x60;2&#x60;, and so on). |  [optional] |
 |**nestedVirtualization** | **Boolean** | If true, nested virtualization is enabled. If false, it is disabled. |  [optional] |

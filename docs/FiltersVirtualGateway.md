@@ -8,7 +8,7 @@ One or more filters.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**connectionTypes** | **List&lt;String&gt;** | The types of the virtual gateways (only &#x60;ipsec.1&#x60; is supported). |  [optional] |
+|**connectionTypes** | **List&lt;String&gt;** | The types of the virtual gateways (always &#x60;ipsec.1&#x60;). |  [optional] |
 |**linkNetIds** | **List&lt;String&gt;** | The IDs of the Nets the virtual gateways are attached to. |  [optional] |
 |**linkStates** | **List&lt;String&gt;** | The current states of the attachments between the virtual gateways and the Nets (&#x60;attaching&#x60; \\| &#x60;attached&#x60; \\| &#x60;detaching&#x60; \\| &#x60;detached&#x60;). |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the virtual gateways (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;deleting&#x60; \\| &#x60;deleted&#x60;). |  [optional] |
