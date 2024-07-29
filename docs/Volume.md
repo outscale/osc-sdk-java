@@ -8,7 +8,7 @@ Information about the volume.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**creationDate** | **OffsetDateTime** | The date and time (UTC) of creation of the volume. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time (UTC) at which the volume was created. |  [optional] |
 |**iops** | **Integer** | The number of I/O operations per second (IOPS):&lt;br /&gt; - For &#x60;io1&#x60; volumes, the number of provisioned IOPS&lt;br /&gt; - For &#x60;gp2&#x60; volumes, the baseline performance of the volume |  [optional] |
 |**linkedVolumes** | [**List&lt;LinkedVolume&gt;**](LinkedVolume.md) | Information about your volume attachment. |  [optional] |
 |**size** | **Integer** | The size of the volume, in gibibytes (GiB). |  [optional] |

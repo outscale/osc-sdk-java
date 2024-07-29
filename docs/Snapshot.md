@@ -10,7 +10,7 @@ Information about the snapshot.
 |------------ | ------------- | ------------- | -------------|
 |**accountAlias** | **String** | The account alias of the owner of the snapshot. |  [optional] |
 |**accountId** | **String** | The account ID of the owner of the snapshot. |  [optional] |
-|**creationDate** | **OffsetDateTime** | The date and time (UTC) of creation of the snapshot. |  [optional] |
+|**creationDate** | **OffsetDateTime** | The date and time (UTC) at which the snapshot was created. |  [optional] |
 |**description** | **String** | The description of the snapshot. |  [optional] |
 |**permissionsToCreateVolume** | [**PermissionsOnResource**](PermissionsOnResource.md) |  |  [optional] |
 |**progress** | **Integer** | The progress of the snapshot, as a percentage. |  [optional] |

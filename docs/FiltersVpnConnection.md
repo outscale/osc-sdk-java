@@ -10,7 +10,7 @@ One or more filters.
 |------------ | ------------- | ------------- | -------------|
 |**bgpAsns** | **List&lt;Integer&gt;** | The Border Gateway Protocol (BGP) Autonomous System Numbers (ASNs) of the connections. |  [optional] |
 |**clientGatewayIds** | **List&lt;String&gt;** | The IDs of the client gateways. |  [optional] |
-|**connectionTypes** | **List&lt;String&gt;** | The types of the VPN connections (only &#x60;ipsec.1&#x60; is supported). |  [optional] |
+|**connectionTypes** | **List&lt;String&gt;** | The types of the VPN connections (always &#x60;ipsec.1&#x60;). |  [optional] |
 |**routeDestinationIpRanges** | **List&lt;String&gt;** | The destination IP ranges. |  [optional] |
 |**states** | **List&lt;String&gt;** | The states of the VPN connections (&#x60;pending&#x60; \\| &#x60;available&#x60; \\| &#x60;deleting&#x60; \\| &#x60;deleted&#x60;). |  [optional] |
 |**staticRoutesOnly** | **Boolean** | If false, the VPN connection uses dynamic routing with Border Gateway Protocol (BGP). If true, routing is controlled using static routes. For more information about how to create and delete static routes, see [CreateVpnConnectionRoute](#createvpnconnectionroute) and [DeleteVpnConnectionRoute](#deletevpnconnectionroute). |  [optional] |

@@ -2,6 +2,7 @@
 
 # FiltersVmTemplate
 
+One or more filters.
 
 ## Properties
 
