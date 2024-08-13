@@ -46,7 +46,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>io.github.outscale</groupId>
   <artifactId>osc-sdk-java</artifactId>
-  <version>0.8.0</version>
+  <version>0.9.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -62,7 +62,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "io.github.outscale:osc-sdk-java:0.8.0"
+     implementation "io.github.outscale:osc-sdk-java:0.9.0"
   }
 ```
 
@@ -76,7 +76,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/osc-sdk-java-0.8.0.jar`
+* `target/osc-sdk-java-0.9.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
