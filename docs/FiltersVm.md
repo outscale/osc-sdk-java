@@ -15,7 +15,7 @@ One or more filters.
 |**blockDeviceMappingStates** | **List&lt;String&gt;** | The states for the BSU volumes (&#x60;attaching&#x60; \\| &#x60;attached&#x60; \\| &#x60;detaching&#x60; \\| &#x60;detached&#x60;). |  [optional] |
 |**blockDeviceMappingVolumeIds** | **List&lt;String&gt;** | The volume IDs of the BSU volumes. |  [optional] |
 |**clientTokens** | **List&lt;String&gt;** | The idempotency tokens provided when launching the VMs. |  [optional] |
-|**creationDates** | **List&lt;LocalDate&gt;** | The dates when the VMs were launched. |  [optional] |
+|**creationDates** | **List&lt;String&gt;** | The dates when the VMs were launched. |  [optional] |
 |**imageIds** | **List&lt;String&gt;** | The IDs of the OMIs used to launch the VMs. |  [optional] |
 |**isSourceDestChecked** | **Boolean** | Whether the source/destination checking is enabled (true) or disabled (false). |  [optional] |
 |**keypairNames** | **List&lt;String&gt;** | The names of the keypairs used when launching the VMs. |  [optional] |

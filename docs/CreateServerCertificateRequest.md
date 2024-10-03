@@ -10,8 +10,8 @@
 |**body** | **String** | The PEM-encoded X509 certificate.&lt;br /&gt;With OSC CLI, use the following syntax to make sure your certificate file is correctly parsed: &#x60;--Body&#x3D;&amp;quot;$(cat FILENAME)&amp;quot;&#x60;. |  |
 |**chain** | **String** | The PEM-encoded intermediate certification authorities.&lt;br /&gt;With OSC CLI, use the following syntax to make sure your certificate chain file is correctly parsed: &#x60;--Chain&#x3D;&amp;quot;$(cat FILENAME)&amp;quot;&#x60;. |  [optional] |
 |**dryRun** | **Boolean** | If true, checks whether you have the required permissions to perform the action. |  [optional] |
-|**name** | **String** | A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (+), equals (&#x3D;), commas (,), periods (.), at signs (@), minuses (-), or underscores (_). |  |
-|**path** | **String** | The path to the server certificate, set to a slash (/) if not specified. |  [optional] |
+|**name** | **String** | A unique name for the certificate. Constraints: 1-128 alphanumeric characters, pluses (&#x60;+&#x60;), equals (&#x60;&#x3D;&#x60;), commas (&#x60;,&#x60;), periods (&#x60;.&#x60;), at signs (&#x60;@&#x60;), minuses (&#x60;-&#x60;), or underscores (&#x60;_&#x60;). |  |
+|**path** | **String** | The path to the server certificate, set to a slash (&#x60;/&#x60;) if not specified. |  [optional] |
 |**privateKey** | **String** | The PEM-encoded private key matching the certificate.&lt;br /&gt;With OSC CLI, use the following syntax to make sure your key file is correctly parsed: &#x60;--PrivateKey&#x3D;&amp;quot;$(cat FILENAME)&amp;quot;&#x60;. |  |
 
 

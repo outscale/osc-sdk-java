@@ -11,7 +11,7 @@
 |**cookieName** | **String** | The name of the application cookie used for stickiness. This parameter is required if you create a stickiness policy based on an application-generated cookie. |  [optional] |
 |**dryRun** | **Boolean** | If true, checks whether you have the required permissions to perform the action. |  [optional] |
 |**loadBalancerName** | **String** | The name of the load balancer for which you want to create a policy. |  |
-|**policyName** | **String** | The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (-). |  |
+|**policyName** | **String** | The unique name of the policy, with a maximum length of 32 alphanumeric characters and dashes (&#x60;-&#x60;). |  |
 |**policyType** | **String** | The type of stickiness policy you want to create: &#x60;app&#x60; or &#x60;load_balancer&#x60;. |  |
 
 

@@ -8,7 +8,7 @@ Information about the VM group.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**creationDate** | **OffsetDateTime** | The date and time (UTC) at which the VM group was created. |  [optional] |
+|**creationDate** | **String** | The date and time (UTC) at which the VM group was created. |  [optional] |
 |**description** | **String** | The description of the VM group. |  [optional] |
 |**positioningStrategy** | [**PositioningStrategyEnum**](#PositioningStrategyEnum) | The positioning strategy of the VMs on hypervisors. By default, or if set to &#x60;no-strategy&#x60;, TINA determines the most adequate position for the VMs. If set to &#x60;attract&#x60;, the VMs are deployed on the same hypervisor, which improves network performance. If set to &#x60;repulse&#x60;, the VMs are deployed on a different hypervisor, which improves fault tolerance. |  [optional] |
 |**securityGroupIds** | **List&lt;String&gt;** | One or more IDs of security groups for the VM group. |  [optional] |

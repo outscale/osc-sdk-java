@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**dryRun** | **Boolean** | If true, checks whether you have the required permissions to perform the action. |  [optional] |
 |**listeners** | [**List&lt;ListenerForCreation&gt;**](ListenerForCreation.md) | One or more listeners to create. |  |
-|**loadBalancerName** | **String** | The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (-). This name must not start or end with a dash. |  |
+|**loadBalancerName** | **String** | The unique name of the load balancer, with a maximum length of 32 alphanumeric characters and dashes (&#x60;-&#x60;). This name must not start or end with a dash. |  |
 |**loadBalancerType** | **String** | The type of load balancer: &#x60;internet-facing&#x60; or &#x60;internal&#x60;. Use this parameter only for load balancers in a Net. |  [optional] |
 |**publicIp** | **String** | (internet-facing only) The public IP you want to associate with the load balancer. If not specified, a public IP owned by 3DS OUTSCALE is associated. |  [optional] |
 |**securityGroups** | **List&lt;String&gt;** | (Net only) One or more IDs of security groups you want to assign to the load balancer. If not specified, the default security group of the Net is assigned to the load balancer. |  [optional] |

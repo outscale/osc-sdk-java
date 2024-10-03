@@ -5,7 +5,7 @@
     <artifactId>osc-sdk-java</artifactId>
     <packaging>jar</packaging>
     <name>osc-sdk-java</name>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
     <url>https://github.com/outscale/osc-sdk-java</url>
     <description>3DS Outscale SDK</description>
     <scm>

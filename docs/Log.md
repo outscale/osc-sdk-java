@@ -14,7 +14,7 @@ Information about the log.
 |**queryApiName** | **String** | The name of the API used by the logged call (always &#x60;oapi&#x60; for the OUTSCALE API). |  [optional] |
 |**queryApiVersion** | **String** | The version of the API used by the logged call. |  [optional] |
 |**queryCallName** | **String** | The name of the logged call. |  [optional] |
-|**queryDate** | **OffsetDateTime** | The date and time (UTC) of the logged call. |  [optional] |
+|**queryDate** | **LocalDate** | The date and time (UTC) of the logged call. |  [optional] |
 |**queryHeaderRaw** | **String** | The raw header of the HTTP request of the logged call. |  [optional] |
 |**queryHeaderSize** | **Integer** | The size of the raw header of the HTTP request of the logged call, in bytes. |  [optional] |
 |**queryIpAddress** | **String** | The IP used for the logged call. |  [optional] |
