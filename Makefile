@@ -2,7 +2,7 @@ API_VERSION=$(shell cat api_version)
 SDK_VERSION=$(shell cat sdk_version)
 USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
-OPENAPI_IMG=openapitools/openapi-generator-cli:v6.3.0
+OPENAPI_IMG=openapitools/openapi-generator-cli:v7.17.0
 #OPENAPI_IMG=outscale/openapi-generator:java-awsv4-signature
 SHELL := /bin/bash
 
@@ -11,60 +11,27 @@ all: help
 .PHONY: help
 help:
 	@echo "help:"
-	@echo "- make gen   : regenerate SDK"
 	@echo "- make test  : run all tests"
-
-.PHONY: gen
-gen: clean osc-generate
-
-.PNONY: openapi-generator-help
-openapi-generator-help:
-	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) config-help -g java
-
-.PHONY: osc-generate
-osc-generate: osc-api/outscale.yaml
-	@echo start generating SDK...
-	rm -rf .sdk || true
-	mkdir .sdk
-	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) generate -i /sdk/osc-api/outscale.yaml -g java -c /sdk/gen.yml -o /sdk/.sdk
-	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) sed -i "s%setUserAgent(\".*\");%setUserAgent(\"osc-sdk-java/$(SDK_VERSION)\");%" /sdk/.sdk/src/main/java/io/github/outscale/osc_sdk_java/client/ApiClient.java
-	docker run -v $(PWD):/sdk --rm $(OPENAPI_IMG) chown -R $(USER_ID).$(GROUP_ID) /sdk/.sdk
-	@echo SDK generated
-	mv .sdk/src ./
-	mv .sdk/docs ./
-	@echo start update SDK version
-	sed "s%SDK_VERSION%$(SDK_VERSION)%" pom.xml.template > pom.xml
-	sed "s%SDK_VERSION%$(SDK_VERSION)%" README.md.template > README.md
-	sed -i "s%API_VERSION%$(API_VERSION)%" README.md
-	$(shell for i in ./examples/*; do sed "s%SDK_VERSION%$(SDK_VERSION)%" $$i/pom.xml.template > $$i/pom.xml; done)
-	git apply ./.osc-patches/before-format/*
-	mvn spotless:apply
-	git apply ./.osc-patches/after-format/*
-
-osc-api/outscale.yaml:
-	@echo getting osc-api description...
-	git clone https://github.com/outscale/osc-api-deploy.git
-	git clone https://github.com/outscale/osc-api-deploy.git osc-api && cd osc-api && git checkout -b $(API_VERSION) $(API_VERSION)
-	./osc-api-deploy/hacks/patch-nooneof.rb osc-api/outscale.yaml > osc-api/outscale-tmp.yaml
-	mv osc-api/outscale-tmp.yaml osc-api/outscale.yaml
+	@echo "- make build : build"
 
 .PHONY: clean
 clean:
 	@echo cleaning build artifacts...
-	rm -rf .sdk osc-api src docs || true
+	mvn clean
 
 .PHONY: test
 test: reuse-test examples-test regen-test
 	@echo all tests OK...
 
+.PHONY: build
+build: 
+	@echo all tests OK...
+	mvn clean compile
+
 .PHONY: reuse-test
 reuse-test:
 	@echo testing licensing with reuse...
 	docker run --rm --volume $(PWD):/data fsfe/reuse:0.11.1 lint
-
-.PHONY: local-deploy
-local-deploy:
-	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dgpg.skip
 
 .PHONY: examples-test
 examples-test: example-volumes example-region example-vm example-config_file example-config_env example-password_auth
@@ -99,13 +66,6 @@ example-config_env: local-deploy
 example-password_auth: local-deploy
 	@echo testing examples/password_auth example...
 	make -C examples/password_auth build run
-# try to regen, should not have any difference
-.PHONY: regen-test
-regen-test: gen
-	@echo SDK regeneration test...
-	git add src
-	git diff --cached -s --exit-code
-	git diff -s --exit-code
 
 # Used by bot to auto-release
 # GH_TOKEN and SSH_PRIVATE_KEY are needed
@@ -136,3 +96,7 @@ release-push:
 .PHONY: release-pr
 release-pr:
 	bash .github/scripts/release-pr.sh
+
+.PHONY: local-deploy
+local-deploy:
+	mvn clean install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dgpg.skip

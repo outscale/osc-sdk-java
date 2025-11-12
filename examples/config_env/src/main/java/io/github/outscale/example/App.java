@@ -1,25 +1,18 @@
 package io.github.outscale.example;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-
-// Import classes:
-import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
-import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.ConfigurationEnv;
 import io.github.outscale.osc_sdk_java.client.ConfigurationException;
-import io.github.outscale.osc_sdk_java.client.ConfigurationFile;
-import io.github.outscale.osc_sdk_java.client.JSON;
+import io.github.outscale.osc_sdk_java.client.handler.VmApi;
+import io.github.outscale.osc_sdk_java.client.*;
 import io.github.outscale.osc_sdk_java.client.model.*;
-import io.github.outscale.osc_sdk_java.client.api.RegionApi;
-import io.github.outscale.osc_sdk_java.client.api.VmApi;
+import java.io.BufferedWriter;
+
+// Import classes:
 
 public class App {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws ConfigurationException {
 
     ConfigurationEnv confEnv = ConfigurationEnv.loadConfigEnv();
     if (confEnv == null) {

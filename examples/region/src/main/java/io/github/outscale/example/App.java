@@ -5,7 +5,7 @@ import io.github.outscale.osc_sdk_java.client.ApiClient;
 import io.github.outscale.osc_sdk_java.client.ApiException;
 import io.github.outscale.osc_sdk_java.client.Configuration;
 import io.github.outscale.osc_sdk_java.client.model.*;
-import io.github.outscale.osc_sdk_java.client.api.RegionApi;
+import io.github.outscale.osc_sdk_java.client.handler.RegionApi;
 
 public class App {
   public static void main(String[] args) {

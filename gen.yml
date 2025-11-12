@@ -1,7 +1,0 @@
-artifactId: osc-sdk-java
-invokerPackage: io.github.outscale.osc-sdk-java.client
-apiPackage: io.github.outscale.osc-sdk-java.client.api
-modelPackage: io.github.outscale.osc-sdk-java.client.model
-withAWSV4Signature: true
-hideGenerationTimestamp: true
-#library: native
