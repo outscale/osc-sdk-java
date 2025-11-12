@@ -2,9 +2,9 @@ package io.github.outscale.example;
 
 // Import classes:
 import io.github.outscale.osc_sdk_java.client.*;
-import io.github.outscale.osc_sdk_java.client.api.AccountApi;
-import io.github.outscale.osc_sdk_java.client.api.ApiAccessPolicyApi;
-import io.github.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.handler.AccountApi;
+import io.github.outscale.osc_sdk_java.client.handler.ApiAccessPolicyApi;
+import io.github.outscale.osc_sdk_java.client.handler.VmApi;
 import io.github.outscale.osc_sdk_java.client.model.*;
 
 public class App {

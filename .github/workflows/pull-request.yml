@@ -10,16 +10,16 @@ permissions:
     
 jobs:
   reuse-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Reuse specification test
         run: make reuse-test
   examples-test:
     environment: eu-west-2
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin' 
@@ -35,19 +35,8 @@ jobs:
           OSC_USERNAME: ${{ secrets.OSC_USERNAME }}
           OSC_PASSWORD: ${{ secrets.OSC_PASSWORD }}
         run: make examples-test
-  regeneration-test:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin' 
-          java-version: '11'
-          cache: 'maven'
-      - name: SDK re-generation test
-        run: make regen-test
   dependabot-auto-merge:
-    needs: [reuse-test, examples-test, regeneration-test]
+    needs: [reuse-test, examples-test]
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:

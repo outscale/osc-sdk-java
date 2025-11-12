@@ -29,12 +29,12 @@ echo "$release_notes$(cat $root/changelog.md)" > $root/changelog.md
 
 # generate SDK
 cd "$root"
-make gen
+sed -i "<outscale-api-version>s|.*|${new_api_version}</outscale-api-version>|" pom.xml
 
 # setup git && commit
 git config user.name "Outscale Bot"
 git config user.email "opensource+bot@outscale.com"
-for f in src dist; do
+for f in src dist pom.xml; do
     git add $f || true
 done
 git commit -asm "osc-sdk-java v$new_sdk_version"

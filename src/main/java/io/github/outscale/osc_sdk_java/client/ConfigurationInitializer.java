@@ -1,5 +1,9 @@
 package io.github.outscale.osc_sdk_java.client;
 
+import dev.failsafe.Failsafe;
+import dev.failsafe.Policy;
+import dev.failsafe.RateLimiter;
+import dev.failsafe.RetryPolicy;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -12,10 +16,13 @@ import java.security.PrivateKey;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.tls.HandshakeCertificates;
 import okhttp3.tls.HeldCertificate;
 import org.bouncycastle.openssl.PEMKeyPair;
@@ -206,6 +213,40 @@ public class ConfigurationInitializer {
             apiClient.setHttpClient(client);
         }
 
+        apiClient.setRetryPolicy(this.getRetryPolicy(profile));
+        apiClient.setRateLimiter(this.getLimiter(profile));
+
         return apiClient;
     }
+
+    protected RetryPolicy<Response> getRetryPolicy(Profile profile) {
+        int max_retires = profile.getMaxRetry() != null ? profile.getMaxRetry() : 3;
+        Duration backoff_factor = profile.getRetryBackoffFactor() != null ?
+            Duration.ofMillis(Math.round(profile.getRetryBackoffFactor() * 1000)) :
+            Duration.ofSeconds(2);
+        Duration backoff_max = profile.getRetryBackoffMax() != null ?
+            Duration.ofMillis(Math.round(profile.getRetryBackoffMax() * 1000)) :
+            Duration.ofSeconds(15);
+        Duration backoff_jitter = profile.getRetryBackoffJitter() != null ?
+            Duration.ofMillis(Math.round(profile.getRetryBackoffJitter() * 500)) :
+            Duration.ofSeconds(1);
+        if (backoff_jitter.compareTo(backoff_factor) > 0) {
+            backoff_jitter = backoff_factor;
+        }
+
+        return RetryPolicy.<Response>builder()
+            .withMaxRetries(max_retires)
+            .withBackoff(backoff_factor, backoff_max)
+            .withJitter(backoff_jitter)
+            .build();
+    }
+
+    protected RateLimiter<Response> getLimiter(Profile profile) {
+        int max_req = profile.getLimiterMaxRequests() != null ? profile.getLimiterMaxRequests() : 5;
+        Duration window = profile.getLimiterWindow() != null ?
+            Duration.ofMillis(Math.round(profile.getLimiterWindow() * 1000)) :
+            Duration.ofSeconds(1);
+
+        return RateLimiter.<Response>smoothBuilder(max_req, window).build();
+    } 
 }

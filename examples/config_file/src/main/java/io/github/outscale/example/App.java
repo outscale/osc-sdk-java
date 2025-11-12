@@ -13,8 +13,8 @@ import io.github.outscale.osc_sdk_java.client.ConfigurationException;
 import io.github.outscale.osc_sdk_java.client.ConfigurationFile;
 import io.github.outscale.osc_sdk_java.client.JSON;
 import io.github.outscale.osc_sdk_java.client.model.*;
-import io.github.outscale.osc_sdk_java.client.api.RegionApi;
-import io.github.outscale.osc_sdk_java.client.api.VmApi;
+import io.github.outscale.osc_sdk_java.client.handler.RegionApi;
+import io.github.outscale.osc_sdk_java.client.handler.VmApi;
 
 public class App {
 

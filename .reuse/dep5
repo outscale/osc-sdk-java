@@ -7,6 +7,6 @@ Files: *.md *.md.template
 Copyright: 2019 Outscale SAS <support@outscale.com>
 License: CC-BY-4.0
 
-Files: Makefile sdk_version api_version *.java .git* src/* dist/* *.yml *.yaml .osc-patches/*.patch  .osc-api-patches/*.patch examples/* pom.xml pom.xml.template
+Files: Makefile sdk_version api_version *.java .git* src/* dist/* *.yml *.yaml .osc-patches/*.patch  .osc-api-patches/*.patch examples/* pom.xml pom.xml.template templates/*
 Copyright: 2019 Outscale SAS <support@outscale.com>
 License: BSD-3-Clause

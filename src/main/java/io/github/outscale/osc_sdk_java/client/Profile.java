@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import com.google.gson.JsonElement;
 
 public class Profile {
     public static final String SERIALIZED_NAME_ACCESS_KEY = "access_key";
@@ -63,6 +64,30 @@ public class Profile {
     @SerializedName(SERIALIZED_NAME_ENDPOINTS)
     private Endpoint endpoints;
 
+    public static final String SERIALIZED_NAME_MAX_RETRIES = "max_retires";
+
+    @SerializedName(SERIALIZED_NAME_MAX_RETRIES)
+    private Integer max_retries;
+
+    public static final String SERIALIZED_NAME_RETRY_BACKOFF_FACTOR = "retry_backoff_factor";
+
+    @SerializedName(SERIALIZED_NAME_RETRY_BACKOFF_FACTOR)
+    private Float retry_backoff_factor;
+
+    public static final String SERIALIZED_NAME_RETRY_BACKOFF_JITTER = "retry_backoff_jitter";
+
+    @SerializedName(SERIALIZED_NAME_RETRY_BACKOFF_JITTER)
+    private Float retry_backoff_jitter;
+
+    public static final String SERIALIZED_NAME_RETRY_BACKOFF_MAX = "retry_backoff_max";
+
+    @SerializedName(SERIALIZED_NAME_RETRY_BACKOFF_MAX)
+    private Float retry_backoff_max;
+
+
+    private Integer limiter_max_requests;
+    private Integer limiter_window;
+
     public static HashSet<String> openapiFields;
     public static HashSet<String> openapiRequiredFields;
 
@@ -110,15 +135,33 @@ public class Profile {
         StringBuilder sb = new StringBuilder();
         sb.append("class Profile {\n");
         sb.append("    accessKey: ").append(accessKey).append("\n");
-        sb.append("    secretKey: ").append(secretKey).append("\n");
+
+        if (secretKey.isEmpty()) {
+            sb.append("    secretKey: ").append(secretKey).append("\n");
+        } else {
+            sb.append("    secretKey: ***\n");
+        }
+
         sb.append("    region: ").append(region).append("\n");
         sb.append("    x509ClientCert: ").append(x509ClientCert).append("\n");
         sb.append("    x509ClientCertB64: ").append(x509ClientCertB64).append("\n");
         sb.append("    x509ClientKey: ").append(x509ClientKey).append("\n");
-        sb.append("    x509ClientKeyB64: ").append(x509ClientKeyB64).append("\n");
+
+        if (x509ClientKeyB64.isEmpty()) {
+            sb.append("    x509ClientKeyB64: ").append(x509ClientKeyB64).append("\n");
+        } else {
+            sb.append("    x509ClientKeyB64: ***\n");
+        }
+
         sb.append("    method: ").append(method).append("\n");
         sb.append("    protocol: ").append(protocol).append("\n");
         sb.append("    endpoints: ").append(endpoints).append("\n");
+        sb.append("    max_retries: ").append(max_retries).append("\n");
+        sb.append("    retry_backoff_factor: ").append(retry_backoff_factor).append("\n");
+        sb.append("    retry_backoff_jitter: ").append(retry_backoff_jitter).append("\n");
+        sb.append("    retry_backoff_max: ").append(retry_backoff_max).append("\n");
+        sb.append("    limiter_max_requests: ").append(limiter_max_requests).append("\n");
+        sb.append("    limiter_window: ").append(limiter_window).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -163,6 +206,32 @@ public class Profile {
         return x509ClientKeyB64;
     }
 
+    public Integer getMaxRetry() {
+        return max_retries;
+    }
+
+    public Float getRetryBackoffFactor() {
+        return retry_backoff_factor;
+    }
+
+    public Float getRetryBackoffJitter() {
+        return retry_backoff_jitter;
+    }
+
+    public Float getRetryBackoffMax() {
+        return retry_backoff_max;
+    }
+
+    public Integer getLimiterMaxRequests() {
+
+        return limiter_max_requests;
+    }
+    
+    public Integer getLimiterWindow() {
+
+        return limiter_window;
+    }
+
     public void setAccessKey(String accessKey) {
         this.accessKey = accessKey;
     }
@@ -201,5 +270,29 @@ public class Profile {
 
     public void setX509ClientKeyB64(String x509ClientKeyB64) {
         this.x509ClientKeyB64 = x509ClientKeyB64;
+    }
+
+    public void setMaxRetries(Integer max_retries) {
+        this.max_retries = max_retries;
+    }
+
+    public void setRetryBackoffFactor(Float retry_backoff_factor) {
+        this.retry_backoff_factor = retry_backoff_factor;
+    }
+
+    public void setRetryBackoffJitter(Float retry_backoff_jitter) {
+        this.retry_backoff_jitter = retry_backoff_jitter;
+    }
+
+    public void setRetryBackoffMax(Float retry_backoff_max) {
+        this.retry_backoff_max = retry_backoff_max;
+    }
+
+    public void setLimiterMaxRequests(Integer limiter_max_requests) {
+        this.limiter_max_requests = limiter_max_requests;
+    }
+
+    public void setLimiterWindow(Integer limiter_window) {
+        this.limiter_window = limiter_window;
     }
 }

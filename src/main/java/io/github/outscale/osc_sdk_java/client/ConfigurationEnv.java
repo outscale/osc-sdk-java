@@ -5,7 +5,7 @@ public class ConfigurationEnv extends ConfigurationInitializer {
 
     public ConfigurationEnv() {}
 
-    public static ConfigurationEnv loadConfigEnv() {
+    public static ConfigurationEnv loadConfigEnv() throws ConfigurationException {
         ConfigurationEnv configurationEnv = new ConfigurationEnv();
 
         configurationEnv.profile = new Profile();
@@ -18,6 +18,37 @@ public class ConfigurationEnv extends ConfigurationInitializer {
         configurationEnv.profile.setX509ClientKeyB64(System.getenv("OSC_X509_CLIENT_KEY_B64"));
         configurationEnv.profile.setMethod(System.getenv("OSC_METHOD"));
         configurationEnv.profile.setProtocol(System.getenv("OSC_PROTOCOL"));
+        try {
+            if (System.getenv("OSC_MAX_RETRIES") != null) {
+                configurationEnv.profile.setMaxRetries(Integer.parseInt(System.getenv("OSC_MAX_RETRIES")));
+            }
+        } catch (NumberFormatException e){
+            throw new ConfigurationException("OSC_MAX_RETRIES is not a valid integer");
+        }
+
+        try {
+            if (System.getenv("OSC_RETRY_BACKOFF_FACTOR") != null) {
+                configurationEnv.profile.setRetryBackoffFactor(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_FACTOR")));
+            }
+        } catch (NumberFormatException e){
+            throw new ConfigurationException("OSC_RETRY_BACKOFF_FACTOR is not a valid float");
+        }
+
+        try {
+            if (System.getenv("OSC_RETRY_BACKOFF_JITTER") != null) {
+                configurationEnv.profile.setRetryBackoffJitter(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_JITTER")));
+            }
+        } catch (NumberFormatException e){
+            throw new ConfigurationException("OSC_RETRY_BACKOFF_Jitter is not a valid float");
+        }
+
+        try {
+            if (System.getenv("OSC_RETRY_BACKOFF_MAX") != null) {
+                configurationEnv.profile.setRetryBackoffMax(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_MAX")));
+            }
+        } catch (NumberFormatException e){
+            throw new ConfigurationException("OSC_RETRY_BACKOFF_MAX is not a valid float");
+        }
 
         Endpoint endpoints = new Endpoint();
         endpoints.setApi(System.getenv("OSC_ENDPOINT_API"));
