@@ -301,6 +301,93 @@
                 </execution>
             </executions>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.6.1</version>
+            <configuration>
+                <relocations>
+                    <relocation>
+                        <pattern>com.squareup.okhttp3</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.com.squareup.okhttp3</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>com.google.code.gson</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.com.google.code.gson</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>io.gsonfire</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.io.gsonfire</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>org.apache</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.org.apache</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>jakarta</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.jakarta</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>org.openapitools</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.org.openapitools</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>javax.ws.rs</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.javax.ws.rs</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>javax.annotation</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.javax.annotation</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>software.amazon.awssdk.auth</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.software.amazon.awssdk.auth</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>dev.failsafe</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.dev.failsae</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>org.junit</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.org.junit</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>org.mockito</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.org.mockito</shadedPattern>
+                    </relocation>
+                    <relocation>
+                        <pattern>org.bouncycastle</pattern>
+                        <shadedPattern>io.github.outscale.osc-sdk-java.thirdparty.org.bouncycastle</shadedPattern>
+                    </relocation>
+                </relocations>
+                <filters>
+                    <filter>
+                        <artifact>*:*</artifact>
+                        <excludes>
+                            <exclude>META-INF/*.SF</exclude>
+                            <exclude>META-INF/*.DSA</exclude>
+                            <exclude>META-INF/*.RSA</exclude>
+                            <exclude>META-INF/NOTICE.txt</exclude>
+                            <exclude>META-INF/NOTICE</exclude>
+                            <exclude>META-INF/LICENSE</exclude>
+                            <exclude>META-INF/LICENSE.txt</exclude>
+                            <exclude>META-INF/FastDoubleParser-LICENSE</exclude>
+                            <exclude>META-INF/FastDoubleParser-NOTICE</exclude>
+                            <exclude>module-info.class</exclude>
+                            <exclude>META-INF/versions/*/module-info.class</exclude>
+                        </excludes>
+                    </filter>
+                </filters>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
 </build>
 
@@ -383,11 +470,6 @@
     </dependency>
     <dependency>
         <groupId>javax.ws.rs</groupId>
-        <artifactId>jsr311-api</artifactId>
-        <version>${jsr311-api-version}</version>
-    </dependency>
-    <dependency>
-        <groupId>javax.ws.rs</groupId>
         <artifactId>javax.ws.rs-api</artifactId>
         <version>${javax.ws.rs-api-version}</version>
     </dependency>
@@ -448,7 +530,6 @@
     <junit-platform-runner.version>1.10.0</junit-platform-runner.version>
     <mockito-core-version>3.12.4</mockito-core-version>
     <javax.ws.rs-api-version>2.1.1</javax.ws.rs-api-version>
-    <jsr311-api-version>1.1.1</jsr311-api-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spotless.version>2.43.0</spotless.version>
     <failsafe-version>3.3.1</failsafe-version>
