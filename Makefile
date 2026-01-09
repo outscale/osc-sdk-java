@@ -31,7 +31,7 @@ build:
 .PHONY: reuse-test
 reuse-test:
 	@echo testing licensing with reuse...
-	docker run --rm --volume $(PWD):/data fsfe/reuse:0.11.1 lint
+	docker run --rm --volume $(PWD):/data fsfe/reuse:6.2 lint
 
 .PHONY: examples-test
 examples-test: example-volumes example-region example-vm example-config_file example-config_env example-password_auth
