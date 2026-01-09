@@ -12,15 +12,15 @@ jobs:
   reuse-test:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
       - name: Reuse specification test
         run: make reuse-test
   examples-test:
     environment: eu-west-2
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+      - uses: actions/setup-java@17f84c3641ba7b8f6deff6309fc4c864478f5d62 # v3
         with:
           distribution: 'temurin' 
           java-version: '11'
@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
+        uses: dependabot/fetch-metadata@a3e5f86ae9f2f49b441498973ddec20035d326b8 # v1.1.1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Auto-merge
