@@ -1,0 +1,16 @@
+version = 1
+SPDX-PackageName = "osc-sdk-java"
+SPDX-PackageSupplier = "Outscale support <support@outscale.com>"
+SPDX-PackageDownloadLocation = "https://github.com/outscale/osc-sdk-java/"
+
+[[annotations]]
+path = ["**.md", "**.md.template"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019 Outscale SAS <support@outscale.com>"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["Makefile", "sdk_version", "api_version", "**.java", ".git**", "src/**", "dist/**", "**.yml", "**.yaml", "examples/**", "pom.xml", "pom.xml.template", "sdk/**", "bundle/**" ,"sbom/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019 Outscale SAS <support@outscale.com>"
+SPDX-License-Identifier = "BSD-3-Clause"
