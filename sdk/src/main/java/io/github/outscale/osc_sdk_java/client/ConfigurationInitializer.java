@@ -203,6 +203,7 @@ public class ConfigurationInitializer {
                             .heldCertificate(clientCertificate)
                             .build();
 
+
             OkHttpClient client =
                     new OkHttpClient.Builder()
                             .sslSocketFactory(
