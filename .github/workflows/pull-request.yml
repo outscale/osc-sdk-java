@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@a3e5f86ae9f2f49b441498973ddec20035d326b8 # v1.1.1
+        uses: dependabot/fetch-metadata@8348ea7f5d949b08c7f125a44b569c9626b05db3 # v1.7.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Auto-merge
