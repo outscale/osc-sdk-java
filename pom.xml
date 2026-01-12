@@ -84,7 +84,7 @@
     <jackson-databind-nullable-version>0.2.8</jackson-databind-nullable-version>
     <jakarta-annotation-version>2.1.1</jakarta-annotation-version>
     <junit-version>5.9.2</junit-version>
-    <junit-platform-runner.version>1.10.0</junit-platform-runner.version>
+    <junit-platform-runner.version>1.14.2</junit-platform-runner.version>
     <mockito-core-version>3.12.4</mockito-core-version>
     <javax.ws.rs-api-version>2.1.1</javax.ws.rs-api-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
