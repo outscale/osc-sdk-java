@@ -85,7 +85,7 @@
     <jakarta-annotation-version>2.1.1</jakarta-annotation-version>
     <junit-version>5.9.2</junit-version>
     <junit-platform-runner.version>1.10.0</junit-platform-runner.version>
-    <mockito-core-version>3.12.4</mockito-core-version>
+    <mockito-core-version>5.21.0</mockito-core-version>
     <javax.ws.rs-api-version>2.1.1</javax.ws.rs-api-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spotless.version>2.43.0</spotless.version>
