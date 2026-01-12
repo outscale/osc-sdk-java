@@ -104,8 +104,8 @@
         <!-- TLS -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.70</version>
+            <artifactId>bcpkix-jdk18on</artifactId>
+            <version>1.83</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-tls -->
         <dependency>
