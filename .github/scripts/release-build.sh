@@ -17,3 +17,4 @@ cd "$root"
 
 new_api_version=$(cat $root/api_version)
 sed -i "s|<outscale-api-version>.*|<outscale-api-version>${new_api_version}</outscale-api-version>|" pom.xml
+mvn versions:set -DnewVersion=${new_sdk_version}
