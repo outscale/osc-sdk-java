@@ -233,7 +233,7 @@
                         <gitHost>github.com</gitHost>
                         <gitUserId>outscale</gitUserId>
                         <gitRepoId>osc-sdk-java</gitRepoId>
-                        <inputSpec>https://raw.githubusercontent.com/outscale/osc-api-deploy/refs/tags/v${outscale-api-version}/outscale.yaml</inputSpec>
+                        <inputSpec>https://raw.githubusercontent.com/outscale/osc-api-deploy/refs/tags/${outscale-api-version}/outscale.yaml</inputSpec>
                         <generatorName>java</generatorName>
                         <templateDirectory>templates</templateDirectory>
                         <groupId>io.github.outscale</groupId>

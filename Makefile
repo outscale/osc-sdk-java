@@ -77,25 +77,9 @@ auto-release: auto-release-cleanup osc-api-check release-check-duplicate release
 auto-release-cleanup:
 	rm -rf .auto-release-abort || true
 
-.PHONY: osc-api-check
-osc-api-check:
-	bash .github/scripts/osc-api-check.sh
-
-.PHONY: release-check-duplicate
-release-check-duplicate:
-	bash .github/scripts/release-check-duplicate.sh
-
 .PHONY: release-build
 release-build:
 	bash .github/scripts/release-build.sh
-
-.PHONY: release-push
-release-push:
-	bash .github/scripts/release-push.sh
-
-.PHONY: release-pr
-release-pr:
-	bash .github/scripts/release-pr.sh
 
 .PHONY: local-deploy
 local-deploy:
