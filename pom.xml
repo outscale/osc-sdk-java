@@ -90,6 +90,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spotless.version>2.46.1</spotless.version>
     <failsafe-version>3.3.2</failsafe-version>
-    <outscale-api-version>1.37.1</outscale-api-version>
+    <outscale-api-version>1.39.1</outscale-api-version>
 </properties>
 </project>
