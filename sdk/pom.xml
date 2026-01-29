@@ -6,7 +6,8 @@
 <parent>
     <groupId>io.github.outscale</groupId>
     <artifactId>osc-sdk-java-parent</artifactId>
-    <version>0.8.0</version>
+    <version>0.9.0</version>
+    <relativePath>../pom.xml</relativePath>
 </parent>
 
 <artifactId>osc-sdk-java</artifactId>
@@ -258,7 +259,7 @@
         <dependency>
             <groupId>io.github.outscale</groupId>
             <artifactId>osc-sdk-java-sbom</artifactId>
-            <version>0.8.0</version>
+            <version>0.9.0</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
