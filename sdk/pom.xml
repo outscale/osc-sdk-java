@@ -133,39 +133,11 @@
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.4.1</version>
-            <executions>
-                <execution>
-                    <id>attach-javadocs</id>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <doclint>none</doclint>
-                <tags>
-                    <tag>
-                        <name>http.response.details</name>
-                        <placement>a</placement>
-                        <head>Http Response Details:</head>
-                    </tag>
-                </tags>
-            </configuration>
+            <artifactId>maven-source-plugin</artifactId>
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <version>3.2.1</version>
-            <executions>
-                <execution>
-                    <id>attach-sources</id>
-                    <goals>
-                        <goal>jar-no-fork</goal>
-                    </goals>
-                </execution>
-            </executions>
+            <artifactId>maven-javadoc-plugin</artifactId>
         </plugin>
         <plugin>
             <groupId>com.diffplug.spotless</groupId>
