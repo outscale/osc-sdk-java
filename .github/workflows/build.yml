@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - uses: chainguard-dev/actions/setup-gitsign@main
+      - uses: chainguard-dev/actions/setup-gitsign@3e76343fe029f8e2a10bfbec0da8f437e5dab7a5 # main
       - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
         with:
           distribution: 'temurin' 
@@ -25,7 +25,9 @@ jobs:
           cache: 'maven'
 
       - name: Write Outscale API version to use
-        run: echo "${{ github.event.inputs.api_version }}" > api_version
+        env:
+          API_VERSION: ${{ github.event.inputs.api_version }}
+        run: echo "$API_VERSION" > api_version
       - name: auto-generate release
         run: make release-build
 
