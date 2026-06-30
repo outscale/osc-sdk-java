@@ -7,6 +7,7 @@ on:
 permissions:
   pull-requests: write
   contents: write
+  id-token: write
     
 jobs:
   reuse-test:
@@ -16,24 +17,29 @@ jobs:
       - name: Reuse specification test
         run: make reuse-test
   examples-test:
-    environment: eu-west-2
-    runs-on: ubuntu-24.04
+    runs-on: [authenticated, Linux]
     steps:
+      - name: 🔒🧹 Setup Vault & Frieza
+        id: secrets
+        uses: outscale/.github/vault-frieza-clean@eb7bd1e0360703d0ad355bce46029ae8d49bac04
+        with:
+          vault_role: outscale-osc-sdk-java
+          osc_account: oak
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: dtolnay/rust-toolchain@stable
       - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
         with:
-          distribution: 'temurin' 
+          distribution: 'temurin'
           java-version: '11'
           cache: 'maven'
+      - name: Install maven
+        run: apt install maven
       - name: Local Tests
         run: ./local_tests.sh
-
       - name: Example tests
         if: "! contains(github.event.pull_request.labels.*.name, 'dependencies')"
         env:
-          OSC_ACCESS_KEY: ${{ secrets.OSC_ACCESS_KEY }}
-          OSC_SECRET_KEY: ${{ secrets.OSC_SECRET_KEY }}
-          OSC_REGION: ${{ secrets.OSC_REGION }}
-          OSC_USERNAME: ${{ secrets.OSC_USERNAME }}
-          OSC_PASSWORD: ${{ secrets.OSC_PASSWORD }}
+          OSC_ACCESS_KEY: ${{ steps.secrets.outputs.access_key }}
+          OSC_SECRET_KEY: ${{ steps.secrets.outputs.secret_key }}
+          OSC_REGION: ${{ steps.secrets.outputs.region }}
         run: make examples-test
