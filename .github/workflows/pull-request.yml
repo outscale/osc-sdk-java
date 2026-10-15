@@ -33,7 +33,7 @@ jobs:
           java-version: '11'
           cache: 'maven'
       - name: Install maven
-        run: apt install maven
+        run: apt install -y maven
       - name: Local Tests
         run: ./local_tests.sh
       - name: Example tests
