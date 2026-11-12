@@ -26,21 +26,29 @@ public class Profile {
 
     public static final String SERIALIZED_NAME_X509_CLIENT_CERT = "x509_client_cert";
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT)
     private String x509ClientCert;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_CERT_B64 = "x509_client_cert_b64";
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_CERT_B64)
     private String x509ClientCertB64;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_KEY = "x509_client_key";
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY)
     private String x509ClientKey;
 
     public static final String SERIALIZED_NAME_X509_CLIENT_KEY_B64 = "x509_client_key_b64";
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     @SerializedName(SERIALIZED_NAME_X509_CLIENT_KEY_B64)
     private String x509ClientKeyB64;
 
@@ -190,18 +198,26 @@ public class Profile {
         return secretKey;
     }
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     public String getX509ClientCert() {
         return x509ClientCert;
     }
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     public String getX509ClientCertB64() {
         return x509ClientCertB64;
     }
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     public String getX509ClientKey() {
         return x509ClientKey;
     }
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     public String getX509ClientKeyB64() {
         return x509ClientKeyB64;
     }
@@ -256,18 +272,26 @@ public class Profile {
         this.secretKey = secretKey;
     }
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     public void setX509ClientCert(String x509ClientCert) {
         this.x509ClientCert = x509ClientCert;
     }
 
+    /** @deprecated X.509 client certificate support is deprecated. */
+    @Deprecated
     public void setX509ClientCertB64(String x509ClientCertB64) {
         this.x509ClientCertB64 = x509ClientCertB64;
     }
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     public void setX509ClientKey(String x509ClientKey) {
         this.x509ClientKey = x509ClientKey;
     }
 
+    /** @deprecated X.509 client key support is deprecated. */
+    @Deprecated
     public void setX509ClientKeyB64(String x509ClientKeyB64) {
         this.x509ClientKeyB64 = x509ClientKeyB64;
     }
