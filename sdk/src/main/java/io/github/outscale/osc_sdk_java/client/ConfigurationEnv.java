@@ -20,33 +20,37 @@ public class ConfigurationEnv extends ConfigurationInitializer {
         configurationEnv.profile.setProtocol(System.getenv("OSC_PROTOCOL"));
         try {
             if (System.getenv("OSC_MAX_RETRIES") != null) {
-                configurationEnv.profile.setMaxRetries(Integer.parseInt(System.getenv("OSC_MAX_RETRIES")));
+                configurationEnv.profile.setMaxRetries(
+                        Integer.parseInt(System.getenv("OSC_MAX_RETRIES")));
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ConfigurationException("OSC_MAX_RETRIES is not a valid integer");
         }
 
         try {
             if (System.getenv("OSC_RETRY_BACKOFF_FACTOR") != null) {
-                configurationEnv.profile.setRetryBackoffFactor(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_FACTOR")));
+                configurationEnv.profile.setRetryBackoffFactor(
+                        Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_FACTOR")));
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ConfigurationException("OSC_RETRY_BACKOFF_FACTOR is not a valid float");
         }
 
         try {
             if (System.getenv("OSC_RETRY_BACKOFF_JITTER") != null) {
-                configurationEnv.profile.setRetryBackoffJitter(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_JITTER")));
+                configurationEnv.profile.setRetryBackoffJitter(
+                        Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_JITTER")));
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ConfigurationException("OSC_RETRY_BACKOFF_Jitter is not a valid float");
         }
 
         try {
             if (System.getenv("OSC_RETRY_BACKOFF_MAX") != null) {
-                configurationEnv.profile.setRetryBackoffMax(Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_MAX")));
+                configurationEnv.profile.setRetryBackoffMax(
+                        Float.parseFloat(System.getenv("OSC_RETRY_BACKOFF_MAX")));
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ConfigurationException("OSC_RETRY_BACKOFF_MAX is not a valid float");
         }
 

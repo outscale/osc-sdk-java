@@ -1,0 +1,11 @@
+name: Run Tests
+description: Run Integration / E2E Tests
+
+runs:
+  using: composite
+  steps:
+    - name: ⬇️ Setup Toolchain
+      uses: ./.github/actions/common-ci
+    - name: 🧪 Run Tests
+      shell: bash
+      run: make examples-test

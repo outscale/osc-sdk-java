@@ -18,6 +18,8 @@ public class App {
     if (confEnv == null) {
       return;
     }
+    
+    System.err.println(confEnv.toString());
 
     ApiClient apiClient = null;
     try {
@@ -30,6 +32,7 @@ public class App {
     if (apiClient == null) {
       return;
     }
+    System.err.println(apiClient.toString());
 
     VmApi apiInstance = new VmApi(apiClient);
     ReadVmsRequest createAccessKeyRequest = new ReadVmsRequest(); // CreateAccessKeyRequest |

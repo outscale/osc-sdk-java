@@ -5,41 +5,25 @@ on:
     branches: [ main ]
 
 permissions:
-  pull-requests: write
-  contents: write
-  id-token: write
+  contents: read
     
 jobs:
-  reuse-test:
-    runs-on: ubuntu-24.04
+  lint:
+    uses: ./.github/workflows/lint.yml
+  tests:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-      - name: Reuse specification test
-        run: make reuse-test
-  examples-test:
-    runs-on: [authenticated, Linux]
-    steps:
-      - name: 🔒🧹 Setup Vault & Frieza
-        id: secrets
-        uses: outscale/.github/vault-frieza-clean@eb7bd1e0360703d0ad355bce46029ae8d49bac04
+      - name: ⬇️ Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          vault_role: outscale-osc-sdk-java
-          osc_account: oak
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249 # stable
-      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
-        with:
-          distribution: 'temurin'
-          java-version: '11'
-          cache: 'maven'
-      - name: Install maven
-        run: apt install maven
-      - name: Local Tests
-        run: ./local_tests.sh
-      - name: Example tests
-        if: "! contains(github.event.pull_request.labels.*.name, 'dependencies')"
+          persist-credentials: false
+      - name: 🚀 Lunch VCR Server
+        run: |
+          python3 ./.github/scripts/vcr.py replay &
+      - name: 🧪 Run Tests
+        uses: ./.github/actions/run-test
         env:
-          OSC_ACCESS_KEY: ${{ steps.secrets.outputs.access_key }}
-          OSC_SECRET_KEY: ${{ steps.secrets.outputs.secret_key }}
-          OSC_REGION: ${{ steps.secrets.outputs.region }}
-        run: make examples-test
+          OSC_ACCESS_KEY: 1111222233334444
+          OSC_SECRET_KEY: AAAABBBBCCCCDDDDEEEEFFFF
+          OSC_REGION: gh-test-1
+          OSC_ENDPOINT_API: http://127.0.0.1:8000/api/v1

@@ -1,7 +1,5 @@
 package io.github.outscale.osc_sdk_java.client;
 
-import dev.failsafe.Failsafe;
-import dev.failsafe.Policy;
 import dev.failsafe.RateLimiter;
 import dev.failsafe.RetryPolicy;
 import java.io.BufferedReader;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.tls.HandshakeCertificates;
 import okhttp3.tls.HeldCertificate;
@@ -54,16 +51,16 @@ public class ConfigurationInitializer {
         apiClient.setAWS4Configuration(accessKey, secretKey, region, "api");
 
         StringBuilder urlBuilder = new StringBuilder();
-        if (selectedProfile.getProtocol() != null && selectedProfile.getProtocol().length() > 0) {
-            urlBuilder.append(selectedProfile.getProtocol() + "://");
-        } else {
-            urlBuilder.append("https://");
-        }
-
         Endpoint endpoints = selectedProfile.getEndpoints();
         if (endpoints != null && endpoints.getApi() != null && endpoints.getApi().length() > 0) {
             urlBuilder.append(endpoints.getApi());
         } else {
+            if (selectedProfile.getProtocol() != null
+                    && selectedProfile.getProtocol().length() > 0) {
+                urlBuilder.append(selectedProfile.getProtocol() + "://");
+            } else {
+                urlBuilder.append("https://");
+            }
             urlBuilder.append("api.{region}.outscale.com/api/v1");
         }
 
@@ -203,7 +200,6 @@ public class ConfigurationInitializer {
                             .heldCertificate(clientCertificate)
                             .build();
 
-
             OkHttpClient client =
                     new OkHttpClient.Builder()
                             .sslSocketFactory(
@@ -222,32 +218,36 @@ public class ConfigurationInitializer {
 
     protected RetryPolicy<Response> getRetryPolicy(Profile profile) {
         int max_retires = profile.getMaxRetry() != null ? profile.getMaxRetry() : 3;
-        Duration backoff_factor = profile.getRetryBackoffFactor() != null ?
-            Duration.ofMillis(Math.round(profile.getRetryBackoffFactor() * 1000)) :
-            Duration.ofSeconds(2);
-        Duration backoff_max = profile.getRetryBackoffMax() != null ?
-            Duration.ofMillis(Math.round(profile.getRetryBackoffMax() * 1000)) :
-            Duration.ofSeconds(15);
-        Duration backoff_jitter = profile.getRetryBackoffJitter() != null ?
-            Duration.ofMillis(Math.round(profile.getRetryBackoffJitter() * 500)) :
-            Duration.ofSeconds(1);
+        Duration backoff_factor =
+                profile.getRetryBackoffFactor() != null
+                        ? Duration.ofMillis(Math.round(profile.getRetryBackoffFactor() * 1000))
+                        : Duration.ofSeconds(2);
+        Duration backoff_max =
+                profile.getRetryBackoffMax() != null
+                        ? Duration.ofMillis(Math.round(profile.getRetryBackoffMax() * 1000))
+                        : Duration.ofSeconds(15);
+        Duration backoff_jitter =
+                profile.getRetryBackoffJitter() != null
+                        ? Duration.ofMillis(Math.round(profile.getRetryBackoffJitter() * 500))
+                        : Duration.ofSeconds(1);
         if (backoff_jitter.compareTo(backoff_factor) > 0) {
             backoff_jitter = backoff_factor;
         }
 
         return RetryPolicy.<Response>builder()
-            .withMaxRetries(max_retires)
-            .withBackoff(backoff_factor, backoff_max)
-            .withJitter(backoff_jitter)
-            .build();
+                .withMaxRetries(max_retires)
+                .withBackoff(backoff_factor, backoff_max)
+                .withJitter(backoff_jitter)
+                .build();
     }
 
     protected RateLimiter<Response> getLimiter(Profile profile) {
         int max_req = profile.getLimiterMaxRequests() != null ? profile.getLimiterMaxRequests() : 5;
-        Duration window = profile.getLimiterWindow() != null ?
-            Duration.ofMillis(Math.round(profile.getLimiterWindow() * 1000)) :
-            Duration.ofSeconds(1);
+        Duration window =
+                profile.getLimiterWindow() != null
+                        ? Duration.ofMillis(Math.round(profile.getLimiterWindow() * 1000))
+                        : Duration.ofSeconds(1);
 
         return RateLimiter.<Response>smoothBuilder(max_req, window).build();
-    } 
+    }
 }

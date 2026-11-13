@@ -401,6 +401,11 @@ public class JSON {
                     return null;
                 default:
                     String date = in.nextString();
+                    // ponytail: API sends full ISO date-times for some `format: date` fields;
+                    // truncate to the date part. Upgrade path: spec fix to date-time upstream.
+                    if (date.length() > 10 && date.charAt(10) == 'T') {
+                        date = date.substring(0, 10);
+                    }
                     return LocalDate.parse(date, formatter);
             }
         }
