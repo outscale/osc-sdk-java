@@ -11,7 +11,7 @@ public class App {
     String accessKey = System.getenv("OSC_ACCESS_KEY");
     String secretKey = System.getenv("OSC_SECRET_KEY");
     String region = System.getenv("OSC_REGION");
-    String endpoint = System.getenv("OSC_ENDPOINT_API_PROTO");
+    String endpoint = System.getenv("OSC_ENDPOINT_API");
 
     if (endpoint != null)
 	    defaultClient.setBasePath(endpoint);

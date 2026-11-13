@@ -1,0 +1,26 @@
+name: Setup Toolchain
+description: Setup Toolchain
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        cache: 'maven'
+    - name: Ensure maven is installed
+      shell: bash
+      run: |
+        if ! command -v mvn >/dev/null 2>&1; then
+          sudo apt-get update
+          sudo apt-get install -y maven
+        fi
+
+        if ! command -v mvn >/dev/null 2>&1; then
+          echo "Error: mvn is not available on PATH" >&2
+          exit 1
+        fi
+
+        mvn --version
+      

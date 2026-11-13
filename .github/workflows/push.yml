@@ -1,0 +1,38 @@
+name: push on main
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "30 2 * * 1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+    
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  tests:
+    runs-on: [authenticated, Linux]
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: 🔒🧹 Setup Vault & Frieza
+        id: secrets
+        uses: outscale/.github/vault-frieza-clean@5bb625dd5ae3c7712cef931f168e91899f4f0055 # v0.18.0
+        with:
+          vault_role: outscale-osc-sdk-java
+          osc_account: oak
+      - name: 🧪 Run Tests
+        uses: ./.github/actions/run-test
+        env:
+          OSC_ACCESS_KEY: ${{ steps.secrets.outputs.access_key }}
+          OSC_SECRET_KEY: ${{ steps.secrets.outputs.secret_key }}
+          OSC_REGION: ${{ steps.secrets.outputs.region }}

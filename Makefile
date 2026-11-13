@@ -3,7 +3,6 @@ SDK_VERSION=$(shell cat sdk_version)
 USER_ID=$(shell id -u)
 GROUP_ID=$(shell id -g)
 OPENAPI_IMG=openapitools/openapi-generator-cli:v7.17.0
-#OPENAPI_IMG=outscale/openapi-generator:java-awsv4-signature
 SHELL := /bin/bash
 
 all: help
@@ -34,7 +33,7 @@ reuse-test:
 	docker run --rm --volume $(PWD):/data fsfe/reuse:6.2 lint
 
 .PHONY: examples-test
-examples-test: example-volumes example-region example-vm example-config_file example-config_env example-password_auth
+examples-test: example-volumes example-region example-vm example-config_env
 	@echo examples are OK
 
 .PHONY: example-volumes
@@ -52,20 +51,10 @@ example-vm: local-deploy
 	@echo testing examples/vm example...
 	make -C examples/vm build run
 
-.PHONY: example-config_file
-example-config_file: local-deploy
-	@echo testing examples/config_file example...
-	make -C examples/config_file build run
-
 .PHONY: example-config_env
 example-config_env: local-deploy
 	@echo testing examples/config_env example...
 	make -C examples/config_env build run
-
-.PHONY: example-password_auth
-example-password_auth: local-deploy
-	@echo testing examples/password_auth example...
-	make -C examples/password_auth build run
 
 # Used by bot to auto-release
 # GH_TOKEN and SSH_PRIVATE_KEY are needed
@@ -76,6 +65,14 @@ auto-release: auto-release-cleanup osc-api-check release-check-duplicate release
 .PHONY: auto-release-cleanup
 auto-release-cleanup:
 	rm -rf .auto-release-abort || true
+
+.PHONY: osc-api-check
+osc-api-check:
+	bash .github/scripts/osc-api-check.sh
+
+.PHONY: release-check-duplicate
+release-check-duplicate:
+	bash .github/scripts/release-check-duplicate.sh
 
 .PHONY: release-build
 release-build:

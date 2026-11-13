@@ -1,0 +1,56 @@
+name: sync vcr fixtures
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sync:
+    runs-on: [authenticated, Linux]
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 🔒🧹 Setup Vault & Frieza
+        id: secrets
+        uses: outscale/.github/vault-frieza-clean@5bb625dd5ae3c7712cef931f168e91899f4f0055 # v0.18.0
+        with:
+          vault_role: outscale-osc-sdk-java
+          osc_account: oak
+      - name: 🚀 Start VCR Record Server
+        env:
+          OSC_ACCESS_KEY: ${{ steps.secrets.outputs.access_key }}
+          OSC_SECRET_KEY: ${{ steps.secrets.outputs.secret_key }}
+          OSC_REGION: ${{ steps.secrets.outputs.region }}
+        run: |
+          rm -rf fixtures
+          python3 ./.github/scripts/vcr.py record \
+            --upstream-host "api.${OSC_REGION}.outscale.com" &
+      - name: 🧪 Run Tests
+        uses: ./.github/actions/run-test
+        env:
+          OSC_ACCESS_KEY: 1111222233334444
+          OSC_SECRET_KEY: AAAABBBBCCCCDDDDEEEE
+          OSC_REGION: gh-test-1
+          OSC_ENDPOINT_API: http://127.0.0.1:8000/api/v1
+      - name: 🛑 Stop VCR Record Server
+        if: always()
+        run: pkill -f "vcr.py record" || true
+      - name: 💾 Commit fixtures
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
+        with:
+          committer: "Outscale Bot <opensource+bot@outscale.com>"
+          author: "Outscale Bot <opensource+bot@outscale.com>"
+          commit-message: "📸 chore(test): update VCR fixtures"
+          token: "${{ env.token }}"
+          labels: "kind/feature"
+        env:
+          sdk_version: ${{ steps.get-sdk-version.outputs.sdk_version }}
+          api_version: ${{ github.event.inputs.api_version }}
+          token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
