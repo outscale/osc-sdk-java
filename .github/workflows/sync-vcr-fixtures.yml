@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 🔒🧹 Setup Vault & Frieza
         id: secrets
-        uses: outscale/.github/vault-frieza-clean@5bb625dd5ae3c7712cef931f168e91899f4f0055 # v0.18.0
+        uses: outscale/.github/vault-frieza-clean@cc76c3e03f3c7a83a09914b1ed65b7fea5605fb8 # v1.5.1
         with:
           vault_role: outscale-osc-sdk-java
           osc_account: oak
