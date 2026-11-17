@@ -36,3 +36,4 @@ jobs:
           OSC_ACCESS_KEY: ${{ steps.secrets.outputs.access_key }}
           OSC_SECRET_KEY: ${{ steps.secrets.outputs.secret_key }}
           OSC_REGION: ${{ steps.secrets.outputs.region }}
+          OSC_ENDPOINT_API: "https://api.${{ steps.secrets.outputs.region }}.outscale.com/api/v1"

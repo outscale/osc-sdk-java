@@ -17,14 +17,14 @@ public class App {
 	    defaultClient.setBasePath(endpoint);
 
     VmApi apiInstance = new VmApi(defaultClient);
-    ReadVmsRequest createAccessKeyRequest = new ReadVmsRequest(); // CreateAccessKeyRequest |
+    ReadVmsRequest readVmsRequest = new ReadVmsRequest();
     FiltersVm filter = new FiltersVm();
-    createAccessKeyRequest.setFilters(filter);
+    readVmsRequest.setFilters(filter);
     try {
-      ReadVmsResponse result = apiInstance.readVms(createAccessKeyRequest);
+      ReadVmsResponse result = apiInstance.readVms(readVmsRequest);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AccessKeyApi#createAccessKey");
+      System.err.println("Exception when calling VmApi#readVms");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
