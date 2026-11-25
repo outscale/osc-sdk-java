@@ -23,7 +23,7 @@ public class App {
       ReadVolumesResponse result = apiInstance.readVolumes(request);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AccessKeyApi#createAccessKey");
+      System.err.println("Exception when calling VolumeApi#readVolumes");
       System.err.println("Endpoint: " + defaultClient.getBasePath());
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
